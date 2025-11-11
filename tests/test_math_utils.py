@@ -1,6 +1,6 @@
 """Tests for the placeholder math utilities."""
 
-from math_utils import add
+from .math_utils import add
 
 
 def test_add_returns_sum() -> None:
