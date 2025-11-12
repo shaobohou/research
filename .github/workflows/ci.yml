@@ -27,7 +27,7 @@ jobs:
             echo "has_python=false" >>"$GITHUB_OUTPUT"
           fi
 
-          if git ls-files 'test_*.py' 'tests/**/*.py' | grep -q .; then
+          if find . -type f \( -name 'test_*.py' -o -name '*_test.py' \) | grep -q .; then
             echo "has_tests=true" >>"$GITHUB_OUTPUT"
           else
             echo "has_tests=false" >>"$GITHUB_OUTPUT"
