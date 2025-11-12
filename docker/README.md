@@ -1,68 +1,68 @@
-# Minimal AI Development Container
+# Docker Development Environment
 
-Lightweight Docker environment with Claude Code, uv, Codex, and Gemini CLIs.
+Lightweight Docker container with AI assistant CLIs (Claude Code, Codex, Gemini) and uv Python package manager.
 
-**Included:**
-- Claude Code (Anthropic)
-- uv (Python package manager)
-- Codex CLI (OpenAI)
-- Gemini CLI (Google)
-- Non-root `dev` user with passwordless sudo
+## Features
 
-## Quickstart
+- **Base**: `debian:bookworm-slim`
+- **User**: Non-root `dev` user with passwordless sudo
+- **Tools**: Claude Code, uv, Codex CLI, Gemini CLI, Git, Node.js
+- **Smart entrypoint**: Auto-installs/updates tools on startup with error handling
+
+## Usage
 
 ```bash
-# Build the image
+# Build image
 docker build -t claude-dev-agents .
 
-# Run interactively (installs/updates tools and opens bash)
+# Run interactively with workspace mounted
 docker run --rm -it -v "$PWD":/home/dev/workspace claude-dev-agents
-```
 
-Inside the container:
-
-```bash
-claude --version
-uv --version
-codex --version
-gemini --version
-```
-
-Or run a specific tool directly:
-
-```bash
-docker run --rm -it claude-dev-agents claude
-docker run --rm -it claude-dev-agents codex --help
-docker run --rm -it claude-dev-agents gemini --help
+# Run specific command
+docker run --rm -it claude-dev-agents claude --version
 ```
 
 ## Python Development with uv
 
 ```bash
-# Create a new Python project
-uv init my-project
-cd my-project
-
-# (Optional) Install or select Python version
-uv python install 3.12
+# Create new project
+uv init my-project && cd my-project
 
 # Add dependencies
-uv add requests jax
+uv add requests pandas
+uv add --dev pytest ruff
 
-# Run code directly in the project environment
+# Run code
 uv run main.py
+uv run -m pytest
 ```
 
-## Environment Details
+## Advanced Usage
 
-| Component | Details |
-|------------|----------|
-| **Base image** | `debian:bookworm-slim` |
-| **User** | `dev` (non-root, passwordless sudo) |
-| **Included tools** | Claude Code, uv, Codex CLI, Gemini CLI |
-| **Node/npm** | Installed for Codex & Gemini CLIs |
-| **TLS** | `ca-certificates` preinstalled |
-| **PATH** | `~/.local/bin`, `~/.claude/bin`, `~/.npm-global/bin` |
+```bash
+# Persist tool configs
+docker run --rm -it \
+  -v "$PWD":/home/dev/workspace \
+  -v claude-config:/home/dev/.claude \
+  claude-dev-agents
+
+# CI/CD usage
+docker run --rm -v "$PWD":/home/dev/workspace claude-dev-agents \
+  bash -c "cd workspace && uv run pytest"
+```
+
+## Details
+
+**Environment**:
+- Base: `debian:bookworm-slim`, user: `dev`, home: `/home/dev`
+- PATH includes: `~/.local/bin`, `~/.claude/bin`, `~/.npm-global/bin`
+- Tools installed via entrypoint on first run
+
+**Entrypoint**: Auto-installs/updates tools, reports versions, handles failures gracefully
+
+**Docker vs Dev Container**:
+- Docker: Standalone, CI/CD, command-line workflows
+- Dev Container: VS Code integration, GitHub Codespaces, pre-configured extensions
 
 ## License
 
