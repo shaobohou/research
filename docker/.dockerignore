@@ -1,0 +1,14 @@
+# Common local files to exclude from Docker context
+.git
+.gitignore
+.DS_Store
+node_modules
+.venv
+venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+dist/
+build/
+.idea/
