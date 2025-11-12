@@ -1,6 +1,15 @@
-# codespaces
+# Research Codespaces
 
-Minimal Codespaces sandbox focused on infrastructure:
+Minimal development environment for AI-assisted research and experimentation.
 
-- `.devcontainer/` provisions Python 3.12 with node, uv, GitHub CLI, and runs a uv post-create script that installs Claude Code, Gemini, and Codex CLIs.
-- `.github/workflows/ci.yml` runs uvx-powered linting and pytest checks when Python sources or tests are tracked.
+## Setup
+
+**Environment**: Python 3.12, Node.js, uv package manager, GitHub CLI
+
+**Dev Container**: `.devcontainer/` auto-installs Claude Code, Gemini, and Codex CLIs via uv post-create script
+
+**CI**: `.github/workflows/ci.yml` runs linting and pytest on Python code changes
+
+## Workflow
+
+See `AGENTS.md` for research investigation guidelines.

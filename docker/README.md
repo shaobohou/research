@@ -1,16 +1,15 @@
-# 🐳 Minimal Claude / uv / Codex / Gemini Dev Container
+# Minimal AI Development Container
 
-A lightweight Docker environment for AI-assisted development, including:
+Lightweight Docker environment with Claude Code, uv, Codex, and Gemini CLIs.
 
-- **Claude Code** – Anthropic CLI for code generation and chat
-- **uv** – Fast Python project and package manager
-- **Codex CLI** – OpenAI code assistant
-- **Gemini CLI** – Google Gemini interface
-- **User** – Non-root `dev` user with passwordless `sudo`
+**Included:**
+- Claude Code (Anthropic)
+- uv (Python package manager)
+- Codex CLI (OpenAI)
+- Gemini CLI (Google)
+- Non-root `dev` user with passwordless sudo
 
----
-
-## 🚀 Quickstart
+## Quickstart
 
 ```bash
 # Build the image
@@ -37,12 +36,7 @@ docker run --rm -it claude-dev-agents codex --help
 docker run --rm -it claude-dev-agents gemini --help
 ```
 
----
-
-## 🐍 Standard uv Workflow
-
-The container includes **uv**, a modern Python project and environment manager.
-Use it to create and manage projects without manually activating virtual environments.
+## Python Development with uv
 
 ```bash
 # Create a new Python project
@@ -59,9 +53,7 @@ uv add requests jax
 uv run main.py
 ```
 
----
-
-## 🧩 Environment Summary
+## Environment Details
 
 | Component | Details |
 |------------|----------|
@@ -72,8 +64,6 @@ uv run main.py
 | **TLS** | `ca-certificates` preinstalled |
 | **PATH** | `~/.local/bin`, `~/.claude/bin`, `~/.npm-global/bin` |
 
----
-
-## 📜 License
+## License
 
 MIT
