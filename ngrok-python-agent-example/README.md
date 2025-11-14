@@ -188,11 +188,11 @@ Clear conversation history for a session
 
 ### Architecture
 
-The agent system uses a clean abstraction layer:
+The agent system uses a clean Protocol-based interface:
 
 ```
 agents.py
-├── AgentBase (abstract base class)
+├── Agent (Protocol defining the interface)
 ├── Message (conversation message)
 ├── AgentResponse (standardized response)
 ├── LLMAgent (OpenAI-based implementation)
@@ -202,7 +202,7 @@ agents.py
 
 ### Core Components
 
-**`AgentBase`**: Abstract base class defining the agent interface
+**`Agent`**: Protocol defining the agent interface (duck-typed)
 - `chat(message, history) -> AgentResponse`: Process messages
 - `name`: Agent identifier
 
@@ -210,16 +210,18 @@ agents.py
 
 **`AgentResponse`**: Standardized response with content and metadata
 
-**`LLMAgent`**: Concrete implementation using OpenAI's Chat Completions API
+**`LLMAgent`**: Implementation using OpenAI's Chat Completions API
 
 ### Creating Custom Agents
 
-Extend `AgentBase` to create custom agent implementations:
+Implement the `Agent` protocol to create custom agents (no inheritance needed):
 
 ```python
-from agents import AgentBase, AgentResponse
+from agents import AgentResponse
 
-class CustomAgent(AgentBase):
+class CustomAgent:
+    """Custom agent - automatically satisfies Agent protocol"""
+
     def chat(self, message, history=None):
         # Your custom logic here
         response_text = f"Custom response to: {message}"
@@ -233,7 +235,7 @@ class CustomAgent(AgentBase):
     def name(self):
         return "custom-agent"
 
-# Use your custom agent
+# Use your custom agent - works with type hints thanks to Protocol
 agent = CustomAgent()
 response = agent.chat("Hello!")
 ```
@@ -359,11 +361,13 @@ uv add package-name
 ### Custom Agent Example: Function Calling
 
 ```python
-from agents import AgentBase, AgentResponse, Message
+from agents import AgentResponse, Message
 
-class ToolAgent(AgentBase):
+class ToolAgent:
+    """Agent with tool-calling capabilities - implements Agent protocol"""
+
     def __init__(self, config=None):
-        super().__init__(config)
+        self.config = config or {}
         self.tools = {
             "get_weather": self._get_weather,
             "calculate": self._calculate

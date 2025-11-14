@@ -3,8 +3,7 @@ LLM Agent Abstractions
 Provides a clean interface for LLM-powered agents
 """
 
-from abc import ABC, abstractmethod
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional, Any, Protocol
 import os
 
 
@@ -41,13 +40,20 @@ class AgentResponse:
         }
 
 
-class AgentBase(ABC):
-    """Base class for all LLM agents"""
+class Agent(Protocol):
+    """
+    Protocol defining the agent interface
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
-        self.config = config or {}
+    Any class implementing this protocol must provide:
+    - chat(message, history) -> AgentResponse
+    - name property
+    """
 
-    @abstractmethod
+    @property
+    def name(self) -> str:
+        """Return the name/identifier of this agent"""
+        ...
+
     def chat(
         self,
         message: str,
@@ -63,24 +69,14 @@ class AgentBase(ABC):
         Returns:
             AgentResponse with the agent's reply and metadata
         """
-        pass
-
-    @property
-    @abstractmethod
-    def name(self) -> str:
-        """Return the name/identifier of this agent"""
-        pass
-
-    def get_config(self, key: str, default: Any = None) -> Any:
-        """Helper to get configuration values"""
-        return self.config.get(key, default)
+        ...
 
 
-class LLMAgent(AgentBase):
+class LLMAgent:
     """LLM-powered agent using OpenAI's Chat Completions API"""
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
-        super().__init__(config)
+        self.config = config or {}
 
         # Try importing OpenAI
         try:
@@ -92,7 +88,7 @@ class LLMAgent(AgentBase):
             )
 
         # Set up API key
-        self.api_key = self.get_config("api_key") or os.getenv("OPENAI_API_KEY")
+        self.api_key = self._get_config("api_key") or os.getenv("OPENAI_API_KEY")
         if not self.api_key:
             raise ValueError(
                 "OpenAI API key not provided. Set OPENAI_API_KEY environment variable."
@@ -101,9 +97,13 @@ class LLMAgent(AgentBase):
         self.openai.api_key = self.api_key
 
         # Configuration
-        self.model = self.get_config("model") or os.getenv("MODEL", "gpt-3.5-turbo")
-        self.max_tokens = self.get_config("max_tokens") or int(os.getenv("MAX_TOKENS", "500"))
-        self.temperature = self.get_config("temperature") or float(os.getenv("TEMPERATURE", "0.7"))
+        self.model = self._get_config("model") or os.getenv("MODEL", "gpt-3.5-turbo")
+        self.max_tokens = self._get_config("max_tokens") or int(os.getenv("MAX_TOKENS", "500"))
+        self.temperature = self._get_config("temperature") or float(os.getenv("TEMPERATURE", "0.7"))
+
+    def _get_config(self, key: str, default: Any = None) -> Any:
+        """Helper to get configuration values"""
+        return self.config.get(key, default)
 
     def chat(
         self,
@@ -146,7 +146,7 @@ class LLMAgent(AgentBase):
         return f"llm-{self.model}"
 
 
-def create_agent(config: Optional[Dict[str, Any]] = None) -> LLMAgent:
+def create_agent(config: Optional[Dict[str, Any]] = None) -> Agent:
     """
     Create an LLM agent instance
 
@@ -164,7 +164,7 @@ def create_agent(config: Optional[Dict[str, Any]] = None) -> LLMAgent:
     return LLMAgent(config)
 
 
-def create_agent_from_env() -> LLMAgent:
+def create_agent_from_env() -> Agent:
     """
     Create an LLM agent based on environment variables
 
