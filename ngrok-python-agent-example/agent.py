@@ -8,7 +8,7 @@ import os
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 
-from agents import AgentFactory, Message
+from agents import create_agent_from_env, Message
 
 # Load environment variables
 load_dotenv()
@@ -18,8 +18,8 @@ app = Flask(__name__)
 # Configuration
 NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN")
 
-# Initialize agent using factory
-agent = AgentFactory.create_from_env()
+# Initialize agent
+agent = create_agent_from_env()
 
 # Simple in-memory conversation history
 # Structure: {session_id: [Message, Message, ...]}
