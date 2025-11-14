@@ -21,12 +21,21 @@ This example shows how to:
 ## Prerequisites
 
 - Python 3.8+
+- [uv](https://github.com/astral-sh/uv) package manager (recommended) or pip
 - ngrok account (free tier works fine)
 - OpenAI API key (optional - runs in echo mode without it)
 
 ## Setup
 
 ### 1. Install Dependencies
+
+Using uv (recommended):
+
+```bash
+uv sync
+```
+
+Or using pip:
 
 ```bash
 pip install -r requirements.txt
@@ -58,6 +67,14 @@ MODEL=gpt-3.5-turbo
 - ngrok Auth Token: https://dashboard.ngrok.com/get-started/your-authtoken
 
 ### 3. Run the Agent
+
+Using uv (recommended):
+
+```bash
+uv run agent.py
+```
+
+Or using python directly:
 
 ```bash
 python agent.py
@@ -265,7 +282,8 @@ Test webhook integrations locally without deploying to production
 ```
 ngrok-python-agent-example/
 ├── agent.py              # Main agent script
-├── requirements.txt      # Python dependencies
+├── pyproject.toml        # Project metadata and dependencies (uv)
+├── requirements.txt      # Python dependencies (pip fallback)
 ├── .env.example         # Environment variables template
 └── README.md            # This file
 ```
@@ -327,6 +345,7 @@ app.run(host="0.0.0.0", port=5001)  # Change port
 
 ## Resources
 
+- [uv Documentation](https://github.com/astral-sh/uv)
 - [ngrok Documentation](https://ngrok.com/docs)
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [OpenAI API Reference](https://platform.openai.com/docs/api-reference)
