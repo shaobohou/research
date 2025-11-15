@@ -10,6 +10,12 @@ on:
     #   - "src/**/*.js"
     #   - "src/**/*.jsx"
 
+# Ensure only one review runs at a time per PR
+# Cancel in-progress reviews when new commits are pushed
+concurrency:
+  group: claude-review-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   claude-review:
     # Only run for organization members, collaborators, and repository owners
