@@ -21,7 +21,7 @@ This example shows how to:
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.12+
 - [uv](https://github.com/astral-sh/uv) package manager
 - ngrok account (free tier works fine)
 - OpenAI API key
@@ -46,11 +46,7 @@ Edit `.env` and add your OpenAI API key:
 
 ```bash
 OPENAI_API_KEY=sk-your-actual-api-key
-
-# Optional: customize the model and parameters
-MODEL=gpt-3.5-turbo
-MAX_TOKENS=500
-TEMPERATURE=0.7
+NGROK_AUTH_TOKEN=your-ngrok-token  # Optional
 ```
 
 **Getting API Keys:**
@@ -269,26 +265,67 @@ print(response.metadata)  # tokens_used, finish_reason, etc.
 
 ## Configuration
 
-Environment variables in `.env`:
+### Environment Variables
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `OPENAI_API_KEY` | OpenAI API key | - | Yes |
-| `MODEL` | Model to use | `gpt-3.5-turbo` | No |
-| `MAX_TOKENS` | Maximum tokens in response | `500` | No |
-| `TEMPERATURE` | Temperature for generation | `0.7` | No |
-| `NGROK_AUTH_TOKEN` | ngrok authentication token | - | No* |
-| `USE_NGROK` | Enable/disable ngrok tunnel | `true` | No |
-| `DEBUG` | Enable Flask debug mode | `false` | No |
+Only secrets need to be in `.env`:
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `OPENAI_API_KEY` | OpenAI API key | Yes |
+| `NGROK_AUTH_TOKEN` | ngrok authentication token | No* |
 
 \* Without ngrok token, you get temporary URLs that change on restart
+
+### Configuration Defaults
+
+Defaults are defined in the code and can be overridden via environment variables:
+
+**LLM Configuration** (in `agents.py`):
+- `MODEL` - Default: `gpt-3.5-turbo`
+- `MAX_TOKENS` - Default: `500`
+- `TEMPERATURE` - Default: `0.7`
+
+**Server Configuration** (in `agent.py`):
+- `USE_NGROK` - Default: `true`
+- `DEBUG` - Default: `false`
+
+### Overriding Defaults
+
+Override defaults by setting environment variables:
+
+```bash
+# In your shell or .env file
+export MODEL=gpt-4
+export MAX_TOKENS=1000
+export TEMPERATURE=0.5
+export USE_NGROK=false
+export DEBUG=true
+```
+
+Or programmatically:
+
+```python
+from agents import create_agent
+
+agent = create_agent({
+    "model": "gpt-4",
+    "max_tokens": 1000,
+    "temperature": 0.5
+})
+```
 
 ## Running Without ngrok
 
 To run without ngrok (local only):
 
 ```bash
-USE_NGROK=false uv run agent.py
+export USE_NGROK=false
+uv run agent.py
+```
+
+Or set in your `.env`:
+```bash
+USE_NGROK=false
 ```
 
 Then access at `http://localhost:5000`
@@ -400,9 +437,9 @@ class ToolAgent:
 ### ngrok Connection Issues
 
 If ngrok fails to connect:
-1. Check your auth token is correct
+1. Check your auth token is correct in `.env`
 2. Verify you're not hitting ngrok's rate limits
-3. Try running without ngrok: `USE_NGROK=false uv run agent.py`
+3. Try running without ngrok: Set `USE_NGROK=false` in `.env` or environment
 
 ### OpenAI API Errors
 

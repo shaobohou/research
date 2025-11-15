@@ -17,6 +17,8 @@ app = Flask(__name__)
 
 # Configuration
 NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN")
+USE_NGROK = os.getenv("USE_NGROK", "true").lower() == "true"
+DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 
 # Initialize agent
 agent = create_agent_from_env()
@@ -178,8 +180,7 @@ def main():
     print(f"✅ Agent: {agent.name}")
 
     # Start ngrok tunnel
-    use_ngrok = os.getenv("USE_NGROK", "true").lower() == "true"
-    if use_ngrok:
+    if USE_NGROK:
         public_url = start_ngrok()
 
     # Start Flask app
@@ -189,7 +190,7 @@ def main():
     app.run(
         host="0.0.0.0",
         port=5000,
-        debug=os.getenv("DEBUG", "false").lower() == "true"
+        debug=DEBUG
     )
 
 
