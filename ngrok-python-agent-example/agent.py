@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Simple LLM Agent with ngrok exposure
-Demonstrates how to create a webhook-enabled LLM agent accessible via ngrok tunnel
+Simple Agent Scaffolding with ngrok exposure
+Demonstrates how to create a webhook-enabled conversational agent accessible via ngrok tunnel
 """
 
 import os
@@ -40,7 +40,7 @@ def home():
         {
             "status": "online",
             "agent": agent.name,
-            "message": "LLM Agent is running",
+            "message": "Agent is running",
             "endpoints": {
                 "/": "Health check",
                 "/chat": "POST - Send a message to the agent",
@@ -54,7 +54,7 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     """
-    Chat endpoint for interacting with the LLM agent
+    Chat endpoint for interacting with the agent
 
     Expected JSON payload:
     {
@@ -211,7 +211,7 @@ def start_ngrok():
 
 def main():
     """Main entry point"""
-    logger.info("🤖 Starting LLM Agent...")
+    logger.info("🤖 Starting Agent...")
     logger.info(f"✅ Agent: {agent.name}")
 
     # Start ngrok tunnel

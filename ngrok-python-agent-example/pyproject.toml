@@ -1,14 +1,13 @@
 [project]
 name = "ngrok-python-agent-example"
 version = "0.1.0"
-description = "Simple LLM agent with Flask and ngrok"
+description = "Simple agent scaffolding with Flask and ngrok"
 readme = "README.md"
 requires-python = ">=3.12"
 
 dependencies = [
     "flask>=3.0.0",
     "pyngrok>=7.0.5",
-    "openai>=1.3.0",
 ]
 
 [project.optional-dependencies]

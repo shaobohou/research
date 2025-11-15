@@ -1,10 +1,9 @@
 """
-LLM Agent Abstractions
-Provides a clean interface for LLM-powered agents
+Agent Abstractions
+Provides a clean interface for conversational agents
 """
 
 from typing import Protocol, Optional, Any
-import os
 
 
 class Message:
@@ -61,98 +60,44 @@ class Agent(Protocol):
         ...
 
 
-class LLMAgent:
-    """LLM-powered agent using OpenAI's Chat Completions API"""
-
-    def __init__(self, config: Optional[dict[str, Any]] = None):
-        self.config = config or {}
-
-        # Import and initialize OpenAI client
-        try:
-            from openai import OpenAI
-        except ImportError as e:
-            raise ImportError("OpenAI package not installed. Install with: uv sync") from e
-
-        # Set up API key (from config or environment)
-        api_key = self._get_config("api_key")
-        if api_key is None:
-            api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            raise ValueError(
-                "OpenAI API key not provided. Set OPENAI_API_KEY environment variable."
-            )
-
-        self.client = OpenAI(api_key=api_key)
-
-        # Model configuration (prioritize: config dict > environment > default)
-        model = self._get_config("model")
-        if model is None:
-            model = os.getenv("MODEL")
-        self.model = model if model is not None else "gpt-4o"
-
-    def _get_config(self, key: str, default: Any = None) -> Any:
-        """Helper to get configuration values"""
-        return self.config.get(key, default)
+class EchoAgent:
+    """Simple echo agent that repeats the user's message"""
 
     def chat(self, message: str, history: Optional[list[Message]] = None) -> AgentResponse:
-        """Generate a response using OpenAI's API"""
+        """Echo the user's message back with conversation context"""
+        message_count = len(history) if history else 0
 
-        # Build messages list
-        messages = []
-        if history:
-            messages = [msg.to_dict() for msg in history]
-        messages.append({"role": "user", "content": message})
-
-        try:
-            # Call OpenAI API (v1.x client)
-            response = self.client.chat.completions.create(model=self.model, messages=messages)
-
-            assistant_message = response.choices[0].message.content
-
-            return AgentResponse(
-                content=assistant_message,
-                metadata={
-                    "model": self.model,
-                    "tokens_used": response.usage.total_tokens,
-                    "finish_reason": response.choices[0].finish_reason,
-                },
-            )
-
-        except Exception as e:
-            raise RuntimeError(f"LLM API error: {str(e)}") from e
+        return AgentResponse(
+            content=f"Echo: {message}",
+            metadata={
+                "message_count": message_count,
+                "echo_length": len(message),
+            },
+        )
 
     @property
     def name(self) -> str:
-        return f"llm-{self.model}"
+        return "echo-agent"
 
 
 def create_agent(config: Optional[dict[str, Any]] = None) -> Agent:
     """
-    Create an LLM agent instance
+    Create an agent instance
 
     Args:
-        config: Configuration dictionary for the agent
-                Can include: api_key, model
+        config: Configuration dictionary for the agent (unused for echo agent)
 
     Returns:
-        An LLMAgent instance
-
-    Raises:
-        ValueError: If API key is not provided
-        ImportError: If OpenAI package is not installed
+        An EchoAgent instance
     """
-    return LLMAgent(config)
+    return EchoAgent()
 
 
 def create_agent_from_env() -> Agent:
     """
-    Create an LLM agent from environment variables
-
-    Environment variables:
-        OPENAI_API_KEY: OpenAI API key (required)
-        MODEL: Model to use (optional, default: gpt-4o)
+    Create an agent from environment variables
 
     Returns:
-        An LLMAgent instance
+        An EchoAgent instance
     """
-    return LLMAgent()
+    return EchoAgent()

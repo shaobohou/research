@@ -1,11 +1,11 @@
 # ngrok Python Agent Example
 
-A simple, extensible LLM agent with Flask and ngrok that demonstrates how to create a publicly accessible webhook-enabled AI agent.
+A simple, extensible agent scaffolding with Flask and ngrok that demonstrates how to create a publicly accessible webhook-enabled conversational agent.
 
 ## Overview
 
 This example shows how to:
-- Create a Flask-based web service with LLM integration
+- Create a Flask-based web service with agent integration
 - Use a Protocol-based abstraction layer for clean agent implementation
 - Expose your local agent to the internet using ngrok
 - Handle chat interactions and webhooks
@@ -14,7 +14,7 @@ This example shows how to:
 ## Features
 
 - **Clean Agent Abstraction**: Protocol-based interface (no inheritance needed)
-- **Chat Endpoint**: POST to `/chat` to interact with the LLM agent
+- **Chat Endpoint**: POST to `/chat` to interact with the agent
 - **Webhook Support**: Receive and process webhook events at `/webhook`
 - **Session Management**: Automatic UUID-based session IDs with conversation history
 - **Thread Safety**: Thread-safe conversation storage with proper locking
@@ -26,7 +26,6 @@ This example shows how to:
 - Python 3.12+
 - [uv](https://github.com/astral-sh/uv) package manager
 - ngrok account (free tier works fine)
-- OpenAI API key
 
 ## Setup
 
@@ -36,24 +35,15 @@ This example shows how to:
 uv sync
 ```
 
-### 2. Set Environment Variables
+### 2. Set Environment Variables (Optional)
 
-Set your OpenAI API key:
-
-```bash
-export OPENAI_API_KEY=sk-your-actual-api-key
-```
-
-Optional environment variables:
 ```bash
 export NGROK_AUTH_TOKEN=your-ngrok-token  # For persistent ngrok URLs
-export MODEL=gpt-4-turbo                  # Override default model (gpt-4o)
 export USE_NGROK=true                     # Enable/disable ngrok (default: true)
 export DEBUG=false                        # Enable Flask debug mode (default: false)
 ```
 
-**Getting API Keys:**
-- OpenAI API: https://platform.openai.com/api-keys
+**Getting ngrok Auth Token:**
 - ngrok Auth Token: https://dashboard.ngrok.com/get-started/your-authtoken
 
 ### 3. Run the Agent
@@ -65,8 +55,8 @@ uv run agent.py
 You should see output like:
 
 ```
-INFO:__main__:🤖 Starting LLM Agent...
-INFO:__main__:✅ Agent: llm-gpt-4o
+INFO:__main__:🤖 Starting Agent...
+INFO:__main__:✅ Agent: echo-agent
 INFO:__main__:============================================================
 INFO:__main__:🚀 ngrok tunnel established!
 INFO:__main__:📡 Public URL: https://abc123.ngrok-free.app
@@ -87,8 +77,8 @@ Response:
 ```json
 {
   "status": "online",
-  "agent": "llm-gpt-4o",
-  "message": "LLM Agent is running",
+  "agent": "echo-agent",
+  "message": "Agent is running",
   "endpoints": {
     "/": "Health check",
     "/chat": "POST - Send a message to the agent",
@@ -122,12 +112,11 @@ curl -X POST https://your-ngrok-url.ngrok-free.app/chat \
 Response:
 ```json
 {
-  "response": "Hello! I'm doing well, thank you for asking. How can I help you today?",
+  "response": "Echo: Hello, how are you?",
   "session_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-  "agent": "llm-gpt-4o",
-  "model": "gpt-4o",
-  "tokens_used": 45,
-  "finish_reason": "stop"
+  "agent": "echo-agent",
+  "message_count": 0,
+  "echo_length": 18
 }
 ```
 
@@ -161,7 +150,7 @@ curl -X POST https://your-ngrok-url.ngrok-free.app/webhook \
 Health check and endpoint documentation
 
 ### `POST /chat`
-Send a message to the LLM agent
+Send a message to the agent
 
 **Request Body:**
 ```json
@@ -174,12 +163,11 @@ Send a message to the LLM agent
 **Response:**
 ```json
 {
-  "response": "Agent's response",
+  "response": "Echo: Your message here",
   "session_id": "session-id",
-  "agent": "llm-model-name",
-  "model": "gpt-4o",
-  "tokens_used": 123,
-  "finish_reason": "stop"
+  "agent": "echo-agent",
+  "message_count": 2,
+  "echo_length": 18
 }
 ```
 
@@ -207,7 +195,7 @@ agents.py
 ├── Agent (Protocol defining the interface)
 ├── Message (conversation message)
 ├── AgentResponse (standardized response)
-├── LLMAgent (OpenAI-based implementation)
+├── EchoAgent (simple echo implementation)
 ├── create_agent() (factory function)
 └── create_agent_from_env() (factory from environment)
 ```
@@ -222,7 +210,7 @@ agents.py
 
 **`AgentResponse`**: Standardized response with content and metadata
 
-**`LLMAgent`**: Implementation using OpenAI's Chat Completions API (v1.x client)
+**`EchoAgent`**: Simple implementation that echoes back user messages
 
 ### Creating Custom Agents
 
@@ -257,24 +245,21 @@ response = agent.chat("Hello!")
 ```python
 from agents import create_agent, Message
 
-# Create agent with custom config
-agent = create_agent({
-    "api_key": "sk-...",
-    "model": "gpt-4-turbo"
-})
+# Create agent
+agent = create_agent()
 
-# Or from environment variables
+# Or from environment variables (same result for echo agent)
 agent = create_agent_from_env()
 
 # Chat with history
 history = [
-    Message("user", "What is Python?"),
-    Message("assistant", "Python is a programming language...")
+    Message("user", "First message"),
+    Message("assistant", "Echo: First message")
 ]
 
-response = agent.chat("Tell me more", history=history)
-print(response.content)
-print(response.metadata)  # tokens_used, finish_reason, etc.
+response = agent.chat("Second message", history=history)
+print(response.content)          # "Echo: Second message"
+print(response.metadata)         # {"message_count": 2, "echo_length": 14}
 ```
 
 ## Configuration
@@ -283,8 +268,6 @@ print(response.metadata)  # tokens_used, finish_reason, etc.
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| `OPENAI_API_KEY` | OpenAI API key | - | Yes |
-| `MODEL` | Model to use | `gpt-4o` | No |
 | `NGROK_AUTH_TOKEN` | ngrok authentication token | - | No* |
 | `USE_NGROK` | Enable/disable ngrok tunnel | `true` | No |
 | `DEBUG` | Enable Flask debug mode | `false` | No |
@@ -295,9 +278,6 @@ print(response.metadata)  # tokens_used, finish_reason, etc.
 
 Defaults are defined in the code:
 
-**LLM Configuration** (in `agents.py`):
-- `MODEL` - Default: `gpt-4o`
-
 **Server Configuration** (in `agent.py`):
 - `USE_NGROK` - Default: `true`
 - `DEBUG` - Default: `false`
@@ -305,22 +285,11 @@ Defaults are defined in the code:
 
 ### Overriding Defaults
 
-Override the model by setting the environment variable:
+Override settings by setting environment variables:
 
 ```bash
-export MODEL=gpt-4-turbo
 export USE_NGROK=false
 export DEBUG=true
-```
-
-Or programmatically:
-
-```python
-from agents import create_agent
-
-agent = create_agent({
-    "model": "gpt-4-turbo"
-})
 ```
 
 ## Running Without ngrok
@@ -366,8 +335,15 @@ Test webhook integrations locally without deploying to production
 ngrok-python-agent-example/
 ├── agent.py              # Main Flask application
 ├── agents.py             # Agent abstraction layer
+├── test_agents.py        # Test suite
 ├── pyproject.toml        # Project metadata and dependencies
 └── README.md            # This file
+```
+
+### Running Tests
+
+```bash
+uv run pytest
 ```
 
 ### Adding Custom Endpoints
@@ -391,11 +367,50 @@ uv add package-name
 
 ### Extending the System
 
-1. **Add Memory**: Integrate vector databases (Pinecone, Weaviate) for long-term memory
-2. **Add Tools**: Implement function calling in your custom agent
-3. **Add Auth**: Implement API key authentication for production use
-4. **Add Database**: Store conversations in PostgreSQL/MongoDB instead of in-memory
-5. **Add Streaming**: Implement streaming responses for better UX
+1. **Add LLM Integration**: Replace EchoAgent with OpenAI, Anthropic, or other LLM providers
+2. **Add Memory**: Integrate vector databases (Pinecone, Weaviate) for long-term memory
+3. **Add Tools**: Implement function calling in your custom agent
+4. **Add Auth**: Implement API key authentication for production use
+5. **Add Database**: Store conversations in PostgreSQL/MongoDB instead of in-memory
+6. **Add Streaming**: Implement streaming responses for better UX
+
+### Custom Agent Example: LLM Integration
+
+```python
+from agents import AgentResponse
+import os
+
+class LLMAgent:
+    """LLM-powered agent - implements Agent protocol"""
+
+    def __init__(self, config=None):
+        from openai import OpenAI
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.model = config.get("model", "gpt-4o") if config else "gpt-4o"
+
+    def chat(self, message, history=None):
+        messages = []
+        if history:
+            messages = [msg.to_dict() for msg in history]
+        messages.append({"role": "user", "content": message})
+
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages
+        )
+
+        return AgentResponse(
+            content=response.choices[0].message.content,
+            metadata={
+                "model": self.model,
+                "tokens_used": response.usage.total_tokens
+            }
+        )
+
+    @property
+    def name(self):
+        return f"llm-{self.model}"
+```
 
 ### Custom Agent Example: Function Calling
 
@@ -413,16 +428,21 @@ class ToolAgent:
 
     def _get_weather(self, location: str) -> str:
         """Get weather for a location (stub implementation)"""
-        # In a real implementation, call a weather API
         return f"Weather in {location}: Sunny, 72°F"
 
     def chat(self, message, history=None):
-        # Parse message for tool calls
-        # Execute tools
-        # Return response
+        # Simple keyword detection for demo
+        if "weather" in message.lower():
+            location = "your location"  # Parse location from message
+            result = self._get_weather(location)
+            return AgentResponse(
+                content=result,
+                metadata={"tools_used": ["get_weather"]}
+            )
+
         return AgentResponse(
-            content="Tool execution result",
-            metadata={"tools_used": ["get_weather"]}
+            content=f"Processed: {message}",
+            metadata={"tools_used": []}
         )
 
     @property
@@ -438,14 +458,6 @@ If ngrok fails to connect:
 1. Check your auth token is correct
 2. Verify you're not hitting ngrok's rate limits
 3. Try running without ngrok: `export USE_NGROK=false`
-
-### OpenAI API Errors
-
-If you see API errors:
-1. Verify your API key is valid (starts with `sk-`)
-2. Check you have credits in your OpenAI account
-3. Try a different model: `export MODEL=gpt-4o-mini` (cheaper option)
-4. Check the error message for rate limits or quota issues
 
 ### Import Errors
 
@@ -484,9 +496,8 @@ public_url = ngrok.connect(5001)  # Match the port
 - [uv Documentation](https://github.com/astral-sh/uv)
 - [ngrok Documentation](https://ngrok.com/docs)
 - [Flask Documentation](https://flask.palletsprojects.com/)
-- [OpenAI API Reference](https://platform.openai.com/docs/api-reference)
 - [pyngrok Documentation](https://pyngrok.readthedocs.io/)
-- [Python Protocols](https://peps.python.org/pep-0544/)
+- [Python Protocols (PEP 544)](https://peps.python.org/pep-0544/)
 - [PEP 585 Type Hints](https://peps.python.org/pep-0585/)
 
 ## License
@@ -495,7 +506,7 @@ This example is provided as-is for educational purposes.
 
 ## Next Steps
 
-1. Implement custom agent with your own logic
+1. Implement custom agent with your own logic (LLM, rules-based, etc.)
 2. Add function calling/tool use capabilities
 3. Add persistent storage (database) for conversations
 4. Create a web frontend for the chat interface
