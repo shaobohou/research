@@ -5,20 +5,23 @@ Demonstrates how to create a webhook-enabled LLM agent accessible via ngrok tunn
 """
 
 import os
+import uuid
+import logging
 from flask import Flask, request, jsonify
-from dotenv import load_dotenv
 
 from agents import create_agent_from_env, Message
 
-# Load environment variables
-load_dotenv()
-
 app = Flask(__name__)
 
-# Configuration
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Configuration from environment variables
 NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN")
 USE_NGROK = os.getenv("USE_NGROK", "true").lower() == "true"
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
+MAX_MESSAGE_LENGTH = 10000
 
 # Initialize agent
 agent = create_agent_from_env()
@@ -39,8 +42,7 @@ def home():
             "/": "Health check",
             "/chat": "POST - Send a message to the agent",
             "/webhook": "POST - Receive webhook events",
-            "/conversations/<session_id>": "GET - Retrieve conversation history",
-            "/conversations/<session_id>": "DELETE - Clear conversation history"
+            "/conversations/<session_id>": "GET to retrieve, DELETE to clear conversation history"
         }
     })
 
@@ -63,7 +65,21 @@ def chat():
             return jsonify({"error": "Missing 'message' in request"}), 400
 
         user_message = data["message"]
-        session_id = data.get("session_id", "default")
+
+        # Validate message length
+        if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
+            return jsonify({
+                "error": f"Message must be a string with max length {MAX_MESSAGE_LENGTH}"
+            }), 400
+
+        # Generate UUID for session if not provided
+        session_id = data.get("session_id")
+        if session_id is None:
+            session_id = str(uuid.uuid4())
+
+        # Validate session_id format (alphanumeric and hyphens only)
+        if not isinstance(session_id, str) or not all(c.isalnum() or c == '-' for c in session_id):
+            return jsonify({"error": "Invalid session_id format"}), 400
 
         # Initialize conversation history for this session
         if session_id not in conversations:
@@ -88,11 +104,13 @@ def chat():
             })
 
         except Exception as e:
+            logger.error(f"Agent error: {e}", exc_info=True)
             return jsonify({
                 "error": f"Agent error: {str(e)}"
             }), 500
 
     except Exception as e:
+        logger.error(f"Request error: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 
@@ -106,9 +124,9 @@ def webhook():
         data = request.get_json()
         headers = dict(request.headers)
 
-        print(f"Webhook received:")
-        print(f"Headers: {headers}")
-        print(f"Payload: {data}")
+        logger.info("Webhook received")
+        logger.debug(f"Headers: {headers}")
+        logger.debug(f"Payload: {data}")
 
         # Process webhook event (customize based on your needs)
         event_type = headers.get("X-Event-Type", "unknown")
@@ -120,6 +138,7 @@ def webhook():
         })
 
     except Exception as e:
+        logger.error(f"Webhook error: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
 
 
@@ -157,35 +176,35 @@ def start_ngrok():
 
         # Open a HTTP tunnel on the default port 5000
         public_url = ngrok.connect(5000)
-        print(f"\n{'='*60}")
-        print(f"🚀 ngrok tunnel established!")
-        print(f"📡 Public URL: {public_url}")
-        print(f"{'='*60}\n")
+        logger.info("="*60)
+        logger.info("🚀 ngrok tunnel established!")
+        logger.info(f"📡 Public URL: {public_url}")
+        logger.info("="*60)
 
         return public_url
 
     except ImportError:
-        print("⚠️  pyngrok not installed. Install with: uv add pyngrok")
-        print("Running without ngrok tunnel...")
+        logger.warning("pyngrok not installed. Install with: uv add pyngrok")
+        logger.warning("Running without ngrok tunnel...")
         return None
     except Exception as e:
-        print(f"⚠️  Failed to start ngrok: {e}")
-        print("Running without ngrok tunnel...")
+        logger.warning(f"Failed to start ngrok: {e}")
+        logger.warning("Running without ngrok tunnel...")
         return None
 
 
 def main():
     """Main entry point"""
-    print("\n🤖 Starting LLM Agent...")
-    print(f"✅ Agent: {agent.name}")
+    logger.info("🤖 Starting LLM Agent...")
+    logger.info(f"✅ Agent: {agent.name}")
 
     # Start ngrok tunnel
     if USE_NGROK:
         public_url = start_ngrok()
 
     # Start Flask app
-    print("\n🌐 Starting Flask server on http://localhost:5000")
-    print("\nPress Ctrl+C to stop the server\n")
+    logger.info("🌐 Starting Flask server on http://localhost:5000")
+    logger.info("Press Ctrl+C to stop the server")
 
     app.run(
         host="0.0.0.0",

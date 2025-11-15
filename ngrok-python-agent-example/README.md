@@ -6,18 +6,19 @@ A simple, extensible LLM agent with Flask and ngrok that demonstrates how to cre
 
 This example shows how to:
 - Create a Flask-based web service with LLM integration
-- Use an abstraction layer for clean agent implementation
+- Use a Protocol-based abstraction layer for clean agent implementation
 - Expose your local agent to the internet using ngrok
 - Handle chat interactions and webhooks
 - Maintain conversation history across sessions
 
 ## Features
 
-- **Clean Agent Abstraction**: Simple, extensible agent interface
+- **Clean Agent Abstraction**: Protocol-based interface (no inheritance needed)
 - **Chat Endpoint**: POST to `/chat` to interact with the LLM agent
 - **Webhook Support**: Receive and process webhook events at `/webhook`
-- **Session Management**: Maintain separate conversation histories per session
+- **Session Management**: Automatic UUID-based session IDs with conversation history
 - **ngrok Integration**: Automatically expose your local agent with a public URL
+- **Input Validation**: Message length limits and session ID validation
 
 ## Prerequisites
 
@@ -34,19 +35,20 @@ This example shows how to:
 uv sync
 ```
 
-### 2. Configure Environment Variables
+### 2. Set Environment Variables
 
-Copy the example environment file:
+Set your OpenAI API key:
 
 ```bash
-cp .env.example .env
+export OPENAI_API_KEY=sk-your-actual-api-key
 ```
 
-Edit `.env` and add your OpenAI API key:
-
+Optional environment variables:
 ```bash
-OPENAI_API_KEY=sk-your-actual-api-key
-NGROK_AUTH_TOKEN=your-ngrok-token  # Optional
+export NGROK_AUTH_TOKEN=your-ngrok-token  # For persistent ngrok URLs
+export MODEL=gpt-4-turbo                  # Override default model (gpt-4o)
+export USE_NGROK=true                     # Enable/disable ngrok (default: true)
+export DEBUG=false                        # Enable Flask debug mode (default: false)
 ```
 
 **Getting API Keys:**
@@ -62,15 +64,14 @@ uv run agent.py
 You should see output like:
 
 ```
-🤖 Starting LLM Agent...
-✅ Agent: llm-gpt-5
-
-============================================================
-🚀 ngrok tunnel established!
-📡 Public URL: https://abc123.ngrok-free.app
-============================================================
-
-🌐 Starting Flask server on http://localhost:5000
+INFO:__main__:🤖 Starting LLM Agent...
+INFO:__main__:✅ Agent: llm-gpt-4o
+INFO:__main__:============================================================
+INFO:__main__:🚀 ngrok tunnel established!
+INFO:__main__:📡 Public URL: https://abc123.ngrok-free.app
+INFO:__main__:============================================================
+INFO:__main__:🌐 Starting Flask server on http://localhost:5000
+INFO:__main__:Press Ctrl+C to stop the server
 ```
 
 ## Usage
@@ -85,19 +86,29 @@ Response:
 ```json
 {
   "status": "online",
-  "agent": "llm-gpt-5",
+  "agent": "llm-gpt-4o",
   "message": "LLM Agent is running",
   "endpoints": {
     "/": "Health check",
     "/chat": "POST - Send a message to the agent",
     "/webhook": "POST - Receive webhook events",
-    "/conversations/<session_id>": "GET - Retrieve conversation history"
+    "/conversations/<session_id>": "GET to retrieve, DELETE to clear conversation history"
   }
 }
 ```
 
 ### Chat with the Agent
 
+Without session ID (auto-generated UUID):
+```bash
+curl -X POST https://your-ngrok-url.ngrok-free.app/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Hello, how are you?"
+  }'
+```
+
+With explicit session ID:
 ```bash
 curl -X POST https://your-ngrok-url.ngrok-free.app/chat \
   -H "Content-Type: application/json" \
@@ -111,9 +122,9 @@ Response:
 ```json
 {
   "response": "Hello! I'm doing well, thank you for asking. How can I help you today?",
-  "session_id": "user123",
-  "agent": "llm-gpt-5",
-  "model": "gpt-5",
+  "session_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "agent": "llm-gpt-4o",
+  "model": "gpt-4o",
   "tokens_used": 45,
   "finish_reason": "stop"
 }
@@ -165,11 +176,15 @@ Send a message to the LLM agent
   "response": "Agent's response",
   "session_id": "session-id",
   "agent": "llm-model-name",
-  "model": "gpt-5",
+  "model": "gpt-4o",
   "tokens_used": 123,
   "finish_reason": "stop"
 }
 ```
+
+**Validation:**
+- `message`: Required, max 10,000 characters
+- `session_id`: Optional (auto-generated UUID if not provided), alphanumeric and hyphens only
 
 ### `POST /webhook`
 Receive webhook events from external services
@@ -206,7 +221,7 @@ agents.py
 
 **`AgentResponse`**: Standardized response with content and metadata
 
-**`LLMAgent`**: Implementation using OpenAI's Chat Completions API
+**`LLMAgent`**: Implementation using OpenAI's Chat Completions API (v1.x client)
 
 ### Creating Custom Agents
 
@@ -265,32 +280,33 @@ print(response.metadata)  # tokens_used, finish_reason, etc.
 
 ### Environment Variables
 
-Only secrets need to be in `.env`:
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `OPENAI_API_KEY` | OpenAI API key | Yes |
-| `NGROK_AUTH_TOKEN` | ngrok authentication token | No* |
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| `OPENAI_API_KEY` | OpenAI API key | - | Yes |
+| `MODEL` | Model to use | `gpt-4o` | No |
+| `NGROK_AUTH_TOKEN` | ngrok authentication token | - | No* |
+| `USE_NGROK` | Enable/disable ngrok tunnel | `true` | No |
+| `DEBUG` | Enable Flask debug mode | `false` | No |
 
 \* Without ngrok token, you get temporary URLs that change on restart
 
 ### Configuration Defaults
 
-Defaults are defined in the code and can be overridden via environment variables:
+Defaults are defined in the code:
 
 **LLM Configuration** (in `agents.py`):
-- `MODEL` - Default: `gpt-5`
+- `MODEL` - Default: `gpt-4o`
 
 **Server Configuration** (in `agent.py`):
 - `USE_NGROK` - Default: `true`
 - `DEBUG` - Default: `false`
+- `MAX_MESSAGE_LENGTH` - Default: `10000`
 
 ### Overriding Defaults
 
 Override the model by setting the environment variable:
 
 ```bash
-# In your shell or .env file
 export MODEL=gpt-4-turbo
 export USE_NGROK=false
 export DEBUG=true
@@ -313,11 +329,6 @@ To run without ngrok (local only):
 ```bash
 export USE_NGROK=false
 uv run agent.py
-```
-
-Or set in your `.env`:
-```bash
-USE_NGROK=false
 ```
 
 Then access at `http://localhost:5000`
@@ -355,7 +366,6 @@ ngrok-python-agent-example/
 ├── agent.py              # Main Flask application
 ├── agents.py             # Agent abstraction layer
 ├── pyproject.toml        # Project metadata and dependencies
-├── .env.example         # Environment variables template
 └── README.md            # This file
 ```
 
@@ -383,14 +393,13 @@ uv add package-name
 1. **Add Memory**: Integrate vector databases (Pinecone, Weaviate) for long-term memory
 2. **Add Tools**: Implement function calling in your custom agent
 3. **Add Auth**: Implement API key authentication for production use
-4. **Add Logging**: Use proper logging instead of print statements
-5. **Add Database**: Store conversations in PostgreSQL/MongoDB instead of in-memory
-6. **Add Streaming**: Implement streaming responses for better UX
+4. **Add Database**: Store conversations in PostgreSQL/MongoDB instead of in-memory
+5. **Add Streaming**: Implement streaming responses for better UX
 
 ### Custom Agent Example: Function Calling
 
 ```python
-from agents import AgentResponse, Message
+from agents import AgentResponse
 
 class ToolAgent:
     """Agent with tool-calling capabilities - implements Agent protocol"""
@@ -399,16 +408,12 @@ class ToolAgent:
         self.config = config or {}
         self.tools = {
             "get_weather": self._get_weather,
-            "calculate": self._calculate
         }
 
-    def _get_weather(self, location):
-        # Your weather API logic
+    def _get_weather(self, location: str) -> str:
+        """Get weather for a location (stub implementation)"""
+        # In a real implementation, call a weather API
         return f"Weather in {location}: Sunny, 72°F"
-
-    def _calculate(self, expression):
-        # Safe calculation logic
-        return str(eval(expression))
 
     def chat(self, message, history=None):
         # Parse message for tool calls
@@ -429,16 +434,16 @@ class ToolAgent:
 ### ngrok Connection Issues
 
 If ngrok fails to connect:
-1. Check your auth token is correct in `.env`
+1. Check your auth token is correct
 2. Verify you're not hitting ngrok's rate limits
-3. Try running without ngrok: Set `USE_NGROK=false` in `.env` or environment
+3. Try running without ngrok: `export USE_NGROK=false`
 
 ### OpenAI API Errors
 
 If you see API errors:
 1. Verify your API key is valid (starts with `sk-`)
 2. Check you have credits in your OpenAI account
-3. Try a different model (e.g., set `MODEL=gpt-5-mini` for a cheaper option)
+3. Try a different model: `export MODEL=gpt-4o-mini` (cheaper option)
 4. Check the error message for rate limits or quota issues
 
 ### Import Errors
@@ -464,13 +469,13 @@ public_url = ngrok.connect(5001)  # Match the port
 **This is a development example. For production:**
 
 1. **Add Authentication**: Implement API key validation
-2. **Rate Limiting**: Add rate limiting to prevent abuse
-3. **Input Validation**: Validate and sanitize all inputs
-4. **HTTPS Only**: Use ngrok's TLS endpoints
-5. **Secrets Management**: Use proper secrets management (not .env files)
+2. **Rate Limiting**: Add rate limiting to prevent abuse (e.g., Flask-Limiter)
+3. **Input Validation**: Already includes basic validation, but consider additional checks
+4. **HTTPS Only**: Use ngrok's TLS endpoints or proper TLS certificates
+5. **Secrets Management**: Use proper secrets management (e.g., AWS Secrets Manager, HashiCorp Vault)
 6. **CORS**: Configure CORS properly if used with web frontends
-7. **Logging**: Implement proper audit logging
-8. **Error Handling**: Don't expose internal errors to users
+7. **Memory Limits**: Implement conversation size limits or TTL-based expiration
+8. **Thread Safety**: Add locks for concurrent access to shared data structures
 
 ## Resources
 
@@ -479,6 +484,8 @@ public_url = ngrok.connect(5001)  # Match the port
 - [Flask Documentation](https://flask.palletsprojects.com/)
 - [OpenAI API Reference](https://platform.openai.com/docs/api-reference)
 - [pyngrok Documentation](https://pyngrok.readthedocs.io/)
+- [Python Protocols](https://peps.python.org/pep-0544/)
+- [PEP 585 Type Hints](https://peps.python.org/pep-0585/)
 
 ## License
 
@@ -493,4 +500,4 @@ This example is provided as-is for educational purposes.
 5. Add streaming responses for better UX
 6. Implement RAG (retrieval-augmented generation)
 7. Add observability (logging, metrics, tracing)
-8. Deploy to production with proper authentication
+8. Deploy to production with proper authentication and rate limiting

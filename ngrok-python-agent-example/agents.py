@@ -3,7 +3,7 @@ LLM Agent Abstractions
 Provides a clean interface for LLM-powered agents
 """
 
-from typing import List, Dict, Optional, Any, Protocol
+from typing import Protocol, Optional, Any
 import os
 
 
@@ -14,26 +14,22 @@ class Message:
         self.role = role
         self.content = content
 
-    def to_dict(self) -> Dict[str, str]:
+    def to_dict(self) -> dict[str, str]:
         return {"role": self.role, "content": self.content}
 
     @classmethod
-    def from_dict(cls, data: Dict[str, str]) -> "Message":
+    def from_dict(cls, data: dict[str, str]) -> "Message":
         return cls(role=data["role"], content=data["content"])
 
 
 class AgentResponse:
     """Standard response format from an agent"""
 
-    def __init__(
-        self,
-        content: str,
-        metadata: Optional[Dict[str, Any]] = None
-    ):
+    def __init__(self, content: str, metadata: Optional[dict[str, Any]] = None):
         self.content = content
         self.metadata = metadata or {}
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "content": self.content,
             "metadata": self.metadata
@@ -54,11 +50,7 @@ class Agent(Protocol):
         """Return the name/identifier of this agent"""
         ...
 
-    def chat(
-        self,
-        message: str,
-        history: Optional[List[Message]] = None
-    ) -> AgentResponse:
+    def chat(self, message: str, history: Optional[list[Message]] = None) -> AgentResponse:
         """
         Process a chat message and return a response
 
@@ -75,43 +67,39 @@ class Agent(Protocol):
 class LLMAgent:
     """LLM-powered agent using OpenAI's Chat Completions API"""
 
-    def __init__(self, config: Optional[Dict[str, Any]] = None):
+    def __init__(self, config: Optional[dict[str, Any]] = None):
         self.config = config or {}
 
-        # Try importing OpenAI
+        # Import and initialize OpenAI client
         try:
-            import openai
-            self.openai = openai
-        except ImportError:
+            from openai import OpenAI
+        except ImportError as e:
             raise ImportError(
                 "OpenAI package not installed. Install with: uv sync"
-            )
+            ) from e
 
         # Set up API key (from config or environment)
-        self.api_key = self._get_config("api_key") or os.getenv("OPENAI_API_KEY")
-        if not self.api_key:
+        api_key = self._get_config("api_key")
+        if api_key is None:
+            api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
             raise ValueError(
                 "OpenAI API key not provided. Set OPENAI_API_KEY environment variable."
             )
 
-        self.openai.api_key = self.api_key
+        self.client = OpenAI(api_key=api_key)
 
         # Model configuration (prioritize: config dict > environment > default)
-        self.model = (
-            self._get_config("model")
-            or os.getenv("MODEL")
-            or "gpt-5"
-        )
+        model = self._get_config("model")
+        if model is None:
+            model = os.getenv("MODEL")
+        self.model = model if model is not None else "gpt-4o"
 
     def _get_config(self, key: str, default: Any = None) -> Any:
         """Helper to get configuration values"""
         return self.config.get(key, default)
 
-    def chat(
-        self,
-        message: str,
-        history: Optional[List[Message]] = None
-    ) -> AgentResponse:
+    def chat(self, message: str, history: Optional[list[Message]] = None) -> AgentResponse:
         """Generate a response using OpenAI's API"""
 
         # Build messages list
@@ -121,8 +109,8 @@ class LLMAgent:
         messages.append({"role": "user", "content": message})
 
         try:
-            # Call OpenAI API
-            response = self.openai.ChatCompletion.create(
+            # Call OpenAI API (v1.x client)
+            response = self.client.chat.completions.create(
                 model=self.model,
                 messages=messages
             )
@@ -139,14 +127,14 @@ class LLMAgent:
             )
 
         except Exception as e:
-            raise RuntimeError(f"LLM API error: {str(e)}")
+            raise RuntimeError(f"LLM API error: {str(e)}") from e
 
     @property
     def name(self) -> str:
         return f"llm-{self.model}"
 
 
-def create_agent(config: Optional[Dict[str, Any]] = None) -> Agent:
+def create_agent(config: Optional[dict[str, Any]] = None) -> Agent:
     """
     Create an LLM agent instance
 
@@ -170,7 +158,7 @@ def create_agent_from_env() -> Agent:
 
     Environment variables:
         OPENAI_API_KEY: OpenAI API key (required)
-        MODEL: Model to use (optional, default: gpt-5)
+        MODEL: Model to use (optional, default: gpt-4o)
 
     Returns:
         An LLMAgent instance
