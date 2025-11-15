@@ -63,7 +63,7 @@ You should see output like:
 
 ```
 🤖 Starting LLM Agent...
-✅ Agent: llm-gpt-4o
+✅ Agent: llm-gpt-5
 
 ============================================================
 🚀 ngrok tunnel established!
@@ -85,7 +85,7 @@ Response:
 ```json
 {
   "status": "online",
-  "agent": "llm-gpt-4o",
+  "agent": "llm-gpt-5",
   "message": "LLM Agent is running",
   "endpoints": {
     "/": "Health check",
@@ -112,8 +112,8 @@ Response:
 {
   "response": "Hello! I'm doing well, thank you for asking. How can I help you today?",
   "session_id": "user123",
-  "agent": "llm-gpt-4o",
-  "model": "gpt-4o",
+  "agent": "llm-gpt-5",
+  "model": "gpt-5",
   "tokens_used": 45,
   "finish_reason": "stop"
 }
@@ -165,7 +165,7 @@ Send a message to the LLM agent
   "response": "Agent's response",
   "session_id": "session-id",
   "agent": "llm-model-name",
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "tokens_used": 123,
   "finish_reason": "stop"
 }
@@ -279,7 +279,7 @@ Only secrets need to be in `.env`:
 Defaults are defined in the code and can be overridden via environment variables:
 
 **LLM Configuration** (in `agents.py`):
-- `MODEL` - Default: `gpt-4o`
+- `MODEL` - Default: `gpt-5`
 
 **Server Configuration** (in `agent.py`):
 - `USE_NGROK` - Default: `true`
@@ -438,7 +438,7 @@ If ngrok fails to connect:
 If you see API errors:
 1. Verify your API key is valid (starts with `sk-`)
 2. Check you have credits in your OpenAI account
-3. Try a different model (e.g., set `MODEL=gpt-4o-mini` for a cheaper option)
+3. Try a different model (e.g., set `MODEL=gpt-5-mini` for a cheaper option)
 4. Check the error message for rate limits or quota issues
 
 ### Import Errors

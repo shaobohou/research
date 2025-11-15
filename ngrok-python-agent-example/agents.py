@@ -100,7 +100,7 @@ class LLMAgent:
         self.model = (
             self._get_config("model")
             or os.getenv("MODEL")
-            or "gpt-4o"
+            or "gpt-5"
         )
 
     def _get_config(self, key: str, default: Any = None) -> Any:
@@ -170,7 +170,7 @@ def create_agent_from_env() -> Agent:
 
     Environment variables:
         OPENAI_API_KEY: OpenAI API key (required)
-        MODEL: Model to use (optional, default: gpt-4o)
+        MODEL: Model to use (optional, default: gpt-5)
 
     Returns:
         An LLMAgent instance
