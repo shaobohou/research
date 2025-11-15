@@ -1,8 +1,10 @@
-# Research Investigation Workflow
+# Development Workflow
+
+Applies to all projects including investigations, examples, scaffolding, and experiments.
 
 ## Setup
 1. Create a new folder with a descriptive name (e.g., `auth-performance-analysis`)
-2. Create `notes.md` for logging progress
+2. Create `notes.md` for logging progress (optional for simple examples)
 
 ## During Work
 - **Log continuously** to `notes.md`: what you tried, learned, and what didn't work
