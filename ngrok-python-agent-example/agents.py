@@ -75,11 +75,6 @@ class Agent(Protocol):
 class LLMAgent:
     """LLM-powered agent using OpenAI's Chat Completions API"""
 
-    # Default configuration
-    DEFAULT_MODEL = "gpt-3.5-turbo"
-    DEFAULT_MAX_TOKENS = 500
-    DEFAULT_TEMPERATURE = 0.7
-
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         self.config = config or {}
 
@@ -101,21 +96,11 @@ class LLMAgent:
 
         self.openai.api_key = self.api_key
 
-        # Configuration (prioritize: config dict > environment > defaults)
+        # Model configuration (prioritize: config dict > environment > default)
         self.model = (
             self._get_config("model")
             or os.getenv("MODEL")
-            or self.DEFAULT_MODEL
-        )
-        self.max_tokens = (
-            self._get_config("max_tokens")
-            or (int(os.getenv("MAX_TOKENS")) if os.getenv("MAX_TOKENS") else None)
-            or self.DEFAULT_MAX_TOKENS
-        )
-        self.temperature = (
-            self._get_config("temperature")
-            or (float(os.getenv("TEMPERATURE")) if os.getenv("TEMPERATURE") else None)
-            or self.DEFAULT_TEMPERATURE
+            or "gpt-4o"
         )
 
     def _get_config(self, key: str, default: Any = None) -> Any:
@@ -139,9 +124,7 @@ class LLMAgent:
             # Call OpenAI API
             response = self.openai.ChatCompletion.create(
                 model=self.model,
-                messages=messages,
-                max_tokens=self.max_tokens,
-                temperature=self.temperature
+                messages=messages
             )
 
             assistant_message = response.choices[0].message.content
@@ -169,7 +152,7 @@ def create_agent(config: Optional[Dict[str, Any]] = None) -> Agent:
 
     Args:
         config: Configuration dictionary for the agent
-                Can include: api_key, model, max_tokens, temperature
+                Can include: api_key, model
 
     Returns:
         An LLMAgent instance
@@ -183,18 +166,11 @@ def create_agent(config: Optional[Dict[str, Any]] = None) -> Agent:
 
 def create_agent_from_env() -> Agent:
     """
-    Create an LLM agent with defaults from LLMAgent class constants
+    Create an LLM agent from environment variables
 
     Environment variables:
         OPENAI_API_KEY: OpenAI API key (required)
-        MODEL: Model to use (optional, overrides default)
-        MAX_TOKENS: Maximum tokens in response (optional, overrides default)
-        TEMPERATURE: Temperature for generation (optional, overrides default)
-
-    Defaults (when env vars not set):
-        MODEL: gpt-3.5-turbo
-        MAX_TOKENS: 500
-        TEMPERATURE: 0.7
+        MODEL: Model to use (optional, default: gpt-4o)
 
     Returns:
         An LLMAgent instance

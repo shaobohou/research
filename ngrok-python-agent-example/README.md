@@ -63,7 +63,7 @@ You should see output like:
 
 ```
 🤖 Starting LLM Agent...
-✅ Agent: llm-gpt-3.5-turbo
+✅ Agent: llm-gpt-4o
 
 ============================================================
 🚀 ngrok tunnel established!
@@ -85,7 +85,7 @@ Response:
 ```json
 {
   "status": "online",
-  "agent": "llm-gpt-3.5-turbo",
+  "agent": "llm-gpt-4o",
   "message": "LLM Agent is running",
   "endpoints": {
     "/": "Health check",
@@ -112,8 +112,8 @@ Response:
 {
   "response": "Hello! I'm doing well, thank you for asking. How can I help you today?",
   "session_id": "user123",
-  "agent": "llm-gpt-3.5-turbo",
-  "model": "gpt-3.5-turbo",
+  "agent": "llm-gpt-4o",
+  "model": "gpt-4o",
   "tokens_used": 45,
   "finish_reason": "stop"
 }
@@ -165,7 +165,7 @@ Send a message to the LLM agent
   "response": "Agent's response",
   "session_id": "session-id",
   "agent": "llm-model-name",
-  "model": "gpt-3.5-turbo",
+  "model": "gpt-4o",
   "tokens_used": 123,
   "finish_reason": "stop"
 }
@@ -244,9 +244,7 @@ from agents import create_agent, Message
 # Create agent with custom config
 agent = create_agent({
     "api_key": "sk-...",
-    "model": "gpt-4",
-    "max_tokens": 1000,
-    "temperature": 0.5
+    "model": "gpt-4-turbo"
 })
 
 # Or from environment variables
@@ -281,9 +279,7 @@ Only secrets need to be in `.env`:
 Defaults are defined in the code and can be overridden via environment variables:
 
 **LLM Configuration** (in `agents.py`):
-- `MODEL` - Default: `gpt-3.5-turbo`
-- `MAX_TOKENS` - Default: `500`
-- `TEMPERATURE` - Default: `0.7`
+- `MODEL` - Default: `gpt-4o`
 
 **Server Configuration** (in `agent.py`):
 - `USE_NGROK` - Default: `true`
@@ -291,13 +287,11 @@ Defaults are defined in the code and can be overridden via environment variables
 
 ### Overriding Defaults
 
-Override defaults by setting environment variables:
+Override the model by setting the environment variable:
 
 ```bash
 # In your shell or .env file
-export MODEL=gpt-4
-export MAX_TOKENS=1000
-export TEMPERATURE=0.5
+export MODEL=gpt-4-turbo
 export USE_NGROK=false
 export DEBUG=true
 ```
@@ -308,9 +302,7 @@ Or programmatically:
 from agents import create_agent
 
 agent = create_agent({
-    "model": "gpt-4",
-    "max_tokens": 1000,
-    "temperature": 0.5
+    "model": "gpt-4-turbo"
 })
 ```
 
@@ -446,7 +438,7 @@ If ngrok fails to connect:
 If you see API errors:
 1. Verify your API key is valid (starts with `sk-`)
 2. Check you have credits in your OpenAI account
-3. Try a different model (e.g., `gpt-3.5-turbo` is cheaper than `gpt-4`)
+3. Try a different model (e.g., set `MODEL=gpt-4o-mini` for a cheaper option)
 4. Check the error message for rate limits or quota issues
 
 ### Import Errors
