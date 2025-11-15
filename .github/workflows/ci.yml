@@ -13,10 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v3
 
       - name: Detect Python files
         id: detect-python
@@ -40,6 +43,10 @@ jobs:
       - name: Run ruff format check
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: uvx --from ruff ruff format --check
+
+      - name: Run pyright type check
+        if: ${{ steps.detect-python.outputs.has_python == 'true' }}
+        run: uvx --with flask --with pyngrok pyright
 
       - name: Run pytest (if tests present)
         if: ${{ steps.detect-python.outputs.has_tests == 'true' }}
