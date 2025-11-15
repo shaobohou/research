@@ -191,7 +191,8 @@ def start_ngrok():
             ngrok.set_auth_token(NGROK_AUTH_TOKEN)
 
         # Open a HTTP tunnel on the default port 5000
-        public_url = ngrok.connect(5000)
+        # pyngrok expects the address parameter as a string, so ensure the port is str
+        public_url = ngrok.connect("5000")
         logger.info("=" * 60)
         logger.info("🚀 ngrok tunnel established!")
         logger.info(f"📡 Public URL: {public_url}")
