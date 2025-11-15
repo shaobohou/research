@@ -7,6 +7,7 @@ Demonstrates how to create a webhook-enabled LLM agent accessible via ngrok tunn
 import os
 import uuid
 import logging
+import threading
 from flask import Flask, request, jsonify
 
 from agents import create_agent_from_env, Message
@@ -29,6 +30,7 @@ agent = create_agent_from_env()
 # Simple in-memory conversation history
 # Structure: {session_id: [Message, Message, ...]}
 conversations = {}
+conversations_lock = threading.Lock()
 
 
 @app.route("/")
@@ -83,17 +85,23 @@ def chat():
         if not isinstance(session_id, str) or not all(c.isalnum() or c == "-" for c in session_id):
             return jsonify({"error": "Invalid session_id format"}), 400
 
-        # Initialize conversation history for this session
-        if session_id not in conversations:
-            conversations[session_id] = []
-
-        # Get agent response
+        # Get agent response with thread-safe conversation history access
         try:
-            response = agent.chat(message=user_message, history=conversations[session_id])
+            with conversations_lock:
+                # Initialize conversation history for this session
+                if session_id not in conversations:
+                    conversations[session_id] = []
+
+                # Get conversation history for this session
+                history = conversations[session_id].copy()
+
+            # Call agent outside the lock to avoid holding it during API call
+            response = agent.chat(message=user_message, history=history)
 
             # Add user message and agent response to history
-            conversations[session_id].append(Message("user", user_message))
-            conversations[session_id].append(Message("assistant", response.content))
+            with conversations_lock:
+                conversations[session_id].append(Message("user", user_message))
+                conversations[session_id].append(Message("assistant", response.content))
 
             return jsonify(
                 {
@@ -146,14 +154,18 @@ def webhook():
 @app.route("/conversations/<session_id>", methods=["GET"])
 def get_conversation(session_id):
     """Retrieve conversation history for a session"""
-    if session_id not in conversations:
-        return jsonify({"error": "Session not found"}), 404
+    with conversations_lock:
+        if session_id not in conversations:
+            return jsonify({"error": "Session not found"}), 404
+
+        messages = [msg.to_dict() for msg in conversations[session_id]]
+        message_count = len(conversations[session_id])
 
     return jsonify(
         {
             "session_id": session_id,
-            "messages": [msg.to_dict() for msg in conversations[session_id]],
-            "message_count": len(conversations[session_id]),
+            "messages": messages,
+            "message_count": message_count,
         }
     )
 
@@ -161,11 +173,12 @@ def get_conversation(session_id):
 @app.route("/conversations/<session_id>", methods=["DELETE"])
 def clear_conversation(session_id):
     """Clear conversation history for a session"""
-    if session_id in conversations:
-        del conversations[session_id]
-        return jsonify({"message": f"Conversation {session_id} cleared"})
+    with conversations_lock:
+        if session_id in conversations:
+            del conversations[session_id]
+            return jsonify({"message": f"Conversation {session_id} cleared"})
 
-    return jsonify({"error": "Session not found"}), 404
+        return jsonify({"error": "Session not found"}), 404
 
 
 def start_ngrok():

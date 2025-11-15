@@ -17,6 +17,7 @@ This example shows how to:
 - **Chat Endpoint**: POST to `/chat` to interact with the LLM agent
 - **Webhook Support**: Receive and process webhook events at `/webhook`
 - **Session Management**: Automatic UUID-based session IDs with conversation history
+- **Thread Safety**: Thread-safe conversation storage with proper locking
 - **ngrok Integration**: Automatically expose your local agent with a public URL
 - **Input Validation**: Message length limits and session ID validation
 
@@ -475,7 +476,8 @@ public_url = ngrok.connect(5001)  # Match the port
 5. **Secrets Management**: Use proper secrets management (e.g., AWS Secrets Manager, HashiCorp Vault)
 6. **CORS**: Configure CORS properly if used with web frontends
 7. **Memory Limits**: Implement conversation size limits or TTL-based expiration
-8. **Thread Safety**: Add locks for concurrent access to shared data structures
+8. **Thread Safety**: ✅ Implemented with threading.Lock for conversation storage
+9. **Persistent Storage**: Consider replacing in-memory storage with Redis or a database for production
 
 ## Resources
 
