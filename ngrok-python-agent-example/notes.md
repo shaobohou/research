@@ -118,6 +118,12 @@ Changes:
 - Completely rewrote README.md
 - Kept LLM integration as extension example in docs
 
+### Iteration 10: CLI-only ngrok and flag-based config
+- Removed `pyngrok` integration entirely in favor of the CLI workflow
+- Swapped environment variables for absl flags with explicit defaults
+- Updated README with flag documentation and CLI tunnel walkthrough
+- Added `absl-py` + `mypy` dependencies and refreshed the `uv.lock` file
+
 **What worked:**
 - Simpler, no external dependencies
 - Easier to understand and extend
@@ -126,6 +132,11 @@ Changes:
 
 **What didn't work initially:**
 - Had to remove pytest import that was unused
+
+### Iteration 11: Restore webhook + conversation endpoints
+- Re-introduced the richer health check plus `/webhook` and `/conversations/<session_id>` endpoints while keeping Abseil flag configuration.
+- Added helper utilities for peeking and clearing conversation history without mutating state unexpectedly.
+- Updated the README to describe the expanded HTTP surface so developers understand the rebuilt routes.
 
 ## Key Technical Decisions
 
