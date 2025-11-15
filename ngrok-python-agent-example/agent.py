@@ -123,7 +123,7 @@ def chat():
         if not isinstance(user_message, str) or len(user_message) > max_message_length:
             return (
                 jsonify(
-                    {"error": ("Message must be a string with max length " f"{max_message_length}")}
+                    {"error": (f"Message must be a string with max length {max_message_length}")}
                 ),
                 400,
             )

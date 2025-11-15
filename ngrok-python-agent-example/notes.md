@@ -138,6 +138,11 @@ Changes:
 - Added helper utilities for peeking and clearing conversation history without mutating state unexpectedly.
 - Updated the README to describe the expanded HTTP surface so developers understand the rebuilt routes.
 
+### Iteration 12: Fix CI formatting regression
+- CI started running `ruff format --check`, which failed because `agent.py` still used a Black-only formatting style for the long error string.
+- Re-formatted `agent.py` with `ruff format` so local edits match the Action's expectations without reintroducing any behavioral changes.
+- Verified the formatter plus the usual lint, type-check, and pytest suites all pass before re-running the repository-level Ruff formatter check.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC
