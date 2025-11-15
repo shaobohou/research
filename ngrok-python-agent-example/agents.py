@@ -30,10 +30,7 @@ class AgentResponse:
         self.metadata = metadata or {}
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "content": self.content,
-            "metadata": self.metadata
-        }
+        return {"content": self.content, "metadata": self.metadata}
 
 
 class Agent(Protocol):
@@ -74,9 +71,7 @@ class LLMAgent:
         try:
             from openai import OpenAI
         except ImportError as e:
-            raise ImportError(
-                "OpenAI package not installed. Install with: uv sync"
-            ) from e
+            raise ImportError("OpenAI package not installed. Install with: uv sync") from e
 
         # Set up API key (from config or environment)
         api_key = self._get_config("api_key")
@@ -110,10 +105,7 @@ class LLMAgent:
 
         try:
             # Call OpenAI API (v1.x client)
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=messages
-            )
+            response = self.client.chat.completions.create(model=self.model, messages=messages)
 
             assistant_message = response.choices[0].message.content
 
@@ -122,8 +114,8 @@ class LLMAgent:
                 metadata={
                     "model": self.model,
                     "tokens_used": response.usage.total_tokens,
-                    "finish_reason": response.choices[0].finish_reason
-                }
+                    "finish_reason": response.choices[0].finish_reason,
+                },
             )
 
         except Exception as e:

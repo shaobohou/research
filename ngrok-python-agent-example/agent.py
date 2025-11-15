@@ -34,17 +34,19 @@ conversations = {}
 @app.route("/")
 def home():
     """Health check endpoint"""
-    return jsonify({
-        "status": "online",
-        "agent": agent.name,
-        "message": "LLM Agent is running",
-        "endpoints": {
-            "/": "Health check",
-            "/chat": "POST - Send a message to the agent",
-            "/webhook": "POST - Receive webhook events",
-            "/conversations/<session_id>": "GET to retrieve, DELETE to clear conversation history"
+    return jsonify(
+        {
+            "status": "online",
+            "agent": agent.name,
+            "message": "LLM Agent is running",
+            "endpoints": {
+                "/": "Health check",
+                "/chat": "POST - Send a message to the agent",
+                "/webhook": "POST - Receive webhook events",
+                "/conversations/<session_id>": "GET to retrieve, DELETE to clear conversation history",
+            },
         }
-    })
+    )
 
 
 @app.route("/chat", methods=["POST"])
@@ -68,9 +70,9 @@ def chat():
 
         # Validate message length
         if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
-            return jsonify({
-                "error": f"Message must be a string with max length {MAX_MESSAGE_LENGTH}"
-            }), 400
+            return jsonify(
+                {"error": f"Message must be a string with max length {MAX_MESSAGE_LENGTH}"}
+            ), 400
 
         # Generate UUID for session if not provided
         session_id = data.get("session_id")
@@ -78,7 +80,7 @@ def chat():
             session_id = str(uuid.uuid4())
 
         # Validate session_id format (alphanumeric and hyphens only)
-        if not isinstance(session_id, str) or not all(c.isalnum() or c == '-' for c in session_id):
+        if not isinstance(session_id, str) or not all(c.isalnum() or c == "-" for c in session_id):
             return jsonify({"error": "Invalid session_id format"}), 400
 
         # Initialize conversation history for this session
@@ -87,27 +89,24 @@ def chat():
 
         # Get agent response
         try:
-            response = agent.chat(
-                message=user_message,
-                history=conversations[session_id]
-            )
+            response = agent.chat(message=user_message, history=conversations[session_id])
 
             # Add user message and agent response to history
             conversations[session_id].append(Message("user", user_message))
             conversations[session_id].append(Message("assistant", response.content))
 
-            return jsonify({
-                "response": response.content,
-                "session_id": session_id,
-                "agent": agent.name,
-                **response.metadata
-            })
+            return jsonify(
+                {
+                    "response": response.content,
+                    "session_id": session_id,
+                    "agent": agent.name,
+                    **response.metadata,
+                }
+            )
 
         except Exception as e:
             logger.error(f"Agent error: {e}", exc_info=True)
-            return jsonify({
-                "error": f"Agent error: {str(e)}"
-            }), 500
+            return jsonify({"error": f"Agent error: {str(e)}"}), 500
 
     except Exception as e:
         logger.error(f"Request error: {e}", exc_info=True)
@@ -131,11 +130,13 @@ def webhook():
         # Process webhook event (customize based on your needs)
         event_type = headers.get("X-Event-Type", "unknown")
 
-        return jsonify({
-            "status": "received",
-            "event_type": event_type,
-            "message": "Webhook processed successfully"
-        })
+        return jsonify(
+            {
+                "status": "received",
+                "event_type": event_type,
+                "message": "Webhook processed successfully",
+            }
+        )
 
     except Exception as e:
         logger.error(f"Webhook error: {e}", exc_info=True)
@@ -148,11 +149,13 @@ def get_conversation(session_id):
     if session_id not in conversations:
         return jsonify({"error": "Session not found"}), 404
 
-    return jsonify({
-        "session_id": session_id,
-        "messages": [msg.to_dict() for msg in conversations[session_id]],
-        "message_count": len(conversations[session_id])
-    })
+    return jsonify(
+        {
+            "session_id": session_id,
+            "messages": [msg.to_dict() for msg in conversations[session_id]],
+            "message_count": len(conversations[session_id]),
+        }
+    )
 
 
 @app.route("/conversations/<session_id>", methods=["DELETE"])
@@ -176,10 +179,10 @@ def start_ngrok():
 
         # Open a HTTP tunnel on the default port 5000
         public_url = ngrok.connect(5000)
-        logger.info("="*60)
+        logger.info("=" * 60)
         logger.info("🚀 ngrok tunnel established!")
         logger.info(f"📡 Public URL: {public_url}")
-        logger.info("="*60)
+        logger.info("=" * 60)
 
         return public_url
 
@@ -200,17 +203,13 @@ def main():
 
     # Start ngrok tunnel
     if USE_NGROK:
-        public_url = start_ngrok()
+        start_ngrok()
 
     # Start Flask app
     logger.info("🌐 Starting Flask server on http://localhost:5000")
     logger.info("Press Ctrl+C to stop the server")
 
-    app.run(
-        host="0.0.0.0",
-        port=5000,
-        debug=DEBUG
-    )
+    app.run(host="0.0.0.0", port=5000, debug=DEBUG)
 
 
 if __name__ == "__main__":
