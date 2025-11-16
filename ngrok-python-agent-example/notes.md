@@ -148,6 +148,11 @@ Changes:
 - Updated the README/testing guidance so contributors run `ruff format` locally alongside the existing lint/type/test steps.
 - Regenerated the `uv.lock` file so development installs no longer pull Black or its transitive dependencies.
 
+### Iteration 14: Add Pyright type checking
+- Added the Pyright CLI to the dev dependencies plus a `pyrightconfig.json` targeting Python 3.12 so editors and CI can run the checker consistently.
+- Updated the README's hygiene section to document the new `uv run pyright` step that now complements `mypy`.
+- Regenerated `uv.lock` via `uv sync` to capture the Pyright dependency graph.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC

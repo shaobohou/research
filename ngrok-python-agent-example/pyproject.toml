@@ -15,6 +15,7 @@ dev = [
     "pytest>=7.4.0",
     "ruff>=0.1.0",
     "mypy>=1.10.0",
+    "pyright>=1.1.354",
 ]
 
 [build-system]

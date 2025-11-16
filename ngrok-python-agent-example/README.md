@@ -56,6 +56,7 @@ Run the usual project hygiene commands before pushing changes:
 uv run ruff format .
 uv run ruff check .
 uv run mypy agent.py agents.py
+uv run pyright
 uv run pytest
 ```
 
