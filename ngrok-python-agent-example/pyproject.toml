@@ -24,13 +24,8 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 only-include = ["agent.py", "agents.py"]
 
-[tool.ruff]
-line-length = 100
-target-version = "py312"
+# Tool configurations are inherited from root pyproject.toml
+# Only project-specific overrides are defined here
 
 [tool.pyright]
 include = ["agent.py", "agents.py", "test_agents.py"]
-pythonVersion = "3.12"
-typeCheckingMode = "standard"
-venvPath = "."
-venv = ".venv"

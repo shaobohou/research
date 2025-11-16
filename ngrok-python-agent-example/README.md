@@ -20,7 +20,16 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
 | `--host` | `0.0.0.0` | Interface that Flask binds to. |
 | `--port` | `5000` | Port for the development server (and your ngrok tunnel). |
 | `--debug` | `False` | Enable Flask's debug server. |
-Messages larger than **1,000,000 characters** are rejected outright as a safety guardrail. That limit is defined in code rather than as a runtime flag so both CLI and WSGI imports behave the same way.
+
+**Note:** Never use `--debug` in production. The Flask development server is not designed for production use and debug mode can expose sensitive information.
+
+## Security guardrails
+The following limits are enforced:
+- **1,000,000 characters** - Maximum message length
+- **128 characters** - Maximum session ID length
+- Session IDs must be alphanumeric with hyphens only
+
+These limits are defined in code rather than as runtime flags to ensure consistent behavior across CLI and WSGI deployments.
 
 Example:
 
@@ -60,3 +69,18 @@ uv run pytest
 ```
 
 Pyright is configured directly in `pyproject.toml`, so editors/CI inherit the same include paths and settings. The existing unit tests cover the `Agent` protocol implementation and ensure the echo agent returns structured metadata for callers.
+
+## Security considerations
+This is a **development scaffold** intended for prototyping and testing webhook integrations. It includes basic guardrails but is **not production-ready** without additional hardening:
+
+- **No authentication** - All endpoints are publicly accessible. Deploy behind a reverse proxy with authentication or use in trusted networks only.
+- **No rate limiting** - Vulnerable to denial-of-service attacks. Use a reverse proxy (nginx, Caddy) with rate limiting for production.
+- **In-memory storage only** - Session data is lost on restart and grows unbounded. Use a proper database for production.
+- **Development server** - Flask's built-in server is single-threaded and not secure. Use gunicorn, uvicorn, or similar for production.
+
+For production deployments, consider adding:
+- API key authentication (e.g., `flask-httpauth`)
+- Rate limiting (e.g., `flask-limiter`)
+- Persistent session storage (e.g., Redis, PostgreSQL)
+- HTTPS/TLS termination
+- Request logging and monitoring

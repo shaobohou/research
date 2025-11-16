@@ -1,5 +1,6 @@
 """Tests for the agent abstraction layer"""
 
+import pytest
 from agents import Message, AgentResponse, EchoAgent, create_agent, create_agent_from_env
 
 
@@ -25,6 +26,22 @@ class TestMessage:
         assert msg.role == "user"
         assert msg.content == "Test"
 
+    def test_message_invalid_role_type(self):
+        """Test that Message raises TypeError for non-string role"""
+        with pytest.raises(TypeError, match="role must be a string"):
+            Message(None, "content")  # type: ignore[arg-type]
+
+    def test_message_invalid_content_type(self):
+        """Test that Message raises TypeError for non-string content"""
+        with pytest.raises(TypeError, match="content must be a string"):
+            Message("user", None)  # type: ignore[arg-type]
+
+    def test_message_empty_strings(self):
+        """Test that Message accepts empty strings"""
+        msg = Message("", "")
+        assert msg.role == ""
+        assert msg.content == ""
+
 
 class TestAgentResponse:
     """Test AgentResponse class"""
@@ -47,6 +64,17 @@ class TestAgentResponse:
         result = response.to_dict()
         assert result["content"] == "Test"
         assert result["metadata"]["model"] == "echo"
+
+    def test_response_invalid_content_type(self):
+        """Test that AgentResponse raises TypeError for non-string content"""
+        with pytest.raises(TypeError, match="content must be a string"):
+            AgentResponse(None)  # type: ignore[arg-type]
+
+    def test_response_empty_content(self):
+        """Test that AgentResponse accepts empty string content"""
+        response = AgentResponse("")
+        assert response.content == ""
+        assert response.metadata == {}
 
 
 class TestEchoAgent:

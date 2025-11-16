@@ -40,8 +40,10 @@ conversations_lock = threading.Lock()
 
 
 def _valid_session_id(session_id: str) -> bool:
-    """Session IDs only allow alphanumeric characters and hyphens."""
+    """Session IDs: 1-128 chars, alphanumeric and hyphens only."""
 
+    if not session_id or len(session_id) > 128:
+        return False
     return all(char.isalnum() or char == "-" for char in session_id)
 
 
@@ -115,14 +117,13 @@ def chat():
 
         user_message = data["message"]
 
+        # Validate message type
+        if not isinstance(user_message, str):
+            return jsonify({"error": "Message must be a string"}), 400
+
         # Validate message length
-        if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
-            return (
-                jsonify(
-                    {"error": (f"Message must be a string with max length {MAX_MESSAGE_LENGTH}")}
-                ),
-                400,
-            )
+        if len(user_message) > MAX_MESSAGE_LENGTH:
+            return jsonify({"error": f"Message exceeds maximum length of {MAX_MESSAGE_LENGTH} characters"}), 400
 
         # Generate UUID for session if not provided
         session_id = data.get("session_id") or str(uuid.uuid4())
@@ -150,11 +151,11 @@ def chat():
 
         except Exception as e:
             logger.error(f"Agent error: {e}", exc_info=True)
-            return jsonify({"error": f"Agent error: {str(e)}"}), 500
+            return jsonify({"error": "Failed to process message"}), 500
 
     except Exception as e:
         logger.error(f"Request error: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Invalid request"}), 400
 
 
 @app.post("/webhook")
@@ -181,7 +182,7 @@ def webhook():
 
     except Exception as e:
         logger.error(f"Webhook error: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Failed to process webhook"}), 500
 
 
 @app.get("/conversations/<session_id>")

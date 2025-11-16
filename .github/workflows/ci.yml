@@ -36,6 +36,7 @@ jobs:
             echo "has_tests=false" >>"$GITHUB_OUTPUT"
           fi
 
+      # Ruff runs from root to use shared configuration in root pyproject.toml
       - name: Run ruff lint
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: uvx --from ruff ruff check
@@ -44,6 +45,7 @@ jobs:
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: uvx --from ruff ruff format --check
 
+      # Pyright and pytest run per-project to use each project's virtual environment
       - name: Run pyright type check per project
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: |

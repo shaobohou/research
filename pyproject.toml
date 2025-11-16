@@ -1,0 +1,17 @@
+# Root-level tool configurations for the research monorepo
+# Individual projects have their own pyproject.toml for dependencies
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+# Projects will use their local .venv
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py", "*_test.py"]
