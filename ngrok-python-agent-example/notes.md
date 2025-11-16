@@ -143,6 +143,11 @@ Changes:
 - Re-formatted `agent.py` with `ruff format` so local edits match the Action's expectations without reintroducing any behavioral changes.
 - Verified the formatter plus the usual lint, type-check, and pytest suites all pass before re-running the repository-level Ruff formatter check.
 
+### Iteration 13: Drop Black in favor of Ruff formatting
+- Removed the Black dependency/config and now rely solely on Ruff for both formatting and linting to match the repo's CI gate.
+- Updated the README/testing guidance so contributors run `ruff format` locally alongside the existing lint/type/test steps.
+- Regenerated the `uv.lock` file so development installs no longer pull Black or its transitive dependencies.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC

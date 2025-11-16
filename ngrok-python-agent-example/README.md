@@ -53,7 +53,7 @@ Swap the `EchoAgent` by implementing the `Agent` protocol in `agents.py` or by m
 Run the usual project hygiene commands before pushing changes:
 
 ```bash
-uv run black .
+uv run ruff format .
 uv run ruff check .
 uv run mypy agent.py agents.py
 uv run pytest
