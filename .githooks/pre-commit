@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Mirror the CI workflow locally so developers can catch issues before pushing.
+# Git pre-commit hook that mirrors the GitHub CI workflow locally.
 
 set -euo pipefail
 
