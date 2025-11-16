@@ -217,7 +217,7 @@ def clear_conversation(session_id: str):
     return jsonify({"error": "Session not found"}), 404
 
 
-def main(argv: list[str]):
+def main(argv: list[str]) -> None:
     """Main entry point."""
 
     del argv  # Unused.
