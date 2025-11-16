@@ -12,7 +12,7 @@ from flask import Flask, jsonify, request
 from agents import Message, create_agent_from_env
 
 app = Flask(__name__)
-app.json.ensure_ascii = False  # Disable unicode escaping for better readability
+app.config["JSON_AS_ASCII"] = False  # Disable unicode escaping for better readability
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -25,7 +25,7 @@ flags.DEFINE_string(
     "0.0.0.0",
     "Host interface that the Flask development server binds to.",
 )
-flags.DEFINE_integer("port", 5000, "Port exposed by the Flask development server.")
+flags.DEFINE_integer("port", 5050, "Port exposed by the Flask development server.")
 flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mode.")
 
 # Validation guardrails

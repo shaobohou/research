@@ -7,7 +7,7 @@ A tiny Flask app plus a pluggable `Agent` interface that demonstrates how to exp
 2. **Run the app**: `uv run agent.py`
 3. **Send a request**:
    ```bash
-   curl -X POST http://localhost:5000/chat \
+   curl -X POST http://localhost:5050/chat \
      -H "Content-Type: application/json" \
      -d '{"message": "Hello"}'
    ```
@@ -18,7 +18,7 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
 | Flag | Default | Purpose |
 | --- | --- | --- |
 | `--host` | `0.0.0.0` | Interface that Flask binds to. |
-| `--port` | `5000` | Port for the development server (and your ngrok tunnel). |
+| `--port` | `5050` | Port for the development server (and your ngrok tunnel). |
 | `--debug` | `False` | Enable Flask's debug server. |
 
 **Note:** Never use `--debug` in production. The Flask development server is not designed for production use and debug mode can expose sensitive information.
@@ -42,7 +42,7 @@ These limits are defined in code rather than as runtime flags to ensure consiste
 
 1. Download the [ngrok CLI](https://ngrok.com/download) and authenticate: `ngrok config add-authtoken <token>`
 2. Start the Flask server with whichever flags you need: `uv run agent.py`
-3. In a separate terminal run: `ngrok http 5000`
+3. In a separate terminal run: `ngrok http 5050`
 4. Copy the forwarded URL from the CLI output and send it to your webhook provider.
 
 Because the CLI owns the tunnel, the Python process has zero ngrok dependencies, making deployments (or container builds) lighter.
