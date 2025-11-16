@@ -167,6 +167,10 @@ Changes:
 - Updated the README to reflect the simplified configuration table and documented why the limit is hard-coded.
 - Captured the diff for this iteration per the repo workflow expectations.
 
+### Iteration 18: Drop stored diff artifacts
+- Removed the `iteration-16.diff` and `iteration-17.diff` files now that the upstream workflow no longer requires checking in per-iteration diffs.
+- Left the rest of the documentation and history intact so future contributors can continue from this scaffold without the extra artifacts in git history.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC
