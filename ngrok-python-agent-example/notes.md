@@ -162,6 +162,11 @@ Changes:
 - Added a helper to fall back to the default max message length when the Abseil flags have not yet been parsed so importing the Flask app under gunicorn or tests works again.
 - Kept the CLI flag behavior unchanged so `python agent.py --max_message_length=...` still overrides the default once Abseil parses the arguments.
 
+### Iteration 17: Remove the max_message_length flag
+- Dropped the `--max_message_length` Abseil flag entirely and replaced it with a generous in-code guardrail of 1,000,000 characters.
+- Updated the README to reflect the simplified configuration table and documented why the limit is hard-coded.
+- Captured the diff for this iteration per the repo workflow expectations.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC

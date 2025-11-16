@@ -20,14 +20,12 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
 | `--host` | `0.0.0.0` | Interface that Flask binds to. |
 | `--port` | `5000` | Port for the development server (and your ngrok tunnel). |
 | `--debug` | `False` | Enable Flask's debug server. |
-| `--max_message_length` | `4000` | Guardrail for incoming payloads. |
-
-When the Flask app is imported by WSGI runners such as `flask run` or `gunicorn agent:app`, Abseil hasn't parsed CLI arguments yet. The handlers automatically fall back to the defaults above so the module works in those contexts, and any explicit CLI invocation (e.g., `uv run agent.py -- --max_message_length=1024`) overrides the defaults once parsed.
+Messages larger than **1,000,000 characters** are rejected outright as a safety guardrail. That limit is defined in code rather than as a runtime flag so both CLI and WSGI imports behave the same way.
 
 Example:
 
 ```bash
-uv run agent.py -- --port=6000 --max_message_length=1024 --debug
+uv run agent.py -- --port=6000 --debug
 ```
 
 ## Using the ngrok CLI
@@ -43,7 +41,7 @@ Because the CLI owns the tunnel, the Python process has zero ngrok dependencies,
 ## HTTP surface area
 The scaffold deliberately keeps the API tiny but still useful for webhook testing workflows:
 
-- `GET /` – detailed health check that includes agent metadata, configured `max_message_length`, and a summary of the available routes.
+- `GET /` – detailed health check that includes agent metadata, the hard-coded `max_message_length` limit, and a summary of the available routes.
 - `POST /chat` – accepts `{ "message": str, "session_id": optional str }` and streams the request through the active agent while maintaining in-memory session history.
 - `POST /webhook` – generic receiver that logs headers/payloads and replies with a basic acknowledgement, useful for validating ngrok tunnels with third-party webhook providers.
 - `GET /conversations/<session_id>` – dumps the stored message history for the given session.

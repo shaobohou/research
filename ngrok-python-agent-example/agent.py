@@ -26,11 +26,9 @@ flags.DEFINE_string(
 )
 flags.DEFINE_integer("port", 5000, "Port exposed by the Flask development server.")
 flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mode.")
-_MAX_MESSAGE_LENGTH_FLAG = flags.DEFINE_integer(
-    "max_message_length",
-    4000,
-    "Maximum number of characters allowed in the user message payload.",
-)
+
+# Validation guardrails
+MAX_MESSAGE_LENGTH = 1_000_000
 
 # Initialize agent
 agent = create_agent_from_env()
@@ -78,15 +76,6 @@ def _store_messages(session_id: str, user_message: str, response: str) -> None:
         history.append(Message("assistant", response))
 
 
-def _get_max_message_length() -> int:
-    """Return the configured max message length, even if flags are unparsed."""
-
-    if FLAGS.is_parsed():
-        return FLAGS.max_message_length
-
-    return _MAX_MESSAGE_LENGTH_FLAG.default
-
-
 @app.get("/")
 def home():
     """Rich health check with endpoint documentation."""
@@ -96,7 +85,7 @@ def home():
             "status": "online",
             "agent": agent.name,
             "message": "Agent is running",
-            "max_message_length": _get_max_message_length(),
+            "max_message_length": MAX_MESSAGE_LENGTH,
             "endpoints": {
                 "/": "Health check",
                 "/chat": "POST - send a message to the agent",
@@ -126,13 +115,11 @@ def chat():
 
         user_message = data["message"]
 
-        max_message_length = _get_max_message_length()
-
         # Validate message length
-        if not isinstance(user_message, str) or len(user_message) > max_message_length:
+        if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
             return (
                 jsonify(
-                    {"error": (f"Message must be a string with max length {max_message_length}")}
+                    {"error": (f"Message must be a string with max length {MAX_MESSAGE_LENGTH}")}
                 ),
                 400,
             )

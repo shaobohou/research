@@ -1,0 +1,106 @@
+diff --git a/ngrok-python-agent-example/README.md b/ngrok-python-agent-example/README.md
+index e5aa1ac..78d21ec 100644
+--- a/ngrok-python-agent-example/README.md
++++ b/ngrok-python-agent-example/README.md
+@@ -20,14 +20,12 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
+ | `--host` | `0.0.0.0` | Interface that Flask binds to. |
+ | `--port` | `5000` | Port for the development server (and your ngrok tunnel). |
+ | `--debug` | `False` | Enable Flask's debug server. |
+-| `--max_message_length` | `4000` | Guardrail for incoming payloads. |
+-
+-When the Flask app is imported by WSGI runners such as `flask run` or `gunicorn agent:app`, Abseil hasn't parsed CLI arguments yet. The handlers automatically fall back to the defaults above so the module works in those contexts, and any explicit CLI invocation (e.g., `uv run agent.py -- --max_message_length=1024`) overrides the defaults once parsed.
++Messages larger than **1,000,000 characters** are rejected outright as a safety guardrail. That limit is defined in code rather than as a runtime flag so both CLI and WSGI imports behave the same way.
+ 
+ Example:
+ 
+ ```bash
+-uv run agent.py -- --port=6000 --max_message_length=1024 --debug
++uv run agent.py -- --port=6000 --debug
+ ```
+ 
+ ## Using the ngrok CLI
+@@ -43,7 +41,7 @@ Because the CLI owns the tunnel, the Python process has zero ngrok dependencies,
+ ## HTTP surface area
+ The scaffold deliberately keeps the API tiny but still useful for webhook testing workflows:
+ 
+-- `GET /` – detailed health check that includes agent metadata, configured `max_message_length`, and a summary of the available routes.
++- `GET /` – detailed health check that includes agent metadata, the hard-coded `max_message_length` limit, and a summary of the available routes.
+ - `POST /chat` – accepts `{ "message": str, "session_id": optional str }` and streams the request through the active agent while maintaining in-memory session history.
+ - `POST /webhook` – generic receiver that logs headers/payloads and replies with a basic acknowledgement, useful for validating ngrok tunnels with third-party webhook providers.
+ - `GET /conversations/<session_id>` – dumps the stored message history for the given session.
+diff --git a/ngrok-python-agent-example/agent.py b/ngrok-python-agent-example/agent.py
+index ec8c636..d607145 100644
+--- a/ngrok-python-agent-example/agent.py
++++ b/ngrok-python-agent-example/agent.py
+@@ -26,11 +26,9 @@ flags.DEFINE_string(
+ )
+ flags.DEFINE_integer("port", 5000, "Port exposed by the Flask development server.")
+ flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mode.")
+-_MAX_MESSAGE_LENGTH_FLAG = flags.DEFINE_integer(
+-    "max_message_length",
+-    4000,
+-    "Maximum number of characters allowed in the user message payload.",
+-)
++
++# Validation guardrails
++MAX_MESSAGE_LENGTH = 1_000_000
+ 
+ # Initialize agent
+ agent = create_agent_from_env()
+@@ -78,15 +76,6 @@ def _store_messages(session_id: str, user_message: str, response: str) -> None:
+         history.append(Message("assistant", response))
+ 
+ 
+-def _get_max_message_length() -> int:
+-    """Return the configured max message length, even if flags are unparsed."""
+-
+-    if FLAGS.is_parsed():
+-        return FLAGS.max_message_length
+-
+-    return _MAX_MESSAGE_LENGTH_FLAG.default
+-
+-
+ @app.get("/")
+ def home():
+     """Rich health check with endpoint documentation."""
+@@ -96,7 +85,7 @@ def home():
+             "status": "online",
+             "agent": agent.name,
+             "message": "Agent is running",
+-            "max_message_length": _get_max_message_length(),
++            "max_message_length": MAX_MESSAGE_LENGTH,
+             "endpoints": {
+                 "/": "Health check",
+                 "/chat": "POST - send a message to the agent",
+@@ -126,13 +115,11 @@ def chat():
+ 
+         user_message = data["message"]
+ 
+-        max_message_length = _get_max_message_length()
+-
+         # Validate message length
+-        if not isinstance(user_message, str) or len(user_message) > max_message_length:
++        if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
+             return (
+                 jsonify(
+-                    {"error": (f"Message must be a string with max length {max_message_length}")}
++                    {"error": (f"Message must be a string with max length {MAX_MESSAGE_LENGTH}")}
+                 ),
+                 400,
+             )
+diff --git a/ngrok-python-agent-example/notes.md b/ngrok-python-agent-example/notes.md
+index 1968091..11cd8d7 100644
+--- a/ngrok-python-agent-example/notes.md
++++ b/ngrok-python-agent-example/notes.md
+@@ -162,6 +162,11 @@ Changes:
+ - Added a helper to fall back to the default max message length when the Abseil flags have not yet been parsed so importing the Flask app under gunicorn or tests works again.
+ - Kept the CLI flag behavior unchanged so `python agent.py --max_message_length=...` still overrides the default once Abseil parses the arguments.
+ 
++### Iteration 17: Remove the max_message_length flag
++- Dropped the `--max_message_length` Abseil flag entirely and replaced it with a generous in-code guardrail of 1,000,000 characters.
++- Updated the README to reflect the simplified configuration table and documented why the limit is hard-coded.
++- Captured the diff for this iteration per the repo workflow expectations.
++
+ ## Key Technical Decisions
+ 
+ ### 1. Protocol vs ABC
