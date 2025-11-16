@@ -12,6 +12,7 @@ from flask import Flask, jsonify, request
 from agents import Message, create_agent_from_env
 
 app = Flask(__name__)
+app.json.ensure_ascii = False  # Disable unicode escaping for better readability
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -29,9 +30,6 @@ flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mod
 
 # Validation guardrails
 MAX_MESSAGE_LENGTH = 1_000_000
-
-# Initialize agent
-agent = create_agent_from_env()
 
 # Simple in-memory conversation history
 # Structure: {session_id: [Message, Message, ...]}
@@ -85,7 +83,7 @@ def home():
     return jsonify(
         {
             "status": "online",
-            "agent": agent.name,
+            "agent": app.config["agent"].name,
             "message": "Agent is running",
             "max_message_length": MAX_MESSAGE_LENGTH,
             "endpoints": {
@@ -136,7 +134,7 @@ def chat():
         try:
             history = _get_history(session_id)
 
-            response = agent.chat(message=user_message, history=history)
+            response = app.config["agent"].chat(message=user_message, history=history)
 
             _store_messages(session_id, user_message, response.content)
 
@@ -144,7 +142,7 @@ def chat():
                 {
                     "response": response.content,
                     "session_id": session_id,
-                    "agent": agent.name,
+                    "agent": app.config["agent"].name,
                     **response.metadata,
                 }
             )
@@ -221,12 +219,19 @@ def clear_conversation(session_id: str):
 def main(argv: list[str]) -> None:
     """Main entry point."""
 
-    del argv  # Unused.
+    # Initialize agent after flags are parsed
+    app.config["agent"] = create_agent_from_env()
 
     logger.info("🤖 Starting Agent...")
-    logger.info(f"✅ Agent: {agent.name}")
+    logger.info(f"✅ Agent: {app.config['agent'].name}")
+    logger.info("")
+    logger.info("⚙️  Configuration:")
+    logger.info(f"   Host: {FLAGS.host}")
+    logger.info(f"   Port: {FLAGS.port}")
+    logger.info(f"   Debug: {FLAGS.debug}")
+    logger.info(f"   Max message length: {MAX_MESSAGE_LENGTH:,}")
+    logger.info("")
     logger.info("🔌 Bring your own ngrok CLI tunnel. See README for details.")
-
     logger.info("🌐 Starting Flask server on http://%s:%s", FLAGS.host, FLAGS.port)
     logger.info("Press Ctrl+C to stop the server")
 

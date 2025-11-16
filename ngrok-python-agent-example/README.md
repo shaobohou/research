@@ -13,7 +13,7 @@ A tiny Flask app plus a pluggable `Agent` interface that demonstrates how to exp
    ```
 
 ## Configuration via flags
-Environment variables are gone in favor of explicit [absl flags](https://abseil.io/docs/python/guides/flags). Pass them after `--` when invoking the script:
+Environment variables are gone in favor of explicit [absl flags](https://abseil.io/docs/python/guides/flags). Pass them directly when invoking the script:
 
 | Flag | Default | Purpose |
 | --- | --- | --- |
@@ -23,6 +23,12 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
 
 **Note:** Never use `--debug` in production. The Flask development server is not designed for production use and debug mode can expose sensitive information.
 
+Example:
+
+```bash
+uv run agent.py --port=6000 --debug
+```
+
 ## Security guardrails
 The following limits are enforced:
 - **1,000,000 characters** - Maximum message length
@@ -30,12 +36,6 @@ The following limits are enforced:
 - Session IDs must be alphanumeric with hyphens only
 
 These limits are defined in code rather than as runtime flags to ensure consistent behavior across CLI and WSGI deployments.
-
-Example:
-
-```bash
-uv run agent.py -- --port=6000 --debug
-```
 
 ## Using the ngrok CLI
 `pyngrok` support has been removed entirely—bring your own CLI tunnel:

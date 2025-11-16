@@ -218,6 +218,15 @@ Changes:
 - Better developer experience
 - Future-focused
 
+### 6. Flask app.config vs Global Variables
+**Decision:** Use Flask's app.config for agent storage
+**Rationale:**
+- Follows Flask best practices
+- Avoids global state and potential side effects
+- Cleaner dependency injection pattern
+- Initialization happens after flag parsing
+- Better testability and maintainability
+
 ## Testing Approach
 
 ### Test Coverage
@@ -297,6 +306,27 @@ ngrok-python-agent-example/
 7. Add observability (metrics, tracing)
 8. Deploy guide for production
 
+### Iteration 20: Eliminate global variables and fix flag parsing
+**Issue:** Agent was initialized at module level as a global variable, and `--` separator was preventing flag parsing
+
+Changes:
+- Moved agent initialization from module level into `main()` function
+- Store agent in `app.config["agent"]` instead of global variable (Flask best practice)
+- Updated all route handlers to access `app.config["agent"]`
+- Fixed README documentation: removed `--` separator from examples
+- Added configuration display on startup (host, port, debug, max message length)
+- Discovered `uv run agent.py --port=6000` works correctly without `--` separator
+
+**What worked:**
+- Using Flask's `app.config` avoids global state and follows Flask conventions
+- Agent initialization happens after flags are parsed by `absl_app.run()`
+- Configuration logging provides visibility into runtime settings
+
+**Technical details:**
+- When using `uv run agent.py -- --port=6000`, the `--` tells absl to stop parsing flags
+- This caused `--port=6000` to be treated as a positional argument, leaving FLAGS.port at default 5000
+- Removing the `--` separator allows absl to properly parse all flags
+
 ## Final State
 
 - ✅ All tests passing (15/15)
@@ -307,5 +337,7 @@ ngrok-python-agent-example/
 - ✅ Python 3.12 target
 - ✅ uv-only support
 - ✅ No .env files
+- ✅ No global variables (uses app.config)
 - ✅ Comprehensive documentation
 - ✅ Simple echo agent (no API dependencies)
+- ✅ Configuration display on startup
