@@ -20,6 +20,7 @@
 - Enforced a "no repeated compositions" rule by tracking canonical song identities, expanded the dataset so every artist has alternate well-known material to cover, and refreshed the README/tests to prove the stricter behavior.
 - Moved the playlist generator modules directly into the `spotify-playlist-generator/` directory so every tracked file lives within the investigation folder and updated imports/README/tests accordingly.
 - Added a `dev` optional dependency group so the shared pre-commit hook can install tooling with `uv run --extra dev` and then ran the pre-commit checks locally.
+- Fixed the candidate sorter to include song ids as tie-breakers so equal-gap, equal-popularity covers do not crash playlist generation, and added a regression test for the scenario.
 
 ## Ideas for Later
 - Enrich the dataset with real metadata (release year, genre, energy) for more nuanced sequencing.

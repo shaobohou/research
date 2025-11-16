@@ -88,3 +88,36 @@ def test_playlist_never_repeats_same_composition() -> None:
     for song in playlist:
         assert song.composition_id not in composition_ids
         composition_ids.add(song.composition_id)
+
+
+def test_generator_handles_equal_scored_candidates() -> None:
+    originals = [
+        Song(id="artist-a-hit", title="Hit", artist="Artist A", popularity=95),
+        Song(id="artist-a-bside", title="B-Side", artist="Artist A", popularity=95),
+    ]
+    covers = [
+        Song(
+            id="cover-1",
+            title="Hit (Cover 1)",
+            artist="Band One",
+            popularity=80,
+            cover_of="artist-a-hit",
+        ),
+        Song(
+            id="cover-2",
+            title="B-Side (Cover 2)",
+            artist="Band Two",
+            popularity=80,
+            cover_of="artist-a-bside",
+        ),
+    ]
+
+    catalog = Catalog(originals + covers)
+    generator = PlaylistGenerator(catalog)
+
+    playlist = generator.generate("artist-a-hit", length=2)
+
+    assert [song.id for song in playlist] == [
+        "artist-a-hit",
+        "cover-2",
+    ]

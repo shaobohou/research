@@ -123,9 +123,10 @@ class PlaylistGenerator:
             if cover.popularity >= original.popularity:
                 continue
             gap = original.popularity - cover.popularity
-            candidates.append((gap, -cover.popularity, cover))
+            # Include the song id in the ranking tuple so ties break deterministically.
+            candidates.append((gap, -cover.popularity, cover.id, cover))
 
         if not candidates:
             return None
         candidates.sort(reverse=True)
-        return candidates[0][2]
+        return candidates[0][3]
