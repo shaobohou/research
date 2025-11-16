@@ -13,10 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v3
 
       - name: Detect Python files
         id: detect-python
@@ -41,6 +44,48 @@ jobs:
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: uvx --from ruff ruff format --check
 
-      - name: Run pytest (if tests present)
+      - name: Run pyright type check per project
+        if: ${{ steps.detect-python.outputs.has_python == 'true' }}
+        run: |
+          set -euo pipefail
+          project_files=$(find . -path './.git' -prune -o -path './.venv' -prune -o -name pyproject.toml -print)
+
+          if [ -z "$project_files" ]; then
+            echo "No pyproject.toml files found; running pyright once from the repository root."
+            uvx --from pyright pyright
+            exit 0
+          fi
+
+          while IFS= read -r project_file; do
+            [ -z "$project_file" ] && continue
+            project_dir=$(dirname "$project_file")
+            echo "::group::pyright ($project_dir)"
+            (
+              cd "$project_dir"
+              uv run --extra dev --with pyright pyright
+            )
+            echo "::endgroup::"
+          done <<< "$project_files"
+
+      - name: Run pytest per project (if tests present)
         if: ${{ steps.detect-python.outputs.has_tests == 'true' }}
-        run: uvx --from pytest pytest
+        run: |
+          set -euo pipefail
+          project_files=$(find . -path './.git' -prune -o -path './.venv' -prune -o -name pyproject.toml -print)
+
+          if [ -z "$project_files" ]; then
+            echo "No pyproject.toml files found; running pytest from the repository root."
+            uvx --from pytest pytest
+            exit 0
+          fi
+
+          while IFS= read -r project_file; do
+            [ -z "$project_file" ] && continue
+            project_dir=$(dirname "$project_file")
+            echo "::group::pytest ($project_dir)"
+            (
+              cd "$project_dir"
+              uv run --extra dev --with pytest pytest
+            )
+            echo "::endgroup::"
+          done <<< "$project_files"

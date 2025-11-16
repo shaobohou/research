@@ -171,6 +171,12 @@ Changes:
 - Removed the `iteration-16.diff` and `iteration-17.diff` files now that the upstream workflow no longer requires checking in per-iteration diffs.
 - Left the rest of the documentation and history intact so future contributors can continue from this scaffold without the extra artifacts in git history.
 
+### Iteration 19: Rebase on latest main and resolve conflicts
+- Pulled in the newest `origin/main` history (which removes the repo-level `pyproject.toml`, devcontainer bootstrap `uv sync`, and the legacy math-utils tests) and resolved the conflicting files.
+- Regenerated `uv.lock` after reconciling `pyproject.toml` and kept the Abseil flag-only agent implementation so the Flask scaffold continues to run without `pyngrok`.
+- Verified the shared tooling guidance still points to Ruff + Pyright + pytest so the repo remains consistent post-merge.
+- Dropped the unused `claude-code-review` workflow while consolidating on the refreshed CI pipeline.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC
