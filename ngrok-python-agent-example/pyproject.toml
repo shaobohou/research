@@ -25,7 +25,4 @@ build-backend = "hatchling.build"
 only-include = ["agent.py", "agents.py"]
 
 # Tool configurations are inherited from root pyproject.toml
-# Only project-specific overrides are defined here
-
-[tool.pyright]
-include = ["agent.py", "agents.py", "test_agents.py"]
+# No project-specific overrides needed - pyright checks all .py files by default
