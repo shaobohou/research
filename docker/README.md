@@ -22,6 +22,21 @@ docker run --rm -it -v "$PWD":/home/dev/workspace claude-dev-agents
 docker run --rm -it claude-dev-agents claude --version
 ```
 
+## API Keys
+
+AI tools require API keys. Pass them from your host environment:
+
+```bash
+export OPENAI_API_KEY="sk-..."
+
+docker run --rm -it \
+  -e OPENAI_API_KEY \
+  -v "$PWD":/home/dev/workspace \
+  claude-dev-agents
+```
+
+**Note:** Using `-e VAR_NAME` (without `=value`) keeps the key out of command history. For multiple keys, add more `-e` flags.
+
 ## Python Development with uv
 
 ```bash
@@ -50,6 +65,21 @@ docker run --rm -it \
 docker run --rm -v "$PWD":/home/dev/workspace claude-dev-agents \
   bash -c "cd workspace && uv run pytest"
 ```
+
+## Volume Mounts
+
+The `-v "$PWD":/home/dev/workspace` flag makes your current directory accessible at `/home/dev/workspace` inside the container. Files sync bidirectionally.
+
+**Read-only mounts** prevent the container from modifying your files:
+
+```bash
+# Add :ro for read-only access
+docker run --rm -it \
+  -v "$PWD":/home/dev/workspace:ro \
+  claude-dev-agents
+```
+
+Use read-only mounts when running untrusted code or when files shouldn't be modified (linting, testing, analysis).
 
 ## Details
 

@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""
-Simple Agent Scaffolding with ngrok exposure
-Demonstrates how to create a webhook-enabled conversational agent accessible via ngrok tunnel
-"""
+"""Minimal Flask + ngrok agent scaffold."""
 
-import os
-import uuid
 import logging
 import threading
-from flask import Flask, request, jsonify
+import uuid
 
-from agents import create_agent_from_env, Message
+from absl import app as absl_app
+from absl import flags
+from flask import Flask, jsonify, request
+
+from agents import Message, create_agent_from_env
 
 app = Flask(__name__)
 
@@ -18,40 +17,88 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Configuration from environment variables
-NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN")
-USE_NGROK = os.getenv("USE_NGROK", "true").lower() == "true"
-DEBUG = os.getenv("DEBUG", "false").lower() == "true"
-MAX_MESSAGE_LENGTH = 10000
+# Configuration via absl.flags
+FLAGS = flags.FLAGS
+flags.DEFINE_string(
+    "host",
+    "0.0.0.0",
+    "Host interface that the Flask development server binds to.",
+)
+flags.DEFINE_integer("port", 5000, "Port exposed by the Flask development server.")
+flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mode.")
+
+# Validation guardrails
+MAX_MESSAGE_LENGTH = 1_000_000
 
 # Initialize agent
 agent = create_agent_from_env()
 
 # Simple in-memory conversation history
 # Structure: {session_id: [Message, Message, ...]}
-conversations = {}
+conversations: dict[str, list[Message]] = {}
 conversations_lock = threading.Lock()
 
 
-@app.route("/")
+def _valid_session_id(session_id: str) -> bool:
+    """Session IDs: 1-128 chars, alphanumeric and hyphens only."""
+
+    if not session_id or len(session_id) > 128:
+        return False
+    return all(char.isalnum() or char == "-" for char in session_id)
+
+
+def _get_history(session_id: str) -> list[Message]:
+    """Return a copy of the conversation history for a session (creating it if needed)."""
+
+    with conversations_lock:
+        return conversations.setdefault(session_id, []).copy()
+
+
+def _peek_conversation(session_id: str) -> list[Message] | None:
+    """Return a copy of the stored conversation without creating it."""
+
+    with conversations_lock:
+        history = conversations.get(session_id)
+        return history.copy() if history is not None else None
+
+
+def _clear_conversation(session_id: str) -> bool:
+    """Clear a stored conversation if it exists."""
+
+    with conversations_lock:
+        return conversations.pop(session_id, None) is not None
+
+
+def _store_messages(session_id: str, user_message: str, response: str) -> None:
+    """Persist the latest user/assistant turns."""
+
+    with conversations_lock:
+        history = conversations.setdefault(session_id, [])
+        history.append(Message("user", user_message))
+        history.append(Message("assistant", response))
+
+
+@app.get("/")
 def home():
-    """Health check endpoint"""
+    """Rich health check with endpoint documentation."""
+
     return jsonify(
         {
             "status": "online",
             "agent": agent.name,
             "message": "Agent is running",
+            "max_message_length": MAX_MESSAGE_LENGTH,
             "endpoints": {
                 "/": "Health check",
-                "/chat": "POST - Send a message to the agent",
-                "/webhook": "POST - Receive webhook events",
-                "/conversations/<session_id>": "GET to retrieve, DELETE to clear conversation history",
+                "/chat": "POST - send a message to the agent",
+                "/webhook": "POST - receive generic webhook events",
+                "/conversations/<session_id>": "GET to inspect, DELETE to clear history",
             },
         }
     )
 
 
-@app.route("/chat", methods=["POST"])
+@app.post("/chat")
 def chat():
     """
     Chat endpoint for interacting with the agent
@@ -70,38 +117,28 @@ def chat():
 
         user_message = data["message"]
 
+        # Validate message type
+        if not isinstance(user_message, str):
+            return jsonify({"error": "Message must be a string"}), 400
+
         # Validate message length
-        if not isinstance(user_message, str) or len(user_message) > MAX_MESSAGE_LENGTH:
-            return jsonify(
-                {"error": f"Message must be a string with max length {MAX_MESSAGE_LENGTH}"}
-            ), 400
+        if len(user_message) > MAX_MESSAGE_LENGTH:
+            return jsonify({"error": f"Message exceeds maximum length of {MAX_MESSAGE_LENGTH} characters"}), 400
 
         # Generate UUID for session if not provided
-        session_id = data.get("session_id")
-        if session_id is None:
-            session_id = str(uuid.uuid4())
+        session_id = data.get("session_id") or str(uuid.uuid4())
 
         # Validate session_id format (alphanumeric and hyphens only)
-        if not isinstance(session_id, str) or not all(c.isalnum() or c == "-" for c in session_id):
+        if not isinstance(session_id, str) or not _valid_session_id(session_id):
             return jsonify({"error": "Invalid session_id format"}), 400
 
         # Get agent response with thread-safe conversation history access
         try:
-            with conversations_lock:
-                # Initialize conversation history for this session
-                if session_id not in conversations:
-                    conversations[session_id] = []
+            history = _get_history(session_id)
 
-                # Get conversation history for this session
-                history = conversations[session_id].copy()
-
-            # Call agent outside the lock to avoid holding it during API call
             response = agent.chat(message=user_message, history=history)
 
-            # Add user message and agent response to history
-            with conversations_lock:
-                conversations[session_id].append(Message("user", user_message))
-                conversations[session_id].append(Message("assistant", response.content))
+            _store_messages(session_id, user_message, response.content)
 
             return jsonify(
                 {
@@ -114,28 +151,25 @@ def chat():
 
         except Exception as e:
             logger.error(f"Agent error: {e}", exc_info=True)
-            return jsonify({"error": f"Agent error: {str(e)}"}), 500
+            return jsonify({"error": "Failed to process message"}), 500
 
     except Exception as e:
         logger.error(f"Request error: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Invalid request"}), 400
 
 
-@app.route("/webhook", methods=["POST"])
+@app.post("/webhook")
 def webhook():
-    """
-    Generic webhook endpoint for receiving events
-    Can be used for GitHub webhooks, Slack events, etc.
-    """
+    """Generic webhook endpoint for receiving events."""
+
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True)
         headers = dict(request.headers)
 
         logger.info("Webhook received")
-        logger.debug(f"Headers: {headers}")
-        logger.debug(f"Payload: {data}")
+        logger.debug("Headers: %s", headers)
+        logger.debug("Payload: %s", data)
 
-        # Process webhook event (customize based on your needs)
         event_type = headers.get("X-Event-Type", "unknown")
 
         return jsonify(
@@ -148,83 +182,56 @@ def webhook():
 
     except Exception as e:
         logger.error(f"Webhook error: {e}", exc_info=True)
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "Failed to process webhook"}), 500
 
 
-@app.route("/conversations/<session_id>", methods=["GET"])
-def get_conversation(session_id):
-    """Retrieve conversation history for a session"""
-    with conversations_lock:
-        if session_id not in conversations:
-            return jsonify({"error": "Session not found"}), 404
+@app.get("/conversations/<session_id>")
+def get_conversation(session_id: str):
+    """Retrieve stored conversation history for a session."""
 
-        messages = [msg.to_dict() for msg in conversations[session_id]]
-        message_count = len(conversations[session_id])
+    if not _valid_session_id(session_id):
+        return jsonify({"error": "Invalid session_id format"}), 400
+
+    history = _peek_conversation(session_id)
+    if history is None:
+        return jsonify({"error": "Session not found"}), 404
 
     return jsonify(
         {
             "session_id": session_id,
-            "messages": messages,
-            "message_count": message_count,
+            "messages": [msg.to_dict() for msg in history],
+            "message_count": len(history),
         }
     )
 
 
-@app.route("/conversations/<session_id>", methods=["DELETE"])
-def clear_conversation(session_id):
-    """Clear conversation history for a session"""
-    with conversations_lock:
-        if session_id in conversations:
-            del conversations[session_id]
-            return jsonify({"message": f"Conversation {session_id} cleared"})
+@app.delete("/conversations/<session_id>")
+def clear_conversation(session_id: str):
+    """Clear stored conversation history for a session."""
 
-        return jsonify({"error": "Session not found"}), 404
+    if not _valid_session_id(session_id):
+        return jsonify({"error": "Invalid session_id format"}), 400
 
+    if _clear_conversation(session_id):
+        return jsonify({"message": f"Conversation {session_id} cleared"})
 
-def start_ngrok():
-    """Start ngrok tunnel"""
-    try:
-        from pyngrok import ngrok
-
-        # Authenticate if token is provided
-        if NGROK_AUTH_TOKEN:
-            ngrok.set_auth_token(NGROK_AUTH_TOKEN)
-
-        # Open a HTTP tunnel on the default port 5000
-        # pyngrok expects the address parameter as a string, so ensure the port is str
-        public_url = ngrok.connect("5000")
-        logger.info("=" * 60)
-        logger.info("🚀 ngrok tunnel established!")
-        logger.info(f"📡 Public URL: {public_url}")
-        logger.info("=" * 60)
-
-        return public_url
-
-    except ImportError:
-        logger.warning("pyngrok not installed. Install with: uv add pyngrok")
-        logger.warning("Running without ngrok tunnel...")
-        return None
-    except Exception as e:
-        logger.warning(f"Failed to start ngrok: {e}")
-        logger.warning("Running without ngrok tunnel...")
-        return None
+    return jsonify({"error": "Session not found"}), 404
 
 
-def main():
-    """Main entry point"""
+def main(argv: list[str]) -> None:
+    """Main entry point."""
+
+    del argv  # Unused.
+
     logger.info("🤖 Starting Agent...")
     logger.info(f"✅ Agent: {agent.name}")
+    logger.info("🔌 Bring your own ngrok CLI tunnel. See README for details.")
 
-    # Start ngrok tunnel
-    if USE_NGROK:
-        start_ngrok()
-
-    # Start Flask app
-    logger.info("🌐 Starting Flask server on http://localhost:5000")
+    logger.info("🌐 Starting Flask server on http://%s:%s", FLAGS.host, FLAGS.port)
     logger.info("Press Ctrl+C to stop the server")
 
-    app.run(host="0.0.0.0", port=5000, debug=DEBUG)
+    app.run(host=FLAGS.host, port=FLAGS.port, debug=FLAGS.debug)
 
 
 if __name__ == "__main__":
-    main()
+    absl_app.run(main)

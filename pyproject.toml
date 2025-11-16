@@ -1,0 +1,13 @@
+# Root-level tool configurations for the research monorepo
+# Individual projects have their own pyproject.toml for dependencies
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py", "*_test.py"]

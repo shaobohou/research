@@ -7,15 +7,14 @@ requires-python = ">=3.12"
 
 dependencies = [
     "flask>=3.0.0",
-    "pyngrok>=7.0.5",
+    "absl-py>=2.1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.4.0",
-    "black>=23.0.0",
     "ruff>=0.1.0",
-    "pyright>=1.1.350",
+    "pyright>=1.1.354",
 ]
 
 [build-system]
@@ -25,10 +24,5 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 only-include = ["agent.py", "agents.py"]
 
-[tool.ruff]
-line-length = 100
-target-version = "py312"
-
-[tool.black]
-line-length = 100
-target-version = ["py312"]
+# Tool configurations are inherited from root pyproject.toml
+# No project-specific overrides needed - pyright checks all .py files by default

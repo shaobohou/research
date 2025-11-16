@@ -118,6 +118,12 @@ Changes:
 - Completely rewrote README.md
 - Kept LLM integration as extension example in docs
 
+### Iteration 10: CLI-only ngrok and flag-based config
+- Removed `pyngrok` integration entirely in favor of the CLI workflow
+- Swapped environment variables for absl flags with explicit defaults
+- Updated README with flag documentation and CLI tunnel walkthrough
+- Added `absl-py` + `mypy` dependencies and refreshed the `uv.lock` file
+
 **What worked:**
 - Simpler, no external dependencies
 - Easier to understand and extend
@@ -126,6 +132,50 @@ Changes:
 
 **What didn't work initially:**
 - Had to remove pytest import that was unused
+
+### Iteration 11: Restore webhook + conversation endpoints
+- Re-introduced the richer health check plus `/webhook` and `/conversations/<session_id>` endpoints while keeping Abseil flag configuration.
+- Added helper utilities for peeking and clearing conversation history without mutating state unexpectedly.
+- Updated the README to describe the expanded HTTP surface so developers understand the rebuilt routes.
+
+### Iteration 12: Fix CI formatting regression
+- CI started running `ruff format --check`, which failed because `agent.py` still used a Black-only formatting style for the long error string.
+- Re-formatted `agent.py` with `ruff format` so local edits match the Action's expectations without reintroducing any behavioral changes.
+- Verified the formatter plus the usual lint, type-check, and pytest suites all pass before re-running the repository-level Ruff formatter check.
+
+### Iteration 13: Drop Black in favor of Ruff formatting
+- Removed the Black dependency/config and now rely solely on Ruff for both formatting and linting to match the repo's CI gate.
+- Updated the README/testing guidance so contributors run `ruff format` locally alongside the existing lint/type/test steps.
+- Regenerated the `uv.lock` file so development installs no longer pull Black or its transitive dependencies.
+
+### Iteration 14: Add Pyright type checking
+- Added the Pyright CLI to the dev dependencies plus a `pyrightconfig.json` targeting Python 3.12 so editors and CI can run the checker consistently.
+- Updated the README's hygiene section to document the new `uv run pyright` step that now complements `mypy`.
+- Regenerated `uv.lock` via `uv sync` to capture the Pyright dependency graph.
+
+### Iteration 15: Simplify type checking setup
+- Dropped mypy from the dev dependencies and documentation so Ruff + Pyright cover formatting, linting, and typing.
+- Removed the standalone `pyrightconfig.json` in favor of a `[tool.pyright]` section inside `pyproject.toml` so configuration travels with the rest of the tooling knobs.
+- Updated the README/testing guidance accordingly and refreshed the lockfile to stop pulling the mypy dependency tree.
+
+### Iteration 16: Parse-safe flag usage in Flask contexts
+- Added a helper to fall back to the default max message length when the Abseil flags have not yet been parsed so importing the Flask app under gunicorn or tests works again.
+- Kept the CLI flag behavior unchanged so `python agent.py --max_message_length=...` still overrides the default once Abseil parses the arguments.
+
+### Iteration 17: Remove the max_message_length flag
+- Dropped the `--max_message_length` Abseil flag entirely and replaced it with a generous in-code guardrail of 1,000,000 characters.
+- Updated the README to reflect the simplified configuration table and documented why the limit is hard-coded.
+- Captured the diff for this iteration per the repo workflow expectations.
+
+### Iteration 18: Drop stored diff artifacts
+- Removed the `iteration-16.diff` and `iteration-17.diff` files now that the upstream workflow no longer requires checking in per-iteration diffs.
+- Left the rest of the documentation and history intact so future contributors can continue from this scaffold without the extra artifacts in git history.
+
+### Iteration 19: Rebase on latest main and resolve conflicts
+- Pulled in the newest `origin/main` history (which removes the repo-level `pyproject.toml`, devcontainer bootstrap `uv sync`, and the legacy math-utils tests) and resolved the conflicting files.
+- Regenerated `uv.lock` after reconciling `pyproject.toml` and kept the Abseil flag-only agent implementation so the Flask scaffold continues to run without `pyngrok`.
+- Verified the shared tooling guidance still points to Ruff + Pyright + pytest so the repo remains consistent post-merge.
+- Dropped the unused `claude-code-review` workflow while consolidating on the refreshed CI pipeline.
 
 ## Key Technical Decisions
 

@@ -12,3 +12,9 @@ __pycache__/
 dist/
 build/
 .idea/
+
+# Credentials and secrets
+.env
+*.key
+*.pem
+secrets/

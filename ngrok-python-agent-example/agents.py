@@ -10,6 +10,10 @@ class Message:
     """Represents a single message in a conversation"""
 
     def __init__(self, role: str, content: str):
+        if not isinstance(role, str):
+            raise TypeError(f"role must be a string, got {type(role).__name__}")
+        if not isinstance(content, str):
+            raise TypeError(f"content must be a string, got {type(content).__name__}")
         self.role = role
         self.content = content
 
@@ -25,6 +29,8 @@ class AgentResponse:
     """Standard response format from an agent"""
 
     def __init__(self, content: str, metadata: Optional[dict[str, Any]] = None):
+        if not isinstance(content, str):
+            raise TypeError(f"content must be a string, got {type(content).__name__}")
         self.content = content
         self.metadata = metadata or {}
 
