@@ -50,6 +50,10 @@ jobs:
         if: ${{ steps.detect-python.outputs.has_python == 'true' }}
         run: |
           set -euo pipefail
+
+          # Explicit skip list for directories with tool-only pyproject.toml (no [project] section)
+          SKIP_DIRS=(".")
+
           project_files=$(find . -path './.git' -prune -o -path './.venv' -prune -o -name pyproject.toml -print)
 
           if [ -z "$project_files" ]; then
@@ -61,6 +65,18 @@ jobs:
           while IFS= read -r project_file; do
             [ -z "$project_file" ] && continue
             project_dir=$(dirname "$project_file")
+
+            # Check if directory is in skip list
+            skip=false
+            for skip_dir in "${SKIP_DIRS[@]}"; do
+              if [ "$project_dir" = "$skip_dir" ]; then
+                echo "Skipping $project_file (in skip list)"
+                skip=true
+                break
+              fi
+            done
+            [ "$skip" = true ] && continue
+
             echo "::group::pyright ($project_dir)"
             (
               cd "$project_dir"
@@ -73,6 +89,10 @@ jobs:
         if: ${{ steps.detect-python.outputs.has_tests == 'true' }}
         run: |
           set -euo pipefail
+
+          # Explicit skip list for directories with tool-only pyproject.toml (no [project] section)
+          SKIP_DIRS=(".")
+
           project_files=$(find . -path './.git' -prune -o -path './.venv' -prune -o -name pyproject.toml -print)
 
           if [ -z "$project_files" ]; then
@@ -84,6 +104,18 @@ jobs:
           while IFS= read -r project_file; do
             [ -z "$project_file" ] && continue
             project_dir=$(dirname "$project_file")
+
+            # Check if directory is in skip list
+            skip=false
+            for skip_dir in "${SKIP_DIRS[@]}"; do
+              if [ "$project_dir" = "$skip_dir" ]; then
+                echo "Skipping $project_file (in skip list)"
+                skip=true
+                break
+              fi
+            done
+            [ "$skip" = true ] && continue
+
             echo "::group::pytest ($project_dir)"
             (
               cd "$project_dir"
