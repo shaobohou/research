@@ -1,0 +1,75 @@
+diff --git a/ngrok-python-agent-example/README.md b/ngrok-python-agent-example/README.md
+index d6e84a5..e5aa1ac 100644
+--- a/ngrok-python-agent-example/README.md
++++ b/ngrok-python-agent-example/README.md
+@@ -22,6 +22,8 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
+ | `--debug` | `False` | Enable Flask's debug server. |
+ | `--max_message_length` | `4000` | Guardrail for incoming payloads. |
+ 
++When the Flask app is imported by WSGI runners such as `flask run` or `gunicorn agent:app`, Abseil hasn't parsed CLI arguments yet. The handlers automatically fall back to the defaults above so the module works in those contexts, and any explicit CLI invocation (e.g., `uv run agent.py -- --max_message_length=1024`) overrides the defaults once parsed.
++
+ Example:
+ 
+ ```bash
+diff --git a/ngrok-python-agent-example/agent.py b/ngrok-python-agent-example/agent.py
+index 916038d..ec8c636 100644
+--- a/ngrok-python-agent-example/agent.py
++++ b/ngrok-python-agent-example/agent.py
+@@ -26,7 +26,7 @@ flags.DEFINE_string(
+ )
+ flags.DEFINE_integer("port", 5000, "Port exposed by the Flask development server.")
+ flags.DEFINE_bool("debug", False, "Run the Flask development server in debug mode.")
+-flags.DEFINE_integer(
++_MAX_MESSAGE_LENGTH_FLAG = flags.DEFINE_integer(
+     "max_message_length",
+     4000,
+     "Maximum number of characters allowed in the user message payload.",
+@@ -78,6 +78,15 @@ def _store_messages(session_id: str, user_message: str, response: str) -> None:
+         history.append(Message("assistant", response))
+ 
+ 
++def _get_max_message_length() -> int:
++    """Return the configured max message length, even if flags are unparsed."""
++
++    if FLAGS.is_parsed():
++        return FLAGS.max_message_length
++
++    return _MAX_MESSAGE_LENGTH_FLAG.default
++
++
+ @app.get("/")
+ def home():
+     """Rich health check with endpoint documentation."""
+@@ -87,7 +96,7 @@ def home():
+             "status": "online",
+             "agent": agent.name,
+             "message": "Agent is running",
+-            "max_message_length": FLAGS.max_message_length,
++            "max_message_length": _get_max_message_length(),
+             "endpoints": {
+                 "/": "Health check",
+                 "/chat": "POST - send a message to the agent",
+@@ -117,7 +126,7 @@ def chat():
+ 
+         user_message = data["message"]
+ 
+-        max_message_length = FLAGS.max_message_length
++        max_message_length = _get_max_message_length()
+ 
+         # Validate message length
+         if not isinstance(user_message, str) or len(user_message) > max_message_length:
+diff --git a/ngrok-python-agent-example/notes.md b/ngrok-python-agent-example/notes.md
+index d9edfcc..1968091 100644
+--- a/ngrok-python-agent-example/notes.md
++++ b/ngrok-python-agent-example/notes.md
+@@ -158,6 +158,10 @@ Changes:
+ - Removed the standalone `pyrightconfig.json` in favor of a `[tool.pyright]` section inside `pyproject.toml` so configuration travels with the rest of the tooling knobs.
+ - Updated the README/testing guidance accordingly and refreshed the lockfile to stop pulling the mypy dependency tree.
+ 
++### Iteration 16: Parse-safe flag usage in Flask contexts
++- Added a helper to fall back to the default max message length when the Abseil flags have not yet been parsed so importing the Flask app under gunicorn or tests works again.
++- Kept the CLI flag behavior unchanged so `python agent.py --max_message_length=...` still overrides the default once Abseil parses the arguments.
++
+ ## Key Technical Decisions
+ 
+ ### 1. Protocol vs ABC

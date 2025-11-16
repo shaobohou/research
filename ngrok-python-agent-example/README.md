@@ -22,6 +22,8 @@ Environment variables are gone in favor of explicit [absl flags](https://abseil.
 | `--debug` | `False` | Enable Flask's debug server. |
 | `--max_message_length` | `4000` | Guardrail for incoming payloads. |
 
+When the Flask app is imported by WSGI runners such as `flask run` or `gunicorn agent:app`, Abseil hasn't parsed CLI arguments yet. The handlers automatically fall back to the defaults above so the module works in those contexts, and any explicit CLI invocation (e.g., `uv run agent.py -- --max_message_length=1024`) overrides the defaults once parsed.
+
 Example:
 
 ```bash

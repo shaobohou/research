@@ -158,6 +158,10 @@ Changes:
 - Removed the standalone `pyrightconfig.json` in favor of a `[tool.pyright]` section inside `pyproject.toml` so configuration travels with the rest of the tooling knobs.
 - Updated the README/testing guidance accordingly and refreshed the lockfile to stop pulling the mypy dependency tree.
 
+### Iteration 16: Parse-safe flag usage in Flask contexts
+- Added a helper to fall back to the default max message length when the Abseil flags have not yet been parsed so importing the Flask app under gunicorn or tests works again.
+- Kept the CLI flag behavior unchanged so `python agent.py --max_message_length=...` still overrides the default once Abseil parses the arguments.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC
