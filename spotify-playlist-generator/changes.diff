@@ -1,0 +1,526 @@
+diff --git a/spotify-playlist-generator/README.md b/spotify-playlist-generator/README.md
+index 4385062..fc5d6e4 100644
+--- a/spotify-playlist-generator/README.md
++++ b/spotify-playlist-generator/README.md
+@@ -42,7 +42,7 @@ Sample output:
+ 
+ ```
+ 1. Screamin' Jay Hawkins – I Put a Spell on You (popularity 96)
+-2. Nina Simone – I Put a Spell on You (Nina Simone cover) (popularity 85) — cover of Screamin' Jay Hawkins – I Put a Spell on You
++2. Nina Simone – Little Demon (Nina Simone cover) (popularity 80) — cover of Screamin' Jay Hawkins – Little Demon
+ 3. Muse – Feeling Good (Muse cover) (popularity 75) — cover of Nina Simone – Feeling Good
+ 4. Velvet Echo – Supermassive Black Hole (Velvet Echo cover) (popularity 68) — cover of Muse – Supermassive Black Hole
+ 5. Hollow Pines – Midnight Script (Hollow Pines cover) (popularity 55) — cover of Velvet Echo – Midnight Script
+diff --git a/spotify-playlist-generator/changes.diff b/spotify-playlist-generator/changes.diff
+index 589729b..e69de29 100644
+--- a/spotify-playlist-generator/changes.diff
++++ b/spotify-playlist-generator/changes.diff
+@@ -1,194 +0,0 @@
+-diff --git a/spotify-playlist-generator/README.md b/spotify-playlist-generator/README.md
+-index 78bec71..4385062 100644
+---- a/spotify-playlist-generator/README.md
+-+++ b/spotify-playlist-generator/README.md
+-@@ -26,24 +26,26 @@ for song in playlist:
+-     print(f"{song.artist} – {song.title} ({song.popularity})")
+- ```
+- 
+--## Randomized Example Playlist
+-+## Example Playlist Starting with "I Put a Spell on You"
+- 
+--You can also start the generator from a random seed song for a more surprising
+--queue. The helper below accepts an optional random seed so the example can be
+--reproduced:
+-+The CLI helper can either pick a random seed (via `--seed`) or start from a
+-+specific song using `--seed-song`. The command below generates a deterministic
+-+playlist that opens on "I Put a Spell on You" before following the required
+-+chain of increasingly niche covers:
+- 
+- ```bash
+--python -m spotify_playlist_generator.examples --length 5 --seed 1
+-+python -m spotify_playlist_generator.examples --length 5 \
+-+  --seed-song screamin-jay-hawkins-i-put-a-spell-on-you
+- ```
+- 
+- Sample output:
+- 
+- ```
+--1. Velvet Echo – Midnight Script (popularity 89)
+--2. Hollow Pines – Midnight Script (Hollow Pines cover) (popularity 55) — cover of Velvet Echo – Midnight Script
+--3. Golden Age – Stone Gardens (Golden Age cover) (popularity 57) — cover of Hollow Pines – Stone Gardens
+--4. Aria North – Ivory Seasons (Aria North cover) (popularity 59) — cover of Golden Age – Ivory Seasons
+--5. Neon Rivers – City Lights (Neon Rivers cover) (popularity 60) — cover of Aria North – City Lights
+-+1. Screamin' Jay Hawkins – I Put a Spell on You (popularity 96)
+-+2. Nina Simone – I Put a Spell on You (Nina Simone cover) (popularity 85) — cover of Screamin' Jay Hawkins – I Put a Spell on You
+-+3. Muse – Feeling Good (Muse cover) (popularity 75) — cover of Nina Simone – Feeling Good
+-+4. Velvet Echo – Supermassive Black Hole (Velvet Echo cover) (popularity 68) — cover of Muse – Supermassive Black Hole
+-+5. Hollow Pines – Midnight Script (Hollow Pines cover) (popularity 55) — cover of Velvet Echo – Midnight Script
+- ```
+- 
+- ## Real Spotify Example Playlist
+-diff --git a/spotify-playlist-generator/notes.md b/spotify-playlist-generator/notes.md
+-index cd2cf56..db4c20f 100644
+---- a/spotify-playlist-generator/notes.md
+-+++ b/spotify-playlist-generator/notes.md
+-@@ -16,6 +16,7 @@
+- - Added the missing `origin` remote pointing at the GitHub repository, fetched the latest `main`, and successfully rebased the investigation branch to keep it aligned without merge commits.
+- - Documented a snapshot of Spotify's "Rock Covers" playlist (including a direct link and song list) so readers can stream a real-world example of the cover-chain aesthetic.
+- - Updated the README's randomized example to use a more popular seed song so the first track better reflects the "well-known original" starting point.
+-+- Expanded the sample catalog with the "I Put a Spell on You" lineage, taught the CLI to accept explicit seed song ids, and refreshed the README/test fixtures to demonstrate the new playlist flow.
+- 
+- ## Ideas for Later
+- - Enrich the dataset with real metadata (release year, genre, energy) for more nuanced sequencing.
+-diff --git a/spotify-playlist-generator/tests/test_playlist_generator.py b/spotify-playlist-generator/tests/test_playlist_generator.py
+-index 9ecb840..d5a59b8 100644
+---- a/spotify-playlist-generator/tests/test_playlist_generator.py
+-+++ b/spotify-playlist-generator/tests/test_playlist_generator.py
+-@@ -61,8 +61,22 @@ def test_random_playlist_is_seeded() -> None:
+-     playlist = generate_random_playlist(length=4, seed=1337)
+- 
+-     assert [song.id for song in playlist] == [
+--        "aria-north-ivory-seasons-cover",
+-+        "aria-north-glass-tides-cover",
+-         "neon-rivers-city-lights-cover",
+-         "velvet-echo-glass-tides-cover",
+-         "hollow-pines-midnight-script-cover",
+-     ]
+-+
+-+
+-+def test_playlist_can_start_from_explicit_seed_song() -> None:
+-+    playlist = generate_random_playlist(
+-+        length=5, seed_song_id="screamin-jay-hawkins-i-put-a-spell-on-you"
+-+    )
+-+
+-+    assert [song.id for song in playlist] == [
+-+        "screamin-jay-hawkins-i-put-a-spell-on-you",
+-+        "nina-simone-i-put-a-spell-on-you-cover",
+-+        "muse-feeling-good-cover",
+-+        "velvet-echo-supermassive-black-hole-cover",
+-+        "hollow-pines-midnight-script-cover",
+-+    ]
+-diff --git a/spotify_playlist_generator/data.py b/spotify_playlist_generator/data.py
+-index 73d307c..4dd42fc 100644
+---- a/spotify_playlist_generator/data.py
+-+++ b/spotify_playlist_generator/data.py
+-@@ -7,6 +7,24 @@ from .playlist import Catalog, Song
+- 
+- SAMPLE_SONGS = [
+-     # Original songs that qualify as "well known".
+-+    Song(
+-+        id="screamin-jay-hawkins-i-put-a-spell-on-you",
+-+        title="I Put a Spell on You",
+-+        artist="Screamin' Jay Hawkins",
+-+        popularity=96,
+-+    ),
+-+    Song(
+-+        id="nina-simone-feeling-good",
+-+        title="Feeling Good",
+-+        artist="Nina Simone",
+-+        popularity=92,
+-+    ),
+-+    Song(
+-+        id="muse-supermassive-black-hole",
+-+        title="Supermassive Black Hole",
+-+        artist="Muse",
+-+        popularity=90,
+-+    ),
+-     Song(
+-         id="aria-north-city-lights",
+-         title="City Lights",
+-@@ -38,6 +56,27 @@ SAMPLE_SONGS = [
+-         popularity=90,
+-     ),
+-     # Covers that form a loop between the featured artists.
+-+    Song(
+-+        id="nina-simone-i-put-a-spell-on-you-cover",
+-+        title="I Put a Spell on You (Nina Simone cover)",
+-+        artist="Nina Simone",
+-+        popularity=85,
+-+        cover_of="screamin-jay-hawkins-i-put-a-spell-on-you",
+-+    ),
+-+    Song(
+-+        id="muse-feeling-good-cover",
+-+        title="Feeling Good (Muse cover)",
+-+        artist="Muse",
+-+        popularity=75,
+-+        cover_of="nina-simone-feeling-good",
+-+    ),
+-+    Song(
+-+        id="velvet-echo-supermassive-black-hole-cover",
+-+        title="Supermassive Black Hole (Velvet Echo cover)",
+-+        artist="Velvet Echo",
+-+        popularity=68,
+-+        cover_of="muse-supermassive-black-hole",
+-+    ),
+-     Song(
+-         id="neon-rivers-city-lights-cover",
+-         title="City Lights (Neon Rivers cover)",
+-diff --git a/spotify_playlist_generator/examples.py b/spotify_playlist_generator/examples.py
+-index bd1734a..1ed7656 100644
+---- a/spotify_playlist_generator/examples.py
+-+++ b/spotify_playlist_generator/examples.py
+-@@ -10,16 +10,27 @@ from .data import load_sample_catalog
+- from .playlist import PlaylistGenerator, Song
+- 
+- 
+--def generate_random_playlist(*, length: int = 5, seed: int | None = None) -> list[Song]:
+--    """Generate a playlist that starts from a randomly selected seed song."""
+-+def generate_random_playlist(
+-+    *,
+-+    length: int = 5,
+-+    seed: int | None = None,
+-+    seed_song_id: str | None = None,
+-+) -> list[Song]:
+-+    """Generate a playlist that starts from a random or explicit seed song."""
+- 
+-     catalog = load_sample_catalog()
+-     songs = list(catalog.songs())
+-     if not songs:
+-         return []
+- 
+--    rng = Random(seed)
+--    seed_song = rng.choice(songs)
+-+    if seed_song_id:
+-+        try:
+-+            seed_song = catalog.song(seed_song_id)
+-+        except KeyError as exc:
+-+            raise ValueError(f"Unknown seed song id: {seed_song_id}") from exc
+-+    else:
+-+        rng = Random(seed)
+-+        seed_song = rng.choice(songs)
+- 
+-     generator = PlaylistGenerator(catalog)
+-     return generator.generate(seed_song_id=seed_song.id, length=length)
+-@@ -50,8 +61,18 @@ def main() -> None:
+-         default=None,
+-         help="Optional random seed for reproducible demonstrations",
+-     )
+-+    parser.add_argument(
+-+        "--seed-song",
+-+        type=str,
+-+        default=None,
+-+        help="Explicit song id to start from; overrides --seed when provided",
+-+    )
+-     args = parser.parse_args()
+--    playlist = generate_random_playlist(length=args.length, seed=args.seed)
+-+    playlist = generate_random_playlist(
+-+        length=args.length,
+-+        seed=args.seed,
+-+        seed_song_id=args.seed_song,
+-+    )
+-     print(_format_playlist(playlist))
+- 
+- 
+diff --git a/spotify-playlist-generator/notes.md b/spotify-playlist-generator/notes.md
+index db4c20f..67a472c 100644
+--- a/spotify-playlist-generator/notes.md
++++ b/spotify-playlist-generator/notes.md
+@@ -17,6 +17,7 @@
+ - Documented a snapshot of Spotify's "Rock Covers" playlist (including a direct link and song list) so readers can stream a real-world example of the cover-chain aesthetic.
+ - Updated the README's randomized example to use a more popular seed song so the first track better reflects the "well-known original" starting point.
+ - Expanded the sample catalog with the "I Put a Spell on You" lineage, taught the CLI to accept explicit seed song ids, and refreshed the README/test fixtures to demonstrate the new playlist flow.
++- Enforced a "no repeated compositions" rule by tracking canonical song identities, expanded the dataset so every artist has alternate well-known material to cover, and refreshed the README/tests to prove the stricter behavior.
+ 
+ ## Ideas for Later
+ - Enrich the dataset with real metadata (release year, genre, energy) for more nuanced sequencing.
+diff --git a/spotify-playlist-generator/tests/test_playlist_generator.py b/spotify-playlist-generator/tests/test_playlist_generator.py
+index d5a59b8..05ecb79 100644
+--- a/spotify-playlist-generator/tests/test_playlist_generator.py
++++ b/spotify-playlist-generator/tests/test_playlist_generator.py
+@@ -61,10 +61,10 @@ def test_random_playlist_is_seeded() -> None:
+     playlist = generate_random_playlist(length=4, seed=1337)
+ 
+     assert [song.id for song in playlist] == [
+-        "aria-north-glass-tides-cover",
+-        "neon-rivers-city-lights-cover",
++        "neon-rivers-luminous-veil-cover",
+         "velvet-echo-glass-tides-cover",
+         "hollow-pines-midnight-script-cover",
++        "golden-age-stone-gardens-cover",
+     ]
+ 
+ 
+@@ -75,8 +75,20 @@ def test_playlist_can_start_from_explicit_seed_song() -> None:
+ 
+     assert [song.id for song in playlist] == [
+         "screamin-jay-hawkins-i-put-a-spell-on-you",
+-        "nina-simone-i-put-a-spell-on-you-cover",
++        "nina-simone-little-demon-cover",
+         "muse-feeling-good-cover",
+         "velvet-echo-supermassive-black-hole-cover",
+         "hollow-pines-midnight-script-cover",
+     ]
++
++
++def test_playlist_never_repeats_same_composition() -> None:
++    catalog = load_sample_catalog()
++    generator = PlaylistGenerator(catalog)
++
++    playlist = generator.generate("screamin-jay-hawkins-i-put-a-spell-on-you", length=6)
++
++    composition_ids: set[str] = set()
++    for song in playlist:
++        assert song.composition_id not in composition_ids
++        composition_ids.add(song.composition_id)
+diff --git a/spotify_playlist_generator/data.py b/spotify_playlist_generator/data.py
+index 4dd42fc..a6dfb22 100644
+--- a/spotify_playlist_generator/data.py
++++ b/spotify_playlist_generator/data.py
+@@ -13,48 +13,96 @@ SAMPLE_SONGS = [
+         artist="Screamin' Jay Hawkins",
+         popularity=96,
+     ),
++    Song(
++        id="screamin-jay-hawkins-little-demon",
++        title="Little Demon",
++        artist="Screamin' Jay Hawkins",
++        popularity=88,
++    ),
+     Song(
+         id="nina-simone-feeling-good",
+         title="Feeling Good",
+         artist="Nina Simone",
+         popularity=92,
+     ),
++    Song(
++        id="nina-simone-sinnerman",
++        title="Sinnerman",
++        artist="Nina Simone",
++        popularity=93,
++    ),
+     Song(
+         id="muse-supermassive-black-hole",
+         title="Supermassive Black Hole",
+         artist="Muse",
+         popularity=90,
+     ),
++    Song(
++        id="muse-starlight",
++        title="Starlight",
++        artist="Muse",
++        popularity=88,
++    ),
+     Song(
+         id="aria-north-city-lights",
+         title="City Lights",
+         artist="Aria North",
+         popularity=93,
+     ),
++    Song(
++        id="aria-north-luminous-veil",
++        title="Luminous Veil",
++        artist="Aria North",
++        popularity=92,
++    ),
+     Song(
+         id="neon-rivers-glass-tides",
+         title="Glass Tides",
+         artist="Neon Rivers",
+         popularity=91,
+     ),
++    Song(
++        id="neon-rivers-midnight-current",
++        title="Midnight Current",
++        artist="Neon Rivers",
++        popularity=89,
++    ),
+     Song(
+         id="velvet-echo-midnight-script",
+         title="Midnight Script",
+         artist="Velvet Echo",
+         popularity=89,
+     ),
++    Song(
++        id="velvet-echo-celestial-letters",
++        title="Celestial Letters",
++        artist="Velvet Echo",
++        popularity=86,
++    ),
+     Song(
+         id="hollow-pines-stone-gardens",
+         title="Stone Gardens",
+         artist="Hollow Pines",
+         popularity=87,
+     ),
++    Song(
++        id="hollow-pines-hidden-hollows",
++        title="Hidden Hollows",
++        artist="Hollow Pines",
++        popularity=85,
++    ),
+     Song(
+         id="golden-age-ivory-seasons",
+         title="Ivory Seasons",
+         artist="Golden Age",
+         popularity=90,
+     ),
++    Song(
++        id="golden-age-solstice-hymn",
++        title="Solstice Hymn",
++        artist="Golden Age",
++        popularity=88,
++    ),
+     # Covers that form a loop between the featured artists.
+     Song(
+         id="nina-simone-i-put-a-spell-on-you-cover",
+@@ -63,6 +111,13 @@ SAMPLE_SONGS = [
+         popularity=85,
+         cover_of="screamin-jay-hawkins-i-put-a-spell-on-you",
+     ),
++    Song(
++        id="nina-simone-little-demon-cover",
++        title="Little Demon (Nina Simone cover)",
++        artist="Nina Simone",
++        popularity=80,
++        cover_of="screamin-jay-hawkins-little-demon",
++    ),
+     Song(
+         id="muse-feeling-good-cover",
+         title="Feeling Good (Muse cover)",
+@@ -70,6 +125,13 @@ SAMPLE_SONGS = [
+         popularity=75,
+         cover_of="nina-simone-feeling-good",
+     ),
++    Song(
++        id="muse-sinnerman-cover",
++        title="Sinnerman (Muse cover)",
++        artist="Muse",
++        popularity=78,
++        cover_of="nina-simone-sinnerman",
++    ),
+     Song(
+         id="velvet-echo-supermassive-black-hole-cover",
+         title="Supermassive Black Hole (Velvet Echo cover)",
+@@ -77,6 +139,13 @@ SAMPLE_SONGS = [
+         popularity=68,
+         cover_of="muse-supermassive-black-hole",
+     ),
++    Song(
++        id="velvet-echo-starlight-cover",
++        title="Starlight (Velvet Echo cover)",
++        artist="Velvet Echo",
++        popularity=70,
++        cover_of="muse-starlight",
++    ),
+     Song(
+         id="neon-rivers-city-lights-cover",
+         title="City Lights (Neon Rivers cover)",
+@@ -84,6 +153,13 @@ SAMPLE_SONGS = [
+         popularity=60,
+         cover_of="aria-north-city-lights",
+     ),
++    Song(
++        id="neon-rivers-luminous-veil-cover",
++        title="Luminous Veil (Neon Rivers cover)",
++        artist="Neon Rivers",
++        popularity=65,
++        cover_of="aria-north-luminous-veil",
++    ),
+     Song(
+         id="velvet-echo-glass-tides-cover",
+         title="Glass Tides (Velvet Echo cover)",
+@@ -91,6 +167,13 @@ SAMPLE_SONGS = [
+         popularity=58,
+         cover_of="neon-rivers-glass-tides",
+     ),
++    Song(
++        id="velvet-echo-midnight-current-cover",
++        title="Midnight Current (Velvet Echo cover)",
++        artist="Velvet Echo",
++        popularity=62,
++        cover_of="neon-rivers-midnight-current",
++    ),
+     Song(
+         id="hollow-pines-midnight-script-cover",
+         title="Midnight Script (Hollow Pines cover)",
+@@ -98,6 +181,13 @@ SAMPLE_SONGS = [
+         popularity=55,
+         cover_of="velvet-echo-midnight-script",
+     ),
++    Song(
++        id="hollow-pines-celestial-letters-cover",
++        title="Celestial Letters (Hollow Pines cover)",
++        artist="Hollow Pines",
++        popularity=56,
++        cover_of="velvet-echo-celestial-letters",
++    ),
+     Song(
+         id="golden-age-stone-gardens-cover",
+         title="Stone Gardens (Golden Age cover)",
+@@ -105,6 +195,13 @@ SAMPLE_SONGS = [
+         popularity=57,
+         cover_of="hollow-pines-stone-gardens",
+     ),
++    Song(
++        id="golden-age-hidden-hollows-cover",
++        title="Hidden Hollows (Golden Age cover)",
++        artist="Golden Age",
++        popularity=58,
++        cover_of="hollow-pines-hidden-hollows",
++    ),
+     Song(
+         id="aria-north-ivory-seasons-cover",
+         title="Ivory Seasons (Aria North cover)",
+@@ -112,6 +209,13 @@ SAMPLE_SONGS = [
+         popularity=59,
+         cover_of="golden-age-ivory-seasons",
+     ),
++    Song(
++        id="aria-north-solstice-hymn-cover",
++        title="Solstice Hymn (Aria North cover)",
++        artist="Aria North",
++        popularity=60,
++        cover_of="golden-age-solstice-hymn",
++    ),
+     # Additional alternative covers to create branching choices.
+     Song(
+         id="late-summer-city-lights-cover",
+diff --git a/spotify_playlist_generator/playlist.py b/spotify_playlist_generator/playlist.py
+index 26102ad..544b359 100644
+--- a/spotify_playlist_generator/playlist.py
++++ b/spotify_playlist_generator/playlist.py
+@@ -30,6 +30,12 @@ class Song:
+ 
+         return self.cover_of is not None
+ 
++    @property
++    def composition_id(self) -> str:
++        """Return the canonical identifier for the musical work itself."""
++
++        return self.cover_of or self.id
++
+ 
+ class Catalog:
+     """In-memory collection of songs and helper lookups."""
+@@ -87,24 +93,30 @@ class PlaylistGenerator:
+ 
+         playlist: List[Song] = [self.catalog.song(seed_song_id)]
+         used_song_ids = {seed_song_id}
++        used_compositions = {playlist[0].composition_id}
+         current = playlist[0]
+ 
+         while len(playlist) < length:
+-            next_song = self._pick_next_song(current, used_song_ids)
++            next_song = self._pick_next_song(current, used_song_ids, used_compositions)
+             if not next_song:
+                 break
+             playlist.append(next_song)
+             used_song_ids.add(next_song.id)
++            used_compositions.add(next_song.composition_id)
+             current = next_song
+         return playlist
+ 
+-    def _pick_next_song(self, current: Song, used_song_ids: set[str]) -> Song | None:
++    def _pick_next_song(
++        self, current: Song, used_song_ids: set[str], used_compositions: set[str]
++    ) -> Song | None:
+         """Return the next cover, or ``None`` when the chain must stop."""
+ 
+         candidates = []
+         for cover in self.catalog.covers_for_artist(current.artist):
+             if cover.id in used_song_ids:
+                 continue
++            if cover.composition_id in used_compositions:
++                continue
+             original = self.catalog.song(cover.cover_of) if cover.cover_of else None
+             if not original:
+                 continue
