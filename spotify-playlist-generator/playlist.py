@@ -106,9 +106,7 @@ class PlaylistGenerator:
             current = next_song
         return playlist
 
-    def _pick_next_song(
-        self, current: Song, used_song_ids: set[str], used_compositions: set[str]
-    ) -> Song | None:
+    def _pick_next_song(self, current: Song, used_song_ids: set[str], used_compositions: set[str]) -> Song | None:
         """Return the next cover, or ``None`` when the chain must stop."""
 
         candidates = []

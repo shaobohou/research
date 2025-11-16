@@ -5,18 +5,16 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from spotify_playlist_generator.data import load_sample_catalog
-from spotify_playlist_generator.examples import generate_random_playlist
-from spotify_playlist_generator.playlist import Catalog, PlaylistGenerator, Song
+from data import load_sample_catalog
+from examples import generate_random_playlist
+from playlist import Catalog, PlaylistGenerator, Song
 
 
-def assert_transition_is_less_famous_cover(
-    previous: Song, current: Song, catalog: Catalog
-) -> None:
+def assert_transition_is_less_famous_cover(previous: Song, current: Song, catalog: Catalog) -> None:
     original = catalog.song(current.cover_of) if current.cover_of else None
     assert original is not None
     assert original.artist == previous.artist
@@ -69,9 +67,7 @@ def test_random_playlist_is_seeded() -> None:
 
 
 def test_playlist_can_start_from_explicit_seed_song() -> None:
-    playlist = generate_random_playlist(
-        length=5, seed_song_id="screamin-jay-hawkins-i-put-a-spell-on-you"
-    )
+    playlist = generate_random_playlist(length=5, seed_song_id="screamin-jay-hawkins-i-put-a-spell-on-you")
 
     assert [song.id for song in playlist] == [
         "screamin-jay-hawkins-i-put-a-spell-on-you",

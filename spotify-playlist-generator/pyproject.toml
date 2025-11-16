@@ -5,6 +5,13 @@ description = "Spotify playlist generator investigation and tooling config"
 requires-python = ">=3.12"
 dependencies = []
 
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+  "pyright",
+]
+
 [dependency-groups]
 dev = [
   "pytest",

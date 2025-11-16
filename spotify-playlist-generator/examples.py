@@ -6,8 +6,8 @@ import argparse
 from random import Random
 from typing import Sequence
 
-from .data import load_sample_catalog
-from .playlist import PlaylistGenerator, Song
+from data import load_sample_catalog
+from playlist import PlaylistGenerator, Song
 
 
 def generate_random_playlist(

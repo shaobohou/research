@@ -18,6 +18,8 @@
 - Updated the README's randomized example to use a more popular seed song so the first track better reflects the "well-known original" starting point.
 - Expanded the sample catalog with the "I Put a Spell on You" lineage, taught the CLI to accept explicit seed song ids, and refreshed the README/test fixtures to demonstrate the new playlist flow.
 - Enforced a "no repeated compositions" rule by tracking canonical song identities, expanded the dataset so every artist has alternate well-known material to cover, and refreshed the README/tests to prove the stricter behavior.
+- Moved the playlist generator modules directly into the `spotify-playlist-generator/` directory so every tracked file lives within the investigation folder and updated imports/README/tests accordingly.
+- Added a `dev` optional dependency group so the shared pre-commit hook can install tooling with `uv run --extra dev` and then ran the pre-commit checks locally.
 
 ## Ideas for Later
 - Enrich the dataset with real metadata (release year, genre, energy) for more nuanced sequencing.

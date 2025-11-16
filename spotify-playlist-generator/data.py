@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .playlist import Catalog, Song
+from playlist import Catalog, Song
 
 
 SAMPLE_SONGS = [

@@ -16,8 +16,8 @@ This project experiments with algorithmic playlist sequencing focused on spotlig
 ## Usage
 
 ```python
-from spotify_playlist_generator.data import load_sample_catalog
-from spotify_playlist_generator.playlist import PlaylistGenerator
+from data import load_sample_catalog
+from playlist import PlaylistGenerator
 
 catalog = load_sample_catalog()
 generator = PlaylistGenerator(catalog)
@@ -34,7 +34,8 @@ playlist that opens on "I Put a Spell on You" before following the required
 chain of increasingly niche covers:
 
 ```bash
-python -m spotify_playlist_generator.examples --length 5 \
+cd spotify-playlist-generator
+python -m examples --length 5 \
   --seed-song screamin-jay-hawkins-i-put-a-spell-on-you
 ```
 
