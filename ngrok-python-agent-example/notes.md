@@ -153,6 +153,11 @@ Changes:
 - Updated the README's hygiene section to document the new `uv run pyright` step that now complements `mypy`.
 - Regenerated `uv.lock` via `uv sync` to capture the Pyright dependency graph.
 
+### Iteration 15: Simplify type checking setup
+- Dropped mypy from the dev dependencies and documentation so Ruff + Pyright cover formatting, linting, and typing.
+- Removed the standalone `pyrightconfig.json` in favor of a `[tool.pyright]` section inside `pyproject.toml` so configuration travels with the rest of the tooling knobs.
+- Updated the README/testing guidance accordingly and refreshed the lockfile to stop pulling the mypy dependency tree.
+
 ## Key Technical Decisions
 
 ### 1. Protocol vs ABC

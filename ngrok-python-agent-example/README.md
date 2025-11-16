@@ -55,9 +55,8 @@ Run the usual project hygiene commands before pushing changes:
 ```bash
 uv run ruff format .
 uv run ruff check .
-uv run mypy agent.py agents.py
 uv run pyright
 uv run pytest
 ```
 
-The existing unit tests cover the `Agent` protocol implementation and ensure the echo agent returns structured metadata for callers.
+Pyright is configured directly in `pyproject.toml`, so editors/CI inherit the same include paths and settings. The existing unit tests cover the `Agent` protocol implementation and ensure the echo agent returns structured metadata for callers.
