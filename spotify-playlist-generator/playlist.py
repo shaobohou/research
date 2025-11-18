@@ -94,19 +94,21 @@ class PlaylistGenerator:
         playlist: List[Song] = [self.catalog.song(seed_song_id)]
         used_song_ids = {seed_song_id}
         used_compositions = {playlist[0].composition_id}
+        used_artists = {playlist[0].artist}
         current = playlist[0]
 
         while len(playlist) < length:
-            next_song = self._pick_next_song(current, used_song_ids, used_compositions)
+            next_song = self._pick_next_song(current, used_song_ids, used_compositions, used_artists)
             if not next_song:
                 break
             playlist.append(next_song)
             used_song_ids.add(next_song.id)
             used_compositions.add(next_song.composition_id)
+            used_artists.add(next_song.artist)
             current = next_song
         return playlist
 
-    def _pick_next_song(self, current: Song, used_song_ids: set[str], used_compositions: set[str]) -> Song | None:
+    def _pick_next_song(self, current: Song, used_song_ids: set[str], used_compositions: set[str], used_artists: set[str]) -> Song | None:
         """Return the next cover, or ``None`` when the chain must stop."""
 
         candidates = []
@@ -115,6 +117,8 @@ class PlaylistGenerator:
                 continue
             if cover.composition_id in used_compositions:
                 continue
+            if cover.artist in used_artists:
+                continue
             original = self.catalog.song(cover.cover_of) if cover.cover_of else None
             if not original:
                 continue
@@ -122,11 +126,11 @@ class PlaylistGenerator:
                 continue
             if cover.popularity >= original.popularity:
                 continue
-            gap = original.popularity - cover.popularity
+            # Favor more popular covers (higher cover.popularity) to extend chains.
             # Include the song id in the ranking tuple so ties break deterministically.
-            candidates.append((gap, -cover.popularity, cover.id, cover))
+            candidates.append((-cover.popularity, cover.id, cover))
 
         if not candidates:
             return None
-        candidates.sort(reverse=True)
-        return candidates[0][3]
+        candidates.sort()
+        return candidates[0][2]
