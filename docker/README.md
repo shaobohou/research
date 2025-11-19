@@ -37,6 +37,26 @@ docker run --rm -it \
 
 **Note:** Using `-e VAR_NAME` (without `=value`) keeps the key out of command history. For multiple keys, add more `-e` flags.
 
+To let Codex CLI commands inherit these variables inside the container, add the following to your Codex config (for example `~/.codex/config.toml`):
+
+```toml
+[shell_environment_policy]
+inherit = "all"            # pass all env vars to subprocesses
+ignore_default_excludes = true
+```
+
+Then mount your Codex/Claude configs so both tools can use the environment settings:
+
+```bash
+docker run --rm -it \
+  -e OPENAI_API_KEY \
+  -v "$PWD":/home/dev/workspace \
+  -v "$HOME/.codex":/home/dev/.codex \
+  -v "$HOME/.claude":/home/dev/.claude \
+  -v "$HOME/.claude.json":/home/dev/.claude.json \
+  claude-dev-agents
+```
+
 ## Python Development with uv
 
 ```bash
