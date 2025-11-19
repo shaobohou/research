@@ -26,13 +26,13 @@ if command -v claude >/dev/null 2>&1; then
   echo "[claude] Updating…"
   if ! claude update; then
     echo "[claude] Update failed, reinstalling…"
-    if ! curl -fsSL https://claude.ai/install.sh | sh; then
+    if ! curl -fsSL https://claude.ai/install.sh | bash; then
       log_error "claude" "Reinstallation failed"
     fi
   fi
 else
   echo "[claude] Installing via native installer…"
-  if ! curl -fsSL https://claude.ai/install.sh | sh; then
+  if ! curl -fsSL https://claude.ai/install.sh | bash; then
     log_error "claude" "Installation failed"
   fi
 fi
