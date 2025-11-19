@@ -1,0 +1,34 @@
+diff --git a/docker/Dockerfile b/docker/Dockerfile
+index 3bd39e8..2fc4bc0 100644
+--- a/docker/Dockerfile
++++ b/docker/Dockerfile
+@@ -6,8 +6,17 @@ ENV PATH="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin:$
+ 
+ # Install essentials
+ RUN apt-get update && apt-get install -y --no-install-recommends \
+-    sudo curl git bash ca-certificates \
+-    procps psmisc iproute2 net-tools less man-db \
++    bash \
++    ca-certificates \
++    curl \
++    git \
++    iproute2 \
++    less \
++    man-db \
++    net-tools \
++    procps \
++    psmisc \
++    sudo \
+  && rm -rf /var/lib/apt/lists/*
+ 
+ # Install Node.js LTS system-wide via NodeSource
+diff --git a/notes.md b/notes.md
+deleted file mode 100644
+index 27613e8..0000000
+--- a/notes.md
++++ /dev/null
+@@ -1,4 +0,0 @@
+-# Work Log
+-
+-- Updated `docker/Dockerfile` to install additional base utilities (`procps`, `psmisc`, `iproute2`, `net-tools`, `less`, `man-db`) as requested.
+-- Verified repository status and prepared for testing and commit.
