@@ -6,7 +6,17 @@ ENV PATH="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin:$
 
 # Install essentials
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo curl git bash ca-certificates \
+    bash \
+    ca-certificates \
+    curl \
+    git \
+    iproute2 \
+    less \
+    man-db \
+    net-tools \
+    procps \
+    psmisc \
+    sudo \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js LTS system-wide via NodeSource
