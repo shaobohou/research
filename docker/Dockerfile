@@ -58,7 +58,7 @@ RUN sudo chmod +x /usr/local/bin/entrypoint
 
 # Copy firewall initialization script
 COPY init-firewall.sh /usr/local/bin/init-firewall.sh
-RUN chmod +x /usr/local/bin/init-firewall.sh
+RUN sudo chmod +x /usr/local/bin/init-firewall.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
 CMD ["bash"]
