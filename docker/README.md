@@ -6,7 +6,7 @@ Lightweight Docker container with AI assistant CLIs (Claude Code, Codex, Gemini)
 
 - **Base**: `debian:bookworm-slim`
 - **User**: Non-root `dev` user with passwordless sudo
-- **Tools**: Claude Code, uv, Codex CLI, Gemini CLI, Git, Node.js
+- **Tools**: Claude Code, uv, Codex CLI, Gemini CLI, Git, GitHub CLI, Node.js
 - **Smart entrypoint**: Auto-installs/updates tools on startup with error handling
 
 ## Usage
