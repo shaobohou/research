@@ -1,142 +1,137 @@
 #!/bin/bash
-set -euo pipefail
+set -euo pipefail  # Exit on error, undefined vars, and pipeline failures
+IFS=$'\n\t'       # Stricter word splitting
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+# 1. Extract Docker DNS info BEFORE any flushing
+DOCKER_DNS_RULES=$(iptables-save -t nat | grep "127\.0\.0\.11" || true)
 
-echo -e "${GREEN}Starting firewall initialization...${NC}"
-
-# Function to validate CIDR notation
-is_valid_cidr() {
-    local cidr=$1
-    if [[ $cidr =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}/[0-9]{1,2}$ ]]; then
-        return 0
-    fi
-    return 1
-}
-
-# Function to validate IP address
-is_valid_ip() {
-    local ip=$1
-    if [[ $ip =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
-        return 0
-    fi
-    return 1
-}
-
-# Preserve Docker DNS rules
-echo -e "${YELLOW}Preserving Docker DNS rules...${NC}"
-DOCKER_DNS_RULES=$(iptables-save | grep 'docker.*53' || true)
-
-# Flush existing rules
-echo -e "${YELLOW}Flushing existing iptables rules...${NC}"
+# Flush existing rules and delete existing ipsets
 iptables -F
 iptables -X
 iptables -t nat -F
 iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
+ipset destroy allowed-domains 2>/dev/null || true
 
-# Restore Docker DNS rules
+# 2. Selectively restore ONLY internal Docker DNS resolution
 if [ -n "$DOCKER_DNS_RULES" ]; then
-    echo -e "${YELLOW}Restoring Docker DNS rules...${NC}"
-    echo "$DOCKER_DNS_RULES" | iptables-restore -n || true
+    echo "Restoring Docker DNS rules..."
+    iptables -t nat -N DOCKER_OUTPUT 2>/dev/null || true
+    iptables -t nat -N DOCKER_POSTROUTING 2>/dev/null || true
+    echo "$DOCKER_DNS_RULES" | xargs -L 1 iptables -t nat
+else
+    echo "No Docker DNS rules to restore"
 fi
 
-# Create ipset for allowed domains
-echo -e "${YELLOW}Creating ipset for allowed domains...${NC}"
-ipset destroy allowed-domains 2>/dev/null || true
+# First allow DNS and localhost before any restrictions
+# Allow outbound DNS
+iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+# Allow inbound DNS responses
+iptables -A INPUT -p udp --sport 53 -j ACCEPT
+# Allow outbound SSH
+iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
+# Allow inbound SSH responses
+iptables -A INPUT -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+# Allow localhost
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+# Create ipset with CIDR support
 ipset create allowed-domains hash:net
 
-# Allow localhost
-echo -e "${YELLOW}Allowing localhost...${NC}"
-ipset add allowed-domains 127.0.0.0/8
-
-# Allow host network (typically 172.17.0.0/16 for Docker)
-HOST_SUBNET=$(ip route | grep default | awk '{print $3}' | cut -d. -f1-3).0/24
-if is_valid_cidr "$HOST_SUBNET"; then
-    echo -e "${YELLOW}Allowing host subnet: $HOST_SUBNET${NC}"
-    ipset add allowed-domains "$HOST_SUBNET"
+# Fetch GitHub meta information and aggregate + add their IP ranges
+echo "Fetching GitHub IP ranges..."
+gh_ranges=$(curl -s https://api.github.com/meta)
+if [ -z "$gh_ranges" ]; then
+    echo "ERROR: Failed to fetch GitHub IP ranges"
+    exit 1
 fi
 
-# Fetch GitHub IP ranges
-echo -e "${YELLOW}Fetching GitHub IP ranges...${NC}"
-GITHUB_IPS=$(curl -s https://api.github.com/meta | jq -r '.git[],.web[],.api[]' | sort -u)
-for ip in $GITHUB_IPS; do
-    if is_valid_cidr "$ip"; then
-        ipset add allowed-domains "$ip" 2>/dev/null || true
+if ! echo "$gh_ranges" | jq -e '.web and .api and .git' >/dev/null; then
+    echo "ERROR: GitHub API response missing required fields"
+    exit 1
+fi
+
+echo "Processing GitHub IPs..."
+while read -r cidr; do
+    if [[ ! "$cidr" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/[0-9]{1,2}$ ]]; then
+        echo "ERROR: Invalid CIDR range from GitHub meta: $cidr"
+        exit 1
     fi
-done
+    echo "Adding GitHub range $cidr"
+    ipset add allowed-domains "$cidr"
+done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 
-# Resolve and add specific domains
-DOMAINS=(
-    "registry.npmjs.org"
-    "api.anthropic.com"
-    "console.anthropic.com"
-    "sentry.io"
-    "update.code.visualstudio.com"
-    "vscode.download.prss.microsoft.com"
-    "marketplace.visualstudio.com"
-    "pypi.org"
-    "files.pythonhosted.org"
-)
+# Resolve and add other allowed domains
+for domain in \
+    "registry.npmjs.org" \
+    "api.anthropic.com" \
+    "sentry.io" \
+    "statsig.anthropic.com" \
+    "statsig.com" \
+    "marketplace.visualstudio.com" \
+    "vscode.blob.core.windows.net" \
+    "update.code.visualstudio.com"; do
+    echo "Resolving $domain..."
+    ips=$(dig +noall +answer A "$domain" | awk '$4 == "A" {print $5}')
+    if [ -z "$ips" ]; then
+        echo "ERROR: Failed to resolve $domain"
+        exit 1
+    fi
 
-echo -e "${YELLOW}Resolving and adding domain IPs...${NC}"
-for domain in "${DOMAINS[@]}"; do
-    echo -e "  Resolving $domain..."
-    IPS=$(dig +short "$domain" A | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' || true)
-    for ip in $IPS; do
-        if is_valid_ip "$ip"; then
-            ipset add allowed-domains "$ip/32" 2>/dev/null || true
+    while read -r ip; do
+        if [[ ! "$ip" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+            echo "ERROR: Invalid IP from DNS for $domain: $ip"
+            exit 1
         fi
-    done
+        echo "Adding $ip for $domain"
+        ipset add allowed-domains "$ip"
+    done < <(echo "$ips")
 done
 
-# Set default policies
-echo -e "${YELLOW}Setting default firewall policies...${NC}"
-iptables -P INPUT ACCEPT
+# Get host IP from default route
+HOST_IP=$(ip route | grep default | cut -d" " -f3)
+if [ -z "$HOST_IP" ]; then
+    echo "ERROR: Failed to detect host IP"
+    exit 1
+fi
+
+HOST_NETWORK=$(echo "$HOST_IP" | sed "s/\.[0-9]*$/.0\/24/")
+echo "Host network detected as: $HOST_NETWORK"
+
+# Set up remaining iptables rules
+iptables -A INPUT -s "$HOST_NETWORK" -j ACCEPT
+iptables -A OUTPUT -d "$HOST_NETWORK" -j ACCEPT
+
+# Set default policies to DROP first
+iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
 
-# Allow established and related connections
-iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+# First allow established connections for already approved traffic
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-# Allow DNS queries
-iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT
-
-# Allow SSH
-iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
-
-# Allow traffic to allowed domains
+# Then allow only specific outbound traffic to allowed domains
 iptables -A OUTPUT -m set --match-set allowed-domains dst -j ACCEPT
 
-# Log dropped packets (optional, for debugging)
-# iptables -A OUTPUT -j LOG --log-prefix "FIREWALL-DROP: " --log-level 4
+# Explicitly REJECT all other outbound traffic for immediate feedback
+iptables -A OUTPUT -j REJECT --reject-with icmp-admin-prohibited
 
-# Drop everything else
-iptables -A OUTPUT -j DROP
-
-echo -e "${GREEN}Firewall rules applied successfully!${NC}"
-
-# Validation tests
-echo -e "${YELLOW}Running validation tests...${NC}"
-
-# Test 1: GitHub should be accessible
-if curl -s --connect-timeout 5 https://api.github.com >/dev/null 2>&1; then
-    echo -e "${GREEN}✓ GitHub API is accessible${NC}"
+echo "Firewall configuration complete"
+echo "Verifying firewall rules..."
+if curl --connect-timeout 5 https://example.com >/dev/null 2>&1; then
+    echo "ERROR: Firewall verification failed - was able to reach https://example.com"
+    exit 1
 else
-    echo -e "${RED}✗ GitHub API is NOT accessible${NC}"
+    echo "Firewall verification passed - unable to reach https://example.com as expected"
 fi
 
-# Test 2: example.com should NOT be accessible
-if curl -s --connect-timeout 5 https://example.com >/dev/null 2>&1; then
-    echo -e "${RED}✗ example.com is accessible (should be blocked)${NC}"
+# Verify GitHub API access
+if ! curl --connect-timeout 5 https://api.github.com/zen >/dev/null 2>&1; then
+    echo "ERROR: Firewall verification failed - unable to reach https://api.github.com"
+    exit 1
 else
-    echo -e "${GREEN}✓ example.com is blocked (as expected)${NC}"
+    echo "Firewall verification passed - able to reach https://api.github.com as expected"
 fi
-
-echo -e "${GREEN}Firewall initialization complete!${NC}"

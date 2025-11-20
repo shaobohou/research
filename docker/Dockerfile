@@ -9,6 +9,7 @@ ENV DEVCONTAINER=true
 
 # Install essentials including firewall tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    aggregate \
     bash \
     ca-certificates \
     curl \
