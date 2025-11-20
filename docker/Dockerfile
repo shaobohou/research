@@ -20,12 +20,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     less \
     man-db \
+    nano \
     net-tools \
     procps \
     psmisc \
     sudo \
-    vim \
-    zsh \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js LTS system-wide via NodeSource
@@ -40,40 +39,11 @@ RUN useradd -m dev && echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "dev ALL=(ALL) NOPASSWD: /usr/local/bin/init-firewall.sh" >> /etc/sudoers.d/firewall \
  && chmod 0440 /etc/sudoers.d/firewall
 
-# Install zsh with powerline10k theme
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/deluan/zsh-in-docker/master/zsh-in-docker.sh)" -- \
-    -t robbyrussell \
-    -p git \
-    -p https://github.com/zsh-users/zsh-autosuggestions \
-    -p https://github.com/zsh-users/zsh-syntax-highlighting
-
-# Install git-delta for better diff output
-ARG GIT_DELTA_VERSION=0.18.2
-RUN curl -L "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_amd64.deb" -o /tmp/git-delta.deb \
- && dpkg -i /tmp/git-delta.deb \
- && rm /tmp/git-delta.deb
-
-# Configure git to use delta
-RUN git config --global core.pager delta \
- && git config --global interactive.diffFilter "delta --color-only" \
- && git config --global delta.navigate true \
- && git config --global delta.light false \
- && git config --global merge.conflictstyle diff3 \
- && git config --global diff.colorMoved default
-
-# Minimal modern prompt for bash
+# Minimal modern prompt
 RUN echo 'export PS1="\[\e[38;5;39m\]\u\[\e[0m\] \[\e[38;5;244m\](\w)\[\e[0m\] $ "' >> /home/dev/.bashrc
 
 USER dev
 WORKDIR /home/dev
-
-# Install fzf (fuzzy finder)
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
- && ~/.fzf/install --all --no-update-rc
-
-# Add fzf to shell configs
-RUN echo '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' >> ~/.bashrc \
- && echo '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' >> ~/.zshrc
 
 # Configure npm to use local prefix
 RUN npm config set prefix "/home/dev/.npm-global"
