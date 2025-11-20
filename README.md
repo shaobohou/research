@@ -14,13 +14,46 @@ Minimal development environment for AI-assisted research and experimentation.
 
 ## Quick Start
 
-**Dev Container (VS Code)**: Open in VS Code → `F1` → "Dev Containers: Reopen in Container"
+### Dev Container (VS Code / Codespaces)
 
-**Docker (Standalone)**:
+Open in VS Code → `F1` → "Dev Containers: Reopen in Container"
+
+**Codespaces Authentication**: When using Claude Code or Codex CLI in GitHub Codespaces, subscription login requires SSH port forwarding. In a local terminal:
+
+```bash
+# Find your codespace name
+gh codespace list
+
+# Create SSH tunnel for authentication (keep running during login)
+gh codespace ssh -c <YOUR_CODESPACE_NAME> -- -N -L 1455:localhost:1455
+```
+
+This forwards port 1455 to your local machine, allowing authentication to complete in your local browser.
+
+### Docker (Standalone)
+
+Build the image (one-time setup):
 ```bash
 cd docker && docker build -t claude-dev-agents .
+```
+
+Run with workspace mounted:
+```bash
 docker run --rm -it -v "$PWD":/home/dev/workspace claude-dev-agents
 ```
+
+Run with config mounting for AI CLIs:
+```bash
+docker run --rm -it \
+  -e OPENAI_API_KEY \
+  -v "$PWD":/home/dev/workspace \
+  -v "$HOME/.codex":/home/dev/.codex \
+  -v "$HOME/.claude":/home/dev/.claude \
+  -v "$HOME/.claude.json":/home/dev/.claude.json \
+  claude-dev-agents
+```
+
+**Security Note**: Mounting config directories and passing API keys gives the container access to sensitive credentials. Only use with trusted code. For untrusted workloads, use read-only mounts (`:ro`) and avoid mounting configs. See [docker/README.md](docker/README.md) for details.
 
 ## Workflow
 
