@@ -57,6 +57,16 @@ docker run --rm -it \
   claude-dev-agents
 ```
 
+## Helper Script with Isolated Directories
+
+The `run-isolated.sh` script launches containers with project-isolated configs, preventing different projects from sharing AI CLI state:
+
+```bash
+./docker/run-isolated.sh
+```
+
+Creates isolated configs per project at `~/docker-agent-data/<repo>/<project-id>/` based on git repo name and directory path. Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
+
 ## Python Development with uv
 
 ```bash
