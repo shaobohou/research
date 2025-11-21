@@ -1,9 +1,10 @@
 FROM debian:bookworm-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # One source of truth for user-local binary dirs
-ENV DEBIAN_FRONTEND=noninteractive \
-    LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin" \
-    PATH="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin:${PATH}"
+ENV LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin"
+ENV PATH="${LOCAL_BINS}:${PATH}"
 
 # Install essentials and configure locale
 RUN apt-get update && apt-get install -y --no-install-recommends \
