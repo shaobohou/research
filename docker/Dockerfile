@@ -1,8 +1,10 @@
 FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
-# Include user-local paths
-ENV PATH="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin:${PATH}"
+
+# One source of truth for user-local binary dirs
+ENV LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin"
+ENV PATH="${LOCAL_BINS}:${PATH}"
 
 # Install essentials
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -12,12 +14,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     iproute2 \
     less \
+    locales \
     man-db \
     net-tools \
     procps \
     psmisc \
     sudo \
+    tmux \
  && rm -rf /var/lib/apt/lists/*
+
+# Configure UTF-8 locale for proper Unicode rendering
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 # Install Node.js LTS system-wide via NodeSource
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
@@ -36,11 +47,20 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o 
 # Create non-root user with passwordless sudo
 RUN useradd -m dev && echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Minimal modern prompt
-RUN echo 'export PS1="\[\e[38;5;39m\]\u\[\e[0m\] \[\e[38;5;244m\](\w)\[\e[0m\] $ "' >> /home/dev/.bashrc
-
 USER dev
 WORKDIR /home/dev
+
+# tmux: always use bash as the default shell/command
+RUN printf '%s\n' \
+  'set-option -g default-shell /bin/bash' \
+  'set-option -g default-command "bash"' \
+  'set -g default-terminal "tmux-256color"' \
+  > /home/dev/.tmux.conf
+
+# Make login shells source .bashrc, and re-export PATH from single source
+RUN echo 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi' > /home/dev/.bash_profile \
+ && echo 'export PATH="$LOCAL_BINS:$PATH"' >> /home/dev/.bashrc \
+ && echo 'export PS1="\[\e[38;5;39m\]\u\[\e[0m\] \[\e[38;5;244m\](\w)\[\e[0m\] $ "' >> /home/dev/.bashrc
 
 # Configure npm to use local prefix
 RUN npm config set prefix "/home/dev/.npm-global"
