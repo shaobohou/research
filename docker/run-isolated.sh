@@ -3,10 +3,10 @@ set -euo pipefail
 
 ROOT_DIR="$(pwd)"
 
-# Get repo name from git remote or use "local" if not a git repo
+# Get repo name from git root directory or use "local" if not a git repo
 if git rev-parse --git-dir > /dev/null 2>&1; then
-  REPO_URL="$(git config --get remote.origin.url 2>/dev/null || echo 'local')"
-  REPO_NAME="$(basename "$REPO_URL" .git)"
+  GIT_ROOT="$(git rev-parse --show-toplevel)"
+  REPO_NAME="$(basename "$GIT_ROOT")"
 else
   REPO_NAME="local"
 fi
