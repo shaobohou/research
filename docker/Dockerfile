@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     iproute2 \
     less \
+    locales \
     man-db \
     net-tools \
     procps \
@@ -21,6 +22,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     tmux \
  && rm -rf /var/lib/apt/lists/*
+
+# Configure UTF-8 locale for proper Unicode rendering
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 # Install Node.js LTS system-wide via NodeSource
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
@@ -46,7 +54,7 @@ WORKDIR /home/dev
 RUN printf '%s\n' \
   'set-option -g default-shell /bin/bash' \
   'set-option -g default-command "bash"' \
-  'set -g default-terminal "screen-256color"' \
+  'set -g default-terminal "tmux-256color"' \
   > /home/dev/.tmux.conf
 
 # Make login shells source .bashrc, and re-export PATH from single source

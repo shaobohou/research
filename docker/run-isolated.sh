@@ -57,7 +57,7 @@ fi
 
 docker run --rm -it \
   -e OPENAI_API_KEY \
-  -e GOOGLE_API_KEY \
+  -e GEMINI_API_KEY \
   -v "$ROOT_DIR":/home/dev/workspace \
   -v "$DATA_DIR/.codex":/home/dev/.codex \
   -v "$DATA_DIR/.claude":/home/dev/.claude \

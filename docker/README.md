@@ -28,11 +28,11 @@ AI tools require API keys. Pass them from your host environment:
 
 ```bash
 export OPENAI_API_KEY="sk-..."
-export GOOGLE_API_KEY="..."
+export GEMINI_API_KEY="..."
 
 docker run --rm -it \
   -e OPENAI_API_KEY \
-  -e GOOGLE_API_KEY \
+  -e GEMINI_API_KEY \
   -v "$PWD":/home/dev/workspace \
   claude-dev-agents
 ```
@@ -52,7 +52,7 @@ Then mount your Codex/Claude configs so both tools can use the environment setti
 ```bash
 docker run --rm -it \
   -e OPENAI_API_KEY \
-  -e GOOGLE_API_KEY \
+  -e GEMINI_API_KEY \
   -v "$PWD":/home/dev/workspace \
   -v "$HOME/.codex":/home/dev/.codex \
   -v "$HOME/.claude":/home/dev/.claude \
