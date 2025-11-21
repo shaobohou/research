@@ -1,4 +1,4 @@
-# Research Codespaces
+# AI-assisted Research Workspace
 
 Minimal development environment for AI-assisted research and experimentation.
 
