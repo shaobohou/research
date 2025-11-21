@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(pwd)"
-
-# Get repo name from git root directory or use "local" if not a git repo
+# Get repo root and name, or use current directory if not a git repo
 if git rev-parse --git-dir > /dev/null 2>&1; then
-  GIT_ROOT="$(git rev-parse --show-toplevel)"
-  REPO_NAME="$(basename "$GIT_ROOT")"
+  ROOT_DIR="$(git rev-parse --show-toplevel)"
+  REPO_NAME="$(basename "$ROOT_DIR")"
 else
+  ROOT_DIR="$(pwd)"
   REPO_NAME="local"
 fi
 
-# Deterministic per-path project ID
+# Deterministic per-repo project ID
 PROJECT_ID="$(echo -n "$ROOT_DIR" | shasum -a 256 | cut -c1-12)"
 
 DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
