@@ -51,9 +51,9 @@ Then mount your Codex/Claude configs so both tools can use the environment setti
 docker run --rm -it \
   -e OPENAI_API_KEY \
   -v "$PWD":/home/dev/workspace \
-  -v "$HOME/.codex":/home/dev/.codex \
-  -v "$HOME/.claude":/home/dev/.claude \
-  -v "$HOME/.claude.json":/home/dev/.claude.json \
+  -v "$PWD/docker/.codex":/home/dev/.codex \
+  -v "$PWD/docker/.claude":/home/dev/.claude \
+  -v "$PWD/docker/.claude.json":/home/dev/.claude.json \
   claude-dev-agents
 ```
 
