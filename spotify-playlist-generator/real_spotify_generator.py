@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Set
 try:
     import spotipy
     from spotipy.oauth2 import SpotifyClientCredentials
+
     SPOTIPY_AVAILABLE = True
 except ImportError:
     SPOTIPY_AVAILABLE = False
@@ -21,10 +22,7 @@ class RealSpotifyPlaylistGenerator:
 
     def __init__(self, client_id: str, client_secret: str):
         """Initialize with Spotify credentials."""
-        auth_manager = SpotifyClientCredentials(
-            client_id=client_id,
-            client_secret=client_secret
-        )
+        auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
         self.spotify = spotipy.Spotify(auth_manager=auth_manager)
         self.cache: Dict[str, Dict] = {}
 
@@ -88,22 +86,25 @@ class RealSpotifyPlaylistGenerator:
                 # 1. Different artist
                 # 2. Similar title (cover)
                 # 3. Less popular than original
-                if (artist_name.lower() != original_artist.lower() and
-                    clean_title.lower() in track_name.lower() and
-                    popularity < original_pop and
-                    popularity > 40):  # Minimum popularity threshold
-
-                    covers.append({
-                        "id": track["id"],
-                        "name": track_name,
-                        "artist": artist_name,
-                        "popularity": popularity,
-                        "uri": track["uri"],
-                        "url": track["external_urls"]["spotify"],
-                        "cover_of": original_info["id"],
-                        "cover_of_artist": original_artist,
-                        "cover_of_title": song_title,
-                    })
+                if (
+                    artist_name.lower() != original_artist.lower()
+                    and clean_title.lower() in track_name.lower()
+                    and popularity < original_pop
+                    and popularity > 40
+                ):  # Minimum popularity threshold
+                    covers.append(
+                        {
+                            "id": track["id"],
+                            "name": track_name,
+                            "artist": artist_name,
+                            "popularity": popularity,
+                            "uri": track["uri"],
+                            "url": track["external_urls"]["spotify"],
+                            "cover_of": original_info["id"],
+                            "cover_of_artist": original_artist,
+                            "cover_of_title": song_title,
+                        }
+                    )
 
             # Sort by popularity (descending)
             covers.sort(key=lambda x: -x["popularity"])
@@ -126,11 +127,11 @@ class RealSpotifyPlaylistGenerator:
         print(f"  🔗 {seed['url']}\n")
 
         playlist = [seed]
-        used_artists: Set[str] = {seed['artist'].lower()}
-        used_song_ids: Set[str] = {seed['id']}
+        used_artists: Set[str] = {seed["artist"].lower()}
+        used_song_ids: Set[str] = {seed["id"]}
 
-        current_artist = seed['artist']
-        current_title = seed['name']
+        current_artist = seed["artist"]
+        current_title = seed["name"]
 
         for i in range(1, length):
             print(f"Step {i}: Looking for covers of {current_artist} songs...")
@@ -141,15 +142,13 @@ class RealSpotifyPlaylistGenerator:
 
             # Filter out already used artists and songs
             valid_covers = [
-                c for c in covers
-                if c['artist'].lower() not in used_artists
-                and c['id'] not in used_song_ids
+                c for c in covers if c["artist"].lower() not in used_artists and c["id"] not in used_song_ids
             ]
 
             if not valid_covers:
                 # Try finding covers of other songs by this artist
                 print(f"  No new covers found for '{current_title}'")
-                print(f"  Searching for artist's other popular songs...")
+                print("  Searching for artist's other popular songs...")
 
                 # Search for artist's top tracks
                 try:
@@ -163,9 +162,9 @@ class RealSpotifyPlaylistGenerator:
                             if track["name"] != current_title:
                                 other_covers = self.find_covers(current_artist, track["name"])
                                 valid_other = [
-                                    c for c in other_covers
-                                    if c['artist'].lower() not in used_artists
-                                    and c['id'] not in used_song_ids
+                                    c
+                                    for c in other_covers
+                                    if c["artist"].lower() not in used_artists and c["id"] not in used_song_ids
                                 ]
                                 if valid_other:
                                     valid_covers = valid_other
@@ -174,22 +173,22 @@ class RealSpotifyPlaylistGenerator:
                     print(f"  Error searching top tracks: {e}")
 
             if not valid_covers:
-                print(f"  ⚠ Chain ended - no more unique covers found")
+                print("  ⚠ Chain ended - no more unique covers found")
                 break
 
             # Pick the most popular valid cover
             next_song = valid_covers[0]
             playlist.append(next_song)
-            used_artists.add(next_song['artist'].lower())
-            used_song_ids.add(next_song['id'])
+            used_artists.add(next_song["artist"].lower())
+            used_song_ids.add(next_song["id"])
 
             print(f"  ✓ Found: {next_song['artist']} - {next_song['name']} (pop: {next_song['popularity']})")
             print(f"    Cover of: {next_song['cover_of_artist']} - {next_song['cover_of_title']}")
             print(f"    🔗 {next_song['url']}\n")
 
             # Next iteration: look for covers by artists who cover this new artist
-            current_artist = next_song['artist']
-            current_title = next_song['name']
+            current_artist = next_song["artist"]
+            current_title = next_song["name"]
 
         return playlist
 
@@ -213,8 +212,8 @@ def print_playlist(playlist: List[Dict]) -> None:
         print()
 
     # Statistics
-    popularities = [s['popularity'] for s in playlist]
-    artists = [s['artist'] for s in playlist]
+    popularities = [s["popularity"] for s in playlist]
+    artists = [s["artist"] for s in playlist]
 
     print("=" * 80)
     print("STATISTICS")
