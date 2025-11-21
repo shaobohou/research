@@ -3,10 +3,17 @@ set -euo pipefail
 
 ROOT_DIR="$(pwd)"
 
+# Get repo name from git remote or use "local" if not a git repo
+if git rev-parse --git-dir > /dev/null 2>&1; then
+  REPO_NAME="$(basename -s .git "$(git config --get remote.origin.url 2>/dev/null || echo 'local')")"
+else
+  REPO_NAME="local"
+fi
+
 # Deterministic per-path project ID
 PROJECT_ID="$(echo -n "$ROOT_DIR" | shasum -a 256 | cut -c1-12)"
 
-DATA_DIR="$HOME/.docker-agent-data/$PROJECT_ID"
+DATA_DIR="$HOME/.docker-agent-data/$REPO_NAME/$PROJECT_ID"
 
 # Ensure host paths exist
 mkdir -p "$DATA_DIR/.codex"

@@ -55,10 +55,8 @@ docker run --rm -it \
 
 Or use the helper script for project-isolated configs:
 ```bash
-./docker/run.sh
+./docker/run-isolated.sh
 ```
-
-This creates isolated Claude/Codex directories per project in `~/.docker-agent-data/`.
 
 **Security Note**: Mounting config directories and passing API keys gives the container access to sensitive credentials. Only use with trusted code. For untrusted workloads, use read-only mounts (`:ro`) and avoid mounting configs. See [docker/README.md](docker/README.md) for details.
 

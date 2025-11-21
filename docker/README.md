@@ -59,37 +59,13 @@ docker run --rm -it \
 
 ## Helper Script with Isolated Directories
 
-The `run.sh` helper script simplifies launching containers with project-isolated configuration directories. This prevents different projects from sharing AI CLI state:
+The `run-isolated.sh` script launches containers with project-isolated configs, preventing different projects from sharing AI CLI state:
 
 ```bash
-# From any project directory
-./docker/run.sh
+./docker/run-isolated.sh
 ```
 
-**What it does:**
-- Creates a unique project ID based on your current directory path
-- Stores Claude/Codex configs in `~/.docker-agent-data/<project-id>/`
-- Auto-creates required directories and config files
-- Mounts workspace and isolated configs into the container
-- Passes through `OPENAI_API_KEY` from your environment
-
-**Benefits:**
-- Each project gets its own AI CLI configuration and history
-- No conflicts between different projects' CLI state
-- Clean separation of concerns for multi-project workflows
-
-Example directory structure created:
-```
-~/.docker-agent-data/
-├── a1b2c3d4e5f6/  # project at /home/user/project-a
-│   ├── .claude/
-│   ├── .codex/
-│   └── .claude.json
-└── f6e5d4c3b2a1/  # project at /home/user/project-b
-    ├── .claude/
-    ├── .codex/
-    └── .claude.json
-```
+Creates isolated configs per project at `~/.docker-agent-data/<repo>/<project-id>/` based on git repo name and directory path. Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
 
 ## Python Development with uv
 
