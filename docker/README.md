@@ -28,9 +28,11 @@ AI tools require API keys. Pass them from your host environment:
 
 ```bash
 export OPENAI_API_KEY="sk-..."
+export GOOGLE_API_KEY="..."
 
 docker run --rm -it \
   -e OPENAI_API_KEY \
+  -e GOOGLE_API_KEY \
   -v "$PWD":/home/dev/workspace \
   claude-dev-agents
 ```
@@ -50,6 +52,7 @@ Then mount your Codex/Claude configs so both tools can use the environment setti
 ```bash
 docker run --rm -it \
   -e OPENAI_API_KEY \
+  -e GOOGLE_API_KEY \
   -v "$PWD":/home/dev/workspace \
   -v "$HOME/.codex":/home/dev/.codex \
   -v "$HOME/.claude":/home/dev/.claude \
@@ -59,13 +62,25 @@ docker run --rm -it \
 
 ## Helper Script with Isolated Directories
 
-The `run-isolated.sh` script launches containers with project-isolated configs, preventing different projects from sharing AI CLI state:
+The `run-isolated.sh` script launches containers with project-isolated configs:
 
 ```bash
 ./docker/run-isolated.sh
 ```
 
-Creates isolated configs per project at `~/docker-agent-data/<repo>/<project-id>/` based on git repo name and directory path. Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files. If `~/.codex/auth.json` exists on the host and the isolated copy is missing, the script copies it into the isolated `.codex` directory; similarly, if `~/.claude/.credentials.json` is available and not already present, it copies that into the isolated `.claude` directory, so you don't need to log in inside Docker.
+Creates isolated configs at `~/docker-agent-data/<repo>/<project-id>/` per project. Each gets separate `.claude/`, `.codex/`, and `.claude.json` files.
+
+**Configuration** (via environment variables):
+- `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
+- `COPY_CLAUDE_CREDS` - Copy Claude credentials (default: `false`)
+
+**Examples**:
+```bash
+./docker/run-isolated.sh                                   # Default: copy Codex, skip Claude
+COPY_CODEX_CREDS=false ./docker/run-isolated.sh            # Skip Codex
+COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh            # Copy Claude credentials
+COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh  # Skip Codex, copy Claude
+```
 
 ## Python Development with uv
 

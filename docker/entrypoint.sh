@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# Ensure user-local paths are available
-export PATH="$HOME/.local/bin:$HOME/.claude/bin:$HOME/.npm-global/bin:$PATH"
-
 # Track installation failures
 FAILED_INSTALLS=()
 

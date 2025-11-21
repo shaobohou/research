@@ -3,7 +3,7 @@ FROM debian:bookworm-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 # One source of truth for user-local binary dirs
-ENV LOCAL_BINS="/home/dev/.npm-global/bin:/home/dev/.local/bin:/home/dev/.claude/bin"
+ENV LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin"
 ENV PATH="${LOCAL_BINS}:${PATH}"
 
 # Install essentials

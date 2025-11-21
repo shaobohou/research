@@ -46,6 +46,7 @@ Run with config mounting for AI CLIs:
 ```bash
 docker run --rm -it \
   -e OPENAI_API_KEY \
+  -e GOOGLE_API_KEY \
   -v "$PWD":/home/dev/workspace \
   -v "$HOME/.codex":/home/dev/.codex \
   -v "$HOME/.claude":/home/dev/.claude \
@@ -55,9 +56,10 @@ docker run --rm -it \
 
 Or use the helper script for project-isolated configs:
 ```bash
-./docker/run-isolated.sh  # Creates ~/docker-agent-data/<repo>/<project-id>/
+./docker/run-isolated.sh                             # Default: copy Codex, skip Claude
+COPY_CODEX_CREDS=false ./docker/run-isolated.sh      # Don't copy Codex
+COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh      # Copy Claude credentials
 ```
-The helper also copies your host Codex `auth.json` from `~/.codex` into the per-project mount when the isolated copy is missing, and copies Claude `.credentials.json` from `~/.claude` if the isolated copy is missing, so you don't have to log in inside Docker.
 
 **Security Note**: Mounting config directories and passing API keys gives the container access to sensitive credentials. Only use with trusted code. For untrusted workloads, use read-only mounts (`:ro`) and avoid mounting configs. See [docker/README.md](docker/README.md) for details.
 
