@@ -1,12 +1,11 @@
 FROM debian:bookworm-slim
 
-ENV DEBIAN_FRONTEND=noninteractive
-
 # One source of truth for user-local binary dirs
-ENV LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin"
-ENV PATH="${LOCAL_BINS}:${PATH}"
+ENV DEBIAN_FRONTEND=noninteractive \
+    LOCAL_BINS="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin" \
+    PATH="/home/dev/.local/bin:/home/dev/.claude/bin:/home/dev/.npm-global/bin:${PATH}"
 
-# Install essentials
+# Install essentials and configure locale
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     ca-certificates \
@@ -21,14 +20,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     psmisc \
     sudo \
     tmux \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+ && locale-gen en_US.UTF-8
 
-# Configure UTF-8 locale for proper Unicode rendering
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen en_US.UTF-8
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
+    LC_ALL=en_US.UTF-8 \
+    COLORTERM=truecolor
 
 # Install Node.js LTS system-wide via NodeSource
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
@@ -50,15 +49,14 @@ RUN useradd -m dev && echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER dev
 WORKDIR /home/dev
 
-# tmux: always use bash as the default shell/command
+# Configure tmux and bash shell
 RUN printf '%s\n' \
   'set-option -g default-shell /bin/bash' \
   'set-option -g default-command "bash"' \
   'set -g default-terminal "tmux-256color"' \
-  > /home/dev/.tmux.conf
-
-# Make login shells source .bashrc, and re-export PATH from single source
-RUN echo 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi' > /home/dev/.bash_profile \
+  'set -ga terminal-overrides ",*256col*:Tc"' \
+  > /home/dev/.tmux.conf \
+ && echo 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi' > /home/dev/.bash_profile \
  && echo 'export PATH="$LOCAL_BINS:$PATH"' >> /home/dev/.bashrc \
  && echo 'export PS1="\[\e[38;5;39m\]\u\[\e[0m\] \[\e[38;5;244m\](\w)\[\e[0m\] $ "' >> /home/dev/.bashrc
 
