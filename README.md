@@ -57,6 +57,7 @@ Or use the helper script for project-isolated configs:
 ```bash
 ./docker/run-isolated.sh  # Creates ~/docker-agent-data/<repo>/<project-id>/
 ```
+The helper also copies your host Codex `auth.json` from `~/.codex` into the per-project mount when the isolated copy is missing, and copies Claude `.credentials.json` from `~/.claude` if the isolated copy is missing, so you don't have to log in inside Docker.
 
 **Security Note**: Mounting config directories and passing API keys gives the container access to sensitive credentials. Only use with trusted code. For untrusted workloads, use read-only mounts (`:ro`) and avoid mounting configs. See [docker/README.md](docker/README.md) for details.
 

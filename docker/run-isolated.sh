@@ -19,6 +19,24 @@ DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
 mkdir -p "$DATA_DIR/.codex"
 mkdir -p "$DATA_DIR/.claude"
 
+# Copy Codex auth into the isolated config so login isn't required in-container
+if [ ! -f "$DATA_DIR/.codex/auth.json" ] && [ -f "$HOME/.codex/auth.json" ]; then
+  if ! cp "$HOME/.codex/auth.json" "$DATA_DIR/.codex/auth.json"; then
+    echo "[codex] Failed to copy auth.json from $HOME/.codex/auth.json" >&2
+  fi
+elif [ ! -f "$DATA_DIR/.codex/auth.json" ]; then
+  echo "[codex] auth.json not found at $HOME/.codex/auth.json; run 'codex login' locally to reuse it in Docker" >&2
+fi
+
+# Copy Claude credentials if not already present in the isolated config
+if [ ! -f "$DATA_DIR/.claude/.credentials.json" ] && [ -f "$HOME/.claude/.credentials.json" ]; then
+  if ! cp "$HOME/.claude/.credentials.json" "$DATA_DIR/.claude/.credentials.json"; then
+    echo "[claude] Failed to copy .credentials.json from $HOME/.claude/.credentials.json" >&2
+  fi
+elif [ ! -f "$DATA_DIR/.claude/.credentials.json" ]; then
+  echo "[claude] .credentials.json not found at $HOME/.claude/.credentials.json; run 'claude login' locally to reuse it in Docker" >&2
+fi
+
 # Ensure valid JSON config file
 CLAUDE_JSON="$DATA_DIR/.claude.json"
 if [ ! -f "$CLAUDE_JSON" ]; then

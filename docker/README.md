@@ -65,7 +65,7 @@ The `run-isolated.sh` script launches containers with project-isolated configs, 
 ./docker/run-isolated.sh
 ```
 
-Creates isolated configs per project at `~/docker-agent-data/<repo>/<project-id>/` based on git repo name and directory path. Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
+Creates isolated configs per project at `~/docker-agent-data/<repo>/<project-id>/` based on git repo name and directory path. Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files. If `~/.codex/auth.json` exists on the host and the isolated copy is missing, the script copies it into the isolated `.codex` directory; similarly, if `~/.claude/.credentials.json` is available and not already present, it copies that into the isolated `.claude` directory, so you don't need to log in inside Docker.
 
 ## Python Development with uv
 
