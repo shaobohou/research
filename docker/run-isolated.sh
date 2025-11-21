@@ -13,7 +13,7 @@ fi
 # Deterministic per-path project ID
 PROJECT_ID="$(echo -n "$ROOT_DIR" | shasum -a 256 | cut -c1-12)"
 
-DATA_DIR="$HOME/.docker-agent-data/$REPO_NAME/$PROJECT_ID"
+DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
 
 # Ensure host paths exist
 mkdir -p "$DATA_DIR/.codex"
