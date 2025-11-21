@@ -5,7 +5,8 @@ ROOT_DIR="$(pwd)"
 
 # Get repo name from git remote or use "local" if not a git repo
 if git rev-parse --git-dir > /dev/null 2>&1; then
-  REPO_NAME="$(basename -s .git "$(git config --get remote.origin.url 2>/dev/null || echo 'local')")"
+  REPO_URL="$(git config --get remote.origin.url 2>/dev/null || echo 'local')"
+  REPO_NAME="$(basename "$REPO_URL" .git)"
 else
   REPO_NAME="local"
 fi
