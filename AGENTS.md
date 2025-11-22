@@ -20,7 +20,7 @@ For single-file projects, use [uv inline script metadata](https://docs.astral.sh
 # ///
 ```
 
-Run with: `uv run script.py`
+Run with: `uv run <your_script>.py`
 
 Only create `pyproject.toml` for multi-file projects.
 
