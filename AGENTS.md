@@ -6,6 +6,24 @@ Applies to all projects including investigations, examples, scaffolding, and exp
 1. Create a new folder with a descriptive name (e.g., `auth-performance-analysis`)
 2. Create `notes.md` for logging progress (optional for simple examples)
 
+## Python Dependencies
+
+For single-file projects, use [uv inline script metadata](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies) (PEP 723):
+
+```python
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "requests",
+#     "pandas",
+# ]
+# ///
+```
+
+Run with: `uv run <your_script>.py`
+
+Only create `pyproject.toml` for multi-file projects.
+
 ## During Work
 - **Log continuously** to `notes.md`: what you tried, learned, and what didn't work
 - **Track progress**: Update task status as you work through the investigation
