@@ -8,11 +8,11 @@ Applies to all projects including investigations, examples, scaffolding, and exp
 
 ## Python Dependencies
 
-For single-file projects, use [uv inline script metadata](https://docs.astral.sh/uv/guides/scripts/) (PEP 723):
+For single-file projects, use [uv inline script metadata](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies) (PEP 723):
 
 ```python
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.12"
 # dependencies = [
 #     "requests",
 #     "pandas",
@@ -22,7 +22,7 @@ For single-file projects, use [uv inline script metadata](https://docs.astral.sh
 
 Run with: `uv run script.py`
 
-Only create `pyproject.toml` or `requirements.txt` for multi-file projects.
+Only create `pyproject.toml` for multi-file projects.
 
 ## During Work
 - **Log continuously** to `notes.md`: what you tried, learned, and what didn't work
