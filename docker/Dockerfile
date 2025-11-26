@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     less \
     locales \
     man-db \
+    nano \
     net-tools \
     procps \
     psmisc \
