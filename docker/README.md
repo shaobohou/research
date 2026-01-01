@@ -60,51 +60,48 @@ docker run --rm -it \
   claude-dev-agents
 ```
 
-## Helper Scripts
+## Helper Script
 
-### Run with Isolated Directories
-
-The `run-isolated.sh` script launches containers with project-isolated configs:
+The `run-isolated.sh` script provides project-isolated configs with **optional network monitoring** (enabled by default):
 
 ```bash
 ./docker/run-isolated.sh
 ```
 
-Creates isolated configs at `~/docker-agent-data/<repo>/<project-id>/` per project. Each gets separate `.claude/`, `.codex/`, and `.claude.json` files.
+**Features**:
+- Isolated config directories per project (`~/docker-agent-data/<repo>/<project-id>/`)
+- Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
+- **Network monitoring and firewall** (enabled by default)
+  - Real-time HTTP/HTTPS request monitoring
+  - Web dashboard at http://localhost:8081 with live updates
+  - Interactive prompts to allow/deny domains
+  - Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
+  - Persistent rules and complete access logging
+  - REST API for programmatic access
 
 **Configuration** (via environment variables):
 - `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
 - `COPY_CLAUDE_CREDS` - Copy Claude credentials (default: `false`)
+- `ENABLE_MONITORING` - Enable network monitoring (default: `true`)
 
 **Examples**:
 ```bash
-./docker/run-isolated.sh                                   # Default: copy Codex, skip Claude
-COPY_CODEX_CREDS=false ./docker/run-isolated.sh            # Skip Codex
-COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh            # Copy Claude credentials
-COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh  # Skip Codex, copy Claude
+# Default: monitoring ON, copy Codex creds
+./docker/run-isolated.sh
+
+# Disable network monitoring
+ENABLE_MONITORING=false ./docker/run-isolated.sh
+
+# Copy Claude creds, keep monitoring
+COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
+
+# All options combined
+ENABLE_MONITORING=false COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
 ```
 
-### Run with Network Monitoring
-
-The `run-monitored.sh` script launches containers with **interactive network access control**:
-
+**With Network Monitoring** (default):
 ```bash
-./docker/run-monitored.sh
-```
-
-**Features**:
-- Monitor all HTTP/HTTPS requests in real-time
-- **Web dashboard** at http://localhost:8081 with live updates
-- Interactive prompts to allow/deny each domain or URL
-- Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
-- Persistent rules saved between sessions
-- Complete access logging and statistics
-- REST API for programmatic access
-
-**Example workflow**:
-```bash
-# Start container with monitoring
-./docker/run-monitored.sh
+./docker/run-isolated.sh
 
 # Open browser to http://localhost:8081
 # - Real-time activity feed

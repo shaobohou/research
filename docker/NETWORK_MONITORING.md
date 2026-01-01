@@ -24,7 +24,12 @@ Interactive network access control for the Docker development environment. Monit
 ### 1. Start Container with Network Monitoring
 
 ```bash
-./docker/run-monitored.sh
+./docker/run-isolated.sh
+```
+
+**Note**: Network monitoring is **enabled by default**. To disable it:
+```bash
+ENABLE_MONITORING=false ./docker/run-isolated.sh
 ```
 
 This will:
@@ -305,7 +310,7 @@ To run the container without network monitoring, use the standard script:
 
 ### Custom Proxy Port
 
-Edit `network-monitor.py` and change the port in the `run_proxy()` function, then update `run-monitored.sh` accordingly.
+Edit `network-monitor.py` and change the port in the `run_proxy()` function, then update `run-isolated.sh` accordingly.
 
 ### HTTPS Certificate Trust
 
@@ -390,8 +395,8 @@ cat ~/docker-agent-data/network-rules.json | python3 -m json.tool
 ### Example 1: Analyze Package Installation
 
 ```bash
-# Start monitored container
-./docker/run-monitored.sh
+# Start container with monitoring (on by default)
+./docker/run-isolated.sh
 
 # In container, install package
 pip install requests
@@ -415,7 +420,7 @@ cat > ~/docker-agent-data/network-rules.json <<EOF
 EOF
 
 # Run container - only GitHub and PyPI allowed
-./docker/run-monitored.sh
+./docker/run-isolated.sh
 ```
 
 ### Example 3: Audit AI Tool Network Usage
@@ -424,8 +429,8 @@ EOF
 # Start with clean rules
 rm ~/docker-agent-data/network-rules.json
 
-# Run monitored
-./docker/run-monitored.sh
+# Run with monitoring (on by default)
+./docker/run-isolated.sh
 
 # In container, use AI tool
 claude "Write hello world in Python"
@@ -446,7 +451,7 @@ claude "Write hello world in Python"
 - ❌ WebSocket connections (may bypass proxy)
 - ❌ Applications that ignore HTTP_PROXY environment variables
 
-**Workaround**: For HTTP/HTTPS to localhost, remove `NO_PROXY` setting in `run-monitored.sh`. For comprehensive coverage including all protocols, see Future Enhancements below.
+**Workaround**: For HTTP/HTTPS to localhost, remove `NO_PROXY` setting in `run-isolated.sh`. For comprehensive coverage including all protocols, see Future Enhancements below.
 
 ## Future Enhancements
 
