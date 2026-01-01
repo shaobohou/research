@@ -18,7 +18,6 @@ Provides a browser-based interface for:
 """
 
 import json
-import os
 import threading
 import time
 from pathlib import Path
@@ -38,12 +37,7 @@ app = Flask(__name__)
 CORS(app)
 
 # In-memory cache
-cache = {
-    'rules': {},
-    'stats': defaultdict(int),
-    'recent_requests': [],
-    'last_update': None
-}
+cache = {"rules": {}, "stats": defaultdict(int), "recent_requests": [], "last_update": None}
 cache_lock = threading.Lock()
 
 
@@ -64,7 +58,7 @@ def save_rules(rules: Dict[str, str]) -> bool:
     """Save rules to config file"""
     try:
         CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
-        with open(CONFIG_FILE, 'w') as f:
+        with open(CONFIG_FILE, "w") as f:
             json.dump(rules, f, indent=2)
         return True
     except Exception as e:
@@ -75,13 +69,13 @@ def save_rules(rules: Dict[str, str]) -> bool:
 def parse_log_line(line: str) -> Optional[Dict]:
     """Parse a log line into structured data"""
     try:
-        parts = line.strip().split(' | ')
+        parts = line.strip().split(" | ")
         if len(parts) >= 4:
             return {
-                'timestamp': parts[0],
-                'decision': parts[1].strip(),
-                'method': parts[2].strip(),
-                'url': parts[3].strip()
+                "timestamp": parts[0],
+                "decision": parts[1].strip(),
+                "method": parts[2].strip(),
+                "url": parts[3].strip(),
             }
     except Exception:
         pass
@@ -94,7 +88,7 @@ def load_recent_logs(limit: int = 100) -> List[Dict]:
         return []
 
     try:
-        with open(LOG_FILE, 'r') as f:
+        with open(LOG_FILE, "r") as f:
             lines = f.readlines()
 
         # Get last N lines
@@ -121,12 +115,12 @@ def calculate_stats() -> Dict:
         return dict(stats)
 
     try:
-        with open(LOG_FILE, 'r') as f:
+        with open(LOG_FILE, "r") as f:
             for line in f:
                 parsed = parse_log_line(line)
                 if parsed:
-                    stats['total'] += 1
-                    stats[parsed['decision'].lower()] += 1
+                    stats["total"] += 1
+                    stats[parsed["decision"].lower()] += 1
     except Exception as e:
         print(f"Error calculating stats: {e}")
 
@@ -136,10 +130,10 @@ def calculate_stats() -> Dict:
 def update_cache():
     """Update in-memory cache from files"""
     with cache_lock:
-        cache['rules'] = load_rules()
-        cache['stats'] = calculate_stats()
-        cache['recent_requests'] = load_recent_logs(100)
-        cache['last_update'] = datetime.now().isoformat()
+        cache["rules"] = load_rules()
+        cache["stats"] = calculate_stats()
+        cache["recent_requests"] = load_recent_logs(100)
+        cache["last_update"] = datetime.now().isoformat()
 
 
 # Background thread to update cache periodically
@@ -160,166 +154,160 @@ updater_thread.start()
 
 # API Routes
 
-@app.route('/')
+
+@app.route("/")
 def index():
     """Serve the main UI"""
-    return send_from_directory('.', 'web-ui.html')
+    return send_from_directory(".", "web-ui.html")
 
 
-@app.route('/api/rules', methods=['GET'])
+@app.route("/api/rules", methods=["GET"])
 def get_rules():
     """Get all firewall rules"""
     with cache_lock:
-        return jsonify({
-            'rules': cache['rules'],
-            'count': len(cache['rules']),
-            'last_update': cache['last_update']
-        })
+        return jsonify({"rules": cache["rules"], "count": len(cache["rules"]), "last_update": cache["last_update"]})
 
 
-@app.route('/api/rules', methods=['POST'])
+@app.route("/api/rules", methods=["POST"])
 def add_rule():
     """Add or update a firewall rule"""
     data = request.json
-    target = data.get('target')
-    action = data.get('action')
+    target = data.get("target")
+    action = data.get("action")
 
     if not target or not action:
-        return jsonify({'error': 'Missing target or action'}), 400
+        return jsonify({"error": "Missing target or action"}), 400
 
-    if action not in ['allow', 'deny', 'allow-domain', 'deny-domain']:
-        return jsonify({'error': 'Invalid action'}), 400
+    if action not in ["allow", "deny", "allow-domain", "deny-domain"]:
+        return jsonify({"error": "Invalid action"}), 400
 
     with cache_lock:
-        rules = cache['rules'].copy()
+        rules = cache["rules"].copy()
         rules[target] = action
 
         if save_rules(rules):
-            cache['rules'] = rules
-            return jsonify({'success': True, 'target': target, 'action': action})
+            cache["rules"] = rules
+            return jsonify({"success": True, "target": target, "action": action})
         else:
-            return jsonify({'error': 'Failed to save rules'}), 500
+            return jsonify({"error": "Failed to save rules"}), 500
 
 
-@app.route('/api/rules/<path:target>', methods=['DELETE'])
+@app.route("/api/rules/<path:target>", methods=["DELETE"])
 def delete_rule(target):
     """Delete a firewall rule"""
     with cache_lock:
-        rules = cache['rules'].copy()
+        rules = cache["rules"].copy()
 
         if target in rules:
             del rules[target]
             if save_rules(rules):
-                cache['rules'] = rules
-                return jsonify({'success': True, 'target': target})
+                cache["rules"] = rules
+                return jsonify({"success": True, "target": target})
             else:
-                return jsonify({'error': 'Failed to save rules'}), 500
+                return jsonify({"error": "Failed to save rules"}), 500
         else:
-            return jsonify({'error': 'Rule not found'}), 404
+            return jsonify({"error": "Rule not found"}), 404
 
 
-@app.route('/api/rules/clear', methods=['POST'])
+@app.route("/api/rules/clear", methods=["POST"])
 def clear_rules():
     """Clear all firewall rules"""
     with cache_lock:
         if save_rules({}):
-            cache['rules'] = {}
-            return jsonify({'success': True})
+            cache["rules"] = {}
+            return jsonify({"success": True})
         else:
-            return jsonify({'error': 'Failed to clear rules'}), 500
+            return jsonify({"error": "Failed to clear rules"}), 500
 
 
-@app.route('/api/stats', methods=['GET'])
+@app.route("/api/stats", methods=["GET"])
 def get_stats():
     """Get network access statistics"""
     with cache_lock:
-        return jsonify({
-            'stats': cache['stats'],
-            'last_update': cache['last_update']
-        })
+        return jsonify({"stats": cache["stats"], "last_update": cache["last_update"]})
 
 
-@app.route('/api/requests', methods=['GET'])
+@app.route("/api/requests", methods=["GET"])
 def get_requests():
     """Get recent network requests"""
-    limit = request.args.get('limit', 100, type=int)
+    limit = request.args.get("limit", 100, type=int)
 
     with cache_lock:
-        return jsonify({
-            'requests': cache['recent_requests'][:limit],
-            'count': len(cache['recent_requests']),
-            'last_update': cache['last_update']
-        })
+        return jsonify(
+            {
+                "requests": cache["recent_requests"][:limit],
+                "count": len(cache["recent_requests"]),
+                "last_update": cache["last_update"],
+            }
+        )
 
 
-@app.route('/api/stream', methods=['GET'])
+@app.route("/api/stream", methods=["GET"])
 def stream_updates():
     """Server-Sent Events stream for live updates"""
+
     def generate():
         last_count = 0
         while True:
             with cache_lock:
-                current_count = len(cache['recent_requests'])
+                current_count = len(cache["recent_requests"])
                 if current_count != last_count:
                     data = {
-                        'requests': cache['recent_requests'][:10],
-                        'stats': cache['stats'],
-                        'timestamp': cache['last_update']
+                        "requests": cache["recent_requests"][:10],
+                        "stats": cache["stats"],
+                        "timestamp": cache["last_update"],
                     }
                     yield f"data: {json.dumps(data)}\n\n"
                     last_count = current_count
             time.sleep(1)
 
     return app.response_class(
-        generate(),
-        mimetype='text/event-stream',
-        headers={
-            'Cache-Control': 'no-cache',
-            'X-Accel-Buffering': 'no'
-        }
+        generate(), mimetype="text/event-stream", headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
     )
 
 
-@app.route('/api/export', methods=['GET'])
+@app.route("/api/export", methods=["GET"])
 def export_rules():
     """Export rules as JSON"""
     with cache_lock:
-        return jsonify(cache['rules'])
+        return jsonify(cache["rules"])
 
 
-@app.route('/api/import', methods=['POST'])
+@app.route("/api/import", methods=["POST"])
 def import_rules():
     """Import rules from JSON"""
     data = request.json
 
     if not isinstance(data, dict):
-        return jsonify({'error': 'Invalid format, expected JSON object'}), 400
+        return jsonify({"error": "Invalid format, expected JSON object"}), 400
 
     # Validate all actions
     for target, action in data.items():
-        if action not in ['allow', 'deny', 'allow-domain', 'deny-domain']:
-            return jsonify({'error': f'Invalid action for {target}: {action}'}), 400
+        if action not in ["allow", "deny", "allow-domain", "deny-domain"]:
+            return jsonify({"error": f"Invalid action for {target}: {action}"}), 400
 
     with cache_lock:
         if save_rules(data):
-            cache['rules'] = data
-            return jsonify({'success': True, 'count': len(data)})
+            cache["rules"] = data
+            return jsonify({"success": True, "count": len(data)})
         else:
-            return jsonify({'error': 'Failed to save rules'}), 500
+            return jsonify({"error": "Failed to save rules"}), 500
 
 
-@app.route('/api/health', methods=['GET'])
+@app.route("/api/health", methods=["GET"])
 def health():
     """Health check endpoint"""
-    return jsonify({
-        'status': 'healthy',
-        'proxy_running': True,  # TODO: Actually check if proxy is running
-        'rules_count': len(cache['rules']),
-        'timestamp': datetime.now().isoformat()
-    })
+    return jsonify(
+        {
+            "status": "healthy",
+            "proxy_running": True,  # TODO: Actually check if proxy is running
+            "rules_count": len(cache["rules"]),
+            "timestamp": datetime.now().isoformat(),
+        }
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("=" * 80)
     print("Network Firewall Web UI")
     print("=" * 80)
@@ -335,4 +323,4 @@ if __name__ == '__main__':
     update_cache()
 
     # Run Flask app
-    app.run(host='0.0.0.0', port=WEB_PORT, debug=False, threaded=True)
+    app.run(host="0.0.0.0", port=WEB_PORT, debug=False, threaded=True)
