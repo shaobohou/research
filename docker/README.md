@@ -60,7 +60,9 @@ docker run --rm -it \
   claude-dev-agents
 ```
 
-## Helper Script with Isolated Directories
+## Helper Scripts
+
+### Run with Isolated Directories
 
 The `run-isolated.sh` script launches containers with project-isolated configs:
 
@@ -81,6 +83,39 @@ COPY_CODEX_CREDS=false ./docker/run-isolated.sh            # Skip Codex
 COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh            # Copy Claude credentials
 COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh  # Skip Codex, copy Claude
 ```
+
+### Run with Network Monitoring
+
+The `run-monitored.sh` script launches containers with **interactive network access control**:
+
+```bash
+./docker/run-monitored.sh
+```
+
+**Features**:
+- Monitor all HTTP/HTTPS requests in real-time
+- Interactive prompts to allow/deny each domain or URL
+- Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
+- Persistent rules saved between sessions
+- Complete access logging and statistics
+
+**Example workflow**:
+```bash
+# Terminal 1: Start container with monitoring
+./docker/run-monitored.sh
+
+# Terminal 2: Manage firewall rules (optional)
+./docker/manage-firewall.sh
+
+# The container will prompt for permission on each new network request
+```
+
+See [NETWORK_MONITORING.md](NETWORK_MONITORING.md) for complete documentation on:
+- How the network monitoring works
+- Permission levels and rule management
+- Pre-configuring trusted domains
+- Viewing statistics and logs
+- Security considerations
 
 ## Python Development with uv
 

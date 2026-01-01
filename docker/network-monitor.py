@@ -1,0 +1,366 @@
+#!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "mitmproxy>=10.1.0",
+#     "rich>=13.7.0",
+# ]
+# ///
+
+"""
+Interactive Network Monitor and Firewall for Docker Container
+
+This script provides real-time network monitoring and access control
+with different permission levels (allow, deny, prompt, etc.).
+"""
+
+import json
+import os
+import sys
+import threading
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, Literal, Optional
+from collections import defaultdict
+
+from mitmproxy import http, ctx
+from mitmproxy.tools import main as mitmproxy_main
+from rich.console import Console
+from rich.table import Table
+from rich.prompt import Prompt, Confirm
+from rich.live import Live
+from rich.layout import Layout
+from rich.panel import Panel
+from rich.text import Text
+
+# Permission types
+PermissionType = Literal["allow", "deny", "prompt", "allow-domain", "deny-domain"]
+
+# Config file location
+CONFIG_FILE = Path.home() / "docker-agent-data" / "network-rules.json"
+LOG_FILE = Path.home() / "docker-agent-data" / "network-access.log"
+
+console = Console()
+
+
+class NetworkFirewall:
+    """Manages network access rules and permissions"""
+
+    def __init__(self):
+        self.rules: Dict[str, PermissionType] = {}
+        self.stats = defaultdict(int)
+        self.recent_requests = []
+        self.max_recent = 50
+        self.lock = threading.Lock()
+        self.load_rules()
+
+    def load_rules(self):
+        """Load rules from config file"""
+        CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        if CONFIG_FILE.exists():
+            try:
+                with open(CONFIG_FILE) as f:
+                    self.rules = json.load(f)
+                console.print(f"[green]Loaded {len(self.rules)} network rules[/green]")
+            except Exception as e:
+                console.print(f"[red]Error loading rules: {e}[/red]")
+
+    def save_rules(self):
+        """Save rules to config file"""
+        try:
+            with open(CONFIG_FILE, 'w') as f:
+                json.dump(self.rules, f, indent=2)
+        except Exception as e:
+            console.print(f"[red]Error saving rules: {e}[/red]")
+
+    def log_request(self, host: str, method: str, path: str, decision: str):
+        """Log network request"""
+        with self.lock:
+            LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+            timestamp = datetime.now().isoformat()
+            log_entry = f"{timestamp} | {decision:10s} | {method:6s} | {host}{path}\n"
+
+            with open(LOG_FILE, 'a') as f:
+                f.write(log_entry)
+
+            # Keep recent requests in memory
+            self.recent_requests.append({
+                'timestamp': timestamp,
+                'host': host,
+                'method': method,
+                'path': path,
+                'decision': decision
+            })
+            if len(self.recent_requests) > self.max_recent:
+                self.recent_requests.pop(0)
+
+            # Update stats
+            self.stats[decision] += 1
+            self.stats['total'] += 1
+
+    def check_permission(self, host: str, url: str, method: str) -> bool:
+        """Check if request should be allowed"""
+
+        # Check exact URL match
+        if url in self.rules:
+            rule = self.rules[url]
+            if rule == "allow":
+                self.log_request(host, method, url, "ALLOW")
+                return True
+            elif rule == "deny":
+                self.log_request(host, method, url, "DENY")
+                return False
+
+        # Check domain-level rules
+        if host in self.rules:
+            rule = self.rules[host]
+            if rule in ("allow", "allow-domain"):
+                self.log_request(host, method, url, "ALLOW")
+                return True
+            elif rule in ("deny", "deny-domain"):
+                self.log_request(host, method, url, "DENY")
+                return False
+
+        # Check wildcard domain rules (*.example.com)
+        domain_parts = host.split('.')
+        for i in range(len(domain_parts)):
+            wildcard = '*.' + '.'.join(domain_parts[i:])
+            if wildcard in self.rules:
+                rule = self.rules[wildcard]
+                if rule in ("allow", "allow-domain"):
+                    self.log_request(host, method, url, "ALLOW")
+                    return True
+                elif rule in ("deny", "deny-domain"):
+                    self.log_request(host, method, url, "DENY")
+                    return False
+
+        # Default: prompt user
+        return self.prompt_user(host, url, method)
+
+    def prompt_user(self, host: str, url: str, method: str) -> bool:
+        """Interactively ask user for permission"""
+        console.print("\n" + "="*80)
+        console.print(f"[bold yellow]Network Access Request[/bold yellow]")
+        console.print(f"[cyan]Host:[/cyan] {host}")
+        console.print(f"[cyan]Method:[/cyan] {method}")
+        console.print(f"[cyan]Path:[/cyan] {url}")
+        console.print("="*80)
+
+        choices = {
+            "1": ("allow-once", "Allow this request once"),
+            "2": ("deny-once", "Deny this request once"),
+            "3": ("allow-domain", f"Always allow {host}"),
+            "4": ("deny-domain", f"Always deny {host}"),
+            "5": ("allow-url", f"Always allow this exact URL"),
+            "6": ("deny-url", f"Always deny this exact URL"),
+        }
+
+        console.print("\n[bold]Choose action:[/bold]")
+        for key, (action, desc) in choices.items():
+            console.print(f"  {key}. {desc}")
+
+        choice = Prompt.ask("Your choice", choices=list(choices.keys()), default="1")
+        action = choices[choice][0]
+
+        if action == "allow-once":
+            self.log_request(host, method, url, "ALLOW-ONCE")
+            return True
+        elif action == "deny-once":
+            self.log_request(host, method, url, "DENY-ONCE")
+            return False
+        elif action == "allow-domain":
+            self.rules[host] = "allow-domain"
+            self.save_rules()
+            self.log_request(host, method, url, "ALLOW-RULE")
+            console.print(f"[green]✓ Added allow rule for {host}[/green]")
+            return True
+        elif action == "deny-domain":
+            self.rules[host] = "deny-domain"
+            self.save_rules()
+            self.log_request(host, method, url, "DENY-RULE")
+            console.print(f"[red]✗ Added deny rule for {host}[/red]")
+            return False
+        elif action == "allow-url":
+            self.rules[url] = "allow"
+            self.save_rules()
+            self.log_request(host, method, url, "ALLOW-RULE")
+            console.print(f"[green]✓ Added allow rule for URL[/green]")
+            return True
+        elif action == "deny-url":
+            self.rules[url] = "deny"
+            self.save_rules()
+            self.log_request(host, method, url, "DENY-RULE")
+            console.print(f"[red]✗ Added deny rule for URL[/red]")
+            return False
+
+        return False
+
+    def get_stats_table(self) -> Table:
+        """Generate statistics table"""
+        table = Table(title="Network Access Statistics")
+        table.add_column("Metric", style="cyan")
+        table.add_column("Count", style="green")
+
+        for key, value in sorted(self.stats.items()):
+            table.add_row(key.title(), str(value))
+
+        return table
+
+    def get_recent_table(self) -> Table:
+        """Generate recent requests table"""
+        table = Table(title="Recent Requests (Last 10)")
+        table.add_column("Time", style="cyan")
+        table.add_column("Decision", style="yellow")
+        table.add_column("Method", style="blue")
+        table.add_column("Host", style="green")
+
+        for req in self.recent_requests[-10:]:
+            time_str = req['timestamp'].split('T')[1][:8]
+            table.add_row(
+                time_str,
+                req['decision'],
+                req['method'],
+                req['host']
+            )
+
+        return table
+
+
+# Global firewall instance
+firewall = NetworkFirewall()
+
+
+class FirewallAddon:
+    """mitmproxy addon for network filtering"""
+
+    def request(self, flow: http.HTTPFlow) -> None:
+        """Intercept and filter HTTP requests"""
+        host = flow.request.pretty_host
+        method = flow.request.method
+        path = flow.request.path
+        url = f"{host}{path}"
+
+        if not firewall.check_permission(host, url, method):
+            flow.response = http.Response.make(
+                403,
+                b"Access denied by network firewall",
+                {"Content-Type": "text/plain"}
+            )
+
+
+def run_proxy():
+    """Run the mitmproxy server"""
+    console.print("[bold green]Starting Network Monitor & Firewall[/bold green]")
+    console.print(f"[cyan]Rules file:[/cyan] {CONFIG_FILE}")
+    console.print(f"[cyan]Log file:[/cyan] {LOG_FILE}")
+    console.print(f"[cyan]Proxy listening on:[/cyan] 0.0.0.0:8080")
+    console.print("\n[yellow]Configure Docker to use HTTP proxy: http://host.docker.internal:8080[/yellow]")
+    console.print("[yellow]Set HTTPS_PROXY and HTTP_PROXY environment variables in container[/yellow]\n")
+
+    # Run mitmproxy with the firewall addon
+    sys.argv = [
+        'mitmproxy',
+        '--mode', 'regular',
+        '--listen-host', '0.0.0.0',
+        '--listen-port', '8080',
+        '--set', 'confdir=~/.mitmproxy',
+        '-s', __file__,  # Load this script as addon
+    ]
+
+    # Start in quiet mode if running as addon
+    if len(sys.argv) > 1 and sys.argv[1] == '--addon-mode':
+        sys.argv.extend(['--quiet'])
+
+    mitmproxy_main.mitmproxy()
+
+
+def show_stats():
+    """Show current statistics and rules"""
+    console.clear()
+    console.print(firewall.get_stats_table())
+    console.print()
+    console.print(firewall.get_recent_table())
+    console.print()
+
+    # Show active rules
+    if firewall.rules:
+        rules_table = Table(title=f"Active Rules ({len(firewall.rules)})")
+        rules_table.add_column("Target", style="cyan")
+        rules_table.add_column("Action", style="yellow")
+
+        for target, action in sorted(firewall.rules.items())[:20]:
+            rules_table.add_row(target[:60], action)
+
+        console.print(rules_table)
+    else:
+        console.print("[yellow]No rules configured yet[/yellow]")
+
+
+def interactive_menu():
+    """Interactive menu for managing firewall"""
+    while True:
+        console.print("\n" + "="*80)
+        console.print("[bold]Network Firewall Management[/bold]")
+        console.print("="*80)
+        console.print("1. View statistics and recent requests")
+        console.print("2. View all rules")
+        console.print("3. Add rule")
+        console.print("4. Remove rule")
+        console.print("5. Clear all rules")
+        console.print("6. Export rules")
+        console.print("0. Exit")
+
+        choice = Prompt.ask("Choose option", choices=["0", "1", "2", "3", "4", "5", "6"])
+
+        if choice == "0":
+            break
+        elif choice == "1":
+            show_stats()
+        elif choice == "2":
+            for target, action in sorted(firewall.rules.items()):
+                console.print(f"[cyan]{target}[/cyan]: [yellow]{action}[/yellow]")
+        elif choice == "3":
+            target = Prompt.ask("Enter domain or URL")
+            action = Prompt.ask("Action", choices=["allow", "deny", "allow-domain", "deny-domain"])
+            firewall.rules[target] = action
+            firewall.save_rules()
+            console.print(f"[green]✓ Rule added[/green]")
+        elif choice == "4":
+            target = Prompt.ask("Enter domain or URL to remove")
+            if target in firewall.rules:
+                del firewall.rules[target]
+                firewall.save_rules()
+                console.print(f"[green]✓ Rule removed[/green]")
+            else:
+                console.print(f"[red]Rule not found[/red]")
+        elif choice == "5":
+            if Confirm.ask("Clear all rules?"):
+                firewall.rules.clear()
+                firewall.save_rules()
+                console.print(f"[green]✓ All rules cleared[/green]")
+        elif choice == "6":
+            export_file = Prompt.ask("Export to file", default="network-rules-export.json")
+            with open(export_file, 'w') as f:
+                json.dump(firewall.rules, f, indent=2)
+            console.print(f"[green]✓ Exported to {export_file}[/green]")
+
+
+def addons():
+    """Return mitmproxy addons (called by mitmproxy)"""
+    return [FirewallAddon()]
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--manage":
+            # Interactive management mode
+            interactive_menu()
+        elif sys.argv[1] == "--stats":
+            # Show stats
+            show_stats()
+        else:
+            # Run proxy
+            run_proxy()
+    else:
+        # Default: run proxy
+        run_proxy()
