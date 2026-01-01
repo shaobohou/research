@@ -127,7 +127,7 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     echo "Starting network monitor proxy on port 8080..."
 
     # Start the proxy in the background
-    uv run "$SCRIPT_DIR/network-monitor.py" > /tmp/network-monitor.log 2>&1 &
+    uv run "$SCRIPT_DIR/monitoring/network-monitor.py" > /tmp/network-monitor.log 2>&1 &
     PROXY_PID=$!
 
     # Wait for proxy to start
@@ -146,7 +146,7 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     echo "Starting web UI on port 8081..."
 
     # Start the web UI in the background
-    cd "$SCRIPT_DIR" && uv run "$SCRIPT_DIR/web-ui.py" > /tmp/web-ui.log 2>&1 &
+    cd "$SCRIPT_DIR/monitoring" && uv run "$SCRIPT_DIR/monitoring/web-ui.py" > /tmp/web-ui.log 2>&1 &
     WEB_UI_PID=$!
 
     # Wait for web UI to start
@@ -204,7 +204,7 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   echo "  - Manage firewall rules"
   echo "  - View statistics and logs"
   echo ""
-  echo "CLI: ./docker/manage-firewall.sh"
+  echo "CLI: ./docker/monitoring/manage-firewall.sh"
   echo "  - Terminal-based management"
   echo ""
   echo "To disable monitoring:"

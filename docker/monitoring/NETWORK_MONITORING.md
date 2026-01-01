@@ -53,7 +53,7 @@ The web UI updates automatically via Server-Sent Events - no refresh needed!
 Prefer the terminal? Run:
 
 ```bash
-./docker/manage-firewall.sh
+./docker/monitoring/manage-firewall.sh
 ```
 
 This opens an interactive menu where you can:
@@ -65,7 +65,7 @@ This opens an interactive menu where you can:
 Or for quick stats:
 
 ```bash
-./docker/manage-firewall.sh --stats
+./docker/monitoring/manage-firewall.sh --stats
 ```
 
 ## How It Works
@@ -278,7 +278,7 @@ EOF
 
 ```bash
 # View recent requests
-./docker/manage-firewall.sh --stats
+./docker/monitoring/manage-firewall.sh --stats
 
 # View full access log
 tail -f ~/docker-agent-data/network-access.log
@@ -401,10 +401,8 @@ cat ~/docker-agent-data/network-rules.json | python3 -m json.tool
 # In container, install package
 pip install requests
 
-# Observe all network requests:
-# - pypi.org (package index)
-# - files.pythonhosted.org (package files)
-# - etc.
+# Observe all network requests in web UI or:
+./docker/monitoring/manage-firewall.sh --stats
 ```
 
 ### Example 2: Restrict to Essential Services Only
@@ -436,7 +434,7 @@ rm ~/docker-agent-data/network-rules.json
 claude "Write hello world in Python"
 
 # Review what endpoints were accessed
-./docker/manage-firewall.sh --stats
+./docker/monitoring/manage-firewall.sh --stats
 ```
 
 ## Current Limitations

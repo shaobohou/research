@@ -111,10 +111,10 @@ COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh --no-moni
 # - Statistics dashboard
 # - Rule management interface
 
-# Or use CLI: ./docker/manage-firewall.sh
+# Or use CLI: ./docker/monitoring/manage-firewall.sh
 ```
 
-See [NETWORK_MONITORING.md](NETWORK_MONITORING.md) for complete documentation on:
+See [monitoring/NETWORK_MONITORING.md](monitoring/NETWORK_MONITORING.md) for complete documentation on:
 - How the network monitoring works
 - Using the web dashboard and REST API
 - Permission levels and rule management
