@@ -22,6 +22,7 @@ DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
 # Ensure host paths exist
 mkdir -p "$DATA_DIR/.codex"
 mkdir -p "$DATA_DIR/.claude"
+mkdir -p "$DATA_DIR/tailscale"
 
 # Copy Codex auth if enabled and missing
 if [ "$COPY_CODEX_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.codex/auth.json" ]; then
@@ -56,10 +57,16 @@ if [ ! -f "$CLAUDE_JSON" ]; then
 fi
 
 docker run --rm -it \
+  --cap-add=NET_ADMIN \
+  --cap-add=NET_RAW \
+  --device=/dev/net/tun \
   -e OPENAI_API_KEY \
   -e GEMINI_API_KEY \
+  -e TAILSCALE_AUTH_KEY \
+  -e TAILSCALE_HOSTNAME \
   -v "$ROOT_DIR":/home/dev/workspace \
   -v "$DATA_DIR/.codex":/home/dev/.codex \
   -v "$DATA_DIR/.claude":/home/dev/.claude \
   -v "$CLAUDE_JSON":/home/dev/.claude.json \
+  -v "$DATA_DIR/tailscale":/var/lib/tailscale \
   claude-dev-agents

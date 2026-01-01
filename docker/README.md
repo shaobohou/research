@@ -6,8 +6,9 @@ Lightweight Docker container with AI assistant CLIs (Claude Code, Codex, Gemini)
 
 - **Base**: `debian:bookworm-slim`
 - **User**: Non-root `dev` user with passwordless sudo
-- **Tools**: Claude Code, uv, Codex CLI, Gemini CLI, Git, GitHub CLI, Node.js
+- **Tools**: Claude Code, uv, Codex CLI, Gemini CLI, Git, GitHub CLI, Node.js, Tailscale
 - **Smart entrypoint**: Auto-installs/updates tools on startup with error handling
+- **Networking**: Tailscale support for secure remote access and networking
 
 ## Usage
 
@@ -59,6 +60,53 @@ docker run --rm -it \
   -v "$HOME/.claude.json":/home/dev/.claude.json \
   claude-dev-agents
 ```
+
+## Tailscale Support
+
+The container includes Tailscale for secure networking. To use it:
+
+**Generate an auth key:**
+1. Go to [Tailscale Admin Console](https://login.tailscale.com/admin/settings/keys)
+2. Generate an auth key (reusable keys recommended for development)
+
+**Usage with isolated script:**
+```bash
+export TAILSCALE_AUTH_KEY="tskey-auth-..."
+export TAILSCALE_HOSTNAME="my-dev-container"  # Optional
+./docker/run-isolated.sh
+```
+
+**Usage with manual docker run:**
+```bash
+docker run --rm -it \
+  --cap-add=NET_ADMIN \
+  --cap-add=NET_RAW \
+  --device=/dev/net/tun \
+  -e TAILSCALE_AUTH_KEY="tskey-auth-..." \
+  -e TAILSCALE_HOSTNAME="my-dev-container" \
+  -v "$PWD":/home/dev/workspace \
+  -v tailscale-state:/var/lib/tailscale \
+  claude-dev-agents
+```
+
+**Manual authentication (without auth key):**
+```bash
+# Inside container
+sudo tailscale up
+# Follow the authentication URL
+```
+
+**Check status:**
+```bash
+sudo tailscale status
+sudo tailscale ip
+```
+
+**Required Docker flags for Tailscale:**
+- `--cap-add=NET_ADMIN` - Network interface management
+- `--cap-add=NET_RAW` - Packet manipulation
+- `--device=/dev/net/tun` - TUN device access
+- `-v <path>:/var/lib/tailscale` - State persistence
 
 ## Helper Script with Isolated Directories
 
