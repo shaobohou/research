@@ -321,18 +321,40 @@ claude "Write hello world in Python"
 ./docker/manage-firewall.sh --stats
 ```
 
+## Current Limitations
+
+**Protocol Coverage**: Only HTTP/HTTPS traffic that respects proxy settings is monitored.
+
+**NOT Currently Covered**:
+- ❌ Local network access (`localhost`, `127.0.0.1`, `192.168.x.x`, `10.x.x.x`)
+- ❌ Direct TCP/UDP connections
+- ❌ DNS queries
+- ❌ SSH, FTP, SMTP, database connections
+- ❌ WebSocket connections (may bypass proxy)
+- ❌ Applications that ignore HTTP_PROXY environment variables
+
+**Workaround**: For HTTP/HTTPS to localhost, remove `NO_PROXY` setting in `run-monitored.sh`. For comprehensive coverage including all protocols, see Future Enhancements below.
+
 ## Future Enhancements
 
 Potential improvements:
 
+- [ ] **Comprehensive network monitoring with iptables/nftables** (HIGH PRIORITY)
+  - Monitor ALL protocols (TCP, UDP, ICMP, etc.)
+  - Cover local network access (localhost, private IPs, host machine)
+  - DNS query monitoring and filtering
+  - Interactive prompts for all connection types
+  - Userspace daemon for permission management
+  - Complete visibility into container network activity
 - [ ] Web-based UI for remote management
 - [ ] Bandwidth limiting per domain
 - [ ] Request/response content inspection and logging
-- [ ] Integration with iptables for non-HTTP protocols
 - [ ] Rate limiting (e.g., max 10 requests/minute to a domain)
 - [ ] Scheduling (allow during work hours only)
 - [ ] Multiple rule profiles (strict, normal, permissive)
 - [ ] Browser extension for managing rules via GUI
+- [ ] Per-process network filtering (track which binary makes requests)
+- [ ] Network namespace isolation with custom routing tables
 
 ## See Also
 
