@@ -89,27 +89,27 @@ class NetworkFirewall:
             self.stats[decision] += 1
             self.stats["total"] += 1
 
-    def check_permission(self, host: str, url: str, method: str) -> bool:
+    def check_permission(self, host: str, url: str, method: str, path: str) -> bool:
         """Check if request should be allowed"""
 
         # Check exact URL match
         if url in self.rules:
             rule = self.rules[url]
             if rule == "allow":
-                self.log_request(host, method, url, "ALLOW")
+                self.log_request(host, method, path, "ALLOW")
                 return True
             elif rule == "deny":
-                self.log_request(host, method, url, "DENY")
+                self.log_request(host, method, path, "DENY")
                 return False
 
         # Check domain-level rules
         if host in self.rules:
             rule = self.rules[host]
             if rule in ("allow", "allow-domain"):
-                self.log_request(host, method, url, "ALLOW")
+                self.log_request(host, method, path, "ALLOW")
                 return True
             elif rule in ("deny", "deny-domain"):
-                self.log_request(host, method, url, "DENY")
+                self.log_request(host, method, path, "DENY")
                 return False
 
         # Check wildcard domain rules (*.example.com)
@@ -119,22 +119,22 @@ class NetworkFirewall:
             if wildcard in self.rules:
                 rule = self.rules[wildcard]
                 if rule in ("allow", "allow-domain"):
-                    self.log_request(host, method, url, "ALLOW")
+                    self.log_request(host, method, path, "ALLOW")
                     return True
                 elif rule in ("deny", "deny-domain"):
-                    self.log_request(host, method, url, "DENY")
+                    self.log_request(host, method, path, "DENY")
                     return False
 
         # Default: prompt user
-        return self.prompt_user(host, url, method)
+        return self.prompt_user(host, url, method, path)
 
-    def prompt_user(self, host: str, url: str, method: str) -> bool:
+    def prompt_user(self, host: str, url: str, method: str, path: str) -> bool:
         """Interactively ask user for permission"""
         console.print("\n" + "=" * 80)
         console.print("[bold yellow]Network Access Request[/bold yellow]")
         console.print(f"[cyan]Host:[/cyan] {host}")
         console.print(f"[cyan]Method:[/cyan] {method}")
-        console.print(f"[cyan]Path:[/cyan] {url}")
+        console.print(f"[cyan]Path:[/cyan] {path}")
         console.print("=" * 80)
 
         choices = {
@@ -154,33 +154,33 @@ class NetworkFirewall:
         action = choices[choice][0]
 
         if action == "allow-once":
-            self.log_request(host, method, url, "ALLOW-ONCE")
+            self.log_request(host, method, path, "ALLOW-ONCE")
             return True
         elif action == "deny-once":
-            self.log_request(host, method, url, "DENY-ONCE")
+            self.log_request(host, method, path, "DENY-ONCE")
             return False
         elif action == "allow-domain":
             self.rules[host] = "allow-domain"
             self.save_rules()
-            self.log_request(host, method, url, "ALLOW-RULE")
+            self.log_request(host, method, path, "ALLOW-RULE")
             console.print(f"[green]✓ Added allow rule for {host}[/green]")
             return True
         elif action == "deny-domain":
             self.rules[host] = "deny-domain"
             self.save_rules()
-            self.log_request(host, method, url, "DENY-RULE")
+            self.log_request(host, method, path, "DENY-RULE")
             console.print(f"[red]✗ Added deny rule for {host}[/red]")
             return False
         elif action == "allow-url":
             self.rules[url] = "allow"
             self.save_rules()
-            self.log_request(host, method, url, "ALLOW-RULE")
+            self.log_request(host, method, path, "ALLOW-RULE")
             console.print("[green]✓ Added allow rule for URL[/green]")
             return True
         elif action == "deny-url":
             self.rules[url] = "deny"
             self.save_rules()
-            self.log_request(host, method, url, "DENY-RULE")
+            self.log_request(host, method, path, "DENY-RULE")
             console.print("[red]✗ Added deny rule for URL[/red]")
             return False
 
@@ -226,7 +226,7 @@ class FirewallAddon:
         path = flow.request.path
         url = f"{host}{path}"
 
-        if not firewall.check_permission(host, url, method):
+        if not firewall.check_permission(host, url, method, path):
             flow.response = http.Response.make(
                 403, b"Access denied by network firewall", {"Content-Type": "text/plain"}
             )
