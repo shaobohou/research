@@ -9,20 +9,47 @@ set -euo pipefail
 # - Optional network monitoring and firewall (enabled by default)
 # - Credential copying from host
 #
+# Usage:
+#   ./docker/run-isolated.sh [OPTIONS]
+#
+# Options:
+#   --no-monitoring       Disable network monitoring (on by default)
+#   --help               Show this help message
+#
 # Environment Variables:
 #   COPY_CODEX_CREDS=true|false    - Copy Codex credentials (default: true)
 #   COPY_CLAUDE_CREDS=true|false   - Copy Claude credentials (default: false)
-#   ENABLE_MONITORING=true|false   - Enable network monitoring (default: true)
 #
 # Examples:
-#   ./docker/run-isolated.sh                           # Default: monitoring ON
-#   ENABLE_MONITORING=false ./docker/run-isolated.sh   # Monitoring OFF
+#   ./docker/run-isolated.sh                    # Default: monitoring ON
+#   ./docker/run-isolated.sh --no-monitoring    # Monitoring OFF
+#   COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh --no-monitoring
 #
 
-# Defaults
+# Parse command-line arguments
+ENABLE_MONITORING=true
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --no-monitoring)
+      ENABLE_MONITORING=false
+      shift
+      ;;
+    --help)
+      grep '^#' "$0" | sed 's/^# \?//' | head -n 20
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      echo "Run '$0 --help' for usage information" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Defaults for environment variables
 COPY_CODEX_CREDS="${COPY_CODEX_CREDS:-true}"
 COPY_CLAUDE_CREDS="${COPY_CLAUDE_CREDS:-false}"
-ENABLE_MONITORING="${ENABLE_MONITORING:-true}"
 
 # Get script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -181,7 +208,7 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   echo "  - Terminal-based management"
   echo ""
   echo "To disable monitoring:"
-  echo "  ENABLE_MONITORING=false ./docker/run-isolated.sh"
+  echo "  ./docker/run-isolated.sh --no-monitoring"
   echo "=========================================="
   echo ""
 else
@@ -190,9 +217,8 @@ else
   echo "=========================================="
   echo "Container will have unrestricted network access"
   echo ""
-  echo "To enable monitoring:"
-  echo "  ENABLE_MONITORING=true ./docker/run-isolated.sh"
-  echo "  (or omit ENABLE_MONITORING - it's on by default)"
+  echo "To enable monitoring (on by default):"
+  echo "  ./docker/run-isolated.sh"
   echo "=========================================="
   echo ""
 fi

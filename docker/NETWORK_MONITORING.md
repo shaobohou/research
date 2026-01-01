@@ -29,7 +29,7 @@ Interactive network access control for the Docker development environment. Monit
 
 **Note**: Network monitoring is **enabled by default**. To disable it:
 ```bash
-ENABLE_MONITORING=false ./docker/run-isolated.sh
+./docker/run-isolated.sh --no-monitoring
 ```
 
 This will:
@@ -302,10 +302,10 @@ cp my-rules.json ~/docker-agent-data/network-rules.json
 
 ### Run Without Monitoring
 
-To run the container without network monitoring, use the standard script:
+To run the container without network monitoring, use the `--no-monitoring` flag:
 
 ```bash
-./docker/run-isolated.sh
+./docker/run-isolated.sh --no-monitoring
 ```
 
 ### Custom Proxy Port

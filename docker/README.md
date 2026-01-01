@@ -79,10 +79,13 @@ The `run-isolated.sh` script provides project-isolated configs with **optional n
   - Persistent rules and complete access logging
   - REST API for programmatic access
 
-**Configuration** (via environment variables):
+**Options**:
+- `--no-monitoring` - Disable network monitoring (on by default)
+- `--help` - Show usage information
+
+**Environment Variables**:
 - `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
 - `COPY_CLAUDE_CREDS` - Copy Claude credentials (default: `false`)
-- `ENABLE_MONITORING` - Enable network monitoring (default: `true`)
 
 **Examples**:
 ```bash
@@ -90,13 +93,13 @@ The `run-isolated.sh` script provides project-isolated configs with **optional n
 ./docker/run-isolated.sh
 
 # Disable network monitoring
-ENABLE_MONITORING=false ./docker/run-isolated.sh
+./docker/run-isolated.sh --no-monitoring
 
 # Copy Claude creds, keep monitoring
 COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
 
 # All options combined
-ENABLE_MONITORING=false COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
+COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh --no-monitoring
 ```
 
 **With Network Monitoring** (default):
