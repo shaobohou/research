@@ -94,24 +94,29 @@ The `run-monitored.sh` script launches containers with **interactive network acc
 
 **Features**:
 - Monitor all HTTP/HTTPS requests in real-time
+- **Web dashboard** at http://localhost:8081 with live updates
 - Interactive prompts to allow/deny each domain or URL
 - Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
 - Persistent rules saved between sessions
 - Complete access logging and statistics
+- REST API for programmatic access
 
 **Example workflow**:
 ```bash
-# Terminal 1: Start container with monitoring
+# Start container with monitoring
 ./docker/run-monitored.sh
 
-# Terminal 2: Manage firewall rules (optional)
-./docker/manage-firewall.sh
+# Open browser to http://localhost:8081
+# - Real-time activity feed
+# - Statistics dashboard
+# - Rule management interface
 
-# The container will prompt for permission on each new network request
+# Or use CLI: ./docker/manage-firewall.sh
 ```
 
 See [NETWORK_MONITORING.md](NETWORK_MONITORING.md) for complete documentation on:
 - How the network monitoring works
+- Using the web dashboard and REST API
 - Permission levels and rule management
 - Pre-configuring trusted domains
 - Viewing statistics and logs

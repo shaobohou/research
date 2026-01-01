@@ -67,12 +67,21 @@ if [ ! -f "$CLAUDE_JSON" ]; then
 fi
 
 # Check if network monitor is already running
+PROXY_ALREADY_RUNNING=false
+WEB_UI_ALREADY_RUNNING=false
+
 if pgrep -f "network-monitor.py" > /dev/null; then
   echo "✓ Network monitor already running"
-else
+  PROXY_ALREADY_RUNNING=true
+fi
+
+if pgrep -f "web-ui.py" > /dev/null; then
+  echo "✓ Web UI already running"
+  WEB_UI_ALREADY_RUNNING=true
+fi
+
+if [ "$PROXY_ALREADY_RUNNING" = false ]; then
   echo "Starting network monitor proxy on port 8080..."
-  echo "Run './docker/manage-firewall.sh' in another terminal to manage rules"
-  echo ""
 
   # Start the proxy in the background
   uv run "$SCRIPT_DIR/network-monitor.py" > /tmp/network-monitor.log 2>&1 &
@@ -87,14 +96,42 @@ else
   fi
 
   echo "✓ Network monitor started (PID: $PROXY_PID)"
-  echo ""
+fi
 
-  # Create cleanup function
+if [ "$WEB_UI_ALREADY_RUNNING" = false ]; then
+  echo "Starting web UI on port 8081..."
+
+  # Start the web UI in the background
+  cd "$SCRIPT_DIR" && uv run "$SCRIPT_DIR/web-ui.py" > /tmp/web-ui.log 2>&1 &
+  WEB_UI_PID=$!
+
+  # Wait for web UI to start
+  sleep 2
+
+  if ! ps -p $WEB_UI_PID > /dev/null; then
+    echo "WARNING: Web UI failed to start. Check /tmp/web-ui.log" >&2
+    echo "Continuing without web UI..."
+  else
+    echo "✓ Web UI started (PID: $WEB_UI_PID)"
+    echo "✓ Web UI available at: http://localhost:8081"
+  fi
+fi
+
+echo ""
+
+# Create cleanup function
+if [ "$PROXY_ALREADY_RUNNING" = false ] || [ "$WEB_UI_ALREADY_RUNNING" = false ]; then
   cleanup() {
     echo ""
-    echo "Stopping network monitor..."
-    kill $PROXY_PID 2>/dev/null || true
-    wait $PROXY_PID 2>/dev/null || true
+    echo "Stopping services..."
+    if [ "$PROXY_ALREADY_RUNNING" = false ] && [ -n "${PROXY_PID:-}" ]; then
+      kill $PROXY_PID 2>/dev/null || true
+      wait $PROXY_PID 2>/dev/null || true
+    fi
+    if [ "$WEB_UI_ALREADY_RUNNING" = false ] && [ -n "${WEB_UI_PID:-}" ]; then
+      kill $WEB_UI_PID 2>/dev/null || true
+      wait $WEB_UI_PID 2>/dev/null || true
+    fi
     echo "✓ Cleanup complete"
   }
 
@@ -117,7 +154,14 @@ echo "Network Monitoring Enabled"
 echo "=========================================="
 echo "Proxy URL: $PROXY_URL"
 echo "All HTTP/HTTPS traffic will be monitored"
-echo "You'll be prompted to allow/deny each domain"
+echo ""
+echo "Web UI: http://localhost:8081"
+echo "  - Real-time monitoring dashboard"
+echo "  - Manage firewall rules"
+echo "  - View statistics and logs"
+echo ""
+echo "CLI: ./docker/manage-firewall.sh"
+echo "  - Terminal-based management"
 echo "=========================================="
 echo ""
 

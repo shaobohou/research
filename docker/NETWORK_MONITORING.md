@@ -5,6 +5,7 @@ Interactive network access control for the Docker development environment. Monit
 ## Features
 
 - **Real-time Network Monitoring**: See all HTTP/HTTPS requests from the container
+- **Web-based Dashboard**: Modern browser interface with live updates
 - **Interactive Permission Control**: Approve or deny each request with prompts
 - **Multiple Permission Levels**:
   - `allow-once`: Allow this single request
@@ -16,6 +17,7 @@ Interactive network access control for the Docker development environment. Monit
 - **Persistent Rules**: Rules are saved and reloaded automatically
 - **Access Logging**: All requests are logged with timestamps and decisions
 - **Statistics Dashboard**: View request counts, recent activity, and active rules
+- **Multiple Interfaces**: Web UI, CLI, or programmatic API access
 
 ## Quick Start
 
@@ -27,12 +29,23 @@ Interactive network access control for the Docker development environment. Monit
 
 This will:
 - Start a network proxy on the host (port 8080)
+- Start a web UI server (port 8081)
 - Launch the Docker container configured to use the proxy
 - Prompt you for permission on each new domain/URL accessed
 
-### 2. Manage Firewall Rules (Optional)
+### 2. Access the Web Dashboard
 
-In a separate terminal, run:
+Open your browser to **http://localhost:8081** for:
+- 🔴 **Live Activity Feed**: See requests in real-time as they happen
+- 📊 **Statistics Dashboard**: View allowed/denied counts and trends
+- ⚙️ **Rule Management**: Add, edit, or remove firewall rules with a click
+- 📥 **Import/Export**: Save and load rule configurations
+
+The web UI updates automatically via Server-Sent Events - no refresh needed!
+
+### 3. Manage Firewall Rules (CLI Alternative)
+
+Prefer the terminal? Run:
 
 ```bash
 ./docker/manage-firewall.sh
@@ -44,7 +57,7 @@ This opens an interactive menu where you can:
 - Export/import rule configurations
 - Clear all rules
 
-### 3. View Statistics Only
+Or for quick stats:
 
 ```bash
 ./docker/manage-firewall.sh --stats
@@ -123,6 +136,106 @@ All configuration and logs are stored in `~/docker-agent-data/`:
   "suspicious-site.com": "deny-domain",
   "https://specific-endpoint.com/api/sensitive": "deny"
 }
+```
+
+## Web UI and API
+
+### Web Dashboard
+
+The web UI (http://localhost:8081) provides a modern, real-time interface:
+
+**Live Activity Feed**
+- See network requests as they happen (auto-updates every 1-2 seconds)
+- Color-coded decision indicators (green=allow, red=deny)
+- Filter and search through request history
+- Request details: timestamp, method, URL, decision
+
+**Statistics Dashboard**
+- Total requests counter
+- Allowed vs denied breakdown
+- Active rules count
+- Visual indicators and charts
+
+**Rule Management**
+- Add new rules with dropdown action selector
+- Delete existing rules with one click
+- Import rules from JSON file
+- Export current rules for backup/sharing
+- Clear all rules with confirmation
+
+**Browser Features**
+- Dark mode interface optimized for long sessions
+- Responsive design works on desktop and mobile
+- No refresh needed - uses Server-Sent Events for live updates
+- Clean, minimal UI inspired by GitHub's design system
+
+### REST API
+
+The web UI is powered by a REST API that you can use programmatically:
+
+**GET /api/rules**
+```bash
+curl http://localhost:8081/api/rules
+```
+Returns all firewall rules and metadata.
+
+**POST /api/rules**
+```bash
+curl -X POST http://localhost:8081/api/rules \
+  -H 'Content-Type: application/json' \
+  -d '{"target": "example.com", "action": "allow-domain"}'
+```
+Add or update a firewall rule.
+
+**DELETE /api/rules/{target}**
+```bash
+curl -X DELETE http://localhost:8081/api/rules/example.com
+```
+Remove a specific rule.
+
+**GET /api/stats**
+```bash
+curl http://localhost:8081/api/stats
+```
+Get network access statistics.
+
+**GET /api/requests**
+```bash
+curl http://localhost:8081/api/requests?limit=50
+```
+Get recent network requests.
+
+**GET /api/stream**
+```bash
+curl http://localhost:8081/api/stream
+```
+Server-Sent Events stream for live updates.
+
+**GET /api/health**
+```bash
+curl http://localhost:8081/api/health
+```
+Health check endpoint.
+
+### Programmatic Usage Example
+
+```python
+import requests
+
+# Add a rule
+requests.post('http://localhost:8081/api/rules', json={
+    'target': 'api.github.com',
+    'action': 'allow-domain'
+})
+
+# Get statistics
+stats = requests.get('http://localhost:8081/api/stats').json()
+print(f"Total requests: {stats['stats']['total']}")
+
+# Export all rules
+rules = requests.get('http://localhost:8081/api/export').json()
+with open('my-rules.json', 'w') as f:
+    json.dump(rules, f, indent=2)
 ```
 
 ## Common Workflows
@@ -346,15 +459,20 @@ Potential improvements:
   - Interactive prompts for all connection types
   - Userspace daemon for permission management
   - Complete visibility into container network activity
-- [ ] Web-based UI for remote management
+- [x] **Web-based UI for monitoring and management** (COMPLETED ✓)
+  - Real-time dashboard with live updates
+  - Statistics and analytics
+  - Rule management interface
+  - REST API for programmatic access
 - [ ] Bandwidth limiting per domain
 - [ ] Request/response content inspection and logging
 - [ ] Rate limiting (e.g., max 10 requests/minute to a domain)
 - [ ] Scheduling (allow during work hours only)
 - [ ] Multiple rule profiles (strict, normal, permissive)
-- [ ] Browser extension for managing rules via GUI
 - [ ] Per-process network filtering (track which binary makes requests)
 - [ ] Network namespace isolation with custom routing tables
+- [ ] TLS certificate pinning for specific domains
+- [ ] Geo-blocking based on IP address location
 
 ## See Also
 
