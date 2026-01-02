@@ -128,59 +128,43 @@ def load_recent_logs(limit: int = 100) -> List[Dict]:
         return []
 
     try:
-        # Use efficient tail-like reading: read from end of file
+        # For files smaller than 1MB, just read the whole thing
+        # For larger files, read last 100KB (should be enough for 100 lines)
+        file_size = os.path.getsize(LOG_FILE)
+
+        if file_size == 0:
+            return []
+
+        # Read last portion of file (or entire file if small)
+        read_size = min(file_size, 100 * 1024)  # 100KB max
+
         with open(LOG_FILE, "rb") as f:
-            # Start from end of file
-            f.seek(0, os.SEEK_END)
-            file_size = f.tell()
+            f.seek(max(0, file_size - read_size))
+            data = f.read()
 
-            if file_size == 0:
-                return []
+        # Decode and split into lines
+        text = data.decode('utf-8', errors='ignore')
+        lines = text.split('\n')
 
-            # Read in chunks from the end
-            chunk_size = 8192
-            lines_found = []
-            position = file_size
+        # Take last N non-empty lines and reverse (most recent first)
+        recent_lines = [line for line in lines if line.strip()][-limit:]
+        recent_lines.reverse()
 
-            while position > 0 and len(lines_found) < limit:
-                # Calculate chunk to read
-                chunk = min(chunk_size, position)
-                position -= chunk
+        # Parse each line
+        requests = []
+        for line in recent_lines:
+            parsed = parse_log_line(line)
+            if parsed:
+                requests.append(parsed)
 
-                # Read chunk
-                f.seek(position)
-                data = f.read(chunk)
-
-                # Split into lines
-                chunk_lines = data.decode('utf-8', errors='ignore').split('\n')
-
-                # Add lines (in reverse order since we're reading backwards)
-                if position > 0:
-                    # First line might be partial, skip it
-                    lines_found.extend(reversed(chunk_lines[1:]))
-                else:
-                    # At beginning of file, include all lines
-                    lines_found.extend(reversed(chunk_lines))
-
-            # Take only the requested number of lines
-            recent_lines = lines_found[:limit]
-
-            # Parse each line
-            requests = []
-            for line in recent_lines:
-                if line.strip():
-                    parsed = parse_log_line(line)
-                    if parsed:
-                        requests.append(parsed)
-
-            return requests
+        return requests
 
     except Exception as e:
         print(f"Error loading logs: {e}")
         return []
 
 
-def calculate_stats_incremental() -> Dict:
+def calculate_stats() -> Dict:
     """
     Calculate statistics from log file (OPTIMIZED: incremental reading).
 
@@ -228,11 +212,6 @@ def calculate_stats_incremental() -> Dict:
         except Exception as e:
             print(f"Error calculating stats: {e}")
             return dict(stats)
-
-
-def calculate_stats() -> Dict:
-    """Calculate statistics from log file (uses incremental reading)"""
-    return calculate_stats_incremental()
 
 
 def update_cache():

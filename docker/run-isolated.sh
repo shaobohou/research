@@ -57,15 +57,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Helper function: wait for port to be available
 wait_for_port() {
   local port=$1
-  local max_wait=${2:-10}
-  local elapsed=0
+  local max_iterations=${2:-20}  # Default 20 iterations = 10 seconds
+  local count=0
 
   while ! nc -z localhost "$port" 2>/dev/null; do
-    if [ $elapsed -ge $max_wait ]; then
+    if [ $count -ge $max_iterations ]; then
       return 1
     fi
     sleep 0.5
-    elapsed=$((elapsed + 1))
+    count=$((count + 1))
   done
   return 0
 }
@@ -146,8 +146,8 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     uv run "$SCRIPT_DIR/monitoring/network-monitor.py" > /tmp/network-monitor.log 2>&1 &
     PROXY_PID=$!
 
-    # Wait for proxy port to be ready
-    if ! wait_for_port 8080 10; then
+    # Wait for proxy port to be ready (20 iterations = 10 seconds)
+    if ! wait_for_port 8080 20; then
       echo "ERROR: Network monitor failed to start on port 8080. Check /tmp/network-monitor.log" >&2
       exit 1
     fi
@@ -168,8 +168,8 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     cd "$SCRIPT_DIR/monitoring" && uv run "$SCRIPT_DIR/monitoring/web-ui.py" > /tmp/web-ui.log 2>&1 &
     WEB_UI_PID=$!
 
-    # Wait for web UI port to be ready
-    if ! wait_for_port 8081 10; then
+    # Wait for web UI port to be ready (20 iterations = 10 seconds)
+    if ! wait_for_port 8081 20; then
       echo "WARNING: Web UI failed to start on port 8081. Check /tmp/web-ui.log" >&2
       echo "Continuing without web UI..."
     elif ! ps -p $WEB_UI_PID > /dev/null; then
