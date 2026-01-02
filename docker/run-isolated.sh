@@ -51,25 +51,6 @@ done
 COPY_CODEX_CREDS="${COPY_CODEX_CREDS:-true}"
 COPY_CLAUDE_CREDS="${COPY_CLAUDE_CREDS:-false}"
 
-# Get script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Helper function: wait for port to be available
-wait_for_port() {
-  local port=$1
-  local max_iterations=${2:-20}  # Default 20 iterations = 10 seconds
-  local count=0
-
-  while ! nc -z localhost "$port" 2>/dev/null; do
-    if [ $count -ge $max_iterations ]; then
-      return 1
-    fi
-    sleep 0.5
-    count=$((count + 1))
-  done
-  return 0
-}
-
 # Get repo root and name, or use current directory if not a git repo
 if git rev-parse --git-dir > /dev/null 2>&1; then
   ROOT_DIR="$(git rev-parse --show-toplevel)"
@@ -127,6 +108,25 @@ PROXY_PID=""
 WEB_UI_PID=""
 
 if [ "$ENABLE_MONITORING" = "true" ]; then
+  # Get script directory for monitoring scripts
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+  # Helper function: wait for port to be available
+  wait_for_port() {
+    local port=$1
+    local max_iterations=${2:-20}  # Default 20 iterations = 10 seconds
+    local count=0
+
+    while ! nc -z localhost "$port" 2>/dev/null; do
+      if [ $count -ge $max_iterations ]; then
+        return 1
+      fi
+      sleep 0.5
+      count=$((count + 1))
+    done
+    return 0
+  }
+
   # Check if network monitor is already running
   if pgrep -f "network-monitor.py" > /dev/null; then
     echo "✓ Network monitor already running"
