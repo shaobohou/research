@@ -26,6 +26,10 @@ set -euo pipefail
 #   COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh --no-monitoring
 #
 
+# ============================================================================
+# COMMAND-LINE ARGUMENT PARSING
+# ============================================================================
+
 # Parse command-line arguments
 ENABLE_MONITORING=true
 
@@ -46,6 +50,10 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+# ============================================================================
+# ENVIRONMENT CONFIGURATION
+# ============================================================================
 
 # Defaults for environment variables
 COPY_CODEX_CREDS="${COPY_CODEX_CREDS:-true}"
@@ -69,8 +77,12 @@ DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
 mkdir -p "$DATA_DIR/.codex"
 mkdir -p "$DATA_DIR/.claude"
 
-# Copy Codex auth if enabled
-if [ "$COPY_CODEX_CREDS" = "true" ]; then
+# ============================================================================
+# CREDENTIAL COPYING
+# ============================================================================
+
+# Copy Codex auth if enabled and missing
+if [ "$COPY_CODEX_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.codex/auth.json" ]; then
   if [ -f "$HOME/.codex/auth.json" ]; then
     if cp "$HOME/.codex/auth.json" "$DATA_DIR/.codex/auth.json" 2>/dev/null; then
       echo "[codex] Copied auth.json"
@@ -82,8 +94,8 @@ if [ "$COPY_CODEX_CREDS" = "true" ]; then
   fi
 fi
 
-# Copy Claude credentials if enabled
-if [ "$COPY_CLAUDE_CREDS" = "true" ]; then
+# Copy Claude credentials if enabled and missing
+if [ "$COPY_CLAUDE_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.claude/.credentials.json" ]; then
   if [ -f "$HOME/.claude/.credentials.json" ]; then
     if cp "$HOME/.claude/.credentials.json" "$DATA_DIR/.claude/.credentials.json" 2>/dev/null; then
       echo "[claude] Copied credentials"
@@ -100,6 +112,10 @@ CLAUDE_JSON="$DATA_DIR/.claude.json"
 if [ ! -f "$CLAUDE_JSON" ]; then
   echo '{}' > "$CLAUDE_JSON"
 fi
+
+# ============================================================================
+# NETWORK MONITORING SETUP
+# ============================================================================
 
 # Network monitoring setup (if enabled)
 PROXY_ALREADY_RUNNING=false
@@ -127,6 +143,10 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     return 0
   }
 
+  # --------------------------------------------------------------------------
+  # Check if monitoring services are already running
+  # --------------------------------------------------------------------------
+
   # Check if network monitor is already running
   if pgrep -f "network-monitor.py" > /dev/null; then
     echo "✓ Network monitor already running"
@@ -137,6 +157,10 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     echo "✓ Web UI already running"
     WEB_UI_ALREADY_RUNNING=true
   fi
+
+  # --------------------------------------------------------------------------
+  # Start monitoring services
+  # --------------------------------------------------------------------------
 
   # Start proxy if not running
   if [ "$PROXY_ALREADY_RUNNING" = false ]; then
@@ -183,6 +207,10 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
 
   echo ""
 
+  # --------------------------------------------------------------------------
+  # Setup cleanup handlers
+  # --------------------------------------------------------------------------
+
   # Create cleanup function for monitoring services
   if [ "$PROXY_ALREADY_RUNNING" = false ] || [ "$WEB_UI_ALREADY_RUNNING" = false ]; then
     cleanup() {
@@ -201,6 +229,10 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
 
     trap cleanup EXIT INT TERM
   fi
+
+  # --------------------------------------------------------------------------
+  # Configure proxy URL and display status
+  # --------------------------------------------------------------------------
 
   # Determine host IP for Docker to reach host
   if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -243,6 +275,10 @@ else
   echo ""
 fi
 
+# ============================================================================
+# DOCKER COMMAND CONSTRUCTION
+# ============================================================================
+
 # Build docker run command based on monitoring setting
 DOCKER_ARGS=(
   "--rm" "-it"
@@ -266,6 +302,10 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     "-e" "no_proxy=localhost,127.0.0.1"
   )
 fi
+
+# ============================================================================
+# EXECUTE DOCKER CONTAINER
+# ============================================================================
 
 # Run Docker container
 docker run "${DOCKER_ARGS[@]}" claude-dev-agents
