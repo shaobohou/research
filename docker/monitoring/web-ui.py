@@ -18,6 +18,7 @@ Provides a browser-based interface for:
 """
 
 import json
+import os
 import threading
 import time
 from pathlib import Path
@@ -46,6 +47,13 @@ cache = {
     "last_update": None,
 }
 cache_lock = threading.Lock()
+
+# File position tracking for incremental log reading
+log_state = {
+    "position": 0,  # Last read position in file
+    "inode": None,  # File inode to detect rotation
+}
+log_state_lock = threading.Lock()
 
 
 def load_rules() -> Dict[str, str]:
@@ -115,48 +123,116 @@ def parse_log_line(line: str) -> Optional[Dict]:
 
 
 def load_recent_logs(limit: int = 100) -> List[Dict]:
-    """Load recent requests from log file"""
+    """Load recent requests from log file (optimized tail implementation)"""
     if not LOG_FILE.exists():
         return []
 
     try:
-        with open(LOG_FILE, "r") as f:
-            lines = f.readlines()
+        # Use efficient tail-like reading: read from end of file
+        with open(LOG_FILE, "rb") as f:
+            # Start from end of file
+            f.seek(0, os.SEEK_END)
+            file_size = f.tell()
 
-        # Get last N lines
-        recent_lines = lines[-limit:] if len(lines) > limit else lines
+            if file_size == 0:
+                return []
 
-        # Parse each line
-        requests = []
-        for line in reversed(recent_lines):
-            parsed = parse_log_line(line)
-            if parsed:
-                requests.append(parsed)
+            # Read in chunks from the end
+            chunk_size = 8192
+            lines_found = []
+            position = file_size
 
-        return requests
+            while position > 0 and len(lines_found) < limit:
+                # Calculate chunk to read
+                chunk = min(chunk_size, position)
+                position -= chunk
+
+                # Read chunk
+                f.seek(position)
+                data = f.read(chunk)
+
+                # Split into lines
+                chunk_lines = data.decode('utf-8', errors='ignore').split('\n')
+
+                # Add lines (in reverse order since we're reading backwards)
+                if position > 0:
+                    # First line might be partial, skip it
+                    lines_found.extend(reversed(chunk_lines[1:]))
+                else:
+                    # At beginning of file, include all lines
+                    lines_found.extend(reversed(chunk_lines))
+
+            # Take only the requested number of lines
+            recent_lines = lines_found[:limit]
+
+            # Parse each line
+            requests = []
+            for line in recent_lines:
+                if line.strip():
+                    parsed = parse_log_line(line)
+                    if parsed:
+                        requests.append(parsed)
+
+            return requests
+
     except Exception as e:
         print(f"Error loading logs: {e}")
         return []
 
 
+def calculate_stats_incremental() -> Dict:
+    """
+    Calculate statistics from log file (OPTIMIZED: incremental reading).
+
+    Only reads new lines since last call, tracking file position.
+    Handles log rotation by detecting inode changes.
+    """
+    with log_state_lock:
+        # Get current stats from cache (or initialize)
+        with cache_lock:
+            stats = defaultdict(int, cache.get("stats", {}))
+
+        if not LOG_FILE.exists():
+            return dict(stats)
+
+        try:
+            # Get file info
+            file_stat = os.stat(LOG_FILE)
+            current_inode = file_stat.st_ino
+            file_size = file_stat.st_size
+
+            # Check if file was rotated/truncated (inode changed or size decreased)
+            if log_state["inode"] != current_inode or file_size < log_state["position"]:
+                # File was rotated - recalculate from scratch
+                print(f"Log file rotation detected, recalculating stats...")
+                stats = defaultdict(int)
+                log_state["position"] = 0
+                log_state["inode"] = current_inode
+
+            # Read only new lines since last position
+            with open(LOG_FILE, "r") as f:
+                f.seek(log_state["position"])
+
+                for line in f:
+                    parsed = parse_log_line(line)
+                    if parsed:
+                        stats["total"] += 1
+                        stats[parsed["decision"].lower()] += 1
+
+                # Update position for next read
+                log_state["position"] = f.tell()
+                log_state["inode"] = current_inode
+
+            return dict(stats)
+
+        except Exception as e:
+            print(f"Error calculating stats: {e}")
+            return dict(stats)
+
+
 def calculate_stats() -> Dict:
-    """Calculate statistics from log file"""
-    stats = defaultdict(int)
-
-    if not LOG_FILE.exists():
-        return dict(stats)
-
-    try:
-        with open(LOG_FILE, "r") as f:
-            for line in f:
-                parsed = parse_log_line(line)
-                if parsed:
-                    stats["total"] += 1
-                    stats[parsed["decision"].lower()] += 1
-    except Exception as e:
-        print(f"Error calculating stats: {e}")
-
-    return dict(stats)
+    """Calculate statistics from log file (uses incremental reading)"""
+    return calculate_stats_incremental()
 
 
 def update_cache():
