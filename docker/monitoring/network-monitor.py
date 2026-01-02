@@ -350,7 +350,9 @@ def interactive_menu():
                 console.print(f"[cyan]{target}[/cyan]: [yellow]{action}[/yellow]")
         elif choice == "3":
             target = Prompt.ask("Enter domain or URL")
-            action_str = Prompt.ask("Action", choices=["allow", "deny", "allow-domain", "deny-domain"])
+            action_str = Prompt.ask(
+                "Action", choices=["allow", "deny", "allow-domain", "deny-domain"]
+            )
             firewall.rules[target] = action_str  # type: ignore[assignment]
             firewall.save_rules()
             console.print("[green]✓ Rule added[/green]")
