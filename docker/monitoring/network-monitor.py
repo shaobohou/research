@@ -17,16 +17,16 @@ with different permission levels (allow, deny, prompt, etc.).
 import json
 import sys
 import threading
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, Literal
 from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
+from typing import Literal
 
 from mitmproxy import http
 from mitmproxy.tools import main as mitmproxy_main
 from rich.console import Console
+from rich.prompt import Confirm, Prompt
 from rich.table import Table
-from rich.prompt import Prompt, Confirm
 
 # Permission types
 PermissionType = Literal["allow", "deny", "prompt", "allow-domain", "deny-domain"]
@@ -43,7 +43,7 @@ class NetworkFirewall:
     """Manages network access rules and permissions"""
 
     def __init__(self):
-        self.rules: Dict[str, PermissionType] = {}
+        self.rules: dict[str, PermissionType] = {}
         self.stats = defaultdict(int)
         self.recent_requests = []
         self.pending_requests = []  # Requests awaiting approval via web UI
@@ -124,7 +124,13 @@ class NetworkFirewall:
 
             # Keep recent requests in memory
             self.recent_requests.append(
-                {"timestamp": timestamp, "host": host, "method": method, "path": path, "decision": decision}
+                {
+                    "timestamp": timestamp,
+                    "host": host,
+                    "method": method,
+                    "path": path,
+                    "decision": decision,
+                }
             )
             if len(self.recent_requests) > self.max_recent:
                 self.recent_requests.pop(0)
@@ -268,8 +274,12 @@ def run_proxy():
     console.print(f"[cyan]Rules file:[/cyan] {CONFIG_FILE}")
     console.print(f"[cyan]Log file:[/cyan] {LOG_FILE}")
     console.print("[cyan]Proxy listening on:[/cyan] 0.0.0.0:8080")
-    console.print("\n[yellow]Configure Docker to use HTTP proxy: http://host.docker.internal:8080[/yellow]")
-    console.print("[yellow]Set HTTPS_PROXY and HTTP_PROXY environment variables in container[/yellow]\n")
+    console.print(
+        "\n[yellow]Configure Docker to use HTTP proxy: http://host.docker.internal:8080[/yellow]"
+    )
+    console.print(
+        "[yellow]Set HTTPS_PROXY and HTTP_PROXY environment variables in container[/yellow]\n"
+    )
 
     # Run mitmproxy with the firewall addon
     sys.argv = [
@@ -340,8 +350,8 @@ def interactive_menu():
                 console.print(f"[cyan]{target}[/cyan]: [yellow]{action}[/yellow]")
         elif choice == "3":
             target = Prompt.ask("Enter domain or URL")
-            action = Prompt.ask("Action", choices=["allow", "deny", "allow-domain", "deny-domain"])
-            firewall.rules[target] = action
+            action_str = Prompt.ask("Action", choices=["allow", "deny", "allow-domain", "deny-domain"])
+            firewall.rules[target] = action_str  # type: ignore[assignment]
             firewall.save_rules()
             console.print("[green]✓ Rule added[/green]")
         elif choice == "4":

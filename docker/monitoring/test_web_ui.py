@@ -281,3 +281,45 @@ def test_port_configuration():
     web_port = 8081
     assert isinstance(web_port, int)
     assert 1024 < web_port < 65535  # Valid port range
+
+
+# TODO: Integration tests needed to fully verify GitHub PR fixes
+#
+# These integration tests would require running actual Flask server instances
+# and handling concurrent requests with threading.
+#
+# 1. test_cache_lock_no_deadlock (PR Comment #2)
+#    - Start web-ui.py Flask server
+#    - Make concurrent API requests to /api/stats
+#    - Verify no deadlock occurs during cache updates
+#    - Verify calculate_stats doesn't acquire cache_lock
+#
+# 2. test_sse_stream_no_freeze (PR Comment #9)
+#    - Start web-ui.py Flask server
+#    - Connect EventSource to /api/stream
+#    - Make concurrent API requests while stream is active
+#    - Verify stream continues sending updates
+#    - Verify no freeze or blocking occurs
+#
+# 3. test_incremental_log_reading (PR Comment #7)
+#    - Start web-ui.py Flask server
+#    - Append new lines to log file
+#    - Call /api/stats endpoint
+#    - Verify only new lines are read (check file position)
+#    - Append more lines and verify incremental reading
+#    - Test log rotation handling (inode change)
+#
+# 4. test_approve_endpoint_creates_rule (PR Comment #10)
+#    - Start both network-monitor.py and web-ui.py
+#    - Add pending request via network-monitor
+#    - Call /api/approve with allow-domain action
+#    - Verify rule is created in network-rules.json
+#    - Send new request matching rule
+#    - Verify network-monitor auto-reloads and allows request
+#
+# 5. test_concurrent_rule_modifications (PR Comments #1, #2, #10)
+#    - Start both network-monitor.py and web-ui.py
+#    - Modify rules via web UI (/api/rules POST)
+#    - Simultaneously send requests through proxy
+#    - Verify no race conditions or deadlocks
+#    - Verify proxy sees updated rules immediately

@@ -21,10 +21,9 @@ import json
 import os
 import threading
 import time
-from pathlib import Path
-from datetime import datetime
 from collections import defaultdict
-from typing import Dict, List, Optional
+from datetime import datetime
+from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
@@ -56,7 +55,7 @@ log_state = {
 log_state_lock = threading.Lock()
 
 
-def load_rules() -> Dict[str, str]:
+def load_rules() -> dict[str, str]:
     """Load rules from config file"""
     CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
     if CONFIG_FILE.exists():
@@ -69,7 +68,7 @@ def load_rules() -> Dict[str, str]:
     return {}
 
 
-def save_rules(rules: Dict[str, str]) -> bool:
+def save_rules(rules: dict[str, str]) -> bool:
     """Save rules to config file"""
     try:
         CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -81,7 +80,7 @@ def save_rules(rules: Dict[str, str]) -> bool:
         return False
 
 
-def load_pending() -> List[Dict]:
+def load_pending() -> list[dict]:
     """Load pending requests from file"""
     PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
     if PENDING_FILE.exists():
@@ -94,7 +93,7 @@ def load_pending() -> List[Dict]:
     return []
 
 
-def save_pending(pending: List[Dict]) -> bool:
+def save_pending(pending: list[dict]) -> bool:
     """Save pending requests to file"""
     try:
         PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -106,7 +105,7 @@ def save_pending(pending: List[Dict]) -> bool:
         return False
 
 
-def parse_log_line(line: str) -> Optional[Dict]:
+def parse_log_line(line: str) -> dict | None:
     """Parse a log line into structured data"""
     try:
         parts = line.strip().split(" | ")
@@ -122,7 +121,7 @@ def parse_log_line(line: str) -> Optional[Dict]:
     return None
 
 
-def load_recent_logs(limit: int = 100) -> List[Dict]:
+def load_recent_logs(limit: int = 100) -> list[dict]:
     """Load recent requests from log file (optimized tail implementation)"""
     if not LOG_FILE.exists():
         return []
@@ -164,7 +163,7 @@ def load_recent_logs(limit: int = 100) -> List[Dict]:
         return []
 
 
-def calculate_stats(current_stats: Dict = None) -> Dict:
+def calculate_stats(current_stats: dict | None = None) -> dict:
     """
     Calculate statistics from log file (OPTIMIZED: incremental reading).
 
@@ -196,7 +195,7 @@ def calculate_stats(current_stats: Dict = None) -> Dict:
                 log_state["inode"] = current_inode
 
             # Read only new lines since last position
-            with open(LOG_FILE, "r") as f:
+            with open(LOG_FILE) as f:
                 f.seek(log_state["position"])
 
                 for line in f:
@@ -256,7 +255,13 @@ def index():
 def get_rules():
     """Get all firewall rules"""
     with cache_lock:
-        return jsonify({"rules": cache["rules"], "count": len(cache["rules"]), "last_update": cache["last_update"]})
+        return jsonify(
+            {
+                "rules": cache["rules"],
+                "count": len(cache["rules"]),
+                "last_update": cache["last_update"],
+            }
+        )
 
 
 @app.route("/api/rules", methods=["POST"])
@@ -407,7 +412,9 @@ def stream_updates():
             time.sleep(1)
 
     return app.response_class(
-        generate(), mimetype="text/event-stream", headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+        generate(),
+        mimetype="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
 
 

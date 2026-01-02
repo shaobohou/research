@@ -9,10 +9,7 @@ complex module mocking.
 import json
 import subprocess
 import tempfile
-import time
 from pathlib import Path
-
-import pytest
 
 
 def test_script_syntax():
@@ -49,9 +46,7 @@ def test_stats_command():
 
         # Create test data
         config_file.write_text(json.dumps({"github.com": "allow-domain"}))
-        log_file.write_text(
-            "2024-01-01T12:00:00 | ALLOW      | GET    | github.com/users\n"
-        )
+        log_file.write_text("2024-01-01T12:00:00 | ALLOW      | GET    | github.com/users\n")
 
         result = subprocess.run(
             ["python3", str(script_path), "--stats"],
@@ -239,3 +234,32 @@ def test_file_permissions():
     with open(script_path) as f:
         first_line = f.readline()
         assert first_line.startswith("#!/usr/bin/env python3")
+
+
+# TODO: Integration tests needed to fully verify GitHub PR fixes
+#
+# These integration tests would require running actual mitmproxy instances,
+# Flask servers, and handling multi-process/multi-threading scenarios.
+#
+# 1. test_flow_request_url_usage (PR Comment #3)
+#    - Start mitmproxy with FirewallAddon
+#    - Send HTTP request through proxy
+#    - Verify flow.request.url is used correctly for rule matching
+#
+# 2. test_rules_auto_reload (PR Comments #1, #10)
+#    - Start network-monitor.py
+#    - Modify network-rules.json externally
+#    - Send request that should match new rule
+#    - Verify rule was reloaded and applied correctly
+#
+# 3. test_no_stdin_blocking (PR Comment #8)
+#    - Start network-monitor.py in subprocess
+#    - Send requests that trigger pending queue
+#    - Verify proxy doesn't block waiting for stdin
+#    - Verify proxy continues processing requests
+#
+# 4. test_port_polling_startup (PR Comment #6)
+#    - Start both network-monitor.py and web-ui.py
+#    - Verify run-isolated.sh successfully waits for ports
+#    - Test with slow startup (add artificial delay)
+#    - Verify timeout works correctly after 10 seconds
