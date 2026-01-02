@@ -31,13 +31,20 @@ from flask_cors import CORS
 # Configuration
 CONFIG_FILE = Path.home() / "docker-agent-data" / "network-rules.json"
 LOG_FILE = Path.home() / "docker-agent-data" / "network-access.log"
+PENDING_FILE = Path.home() / "docker-agent-data" / "network-pending.json"
 WEB_PORT = 8081
 
 app = Flask(__name__)
 CORS(app)
 
 # In-memory cache
-cache = {"rules": {}, "stats": defaultdict(int), "recent_requests": [], "last_update": None}
+cache = {
+    "rules": {},
+    "stats": defaultdict(int),
+    "recent_requests": [],
+    "pending_requests": [],
+    "last_update": None,
+}
 cache_lock = threading.Lock()
 
 
@@ -63,6 +70,31 @@ def save_rules(rules: Dict[str, str]) -> bool:
         return True
     except Exception as e:
         print(f"Error saving rules: {e}")
+        return False
+
+
+def load_pending() -> List[Dict]:
+    """Load pending requests from file"""
+    PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if PENDING_FILE.exists():
+        try:
+            with open(PENDING_FILE) as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Error loading pending requests: {e}")
+            return []
+    return []
+
+
+def save_pending(pending: List[Dict]) -> bool:
+    """Save pending requests to file"""
+    try:
+        PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(PENDING_FILE, "w") as f:
+            json.dump(pending, f, indent=2)
+        return True
+    except Exception as e:
+        print(f"Error saving pending requests: {e}")
         return False
 
 
@@ -133,6 +165,7 @@ def update_cache():
         cache["rules"] = load_rules()
         cache["stats"] = calculate_stats()
         cache["recent_requests"] = load_recent_logs(100)
+        cache["pending_requests"] = load_pending()
         cache["last_update"] = datetime.now().isoformat()
 
 
@@ -242,23 +275,77 @@ def get_requests():
         )
 
 
+@app.route("/api/pending", methods=["GET"])
+def get_pending():
+    """Get pending approval requests"""
+    with cache_lock:
+        return jsonify(
+            {
+                "pending": cache["pending_requests"],
+                "count": len(cache["pending_requests"]),
+                "last_update": cache["last_update"],
+            }
+        )
+
+
+@app.route("/api/approve", methods=["POST"])
+def approve_request():
+    """Approve/deny a pending request and add firewall rule"""
+    data = request.json
+    host = data.get("host")
+    url = data.get("url")
+    action_type = data.get("action")  # allow-domain, deny-domain, allow-url, deny-url
+
+    if not host or not url or not action_type:
+        return jsonify({"error": "Missing required fields"}), 400
+
+    if action_type not in ["allow-domain", "deny-domain", "allow-url", "deny-url"]:
+        return jsonify({"error": "Invalid action"}), 400
+
+    # Determine rule target and action
+    if action_type in ["allow-domain", "deny-domain"]:
+        target = host
+        action = action_type
+    else:  # allow-url or deny-url
+        target = url
+        action = "allow" if action_type == "allow-url" else "deny"
+
+    # Add rule
+    with cache_lock:
+        rules = cache["rules"].copy()
+        rules[target] = action
+
+        # Remove from pending
+        pending = cache["pending_requests"].copy()
+        pending = [p for p in pending if not (p["host"] == host and p["url"] == url)]
+
+        # Save both
+        if save_rules(rules) and save_pending(pending):
+            cache["rules"] = rules
+            cache["pending_requests"] = pending
+            return jsonify({"success": True, "target": target, "action": action})
+        else:
+            return jsonify({"error": "Failed to save"}), 500
+
+
 @app.route("/api/stream", methods=["GET"])
 def stream_updates():
     """Server-Sent Events stream for live updates"""
 
     def generate():
-        last_count = 0
+        last_timestamp = None
         while True:
             with cache_lock:
-                current_count = len(cache["recent_requests"])
-                if current_count != last_count:
+                current_timestamp = cache["last_update"]
+                if current_timestamp != last_timestamp:
                     data = {
                         "requests": cache["recent_requests"][:10],
+                        "pending": cache["pending_requests"],
                         "stats": cache["stats"],
                         "timestamp": cache["last_update"],
                     }
                     yield f"data: {json.dumps(data)}\n\n"
-                    last_count = current_count
+                    last_timestamp = current_timestamp
             time.sleep(1)
 
     return app.response_class(

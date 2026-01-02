@@ -15,6 +15,7 @@ with different permission levels (allow, deny, prompt, etc.).
 """
 
 import json
+import os
 import sys
 import threading
 from pathlib import Path
@@ -34,6 +35,7 @@ PermissionType = Literal["allow", "deny", "prompt", "allow-domain", "deny-domain
 # Config file location
 CONFIG_FILE = Path.home() / "docker-agent-data" / "network-rules.json"
 LOG_FILE = Path.home() / "docker-agent-data" / "network-access.log"
+PENDING_FILE = Path.home() / "docker-agent-data" / "network-pending.json"
 
 console = Console()
 
@@ -45,9 +47,12 @@ class NetworkFirewall:
         self.rules: Dict[str, PermissionType] = {}
         self.stats = defaultdict(int)
         self.recent_requests = []
+        self.pending_requests = []  # Requests awaiting approval via web UI
         self.max_recent = 50
+        self.max_pending = 100
         self.lock = threading.Lock()
         self.load_rules()
+        self.load_pending()
 
     def load_rules(self):
         """Load rules from config file"""
@@ -67,6 +72,25 @@ class NetworkFirewall:
                 json.dump(self.rules, f, indent=2)
         except Exception as e:
             console.print(f"[red]Error saving rules: {e}[/red]")
+
+    def load_pending(self):
+        """Load pending requests from file"""
+        PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
+        if PENDING_FILE.exists():
+            try:
+                with open(PENDING_FILE) as f:
+                    self.pending_requests = json.load(f)
+            except Exception as e:
+                console.print(f"[red]Error loading pending requests: {e}[/red]")
+                self.pending_requests = []
+
+    def save_pending(self):
+        """Save pending requests to file"""
+        try:
+            with open(PENDING_FILE, "w") as f:
+                json.dump(self.pending_requests, f, indent=2)
+        except Exception as e:
+            console.print(f"[red]Error saving pending requests: {e}[/red]")
 
     def log_request(self, host: str, method: str, path: str, decision: str):
         """Log network request"""
@@ -128,63 +152,36 @@ class NetworkFirewall:
         # Default: prompt user
         return self.prompt_user(host, url, method, path)
 
+    def add_pending_request(self, host: str, url: str, method: str, path: str):
+        """Add request to pending approval queue"""
+        with self.lock:
+            # Check if already in pending (avoid duplicates)
+            for req in self.pending_requests:
+                if req["host"] == host and req["url"] == url:
+                    return
+
+            # Add to pending queue
+            pending_req = {
+                "host": host,
+                "url": url,
+                "method": method,
+                "path": path,
+                "timestamp": datetime.now().isoformat(),
+            }
+            self.pending_requests.append(pending_req)
+
+            # Keep only most recent pending requests
+            if len(self.pending_requests) > self.max_pending:
+                self.pending_requests = self.pending_requests[-self.max_pending :]
+
+            # Save to file
+            self.save_pending()
+
     def prompt_user(self, host: str, url: str, method: str, path: str) -> bool:
-        """Interactively ask user for permission"""
-        console.print("\n" + "=" * 80)
-        console.print("[bold yellow]Network Access Request[/bold yellow]")
-        console.print(f"[cyan]Host:[/cyan] {host}")
-        console.print(f"[cyan]Method:[/cyan] {method}")
-        console.print(f"[cyan]Path:[/cyan] {path}")
-        console.print("=" * 80)
-
-        choices = {
-            "1": ("allow-once", "Allow this request once"),
-            "2": ("deny-once", "Deny this request once"),
-            "3": ("allow-domain", f"Always allow {host}"),
-            "4": ("deny-domain", f"Always deny {host}"),
-            "5": ("allow-url", "Always allow this exact URL"),
-            "6": ("deny-url", "Always deny this exact URL"),
-        }
-
-        console.print("\n[bold]Choose action:[/bold]")
-        for key, (action, desc) in choices.items():
-            console.print(f"  {key}. {desc}")
-
-        choice = Prompt.ask("Your choice", choices=list(choices.keys()), default="1")
-        action = choices[choice][0]
-
-        if action == "allow-once":
-            self.log_request(host, method, path, "ALLOW-ONCE")
-            return True
-        elif action == "deny-once":
-            self.log_request(host, method, path, "DENY-ONCE")
-            return False
-        elif action == "allow-domain":
-            self.rules[host] = "allow-domain"
-            self.save_rules()
-            self.log_request(host, method, path, "ALLOW-RULE")
-            console.print(f"[green]✓ Added allow rule for {host}[/green]")
-            return True
-        elif action == "deny-domain":
-            self.rules[host] = "deny-domain"
-            self.save_rules()
-            self.log_request(host, method, path, "DENY-RULE")
-            console.print(f"[red]✗ Added deny rule for {host}[/red]")
-            return False
-        elif action == "allow-url":
-            self.rules[url] = "allow"
-            self.save_rules()
-            self.log_request(host, method, path, "ALLOW-RULE")
-            console.print("[green]✓ Added allow rule for URL[/green]")
-            return True
-        elif action == "deny-url":
-            self.rules[url] = "deny"
-            self.save_rules()
-            self.log_request(host, method, path, "DENY-RULE")
-            console.print("[red]✗ Added deny rule for URL[/red]")
-            return False
-
-        return False
+        """Add request to pending queue and deny (user can approve via web UI)"""
+        self.add_pending_request(host, url, method, path)
+        self.log_request(host, method, path, "PENDING")
+        return False  # Deny until approved via web UI
 
     def get_stats_table(self) -> Table:
         """Generate statistics table"""
@@ -224,7 +221,7 @@ class FirewallAddon:
         host = flow.request.pretty_host
         method = flow.request.method
         path = flow.request.path
-        url = f"{host}{path}"
+        url = flow.request.url
 
         if not firewall.check_permission(host, url, method, path):
             flow.response = http.Response.make(

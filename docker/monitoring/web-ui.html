@@ -355,6 +355,17 @@
             </div>
         </div>
 
+        <!-- Pending Approvals -->
+        <div class="section" id="pendingSection" style="display: none;">
+            <div class="section-header">
+                <span class="section-title">Pending Approvals</span>
+                <span class="badge" id="pendingCount" style="background: #f85149;">0</span>
+            </div>
+            <div id="pendingContent">
+                <div class="empty-state">No pending requests</div>
+            </div>
+        </div>
+
         <!-- Firewall Rules -->
         <div class="section">
             <div class="section-header">
@@ -406,6 +417,7 @@
             loadStats();
             loadActivity();
             loadRules();
+            loadPending();
             startLiveUpdates();
         });
 
@@ -417,6 +429,7 @@
                 const data = JSON.parse(event.data);
                 updateStats(data.stats);
                 updateActivityTable(data.requests);
+                updatePendingRequests(data.pending || []);
                 document.getElementById('statusIndicator').classList.remove('disconnected');
             };
 
@@ -623,6 +636,85 @@
             } catch (error) {
                 console.error('Error exporting rules:', error);
                 alert('Failed to export rules');
+            }
+        }
+
+        // Load pending approval requests
+        async function loadPending() {
+            try {
+                const response = await fetch(`${API_BASE}/api/pending`);
+                const data = await response.json();
+                updatePendingRequests(data.pending || []);
+            } catch (error) {
+                console.error('Error loading pending requests:', error);
+            }
+        }
+
+        // Update pending requests display
+        function updatePendingRequests(pending) {
+            const section = document.getElementById('pendingSection');
+            const content = document.getElementById('pendingContent');
+            const countBadge = document.getElementById('pendingCount');
+
+            if (pending.length === 0) {
+                section.style.display = 'none';
+                content.innerHTML = '<div class="empty-state">No pending requests</div>';
+                return;
+            }
+
+            section.style.display = 'block';
+            countBadge.textContent = pending.length;
+
+            let html = '<table class="table"><thead><tr>';
+            html += '<th>Host</th><th>Path</th><th>Method</th><th>Time</th><th>Actions</th>';
+            html += '</tr></thead><tbody>';
+
+            pending.forEach(req => {
+                const time = new Date(req.timestamp).toLocaleTimeString();
+                html += `<tr>
+                    <td><code>${escapeHtml(req.host)}</code></td>
+                    <td><code>${escapeHtml(req.path)}</code></td>
+                    <td><span class="badge">${escapeHtml(req.method)}</span></td>
+                    <td>${time}</td>
+                    <td>
+                        <button class="btn btn-primary btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "allow-domain")'>
+                            ✓ Allow Domain
+                        </button>
+                        <button class="btn btn-danger btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "deny-domain")'>
+                            ✗ Deny Domain
+                        </button>
+                    </td>
+                </tr>`;
+            });
+
+            html += '</tbody></table>';
+            content.innerHTML = html;
+        }
+
+        // Approve/deny a pending request
+        async function approvePending(req, action) {
+            try {
+                const response = await fetch(`${API_BASE}/api/approve`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        host: req.host,
+                        url: req.url,
+                        action: action
+                    })
+                });
+
+                if (response.ok) {
+                    loadPending();
+                    loadRules();
+                } else {
+                    alert('Failed to approve request');
+                }
+            } catch (error) {
+                console.error('Error approving request:', error);
+                alert('Failed to approve request');
             }
         }
 
