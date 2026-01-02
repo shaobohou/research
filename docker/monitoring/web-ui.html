@@ -382,11 +382,11 @@
         </div>
     </div>
 
-    <!-- Add Rule Modal -->
+    <!-- Add/Edit Rule Modal -->
     <div class="modal" id="addRuleModal">
         <div class="modal-content">
-            <div class="modal-header">Add Firewall Rule</div>
-            <form id="addRuleForm" onsubmit="addRule(event)">
+            <div class="modal-header" id="ruleModalTitle">Add Firewall Rule</div>
+            <form id="addRuleForm" onsubmit="saveRule(event)">
                 <div class="form-group">
                     <label>Target (domain or URL)</label>
                     <input type="text" id="ruleTarget" placeholder="e.g., github.com or *.google.com" required>
@@ -401,8 +401,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="closeAddRuleModal()">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Add Rule</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeRuleModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="ruleModalSubmit">Add Rule</button>
                 </div>
             </form>
         </div>
@@ -411,6 +411,7 @@
     <script>
         const API_BASE = window.location.origin;
         let eventSource = null;
+        let editingRule = null;  // Track if we're editing (stores original target)
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -546,6 +547,7 @@
                                 <td class="code">${escapeHtml(target)}</td>
                                 <td><span class="decision ${action}">${action}</span></td>
                                 <td style="text-align: right;">
+                                    <button class="btn btn-secondary btn-small" onclick='editRule(${JSON.stringify(target)}, ${JSON.stringify(action)})'>Edit</button>
                                     <button class="btn btn-danger btn-small" onclick="deleteRule('${escapeHtml(target)}')">Delete</button>
                                 </td>
                             </tr>
@@ -556,13 +558,21 @@
             document.getElementById('rulesContent').innerHTML = html;
         }
 
-        // Add rule
-        async function addRule(event) {
+        // Save rule (add or edit)
+        async function saveRule(event) {
             event.preventDefault();
             const target = document.getElementById('ruleTarget').value.trim();
             const action = document.getElementById('ruleAction').value;
 
             try {
+                // If editing and target changed, delete old rule first
+                if (editingRule && editingRule !== target) {
+                    await fetch(`${API_BASE}/api/rules/${encodeURIComponent(editingRule)}`, {
+                        method: 'DELETE'
+                    });
+                }
+
+                // Add/update the rule
                 const response = await fetch(`${API_BASE}/api/rules`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -570,14 +580,14 @@
                 });
 
                 if (response.ok) {
-                    closeAddRuleModal();
+                    closeRuleModal();
                     loadRules();
                 } else {
-                    alert('Failed to add rule');
+                    alert(editingRule ? 'Failed to update rule' : 'Failed to add rule');
                 }
             } catch (error) {
-                console.error('Error adding rule:', error);
-                alert('Failed to add rule');
+                console.error('Error saving rule:', error);
+                alert(editingRule ? 'Failed to update rule' : 'Failed to add rule');
             }
         }
 
@@ -676,14 +686,26 @@
                     <td><code>${escapeHtml(req.path)}</code></td>
                     <td><span class="badge">${escapeHtml(req.method)}</span></td>
                     <td>${time}</td>
-                    <td>
+                    <td style="white-space: nowrap;">
                         <button class="btn btn-primary btn-small"
-                                onclick='approvePending(${JSON.stringify(req)}, "allow-domain")'>
-                            ✓ Allow Domain
+                                onclick='approvePending(${JSON.stringify(req)}, "allow-domain")'
+                                title="Allow all requests to ${escapeHtml(req.host)}">
+                            ✓ Domain
+                        </button>
+                        <button class="btn btn-primary btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "allow-url")'
+                                title="Allow only this specific URL">
+                            ✓ URL
                         </button>
                         <button class="btn btn-danger btn-small"
-                                onclick='approvePending(${JSON.stringify(req)}, "deny-domain")'>
-                            ✗ Deny Domain
+                                onclick='approvePending(${JSON.stringify(req)}, "deny-domain")'
+                                title="Deny all requests to ${escapeHtml(req.host)}">
+                            ✗ Domain
+                        </button>
+                        <button class="btn btn-danger btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "deny-url")'
+                                title="Deny only this specific URL">
+                            ✗ URL
                         </button>
                     </td>
                 </tr>`;
@@ -720,13 +742,29 @@
 
         // Modal controls
         function showAddRuleModal() {
+            editingRule = null;
+            document.getElementById('ruleModalTitle').textContent = 'Add Firewall Rule';
+            document.getElementById('ruleModalSubmit').textContent = 'Add Rule';
+            document.getElementById('ruleTarget').value = '';
+            document.getElementById('ruleAction').value = 'allow-domain';
             document.getElementById('addRuleModal').classList.add('active');
             document.getElementById('ruleTarget').focus();
         }
 
-        function closeAddRuleModal() {
+        function editRule(target, action) {
+            editingRule = target;
+            document.getElementById('ruleModalTitle').textContent = 'Edit Firewall Rule';
+            document.getElementById('ruleModalSubmit').textContent = 'Save Changes';
+            document.getElementById('ruleTarget').value = target;
+            document.getElementById('ruleAction').value = action;
+            document.getElementById('addRuleModal').classList.add('active');
+            document.getElementById('ruleTarget').focus();
+        }
+
+        function closeRuleModal() {
             document.getElementById('addRuleModal').classList.remove('active');
             document.getElementById('addRuleForm').reset();
+            editingRule = null;
         }
 
         // Refresh functions
