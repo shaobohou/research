@@ -51,6 +51,7 @@ class NetworkFirewall:
         self.max_pending = 100
         self.lock = threading.Lock()
         self.rules_mtime = 0.0  # Track rules file modification time for auto-reload
+        self.pending_mtime = 0.0  # Track pending file modification time for auto-reload
         self.load_rules()
         self.load_pending()
 
@@ -85,6 +86,24 @@ class NetworkFirewall:
             # Ignore errors during reload check (file might be mid-write)
             pass
 
+    def reload_pending_if_changed(self):
+        """Reload pending requests if the file has been modified (e.g., by web UI)"""
+        if not PENDING_FILE.exists():
+            return
+
+        try:
+            current_mtime = PENDING_FILE.stat().st_mtime
+            if current_mtime > self.pending_mtime:
+                # File was modified, reload pending requests
+                with self.lock:
+                    with open(PENDING_FILE) as f:
+                        self.pending_requests = json.load(f)
+                    self.pending_mtime = current_mtime
+                    # Silent reload - don't spam console
+        except Exception:
+            # Ignore errors during reload check (file might be mid-write)
+            pass
+
     def save_rules(self):
         """Save rules to config file"""
         try:
@@ -100,6 +119,8 @@ class NetworkFirewall:
             try:
                 with open(PENDING_FILE) as f:
                     self.pending_requests = json.load(f)
+                # Update modification time after successful load
+                self.pending_mtime = PENDING_FILE.stat().st_mtime
             except Exception as e:
                 console.print(f"[red]Error loading pending requests: {e}[/red]")
                 self.pending_requests = []
@@ -188,6 +209,9 @@ class NetworkFirewall:
 
     def add_pending_request(self, host: str, url: str, method: str, path: str):
         """Add request to pending approval queue"""
+        # Reload pending list if modified (e.g., by web UI)
+        self.reload_pending_if_changed()
+
         with self.lock:
             # Check if already in pending (avoid duplicates)
             for req in self.pending_requests:
