@@ -408,18 +408,20 @@ pip install requests
 ### Example 2: Restrict to Essential Services Only
 
 ```bash
-# Pre-configure minimal rules
+# Pre-configure minimal rules (allow-list approach)
 cat > ~/docker-agent-data/network-rules.json <<EOF
 {
   "github.com": "allow-domain",
-  "pypi.org": "allow-domain",
-  "*": "deny"
+  "pypi.org": "allow-domain"
 }
 EOF
 
 # Run container - only GitHub and PyPI allowed
+# All other requests are denied and added to pending queue for approval
 ./docker/run-isolated.sh
 ```
+
+**Note:** There is no wildcard catch-all deny rule. Requests that don't match any allow rule are automatically denied and added to the pending approval queue visible in the web UI.
 
 ### Example 3: Audit AI Tool Network Usage
 
