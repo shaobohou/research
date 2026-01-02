@@ -147,13 +147,14 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   # Check if monitoring services are already running
   # --------------------------------------------------------------------------
 
-  # Check if network monitor is already running
-  if pgrep -f "network-monitor.py" > /dev/null; then
+  # Check if network monitor proxy is already running (by checking if port 8080 is listening)
+  if nc -z localhost 8080 2>/dev/null; then
     echo "✓ Network monitor already running"
     PROXY_ALREADY_RUNNING=true
   fi
 
-  if pgrep -f "web-ui.py" > /dev/null; then
+  # Check if web UI is already running (by checking if port 8081 is listening)
+  if nc -z localhost 8081 2>/dev/null; then
     echo "✓ Web UI already running"
     WEB_UI_ALREADY_RUNNING=true
   fi
