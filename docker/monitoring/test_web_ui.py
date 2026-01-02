@@ -283,6 +283,73 @@ def test_port_configuration():
     assert 1024 < web_port < 65535  # Valid port range
 
 
+class TestHTMLContent:
+    """Test web-ui.html content for correct escaping patterns"""
+
+    def test_delete_button_uses_json_stringify(self):
+        """Test that delete button uses JSON.stringify, not escapeHtml (PR #2657625584)"""
+        html_path = Path(__file__).parent / "web-ui.html"
+        with open(html_path) as f:
+            content = f.read()
+
+        # Find the rules table rendering section
+        assert "deleteRule(" in content, "Delete button should exist"
+
+        # Verify delete button uses JSON.stringify(target)
+        assert "deleteRule(${JSON.stringify(target)})" in content, (
+            "Delete button must use JSON.stringify(target) to avoid double-escaping"
+        )
+
+        # Verify delete button does NOT use escapeHtml
+        assert "deleteRule('${escapeHtml(target)}" not in content, (
+            "Delete button must NOT use escapeHtml (causes double-escaping bug)"
+        )
+        assert 'deleteRule("${escapeHtml(target)}' not in content, (
+            "Delete button must NOT use escapeHtml (causes double-escaping bug)"
+        )
+
+    def test_display_still_uses_escape_html(self):
+        """Test that table cell display still uses escapeHtml for XSS protection"""
+        html_path = Path(__file__).parent / "web-ui.html"
+        with open(html_path) as f:
+            content = f.read()
+
+        # Verify table cell uses escapeHtml for safe display
+        assert '<td class="code">${escapeHtml(target)}</td>' in content, (
+            "Table cell must use escapeHtml for XSS protection"
+        )
+
+    def test_edit_and_delete_buttons_use_same_pattern(self):
+        """Test that edit and delete buttons both use JSON.stringify"""
+        html_path = Path(__file__).parent / "web-ui.html"
+        with open(html_path) as f:
+            content = f.read()
+
+        # Both should use JSON.stringify for consistency
+        assert "editRule(${JSON.stringify(target)}" in content, (
+            "Edit button should use JSON.stringify"
+        )
+        assert "deleteRule(${JSON.stringify(target)})" in content, (
+            "Delete button should use JSON.stringify"
+        )
+
+    def test_no_double_escaping_pattern(self):
+        """Test that there's no double-escaping pattern anywhere"""
+        html_path = Path(__file__).parent / "web-ui.html"
+        with open(html_path) as f:
+            content = f.read()
+
+        # Pattern that would cause double-escaping: escapeHtml used in onclick handlers
+        # This is a smell test to catch similar bugs in the future
+        lines = content.split("\n")
+        for i, line in enumerate(lines, 1):
+            if "onclick=" in line and "deleteRule" in line:
+                # Delete button onclick should not have escapeHtml
+                assert "escapeHtml" not in line, (
+                    f"Line {i}: deleteRule onclick must not use escapeHtml"
+                )
+
+
 # TODO: Integration tests needed to fully verify GitHub PR fixes
 #
 # These integration tests would require running actual Flask server instances
