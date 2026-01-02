@@ -15,7 +15,6 @@ with different permission levels (allow, deny, prompt, etc.).
 """
 
 import json
-import os
 import sys
 import threading
 from pathlib import Path

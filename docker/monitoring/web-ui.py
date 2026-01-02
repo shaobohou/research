@@ -143,8 +143,8 @@ def load_recent_logs(limit: int = 100) -> List[Dict]:
             data = f.read()
 
         # Decode and split into lines
-        text = data.decode('utf-8', errors='ignore')
-        lines = text.split('\n')
+        text = data.decode("utf-8", errors="ignore")
+        lines = text.split("\n")
 
         # Take last N non-empty lines and reverse (most recent first)
         recent_lines = [line for line in lines if line.strip()][-limit:]
@@ -188,7 +188,7 @@ def calculate_stats() -> Dict:
             # Check if file was rotated/truncated (inode changed or size decreased)
             if log_state["inode"] != current_inode or file_size < log_state["position"]:
                 # File was rotated - recalculate from scratch
-                print(f"Log file rotation detected, recalculating stats...")
+                print("Log file rotation detected, recalculating stats...")
                 stats = defaultdict(int)
                 log_state["position"] = 0
                 log_state["inode"] = current_inode
