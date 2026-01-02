@@ -164,17 +164,19 @@ def load_recent_logs(limit: int = 100) -> List[Dict]:
         return []
 
 
-def calculate_stats() -> Dict:
+def calculate_stats(current_stats: Dict = None) -> Dict:
     """
     Calculate statistics from log file (OPTIMIZED: incremental reading).
 
     Only reads new lines since last call, tracking file position.
     Handles log rotation by detecting inode changes.
+
+    Args:
+        current_stats: Current stats dict to build upon (for incremental updates)
     """
     with log_state_lock:
-        # Get current stats from cache (or initialize)
-        with cache_lock:
-            stats = defaultdict(int, cache.get("stats", {}))
+        # Initialize from provided stats or empty dict
+        stats = defaultdict(int, current_stats or {})
 
         if not LOG_FILE.exists():
             return dict(stats)
@@ -218,7 +220,8 @@ def update_cache():
     """Update in-memory cache from files"""
     with cache_lock:
         cache["rules"] = load_rules()
-        cache["stats"] = calculate_stats()
+        # Pass current stats to avoid deadlock (don't acquire cache_lock in calculate_stats)
+        cache["stats"] = calculate_stats(cache.get("stats", {}))
         cache["recent_requests"] = load_recent_logs(100)
         cache["pending_requests"] = load_pending()
         cache["last_update"] = datetime.now().isoformat()

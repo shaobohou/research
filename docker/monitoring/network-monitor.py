@@ -50,6 +50,7 @@ class NetworkFirewall:
         self.max_recent = 50
         self.max_pending = 100
         self.lock = threading.Lock()
+        self.rules_mtime = 0.0  # Track rules file modification time for auto-reload
         self.load_rules()
         self.load_pending()
 
@@ -60,9 +61,29 @@ class NetworkFirewall:
             try:
                 with open(CONFIG_FILE) as f:
                     self.rules = json.load(f)
+                # Update modification time after successful load
+                self.rules_mtime = CONFIG_FILE.stat().st_mtime
                 console.print(f"[green]Loaded {len(self.rules)} network rules[/green]")
             except Exception as e:
                 console.print(f"[red]Error loading rules: {e}[/red]")
+
+    def reload_rules_if_changed(self):
+        """Reload rules if the config file has been modified (e.g., by web UI)"""
+        if not CONFIG_FILE.exists():
+            return
+
+        try:
+            current_mtime = CONFIG_FILE.stat().st_mtime
+            if current_mtime > self.rules_mtime:
+                # File was modified, reload rules
+                with self.lock:
+                    with open(CONFIG_FILE) as f:
+                        self.rules = json.load(f)
+                    self.rules_mtime = current_mtime
+                    # Silent reload - don't spam console
+        except Exception:
+            # Ignore errors during reload check (file might be mid-write)
+            pass
 
     def save_rules(self):
         """Save rules to config file"""
@@ -120,6 +141,8 @@ class NetworkFirewall:
         - Only explicitly allowed requests are permitted
         - All other requests are denied and queued for approval
         """
+        # Reload rules if modified (e.g., by web UI)
+        self.reload_rules_if_changed()
 
         # Check exact URL match
         if url in self.rules:
