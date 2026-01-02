@@ -114,7 +114,13 @@ class NetworkFirewall:
             self.stats["total"] += 1
 
     def check_permission(self, host: str, url: str, method: str, path: str) -> bool:
-        """Check if request should be allowed"""
+        """
+        Check if request should be allowed.
+
+        Security model: DEFAULT DENY
+        - Only explicitly allowed requests are permitted
+        - All other requests are denied and queued for approval
+        """
 
         # Check exact URL match
         if url in self.rules:
@@ -149,7 +155,7 @@ class NetworkFirewall:
                     self.log_request(host, method, path, "DENY")
                     return False
 
-        # Default: prompt user
+        # Default: DENY and queue for approval (fail-safe)
         return self.prompt_user(host, url, method, path)
 
     def add_pending_request(self, host: str, url: str, method: str, path: str):
@@ -178,10 +184,15 @@ class NetworkFirewall:
             self.save_pending()
 
     def prompt_user(self, host: str, url: str, method: str, path: str) -> bool:
-        """Add request to pending queue and deny (user can approve via web UI)"""
+        """
+        Handle request without explicit rule: DEFAULT DENY.
+
+        For security, all requests not explicitly allowed are denied.
+        The request is logged and queued for user approval via web UI.
+        """
         self.add_pending_request(host, url, method, path)
         self.log_request(host, method, path, "PENDING")
-        return False  # Deny until approved via web UI
+        return False  # SECURITY: Deny by default until explicitly approved
 
     def get_stats_table(self) -> Table:
         """Generate statistics table"""

@@ -72,9 +72,10 @@ The `run-isolated.sh` script provides project-isolated configs with **optional n
 - Isolated config directories per project (`~/docker-agent-data/<repo>/<project-id>/`)
 - Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
 - **Network monitoring and firewall** (enabled by default)
+  - 🔒 **DEFAULT DENY security model**: All requests denied unless explicitly allowed
   - Real-time HTTP/HTTPS request monitoring
   - Web dashboard at http://localhost:8081 with live updates
-  - Interactive prompts to allow/deny domains
+  - Pending approval queue for unknown requests
   - Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
   - Persistent rules and complete access logging
   - REST API for programmatic access

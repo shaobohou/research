@@ -2,6 +2,16 @@
 
 Interactive network access control for the Docker development environment. Monitor and control all network requests with fine-grained permissions.
 
+## Security Model
+
+**DEFAULT DENY**: All network requests are denied unless explicitly allowed.
+
+- ✅ **Allowed**: Requests matching an explicit allow rule
+- ❌ **Denied**: Requests matching an explicit deny rule
+- ❌ **Denied (Pending)**: Requests with no matching rule are denied and queued for approval
+
+This fail-safe approach ensures that only authorized network access occurs. Unknown requests are logged and added to the pending approval queue in the web UI.
+
 ## Features
 
 - **Real-time Network Monitoring**: See all HTTP/HTTPS requests from the container
