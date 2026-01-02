@@ -548,7 +548,7 @@
                                 <td><span class="decision ${action}">${action}</span></td>
                                 <td style="text-align: right;">
                                     <button class="btn btn-secondary btn-small" onclick='editRule(${JSON.stringify(target)}, ${JSON.stringify(action)})'>Edit</button>
-                                    <button class="btn btn-danger btn-small" onclick="deleteRule('${escapeHtml(target)}')">Delete</button>
+                                    <button class="btn btn-danger btn-small" onclick='deleteRule(${JSON.stringify(target)})'>Delete</button>
                                 </td>
                             </tr>
                         `).join('')}
