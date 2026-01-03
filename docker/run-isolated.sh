@@ -127,6 +127,37 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   # Get script directory for monitoring scripts
   SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+  # --------------------------------------------------------------------------
+  # Ensure mitmproxy CA certificate exists
+  # --------------------------------------------------------------------------
+  MITMPROXY_CA="$HOME/.mitmproxy/mitmproxy-ca-cert.pem"
+
+  if [ ! -f "$MITMPROXY_CA" ]; then
+    echo "Generating mitmproxy CA certificate (first-time setup)..."
+
+    # Start mitmproxy briefly to generate certificate
+    uv run "$SCRIPT_DIR/monitoring/network-monitor.py" > /tmp/mitmproxy-cert-gen.log 2>&1 &
+    CERT_GEN_PID=$!
+
+    # Wait up to 10 seconds for certificate to be generated
+    for i in {1..20}; do
+      if [ -f "$MITMPROXY_CA" ]; then
+        echo "✓ CA certificate generated at $MITMPROXY_CA"
+        kill $CERT_GEN_PID 2>/dev/null || true
+        wait $CERT_GEN_PID 2>/dev/null || true
+        sleep 1  # Give it time to clean up
+        break
+      fi
+      sleep 0.5
+    done
+
+    if [ ! -f "$MITMPROXY_CA" ]; then
+      echo "ERROR: Failed to generate mitmproxy CA certificate" >&2
+      echo "       Check /tmp/mitmproxy-cert-gen.log for details" >&2
+      exit 1
+    fi
+  fi
+
   # Helper function: wait for port to be available
   wait_for_port() {
     local port=$1
@@ -307,13 +338,7 @@ DOCKER_ARGS=(
 
 # Add monitoring-specific arguments if enabled
 if [ "$ENABLE_MONITORING" = "true" ]; then
-  # Ensure mitmproxy CA certificate exists
-  MITMPROXY_CA="$HOME/.mitmproxy/mitmproxy-ca-cert.pem"
-  if [ ! -f "$MITMPROXY_CA" ]; then
-    echo "WARNING: mitmproxy CA certificate not found at $MITMPROXY_CA" >&2
-    echo "         HTTPS interception may fail. Start the proxy to generate the certificate." >&2
-  fi
-
+  # Certificate already ensured to exist in monitoring setup section above
   DOCKER_ARGS+=(
     "--add-host=host.docker.internal:host-gateway"
     "-e" "HTTP_PROXY=$PROXY_URL"
