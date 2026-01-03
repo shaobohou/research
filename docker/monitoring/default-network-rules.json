@@ -11,5 +11,6 @@
   "api.github.com": "allow-domain",
   "console.anthropic.com": "allow-domain",
   "https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md": "allow",
-  "play.googleapis.com": "allow-domain"
+  "play.googleapis.com": "allow-domain",
+  "generativelanguage.googleapis.com": "allow-domain"
 }
