@@ -477,9 +477,8 @@ def interactive_menu():
             console.print(f"[green]✓ Exported to {export_file}[/green]")
 
 
-def addons():
-    """Return mitmproxy addons (called by mitmproxy)"""
-    return [FirewallAddon()]
+# mitmproxy addon list (must be module-level variable, not function)
+addons = [FirewallAddon()]
 
 
 if __name__ == "__main__":
