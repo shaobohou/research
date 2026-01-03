@@ -382,9 +382,9 @@ def run_proxy():
         "[yellow]Set HTTPS_PROXY and HTTP_PROXY environment variables in container[/yellow]\n"
     )
 
-    # Run mitmproxy with the firewall addon
+    # Run mitmdump (non-interactive mode for background operation)
     sys.argv = [
-        "mitmproxy",
+        "mitmdump",
         "--mode",
         "regular",
         "--listen-host",
@@ -397,11 +397,7 @@ def run_proxy():
         __file__,  # Load this script as addon
     ]
 
-    # Start in quiet mode if running as addon
-    if len(sys.argv) > 1 and sys.argv[1] == "--addon-mode":
-        sys.argv.extend(["--quiet"])
-
-    mitmproxy_main.mitmproxy()
+    mitmproxy_main.mitmdump()
 
 
 def show_stats():
