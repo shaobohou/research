@@ -159,15 +159,22 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   fi
 
   # --------------------------------------------------------------------------
-  # Initialize network rules file (first-time setup)
+  # Initialize default network rules (first-time setup)
   # --------------------------------------------------------------------------
   RULES_FILE="$HOME/docker-agent-data/network-rules.json"
+  DEFAULT_RULES="$SCRIPT_DIR/monitoring/default-network-rules.json"
 
   if [ ! -f "$RULES_FILE" ]; then
-    echo "Initializing network rules (first-time setup)..."
+    echo "Initializing default network rules (first-time setup)..."
     mkdir -p "$(dirname "$RULES_FILE")"
-    echo "{}" > "$RULES_FILE"
-    echo "✓ Network rules file created at $RULES_FILE"
+
+    if [ -f "$DEFAULT_RULES" ]; then
+      cp "$DEFAULT_RULES" "$RULES_FILE"
+      echo "✓ Default network rules installed at $RULES_FILE"
+    else
+      echo "{}" > "$RULES_FILE"
+      echo "✓ Empty network rules file created at $RULES_FILE"
+    fi
   fi
 
   # Helper function: wait for port to be available
