@@ -246,27 +246,102 @@ class NetworkFirewall:
         self.log_request(host, method, path, "PENDING")
         return False  # SECURITY: Deny by default until explicitly approved
 
+    def load_stats_from_log(self) -> dict[str, int]:
+        """Load statistics from log file (for CLI mode)"""
+        stats = defaultdict(int)
+
+        if not LOG_FILE.exists():
+            return dict(stats)
+
+        try:
+            with open(LOG_FILE) as f:
+                for line in f:
+                    # Parse log line: "timestamp | decision | method | url"
+                    parts = line.strip().split("|")
+                    if len(parts) >= 2:
+                        decision = parts[1].strip()
+                        stats[decision] += 1
+                        stats["total"] += 1
+        except Exception:
+            pass
+
+        return dict(stats)
+
+    def load_recent_from_log(self, limit: int = 10) -> list[dict]:
+        """Load recent requests from log file (for CLI mode)"""
+        if not LOG_FILE.exists():
+            return []
+
+        try:
+            # Read last portion of file for efficiency
+            import os
+
+            file_size = os.path.getsize(LOG_FILE)
+            if file_size == 0:
+                return []
+
+            read_size = min(file_size, 100 * 1024)  # 100KB max
+
+            with open(LOG_FILE, "rb") as f:
+                f.seek(max(0, file_size - read_size))
+                data = f.read()
+
+            # Decode and parse lines
+            text = data.decode("utf-8", errors="ignore")
+            lines = [line for line in text.split("\n") if line.strip()][-limit:]
+
+            requests = []
+            for line in lines:
+                # Parse: "timestamp | decision | method | host/path"
+                parts = line.strip().split("|")
+                if len(parts) >= 4:
+                    requests.append(
+                        {
+                            "timestamp": parts[0].strip(),
+                            "decision": parts[1].strip(),
+                            "method": parts[2].strip(),
+                            "host": parts[3].strip(),
+                        }
+                    )
+
+            return requests
+
+        except Exception:
+            return []
+
     def get_stats_table(self) -> Table:
-        """Generate statistics table"""
+        """Generate statistics table (loads from log file if in CLI mode)"""
         table = Table(title="Network Access Statistics")
         table.add_column("Metric", style="cyan")
         table.add_column("Count", style="green")
 
-        for key, value in sorted(self.stats.items()):
+        # In CLI mode, in-memory stats will be empty - load from log file
+        stats_to_show = self.stats if self.stats else self.load_stats_from_log()
+
+        for key, value in sorted(stats_to_show.items()):
             table.add_row(key.title(), str(value))
 
         return table
 
     def get_recent_table(self) -> Table:
-        """Generate recent requests table"""
+        """Generate recent requests table (loads from log file if in CLI mode)"""
         table = Table(title="Recent Requests (Last 10)")
         table.add_column("Time", style="cyan")
         table.add_column("Decision", style="yellow")
         table.add_column("Method", style="blue")
         table.add_column("Host", style="green")
 
-        for req in self.recent_requests[-10:]:
-            time_str = req["timestamp"].split("T")[1][:8]
+        # In CLI mode, in-memory requests will be empty - load from log file
+        requests_to_show = (
+            self.recent_requests[-10:] if self.recent_requests else self.load_recent_from_log(10)
+        )
+
+        for req in requests_to_show:
+            time_str = (
+                req["timestamp"].split("T")[1][:8]
+                if "T" in req["timestamp"]
+                else req["timestamp"][:8]
+            )
             table.add_row(time_str, req["decision"], req["method"], req["host"])
 
         return table
