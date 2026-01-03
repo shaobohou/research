@@ -23,8 +23,8 @@ DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
 mkdir -p "$DATA_DIR/.codex"
 mkdir -p "$DATA_DIR/.claude"
 
-# Copy Codex auth if enabled and missing
-if [ "$COPY_CODEX_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.codex/auth.json" ]; then
+# Copy Codex auth if enabled
+if [ "$COPY_CODEX_CREDS" = "true" ]; then
   if [ -f "$HOME/.codex/auth.json" ]; then
     if cp "$HOME/.codex/auth.json" "$DATA_DIR/.codex/auth.json" 2>/dev/null; then
       echo "[codex] Copied auth.json"
@@ -36,8 +36,8 @@ if [ "$COPY_CODEX_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.codex/auth.json" ]; th
   fi
 fi
 
-# Copy Claude credentials if enabled and missing
-if [ "$COPY_CLAUDE_CREDS" = "true" ] && [ ! -f "$DATA_DIR/.claude/.credentials.json" ]; then
+# Copy Claude credentials if enabled
+if [ "$COPY_CLAUDE_CREDS" = "true" ]; then
   if [ -f "$HOME/.claude/.credentials.json" ]; then
     if cp "$HOME/.claude/.credentials.json" "$DATA_DIR/.claude/.credentials.json" 2>/dev/null; then
       echo "[claude] Copied credentials"
