@@ -34,12 +34,17 @@ This fail-safe approach ensures that only authorized network access occurs. Unkn
 ### 1. Start Container with Network Monitoring
 
 ```bash
-./docker/run-isolated.sh
+./docker/run-monitored.sh
 ```
 
-**Note**: Network monitoring is **enabled by default**. To disable it:
+**Note**: Network monitoring is **enabled by default** in `run-monitored.sh`. To disable it:
 ```bash
-./docker/run-isolated.sh --no-monitoring
+./docker/run-monitored.sh --no-monitoring
+```
+
+**For simple, unmonitored container launch**, use:
+```bash
+./docker/run-isolated.sh
 ```
 
 This will:
@@ -312,15 +317,19 @@ cp my-rules.json ~/docker-agent-data/network-rules.json
 
 ### Run Without Monitoring
 
-To run the container without network monitoring, use the `--no-monitoring` flag:
+To run the container without network monitoring, use either:
 
 ```bash
-./docker/run-isolated.sh --no-monitoring
+# Option 1: Use the simple script (no monitoring overhead)
+./docker/run-isolated.sh
+
+# Option 2: Use monitored script with monitoring disabled
+./docker/run-monitored.sh --no-monitoring
 ```
 
 ### Custom Proxy Port
 
-Edit `network-monitor.py` and change the port in the `run_proxy()` function, then update `run-isolated.sh` accordingly.
+Edit `network-monitor.py` and change the port in the `run_proxy()` function, then update `run-monitored.sh` accordingly.
 
 ### HTTPS Certificate Trust
 
@@ -391,7 +400,7 @@ cat ~/docker-agent-data/network-rules.json | python3 -m json.tool
 - **Rules File**: Contains your allow/deny decisions - review periodically
 - **Logs**: May contain sensitive URLs or data - rotate/clean regularly
 
-**Recommendation**: Only use network monitoring when analyzing or debugging network behavior. For normal development, use `run-isolated.sh` without the proxy.
+**Recommendation**: Only use network monitoring when analyzing or debugging network behavior. For normal development, use `run-isolated.sh` for simple, fast container launches without monitoring overhead.
 
 ## Implementation Details
 
@@ -405,8 +414,8 @@ cat ~/docker-agent-data/network-rules.json | python3 -m json.tool
 ### Example 1: Analyze Package Installation
 
 ```bash
-# Start container with monitoring (on by default)
-./docker/run-isolated.sh
+# Start container with monitoring
+./docker/run-monitored.sh
 
 # In container, install package
 pip install requests
@@ -428,7 +437,7 @@ EOF
 
 # Run container - only GitHub and PyPI allowed
 # All other requests are denied and added to pending queue for approval
-./docker/run-isolated.sh
+./docker/run-monitored.sh
 ```
 
 **Note:** There is no wildcard catch-all deny rule. Requests that don't match any allow rule are automatically denied and added to the pending approval queue visible in the web UI.
@@ -439,8 +448,8 @@ EOF
 # Start with clean rules
 rm ~/docker-agent-data/network-rules.json
 
-# Run with monitoring (on by default)
-./docker/run-isolated.sh
+# Run with monitoring
+./docker/run-monitored.sh
 
 # In container, use AI tool
 claude "Write hello world in Python"
@@ -461,7 +470,7 @@ claude "Write hello world in Python"
 - ❌ WebSocket connections (may bypass proxy)
 - ❌ Applications that ignore HTTP_PROXY environment variables
 
-**Workaround**: For HTTP/HTTPS to localhost, remove `NO_PROXY` setting in `run-isolated.sh`. For comprehensive coverage including all protocols, see Future Enhancements below.
+**Workaround**: For HTTP/HTTPS to localhost, remove `NO_PROXY` setting in `run-monitored.sh`. For comprehensive coverage including all protocols, see Future Enhancements below.
 
 ## Future Enhancements
 
