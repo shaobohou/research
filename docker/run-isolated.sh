@@ -147,16 +147,30 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
   # Check if monitoring services are already running
   # --------------------------------------------------------------------------
 
-  # Check if network monitor proxy is already running (by checking if port 8080 is listening)
+  # Check if network monitor proxy is already running
   if nc -z localhost 8080 2>/dev/null; then
-    echo "✓ Network monitor already running"
-    PROXY_ALREADY_RUNNING=true
+    # Port 8080 is occupied - verify it's actually our proxy
+    if pgrep -f "network-monitor.py" > /dev/null && ! pgrep -f "network-monitor.py --manage" > /dev/null; then
+      echo "✓ Network monitor already running"
+      PROXY_ALREADY_RUNNING=true
+    else
+      echo "ERROR: Port 8080 is already in use by another process" >&2
+      echo "       Network monitoring requires port 8080 to be available" >&2
+      echo "       Please stop the process using port 8080 or run with --no-monitoring" >&2
+      exit 1
+    fi
   fi
 
-  # Check if web UI is already running (by checking if port 8081 is listening)
+  # Check if web UI is already running
   if nc -z localhost 8081 2>/dev/null; then
-    echo "✓ Web UI already running"
-    WEB_UI_ALREADY_RUNNING=true
+    # Port 8081 is occupied - verify it's actually our web UI
+    if pgrep -f "web-ui.py" > /dev/null; then
+      echo "✓ Web UI already running"
+      WEB_UI_ALREADY_RUNNING=true
+    else
+      echo "WARNING: Port 8081 is already in use by another process" >&2
+      echo "         Web UI will not be available, but proxy will continue" >&2
+    fi
   fi
 
   # --------------------------------------------------------------------------
