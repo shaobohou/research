@@ -307,6 +307,13 @@ DOCKER_ARGS=(
 
 # Add monitoring-specific arguments if enabled
 if [ "$ENABLE_MONITORING" = "true" ]; then
+  # Ensure mitmproxy CA certificate exists
+  MITMPROXY_CA="$HOME/.mitmproxy/mitmproxy-ca-cert.pem"
+  if [ ! -f "$MITMPROXY_CA" ]; then
+    echo "WARNING: mitmproxy CA certificate not found at $MITMPROXY_CA" >&2
+    echo "         HTTPS interception may fail. Start the proxy to generate the certificate." >&2
+  fi
+
   DOCKER_ARGS+=(
     "--add-host=host.docker.internal:host-gateway"
     "-e" "HTTP_PROXY=$PROXY_URL"
@@ -315,6 +322,8 @@ if [ "$ENABLE_MONITORING" = "true" ]; then
     "-e" "https_proxy=$PROXY_URL"
     "-e" "NO_PROXY=localhost,127.0.0.1"
     "-e" "no_proxy=localhost,127.0.0.1"
+    "-e" "NETWORK_MONITORING=true"
+    "-v" "$MITMPROXY_CA:/tmp/mitmproxy-ca-cert.pem:ro"
   )
 fi
 
