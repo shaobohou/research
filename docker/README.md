@@ -22,6 +22,46 @@ docker run --rm -it -v "$PWD":/home/dev/workspace claude-dev-agents
 docker run --rm -it claude-dev-agents claude --version
 ```
 
+## Accessing Running Containers
+
+You can access a running container from another terminal using `docker exec`:
+
+```bash
+# List running containers
+docker ps
+
+# Get an interactive shell in the running container
+docker exec -it <container-id-or-name> bash
+```
+
+**Example workflow:**
+
+Terminal 1 - Launch container:
+```bash
+docker run --rm -it -v "$PWD":/home/dev/workspace claude-dev-agents
+```
+
+Terminal 2 - Access same container:
+```bash
+$ docker ps
+CONTAINER ID   IMAGE              COMMAND
+abc123def456   claude-dev-agents  "/usr/local/bin/entr…"
+
+$ docker exec -it abc123def456 bash
+dev@abc123def456 ~ $  # Now inside the container
+```
+
+**Useful commands:**
+```bash
+# Run single command without interactive shell
+docker exec <container-id> ls /home/dev/workspace
+
+# Access as root user
+docker exec -it -u root <container-id> bash
+```
+
+All terminals accessing the same container share the same filesystem and processes.
+
 ## API Keys
 
 AI tools require API keys. Pass them from your host environment:
