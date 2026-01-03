@@ -60,9 +60,11 @@ docker run --rm -it \
   claude-dev-agents
 ```
 
-## Helper Script
+## Helper Scripts
 
-The `run-isolated.sh` script provides project-isolated configs with **optional network monitoring** (enabled by default):
+### Simple Usage: `run-isolated.sh`
+
+For quick, simple container launches with isolated configs:
 
 ```bash
 ./docker/run-isolated.sh
@@ -71,18 +73,8 @@ The `run-isolated.sh` script provides project-isolated configs with **optional n
 **Features**:
 - Isolated config directories per project (`~/docker-agent-data/<repo>/<project-id>/`)
 - Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
-- **Network monitoring and firewall** (enabled by default)
-  - 🔒 **DEFAULT DENY security model**: All requests denied unless explicitly allowed
-  - Real-time HTTP/HTTPS request monitoring
-  - Web dashboard at http://localhost:8081 with live updates
-  - Pending approval queue for unknown requests
-  - Multiple permission levels (allow-once, allow-domain, deny-domain, etc.)
-  - Persistent rules and complete access logging
-  - REST API for programmatic access
-
-**Options**:
-- `--no-monitoring` - Disable network monitoring (on by default)
-- `--help` - Show usage information
+- Fast startup with no monitoring overhead
+- Automatic credential copying from host
 
 **Environment Variables**:
 - `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
@@ -90,22 +82,41 @@ The `run-isolated.sh` script provides project-isolated configs with **optional n
 
 **Examples**:
 ```bash
-# Default: monitoring ON, copy Codex creds
+# Default: copy Codex creds
 ./docker/run-isolated.sh
 
-# Disable network monitoring
-./docker/run-isolated.sh --no-monitoring
-
-# Copy Claude creds, keep monitoring
+# Copy Claude creds too
 COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
-
-# All options combined
-COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh --no-monitoring
 ```
 
-**With Network Monitoring** (default):
+### Network Monitoring: `run-monitored.sh`
+
+For development with network monitoring and firewall:
+
 ```bash
-./docker/run-isolated.sh
+./docker/run-monitored.sh
+```
+
+**Features**:
+- All features from `run-isolated.sh` PLUS:
+- 🔒 **Network monitoring and firewall** with mitmproxy
+  - **DEFAULT DENY security model**: All requests denied unless explicitly allowed
+  - Real-time HTTP/HTTPS request monitoring
+  - Web dashboard at http://localhost:8081 with live updates
+  - Pending approval queue for unknown requests
+  - Multiple permission levels (allow-domain, deny-domain, allow-url, deny-url)
+  - Persistent rules and complete access logging
+  - REST API for programmatic access
+  - Default allow-list for common services (GitHub, npm, etc.)
+
+**Options**:
+- `--no-monitoring` - Disable network monitoring (bypass monitoring overhead)
+- `--help` - Show usage information
+
+**Examples**:
+```bash
+# Default: monitoring ON
+./docker/run-monitored.sh
 
 # Open browser to http://localhost:8081
 # - Real-time activity feed
