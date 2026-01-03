@@ -380,7 +380,15 @@ def approve_request():
 
         # Remove from pending
         pending = cache["pending_requests"].copy()
-        pending = [p for p in pending if not (p["host"] == host and p["url"] == url)]
+
+        # For domain-level rules, clear ALL pending requests for that domain
+        # For URL-level rules, only clear the specific URL
+        if action_type in ["allow-domain", "deny-domain"]:
+            # Clear all pending requests matching this host
+            pending = [p for p in pending if p["host"] != host]
+        else:
+            # Clear only the specific URL
+            pending = [p for p in pending if not (p["host"] == host and p["url"] == url)]
 
         # Save both
         if save_rules(rules) and save_pending(pending):
