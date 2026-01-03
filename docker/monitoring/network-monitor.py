@@ -354,6 +354,8 @@ firewall = NetworkFirewall()
 class FirewallAddon:
     """mitmproxy addon for network filtering"""
 
+    addons = []  # No nested addons (required by mitmproxy)
+
     def request(self, flow: http.HTTPFlow) -> None:
         """Intercept and filter HTTP requests"""
         host = flow.request.pretty_host
