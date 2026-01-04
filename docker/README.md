@@ -60,27 +60,107 @@ docker run --rm -it \
   claude-dev-agents
 ```
 
-## Helper Script with Isolated Directories
+## Helper Scripts
 
-The `run-isolated.sh` script launches containers with project-isolated configs:
+### Simple Usage: `run-isolated.sh`
+
+For quick, simple container launches with isolated configs:
 
 ```bash
 ./docker/run-isolated.sh
 ```
 
-Creates isolated configs at `~/docker-agent-data/<repo>/<project-id>/` per project. Each gets separate `.claude/`, `.codex/`, and `.claude.json` files.
+**Features**:
+- Isolated config directories per project (`~/docker-agent-data/<repo>/<project-id>/`)
+- Each project gets separate `.claude/`, `.codex/`, and `.claude.json` files
+- Fast startup with no monitoring overhead
+- Automatic credential copying from host
 
-**Configuration** (via environment variables):
+**Environment Variables**:
 - `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
 - `COPY_CLAUDE_CREDS` - Copy Claude credentials (default: `false`)
 
 **Examples**:
 ```bash
-./docker/run-isolated.sh                                   # Default: copy Codex, skip Claude
-COPY_CODEX_CREDS=false ./docker/run-isolated.sh            # Skip Codex
-COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh            # Copy Claude credentials
-COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh  # Skip Codex, copy Claude
+# Default: copy Codex creds
+./docker/run-isolated.sh
+
+# Copy Claude creds too
+COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh
 ```
+
+### Network Monitoring: `run-monitored.sh`
+
+For development with network monitoring and firewall:
+
+```bash
+./docker/run-monitored.sh
+```
+
+**Features**:
+- All features from `run-isolated.sh` PLUS:
+- 🔒 **Network monitoring and firewall** with mitmproxy
+  - **DEFAULT DENY security model**: All requests denied unless explicitly allowed
+  - Real-time HTTP/HTTPS request monitoring
+  - Web dashboard at http://localhost:8081 with live updates
+  - Pending approval queue for unknown requests
+  - Multiple permission levels (allow-domain, deny-domain, allow-url, deny-url)
+  - Persistent rules and complete access logging
+  - REST API for programmatic access
+  - Default allow-list for common services (GitHub, npm, etc.)
+
+**Options**:
+- `--no-monitoring` - Disable network monitoring (bypass monitoring overhead)
+- `--help` - Show usage information
+
+**Examples**:
+```bash
+# Default: monitoring ON
+./docker/run-monitored.sh
+
+# Open browser to http://localhost:8081
+# - Real-time activity feed
+# - Statistics dashboard
+# - Rule management interface
+
+# Or use CLI: ./docker/monitoring/manage-firewall.sh
+```
+
+See [monitoring/NETWORK_MONITORING.md](monitoring/NETWORK_MONITORING.md) for complete documentation on:
+- How the network monitoring works
+- Using the web dashboard and REST API
+- Permission levels and rule management
+- Pre-configuring trusted domains
+- Viewing statistics and logs
+- Security considerations
+
+#### Security Limitations
+
+**Important**: The network monitoring is **cooperative, not enforced**.
+
+- ✅ **Provides visibility**: All HTTP/HTTPS traffic via standard libraries is logged
+- ✅ **Interactive control**: Approve/deny requests via web UI
+- ✅ **Good for development**: Audit network behavior of AI tools and scripts
+- ⚠️ **Can be bypassed**: Malicious code can ignore `HTTP_PROXY` environment variables
+- ⚠️ **Not enforcement**: Code can make raw socket connections that bypass the proxy
+
+**Why this limitation exists**: Docker Desktop on macOS runs containers in a managed Linux VM that doesn't expose network enforcement tools (like iptables). True kernel-level enforcement would require:
+- Native Linux host (not macOS/Windows)
+- iptables or nftables configuration
+- Root/sudo access
+
+**Recommendation**: Use network monitoring for:
+- ✅ Development and debugging
+- ✅ Auditing trusted code with unknown network behavior
+- ✅ Understanding what AI tools are accessing
+- ✅ Creating allow-lists for known-good services
+
+**Not suitable for**:
+- ❌ Running untrusted/malicious code
+- ❌ Security enforcement against adversarial actors
+- ❌ Preventing determined bypass attempts
+
+For true network isolation, use a Linux host or VM where iptables-based enforcement can be implemented.
 
 ## Python Development with uv
 

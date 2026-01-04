@@ -12,6 +12,38 @@ log_error() {
   FAILED_INSTALLS+=("$tool")
 }
 
+# ============================================================================
+# NETWORK MONITORING: Install mitmproxy CA certificate
+# ============================================================================
+if [ "${NETWORK_MONITORING:-false}" = "true" ]; then
+  if [ -f "/tmp/mitmproxy-ca-cert.pem" ]; then
+    echo "[mitmproxy] Installing CA certificate for HTTPS interception…"
+
+    # Install certificate in system trust store
+    sudo cp /tmp/mitmproxy-ca-cert.pem /usr/local/share/ca-certificates/mitmproxy.crt
+    sudo update-ca-certificates --fresh > /dev/null 2>&1
+
+    # Set environment variables for tools that need explicit CA bundle
+    export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+    export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+    export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+    export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+
+    # Persist CA bundle environment variables for shell sessions
+    cat >> /home/dev/.bashrc << 'EOF'
+# mitmproxy CA certificate (for HTTPS interception)
+export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+EOF
+
+    echo "[mitmproxy] ✓ CA certificate installed"
+  else
+    echo "[mitmproxy] WARNING: CA certificate not found, HTTPS may fail" >&2
+  fi
+fi
+
 echo "========================================"
 echo "Checking tools (install/update as needed)…"
 echo "========================================"
