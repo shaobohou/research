@@ -485,9 +485,18 @@ if __name__ == "__main__":
         elif sys.argv[1] == "--stats":
             # Show stats
             show_stats()
+        elif sys.argv[1] in ["--help", "-h"]:
+            # Show usage
+            print("Usage: network-monitor.py [--manage | --stats]", file=sys.stderr)
+            print("  (no args)   Start proxy server", file=sys.stderr)
+            print("  --manage    Interactive rule management", file=sys.stderr)
+            print("  --stats     Show statistics", file=sys.stderr)
+            sys.exit(1)
         else:
-            # Run proxy
-            run_proxy()
+            # Unrecognized argument
+            print(f"Error: Unknown argument '{sys.argv[1]}'", file=sys.stderr)
+            print("Usage: network-monitor.py [--manage | --stats]", file=sys.stderr)
+            sys.exit(1)
     else:
         # Default: run proxy
         run_proxy()
