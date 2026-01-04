@@ -134,6 +134,34 @@ See [monitoring/NETWORK_MONITORING.md](monitoring/NETWORK_MONITORING.md) for com
 - Viewing statistics and logs
 - Security considerations
 
+#### Security Limitations
+
+**Important**: The network monitoring is **cooperative, not enforced**.
+
+- ✅ **Provides visibility**: All HTTP/HTTPS traffic via standard libraries is logged
+- ✅ **Interactive control**: Approve/deny requests via web UI
+- ✅ **Good for development**: Audit network behavior of AI tools and scripts
+- ⚠️ **Can be bypassed**: Malicious code can ignore `HTTP_PROXY` environment variables
+- ⚠️ **Not enforcement**: Code can make raw socket connections that bypass the proxy
+
+**Why this limitation exists**: Docker Desktop on macOS runs containers in a managed Linux VM that doesn't expose network enforcement tools (like iptables). True kernel-level enforcement would require:
+- Native Linux host (not macOS/Windows)
+- iptables or nftables configuration
+- Root/sudo access
+
+**Recommendation**: Use network monitoring for:
+- ✅ Development and debugging
+- ✅ Auditing trusted code with unknown network behavior
+- ✅ Understanding what AI tools are accessing
+- ✅ Creating allow-lists for known-good services
+
+**Not suitable for**:
+- ❌ Running untrusted/malicious code
+- ❌ Security enforcement against adversarial actors
+- ❌ Preventing determined bypass attempts
+
+For true network isolation, use a Linux host or VM where iptables-based enforcement can be implemented.
+
 ## Python Development with uv
 
 ```bash
