@@ -1,0 +1,20 @@
+{
+  "name": "slack-llm-coding-agent",
+  "version": "0.1.0",
+  "description": "A simple LLM-powered Slack-based coding agent using pi-mono",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@mariozechner/pi-ai": "^0.52.0",
+    "@slack/bolt": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
