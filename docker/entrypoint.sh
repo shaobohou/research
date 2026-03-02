@@ -87,5 +87,41 @@ if [ ${#FAILED_INSTALLS[@]} -gt 0 ]; then
   echo "========================================"
 fi
 
+# --- Tailscale Setup ---
+echo "========================================"
+echo "Setting up Tailscale..."
+echo "========================================"
+
+# Start tailscaled daemon in background
+if ! sudo tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/var/run/tailscale/tailscaled.sock > /tmp/tailscaled.log 2>&1 &
+then
+  echo "[tailscale] Failed to start tailscaled daemon" >&2
+else
+  # Wait for socket to be ready (max 5 seconds)
+  for i in {1..10}; do
+    if [ -S /var/run/tailscale/tailscaled.sock ]; then
+      echo "[tailscale] Daemon started successfully"
+      break
+    fi
+    sleep 0.5
+  done
+
+  # Authenticate if auth key is provided
+  if [ -n "${TAILSCALE_AUTH_KEY:-}" ]; then
+    echo "[tailscale] Authenticating with provided auth key..."
+    if sudo tailscale up --authkey="$TAILSCALE_AUTH_KEY" --hostname="${TAILSCALE_HOSTNAME:-docker-dev-$(hostname)}"; then
+      echo "[tailscale] Authentication successful"
+      echo "[tailscale] Status: $(sudo tailscale status --json | grep -o '"Self":[^}]*' || echo 'connected')"
+    else
+      echo "[tailscale] Authentication failed" >&2
+    fi
+  else
+    echo "[tailscale] No auth key provided (set TAILSCALE_AUTH_KEY to authenticate)"
+    echo "[tailscale] Run 'sudo tailscale up' to authenticate manually"
+  fi
+fi
+
+echo "========================================"
+
 # Execute provided command (default: bash)
 exec "$@"
