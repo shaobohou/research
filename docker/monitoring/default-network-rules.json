@@ -1,0 +1,17 @@
+{
+  "claude.ai": "allow-domain",
+  "registry.npmjs.org": "allow-domain",
+  "storage.googleapis.com": "allow-domain",
+  "statsig.anthropic.com": "allow-domain",
+  "downloads.claude.ai": "allow-domain",
+  "nodejs.org": "allow-domain",
+  "api.anthropic.com": "allow-domain",
+  "github.com": "allow-domain",
+  "auth.openai.com": "allow-domain",
+  "api.github.com": "allow-domain",
+  "console.anthropic.com": "allow-domain",
+  "https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md": "allow",
+  "play.googleapis.com": "allow-domain",
+  "generativelanguage.googleapis.com": "allow-domain",
+  "chatgpt.com": "allow-domain"
+}

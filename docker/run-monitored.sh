@@ -1,0 +1,382 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+#
+# Run Docker container with network monitoring and firewall
+#
+# Features:
+# - Network monitoring and firewall with mitmproxy
+# - Interactive web UI for managing network rules
+# - Isolated config directories per project
+# - Credential copying from host
+#
+# Usage:
+#   ./docker/run-monitored.sh [OPTIONS]
+#
+# Options:
+#   --no-monitoring       Disable network monitoring (on by default)
+#   --help               Show this help message
+#
+# Environment Variables:
+#   COPY_CODEX_CREDS=true|false    - Copy Codex credentials (default: true)
+#   COPY_CLAUDE_CREDS=true|false   - Copy Claude credentials (default: false)
+#
+# Examples:
+#   ./docker/run-monitored.sh                    # Default: monitoring ON
+#   ./docker/run-monitored.sh --no-monitoring    # Monitoring OFF
+#   COPY_CLAUDE_CREDS=true ./docker/run-monitored.sh
+#
+# For unmonitored version, use: ./docker/run-isolated.sh
+#
+
+# ============================================================================
+# COMMAND-LINE ARGUMENT PARSING
+# ============================================================================
+
+# Parse command-line arguments
+ENABLE_MONITORING=true
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --no-monitoring)
+      ENABLE_MONITORING=false
+      shift
+      ;;
+    --help)
+      grep '^#' "$0" | sed 's/^# \?//' | head -n 20
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      echo "Run '$0 --help' for usage information" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# ============================================================================
+# ENVIRONMENT CONFIGURATION
+# ============================================================================
+
+# Defaults for environment variables
+COPY_CODEX_CREDS="${COPY_CODEX_CREDS:-true}"
+COPY_CLAUDE_CREDS="${COPY_CLAUDE_CREDS:-false}"
+
+# Get repo root and name, or use current directory if not a git repo
+if git rev-parse --git-dir > /dev/null 2>&1; then
+  ROOT_DIR="$(git rev-parse --show-toplevel)"
+  REPO_NAME="$(basename "$ROOT_DIR")"
+else
+  ROOT_DIR="$(pwd)"
+  REPO_NAME="local"
+fi
+
+# Deterministic per-repo project ID
+PROJECT_ID="$(echo -n "$ROOT_DIR" | shasum -a 256 | cut -c1-12)"
+
+DATA_DIR="$HOME/docker-agent-data/$REPO_NAME/$PROJECT_ID"
+
+# Ensure host paths exist
+mkdir -p "$DATA_DIR/.codex"
+mkdir -p "$DATA_DIR/.claude"
+
+# ============================================================================
+# CREDENTIAL COPYING
+# ============================================================================
+
+# Copy Codex auth if enabled
+if [ "$COPY_CODEX_CREDS" = "true" ]; then
+  if [ -f "$HOME/.codex/auth.json" ]; then
+    if cp "$HOME/.codex/auth.json" "$DATA_DIR/.codex/auth.json" 2>/dev/null; then
+      echo "[codex] Copied auth.json"
+    else
+      echo "[codex] Failed to copy auth.json" >&2
+    fi
+  else
+    echo "[codex] auth.json not found at ~/.codex/auth.json" >&2
+  fi
+fi
+
+# Copy Claude credentials if enabled
+if [ "$COPY_CLAUDE_CREDS" = "true" ]; then
+  if [ -f "$HOME/.claude/.credentials.json" ]; then
+    if cp "$HOME/.claude/.credentials.json" "$DATA_DIR/.claude/.credentials.json" 2>/dev/null; then
+      echo "[claude] Copied credentials"
+    else
+      echo "[claude] Failed to copy credentials" >&2
+    fi
+  else
+    echo "[claude] credentials not found at ~/.claude/.credentials.json" >&2
+  fi
+fi
+
+# Ensure valid JSON config file
+CLAUDE_JSON="$DATA_DIR/.claude.json"
+if [ ! -f "$CLAUDE_JSON" ]; then
+  echo '{}' > "$CLAUDE_JSON"
+fi
+
+# ============================================================================
+# NETWORK MONITORING SETUP
+# ============================================================================
+
+# Network monitoring setup (if enabled)
+PROXY_ALREADY_RUNNING=false
+WEB_UI_ALREADY_RUNNING=false
+PROXY_PID=""
+WEB_UI_PID=""
+
+if [ "$ENABLE_MONITORING" = "true" ]; then
+  # Get script directory for monitoring scripts
+  SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+  # --------------------------------------------------------------------------
+  # Ensure mitmproxy CA certificate exists
+  # --------------------------------------------------------------------------
+  MITMPROXY_CA="$HOME/.mitmproxy/mitmproxy-ca-cert.pem"
+
+  if [ ! -f "$MITMPROXY_CA" ]; then
+    echo "Generating mitmproxy CA certificate (first-time setup)..."
+
+    # Start mitmproxy briefly to generate certificate
+    uv run "$SCRIPT_DIR/monitoring/network-monitor.py" > /tmp/mitmproxy-cert-gen.log 2>&1 &
+    CERT_GEN_PID=$!
+
+    # Wait up to 10 seconds for certificate to be generated
+    for i in {1..20}; do
+      if [ -f "$MITMPROXY_CA" ]; then
+        echo "✓ CA certificate generated at $MITMPROXY_CA"
+        kill $CERT_GEN_PID 2>/dev/null || true
+        wait $CERT_GEN_PID 2>/dev/null || true
+        sleep 1  # Give it time to clean up
+        break
+      fi
+      sleep 0.5
+    done
+
+    if [ ! -f "$MITMPROXY_CA" ]; then
+      echo "ERROR: Failed to generate mitmproxy CA certificate" >&2
+      echo "       Check /tmp/mitmproxy-cert-gen.log for details" >&2
+      exit 1
+    fi
+  fi
+
+  # --------------------------------------------------------------------------
+  # Initialize default network rules (first-time setup)
+  # --------------------------------------------------------------------------
+  RULES_FILE="$HOME/docker-agent-data/network-rules.json"
+  DEFAULT_RULES="$SCRIPT_DIR/monitoring/default-network-rules.json"
+
+  if [ ! -f "$RULES_FILE" ]; then
+    echo "Initializing default network rules (first-time setup)..."
+    mkdir -p "$(dirname "$RULES_FILE")"
+
+    if [ -f "$DEFAULT_RULES" ]; then
+      cp "$DEFAULT_RULES" "$RULES_FILE"
+      echo "✓ Default network rules installed at $RULES_FILE"
+    else
+      echo "{}" > "$RULES_FILE"
+      echo "✓ Empty network rules file created at $RULES_FILE"
+    fi
+  fi
+
+  # Helper function: wait for port to be available
+  wait_for_port() {
+    local port=$1
+    local max_iterations=${2:-20}  # Default 20 iterations = 10 seconds
+    local count=0
+
+    while ! nc -z localhost "$port" 2>/dev/null; do
+      if [ $count -ge $max_iterations ]; then
+        return 1
+      fi
+      sleep 0.5
+      count=$((count + 1))
+    done
+    return 0
+  }
+
+  # --------------------------------------------------------------------------
+  # Check if monitoring services are already running
+  # --------------------------------------------------------------------------
+
+  # Check if network monitor proxy is already running
+  if nc -z localhost 8080 2>/dev/null; then
+    # Port 8080 is occupied - verify it's actually our proxy
+    if pgrep -f "network-monitor.py" > /dev/null && ! pgrep -f "network-monitor.py --manage" > /dev/null; then
+      echo "✓ Network monitor already running"
+      PROXY_ALREADY_RUNNING=true
+    else
+      echo "ERROR: Port 8080 is already in use by another process" >&2
+      echo "       Network monitoring requires port 8080 to be available" >&2
+      echo "       Please stop the process using port 8080 or run with --no-monitoring" >&2
+      exit 1
+    fi
+  fi
+
+  # Check if web UI is already running
+  if nc -z localhost 8081 2>/dev/null; then
+    # Port 8081 is occupied - verify it's actually our web UI
+    if pgrep -f "web-ui.py" > /dev/null; then
+      echo "✓ Web UI already running"
+      WEB_UI_ALREADY_RUNNING=true
+    else
+      echo "WARNING: Port 8081 is already in use by another process" >&2
+      echo "         Web UI will not be available, but proxy will continue" >&2
+    fi
+  fi
+
+  # --------------------------------------------------------------------------
+  # Start monitoring services
+  # --------------------------------------------------------------------------
+
+  # Start proxy if not running
+  if [ "$PROXY_ALREADY_RUNNING" = false ]; then
+    echo "Starting network monitor proxy on port 8080..."
+
+    # Start the proxy in the background
+    uv run "$SCRIPT_DIR/monitoring/network-monitor.py" > /tmp/network-monitor.log 2>&1 &
+    PROXY_PID=$!
+
+    # Wait for proxy port to be ready (20 iterations = 10 seconds)
+    if ! wait_for_port 8080 20; then
+      echo "ERROR: Network monitor failed to start on port 8080. Check /tmp/network-monitor.log" >&2
+      exit 1
+    fi
+
+    if ! ps -p $PROXY_PID > /dev/null; then
+      echo "ERROR: Network monitor process died. Check /tmp/network-monitor.log" >&2
+      exit 1
+    fi
+
+    echo "✓ Network monitor started (PID: $PROXY_PID)"
+  fi
+
+  # Start web UI if not running
+  if [ "$WEB_UI_ALREADY_RUNNING" = false ]; then
+    echo "Starting web UI on port 8081..."
+
+    # Start the web UI in the background
+    cd "$SCRIPT_DIR/monitoring" && uv run "$SCRIPT_DIR/monitoring/web-ui.py" > /tmp/web-ui.log 2>&1 &
+    WEB_UI_PID=$!
+
+    # Wait for web UI port to be ready (20 iterations = 10 seconds)
+    if ! wait_for_port 8081 20; then
+      echo "WARNING: Web UI failed to start on port 8081. Check /tmp/web-ui.log" >&2
+      echo "Continuing without web UI..."
+    elif ! ps -p $WEB_UI_PID > /dev/null; then
+      echo "WARNING: Web UI process died. Check /tmp/web-ui.log" >&2
+      echo "Continuing without web UI..."
+    else
+      echo "✓ Web UI started (PID: $WEB_UI_PID)"
+      echo "✓ Web UI available at: http://localhost:8081"
+    fi
+  fi
+
+  echo ""
+
+  # --------------------------------------------------------------------------
+  # Setup cleanup handlers
+  # --------------------------------------------------------------------------
+
+  # Create cleanup function for monitoring services
+  if [ "$PROXY_ALREADY_RUNNING" = false ] || [ "$WEB_UI_ALREADY_RUNNING" = false ]; then
+    cleanup() {
+      echo ""
+      echo "Stopping services..."
+      if [ "$PROXY_ALREADY_RUNNING" = false ] && [ -n "${PROXY_PID:-}" ]; then
+        kill $PROXY_PID 2>/dev/null || true
+        wait $PROXY_PID 2>/dev/null || true
+      fi
+      if [ "$WEB_UI_ALREADY_RUNNING" = false ] && [ -n "${WEB_UI_PID:-}" ]; then
+        kill $WEB_UI_PID 2>/dev/null || true
+        wait $WEB_UI_PID 2>/dev/null || true
+      fi
+      echo "✓ Cleanup complete"
+    }
+
+    trap cleanup EXIT INT TERM
+  fi
+
+  # --------------------------------------------------------------------------
+  # Configure proxy URL and display status
+  # --------------------------------------------------------------------------
+
+  # Determine host IP for Docker to reach host
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS: use special DNS name
+    HOST_IP="host.docker.internal"
+  else
+    # Linux: get actual host IP
+    HOST_IP=$(ip -4 addr show docker0 2>/dev/null | grep -oP '(?<=inet\s)\d+(\.\d+){3}' || echo "172.17.0.1")
+  fi
+
+  PROXY_URL="http://${HOST_IP}:8080"
+
+  echo "=========================================="
+  echo "Network Monitoring Enabled"
+  echo "=========================================="
+  echo "Proxy URL: $PROXY_URL"
+  echo "All HTTP/HTTPS traffic will be monitored"
+  echo ""
+  echo "Web UI: http://localhost:8081"
+  echo "  - Real-time monitoring dashboard"
+  echo "  - Manage firewall rules"
+  echo "  - View statistics and logs"
+  echo ""
+  echo "CLI: ./docker/monitoring/manage-firewall.sh"
+  echo "  - Terminal-based management"
+  echo ""
+  echo "To disable monitoring:"
+  echo "  ./docker/run-isolated.sh --no-monitoring"
+  echo "=========================================="
+  echo ""
+else
+  echo "=========================================="
+  echo "Network Monitoring Disabled"
+  echo "=========================================="
+  echo "Container will have unrestricted network access"
+  echo ""
+  echo "To enable monitoring (on by default):"
+  echo "  ./docker/run-isolated.sh"
+  echo "=========================================="
+  echo ""
+fi
+
+# ============================================================================
+# DOCKER COMMAND CONSTRUCTION
+# ============================================================================
+
+# Build docker run command based on monitoring setting
+DOCKER_ARGS=(
+  "--rm" "-it"
+  "-e" "OPENAI_API_KEY"
+  "-e" "GEMINI_API_KEY"
+  "-v" "$ROOT_DIR:/home/dev/workspace"
+  "-v" "$DATA_DIR/.codex:/home/dev/.codex"
+  "-v" "$DATA_DIR/.claude:/home/dev/.claude"
+  "-v" "$CLAUDE_JSON:/home/dev/.claude.json"
+)
+
+# Add monitoring-specific arguments if enabled
+if [ "$ENABLE_MONITORING" = "true" ]; then
+  # Certificate already ensured to exist in monitoring setup section above
+  DOCKER_ARGS+=(
+    "--add-host=host.docker.internal:host-gateway"
+    "-e" "HTTP_PROXY=$PROXY_URL"
+    "-e" "HTTPS_PROXY=$PROXY_URL"
+    "-e" "http_proxy=$PROXY_URL"
+    "-e" "https_proxy=$PROXY_URL"
+    "-e" "NO_PROXY=localhost,127.0.0.1"
+    "-e" "no_proxy=localhost,127.0.0.1"
+    "-e" "NETWORK_MONITORING=true"
+    "-v" "$MITMPROXY_CA:/tmp/mitmproxy-ca-cert.pem:ro"
+  )
+fi
+
+# ============================================================================
+# EXECUTE DOCKER CONTAINER
+# ============================================================================
+
+# Run Docker container
+docker run "${DOCKER_ARGS[@]}" claude-dev-agents

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Firewall Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .stat-label {
+            color: #8b949e;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: #58a6ff;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c9d1d9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            background: #1f6feb;
+            color: #fff;
+        }
+
+        .badge.live {
+            background: #238636;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px;
+            color: #8b949e;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #30363d;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        tr:hover {
+            background: #0d1117;
+        }
+
+        .decision {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .decision.allow, .decision.allow-once, .decision.allow-rule {
+            background: #238636;
+            color: #fff;
+        }
+
+        .decision.deny, .decision.deny-once, .decision.deny-rule {
+            background: #da3633;
+            color: #fff;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #238636;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #2ea043;
+        }
+
+        .btn-danger {
+            background: #da3633;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #b62324;
+        }
+
+        .btn-secondary {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+        }
+
+        .btn-secondary:hover {
+            background: #30363d;
+        }
+
+        .btn-small {
+            padding: 4px 10px;
+            font-size: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
+            font-size: 13px;
+            color: #79c0ff;
+        }
+
+        .timestamp {
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .url-cell {
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #238636;
+            margin-right: 5px;
+        }
+
+        .status-indicator.disconnected {
+            background: #da3633;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🛡️ Network Firewall Monitor</h1>
+            <div class="subtitle">
+                <span class="status-indicator" id="statusIndicator"></span>
+                Real-time network access control and monitoring
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Statistics Grid -->
+        <div class="grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Requests</div>
+                <div class="stat-value" id="statTotal">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Allowed</div>
+                <div class="stat-value" id="statAllowed" style="color: #3fb950;">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Denied</div>
+                <div class="stat-value" id="statDenied" style="color: #f85149;">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Rules</div>
+                <div class="stat-value" id="statRules">0</div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="section">
+            <div class="section-header">
+                <div>
+                    <span class="section-title">Recent Activity</span>
+                    <span class="badge live">LIVE</span>
+                </div>
+                <button class="btn btn-secondary btn-small" onclick="refreshActivity()">Refresh</button>
+            </div>
+            <div id="activityContent">
+                <div class="empty-state">Loading activity...</div>
+            </div>
+        </div>
+
+        <!-- Pending Approvals -->
+        <div class="section" id="pendingSection" style="display: none;">
+            <div class="section-header">
+                <span class="section-title">Pending Approvals</span>
+                <span class="badge" id="pendingCount" style="background: #f85149;">0</span>
+            </div>
+            <div id="pendingContent">
+                <div class="empty-state">No pending requests</div>
+            </div>
+        </div>
+
+        <!-- Firewall Rules -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-title">Firewall Rules</span>
+                <div class="toolbar">
+                    <button class="btn btn-primary btn-small" onclick="showAddRuleModal()">+ Add Rule</button>
+                    <button class="btn btn-secondary btn-small" onclick="exportRules()">Export</button>
+                    <button class="btn btn-danger btn-small" onclick="clearAllRules()">Clear All</button>
+                </div>
+            </div>
+            <div id="rulesContent">
+                <div class="empty-state">Loading rules...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Rule Modal -->
+    <div class="modal" id="addRuleModal">
+        <div class="modal-content">
+            <div class="modal-header" id="ruleModalTitle">Add Firewall Rule</div>
+            <form id="addRuleForm" onsubmit="saveRule(event)">
+                <div class="form-group">
+                    <label>Target (domain or URL)</label>
+                    <input type="text" id="ruleTarget" placeholder="e.g., github.com or *.google.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Action</label>
+                    <select id="ruleAction" required>
+                        <option value="allow-domain">Allow Domain</option>
+                        <option value="deny-domain">Deny Domain</option>
+                        <option value="allow">Allow URL</option>
+                        <option value="deny">Deny URL</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeRuleModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="ruleModalSubmit">Add Rule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.origin;
+        let eventSource = null;
+        let editingRule = null;  // Track if we're editing (stores original target)
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadActivity();
+            loadRules();
+            loadPending();
+            startLiveUpdates();
+        });
+
+        // Live updates via SSE
+        function startLiveUpdates() {
+            eventSource = new EventSource(`${API_BASE}/api/stream`);
+
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                updateStats(data.stats);
+                updateActivityTable(data.requests);
+                updatePendingRequests(data.pending || []);
+                document.getElementById('statusIndicator').classList.remove('disconnected');
+            };
+
+            eventSource.onerror = () => {
+                document.getElementById('statusIndicator').classList.add('disconnected');
+                setTimeout(() => {
+                    if (eventSource.readyState === EventSource.CLOSED) {
+                        startLiveUpdates();
+                    }
+                }, 5000);
+            };
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/api/stats`);
+                const data = await response.json();
+                updateStats(data.stats);
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Update statistics display
+        function updateStats(stats) {
+            document.getElementById('statTotal').textContent = stats.total || 0;
+
+            const allowed = (stats.allow || 0) + (stats['allow-once'] || 0) + (stats['allow-rule'] || 0);
+            const denied = (stats.deny || 0) + (stats['deny-once'] || 0) + (stats['deny-rule'] || 0);
+
+            document.getElementById('statAllowed').textContent = allowed;
+            document.getElementById('statDenied').textContent = denied;
+        }
+
+        // Load recent activity
+        async function loadActivity() {
+            try {
+                const response = await fetch(`${API_BASE}/api/requests?limit=50`);
+                const data = await response.json();
+                updateActivityTable(data.requests);
+            } catch (error) {
+                console.error('Error loading activity:', error);
+                document.getElementById('activityContent').innerHTML = '<div class="empty-state">Failed to load activity</div>';
+            }
+        }
+
+        // Update activity table
+        function updateActivityTable(requests) {
+            if (!requests || requests.length === 0) {
+                document.getElementById('activityContent').innerHTML = '<div class="empty-state">No activity yet</div>';
+                return;
+            }
+
+            const html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Decision</th>
+                            <th>Method</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${requests.map(req => `
+                            <tr>
+                                <td class="timestamp">${formatTimestamp(req.timestamp)}</td>
+                                <td><span class="decision ${req.decision.toLowerCase()}">${req.decision}</span></td>
+                                <td><span class="code">${req.method}</span></td>
+                                <td class="url-cell code">${escapeHtml(req.url)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('activityContent').innerHTML = html;
+        }
+
+        // Load firewall rules
+        async function loadRules() {
+            try {
+                const response = await fetch(`${API_BASE}/api/rules`);
+                const data = await response.json();
+                document.getElementById('statRules').textContent = data.count || 0;
+                updateRulesTable(data.rules);
+            } catch (error) {
+                console.error('Error loading rules:', error);
+                document.getElementById('rulesContent').innerHTML = '<div class="empty-state">Failed to load rules</div>';
+            }
+        }
+
+        // Update rules table
+        function updateRulesTable(rules) {
+            if (!rules || Object.keys(rules).length === 0) {
+                document.getElementById('rulesContent').innerHTML = '<div class="empty-state">No rules configured</div>';
+                return;
+            }
+
+            const entries = Object.entries(rules).sort((a, b) => a[0].localeCompare(b[0]));
+
+            const html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Target</th>
+                            <th>Action</th>
+                            <th style="width: 100px; text-align: right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${entries.map(([target, action]) => `
+                            <tr>
+                                <td class="code">${escapeHtml(target)}</td>
+                                <td><span class="decision ${action}">${action}</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-secondary btn-small" onclick='editRule(${JSON.stringify(target)}, ${JSON.stringify(action)})'>Edit</button>
+                                    <button class="btn btn-danger btn-small" onclick='deleteRule(${JSON.stringify(target)})'>Delete</button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            document.getElementById('rulesContent').innerHTML = html;
+        }
+
+        // Save rule (add or edit)
+        async function saveRule(event) {
+            event.preventDefault();
+            const target = document.getElementById('ruleTarget').value.trim();
+            const action = document.getElementById('ruleAction').value;
+
+            try {
+                // If editing and target changed, delete old rule first
+                if (editingRule && editingRule !== target) {
+                    await fetch(`${API_BASE}/api/rules/${encodeURIComponent(editingRule)}`, {
+                        method: 'DELETE'
+                    });
+                }
+
+                // Add/update the rule
+                const response = await fetch(`${API_BASE}/api/rules`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target, action })
+                });
+
+                if (response.ok) {
+                    closeRuleModal();
+                    loadRules();
+                } else {
+                    alert(editingRule ? 'Failed to update rule' : 'Failed to add rule');
+                }
+            } catch (error) {
+                console.error('Error saving rule:', error);
+                alert(editingRule ? 'Failed to update rule' : 'Failed to add rule');
+            }
+        }
+
+        // Delete rule
+        async function deleteRule(target) {
+            if (!confirm(`Delete rule for "${target}"?`)) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/rules/${encodeURIComponent(target)}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    loadRules();
+                } else {
+                    alert('Failed to delete rule');
+                }
+            } catch (error) {
+                console.error('Error deleting rule:', error);
+                alert('Failed to delete rule');
+            }
+        }
+
+        // Clear all rules
+        async function clearAllRules() {
+            if (!confirm('Delete ALL firewall rules? This cannot be undone.')) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/rules/clear`, {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    loadRules();
+                } else {
+                    alert('Failed to clear rules');
+                }
+            } catch (error) {
+                console.error('Error clearing rules:', error);
+                alert('Failed to clear rules');
+            }
+        }
+
+        // Export rules
+        async function exportRules() {
+            try {
+                const response = await fetch(`${API_BASE}/api/export`);
+                const rules = await response.json();
+                const blob = new Blob([JSON.stringify(rules, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `firewall-rules-${Date.now()}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('Error exporting rules:', error);
+                alert('Failed to export rules');
+            }
+        }
+
+        // Load pending approval requests
+        async function loadPending() {
+            try {
+                const response = await fetch(`${API_BASE}/api/pending`);
+                const data = await response.json();
+                updatePendingRequests(data.pending || []);
+            } catch (error) {
+                console.error('Error loading pending requests:', error);
+            }
+        }
+
+        // Update pending requests display
+        function updatePendingRequests(pending) {
+            const section = document.getElementById('pendingSection');
+            const content = document.getElementById('pendingContent');
+            const countBadge = document.getElementById('pendingCount');
+
+            if (pending.length === 0) {
+                section.style.display = 'none';
+                content.innerHTML = '<div class="empty-state">No pending requests</div>';
+                return;
+            }
+
+            section.style.display = 'block';
+            countBadge.textContent = pending.length;
+
+            let html = '<table class="table"><thead><tr>';
+            html += '<th>Host</th><th>Path</th><th>Method</th><th>Time</th><th>Actions</th>';
+            html += '</tr></thead><tbody>';
+
+            pending.forEach(req => {
+                const time = new Date(req.timestamp).toLocaleTimeString();
+                html += `<tr>
+                    <td><code>${escapeHtml(req.host)}</code></td>
+                    <td><code>${escapeHtml(req.path)}</code></td>
+                    <td><span class="badge">${escapeHtml(req.method)}</span></td>
+                    <td>${time}</td>
+                    <td style="white-space: nowrap;">
+                        <button class="btn btn-primary btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "allow-domain")'
+                                title="Allow all requests to ${escapeHtml(req.host)}">
+                            ✓ Domain
+                        </button>
+                        <button class="btn btn-primary btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "allow-url")'
+                                title="Allow only this specific URL">
+                            ✓ URL
+                        </button>
+                        <button class="btn btn-danger btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "deny-domain")'
+                                title="Deny all requests to ${escapeHtml(req.host)}">
+                            ✗ Domain
+                        </button>
+                        <button class="btn btn-danger btn-small"
+                                onclick='approvePending(${JSON.stringify(req)}, "deny-url")'
+                                title="Deny only this specific URL">
+                            ✗ URL
+                        </button>
+                    </td>
+                </tr>`;
+            });
+
+            html += '</tbody></table>';
+            content.innerHTML = html;
+        }
+
+        // Approve/deny a pending request
+        async function approvePending(req, action) {
+            try {
+                const response = await fetch(`${API_BASE}/api/approve`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        host: req.host,
+                        url: req.url,
+                        action: action
+                    })
+                });
+
+                if (response.ok) {
+                    loadPending();
+                    loadRules();
+                } else {
+                    alert('Failed to approve request');
+                }
+            } catch (error) {
+                console.error('Error approving request:', error);
+                alert('Failed to approve request');
+            }
+        }
+
+        // Modal controls
+        function showAddRuleModal() {
+            editingRule = null;
+            document.getElementById('ruleModalTitle').textContent = 'Add Firewall Rule';
+            document.getElementById('ruleModalSubmit').textContent = 'Add Rule';
+            document.getElementById('ruleTarget').value = '';
+            document.getElementById('ruleAction').value = 'allow-domain';
+            document.getElementById('addRuleModal').classList.add('active');
+            document.getElementById('ruleTarget').focus();
+        }
+
+        function editRule(target, action) {
+            editingRule = target;
+            document.getElementById('ruleModalTitle').textContent = 'Edit Firewall Rule';
+            document.getElementById('ruleModalSubmit').textContent = 'Save Changes';
+            document.getElementById('ruleTarget').value = target;
+            document.getElementById('ruleAction').value = action;
+            document.getElementById('addRuleModal').classList.add('active');
+            document.getElementById('ruleTarget').focus();
+        }
+
+        function closeRuleModal() {
+            document.getElementById('addRuleModal').classList.remove('active');
+            document.getElementById('addRuleForm').reset();
+            editingRule = null;
+        }
+
+        // Refresh functions
+        function refreshActivity() {
+            loadActivity();
+            loadStats();
+        }
+
+        // Utility functions
+        function formatTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleTimeString();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Close modal on background click
+        document.getElementById('addRuleModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeAddRuleModal();
+        });
+    </script>
+</body>
+</html>
