@@ -248,7 +248,8 @@ updater_thread.start()
 @app.route("/")
 def index():
     """Serve the main UI"""
-    return send_from_directory(".", "web-ui.html")
+    script_dir = Path(__file__).parent
+    return send_from_directory(script_dir, "web-ui.html")
 
 
 @app.route("/api/rules", methods=["GET"])
