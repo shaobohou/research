@@ -20,7 +20,6 @@ Server spec can be:
 
 import argparse
 import asyncio
-import json
 import keyword
 import re
 import sys
@@ -61,12 +60,11 @@ def _py_type(schema: dict[str, Any]) -> tuple[str, bool]:
         return f"list[{item_t}]", False
     if _is_simple(schema):
         t = schema.get("type", "string")
-        TM = {"string": "str", "integer": "int", "number": "float",
-              "boolean": "bool", "null": "None"}
+        TM = {"string": "str", "integer": "int", "number": "float", "boolean": "bool", "null": "None"}
         if isinstance(t, list):
             return " | ".join(TM.get(x, "str") for x in t), False
         return TM.get(t, "str"), False
-    return "str", True   # complex type → accept as JSON string
+    return "str", True  # complex type → accept as JSON string
 
 
 def _to_id(name: str) -> str:
@@ -94,6 +92,7 @@ def _is_url(spec: str) -> bool:
 
 
 # ── Generated-script helpers ──────────────────────────────────────────────────
+
 
 def _add_argument_lines(prop_name: str, prop_schema: dict[str, Any], is_required: bool) -> list[str]:
     """Return add_argument() source lines for one property."""
@@ -156,8 +155,7 @@ def _tool_function_source(tool: Any) -> str:
             _, needs_json = _py_type(pschema)
             if needs_json:
                 L.append(
-                    f"        {pname!r}: json.loads(args.{safe})"
-                    f" if isinstance(args.{safe}, str) else args.{safe},"
+                    f"        {pname!r}: json.loads(args.{safe}) if isinstance(args.{safe}, str) else args.{safe},"
                 )
             else:
                 L.append(f"        {pname!r}: args.{safe},")
@@ -470,8 +468,7 @@ def generate_skill_content(server_name: str, cli_name: str, tools: list[Any]) ->
     skill_name = re.sub(r"[^a-zA-Z0-9-]", "-", server_name).lower().strip("-")
     sections = "\n\n".join(_tool_skill_section(t, cli_name) for t in tools)
     return (
-        _SKILL_TMPL
-        .replace("{skill_name}", skill_name)
+        _SKILL_TMPL.replace("{skill_name}", skill_name)
         .replace("{server_name}", server_name)
         .replace("{cli_name}", cli_name)
         .replace("{tool_sections}", sections + "\n\n" if sections else "")
@@ -497,8 +494,7 @@ def generate_cli_script(
     # Use .replace() to avoid conflicts between .format() placeholders and
     # literal Python braces (dict comprehensions, f-strings) in the template.
     header = (
-        _HEADER_TMPL
-        .replace("{server_name}", server_name)
+        _HEADER_TMPL.replace("{server_name}", server_name)
         .replace("{server_spec}", server_spec)
         .replace("{output_name}", output_name)
         .replace("{client_spec}", client_spec)
@@ -510,9 +506,7 @@ def generate_cli_script(
 
     # _setup_tool_subparsers body
     if tools:
-        setup_calls = "\n".join(
-            f"    _setup_{_to_id(t.name)}(sub)" for t in tools
-        )
+        setup_calls = "\n".join(f"    _setup_{_to_id(t.name)}(sub)" for t in tools)
     else:
         setup_calls = "    pass  # no tools"
 
@@ -523,6 +517,7 @@ def generate_cli_script(
 
 # ── MCP connection ────────────────────────────────────────────────────────────
 
+
 async def _connect_and_list_tools(spec: str) -> tuple[list[Any], Any]:
     """Connect to the MCP server and return (tools, server_info)."""
     from mcp import ClientSession, StdioServerParameters
@@ -531,6 +526,7 @@ async def _connect_and_list_tools(spec: str) -> tuple[list[Any], Any]:
         # Try streamable HTTP first, then SSE
         try:
             from mcp.client.streamable_http import streamablehttp_client
+
             async with streamablehttp_client(spec) as (r, w, _):
                 async with ClientSession(r, w) as session:
                     await session.initialize()
@@ -540,6 +536,7 @@ async def _connect_and_list_tools(spec: str) -> tuple[list[Any], Any]:
             pass
 
         from mcp.client.sse import sse_client
+
         async with sse_client(spec) as (r, w):
             async with ClientSession(r, w) as session:
                 await session.initialize()
@@ -547,6 +544,7 @@ async def _connect_and_list_tools(spec: str) -> tuple[list[Any], Any]:
                 return result.tools, getattr(session, "server_info", None)
     else:
         from mcp.client.stdio import stdio_client
+
         parts = spec.split()
         params = StdioServerParameters(command=parts[0], args=parts[1:])
         async with stdio_client(params) as (r, w):
@@ -557,6 +555,7 @@ async def _connect_and_list_tools(spec: str) -> tuple[list[Any], Any]:
 
 
 # ── Entry point ───────────────────────────────────────────────────────────────
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -574,7 +573,8 @@ def main() -> None:
         help="Output file path (default: cli.py)",
     )
     parser.add_argument(
-        "-f", "--force",
+        "-f",
+        "--force",
         action="store_true",
         help="Overwrite output file if it exists",
     )
