@@ -265,14 +265,11 @@ class TestOptimizedLogReading:
 
 def test_dependencies_importable():
     """Test that required dependencies can be imported"""
-    try:
-        import flask
-        import flask_cors
+    import flask
+    import flask_cors
 
-        assert flask is not None
-        assert flask_cors is not None
-    except ImportError as e:
-        pytest.skip(f"Dependencies not installed: {e}")
+    assert flask is not None
+    assert flask_cors is not None
 
 
 def test_port_configuration():
