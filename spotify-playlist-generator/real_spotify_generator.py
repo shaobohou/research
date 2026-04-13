@@ -38,7 +38,7 @@ class RealSpotifyPlaylistGenerator:
             query = f'artist:"{artist}" track:"{clean_title}"'
             results = self.spotify.search(q=query, type="track", limit=5)
 
-            if results["tracks"]["items"]:
+            if results and results["tracks"]["items"]:
                 # Get the most popular match
                 tracks = results["tracks"]["items"]
                 best_match = max(tracks, key=lambda t: t["popularity"])
@@ -77,7 +77,7 @@ class RealSpotifyPlaylistGenerator:
 
             original_pop = original_info["popularity"]
 
-            for track in results["tracks"]["items"]:
+            for track in results["tracks"]["items"] if results else []:
                 artist_name = track["artists"][0]["name"]
                 track_name = track["name"]
                 popularity = track["popularity"]
@@ -153,12 +153,12 @@ class RealSpotifyPlaylistGenerator:
                 # Search for artist's top tracks
                 try:
                     artist_search = self.spotify.search(q=f'artist:"{current_artist}"', type="artist", limit=1)
-                    if artist_search["artists"]["items"]:
+                    if artist_search and artist_search["artists"]["items"]:
                         artist_id = artist_search["artists"]["items"][0]["id"]
                         top_tracks = self.spotify.artist_top_tracks(artist_id)
 
                         # Try to find covers of other popular songs
-                        for track in top_tracks["tracks"][:5]:
+                        for track in top_tracks["tracks"][:5] if top_tracks else []:
                             if track["name"] != current_title:
                                 other_covers = self.find_covers(current_artist, track["name"])
                                 valid_other = [
