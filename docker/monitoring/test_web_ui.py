@@ -9,8 +9,6 @@ import json
 import subprocess
 from pathlib import Path
 
-import pytest
-
 
 def test_script_syntax():
     """Test that the script has valid Python syntax"""
