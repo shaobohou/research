@@ -24,21 +24,19 @@ from mcp.client.stdio import stdio_client
 
 try:
     from mcp.client.streamable_http import streamablehttp_client
-
     _HAS_STREAMABLE = True
 except ImportError:
     _HAS_STREAMABLE = False
 
 try:
     from mcp.client.sse import sse_client
-
     _HAS_SSE = True
 except ImportError:
     _HAS_SSE = False
 
 # Modify this to change how the CLI connects to the MCP server.
-CLIENT_SPEC = {"command": "python", "args": ["example_server.py"]}
-CLIENT_TYPE = "stdio"  # "url" or "stdio"
+CLIENT_SPEC = {'command': 'python', 'args': ['example_server.py']}
+CLIENT_TYPE = 'stdio'  # "url" or "stdio"
 
 
 @asynccontextmanager
@@ -56,7 +54,10 @@ async def _get_session():
                     await session.initialize()
                     yield session
         else:
-            raise RuntimeError("No HTTP transport available. Install mcp with: pip install 'mcp[http]'")
+            raise RuntimeError(
+                "No HTTP transport available. "
+                "Install mcp with: pip install 'mcp[http]'"
+            )
     else:
         params = StdioServerParameters(**CLIENT_SPEC)
         async with stdio_client(params) as (r, w):
@@ -82,7 +83,6 @@ async def _call_tool(name: str, arguments: dict) -> None:
 
 
 # ── Utility command handlers ──────────────────────────────────────────────────
-
 
 async def _handle_list_tools(args):
     async with _get_session() as session:
@@ -159,77 +159,66 @@ async def _handle_call_tool_generic(args):
 
 
 def _setup_add(sub):
-    p = sub.add_parser("add", help="Add two numbers together.")
-    p.add_argument("--a", dest="a", type=float, required=True, help="First operand")
-    p.add_argument("--b", dest="b", type=float, required=True, help="Second operand")
+    p = sub.add_parser('add', help='Add two numbers together.')
+    p.add_argument('--a', dest='a', type=float, required=True, help='First operand')
+    p.add_argument('--b', dest='b', type=float, required=True, help='Second operand')
     p.set_defaults(_handler=_handle_add)
-
 
 async def _handle_add(args):
     arguments = {
-        "a": args.a,
-        "b": args.b,
+        'a': args.a,
+        'b': args.b,
     }
     arguments = {k: v for k, v in arguments.items() if v is not None}
-    await _call_tool("add", arguments)
-
-
+    await _call_tool('add', arguments)
 def _setup_greet(sub):
-    p = sub.add_parser("greet", help="Return a personalised greeting.")
-    p.add_argument("--name", dest="name", type=str, required=True, help="Name to greet")
-    p.add_argument("--loud", dest="loud", action="store_true", help="Shout the greeting")
-    p.add_argument("--times", dest="times", type=int, required=False, help="How many times to repeat")
+    p = sub.add_parser('greet', help='Return a personalised greeting.')
+    p.add_argument('--name', dest='name', type=str, required=True, help='Name to greet')
+    p.add_argument('--loud', dest='loud', action='store_true', help='Shout the greeting')
+    p.add_argument('--times', dest='times', type=int, required=False, help='How many times to repeat')
     p.set_defaults(_handler=_handle_greet)
-
 
 async def _handle_greet(args):
     arguments = {
-        "name": args.name,
-        "loud": args.loud,
-        "times": args.times,
+        'name': args.name,
+        'loud': args.loud,
+        'times': args.times,
     }
     arguments = {k: v for k, v in arguments.items() if v is not None}
-    await _call_tool("greet", arguments)
-
-
+    await _call_tool('greet', arguments)
 def _setup_join(sub):
-    p = sub.add_parser("join", help="Join a list of strings with a separator.")
-    p.add_argument("--words", dest="words", nargs="+", type=str, required=True, help="Words to join")
-    p.add_argument("--sep", dest="sep", type=str, required=False, help="Separator (default: space)")
+    p = sub.add_parser('join', help='Join a list of strings with a separator.')
+    p.add_argument('--words', dest='words', nargs='+', type=str, required=True, help='Words to join')
+    p.add_argument('--sep', dest='sep', type=str, required=False, help='Separator (default: space)')
     p.set_defaults(_handler=_handle_join)
-
 
 async def _handle_join(args):
     arguments = {
-        "words": args.words,
-        "sep": args.sep,
+        'words': args.words,
+        'sep': args.sep,
     }
     arguments = {k: v for k, v in arguments.items() if v is not None}
-    await _call_tool("join", arguments)
-
-
+    await _call_tool('join', arguments)
 def _setup_echo_json(sub):
-    p = sub.add_parser("echo_json", help="Echo back a JSON object.")
-    p.add_argument("--payload", dest="payload", type=str, required=True, help="Any JSON object (JSON string)")
+    p = sub.add_parser('echo_json', help='Echo back a JSON object.')
+    p.add_argument('--payload', dest='payload', type=str, required=True, help='Any JSON object (JSON string)')
     p.set_defaults(_handler=_handle_echo_json)
-
 
 async def _handle_echo_json(args):
     arguments = {
-        "payload": json.loads(args.payload) if isinstance(args.payload, str) else args.payload,
+        'payload': json.loads(args.payload) if isinstance(args.payload, str) else args.payload,
     }
     arguments = {k: v for k, v in arguments.items() if v is not None}
-    await _call_tool("echo_json", arguments)
-
+    await _call_tool('echo_json', arguments)
 
 # ── CLI wiring ────────────────────────────────────────────────────────────────
 
 _UTIL_HANDLERS = {
-    "list-tools": _handle_list_tools,
-    "list-resources": _handle_list_resources,
-    "read-resource": _handle_read_resource,
-    "list-prompts": _handle_list_prompts,
-    "call-tool": _handle_call_tool_generic,
+    "list-tools":      _handle_list_tools,
+    "list-resources":  _handle_list_resources,
+    "read-resource":   _handle_read_resource,
+    "list-prompts":    _handle_list_prompts,
+    "call-tool":       _handle_call_tool_generic,
 }
 
 
@@ -242,15 +231,15 @@ def _build_parser() -> argparse.ArgumentParser:
     sub.required = True
 
     # Utility commands
-    sub.add_parser("list-tools", help="List available tools")
-    sub.add_parser("list-resources", help="List available resources")
+    sub.add_parser("list-tools",      help="List available tools")
+    sub.add_parser("list-resources",  help="List available resources")
     rr = sub.add_parser("read-resource", help="Read a resource by URI")
     rr.add_argument("uri", help="Resource URI")
-    sub.add_parser("list-prompts", help="List available prompts")
+    sub.add_parser("list-prompts",    help="List available prompts")
 
-    ct = sub.add_parser("call-tool", help="Call a tool by name with key=value args")
-    ct.add_argument("tool_name", help="Tool name")
-    ct.add_argument("tool_args", nargs="*", metavar="key=value", help="Tool arguments")
+    ct = sub.add_parser("call-tool",  help="Call a tool by name with key=value args")
+    ct.add_argument("tool_name",  help="Tool name")
+    ct.add_argument("tool_args",  nargs="*", metavar="key=value", help="Tool arguments")
 
     # Generated per-tool subcommands
     _setup_tool_subparsers(sub)

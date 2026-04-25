@@ -130,14 +130,14 @@ def _tool_function_source(tool: Any) -> str:
     required: set[str] = set(schema.get("required", []))
 
     fn = _to_id(tool.name)
-    desc = (tool.description or "").replace("\\", "\\\\").replace("'", "\\'")
+    desc_r = repr(tool.description or "")
 
     # Build lines explicitly to avoid f-string / textwrap.dedent indentation bugs.
     L: list[str] = []
 
     # --- _setup_<fn> ---
     L.append(f"def _setup_{fn}(sub):")
-    L.append(f"    p = sub.add_parser({tool.name!r}, help='{desc}')")
+    L.append(f"    p = sub.add_parser({tool.name!r}, help={desc_r})")
     for pname, pschema in props.items():
         for line in _add_argument_lines(pname, pschema, pname in required):
             L.append(f"    {line}")
@@ -491,11 +491,15 @@ def generate_cli_script(
         client_spec = repr({"command": parts[0], "args": parts[1:]})
         client_type = "stdio"
 
+    # Strip triple-quotes to prevent breaking out of the docstring in the generated file.
+    safe_name = server_name.replace('"""', "'''")
+    safe_spec = server_spec.replace('"""', "'''")
+
     # Use .replace() to avoid conflicts between .format() placeholders and
     # literal Python braces (dict comprehensions, f-strings) in the template.
     header = (
-        _HEADER_TMPL.replace("{server_name}", server_name)
-        .replace("{server_spec}", server_spec)
+        _HEADER_TMPL.replace("{server_name}", safe_name)
+        .replace("{server_spec}", safe_spec)
         .replace("{output_name}", output_name)
         .replace("{client_spec}", client_spec)
         .replace("{client_type!r}", repr(client_type))
@@ -608,7 +612,7 @@ def main() -> None:
 
     print(f"Discovered {len(tools)} tool(s).", file=sys.stderr)
 
-    server_name = _derive_name(args.server_spec)
+    server_name = getattr(server_info, "name", None) or _derive_name(args.server_spec)
     script = generate_cli_script(
         server_name=server_name,
         server_spec=args.server_spec,
