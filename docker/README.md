@@ -71,13 +71,18 @@ The container includes Tailscale for secure networking. To use it:
 
 **Usage with isolated script:**
 ```bash
+# Tailscale is automatically enabled when auth key is provided
 export TAILSCALE_AUTH_KEY="tskey-auth-..."
 export TAILSCALE_HOSTNAME="my-dev-container"  # Optional
 ./docker/run-isolated.sh
+
+# Or enable explicitly
+ENABLE_TAILSCALE=true ./docker/run-isolated.sh
 ```
 
 **Usage with manual docker run:**
 ```bash
+# Using named volume (recommended - Docker manages the volume)
 docker run --rm -it \
   --cap-add=NET_ADMIN \
   --cap-add=NET_RAW \
@@ -86,6 +91,17 @@ docker run --rm -it \
   -e TAILSCALE_HOSTNAME="my-dev-container" \
   -v "$PWD":/home/dev/workspace \
   -v tailscale-state:/var/lib/tailscale \
+  claude-dev-agents
+
+# Using host path (useful for debugging or backups)
+docker run --rm -it \
+  --cap-add=NET_ADMIN \
+  --cap-add=NET_RAW \
+  --device=/dev/net/tun \
+  -e TAILSCALE_AUTH_KEY="tskey-auth-..." \
+  -e TAILSCALE_HOSTNAME="my-dev-container" \
+  -v "$PWD":/home/dev/workspace \
+  -v "$HOME/.tailscale-docker":/var/lib/tailscale \
   claude-dev-agents
 ```
 
@@ -106,7 +122,19 @@ sudo tailscale ip
 - `--cap-add=NET_ADMIN` - Network interface management
 - `--cap-add=NET_RAW` - Packet manipulation
 - `--device=/dev/net/tun` - TUN device access
-- `-v <path>:/var/lib/tailscale` - State persistence
+- `-v <volume>:/var/lib/tailscale` - State persistence
+  - **Named volumes** (recommended): `-v tailscale-state:/var/lib/tailscale`
+  - **Host paths** (for debugging): `-v "$HOME/.tailscale-docker":/var/lib/tailscale`
+
+**Compatibility:**
+- **Linux**: Full support for all Tailscale features
+- **Docker Desktop (macOS/Windows)**: May require privileged mode or specific settings
+- **Rootless Docker**: Limited capability support; manual Tailscale setup may be needed
+
+**Note:** The `run-isolated.sh` script:
+- Uses host paths for per-project isolation
+- Auto-enables Tailscale only when `TAILSCALE_AUTH_KEY` is set (avoids breaking default workflows)
+- Without Tailscale, runs without elevated capabilities for maximum compatibility
 
 ## Helper Script with Isolated Directories
 
@@ -121,13 +149,26 @@ Creates isolated configs at `~/docker-agent-data/<repo>/<project-id>/` per proje
 **Configuration** (via environment variables):
 - `COPY_CODEX_CREDS` - Copy Codex credentials (default: `true`)
 - `COPY_CLAUDE_CREDS` - Copy Claude credentials (default: `false`)
+- `ENABLE_TAILSCALE` - Enable Tailscale capabilities (default: `auto`)
+  - `auto` - Enable only if `TAILSCALE_AUTH_KEY` is set
+  - `true` - Always enable (requires Docker support for capabilities)
+  - `false` - Always disable
 
 **Examples**:
 ```bash
-./docker/run-isolated.sh                                   # Default: copy Codex, skip Claude
+# Default: copy Codex, skip Claude, no Tailscale
+./docker/run-isolated.sh
+
+# With Tailscale (auto-enabled when auth key is set)
+TAILSCALE_AUTH_KEY="tskey-auth-..." ./docker/run-isolated.sh
+
+# Force Tailscale on/off regardless of auth key
+ENABLE_TAILSCALE=true ./docker/run-isolated.sh
+ENABLE_TAILSCALE=false ./docker/run-isolated.sh
+
+# Credential management
 COPY_CODEX_CREDS=false ./docker/run-isolated.sh            # Skip Codex
 COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh            # Copy Claude credentials
-COPY_CODEX_CREDS=false COPY_CLAUDE_CREDS=true ./docker/run-isolated.sh  # Skip Codex, copy Claude
 ```
 
 ## Python Development with uv
