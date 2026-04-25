@@ -1,84 +1,148 @@
-# Spotify Playlist Generator
+# Playlist Generator
 
-This project experiments with algorithmic playlist sequencing focused on spotlighting cover songs. Starting from a seed song, every subsequent selection must be a less-famous cover of a well-known song by the artist of the current track. The work includes:
+Generate playlists using **real songs** by chaining cover versions. Starting from a seed song, each subsequent track is a cover by a different artist, creating unique playlists that explore how songs evolve through reinterpretation.
 
-- A lightweight catalog model describing songs, artists, and cover relationships
-- A deterministic playlist generator that enforces the "less-famous cover" rule
-- Tests demonstrating the chaining logic across a curated sample catalog
-- Notes capturing implementation details and future ideas
+## Two Options
 
-## Objectives
+### Option 1: MusicBrainz (Recommended - No API Key!)
+✓ **No registration needed** - just run it  
+✓ **Free forever** - community-maintained  
+✓ **Cover relationships** - built into the database  
+⚠ Rate limited to 1 request/second  
 
-1. Represent a small but expressive dataset that encodes popular originals alongside modestly performing cover versions.
-2. Implement a playlist generator that chains together songs by hopping from an artist to a cover of that artist's well-known material.
-3. Provide usage examples and automated tests so that the behavior is reproducible.
+### Option 2: Spotify API
+✓ **Richer metadata** - accurate popularity scores  
+✓ **Larger catalog** - more covers available  
+⚠ Requires API credentials (2 min signup)
 
-## Usage
+## Features
 
-```python
-from data import load_sample_catalog
-from playlist import PlaylistGenerator
+✓ **Real Spotify songs only** - searches actual Spotify catalog
+✓ **Cover discovery** - finds authentic cover versions by different artists
+✓ **No artist repetition** - each artist appears only once
+✓ **Spotify URLs** - every song includes a playable link
+✓ **Album metadata** - shows album name and release date
+✓ **Smart chaining** - favors more popular covers to extend playlists
 
-catalog = load_sample_catalog()
-generator = PlaylistGenerator(catalog)
-playlist = generator.generate(seed_song_id="aria-north-city-lights", length=5)
-for song in playlist:
-    print(f"{song.artist} – {song.title} ({song.popularity})")
-```
+## Quick Start
 
-## Example Playlist Starting with "I Put a Spell on You"
-
-The CLI helper can either pick a random seed (via `--seed`) or start from a
-specific song using `--seed-song`. The command below generates a deterministic
-playlist that opens on "I Put a Spell on You" before following the required
-chain of increasingly niche covers:
+### MusicBrainz (No Setup Required!)
 
 ```bash
-cd spotify-playlist-generator
-python -m examples --length 5 \
-  --seed-song screamin-jay-hawkins-i-put-a-spell-on-you
+pip install musicbrainzngs
+python musicbrainz_generator.py
 ```
 
-Sample output:
+That's it! No API keys, no registration.
+
+### Spotify (Requires Credentials)
+
+#### 1. Get Spotify Credentials (2 minutes)
+
+1. Go to **https://developer.spotify.com/dashboard**
+2. Log in with your Spotify account (free account works)
+3. Click **"Create app"**
+   - App name: "Playlist Generator"
+   - Redirect URI: `http://localhost:8888/callback`
+4. Copy your **Client ID** and **Client Secret**
+
+See [SPOTIFY_SETUP.md](SPOTIFY_SETUP.md) for detailed instructions.
+
+### 2. Set Credentials
+
+```bash
+export SPOTIFY_CLIENT_ID='your_client_id_here'
+export SPOTIFY_CLIENT_SECRET='your_client_secret_here'
+```
+
+### 3. Run the Generator
+
+```bash
+python real_spotify_generator.py
+```
+
+## How It Works
+
+The generator:
+1. Searches Spotify for your seed song
+2. Finds cover versions by different artists
+3. Selects the most popular cover (to extend the chain)
+4. Repeats from the new artist's catalog
+5. Ensures no artist appears twice
+
+## Example Output
 
 ```
-1. Screamin' Jay Hawkins – I Put a Spell on You (popularity 96)
-2. Nina Simone – Little Demon (Nina Simone cover) (popularity 80) — cover of Screamin' Jay Hawkins – Little Demon
-3. Muse – Feeling Good (Muse cover) (popularity 75) — cover of Nina Simone – Feeling Good
-4. Velvet Echo – Supermassive Black Hole (Velvet Echo cover) (popularity 68) — cover of Muse – Supermassive Black Hole
-5. Hollow Pines – Midnight Script (Hollow Pines cover) (popularity 55) — cover of Velvet Echo – Midnight Script
+Seed: Nina Simone - Feeling Good
+
+1. Nina Simone – Feeling Good (popularity 80)
+   🔗 https://open.spotify.com/track/...
+   💿 I Put A Spell On You (1965)
+
+2. Muse – Feeling Good (popularity 73)
+   🔗 https://open.spotify.com/track/...
+   💿 Hullabaloo Soundtrack (2002)
+   — cover of Nina Simone – Feeling Good
+
+3. [Next artist's cover of a Muse song...]
 ```
 
-## Real Spotify Example Playlist
+## Best Seed Songs
 
-To hear how the concept translates to real recordings, jump into Spotify's
-editorial [Rock Covers](https://open.spotify.com/playlist/37i9dQZF1DX2S9rTKTX6JP)
-playlist. As of **16 Nov 2025** the first five entries are:
+Songs with many real covers on Spotify:
 
-1. "Changes (Live From Villa Park) Back To The Beginning (feat. Nuno Bettencourt, Frank Bello, Adam Wakeman, II)" — YUNGBLUD, Nuno Bettencourt, Frank Bello, Adam Wakeman, II
-2. "Miss Murder - From The “American Psycho” Comic Series Soundtrack" — Charlotte Sands
-3. "We Didn’t Start The Fire" — Fall Out Boy
-4. "Burning Down the House" — Paramore
-5. "Karma Police" — Pierce The Veil
+- **The Beatles** - "Yesterday"
+- **Leonard Cohen** - "Hallelujah"
+- **Johnny Cash** - "Hurt"
+- **Nina Simone** - "Feeling Good"
+- **Bill Withers** - "Ain't No Sunshine"
+- **Simon & Garfunkel** - "The Sound of Silence"
+- **Jeff Buckley** - "Hallelujah"
 
-This curated queue offers a real-world reference for the sound the generator
-targets—each entry is a reinterpretation of a recognizable hit performed by a
-different, often less-famous artist.
+## API Usage
 
-## Key Findings
+Free tier: 1,000 requests/day (plenty for playlist generation)
 
-- A structured catalog with explicit cover relationships is essential; popularity comparisons alone are insufficient without identifying the original artist.
-- Deterministic tie-breaking (favoring the largest popularity gap) helps the playlist feel intentional instead of random.
-- The chaining requirement quickly stalls when an artist lacks covered material, so the dataset must be curated with overlapping cover networks.
+Results are cached to minimize API calls.
 
-## Next Steps
+## Troubleshooting
 
-- Integrate a real Spotify API client and fetch live popularity metrics.
-- Replace the static dataset with queries to crowd-sourced cover databases.
-- Explore probabilistic or mood-aware transitions layered atop the cover-chain constraint.
+**"401 Unauthorized"**
+- Check your credentials are correct
+- Try creating a new app in the Spotify dashboard
 
-## Tooling Notes
+**"No covers found"**
+- Try a more popular seed song
+- Some songs don't have many covers on Spotify
+- Use songs from the "Best Seed Songs" list above
 
-- The playlist generator directory now includes its own `pyproject.toml`, so you can install pytest, ruff, and pyright without modifying the shared repository toolchain.
-- Run `pyright` from the repository root to type-check the playlist generator; the tool is expected to be installed globally rather than declared in the shared `pyproject.toml`.
-- The playlist generator's regression tests live under `spotify-playlist-generator/tests/` so the shared `tests/` directory stays reserved for other investigations.
+**"429 Too Many Requests"**
+- Rate limit reached
+- Wait a few minutes and try again
+
+## Files
+
+- `musicbrainz_generator.py` - MusicBrainz version (no API key)
+- `real_spotify_generator.py` - Spotify version (requires API key)
+- `SPOTIFY_SETUP.md` - Detailed Spotify setup guide
+- `tests/` - Test suite (14 tests, all passing)
+- `README.md` - This file
+
+## Requirements
+
+- Python 3.12+
+
+**For MusicBrainz (no API key):**
+- `musicbrainzngs`: `pip install musicbrainzngs`
+
+**For Spotify:**
+- `spotipy`: `pip install spotipy`
+- Spotify API credentials (free, 2 min setup)
+
+## Example Use Case
+
+Create unique playlists that:
+- Explore how classic songs are reinterpreted
+- Discover new artists through covers
+- Build thematic playlists around iconic songs
+- Show the evolution of popular music through covers
