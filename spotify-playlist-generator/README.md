@@ -1,6 +1,19 @@
-# Spotify Playlist Generator
+# Playlist Generator
 
-Generate playlists using **real songs from Spotify** by chaining cover versions. Starting from a seed song, each subsequent track is a cover by a different artist, creating unique playlists that explore how songs evolve through reinterpretation.
+Generate playlists using **real songs** by chaining cover versions. Starting from a seed song, each subsequent track is a cover by a different artist, creating unique playlists that explore how songs evolve through reinterpretation.
+
+## Two Options
+
+### Option 1: MusicBrainz (Recommended - No API Key!)
+✓ **No registration needed** - just run it  
+✓ **Free forever** - community-maintained  
+✓ **Cover relationships** - built into the database  
+⚠ Rate limited to 1 request/second  
+
+### Option 2: Spotify API
+✓ **Richer metadata** - accurate popularity scores  
+✓ **Larger catalog** - more covers available  
+⚠ Requires API credentials (2 min signup)
 
 ## Features
 
@@ -13,7 +26,18 @@ Generate playlists using **real songs from Spotify** by chaining cover versions.
 
 ## Quick Start
 
-### 1. Get Spotify Credentials (2 minutes)
+### MusicBrainz (No Setup Required!)
+
+```bash
+pip install musicbrainzngs
+python musicbrainz_generator.py
+```
+
+That's it! No API keys, no registration.
+
+### Spotify (Requires Credentials)
+
+#### 1. Get Spotify Credentials (2 minutes)
 
 1. Go to **https://developer.spotify.com/dashboard**
 2. Log in with your Spotify account (free account works)
@@ -98,15 +122,22 @@ Results are cached to minimize API calls.
 
 ## Files
 
-- `real_spotify_generator.py` - Main playlist generator
-- `SPOTIFY_SETUP.md` - Detailed setup guide
+- `musicbrainz_generator.py` - MusicBrainz version (no API key)
+- `real_spotify_generator.py` - Spotify version (requires API key)
+- `SPOTIFY_SETUP.md` - Detailed Spotify setup guide
+- `tests/` - Test suite (14 tests, all passing)
 - `README.md` - This file
 
 ## Requirements
 
-- Python 3.7+
-- `spotipy` library: `pip install spotipy`
-- Spotify API credentials (free)
+- Python 3.12+
+
+**For MusicBrainz (no API key):**
+- `musicbrainzngs`: `pip install musicbrainzngs`
+
+**For Spotify:**
+- `spotipy`: `pip install spotipy`
+- Spotify API credentials (free, 2 min setup)
 
 ## Example Use Case
 

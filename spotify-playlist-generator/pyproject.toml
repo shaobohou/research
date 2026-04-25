@@ -5,6 +5,7 @@ description = "Spotify playlist generator using real songs from the Spotify API"
 requires-python = ">=3.12"
 dependencies = [
   "spotipy>=2.25.1",
+  "musicbrainzngs>=0.7.1",
 ]
 
 [project.optional-dependencies]
