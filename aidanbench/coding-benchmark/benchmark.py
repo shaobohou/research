@@ -149,17 +149,18 @@ def run_problem(name: str, problem: dict) -> dict:
         new_cell = cell not in archive
 
         record = {
-            "attempt":          attempts,
-            "correct":          True,
-            "new_cell":         new_cell,
-            "cell":             list(cell),
-            "time_complexity":  feats["time_complexity"],
-            "space_complexity": feats["space_complexity"],
-            "cyclomatic":       feats["cyclomatic"],
-            "builtin_reliance": feats["builtin_reliance"],
-            "cyclomatic_raw":   feats["cyclomatic_raw"],
-            "builtin_raw":      feats["builtin_raw"],
-            "code":             code,
+            "attempt":                attempts,
+            "correct":                True,
+            "new_cell":               new_cell,
+            "cell":                   list(cell),
+            "time_complexity":        feats["time_complexity"],
+            "time_complexity_timing": feats["time_complexity_timing"],
+            "space_complexity":       feats["space_complexity"],
+            "cyclomatic":             feats["cyclomatic"],
+            "builtin_reliance":       feats["builtin_reliance"],
+            "cyclomatic_raw":         feats["cyclomatic_raw"],
+            "builtin_raw":            feats["builtin_raw"],
+            "code":                   code,
         }
         records.append(record)
         all_correct.append(code)

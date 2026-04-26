@@ -137,30 +137,27 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
                 insns = eval(line[6:])
 
         if not times or not mems or len(times) != len(sizes):
-            return {"time_complexity": "unknown", "space_complexity": "unknown"}
+            return {"time_complexity": "unknown", "time_complexity_timing": "unknown", "space_complexity": "unknown"}
 
         # Filter out zero times (faster than clock resolution)
         valid = [(s, t, m) for s, t, m in zip(sizes, times, mems) if t > 1e-9]
         if len(valid) < 2:
-            return {"time_complexity": "O(1)", "space_complexity": "O(1)", "instruction_count": insns[-1] if insns else 0}
+            return {"time_complexity": "O(1)", "time_complexity_timing": "O(1)", "space_complexity": "O(1)"}
 
         vs, vt, vm = zip(*valid)
-        # Fit instruction counts to complexity classes — more deterministic than timing.
-        # Filter insns to match the valid (non-zero-time) subset.
         valid_insns = [insns[i] for i, (s, t, m) in enumerate(zip(sizes, times, mems)) if t > 1e-9] if insns else []
-        if len(valid_insns) >= 2:
-            time_class = _best_fit(vs, valid_insns)
-        else:
-            time_class = _best_fit(vs, vt)
+        time_by_insns = _best_fit(vs, valid_insns) if len(valid_insns) >= 2 else "unknown"
+        time_by_timing = _best_fit(vs, vt)
         return {
-            "time_complexity":  time_class,
-            "space_complexity": _best_fit(vs, vm),
+            "time_complexity":        time_by_insns,
+            "time_complexity_timing": time_by_timing,
+            "space_complexity":       _best_fit(vs, vm),
             "raw_times": list(vt),
             "raw_mems":  list(vm),
             "raw_insns": insns or [],
         }
     except subprocess.TimeoutExpired:
-        return {"time_complexity": "O(2^n)", "space_complexity": "O(2^n)"}
+        return {"time_complexity": "O(2^n)", "time_complexity_timing": "O(2^n)", "space_complexity": "O(2^n)"}
     except Exception as e:
         return {"time_complexity": "unknown", "space_complexity": "unknown"}
     finally:
@@ -234,23 +231,26 @@ def bin_builtins(br: int) -> str:
 # ── Full feature vector ───────────────────────────────────────────────────────
 
 def extract_features(code: str, sizes: list, size_input_fn) -> dict:
-    """Return all 4 features for a solution."""
+    """Return all features for a solution, including both time complexity variants."""
     empirical = measure_complexity(code, sizes, size_input_fn)
     cc = cyclomatic_complexity(code)
     br = builtin_reliance(code)
     return {
-        "time_complexity":  empirical.get("time_complexity",  "unknown"),
-        "space_complexity": empirical.get("space_complexity", "unknown"),
-        "cyclomatic":       bin_cyclomatic(cc),
-        "builtin_reliance": bin_builtins(br),
-        "cyclomatic_raw":   cc,
-        "builtin_raw":      br,
+        "time_complexity":        empirical.get("time_complexity",        "unknown"),
+        "time_complexity_timing": empirical.get("time_complexity_timing", "unknown"),
+        "space_complexity":       empirical.get("space_complexity",       "unknown"),
+        "cyclomatic":             bin_cyclomatic(cc),
+        "builtin_reliance":       bin_builtins(br),
+        "cyclomatic_raw":         cc,
+        "builtin_raw":            br,
     }
 
 
-def cell_key(features: dict) -> tuple:
+def cell_key(features: dict, use_timing: bool = False) -> tuple:
+    """Return the MAP-Elites cell key. Defaults to instruction-count time complexity."""
+    tc = features["time_complexity_timing"] if use_timing else features["time_complexity"]
     return (
-        features["time_complexity"],
+        tc,
         features["space_complexity"],
         features["cyclomatic"],
         features["builtin_reliance"],
