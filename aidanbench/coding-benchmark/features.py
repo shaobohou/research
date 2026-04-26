@@ -51,10 +51,17 @@ def _best_fit(sizes, values):
 # ── Empirical measurement ─────────────────────────────────────────────────────
 
 _MEASURE_TEMPLATE = """
-import tracemalloc, time, sys, timeit
+import tracemalloc, time, sys, timeit, functools, gc
 sys.setrecursionlimit(100000)
 
 {code}
+
+def _clear_caches():
+    # Clear lru_cache / cache on any callable in module globals so each size
+    # is measured cold (prevents memoized solutions appearing O(1)).
+    for obj in list(globals().values()):
+        if callable(obj) and hasattr(obj, 'cache_clear'):
+            obj.cache_clear()
 
 sizes  = {sizes}
 inputs = {inputs}
@@ -64,9 +71,11 @@ mems   = []
 insns  = []
 for args in inputs:
     # timing: auto-scale repetitions so measurement > 1ms
+    _clear_caches()
     reps = 1
     t = None
     while True:
+        _clear_caches()
         try:
             t = timeit.timeit(lambda: solve(*args), number=reps)
         except Exception:
@@ -77,7 +86,8 @@ for args in inputs:
         reps *= 10
     times.append((t or 0.0) / reps)
 
-    # memory: peak allocation
+    # memory: peak allocation (cold cache)
+    _clear_caches()
     tracemalloc.start()
     try:
         solve(*args)
@@ -87,7 +97,8 @@ for args in inputs:
     tracemalloc.stop()
     mems.append(peak)
 
-    # instruction count: sys.settrace counting line events (separate from timing run)
+    # instruction count: sys.settrace counting line events (cold cache)
+    _clear_caches()
     _count = [0]
     def _tracer(frame, event, arg):
         if event == 'line':
