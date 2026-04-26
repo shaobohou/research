@@ -61,6 +61,7 @@ inputs = {inputs}
 
 times  = []
 mems   = []
+insns  = []
 for args in inputs:
     # timing: auto-scale repetitions so measurement > 1ms
     reps = 1
@@ -86,8 +87,24 @@ for args in inputs:
     tracemalloc.stop()
     mems.append(peak)
 
+    # instruction count: sys.settrace counting line events (separate from timing run)
+    _count = [0]
+    def _tracer(frame, event, arg):
+        if event == 'line':
+            _count[0] += 1
+        return _tracer
+    sys.settrace(_tracer)
+    try:
+        solve(*args)
+    except Exception:
+        pass
+    finally:
+        sys.settrace(None)
+    insns.append(_count[0])
+
 print("TIMES", times)
 print("MEMS",  mems)
+print("INSNS", insns)
 """
 
 def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
@@ -110,12 +127,14 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
             capture_output=True, text=True, timeout=30
         )
         lines = result.stdout.strip().splitlines()
-        times = mems = None
+        times = mems = insns = None
         for line in lines:
             if line.startswith("TIMES"):
                 times = eval(line[6:])
             elif line.startswith("MEMS"):
                 mems = eval(line[5:])
+            elif line.startswith("INSNS"):
+                insns = eval(line[6:])
 
         if not times or not mems or len(times) != len(sizes):
             return {"time_complexity": "unknown", "space_complexity": "unknown"}
@@ -123,7 +142,7 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
         # Filter out zero times (faster than clock resolution)
         valid = [(s, t, m) for s, t, m in zip(sizes, times, mems) if t > 1e-9]
         if len(valid) < 2:
-            return {"time_complexity": "O(1)", "space_complexity": "O(1)"}
+            return {"time_complexity": "O(1)", "space_complexity": "O(1)", "instruction_count": insns[-1] if insns else 0}
 
         vs, vt, vm = zip(*valid)
         return {
@@ -131,6 +150,7 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
             "space_complexity": _best_fit(vs, vm),
             "raw_times": list(vt),
             "raw_mems":  list(vm),
+            "raw_insns": insns or [],
         }
     except subprocess.TimeoutExpired:
         return {"time_complexity": "O(2^n)", "space_complexity": "O(2^n)"}
@@ -204,21 +224,33 @@ def bin_builtins(br: int) -> str:
     if br <= 3:  return "few"
     return "many"
 
+def bin_instructions(ic: int) -> str:
+    """Bin median instruction count (line events) at largest measured input size."""
+    if ic <= 50:    return "tiny"
+    if ic <= 500:   return "low"
+    if ic <= 5000:  return "medium"
+    return "high"
+
 
 # ── Full feature vector ───────────────────────────────────────────────────────
 
 def extract_features(code: str, sizes: list, size_input_fn) -> dict:
-    """Return all 4 features for a solution."""
+    """Return all 5 features for a solution."""
     empirical = measure_complexity(code, sizes, size_input_fn)
     cc = cyclomatic_complexity(code)
     br = builtin_reliance(code)
+    # Use instruction count at the largest input size (last entry)
+    raw_insns = empirical.get("raw_insns", [])
+    ic = raw_insns[-1] if raw_insns else 0
     return {
-        "time_complexity":  empirical.get("time_complexity",  "unknown"),
-        "space_complexity": empirical.get("space_complexity", "unknown"),
-        "cyclomatic":       bin_cyclomatic(cc),
-        "builtin_reliance": bin_builtins(br),
-        "cyclomatic_raw":   cc,
-        "builtin_raw":      br,
+        "time_complexity":   empirical.get("time_complexity",  "unknown"),
+        "space_complexity":  empirical.get("space_complexity", "unknown"),
+        "cyclomatic":        bin_cyclomatic(cc),
+        "builtin_reliance":  bin_builtins(br),
+        "instruction_count": bin_instructions(ic),
+        "cyclomatic_raw":    cc,
+        "builtin_raw":       br,
+        "instruction_raw":   ic,
     }
 
 
@@ -228,4 +260,5 @@ def cell_key(features: dict) -> tuple:
         features["space_complexity"],
         features["cyclomatic"],
         features["builtin_reliance"],
+        features["instruction_count"],
     )
