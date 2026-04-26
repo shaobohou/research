@@ -239,3 +239,24 @@ measurement environment is cleaner than Python in every other respect.
 The ISA spec goes in the prompt; the interpreter is our infrastructure. Models
 already have a strong prior for this style of assembly from MIPS/RISC-V
 training data.
+
+---
+
+## Option 5: TIS-100 (Future Work)
+
+TIS-100 (Zachtronics) is a distributed dataflow architecture: a grid of nodes,
+each running a tiny program (max 15 instructions), communicating via directional
+ports (UP/DOWN/LEFT/RIGHT). Per-node instructions: MOV, ADD, SUB, NEG, SAV,
+SWP, JMP/JEZ/JNZ/JGZ/JLZ, JRO, NOP. Single accumulator (ACC) plus one backup
+register (BAK). No MUL/DIV. No direct memory — memory is a special node type.
+
+Not suitable as a near-term benchmark (multi-node topology is hard to
+auto-verify; single accumulator forces SAV/SWP boilerplate that obscures
+algorithm structure in the feature space).
+
+**Worth revisiting because**: the hardware constraints ARE the interesting
+variation. The 15-line-per-node limit, port topology, and accumulator-only
+model force solutions that a conventional ISA never surfaces. Constraints are
+as interesting as features — a solution's node count, wiring topology, and
+how it works around the accumulator limitation could themselves become MAP-Elites
+axes. This is a different kind of diversity than algorithmic complexity class.
