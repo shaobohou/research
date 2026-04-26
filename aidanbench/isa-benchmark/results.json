@@ -813,5 +813,301 @@
         "source": "; Fibonacci mod 10^9+7\n; Algorithm: table-fill with 8x manual unrolling per chunk\n; Fill mem[0..n] with fib values, then output mem[n]\n; Unrolled inner body: each chunk computes 8 consecutive fib values\n; R0 = n\n; R1 = modulus\n; R2 = current index i (starts at 2)\n; R3 = fib(i-2)\n; R4 = fib(i-1)\n; R5 = fib(i) temp\n; R6 = chunk end index\n; R7 = temp\n\n    IN R0\n    MOV R1, 1000000007\n\n    ; Base: mem[0]=0 already, mem[1]=1\n    JZ R0, EMIT_ZERO\n\n    MOV R7, 0\n    STOR R7, [R7+0]       ; mem[0] = 0\n    MOV R7, 1\n    STOR R7, [R7+0]       ; mem[1] = 1\n\n    MOV R7, 1\n    JLE R0, R7, EMIT_ONE\n\n    ; n >= 2\n    ; Initialize R3=fib(0)=0, R4=fib(1)=1, i=2\n    MOV R3, 0\n    MOV R4, 1\n    MOV R2, 2\n\nCHUNK_START:\n    ; If i > n, done filling\n    JGT R2, R0, DONE_FILL\n\n    ; Compute chunk end = min(i+7, n), store in R6\n    MOV R6, R2\n    ADD R6, 7\n    JLE R6, R0, DO_CHUNK\n    MOV R6, R0            ; clamp to n\n\nDO_CHUNK:\n    ; We'll do up to 8 steps manually, checking i<=R6 each time\n\n    ; Step 1\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 2\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 3\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 4\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 5\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 6\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 7\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    ; Step 8\n    JGT R2, R6, CHUNK_START\n    MOV R5, R3\n    ADD R5, R4\n    MOD R5, R1\n    STOR R5, [R2+0]\n    MOV R3, R4\n    MOV R4, R5\n    INC R2\n\n    JMP CHUNK_START\n\nDONE_FILL:\n    ; Output mem[n]\n    LOAD R5, [R0+0]\n    OUT R5\n    HALT\n\nEMIT_ZERO:\n    OUT 0\n    HALT\n\nEMIT_ONE:\n    OUT 1\n    HALT"
       }
     ]
+  },
+  "binary_search": {
+    "score": 2,
+    "attempts": 10,
+    "cells": {
+      "('O(n)', 'O(n)', 'medium', 'r0-r7')": {
+        "attempt": 1,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 30,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          133,
+          397,
+          1381,
+          5245,
+          20629
+        ],
+        "raw_hwms": [
+          15,
+          63,
+          255,
+          1023,
+          4095
+        ],
+        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2     ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      "('O(n)', 'O(n)', 'large', 'r0-r7')": {
+        "attempt": 4,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 63,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          163,
+          519,
+          1883,
+          7279,
+          28803
+        ],
+        "raw_hwms": [
+          2015,
+          2063,
+          2255,
+          3023,
+          6095
+        ],
+        "source": "; Exponential Search + Binary Search\n; Phase 1: Gallop/double index until arr[bound] >= target or bound >= n\n; Phase 2: Binary search in [bound/2, min(bound, n-1)]\n;\n; Registers during gallop:\n;   R0 = n\n;   R1 = target\n;   R2 = base address (2000)\n;   R3 = bound (current gallop index, starts at 1)\n;   R4 = arr[bound]\n;   R5 = temp address\n;   R6 = lo (for binary search phase)\n;   R7 = hi (for binary search phase)\n\n    IN R0           ; R0 = n\n    MOV R2, 2000    ; base address\n\n    ; Read array into mem[2000..2000+n-1]\n    CLR R5          ; index counter\nREAD_LOOP:\n    JGE R5, R0, READ_DONE\n    IN R4\n    MOV R3, R2\n    ADD R3, R5\n    STOR R4, [R3+0]\n    INC R5\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R1           ; R1 = target\n\n    ; Handle empty array\n    JZ R0, NOT_FOUND\n\n    ; Check index 0 first\n    LOAD R4, [R2+0]\n    MOV R5, R4\n    SUB R5, R1\n    JZ R5, FOUND_ZERO\n\n    ; If arr[0] > target, not found (array is sorted)\n    JGT R4, R1, NOT_FOUND\n\n    ; Exponential gallop: bound starts at 1\n    MOV R3, 1       ; R3 = bound\n\nGALLOP:\n    ; if bound >= n, cap and go to binary search\n    JGE R3, R0, CAP_AND_SEARCH\n\n    ; load arr[bound]\n    MOV R5, R2\n    ADD R5, R3\n    LOAD R4, [R5+0] ; R4 = arr[bound]\n\n    ; if arr[bound] == target => found\n    MOV R5, R4\n    SUB R5, R1\n    JZ R5, FOUND_BOUND\n\n    ; if arr[bound] >= target => stop galloping, binary search [bound/2, bound]\n    JGE R4, R1, DO_BSEARCH\n\n    ; double the bound\n    MUL R3, 2\n    JMP GALLOP\n\nCAP_AND_SEARCH:\n    ; bound >= n, so hi = n-1, lo = bound/2\n    MOV R7, R0\n    DEC R7          ; hi = n - 1\n    MOV R6, R3\n    DIV R6, 2       ; lo = bound / 2\n    JMP BSEARCH\n\nDO_BSEARCH:\n    ; binary search in [bound/2, bound]\n    MOV R7, R3      ; hi = bound\n    DIV R3, 2       ; R3 = bound/2\n    MOV R6, R3      ; lo = bound/2\n    JMP BSEARCH\n\nBSEARCH:\n    ; lo = R6, hi = R7\n    ; if lo > hi => not found\n    JGT R6, R7, NOT_FOUND\n\n    ; mid = lo + (hi - lo) / 2\n    MOV R5, R7\n    SUB R5, R6      ; R5 = hi - lo\n    DIV R5, 2       ; R5 = (hi-lo)/2\n    ADD R5, R6      ; R5 = mid\n\n    ; load arr[mid]\n    MOV R3, R2\n    ADD R3, R5\n    LOAD R4, [R3+0] ; R4 = arr[mid]\n\n    ; if arr[mid] == target => output mid\n    MOV R3, R4\n    SUB R3, R1\n    JZ R3, FOUND_MID\n\n    ; if arr[mid] < target => lo = mid + 1\n    JLT R4, R1, RIGHT\n\n    ; else hi = mid - 1\n    MOV R7, R5\n    DEC R7\n    JMP BSEARCH\n\nRIGHT:\n    MOV R6, R5\n    INC R6\n    JMP BSEARCH\n\nFOUND_ZERO:\n    OUT 0\n    HALT\n\nFOUND_BOUND:\n    OUT R3\n    HALT\n\nFOUND_MID:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      }
+    },
+    "records": [
+      {
+        "attempt": 1,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 30,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          133,
+          397,
+          1381,
+          5245,
+          20629
+        ],
+        "raw_hwms": [
+          15,
+          63,
+          255,
+          1023,
+          4095
+        ],
+        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2     ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 2,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 39,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          211,
+          673,
+          2431,
+          9373,
+          37051
+        ],
+        "raw_hwms": [
+          1015,
+          1063,
+          1255,
+          2023,
+          5095
+        ],
+        "source": "; Binary search using a different structure:\n; Store array at base address 1000\n; Use a \"converging pointers\" style where we track lo and hi\n; and compute mid differently (lo + (hi-lo)/2)\n; Registers:\n;   R0 = n\n;   R1 = loop counter for reading\n;   R2 = base address (1000)\n;   R3 = target\n;   R4 = lo\n;   R5 = hi\n;   R6 = mid\n;   R7 = temp\n\n    IN R0           ; R0 = n\n    MOV R2, 1000    ; base address for array storage\n\n    ; Read array into mem[1000..1000+n-1]\n    CLR R1\nLOAD_LOOP:\n    JGE R1, R0, LOAD_DONE\n    IN R7\n    ADD R7, R2      ; address = base + index... wait, need to store differently\n    ; Actually store: mem[1000 + R1] = value\n    ; Use R6 as address\n    MOV R6, R2\n    ADD R6, R1\n    ; R7 currently holds address, need value\n    ; Redo: use a different temp\n    SUB R7, R2      ; restore R7 to value (undo the add)\n    ; Let me use a cleaner approach\n    ; R7 = value (just read), R6 = address\n    STOR R7, [R6+0]\n    INC R1\n    JMP LOAD_LOOP\nLOAD_DONE:\n\n    IN R3           ; R3 = target\n\n    ; lo = 0, hi = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n\n    ; Check empty array\n    JLT R5, R4, NOT_FOUND\n\nBSEARCH:\n    ; if lo > hi => not found\n    JGT R4, R5, NOT_FOUND\n\n    ; mid = lo + (hi - lo) / 2\n    MOV R6, R5\n    SUB R6, R4      ; R6 = hi - lo\n    DIV R6, 2       ; R6 = (hi - lo) / 2\n    ADD R6, R4      ; R6 = lo + (hi - lo) / 2  => mid\n\n    ; load arr[mid] = mem[base + mid]\n    MOV R1, R2\n    ADD R1, R6      ; R1 = address of arr[mid]\n    LOAD R7, [R1+0] ; R7 = arr[mid]\n\n    ; compare arr[mid] with target\n    ; if arr[mid] == target => found\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n\n    ; if arr[mid] < target => lo = mid + 1\n    JLT R7, R3, MOVE_LO\n\n    ; else arr[mid] > target => hi = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n\nMOVE_LO:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n\nFOUND:\n    OUT R6\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 3,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 33,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          131,
+          467,
+          1811,
+          7187,
+          28691
+        ],
+        "raw_hwms": [
+          515,
+          563,
+          755,
+          1523,
+          4595
+        ],
+        "source": "; Binary search - iterative with different register usage and loop structure\n; Strategy: use a \"half-open interval\" [lo, hi) where hi = n initially\n; This avoids the n-1 initialization and changes the termination condition\n; Array stored at base address 500\n; Registers:\n;   R0 = n (also used as hi, half-open upper bound)\n;   R1 = lo (starts at 0)\n;   R2 = target\n;   R3 = base address (500)\n;   R4 = mid (index)\n;   R5 = address of arr[mid]\n;   R6 = arr[mid] value\n;   R7 = temp for comparisons\n\n    ; Read n\n    IN R0\n    MOV R3, 500     ; base address\n\n    ; Read array elements into mem[500..500+n-1]\n    CLR R7          ; R7 = loop index\nFILL:\n    JGE R7, R0, FILL_DONE\n    IN R6\n    MOV R5, R3\n    ADD R5, R7      ; address = 500 + index\n    STOR R6, [R5+0]\n    INC R7\n    JMP FILL\nFILL_DONE:\n\n    ; Read target\n    IN R2\n\n    ; Binary search on half-open interval [lo, hi)\n    ; lo = R1 = 0, hi = R0 = n\n    CLR R1          ; lo = 0\n    ; R0 already = n = hi\n\nSEARCH:\n    ; if lo >= hi => not found\n    JGE R1, R0, NOT_FOUND\n\n    ; mid = lo + (hi - lo) / 2\n    MOV R4, R0\n    SUB R4, R1      ; R4 = hi - lo\n    DIV R4, 2       ; R4 = (hi - lo) / 2\n    ADD R4, R1      ; R4 = mid\n\n    ; load arr[mid]\n    MOV R5, R3\n    ADD R5, R4      ; R5 = 500 + mid\n    LOAD R6, [R5+0] ; R6 = arr[mid]\n\n    ; if arr[mid] == target => found\n    MOV R7, R6\n    SUB R7, R2\n    JZ R7, FOUND\n\n    ; if arr[mid] < target => lo = mid + 1\n    JLT R6, R2, GO_RIGHT\n\n    ; else arr[mid] > target => hi = mid (half-open: hi = mid, not mid-1)\n    MOV R0, R4\n    JMP SEARCH\n\nGO_RIGHT:\n    MOV R1, R4\n    INC R1          ; lo = mid + 1\n    JMP SEARCH\n\nFOUND:\n    OUT R4\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 4,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 63,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          163,
+          519,
+          1883,
+          7279,
+          28803
+        ],
+        "raw_hwms": [
+          2015,
+          2063,
+          2255,
+          3023,
+          6095
+        ],
+        "source": "; Exponential Search + Binary Search\n; Phase 1: Gallop/double index until arr[bound] >= target or bound >= n\n; Phase 2: Binary search in [bound/2, min(bound, n-1)]\n;\n; Registers during gallop:\n;   R0 = n\n;   R1 = target\n;   R2 = base address (2000)\n;   R3 = bound (current gallop index, starts at 1)\n;   R4 = arr[bound]\n;   R5 = temp address\n;   R6 = lo (for binary search phase)\n;   R7 = hi (for binary search phase)\n\n    IN R0           ; R0 = n\n    MOV R2, 2000    ; base address\n\n    ; Read array into mem[2000..2000+n-1]\n    CLR R5          ; index counter\nREAD_LOOP:\n    JGE R5, R0, READ_DONE\n    IN R4\n    MOV R3, R2\n    ADD R3, R5\n    STOR R4, [R3+0]\n    INC R5\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R1           ; R1 = target\n\n    ; Handle empty array\n    JZ R0, NOT_FOUND\n\n    ; Check index 0 first\n    LOAD R4, [R2+0]\n    MOV R5, R4\n    SUB R5, R1\n    JZ R5, FOUND_ZERO\n\n    ; If arr[0] > target, not found (array is sorted)\n    JGT R4, R1, NOT_FOUND\n\n    ; Exponential gallop: bound starts at 1\n    MOV R3, 1       ; R3 = bound\n\nGALLOP:\n    ; if bound >= n, cap and go to binary search\n    JGE R3, R0, CAP_AND_SEARCH\n\n    ; load arr[bound]\n    MOV R5, R2\n    ADD R5, R3\n    LOAD R4, [R5+0] ; R4 = arr[bound]\n\n    ; if arr[bound] == target => found\n    MOV R5, R4\n    SUB R5, R1\n    JZ R5, FOUND_BOUND\n\n    ; if arr[bound] >= target => stop galloping, binary search [bound/2, bound]\n    JGE R4, R1, DO_BSEARCH\n\n    ; double the bound\n    MUL R3, 2\n    JMP GALLOP\n\nCAP_AND_SEARCH:\n    ; bound >= n, so hi = n-1, lo = bound/2\n    MOV R7, R0\n    DEC R7          ; hi = n - 1\n    MOV R6, R3\n    DIV R6, 2       ; lo = bound / 2\n    JMP BSEARCH\n\nDO_BSEARCH:\n    ; binary search in [bound/2, bound]\n    MOV R7, R3      ; hi = bound\n    DIV R3, 2       ; R3 = bound/2\n    MOV R6, R3      ; lo = bound/2\n    JMP BSEARCH\n\nBSEARCH:\n    ; lo = R6, hi = R7\n    ; if lo > hi => not found\n    JGT R6, R7, NOT_FOUND\n\n    ; mid = lo + (hi - lo) / 2\n    MOV R5, R7\n    SUB R5, R6      ; R5 = hi - lo\n    DIV R5, 2       ; R5 = (hi-lo)/2\n    ADD R5, R6      ; R5 = mid\n\n    ; load arr[mid]\n    MOV R3, R2\n    ADD R3, R5\n    LOAD R4, [R3+0] ; R4 = arr[mid]\n\n    ; if arr[mid] == target => output mid\n    MOV R3, R4\n    SUB R3, R1\n    JZ R3, FOUND_MID\n\n    ; if arr[mid] < target => lo = mid + 1\n    JLT R4, R1, RIGHT\n\n    ; else hi = mid - 1\n    MOV R7, R5\n    DEC R7\n    JMP BSEARCH\n\nRIGHT:\n    MOV R6, R5\n    INC R6\n    JMP BSEARCH\n\nFOUND_ZERO:\n    OUT 0\n    HALT\n\nFOUND_BOUND:\n    OUT R3\n    HALT\n\nFOUND_MID:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 5,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 68,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          157,
+          493,
+          1837,
+          7213,
+          28717
+        ],
+        "raw_hwms": [
+          3015,
+          3063,
+          3255,
+          4023,
+          7095
+        ],
+        "source": "; Interpolation Search + fallback Binary Search\n; Uses interpolation formula: mid = lo + (target - arr[lo]) * (hi - lo) / (arr[hi] - arr[lo])\n; Falls back to binary search when arr[hi] == arr[lo]\n; Array stored at base address 3000\n;\n; Registers:\n;   R0 = n\n;   R1 = target\n;   R2 = base address (3000)\n;   R3 = lo\n;   R4 = hi\n;   R5 = mid (computed index)\n;   R6 = arr[mid] or temp\n;   R7 = temp\n\n    IN R0           ; R0 = n\n    MOV R2, 3000    ; base address\n\n    ; Read array into mem[3000..3000+n-1]\n    CLR R7          ; index counter\nREADLOOP:\n    JGE R7, R0, READDONE\n    IN R6\n    MOV R5, R2\n    ADD R5, R7\n    STOR R6, [R5+0]\n    INC R7\n    JMP READLOOP\nREADDONE:\n\n    IN R1           ; R1 = target\n\n    ; Handle n == 0\n    JZ R0, NOTFOUND\n\n    ; lo = 0, hi = n - 1\n    CLR R3\n    MOV R4, R0\n    DEC R4\n\nISEARCH:\n    ; if lo > hi => not found\n    JGT R3, R4, NOTFOUND\n\n    ; load arr[lo]\n    MOV R5, R2\n    ADD R5, R3\n    LOAD R6, [R5+0]   ; R6 = arr[lo]\n\n    ; if target < arr[lo] => not found\n    JLT R1, R6, NOTFOUND\n\n    ; load arr[hi]\n    MOV R5, R2\n    ADD R5, R4\n    LOAD R7, [R5+0]   ; R7 = arr[hi]\n\n    ; if target > arr[hi] => not found\n    JGT R1, R7, NOTFOUND\n\n    ; if arr[lo] == arr[hi], check equality then binary search or decide\n    MOV R5, R7\n    SUB R5, R6         ; R5 = arr[hi] - arr[lo]\n    JZ R5, EQUALRANGE\n\n    ; Interpolation: mid = lo + (target - arr[lo]) * (hi - lo) / (arr[hi] - arr[lo])\n    ; Compute numerator: (target - arr[lo]) * (hi - lo)\n    ; Use R6 as (target - arr[lo]), R7 as (hi - lo), R5 as denominator\n    ; denominator = arr[hi] - arr[lo] (already in R5)\n    ; Save denominator somewhere: store in mem[2999]\n    STOR R5, [R2-1]    ; mem[2999] = arr[hi] - arr[lo]\n\n    MOV R6, R1\n    SUB R6, R6         ; reset - redo\n    ; reload arr[lo]\n    MOV R5, R2\n    ADD R5, R3\n    LOAD R6, [R5+0]    ; R6 = arr[lo]\n\n    MOV R5, R1\n    SUB R5, R6         ; R5 = target - arr[lo]\n\n    MOV R6, R4\n    SUB R6, R3         ; R6 = hi - lo\n\n    MUL R5, R6         ; R5 = (target - arr[lo]) * (hi - lo)\n\n    LOAD R7, [R2-1]    ; R7 = arr[hi] - arr[lo]\n    DIV R5, R7         ; R5 = numerator / denominator\n\n    ADD R5, R3         ; R5 = mid = lo + ...\n\n    ; Clamp mid to [lo, hi]\n    JGE R5, R3, CLAMP_HI\n    MOV R5, R3\nCLAMP_HI:\n    JLE R5, R4, MID_OK\n    MOV R5, R4\nMID_OK:\n\n    ; load arr[mid]\n    MOV R6, R2\n    ADD R6, R5\n    LOAD R6, [R6+0]    ; R6 = arr[mid]\n\n    ; compare with target\n    MOV R7, R6\n    SUB R7, R1\n    JZ R7, FOUND\n\n    JLT R6, R1, GORIGHT\n\n    ; arr[mid] > target => hi = mid - 1\n    MOV R4, R5\n    DEC R4\n    JMP ISEARCH\n\nGORIGHT:\n    ; arr[mid] < target => lo = mid + 1\n    MOV R3, R5\n    INC R3\n    JMP ISEARCH\n\nEQUALRANGE:\n    ; arr[lo] == arr[hi], check if target matches\n    MOV R5, R6\n    SUB R5, R1\n    JZ R5, FOUND_LO\n    JMP NOTFOUND\n\nFOUND_LO:\n    OUT R3\n    HALT\n\nFOUND:\n    OUT R5\n    HALT\n\nNOTFOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 6,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 49,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          286,
+          1126,
+          4486,
+          17926,
+          71686
+        ],
+        "raw_hwms": [
+          115,
+          163,
+          355,
+          1123,
+          4195
+        ],
+        "source": "; Two-pointer linear scan from both ends simultaneously\n; Registers:\n;   R0 = n\n;   R1 = target\n;   R2 = left pointer (starts at 0, advances forward)\n;   R3 = right pointer (starts at n-1, advances backward)\n;   R4 = value at left\n;   R5 = value at right\n;   R6 = temp\n;   R7 = base address (100)\n\n    IN R0           ; R0 = n\n    MOV R7, 100     ; base address\n\n    ; Handle n == 0\n    JZ R0, NOTFOUND\n\n    ; Read array into mem[100..100+n-1]\n    CLR R6          ; index counter\nREADLOOP:\n    JGE R6, R0, READDONE\n    IN R4\n    MOV R5, R7\n    ADD R5, R6\n    STOR R4, [R5+0]\n    INC R6\n    JMP READLOOP\nREADDONE:\n\n    IN R1           ; R1 = target\n\n    ; left = 0, right = n - 1\n    CLR R2\n    MOV R3, R0\n    DEC R3\n\nSCANLOOP:\n    ; if left > right, not found\n    JGT R2, R3, NOTFOUND\n\n    ; Check if left == right (single element remaining)\n    MOV R6, R2\n    SUB R6, R3\n    JZ R6, SINGLE\n\n    ; Load arr[left]\n    MOV R6, R7\n    ADD R6, R2\n    LOAD R4, [R6+0]     ; R4 = arr[left]\n\n    ; Check if arr[left] == target\n    MOV R6, R4\n    SUB R6, R1\n    JZ R6, FOUND_LEFT\n\n    ; Load arr[right]\n    MOV R6, R7\n    ADD R6, R3\n    LOAD R5, [R6+0]     ; R5 = arr[right]\n\n    ; Check if arr[right] == target\n    MOV R6, R5\n    SUB R6, R1\n    JZ R6, FOUND_RIGHT\n\n    ; Since array is sorted:\n    ; if arr[left] > target, target cannot exist (all remaining >= arr[left] > target... wait sorted ascending)\n    ; arr[left] <= arr[left+1] <= ... <= arr[right]\n    ; if arr[left] > target => not found\n    JGT R4, R1, NOTFOUND\n\n    ; if arr[right] < target => not found\n    JLT R5, R1, NOTFOUND\n\n    ; arr[left] < target and arr[right] > target\n    ; advance both pointers inward\n    INC R2\n    DEC R3\n    JMP SCANLOOP\n\nSINGLE:\n    ; left == right, check that element\n    MOV R6, R7\n    ADD R6, R2\n    LOAD R4, [R6+0]\n    MOV R6, R4\n    SUB R6, R1\n    JZ R6, FOUND_LEFT\n    JMP NOTFOUND\n\nFOUND_LEFT:\n    OUT R2\n    HALT\n\nFOUND_RIGHT:\n    OUT R3\n    HALT\n\nNOTFOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 7,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 54,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          229,
+          659,
+          2191,
+          7943,
+          30199
+        ],
+        "raw_hwms": [
+          4015,
+          4063,
+          4255,
+          5023,
+          8095
+        ],
+        "source": "; Jump Search (Block Search)\n; Phase 1: Jump forward by block_size = floor(sqrt(n)) steps until arr[block_end] >= target\n; Phase 2: Linear scan backward from block_end to find exact index\n; Array stored at base address 4000\n;\n; Registers:\n;   R0 = n\n;   R1 = target\n;   R2 = base address (4000)\n;   R3 = block_size (approx sqrt(n))\n;   R4 = current jump position (block_end)\n;   R5 = value at current position\n;   R6 = linear scan index\n;   R7 = temp / address\n\n    IN R0           ; R0 = n\n    MOV R2, 4000    ; base address\n\n    ; Handle n == 0\n    JZ R0, NOTFOUND\n\n    ; Read array into mem[4000..4000+n-1]\n    CLR R7\nREADLOOP:\n    JGE R7, R0, READDONE\n    IN R5\n    MOV R4, R2\n    ADD R4, R7\n    STOR R5, [R4+0]\n    INC R7\n    JMP READLOOP\nREADDONE:\n\n    IN R1           ; R1 = target\n\n    ; Compute block_size = floor(sqrt(n)) using integer sqrt\n    ; Use iterative method: find largest k such that k*k <= n\n    CLR R3          ; R3 = k = 0\nSQRTLOOP:\n    MOV R7, R3\n    INC R7          ; R7 = k+1\n    MOV R4, R7\n    MUL R4, R7      ; R4 = (k+1)^2\n    JGT R4, R0, SQRTDONE\n    INC R3\n    JMP SQRTLOOP\nSQRTDONE:\n    ; R3 = floor(sqrt(n)), ensure at least 1\n    JNZ R3, BLOCKSIZE_OK\n    MOV R3, 1\nBLOCKSIZE_OK:\n\n    ; Jump search phase\n    ; current position starts at block_size - 1 (end of first block)\n    ; prev = 0 (start of current block)\n    ; R4 = current jump end index\n    MOV R4, R3\n    DEC R4          ; R4 = block_size - 1\n\nJUMPLOOP:\n    ; Clamp R4 to n-1\n    MOV R7, R0\n    DEC R7          ; R7 = n-1\n    JLE R4, R7, NO_CLAMP\n    MOV R4, R7\nNO_CLAMP:\n\n    ; Load arr[R4]\n    MOV R5, R2\n    ADD R5, R4\n    LOAD R5, [R5+0] ; R5 = arr[R4]\n\n    ; If arr[R4] < target, jump to next block\n    JLT R5, R1, NEXT_BLOCK\n\n    ; arr[R4] >= target: do linear scan backward from R4\n    JMP LINSCAN\n\nNEXT_BLOCK:\n    ; Check if we've reached the end\n    MOV R7, R0\n    DEC R7\n    MOV R6, R4      ; save current position as prev block start hint\n    JGE R4, R7, NOTFOUND\n\n    ; Advance R4 by block_size\n    ADD R4, R3\n    JMP JUMPLOOP\n\nLINSCAN:\n    ; Linear scan from R4 down to find target\n    ; R6 = scan index, starts at R4\n    MOV R6, R4\n\nSCANLOOP:\n    ; if R6 < 0, not found\n    JLT R6, 0, NOTFOUND\n\n    ; Load arr[R6]\n    MOV R7, R2\n    ADD R7, R6\n    LOAD R5, [R7+0] ; R5 = arr[R6]\n\n    ; if arr[R6] == target => found\n    MOV R7, R5\n    SUB R7, R1\n    JZ R7, FOUND\n\n    ; if arr[R6] < target => target not in array (we passed it)\n    JLT R5, R1, NOTFOUND\n\n    ; arr[R6] > target, keep scanning left\n    DEC R6\n    JMP SCANLOOP\n\nFOUND:\n    OUT R6\n    HALT\n\nNOTFOUND:\n    OUT -1\n    HALT"
+      }
+    ]
   }
 }
