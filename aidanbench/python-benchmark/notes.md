@@ -11,7 +11,8 @@ MAP-Elites style coding benchmark for claude-sonnet-4-6.
 - **Built-in reliance** (static AST): none, few (1-3), many (4+)
 
 Time complexity uses sys.settrace line-event counts (not wall-clock timing) for a deterministic,
-noise-free signal. The tracer runs separately from the timing run, so overhead is irrelevant.
+noise-free signal. Both instruction counts and wall-clock timing are recorded; cell_key defaults
+to instruction counts.
 
 ### Scoring
 Score per problem = number of distinct (time, space, cyclomatic, builtin) cells
@@ -22,5 +23,4 @@ occupied by **correct** solutions.
 
 ## Status
 
-Implementation complete including 5th bytecode-counting dimension.
-Benchmark not yet run.
+Implementation complete. Benchmark not yet run.

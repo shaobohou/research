@@ -66,6 +66,13 @@ OUT  src               # append src to output
 HALT                   # stop execution
 ```
 
+### ISA Tiers
+
+**Core** (12 opcodes): MOV ADD SUB MUL DIV LOAD STOR JMP JZ JLT IN OUT — programs
+fall off the end to terminate; HALT and extended opcodes forbidden.
+
+**Extended** (default): adds MOD JNZ JLE HALT plus the 6 macros below.
+
 ### Macros (syntactic sugar, expanded before execution)
 
 ```
@@ -74,6 +81,7 @@ JGE  reg, src, label   # expands to: JLE src, reg, label
 INC  reg               # expands to: ADD reg, 1
 DEC  reg               # expands to: SUB reg, 1
 CLR  reg               # expands to: MOV reg, 0
+NEG  reg               # expands to: MUL reg, -1
 ```
 
 ---
@@ -96,18 +104,21 @@ elements, then the target).
 
 ## 4. Benchmark Problems (ISA edition)
 
-| Problem | Input format | Expected output |
-|---------|-------------|-----------------|
-| fibonacci | n | fib(n) % (10^9+7) |
-| sort_list | n, then n integers | n integers in sorted order |
-| binary_search | n, n integers (sorted), target | index or -1 |
-| two_sum | n, n integers, target | i, j (two lines) |
-| is_palindrome | n, then n integers (char codes) | 1 or 0 |
-| factorial | n | n! % (10^9+7) |
+| Problem | Input format | Expected output | Status |
+|---------|-------------|-----------------|--------|
+| fibonacci | n | fib(n) % (10^9+7) | implemented |
+| sort_list | n, then n integers | n integers in sorted order | planned |
+| two_sum | n, n integers, target | i, j (two lines) | planned |
+| is_palindrome | n, then n integers (char codes) | 1 or 0 | planned |
+| factorial | n | n! % (10^9+7) | planned |
 
 For `sort_list` the output is n integers emitted via n OUT instructions.
 For `is_palindrome` the string is encoded as a sequence of integer char codes
 to avoid string I/O.
+
+Binary search was considered but removed: the O(n) array-loading phase dominates
+both time and space for any correct implementation, collapsing all solutions into
+the same MAP-Elites cells.
 
 ---
 
@@ -132,35 +143,28 @@ Programs that use only registers have mem_hwm = 0 across all sizes → O(1).
 
 ### 5.2 Static Features (source analysis)
 
-**Cyclomatic complexity** — count branch instructions in source:
-JMP, JZ, JNZ, JLT, JLE (and their macro expansions).
-Bins: simple (1–3), moderate (4–8), complex (9+).
-
-Unlike Python, every branch is explicit and visible — no hidden control flow
-from builtins or comprehensions.
-
 **Register pressure** — highest register index referenced in source:
-- few: only R0–R1
-- some: up to R3
-- many: R4 or higher
+- r0-r2: uses at most R2
+- r0-r4: uses at most R4
+- r0-r7: uses R5 or higher
 
 Captures how heavily the solution exploits the register file. A low-register
 solution must spill to memory or restructure the algorithm.
 
-**Program length** — total instruction lines in source (after macro expansion):
-- tiny: ≤ 15
-- short: 16–40
-- medium: 41–80
-- long: > 80
+**Program size** — total instruction count after macro expansion:
+- tiny: ≤ 10
+- small: 11–25
+- medium: 26–50
+- large: > 50
 
-### 5.3 Default Cell Key (5 dimensions)
+### 5.3 Default Cell Key (4 dimensions)
 
 ```
-(time_complexity, space_complexity, cyclomatic, register_pressure, program_length)
+(time_complexity, space_complexity, program_size_bin, register_pressure)
 ```
 
 Replaces Python's `builtin_reliance` (always zero in assembly) with
-`register_pressure` and `program_length`, both of which vary meaningfully
+`program_size_bin` and `register_pressure`, both of which vary meaningfully
 across ISA solutions.
 
 ---
@@ -248,91 +252,46 @@ even if both are O(n log n) time.
 
 ## 7. Full Feature Space Summary
 
-### Recommended default (5 axes, no hard constraints)
+### Default (4 axes, no hard constraints)
 
 | Axis | Source | Values |
 |------|--------|--------|
 | time_complexity | empirical (insn_count fit) | O(1) O(log n) O(n) O(n log n) O(n²) O(2^n) |
-| space_complexity | empirical (mem_hwm fit) | O(1) O(log n) O(n) O(n²) |
-| cyclomatic | static (branch count) | simple moderate complex |
-| register_pressure | static (max reg index) | few some many |
-| program_length | static (line count) | tiny short medium long |
+| space_complexity | empirical (mem_hwm fit) | O(1) O(log n) O(n) O(n log n) O(n²) O(2^n) |
+| program_size_bin | static (insn count after expansion) | tiny small medium large |
+| register_pressure | static (max reg index) | r0-r2 r0-r4 r0-r7 |
 
-Maximum possible cells per problem: 6 × 4 × 3 × 3 × 4 = **864**
-Realistically reachable: 20–40 (most complexity combinations are
+Maximum possible cells per problem: 6 × 6 × 4 × 3 = **432**
+Realistically reachable: 10–30 (most complexity combinations are
 algorithmically impossible or equivalent).
 
 ### Extended (add constraint-derived axes)
 
-Add `memory_cells_used` and `distinct_opcodes` for a 7-axis space.
-Maximum cells: 864 × 4 × 3 = **10,368** — mostly empty, but richer
+Add `memory_cells_used` and `distinct_opcodes` for a 6-axis space.
+Maximum cells: 432 × 4 × 3 = **5,184** — mostly empty, but richer
 for problems like sort where many strategies exist.
 
 ---
 
-## 8. Implementation Plan
-
-### Phase 1 — Interpreter
-
-`isa/interpreter.py` (~100 lines)
-- Parse assembly text (labels, instructions, operands)
-- Execute with insn_count and mem_hwm tracking
-- Enforce register/memory/size/whitelist constraints
-- Run program on a list of integer inputs, return list of integer outputs
-
-### Phase 2 — Feature Extraction
-
-Adapt `features.py`:
-- Replace Python subprocess runner with ISA interpreter calls
-- Static analysis of assembly source: count branches, max register index,
-  source lines, distinct opcodes
-- Same R² fitting for time and space complexity series
-
-### Phase 3 — Problem Definitions
-
-Adapt `problems.py`:
-- New descriptions with ISA input/output format
-- `size_input(n)` returns integer list (not Python args tuple)
-- `test_cases`: list of (input_integers, expected_output_integers)
-
-### Phase 4 — Benchmark Runner
-
-Adapt `benchmark.py`:
-- Prompt includes full ISA spec
-- Extract assembly code from response (between code fences or XML tags)
-- Correctness check runs program on test_case inputs, compares output list
-- Same MAP-Elites archive loop
-
-### Phase 5 — Constraint Variants
-
-Add a `constraints` dict to each problem run:
-```python
-{"register_budget": 4, "memory_budget": 64, "whitelist": "no-mul"}
-```
-The interpreter enforces these; solutions that violate are scored as incorrect.
-Run the same problem multiple times under different constraint profiles to
-explore constraint-induced diversity.
-
----
-
-## 9. Example: Fibonacci Feature Space
+## 8. Example: Fibonacci Feature Space
 
 Expected distinct cells across algorithm families (no constraints):
 
-| Algorithm | time | space | cyclomatic | reg_pressure | prog_len |
-|-----------|------|-------|------------|--------------|----------|
-| iterative | O(n) | O(1) | simple | few | tiny |
-| dp in memory | O(n) | O(n) | simple | some | short |
-| matrix exp | O(log n) | O(1) | moderate | many | medium |
-| naive recursive* | O(2^n) | O(n) | moderate | some | short |
-| unrolled (fixed n) | O(1) | O(1) | simple | few | long |
+| Algorithm | time | space | prog_size | reg_pressure |
+|-----------|------|-------|-----------|--------------|
+| iterative | O(n) | O(1) | small | r0-r4 |
+| dp in memory | O(n) | O(n) | small/medium | r0-r4 |
+| fast-doubling | O(log n) | O(1) | medium | r0-r7 |
+| matrix exp (stack) | O(log n) | O(log n) | large | r0-r7 |
+| naive recursive* | O(2^n) | O(n) | medium | r0-r4 |
+| unrolled (fixed n) | O(1) | O(1) | large | r0-r4 |
 
 *Requires manual stack management via STOR/LOAD since ISA has no CALL/RET.
 
-5 distinct cells — same as Python. But under `memory_budget=0`:
+Observed in benchmark runs: 9 distinct cells across 25 attempts, including
+fast-doubling (O(log n)/O(1)/medium/r0-r7). Under `memory_budget=0`:
 - dp in memory and naive recursive become *impossible* (need memory for table/stack)
-- Only iterative, matrix exp, and unrolled survive
-- A 2-cell (or 3-cell) space with constraint-induced pruning
+- Only iterative, fast-doubling, and unrolled survive — constraint-induced pruning
 
 This is the TIS-100 insight applied systematically: constraints don't just
 limit, they *redirect* diversity into dimensions the unconstrained space misses.
