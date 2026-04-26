@@ -184,6 +184,14 @@ PYTHON_BUILTINS = {
     "map", "max", "min", "next", "oct", "ord", "pow", "print", "range",
     "reduce", "repr", "reversed", "round", "set", "setattr", "slice",
     "sorted", "str", "sum", "tuple", "type", "vars", "zip",
+    # commonly imported stdlib callables used as bare names
+    "lru_cache", "cache", "partial", "wraps",
+    "defaultdict", "Counter", "deque", "OrderedDict",
+    "heappush", "heappop", "heapify",
+    "bisect", "bisect_left", "bisect_right", "insort",
+    "factorial", "gcd", "lcm", "sqrt", "log", "ceil", "floor",
+    "product", "permutations", "combinations",
+    "deepcopy",
 }
 
 STDLIB_ATTRS = {
@@ -203,8 +211,8 @@ def cyclomatic_complexity(code: str) -> int:
         return 0
     count = 1
     for node in ast.walk(tree):
-        if isinstance(node, (ast.If, ast.For, ast.While, ast.ExceptHandler,
-                              ast.With, ast.Assert)):
+        if isinstance(node, (ast.If, ast.IfExp, ast.For, ast.While,
+                              ast.ExceptHandler, ast.With, ast.Assert)):
             count += 1
         elif isinstance(node, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
             count += sum(1 for g in node.generators for _ in g.ifs)
