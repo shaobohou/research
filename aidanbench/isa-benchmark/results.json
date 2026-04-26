@@ -1,28 +1,31 @@
 {
   "fibonacci": {
-    "score": 4,
-    "attempts": 9,
+    "score": 3,
+    "attempts": 12,
     "cells": {
-      "('O(n)', 'O(1)', 'small')": {
+      "('O(n)', 'O(1)', 'medium', 'r0-r7')": {
         "attempt": 1,
         "correct": true,
         "new_cell": true,
         "cell": [
           "O(n)",
           "O(1)",
-          "small"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
-        "program_size": 25,
-        "program_size_bin": "small",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 5,
         "raw_insns": [
-          805,
-          4005,
-          8005,
-          16005,
-          40005,
-          80005
+          808,
+          4008,
+          8008,
+          16008,
+          40008,
+          80008
         ],
         "raw_hwms": [
           0,
@@ -32,21 +35,24 @@
           0,
           0
         ],
-        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, DONE_ZERO\n\n    MOV R1, 1\n    JZ R1, SKIP     ; never taken, just using R1\n    ; Check if n == 1\n    MOV R2, 1\n    JLE R0, R2, DONE_ONE\n\n    ; General case: compute fib(n) iteratively\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n\n    ; R4 = modulus\n    MOV R1, 0\n    MOV R2, 1\n    MOV R3, 1\n    MOV R4, 1000000007\n\nLOOP:\n    JGE R3, R0, DONE\n    ; R5 = R1 + R2\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    ; shift: R1 = R2, R2 = R5\n    MOV R1, R2\n    MOV R2, R5\n    INC R3\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nDONE_ZERO:\n    OUT 0\n    HALT\n\nDONE_ONE:\n    OUT 1\n    HALT\n\nSKIP:\n    HALT"
+        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, BASE0\n    MOV R1, 1\n    JZ R1, BASE1    ; never taken, just placeholder\n    ; Check if n == 1\n    MOV R2, 1\n    JZ R0, BASE0\n    ; compare n with 1\n    MOV R3, R0\n    SUB R3, 1\n    JZ R3, BASE1\n\n    ; General case: compute fib(n) iteratively\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n-1\n    ; MOD = 1000000007\n\n    MOV R1, 0       ; fib(0)\n    MOV R2, 1       ; fib(1)\n    MOV R3, 1       ; counter = 1\n    MOV R4, 1000000007  ; modulus\n\nLOOP:\n    JGE R3, R0, DONE   ; if counter >= n, done\n    ; R5 = R1 + R2\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    ; shift: R1 = R2, R2 = R5\n    MOV R1, R2\n    MOV R2, R5\n    INC R3\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nBASE0:\n    OUT 0\n    HALT\n\nBASE1:\n    OUT 1\n    HALT"
       },
-      "('O(n)', 'O(n)', 'small')": {
+      "('O(n)', 'O(n)', 'medium', 'r0-r7')": {
         "attempt": 2,
         "correct": true,
         "new_cell": true,
         "cell": [
           "O(n)",
           "O(n)",
-          "small"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
-        "program_size": 24,
-        "program_size_bin": "small",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
           1201,
           6001,
@@ -63,69 +69,41 @@
           5000,
           10000
         ],
-        "source": "IN R0               ; R0 = n\n    MOV R4, 1000000007  ; modulus\n\n    ; Store fib values in memory: mem[0]=fib(0)=0, mem[1]=fib(1)=1\n    ; Use memory array approach, fill up to index n\n\n    ; Base cases stored in memory\n    MOV R1, 0\n    STOR R1, [R1+0]     ; mem[0] = 0\n    MOV R1, 1\n    STOR R1, [R1+0]     ; mem[1] = 1\n\n    ; If n <= 1, just load and output\n    MOV R2, 1\n    JLE R0, R2, OUTPUT\n\n    ; Fill memory from index 2 to n\n    MOV R3, 2           ; R3 = current index i\n\nFILL:\n    JGT R3, R0, OUTPUT  ; if i > n, done\n\n    ; Load mem[i-1] and mem[i-2]\n    MOV R5, R3\n    SUB R5, 1\n    LOAD R6, [R5+0]     ; R6 = mem[i-1]\n\n    MOV R5, R3\n    SUB R5, 2\n    LOAD R7, [R5+0]     ; R7 = mem[i-2]\n\n    ADD R6, R7\n    MOD R6, R4\n\n    STOR R6, [R3+0]     ; mem[i] = (mem[i-1] + mem[i-2]) % MOD\n\n    INC R3\n    JMP FILL\n\nOUTPUT:\n    LOAD R1, [R0+0]     ; load mem[n]\n    OUT R1\n    HALT"
+        "source": "IN R0\n    MOV R4, 1000000007\n\n    ; Store fib values in memory\n    ; mem[0] = fib(0) = 0\n    ; mem[1] = fib(1) = 1\n    ; mem[i] = (mem[i-1] + mem[i-2]) % MOD\n\n    MOV R1, 0\n    STOR R1, [R1+0]   ; mem[0] = 0\n    MOV R2, 1\n    STOR R2, [R2+0]   ; mem[1] = 1 (address 1)\n\n    ; Check if n <= 1\n    MOV R3, 1\n    JLE R0, R3, SMALL\n\n    ; R5 = current index, starts at 2\n    MOV R5, 2\n\nFILL:\n    JGT R5, R0, READ_ANS\n    ; mem[R5] = (mem[R5-1] + mem[R5-2]) % MOD\n    MOV R6, R5\n    SUB R6, 1\n    LOAD R1, [R6+0]   ; fib(i-1)\n    MOV R6, R5\n    SUB R6, 2\n    LOAD R2, [R6+0]   ; fib(i-2)\n    ADD R1, R2\n    MOD R1, R4\n    STOR R1, [R5+0]\n    INC R5\n    JMP FILL\n\nREAD_ANS:\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT\n\nSMALL:\n    ; n is 0 or 1, load directly\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT"
       },
-      "('O(n)', 'O(1)', 'medium')": {
-        "attempt": 4,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 36,
-        "program_size_bin": "medium",
-        "raw_insns": [
-          664,
-          3264,
-          6514,
-          13014,
-          32514,
-          65014
-        ],
-        "raw_hwms": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "source": "; Compute fib(n) % 1000000007 using an unrolled two-step loop\n; to reduce loop overhead, processing two Fibonacci steps per iteration.\n; Register layout:\n;   R0 = n (input)\n;   R1 = fib_a (current)\n;   R2 = fib_b (next)\n;   R3 = loop counter (steps remaining)\n;   R4 = modulus\n;   R5 = temp\n\nIN R0\nMOV R4, 1000000007\n\n; Base case: n == 0\nJZ R0, BASE_ZERO\n\n; Base case: n == 1\nMOV R3, 1\nJLE R0, R3, BASE_ONE\n\n; General case\n; We want fib(n). Start with fib(0)=0, fib(1)=1.\n; R1 = fib_a = 0, R2 = fib_b = 1\n; We need n steps to go from fib(0) to fib(n)\n; Each single step: new_b = a+b, new_a = b\n; We do two steps per loop iteration when possible\n\nMOV R1, 0       ; fib_a = fib(0)\nMOV R2, 1       ; fib_b = fib(1)\nMOV R3, R0      ; R3 = n (number of steps needed)\n\n; If n is odd, do one step first to make remaining count even\nMOV R5, R3\nMOD R5, 2\nJZ R5, MAIN_LOOP\n\n; Do one step: (a,b) -> (b, a+b)\nMOV R5, R1\nADD R5, R2\nMOD R5, R4\nMOV R1, R2\nMOV R2, R5\nDEC R3\n\nMAIN_LOOP:\n    JZ R3, DONE\n\n    ; Step 1: (a,b) -> (b, a+b)\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    MOV R1, R2\n    MOV R2, R5\n\n    ; Step 2: (a,b) -> (b, a+b)\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    MOV R1, R2\n    MOV R2, R5\n\n    SUB R3, 2\n    JMP MAIN_LOOP\n\nDONE:\n    OUT R1\n    HALT\n\nBASE_ZERO:\n    OUT 0\n    HALT\n\nBASE_ONE:\n    OUT 1\n    HALT"
-      },
-      "('O(log n)', 'O(log n)', 'large')": {
-        "attempt": 5,
+      "('O(log n)', 'O(log n)', 'large', 'r0-r7')": {
+        "attempt": 6,
         "correct": true,
         "new_cell": true,
         "cell": [
           "O(log n)",
           "O(log n)",
-          "large"
+          "large",
+          "r0-r7"
         ],
         "time_complexity": "O(log n)",
         "space_complexity": "O(log n)",
-        "program_size": 74,
+        "program_size": 52,
         "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          337,
-          434,
-          478,
-          522,
-          607,
-          651
+          244,
+          314,
+          346,
+          378,
+          440,
+          472
         ],
         "raw_hwms": [
-          16,
-          18,
-          19,
-          20,
-          22,
-          23
+          206,
+          208,
+          209,
+          210,
+          212,
+          213
         ],
-        "source": "; Fibonacci using fast doubling (matrix exponentiation via doubling identities)\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; We process bits of n from high to low\n; Memory layout:\n;   mem[0] = a = fib(k)\n;   mem[1] = b = fib(k+1)\n; Registers:\n;   R0 = n\n;   R1 = modulus\n;   R2 = bit position / temp\n;   R3 = current bit value\n;   R4, R5, R6, R7 = temporaries\n\nIN R0\nMOV R1, 1000000007\n\n; Base cases\nJZ R0, OUT_ZERO\nMOV R2, 1\nJLE R0, R2, OUT_ONE\n\n; Find highest bit of n\n; We'll store bits in memory starting at mem[10]\n; First, copy n to R2 and extract bits\nMOV R2, R0\nMOV R3, 10          ; mem index for bits array\n\nBIT_EXTRACT:\n    JZ R2, BITS_DONE\n    MOV R4, R2\n    MOD R4, 2           ; R4 = R2 % 2 (LSB)\n    STOR R4, [R3+0]     ; store bit\n    INC R3\n    DIV R2, 2\n    JMP BIT_EXTRACT\n\nBITS_DONE:\n    ; R3 now points one past last bit\n    ; bits are stored LSB first at mem[10..R3-1]\n    ; We process from MSB (R3-1) down to mem[10]\n    ; Initialize a=0, b=1 (fib(0), fib(1))\n    MOV R4, 0\n    STOR R4, [R4+0]     ; mem[0] = 0\n    MOV R4, 1\n    STOR R4, [R4+0]     ; mem[1] = 1\n\n    ; R2 = current index, start at R3-1 (MSB), go down to 10\n    MOV R2, R3\n    DEC R2\n\nPROCESS_BITS:\n    ; if R2 < 10, done\n    MOV R5, 10\n    JLT R2, R5, EXTRACT_RESULT\n\n    ; Load current bit\n    LOAD R3, [R2+0]     ; R3 = current bit\n\n    ; Load a = mem[0], b = mem[1]\n    MOV R4, 0\n    LOAD R4, [R4+0]     ; R4 = a\n    MOV R5, 1\n    LOAD R5, [R5+0]     ; R5 = b\n\n    ; Doubling step:\n    ; c = a * (2*b - a) mod M\n    ; d = a*a + b*b mod M\n\n    ; Compute 2*b - a\n    MOV R6, R5\n    MUL R6, 2\n    SUB R6, R4\n    MOD R6, R1          ; R6 = (2b - a) mod M\n\n    ; c = a * R6 mod M\n    MUL R4, R6\n    MOD R4, R1          ; R4 = c = new a\n\n    ; d = old_a^2 + b^2 mod M  -- need old a\n    ; R5 = b (still), but R4 is now c\n    ; We need old a: we lost it. Reload b from mem[1], recompute\n    ; Actually R6 = (2b-a), and we used R4=a for multiply\n    ; Let's redo: load fresh\n    ; Reload a and b\n    MOV R7, 0\n    LOAD R7, [R7+0]     ; R7 = a (original)\n    MOV R6, 1\n    LOAD R6, [R6+0]     ; R6 = b (original)\n\n    ; c = a*(2b-a) mod M\n    MOV R4, R6\n    MUL R4, 2\n    SUB R4, R7\n    MOD R4, R1\n    MUL R4, R7\n    MOD R4, R1          ; R4 = c\n\n    ; d = a^2 + b^2 mod M\n    MUL R7, R7\n    MOD R7, R1\n    MUL R6, R6\n    MOD R6, R1\n    ADD R7, R6\n    MOD R7, R1          ; R7 = d\n\n    ; If bit == 0: (a,b) = (c, d)\n    ; If bit == 1: (a,b) = (d, c+d)\n    LOAD R3, [R2+0]     ; reload bit\n    JNZ R3, BIT_ONE\n\n    ; bit == 0\n    MOV R5, 0\n    STOR R4, [R5+0]     ; mem[0] = c\n    MOV R5, 1\n    STOR R7, [R5+0]     ; mem[1] = d\n    DEC R2\n    JMP PROCESS_BITS\n\nBIT_ONE:\n    ; bit == 1: a=d, b=c+d\n    MOV R5, R4\n    ADD R5, R7\n    MOD R5, R1          ; R5 = c+d\n    MOV R6, 0\n    STOR R7, [R6+0]     ; mem[0] = d\n    MOV R6, 1\n    STOR R5, [R6+0]     ; mem[1] = c+d\n    DEC R2\n    JMP PROCESS_BITS\n\nEXTRACT_RESULT:\n    MOV R2, 0\n    LOAD R2, [R2+0]     ; result = mem[0] = fib(n)\n    OUT R2\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT\n\nOUT_ONE:\n    OUT 1\n    HALT"
+        "source": "; Fast doubling Fibonacci using explicit stack in memory\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; Stack stores the sequence of bits (0=even, 1=odd) of n\n; Then we apply doubling formulas bottom-up\n\nIN R0\nMOV R6, 1000000007\n\n; Base cases\nJZ R0, OUT_ZERO\nMOV R7, 1\nJLE R0, R7, OUT_ONE\n\n; Push bits of n onto stack in memory starting at address 200\n; We push 0 if n is even, 1 if n is odd, then n = n/2, repeat until n=0\n; Stack pointer in R7, starts at 200\nMOV R7, 200\nMOV R3, R0\n\nPUSH_LOOP:\n    JZ R3, PUSH_DONE\n    MOV R4, R3\n    MOD R4, 2          ; R4 = R3 % 2 (bit)\n    STOR R4, [R7+0]\n    INC R7\n    DIV R3, 2\n    JMP PUSH_LOOP\n\nPUSH_DONE:\n; Now pop bits and apply fast doubling\n; R1 = a = fib(k), R2 = b = fib(k+1), start with k=0: a=0, b=1\nMOV R1, 0\nMOV R2, 1\n\n; R7 points one past top of stack, decrement to read\nPOP_LOOP:\n    MOV R5, 200\n    JLE R7, R5, RESULT  ; if R7 <= 200, stack empty\n\n    DEC R7\n    LOAD R4, [R7+0]     ; R4 = bit\n\n    ; Doubling step:\n    ; c = a * (2*b - a) % MOD\n    ; d = (a*a + b*b) % MOD\n    ; if bit==0: (a,b) = (c, d)\n    ; if bit==1: (a,b) = (d, c+d)\n\n    ; Compute c = a*(2b - a) % MOD\n    MOV R3, R2\n    MUL R3, 2\n    MOD R3, R6          ; R3 = 2b % MOD\n    SUB R3, R1          ; R3 = 2b - a\n    MOD R3, R6          ; handle negative mod\n    MUL R3, R1          ; R3 = a*(2b-a)  -- may overflow 32-bit!\n    MOD R3, R6          ; c = R3\n\n    ; Compute d = (a^2 + b^2) % MOD\n    MOV R5, R1\n    MUL R5, R1\n    MOD R5, R6          ; R5 = a^2 % MOD\n    MOV R4, R2          ; save bit in R4? No, R4=bit, need temp\n    ; Save bit first\n    LOAD R4, [R7+0]     ; reload bit (R7 still points to it)\n\n    MOV R0, R2\n    MUL R0, R2\n    MOD R0, R6          ; R0 = b^2 % MOD\n    ADD R5, R0\n    MOD R5, R6          ; d = R5\n\n    ; Now R4=bit, R3=c, R5=d\n    JNZ R4, BIT_ONE\n\n    ; bit==0: a=c, b=d\n    MOV R1, R3\n    MOV R2, R5\n    JMP POP_LOOP\n\nBIT_ONE:\n    ; bit==1: a=d, b=c+d\n    MOV R1, R5\n    MOV R2, R3\n    ADD R2, R5\n    MOD R2, R6\n    JMP POP_LOOP\n\nRESULT:\n    OUT R1\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT\n\nOUT_ONE:\n    OUT 1\n    HALT"
       }
     },
     "records": [
@@ -136,19 +114,22 @@
         "cell": [
           "O(n)",
           "O(1)",
-          "small"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
-        "program_size": 25,
-        "program_size_bin": "small",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 5,
         "raw_insns": [
-          805,
-          4005,
-          8005,
-          16005,
-          40005,
-          80005
+          808,
+          4008,
+          8008,
+          16008,
+          40008,
+          80008
         ],
         "raw_hwms": [
           0,
@@ -158,7 +139,7 @@
           0,
           0
         ],
-        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, DONE_ZERO\n\n    MOV R1, 1\n    JZ R1, SKIP     ; never taken, just using R1\n    ; Check if n == 1\n    MOV R2, 1\n    JLE R0, R2, DONE_ONE\n\n    ; General case: compute fib(n) iteratively\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n\n    ; R4 = modulus\n    MOV R1, 0\n    MOV R2, 1\n    MOV R3, 1\n    MOV R4, 1000000007\n\nLOOP:\n    JGE R3, R0, DONE\n    ; R5 = R1 + R2\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    ; shift: R1 = R2, R2 = R5\n    MOV R1, R2\n    MOV R2, R5\n    INC R3\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nDONE_ZERO:\n    OUT 0\n    HALT\n\nDONE_ONE:\n    OUT 1\n    HALT\n\nSKIP:\n    HALT"
+        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, BASE0\n    MOV R1, 1\n    JZ R1, BASE1    ; never taken, just placeholder\n    ; Check if n == 1\n    MOV R2, 1\n    JZ R0, BASE0\n    ; compare n with 1\n    MOV R3, R0\n    SUB R3, 1\n    JZ R3, BASE1\n\n    ; General case: compute fib(n) iteratively\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n-1\n    ; MOD = 1000000007\n\n    MOV R1, 0       ; fib(0)\n    MOV R2, 1       ; fib(1)\n    MOV R3, 1       ; counter = 1\n    MOV R4, 1000000007  ; modulus\n\nLOOP:\n    JGE R3, R0, DONE   ; if counter >= n, done\n    ; R5 = R1 + R2\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    ; shift: R1 = R2, R2 = R5\n    MOV R1, R2\n    MOV R2, R5\n    INC R3\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nBASE0:\n    OUT 0\n    HALT\n\nBASE1:\n    OUT 1\n    HALT"
       },
       {
         "attempt": 2,
@@ -167,12 +148,15 @@
         "cell": [
           "O(n)",
           "O(n)",
-          "small"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
-        "program_size": 24,
-        "program_size_bin": "small",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
           1201,
           6001,
@@ -189,59 +173,70 @@
           5000,
           10000
         ],
-        "source": "IN R0               ; R0 = n\n    MOV R4, 1000000007  ; modulus\n\n    ; Store fib values in memory: mem[0]=fib(0)=0, mem[1]=fib(1)=1\n    ; Use memory array approach, fill up to index n\n\n    ; Base cases stored in memory\n    MOV R1, 0\n    STOR R1, [R1+0]     ; mem[0] = 0\n    MOV R1, 1\n    STOR R1, [R1+0]     ; mem[1] = 1\n\n    ; If n <= 1, just load and output\n    MOV R2, 1\n    JLE R0, R2, OUTPUT\n\n    ; Fill memory from index 2 to n\n    MOV R3, 2           ; R3 = current index i\n\nFILL:\n    JGT R3, R0, OUTPUT  ; if i > n, done\n\n    ; Load mem[i-1] and mem[i-2]\n    MOV R5, R3\n    SUB R5, 1\n    LOAD R6, [R5+0]     ; R6 = mem[i-1]\n\n    MOV R5, R3\n    SUB R5, 2\n    LOAD R7, [R5+0]     ; R7 = mem[i-2]\n\n    ADD R6, R7\n    MOD R6, R4\n\n    STOR R6, [R3+0]     ; mem[i] = (mem[i-1] + mem[i-2]) % MOD\n\n    INC R3\n    JMP FILL\n\nOUTPUT:\n    LOAD R1, [R0+0]     ; load mem[n]\n    OUT R1\n    HALT"
+        "source": "IN R0\n    MOV R4, 1000000007\n\n    ; Store fib values in memory\n    ; mem[0] = fib(0) = 0\n    ; mem[1] = fib(1) = 1\n    ; mem[i] = (mem[i-1] + mem[i-2]) % MOD\n\n    MOV R1, 0\n    STOR R1, [R1+0]   ; mem[0] = 0\n    MOV R2, 1\n    STOR R2, [R2+0]   ; mem[1] = 1 (address 1)\n\n    ; Check if n <= 1\n    MOV R3, 1\n    JLE R0, R3, SMALL\n\n    ; R5 = current index, starts at 2\n    MOV R5, 2\n\nFILL:\n    JGT R5, R0, READ_ANS\n    ; mem[R5] = (mem[R5-1] + mem[R5-2]) % MOD\n    MOV R6, R5\n    SUB R6, 1\n    LOAD R1, [R6+0]   ; fib(i-1)\n    MOV R6, R5\n    SUB R6, 2\n    LOAD R2, [R6+0]   ; fib(i-2)\n    ADD R1, R2\n    MOD R1, R4\n    STOR R1, [R5+0]\n    INC R5\n    JMP FILL\n\nREAD_ANS:\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT\n\nSMALL:\n    ; n is 0 or 1, load directly\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT"
       },
       {
         "attempt": 3,
-        "correct": true,
-        "new_cell": false,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "small"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 23,
-        "program_size_bin": "small",
-        "raw_insns": [
-          804,
-          4004,
-          8004,
-          16004,
-          40004,
-          80004
-        ],
-        "raw_hwms": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "source": "; Compute fib(n) % 1000000007 using a downward-counting loop\n; with a different register layout: count down from n to 0\n\nIN R0               ; R0 = n\nMOV R6, 1000000007  ; R6 = modulus\n\n; We'll use a \"count down\" approach\n; R1 = fib(n-counter) \"current\"\n; R2 = fib(n-counter+1) \"next\"\n; Start with fib(0)=0, fib(1)=1 and count up to n\n; but structured as: initialize a=1, b=0, counter=n, count down\n\n; Special case: n == 0 -> output 0\nJZ R0, OUT_ZERO\n\n; Special case: n == 1 -> output 1\nMOV R3, 1\nJLE R0, R3, OUT_ONE\n\n; General: use two accumulators, count down\n; a = fib(1) = 1, b = fib(0) = 0\n; We want to step (n-1) times: each step (a,b) -> (a+b, a)\n; After (n-1) steps, a = fib(n)\n\nMOV R1, 1       ; R1 = a = fib(1)\nMOV R2, 0       ; R2 = b = fib(0)\nMOV R3, R0\nDEC R3          ; R3 = n-1 (number of steps to do)\n\n; Count down R3 to 0\nLOOP:\n    JZ R3, DONE\n    ; temp = a + b\n    MOV R4, R1\n    ADD R4, R2\n    MOD R4, R6\n    ; b = a\n    MOV R2, R1\n    ; a = temp\n    MOV R1, R4\n    DEC R3\n    JMP LOOP\n\nDONE:\n    OUT R1\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT\n\nOUT_ONE:\n    OUT 1\n    HALT"
+        "correct": false,
+        "error": "case 2: inputs=[2] \u2192 outputs=[2], expected=[1]"
       },
       {
         "attempt": 4,
         "correct": true,
-        "new_cell": true,
+        "new_cell": false,
         "cell": [
           "O(n)",
           "O(1)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
-        "program_size": 36,
+        "program_size": 33,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          664,
-          3264,
-          6514,
-          13014,
-          32514,
-          65014
+          1601,
+          8001,
+          16001,
+          32001,
+          80001,
+          160001
+        ],
+        "raw_hwms": [
+          102,
+          102,
+          102,
+          102,
+          102,
+          102
+        ],
+        "source": "; Fibonacci using pairs stored in memory, iterating backwards from n down to 0\n; Uses a \"countdown\" loop structure with memory-based state\n\nIN R0                   ; R0 = n\n\nMOV R5, 1000000007      ; modulus\n\n; We'll compute using two \"accumulators\" but iterate by counting DOWN from n to 0\n; At each step we maintain: (a, b) where initially a=fib(n), b=fib(n+1)\n; But we don't know fib(n) yet, so instead:\n; Use matrix-style: store current pair (cur, next) but count down\n; Actually: start with fib(0)=0, fib(1)=1 and count up, but use a different\n; register layout and loop structure than previous solutions.\n\n; Different structure: use memory slots 100 and 101 for the two working values\n; and a memory slot 102 for the counter, loop checking counter against n\n\nMOV R1, 0\nSTOR R1, [R1+100]       ; mem[100] = 0  (fib_prev = fib(0))\nMOV R2, 1\nMOV R3, 101\nSTOR R2, [R3+0]         ; mem[101] = 1  (fib_curr = fib(1))\n\n; If n == 0, output 0\nJZ R0, OUT_ZERO\n\n; counter in memory at address 102\nMOV R6, 1\nMOV R7, 102\nSTOR R6, [R7+0]         ; mem[102] = 1 (counter)\n\nLOOP:\n    LOAD R6, [R7+0]     ; R6 = counter\n    JGE R6, R0, FINISH  ; if counter >= n, done\n\n    LOAD R1, [R1+100]   ; R1 = fib_prev  (but R1 is 0, so [0+100]=mem[100])\n    MOV R3, 101\n    LOAD R2, [R3+0]     ; R2 = fib_curr\n\n    ; new_curr = (fib_prev + fib_curr) % MOD\n    ADD R1, R2\n    MOD R1, R5\n\n    ; fib_prev = fib_curr\n    MOV R4, 100\n    STOR R2, [R4+0]     ; mem[100] = old fib_curr\n\n    ; fib_curr = new_curr\n    MOV R4, 101\n    STOR R1, [R4+0]     ; mem[101] = new_curr\n\n    ; increment counter\n    LOAD R6, [R7+0]\n    INC R6\n    STOR R6, [R7+0]\n\n    ; reset R1 to 0 so [R1+100] works correctly\n    CLR R1\n\n    JMP LOOP\n\nFINISH:\n    MOV R3, 101\n    LOAD R2, [R3+0]\n    OUT R2\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT"
+      },
+      {
+        "attempt": 5,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(1)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "program_size": 43,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          719,
+          3519,
+          7019,
+          14019,
+          35019,
+          70019
         ],
         "raw_hwms": [
           0,
@@ -251,64 +246,104 @@
           0,
           0
         ],
-        "source": "; Compute fib(n) % 1000000007 using an unrolled two-step loop\n; to reduce loop overhead, processing two Fibonacci steps per iteration.\n; Register layout:\n;   R0 = n (input)\n;   R1 = fib_a (current)\n;   R2 = fib_b (next)\n;   R3 = loop counter (steps remaining)\n;   R4 = modulus\n;   R5 = temp\n\nIN R0\nMOV R4, 1000000007\n\n; Base case: n == 0\nJZ R0, BASE_ZERO\n\n; Base case: n == 1\nMOV R3, 1\nJLE R0, R3, BASE_ONE\n\n; General case\n; We want fib(n). Start with fib(0)=0, fib(1)=1.\n; R1 = fib_a = 0, R2 = fib_b = 1\n; We need n steps to go from fib(0) to fib(n)\n; Each single step: new_b = a+b, new_a = b\n; We do two steps per loop iteration when possible\n\nMOV R1, 0       ; fib_a = fib(0)\nMOV R2, 1       ; fib_b = fib(1)\nMOV R3, R0      ; R3 = n (number of steps needed)\n\n; If n is odd, do one step first to make remaining count even\nMOV R5, R3\nMOD R5, 2\nJZ R5, MAIN_LOOP\n\n; Do one step: (a,b) -> (b, a+b)\nMOV R5, R1\nADD R5, R2\nMOD R5, R4\nMOV R1, R2\nMOV R2, R5\nDEC R3\n\nMAIN_LOOP:\n    JZ R3, DONE\n\n    ; Step 1: (a,b) -> (b, a+b)\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    MOV R1, R2\n    MOV R2, R5\n\n    ; Step 2: (a,b) -> (b, a+b)\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4\n    MOV R1, R2\n    MOV R2, R5\n\n    SUB R3, 2\n    JMP MAIN_LOOP\n\nDONE:\n    OUT R1\n    HALT\n\nBASE_ZERO:\n    OUT 0\n    HALT\n\nBASE_ONE:\n    OUT 1\n    HALT"
+        "source": "; Fibonacci using a \"leapfrog\" two-step unrolled loop\n; Each iteration advances by 2 steps to reduce loop overhead\n; Registers: R0=n, R1=fib(even), R2=fib(odd), R3=counter, R4=MOD\n\nIN R0\nMOV R4, 1000000007\n\n; Base cases\nJZ R0, DONE_ZERO\nMOV R5, 1\nJLE R0, R5, DONE_ONE\n\n; n >= 2\n; We'll compute pairs: after k full \"double-steps\", we have fib(2k) and fib(2k+1)\n; Start: fib(0)=0, fib(1)=1\nMOV R1, 0       ; fib(2k)   starts as fib(0)\nMOV R2, 1       ; fib(2k+1) starts as fib(1)\nMOV R3, 0       ; counter = number of double-steps done (each covers 2 indices)\n\n; We want to reach index n\n; Each double-step: fib(i+2) = fib(i) + fib(i+1), fib(i+3) = fib(i+1) + fib(i+2)\n; But we advance by 2 each iteration\n\n; Compute how many double-steps: floor((n-1)/2)\n; After that, pick the right value\n\n; R5 = n - 1 (number of steps needed from fib(1))\n; Actually let's just count: start at index=0 (R1) and index=1 (R2)\n; Each loop iteration: advance by 2\n; Loop while (current_base_index + 2) <= n, i.e., R3*2 + 2 <= n\n\nLEAPFROG:\n    ; Check if we can do a double step: if R3*2 + 2 <= n\n    ; Equivalent: if current low index + 2 <= n\n    ; current low index = R3*2\n    MOV R6, R3\n    MUL R6, 2\n    ADD R6, 2       ; R6 = R3*2 + 2\n    JGT R6, R0, FINISH_UP   ; if R3*2+2 > n, stop double-stepping\n\n    ; Double step:\n    ; new_fib(i+2) = fib(i) + fib(i+1)\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4      ; R5 = fib(i+2)\n\n    ; new_fib(i+3) = fib(i+1) + fib(i+2)\n    MOV R7, R2\n    ADD R7, R5\n    MOD R7, R4      ; R7 = fib(i+3)\n\n    MOV R1, R5\n    MOV R2, R7\n    INC R3          ; R3 counts double-steps done\n    JMP LEAPFROG\n\nFINISH_UP:\n    ; Now R1 = fib(R3*2), R2 = fib(R3*2 + 1)\n    ; current_low = R3*2\n    MOV R6, R3\n    MUL R6, 2       ; R6 = current low index\n\n    ; If R6 == n, answer is R1\n    MOV R5, R6\n    SUB R5, R0      ; R5 = current_low - n\n    JZ R5, ANSWER_LOW\n\n    ; If R6 + 1 == n, answer is R2\n    ADD R6, 1\n    MOV R5, R6\n    SUB R5, R0\n    JZ R5, ANSWER_HIGH\n\n    ; Otherwise R6+1 < n means we need one more step\n    ; (This handles the case where n = current_low + 2 was missed)\n    ; Do one single step: fib(current_low+2) = R1 + R2\n    ADD R1, R2\n    MOD R1, R4\n    OUT R1\n    HALT\n\nANSWER_LOW:\n    OUT R1\n    HALT\n\nANSWER_HIGH:\n    OUT R2\n    HALT\n\nDONE_ZERO:\n    OUT 0\n    HALT\n\nDONE_ONE:\n    OUT 1\n    HALT"
       },
       {
-        "attempt": 5,
+        "attempt": 6,
         "correct": true,
         "new_cell": true,
         "cell": [
           "O(log n)",
           "O(log n)",
-          "large"
+          "large",
+          "r0-r7"
         ],
         "time_complexity": "O(log n)",
         "space_complexity": "O(log n)",
-        "program_size": 74,
+        "program_size": 52,
         "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          337,
-          434,
-          478,
-          522,
-          607,
-          651
+          244,
+          314,
+          346,
+          378,
+          440,
+          472
         ],
         "raw_hwms": [
-          16,
-          18,
-          19,
-          20,
-          22,
-          23
+          206,
+          208,
+          209,
+          210,
+          212,
+          213
         ],
-        "source": "; Fibonacci using fast doubling (matrix exponentiation via doubling identities)\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; We process bits of n from high to low\n; Memory layout:\n;   mem[0] = a = fib(k)\n;   mem[1] = b = fib(k+1)\n; Registers:\n;   R0 = n\n;   R1 = modulus\n;   R2 = bit position / temp\n;   R3 = current bit value\n;   R4, R5, R6, R7 = temporaries\n\nIN R0\nMOV R1, 1000000007\n\n; Base cases\nJZ R0, OUT_ZERO\nMOV R2, 1\nJLE R0, R2, OUT_ONE\n\n; Find highest bit of n\n; We'll store bits in memory starting at mem[10]\n; First, copy n to R2 and extract bits\nMOV R2, R0\nMOV R3, 10          ; mem index for bits array\n\nBIT_EXTRACT:\n    JZ R2, BITS_DONE\n    MOV R4, R2\n    MOD R4, 2           ; R4 = R2 % 2 (LSB)\n    STOR R4, [R3+0]     ; store bit\n    INC R3\n    DIV R2, 2\n    JMP BIT_EXTRACT\n\nBITS_DONE:\n    ; R3 now points one past last bit\n    ; bits are stored LSB first at mem[10..R3-1]\n    ; We process from MSB (R3-1) down to mem[10]\n    ; Initialize a=0, b=1 (fib(0), fib(1))\n    MOV R4, 0\n    STOR R4, [R4+0]     ; mem[0] = 0\n    MOV R4, 1\n    STOR R4, [R4+0]     ; mem[1] = 1\n\n    ; R2 = current index, start at R3-1 (MSB), go down to 10\n    MOV R2, R3\n    DEC R2\n\nPROCESS_BITS:\n    ; if R2 < 10, done\n    MOV R5, 10\n    JLT R2, R5, EXTRACT_RESULT\n\n    ; Load current bit\n    LOAD R3, [R2+0]     ; R3 = current bit\n\n    ; Load a = mem[0], b = mem[1]\n    MOV R4, 0\n    LOAD R4, [R4+0]     ; R4 = a\n    MOV R5, 1\n    LOAD R5, [R5+0]     ; R5 = b\n\n    ; Doubling step:\n    ; c = a * (2*b - a) mod M\n    ; d = a*a + b*b mod M\n\n    ; Compute 2*b - a\n    MOV R6, R5\n    MUL R6, 2\n    SUB R6, R4\n    MOD R6, R1          ; R6 = (2b - a) mod M\n\n    ; c = a * R6 mod M\n    MUL R4, R6\n    MOD R4, R1          ; R4 = c = new a\n\n    ; d = old_a^2 + b^2 mod M  -- need old a\n    ; R5 = b (still), but R4 is now c\n    ; We need old a: we lost it. Reload b from mem[1], recompute\n    ; Actually R6 = (2b-a), and we used R4=a for multiply\n    ; Let's redo: load fresh\n    ; Reload a and b\n    MOV R7, 0\n    LOAD R7, [R7+0]     ; R7 = a (original)\n    MOV R6, 1\n    LOAD R6, [R6+0]     ; R6 = b (original)\n\n    ; c = a*(2b-a) mod M\n    MOV R4, R6\n    MUL R4, 2\n    SUB R4, R7\n    MOD R4, R1\n    MUL R4, R7\n    MOD R4, R1          ; R4 = c\n\n    ; d = a^2 + b^2 mod M\n    MUL R7, R7\n    MOD R7, R1\n    MUL R6, R6\n    MOD R6, R1\n    ADD R7, R6\n    MOD R7, R1          ; R7 = d\n\n    ; If bit == 0: (a,b) = (c, d)\n    ; If bit == 1: (a,b) = (d, c+d)\n    LOAD R3, [R2+0]     ; reload bit\n    JNZ R3, BIT_ONE\n\n    ; bit == 0\n    MOV R5, 0\n    STOR R4, [R5+0]     ; mem[0] = c\n    MOV R5, 1\n    STOR R7, [R5+0]     ; mem[1] = d\n    DEC R2\n    JMP PROCESS_BITS\n\nBIT_ONE:\n    ; bit == 1: a=d, b=c+d\n    MOV R5, R4\n    ADD R5, R7\n    MOD R5, R1          ; R5 = c+d\n    MOV R6, 0\n    STOR R7, [R6+0]     ; mem[0] = d\n    MOV R6, 1\n    STOR R5, [R6+0]     ; mem[1] = c+d\n    DEC R2\n    JMP PROCESS_BITS\n\nEXTRACT_RESULT:\n    MOV R2, 0\n    LOAD R2, [R2+0]     ; result = mem[0] = fib(n)\n    OUT R2\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT\n\nOUT_ONE:\n    OUT 1\n    HALT"
+        "source": "; Fast doubling Fibonacci using explicit stack in memory\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; Stack stores the sequence of bits (0=even, 1=odd) of n\n; Then we apply doubling formulas bottom-up\n\nIN R0\nMOV R6, 1000000007\n\n; Base cases\nJZ R0, OUT_ZERO\nMOV R7, 1\nJLE R0, R7, OUT_ONE\n\n; Push bits of n onto stack in memory starting at address 200\n; We push 0 if n is even, 1 if n is odd, then n = n/2, repeat until n=0\n; Stack pointer in R7, starts at 200\nMOV R7, 200\nMOV R3, R0\n\nPUSH_LOOP:\n    JZ R3, PUSH_DONE\n    MOV R4, R3\n    MOD R4, 2          ; R4 = R3 % 2 (bit)\n    STOR R4, [R7+0]\n    INC R7\n    DIV R3, 2\n    JMP PUSH_LOOP\n\nPUSH_DONE:\n; Now pop bits and apply fast doubling\n; R1 = a = fib(k), R2 = b = fib(k+1), start with k=0: a=0, b=1\nMOV R1, 0\nMOV R2, 1\n\n; R7 points one past top of stack, decrement to read\nPOP_LOOP:\n    MOV R5, 200\n    JLE R7, R5, RESULT  ; if R7 <= 200, stack empty\n\n    DEC R7\n    LOAD R4, [R7+0]     ; R4 = bit\n\n    ; Doubling step:\n    ; c = a * (2*b - a) % MOD\n    ; d = (a*a + b*b) % MOD\n    ; if bit==0: (a,b) = (c, d)\n    ; if bit==1: (a,b) = (d, c+d)\n\n    ; Compute c = a*(2b - a) % MOD\n    MOV R3, R2\n    MUL R3, 2\n    MOD R3, R6          ; R3 = 2b % MOD\n    SUB R3, R1          ; R3 = 2b - a\n    MOD R3, R6          ; handle negative mod\n    MUL R3, R1          ; R3 = a*(2b-a)  -- may overflow 32-bit!\n    MOD R3, R6          ; c = R3\n\n    ; Compute d = (a^2 + b^2) % MOD\n    MOV R5, R1\n    MUL R5, R1\n    MOD R5, R6          ; R5 = a^2 % MOD\n    MOV R4, R2          ; save bit in R4? No, R4=bit, need temp\n    ; Save bit first\n    LOAD R4, [R7+0]     ; reload bit (R7 still points to it)\n\n    MOV R0, R2\n    MUL R0, R2\n    MOD R0, R6          ; R0 = b^2 % MOD\n    ADD R5, R0\n    MOD R5, R6          ; d = R5\n\n    ; Now R4=bit, R3=c, R5=d\n    JNZ R4, BIT_ONE\n\n    ; bit==0: a=c, b=d\n    MOV R1, R3\n    MOV R2, R5\n    JMP POP_LOOP\n\nBIT_ONE:\n    ; bit==1: a=d, b=c+d\n    MOV R1, R5\n    MOV R2, R3\n    ADD R2, R5\n    MOD R2, R6\n    JMP POP_LOOP\n\nRESULT:\n    OUT R1\n    HALT\n\nOUT_ZERO:\n    OUT 0\n    HALT\n\nOUT_ONE:\n    OUT 1\n    HALT"
       },
       {
-        "attempt": 6,
+        "attempt": 8,
         "correct": false,
-        "error": "case 3: runtime error \u2014 Step limit exceeded"
+        "error": "case 2: inputs=[2] \u2192 outputs=[2], expected=[1]"
       },
       {
-        "attempt": 7,
+        "attempt": 10,
         "correct": true,
         "new_cell": false,
         "cell": [
           "O(n)",
           "O(1)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
-        "program_size": 31,
+        "program_size": 32,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          1106,
-          5506,
-          11006,
-          22006,
-          55006,
-          110006
+          1302,
+          6502,
+          13002,
+          26002,
+          65002,
+          130002
+        ],
+        "raw_hwms": [
+          501,
+          501,
+          501,
+          501,
+          501,
+          501
+        ],
+        "source": "; Fibonacci: countdown loop (n down to 2), state in memory, do-while structure\n; Completely different structure: decrement counter from n to 2, bottom-check\n\nIN R0\nMOV R5, 1000000007\n\n; Handle n == 0\nJZ R0, EMIT_ZERO\n\n; Handle n == 1\nMOV R3, 1\nJLE R0, R3, EMIT_ONE\n\n; n >= 2\n; Store fib_a = fib(0) = 0 at mem[500]\n; Store fib_b = fib(1) = 1 at mem[501]\n; counter = n, count down to 2 (do n-1 additions)\n\nMOV R1, 0\nSTOR R1, [R1+500]    ; mem[500] = 0\n\nMOV R2, 1\nMOV R4, 501\nSTOR R2, [R4+0]      ; mem[501] = 1\n\n; R3 = counter, starts at n, decrements to 1\nMOV R3, R0\n\nCOUNTDOWN:\n    ; Load a and b from memory\n    MOV R6, 500\n    LOAD R1, [R6+0]   ; R1 = fib_a\n    MOV R6, 501\n    LOAD R2, [R6+0]   ; R2 = fib_b\n\n    ; new value = (fib_a + fib_b) % MOD\n    ADD R1, R2\n    MOD R1, R5        ; R1 = new fib\n\n    ; shift: mem[500] = old fib_b, mem[501] = new fib\n    MOV R6, 500\n    STOR R2, [R6+0]   ; mem[500] = old fib_b\n\n    MOV R6, 501\n    STOR R1, [R6+0]   ; mem[501] = new fib\n\n    ; decrement counter\n    DEC R3\n\n    ; bottom-of-loop check: if counter > 1, keep going\n    MOV R7, 1\n    JGT R3, R7, COUNTDOWN\n\n; Result is in mem[501]\nMOV R6, 501\nLOAD R2, [R6+0]\nOUT R2\nHALT\n\nEMIT_ZERO:\n    OUT 0\n    HALT\n\nEMIT_ONE:\n    OUT 1\n    HALT"
+      },
+      {
+        "attempt": 11,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(1)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "program_size": 35,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          1600,
+          8000,
+          16000,
+          32000,
+          80000,
+          160000
         ],
         "raw_hwms": [
           1,
@@ -318,32 +353,30 @@
           1,
           1
         ],
-        "source": "; Fibonacci using a circular buffer of size 2 in memory\n; mem[0] and mem[1] alternate as \"current\" and \"previous\"\n; We use a pointer that alternates between 0 and 1\n; This is fundamentally different: pointer-based circular buffer in memory\n\nIN R0               ; R0 = n\nMOV R7, 1000000007  ; modulus\n\n; Handle n=0\nJZ R0, EMIT_ZERO\n\n; Handle n=1\nMOV R1, 1\nJLE R0, R1, EMIT_ONE\n\n; Initialize circular buffer:\n; mem[0] = fib(0) = 0\n; mem[1] = fib(1) = 1\n; R5 = write pointer (index into circular buffer for \"older\" slot)\n; We track: prev_ptr and curr_ptr alternating between 0 and 1\n\nMOV R1, 0\nSTOR R1, [R1+0]     ; mem[0] = 0\nMOV R1, 1\nSTOR R1, [R1+0]     ; mem[1] = 1\n\n; R2 = counter: we've computed up to fib(1), need to go up to fib(n)\n; so we need (n-1) more steps\n; R3 = pointer to \"current\" fib slot (fib(i))\n; R4 = pointer to \"previous\" fib slot (fib(i-1))\n; Start: fib(1) is at mem[1], fib(0) is at mem[0]\n\nMOV R3, 1           ; curr_ptr = 1 (holds fib(1))\nMOV R4, 0           ; prev_ptr = 0 (holds fib(0))\nMOV R2, R0\nDEC R2              ; steps remaining = n - 1\n\nLOOP:\n    JZ R2, DONE\n\n    ; Load current and previous\n    LOAD R5, [R3+0]     ; R5 = fib(i)\n    LOAD R6, [R4+0]     ; R6 = fib(i-1)\n\n    ; Compute fib(i+1) = fib(i) + fib(i-1)\n    ADD R5, R6\n    MOD R5, R7\n\n    ; Store into the slot that held fib(i-1) (overwrite it \u2014 it's the oldest)\n    STOR R5, [R4+0]     ; mem[prev_ptr] = fib(i+1)\n\n    ; Advance pointers: new_curr = old prev_ptr, new_prev = old curr_ptr\n    ; (swap them)\n    MOV R6, R4          ; R6 = old prev_ptr\n    MOV R4, R3          ; prev_ptr = old curr_ptr\n    MOV R3, R6          ; curr_ptr = old prev_ptr\n\n    DEC R2\n    JMP LOOP\n\nDONE:\n    ; curr_ptr (R3) points to fib(n)\n    LOAD R1, [R3+0]\n    OUT R1\n    HALT\n\nEMIT_ZERO:\n    OUT 0\n    HALT\n\nEMIT_ONE:\n    OUT 1\n    HALT"
-      },
-      {
-        "attempt": 8,
-        "correct": false,
-        "error": "case 8: runtime error \u2014 Step limit exceeded"
+        "source": "; Fibonacci using a ring buffer of size 2 in memory, with a while-style loop\n; that increments an index register and uses MOD 2 addressing.\n; Fundamentally different: uses modular indexing into a circular buffer.\n\nIN R0               ; R0 = n\nMOV R7, 1000000007  ; modulus\n\n; Base case: n == 0\nJZ R0, EMIT_ZERO\n\n; Base case: n == 1\nMOV R3, 1\nJLE R0, R3, EMIT_ONE\n\n; Initialize ring buffer in memory:\n; mem[0] = fib(0) = 0\n; mem[1] = fib(1) = 1\nMOV R1, 0\nSTOR R1, [R1+0]     ; mem[0] = 0\nMOV R2, 1\nSTOR R2, [R2+0]     ; mem[1] = 1\n\n; R3 = current index into ring buffer (which slot holds the \"latest\" fib)\n; We'll compute from index 2 up to n\n; R4 = loop counter (current fib index we are computing)\nMOV R4, 2           ; start computing fib(2)\n\nLOOP:\n    JGT R4, R0, DONE    ; if R4 > n, stop\n\n    ; Ring buffer: slot = R4 % 2\n    ; prev1 slot = (R4 - 1) % 2\n    ; prev2 slot = (R4 - 2) % 2 = R4 % 2  (same as current slot, which we overwrite)\n\n    ; Compute (R4-1) % 2 -> address of fib(R4-1)\n    MOV R5, R4\n    SUB R5, 1\n    MOD R5, 2           ; R5 = address of fib(R4-1)\n    LOAD R1, [R5+0]     ; R1 = fib(R4-1)\n\n    ; Compute (R4-2) % 2 -> address of fib(R4-2)\n    MOV R6, R4\n    SUB R6, 2\n    MOD R6, 2           ; R6 = address of fib(R4-2)\n    LOAD R2, [R6+0]     ; R2 = fib(R4-2)\n\n    ; fib(R4) = (fib(R4-1) + fib(R4-2)) % MOD\n    ADD R1, R2\n    MOD R1, R7\n\n    ; Store into slot R4 % 2\n    MOV R5, R4\n    MOD R5, 2\n    STOR R1, [R5+0]\n\n    INC R4\n    JMP LOOP\n\nDONE:\n    ; Answer is in slot n % 2\n    MOV R5, R0\n    MOD R5, 2\n    LOAD R1, [R5+0]\n    OUT R1\n    HALT\n\nEMIT_ZERO:\n    OUT 0\n    HALT\n\nEMIT_ONE:\n    OUT 1\n    HALT"
       }
     ]
   },
   "binary_search": {
-    "score": 1,
-    "attempts": 5,
+    "score": 2,
+    "attempts": 11,
     "cells": {
-      "('O(n)', 'O(n)', 'medium')": {
+      "('O(n)', 'O(n)', 'medium', 'r0-r7')": {
         "attempt": 1,
         "correct": true,
         "new_cell": true,
         "cell": [
           "O(n)",
           "O(n)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
         "program_size": 30,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
           133,
           397,
@@ -358,7 +391,39 @@
           1023,
           4095
         ],
-        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2      ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
+        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2      ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    ; check arr[mid] - target == 0\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      "('O(n)', 'O(n)', 'large', 'r0-r7')": {
+        "attempt": 5,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 56,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          159,
+          495,
+          1839,
+          7215,
+          28719
+        ],
+        "raw_hwms": [
+          515,
+          563,
+          755,
+          1523,
+          4595
+        ],
+        "source": "; Binary search using a \"galloping/doubling\" scan to find the target first,\n; then confirm exact index. Different structure: we scan with step=1 from low,\n; but use the binary search bounds in a \"shrinking window from both ends\" style\n; (two-pointer narrowing), checking both ends simultaneously each iteration.\n;\n; Memory layout: array stored at base address 500\n; R0 = n\n; R1 = left pointer\n; R2 = right pointer\n; R3 = target\n; R4 = arr[left]\n; R5 = arr[right]\n; R6 = temp address\n; R7 = temp diff\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base 500\n    CLR R1\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R7\n    MOV R6, R1\n    ADD R6, 500\n    STOR R7, [R6+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R3           ; R3 = target\n\n    ; Handle n=0\n    JZ R0, NOT_FOUND\n\n    ; Two-pointer binary search: check both ends, then narrow\n    ; R1 = left = 0\n    ; R2 = right = n-1\n    CLR R1\n    MOV R2, R0\n    DEC R2\n\nCHECK_LOOP:\n    ; if left > right: not found\n    JGT R1, R2, NOT_FOUND\n\n    ; Check left end: load arr[left]\n    MOV R6, R1\n    ADD R6, 500\n    LOAD R4, [R6+0]\n\n    ; if arr[left] == target -> found at left\n    MOV R7, R4\n    SUB R7, R3\n    JZ R7, FOUND_LEFT\n\n    ; Check right end: load arr[right]\n    MOV R6, R2\n    ADD R6, 500\n    LOAD R5, [R6+0]\n\n    ; if arr[right] == target -> found at right\n    MOV R7, R5\n    SUB R7, R3\n    JZ R7, FOUND_RIGHT\n\n    ; if left == right and neither matched: not found\n    MOV R7, R2\n    SUB R7, R1\n    JZ R7, NOT_FOUND\n\n    ; Narrow: compute mid = (left + right) / 2\n    MOV R6, R1\n    ADD R6, R2\n    DIV R6, 2       ; R6 = mid\n\n    ; Load arr[mid]\n    MOV R7, R6\n    ADD R7, 500\n    LOAD R4, [R7+0]  ; R4 = arr[mid]\n\n    ; if arr[mid] == target -> found at mid\n    MOV R7, R4\n    SUB R7, R3\n    JZ R7, FOUND_MID\n\n    ; if arr[mid] < target -> search right half: left = mid+1\n    JLT R4, R3, GO_RIGHT\n\n    ; arr[mid] > target -> search left half: right = mid-1\n    ; but also advance left by 1 (we already checked arr[left])\n    INC R1\n    MOV R2, R6\n    DEC R2\n    JMP CHECK_LOOP\n\nGO_RIGHT:\n    ; also shrink right by 1 (we already checked arr[right])\n    DEC R2\n    MOV R1, R6\n    INC R1\n    JMP CHECK_LOOP\n\nFOUND_LEFT:\n    OUT R1\n    HALT\n\nFOUND_RIGHT:\n    OUT R2\n    HALT\n\nFOUND_MID:\n    OUT R6\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
       }
     },
     "records": [
@@ -369,12 +434,15 @@
         "cell": [
           "O(n)",
           "O(n)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
         "program_size": 30,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
           133,
           397,
@@ -389,7 +457,7 @@
           1023,
           4095
         ],
-        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2      ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
+        "source": "; Read n\n    IN R0          ; R0 = n (array length)\n    \n    ; Read array into memory starting at address 0\n    CLR R1         ; R1 = index counter\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R2\n    STOR R2, [R1+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n    \n    ; Read target\n    IN R3          ; R3 = target\n    \n    ; Binary search\n    ; R4 = low = 0\n    ; R5 = high = n - 1\n    CLR R4\n    MOV R5, R0\n    DEC R5\n    \nBSEARCH:\n    ; if low > high, not found\n    JGT R4, R5, NOT_FOUND\n    \n    ; mid = (low + high) / 2\n    MOV R6, R4\n    ADD R6, R5\n    DIV R6, 2      ; R6 = mid\n    \n    ; load arr[mid]\n    LOAD R7, [R6+0]\n    \n    ; if arr[mid] == target, found\n    ; check arr[mid] - target == 0\n    MOV R1, R7\n    SUB R1, R3\n    JZ R1, FOUND\n    \n    ; if arr[mid] < target, low = mid + 1\n    JLT R7, R3, GO_RIGHT\n    \n    ; else high = mid - 1\n    MOV R5, R6\n    DEC R5\n    JMP BSEARCH\n    \nGO_RIGHT:\n    MOV R4, R6\n    INC R4\n    JMP BSEARCH\n    \nFOUND:\n    OUT R6\n    HALT\n    \nNOT_FOUND:\n    OUT -1\n    HALT"
       },
       {
         "attempt": 2,
@@ -403,27 +471,30 @@
         "cell": [
           "O(n)",
           "O(n)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
-        "program_size": 37,
+        "program_size": 35,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          194,
-          608,
-          2174,
-          8348,
-          32954
+          131,
+          467,
+          1811,
+          7187,
+          28691
         ],
         "raw_hwms": [
-          1015,
-          1063,
-          1255,
-          2023,
-          5095
+          115,
+          163,
+          355,
+          1123,
+          4195
         ],
-        "source": "; Binary search using a different structure:\n; Store array at base address 1000\n; Use R0=n, R1=target, R2=low, R3=high, R4=mid, R5=val, R6=base=1000, R7=tmp\n\n    IN R0           ; R0 = n\n    MOV R6, 1000    ; base address for array\n\n    ; Read array into memory[1000..1000+n-1]\n    CLR R7          ; R7 = i\nFILL:\n    JGE R7, R0, FILL_DONE\n    IN R5\n    ADD R5, 0       ; no-op to keep R5\n    ; store at mem[1000 + i]\n    MOV R4, R6\n    ADD R4, R7\n    STOR R5, [R4+0]\n    INC R7\n    JMP FILL\nFILL_DONE:\n\n    IN R1           ; R1 = target\n\n    ; Binary search\n    CLR R2          ; low = 0\n    MOV R3, R0\n    DEC R3          ; high = n-1\n\nSEARCH:\n    ; if low > high => not found\n    JGT R2, R3, MISS\n\n    ; mid = low + (high - low) / 2\n    MOV R4, R3\n    SUB R4, R2      ; R4 = high - low\n    DIV R4, 2       ; R4 = (high-low)/2\n    ADD R4, R2      ; R4 = mid\n\n    ; load mem[base + mid]\n    MOV R5, R6\n    ADD R5, R4\n    LOAD R5, [R5+0] ; R5 = arr[mid]\n\n    ; compare arr[mid] vs target\n    MOV R7, R5\n    SUB R7, R1      ; R7 = arr[mid] - target\n    JZ  R7, HIT\n\n    JLT R5, R1, RIGHT\n    ; arr[mid] > target => high = mid - 1\n    MOV R3, R4\n    DEC R3\n    JMP SEARCH\n\nRIGHT:\n    ; arr[mid] < target => low = mid + 1\n    MOV R2, R4\n    INC R2\n    JMP SEARCH\n\nHIT:\n    OUT R4\n    HALT\n\nMISS:\n    OUT -1\n    HALT"
+        "source": "; Binary search using a different structure:\n; Instead of tracking low/high symmetrically, use base + length approach\n; R0 = n (array length)\n; R1 = base (start of current search range)\n; R2 = length (size of current search range)\n; R3 = target\n; R4 = temp/mid offset\n; R5 = arr[mid] value\n; R6 = temp for comparisons\n; R7 = temp for address calc\n\n    ; Read n\n    IN R0\n\n    ; Read array into memory starting at address 100\n    CLR R1\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R5\n    ADD R1, 100       ; compute address = 100 + index\n    STOR R5, [R1+0]\n    SUB R1, 100       ; restore index\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n\n    ; Read target\n    IN R3\n\n    ; Initialize base=0, length=n\n    CLR R1        ; R1 = base index\n    MOV R2, R0   ; R2 = length\n\nSEARCH:\n    ; if length == 0, not found\n    JZ R2, NOT_FOUND\n\n    ; mid_offset = length / 2\n    MOV R4, R2\n    DIV R4, 2    ; R4 = mid offset from base\n\n    ; actual index = base + mid_offset\n    MOV R7, R1\n    ADD R7, R4   ; R7 = mid index\n\n    ; load arr[mid] from address 100 + mid_index\n    ADD R7, 100\n    LOAD R5, [R7+0]\n    SUB R7, 100  ; restore R7 to mid index\n\n    ; compare arr[mid] with target\n    MOV R6, R5\n    SUB R6, R3\n    JZ R6, FOUND\n\n    ; if arr[mid] < target: base = mid+1, length = length - mid_offset - 1\n    JLT R5, R3, GO_RIGHT\n\n    ; arr[mid] > target: length = mid_offset (search left half)\n    MOV R2, R4\n    JMP SEARCH\n\nGO_RIGHT:\n    ; base = base + mid_offset + 1\n    ADD R1, R4\n    INC R1\n    ; length = length - mid_offset - 1\n    SUB R2, R4\n    DEC R2\n    JMP SEARCH\n\nFOUND:\n    ; output mid index = R7\n    OUT R7\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
       },
       {
         "attempt": 4,
@@ -432,18 +503,53 @@
         "cell": [
           "O(n)",
           "O(n)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
-        "program_size": 39,
+        "program_size": 36,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          179,
-          545,
-          1919,
-          7325,
-          28859
+          178,
+          544,
+          1918,
+          7324,
+          28858
+        ],
+        "raw_hwms": [
+          1015,
+          1063,
+          1255,
+          2023,
+          5095
+        ],
+        "source": "; Binary search - exponential search style:\n; First find the range where target might be, then do binary search\n; Uses a different approach: store array at base 1000\n; R0 = n\n; R1 = loop index for reading\n; R2 = target\n; R3 = low\n; R4 = high\n; R5 = mid\n; R6 = arr[mid]\n; R7 = temp\n\n    ; Read n into R0\n    IN R0\n\n    ; Read array into memory at base address 1000\n    CLR R1\nLOAD_ARRAY:\n    JGE R1, R0, LOAD_DONE\n    IN R7\n    ; store at address 1000 + R1\n    ; We need to compute address: use R6 as address = 1000 + R1\n    MOV R6, R1\n    ADD R6, 1000\n    STOR R7, [R6+0]\n    INC R1\n    JMP LOAD_ARRAY\nLOAD_DONE:\n\n    ; Read target\n    IN R2\n\n    ; Handle n=0 case\n    JZ R0, NOT_FOUND\n\n    ; Binary search\n    ; low = 0, high = n - 1\n    CLR R3\n    MOV R4, R0\n    DEC R4\n\nBSEARCH:\n    ; if low > high -> not found\n    JGT R3, R4, NOT_FOUND\n\n    ; mid = low + (high - low) / 2\n    ; This avoids overflow compared to (low+high)/2\n    MOV R5, R4\n    SUB R5, R3      ; R5 = high - low\n    DIV R5, 2       ; R5 = (high - low) / 2\n    ADD R5, R3      ; R5 = low + (high - low) / 2  = mid\n\n    ; load arr[mid] from address 1000 + mid\n    MOV R6, R5\n    ADD R6, 1000\n    LOAD R6, [R6+0]  ; R6 = arr[mid]\n\n    ; if arr[mid] == target -> found\n    MOV R7, R6\n    SUB R7, R2\n    JZ R7, FOUND\n\n    ; if arr[mid] < target -> search right half\n    JLT R6, R2, SEARCH_RIGHT\n\n    ; arr[mid] > target -> search left half\n    ; high = mid - 1\n    MOV R4, R5\n    DEC R4\n    JMP BSEARCH\n\nSEARCH_RIGHT:\n    ; low = mid + 1\n    MOV R3, R5\n    INC R3\n    JMP BSEARCH\n\nFOUND:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 5,
+        "correct": true,
+        "new_cell": true,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 56,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          159,
+          495,
+          1839,
+          7215,
+          28719
         ],
         "raw_hwms": [
           515,
@@ -452,36 +558,167 @@
           1523,
           4595
         ],
-        "source": "; Binary search - different structure:\n; Read array into memory starting at address 500\n; Use exponential/galloping-style approach to find bounds first,\n; then do binary search within those bounds.\n; Actually: use a single loop with explicit stack-free iterative binary search\n; but with a different register layout and memory base, and\n; compute mid differently (bitshift via DIV by 2 on sum).\n;\n; Register usage:\n; R0 = n\n; R1 = base address (500)\n; R2 = target\n; R3 = lo\n; R4 = hi\n; R5 = mid\n; R6 = arr[mid]\n; R7 = scratch\n\n    IN R0               ; R0 = n\n    MOV R1, 500         ; base address\n\n    ; Load array into mem[500..500+n-1]\n    CLR R7              ; i = 0\nLOAD_LOOP:\n    JGE R7, R0, LOAD_DONE\n    IN R6\n    MOV R5, R1\n    ADD R5, R7          ; address = base + i\n    STOR R6, [R5+0]\n    INC R7\n    JMP LOAD_LOOP\nLOAD_DONE:\n\n    IN R2               ; R2 = target\n\n    ; Handle n=0 edge case\n    JNZ R0, START_SEARCH\n    OUT -1\n    HALT\n\nSTART_SEARCH:\n    CLR R3              ; lo = 0\n    MOV R4, R0\n    DEC R4              ; hi = n - 1\n\nBSEARCH_LOOP:\n    ; if lo > hi => not found\n    JGT R3, R4, NOT_FOUND\n\n    ; mid = (lo + hi) / 2  using lo + (hi-lo)/2 to avoid overflow\n    MOV R5, R4\n    SUB R5, R3          ; R5 = hi - lo\n    DIV R5, 2           ; R5 = (hi-lo)/2\n    ADD R5, R3          ; R5 = lo + (hi-lo)/2 = mid\n\n    ; load arr[mid] from mem[base + mid]\n    MOV R6, R1\n    ADD R6, R5          ; address = base + mid\n    LOAD R6, [R6+0]     ; R6 = arr[mid]\n\n    ; if arr[mid] == target => found\n    MOV R7, R6\n    SUB R7, R2          ; R7 = arr[mid] - target\n    JZ R7, FOUND\n\n    ; if arr[mid] < target => lo = mid + 1\n    JLT R6, R2, GO_RIGHT\n\n    ; arr[mid] > target => hi = mid - 1\n    MOV R4, R5\n    DEC R4\n    JMP BSEARCH_LOOP\n\nGO_RIGHT:\n    MOV R3, R5\n    INC R3\n    JMP BSEARCH_LOOP\n\nFOUND:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+        "source": "; Binary search using a \"galloping/doubling\" scan to find the target first,\n; then confirm exact index. Different structure: we scan with step=1 from low,\n; but use the binary search bounds in a \"shrinking window from both ends\" style\n; (two-pointer narrowing), checking both ends simultaneously each iteration.\n;\n; Memory layout: array stored at base address 500\n; R0 = n\n; R1 = left pointer\n; R2 = right pointer\n; R3 = target\n; R4 = arr[left]\n; R5 = arr[right]\n; R6 = temp address\n; R7 = temp diff\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base 500\n    CLR R1\nREAD_LOOP:\n    JGE R1, R0, READ_DONE\n    IN R7\n    MOV R6, R1\n    ADD R6, 500\n    STOR R7, [R6+0]\n    INC R1\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R3           ; R3 = target\n\n    ; Handle n=0\n    JZ R0, NOT_FOUND\n\n    ; Two-pointer binary search: check both ends, then narrow\n    ; R1 = left = 0\n    ; R2 = right = n-1\n    CLR R1\n    MOV R2, R0\n    DEC R2\n\nCHECK_LOOP:\n    ; if left > right: not found\n    JGT R1, R2, NOT_FOUND\n\n    ; Check left end: load arr[left]\n    MOV R6, R1\n    ADD R6, 500\n    LOAD R4, [R6+0]\n\n    ; if arr[left] == target -> found at left\n    MOV R7, R4\n    SUB R7, R3\n    JZ R7, FOUND_LEFT\n\n    ; Check right end: load arr[right]\n    MOV R6, R2\n    ADD R6, 500\n    LOAD R5, [R6+0]\n\n    ; if arr[right] == target -> found at right\n    MOV R7, R5\n    SUB R7, R3\n    JZ R7, FOUND_RIGHT\n\n    ; if left == right and neither matched: not found\n    MOV R7, R2\n    SUB R7, R1\n    JZ R7, NOT_FOUND\n\n    ; Narrow: compute mid = (left + right) / 2\n    MOV R6, R1\n    ADD R6, R2\n    DIV R6, 2       ; R6 = mid\n\n    ; Load arr[mid]\n    MOV R7, R6\n    ADD R7, 500\n    LOAD R4, [R7+0]  ; R4 = arr[mid]\n\n    ; if arr[mid] == target -> found at mid\n    MOV R7, R4\n    SUB R7, R3\n    JZ R7, FOUND_MID\n\n    ; if arr[mid] < target -> search right half: left = mid+1\n    JLT R4, R3, GO_RIGHT\n\n    ; arr[mid] > target -> search left half: right = mid-1\n    ; but also advance left by 1 (we already checked arr[left])\n    INC R1\n    MOV R2, R6\n    DEC R2\n    JMP CHECK_LOOP\n\nGO_RIGHT:\n    ; also shrink right by 1 (we already checked arr[right])\n    DEC R2\n    MOV R1, R6\n    INC R1\n    JMP CHECK_LOOP\n\nFOUND_LEFT:\n    OUT R1\n    HALT\n\nFOUND_RIGHT:\n    OUT R2\n    HALT\n\nFOUND_MID:\n    OUT R6\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
       },
       {
-        "attempt": 5,
+        "attempt": 6,
         "correct": true,
         "new_cell": false,
         "cell": [
           "O(n)",
           "O(n)",
-          "medium"
+          "medium",
+          "r0-r7"
         ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
-        "program_size": 45,
+        "program_size": 43,
         "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
         "raw_insns": [
-          207,
-          573,
-          1947,
-          7353,
-          28887
+          212,
+          582,
+          1960,
+          7370,
+          28908
         ],
         "raw_hwms": [
-          2015,
-          2063,
-          2255,
-          3023,
-          6095
+          215,
+          263,
+          455,
+          1223,
+          4295
         ],
-        "source": "; Binary search using a \"two-pointer closing\" style:\n; Instead of tracking lo/hi and computing mid each iteration,\n; we use a power-of-two step size that we halve each iteration (like a jump search / bitwise binary search).\n; Start with step = largest power of 2 <= n, pos = -1.\n; Each iteration: candidate = pos + step; if candidate < n and arr[candidate] <= target, pos = candidate.\n; Halve step each iteration. At end, pos+1 is either the answer or not found.\n;\n; Register usage:\n; R0 = n\n; R1 = base address (2000)\n; R2 = target\n; R3 = pos (starts at -1)\n; R4 = step\n; R5 = candidate index\n; R6 = arr[candidate]\n; R7 = scratch\n\n    IN R0               ; R0 = n\n    MOV R1, 2000        ; base address for array\n\n    ; Read array into mem[2000..2000+n-1]\n    CLR R7              ; i = 0\nREAD_LOOP:\n    JGE R7, R0, READ_DONE\n    IN R6\n    MOV R5, R1\n    ADD R5, R7\n    STOR R6, [R5+0]\n    INC R7\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R2               ; R2 = target\n\n    ; Handle n=0\n    JNZ R0, INIT\n    OUT -1\n    HALT\n\nINIT:\n    ; Find largest power of 2 <= n\n    ; Store it in R4\n    MOV R4, 1\nFIND_POW:\n    MOV R7, R4\n    MUL R7, 2\n    JGT R7, R0, POW_DONE\n    MOV R4, R7\n    JMP FIND_POW\nPOW_DONE:\n    ; R4 = largest power of 2 <= n\n\n    MOV R3, -1          ; pos = -1\n\nSTEP_LOOP:\n    ; if step == 0, done\n    JZ R4, STEP_DONE\n\n    ; candidate = pos + step\n    MOV R5, R3\n    ADD R5, R4          ; R5 = candidate\n\n    ; if candidate >= n, skip (don't move pos)\n    JGE R5, R0, SKIP_MOVE\n\n    ; load arr[candidate]\n    MOV R6, R1\n    ADD R6, R5\n    LOAD R6, [R6+0]     ; R6 = arr[candidate]\n\n    ; if arr[candidate] <= target, pos = candidate\n    JGT R6, R2, SKIP_MOVE\n    MOV R3, R5          ; pos = candidate\n\nSKIP_MOVE:\n    ; step = step / 2\n    DIV R4, 2\n    JMP STEP_LOOP\n\nSTEP_DONE:\n    ; pos is now the largest index where arr[pos] <= target (or -1 if none)\n    ; Check if arr[pos] == target\n    MOV R7, R3\n    ADD R7, 1\n    JZ R7, NOT_FOUND    ; if pos == -1, not found\n\n    ; load arr[pos]\n    MOV R6, R1\n    ADD R6, R3\n    LOAD R6, [R6+0]     ; R6 = arr[pos]\n\n    ; if arr[pos] == target => found at pos\n    MOV R7, R6\n    SUB R7, R2\n    JNZ R7, NOT_FOUND\n\n    OUT R3\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+        "source": "; Binary search using power-of-two stepping (branch-free style)\n; Find largest power of 2 <= n, use as initial step\n; R0 = n\n; R1 = target\n; R2 = step (power of 2)\n; R3 = candidate index (starts at -1, we add step if arr[candidate+step] <= target... \n;      actually we track position)\n; R4 = address temp\n; R5 = arr value\n; R6 = temp\n; R7 = final index candidate\n\n    IN R0       ; R0 = n\n\n    ; Read array into memory starting at address 200\n    CLR R6\nREAD_LOOP:\n    JGE R6, R0, READ_DONE\n    IN R5\n    MOV R4, R6\n    ADD R4, 200\n    STOR R5, [R4+0]\n    INC R6\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R1       ; R1 = target\n\n    ; Handle n=0\n    JZ R0, NOT_FOUND\n\n    ; Find largest power of 2 <= n\n    ; R2 = 1, keep doubling while R2*2 <= n\n    MOV R2, 1\nFIND_POW:\n    MOV R6, R2\n    MUL R6, 2\n    JGT R6, R0, POW_DONE\n    MOV R2, R6\n    JMP FIND_POW\nPOW_DONE:\n    ; R2 = largest power of 2 <= n\n\n    ; Power-of-two stepping binary search\n    ; R3 = current position index (0-based), start at 0\n    ; We use: pos starts at 0, step = R2\n    ; At each step: probe index = pos + step - 1 (0-based)\n    ; If arr[probe] < target: pos += step\n    ; Then step /= 2\n    ; After all steps, pos-1 is candidate (if pos > 0)\n    ; Actually use standard formulation:\n    ; pos = 0\n    ; for step = pow2 down to 1:\n    ;   if pos+step <= n and arr[pos+step-1] < target: pos += step\n    ; after loop: if pos < n and arr[pos] == target -> found at pos\n    ; else not found\n\n    CLR R3      ; R3 = pos = 0\n\nSTEP_LOOP:\n    JZ R2, STEP_DONE\n\n    ; probe = pos + step (check if probe <= n)\n    MOV R4, R3\n    ADD R4, R2      ; R4 = pos + step\n    JGT R4, R0, SKIP_PROBE   ; if pos+step > n, skip\n\n    ; load arr[pos+step-1] = arr[R4-1], address = 200 + R4 - 1\n    MOV R6, R4\n    DEC R6          ; R6 = pos+step-1 (0-based index)\n    ADD R6, 200\n    LOAD R5, [R6+0] ; R5 = arr[pos+step-1]\n\n    ; if arr[pos+step-1] < target: pos += step\n    JLT R5, R1, ADVANCE\n    JMP SKIP_PROBE\n\nADVANCE:\n    ADD R3, R2      ; pos += step\n\nSKIP_PROBE:\n    DIV R2, 2       ; step /= 2\n    JMP STEP_LOOP\n\nSTEP_DONE:\n    ; R3 = pos: the largest index where all elements before are < target\n    ; Check arr[pos] == target (0-based index R3)\n    ; if pos >= n -> not found\n    JGE R3, R0, NOT_FOUND\n\n    ; load arr[pos]\n    MOV R4, R3\n    ADD R4, 200\n    LOAD R5, [R4+0]\n\n    ; compare with target\n    MOV R6, R5\n    SUB R6, R1\n    JZ R6, FOUND\n\n    JMP NOT_FOUND\n\nFOUND:\n    OUT R3\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 7,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 38,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          135,
+          471,
+          1815,
+          7191,
+          28695
+        ],
+        "raw_hwms": [
+          315,
+          363,
+          555,
+          1323,
+          4395
+        ],
+        "source": "; Binary search using a \"sentinel + reverse search\" approach:\n; Store array in memory, place a sentinel at the end,\n; then search from HIGH down to LOW using a different loop structure.\n; Uses mid = high - (high - low) / 2  (biased toward high end)\n; to differentiate from previous solutions.\n;\n; Memory layout: array at base address 300\n; R0 = n\n; R1 = temp for reading / address calc\n; R2 = target\n; R3 = low (left boundary)\n; R4 = high (right boundary)\n; R5 = mid index\n; R6 = arr[mid]\n; R7 = temp\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base 300\n    CLR R1\nLOAD_LOOP:\n    JGE R1, R0, LOAD_DONE\n    IN R7\n    MOV R6, R1\n    ADD R6, 300\n    STOR R7, [R6+0]\n    INC R1\n    JMP LOAD_LOOP\nLOAD_DONE:\n\n    IN R2           ; R2 = target\n\n    ; Handle n=0 edge case\n    JZ R0, NOT_FOUND\n\n    ; Initialize low=0, high=n-1\n    CLR R3\n    MOV R4, R0\n    DEC R4\n\nBSEARCH:\n    ; if low > high: not found\n    JGT R3, R4, NOT_FOUND\n\n    ; mid = high - (high - low) / 2\n    ; This biases mid toward the high end (opposite of typical)\n    MOV R5, R4\n    SUB R5, R3      ; R5 = high - low\n    DIV R5, 2       ; R5 = (high - low) / 2\n    MOV R7, R4\n    SUB R7, R5      ; R7 = high - (high-low)/2 = mid (biased high)\n    MOV R5, R7      ; R5 = mid\n\n    ; Load arr[mid] from address 300 + mid\n    MOV R6, R5\n    ADD R6, 300\n    LOAD R6, [R6+0] ; R6 = arr[mid]\n\n    ; Check if arr[mid] == target\n    MOV R7, R6\n    SUB R7, R2\n    JZ R7, FOUND\n\n    ; if arr[mid] < target -> search right: low = mid + 1\n    JLT R6, R2, SEARCH_RIGHT\n\n    ; arr[mid] > target -> search left: high = mid - 1\n    MOV R4, R5\n    DEC R4\n    JMP BSEARCH\n\nSEARCH_RIGHT:\n    MOV R3, R5\n    INC R3\n    JMP BSEARCH\n\nFOUND:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 8,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 57,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          222,
+          610,
+          2006,
+          7434,
+          28990
+        ],
+        "raw_hwms": [
+          4015,
+          4063,
+          4255,
+          5023,
+          8095
+        ],
+        "source": "; Binary search using iterative deepening with a stack-simulated approach:\n; We simulate a recursive binary search by explicitly managing a stack in memory.\n; Stack stored at base address 2000, grows upward.\n; Each stack frame: [low, high] pair (2 words per frame)\n; This is fundamentally different: uses explicit stack + iterative stack processing\n;\n; R0 = n\n; R1 = target\n; R2 = stack pointer (index into stack, counts frames)\n; R3 = low (popped from stack)\n; R4 = high (popped from stack)\n; R5 = mid\n; R6 = arr[mid]\n; R7 = temp / address\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base address 4000\n    CLR R7\nREAD_LOOP:\n    JGE R7, R0, READ_DONE\n    IN R6\n    MOV R5, R7\n    ADD R5, 4000\n    STOR R6, [R5+0]\n    INC R7\n    JMP READ_LOOP\nREAD_DONE:\n\n    IN R1           ; R1 = target\n\n    ; Handle n=0\n    JZ R0, NOT_FOUND\n\n    ; Initialize stack pointer (R2 = top of stack, in words)\n    ; Stack base = 2000\n    ; Push initial frame: low=0, high=n-1\n    CLR R2          ; R2 = stack word offset (each frame = 2 words)\n\n    ; Push low=0\n    MOV R7, 2000\n    MOV R3, 0\n    STOR R3, [R7+0]     ; mem[2000] = 0 (low)\n    MOV R4, R0\n    DEC R4\n    STOR R4, [R7+1]     ; mem[2001] = n-1 (high)\n    ; stack has 1 frame, R2 = word offset to next free = 2\n    MOV R2, 2\n\nSTACK_LOOP:\n    ; if stack is empty (R2 == 0), not found\n    JZ R2, NOT_FOUND\n\n    ; Pop frame: top frame at offset R2-2\n    SUB R2, 2           ; R2 now points to this frame's base\n\n    ; Load low and high from stack\n    MOV R7, R2\n    ADD R7, 2000\n    LOAD R3, [R7+0]     ; R3 = low\n    LOAD R4, [R7+1]     ; R4 = high\n\n    ; if low > high: skip (empty range)\n    JGT R3, R4, STACK_LOOP\n\n    ; Compute mid = low + (high - low) / 2\n    MOV R5, R4\n    SUB R5, R3          ; R5 = high - low\n    DIV R5, 2           ; R5 = (high - low) / 2\n    ADD R5, R3          ; R5 = mid\n\n    ; Load arr[mid] from address 4000 + mid\n    MOV R6, R5\n    ADD R6, 4000\n    LOAD R6, [R6+0]     ; R6 = arr[mid]\n\n    ; if arr[mid] == target -> found\n    MOV R7, R6\n    SUB R7, R1\n    JZ R7, FOUND\n\n    ; if arr[mid] < target -> push right half [mid+1, high]\n    JLT R6, R1, PUSH_RIGHT\n\n    ; arr[mid] > target -> push left half [low, mid-1]\n    ; Push [low, mid-1]\n    MOV R7, R2\n    ADD R7, 2000\n    STOR R3, [R7+0]     ; low\n    MOV R6, R5\n    DEC R6\n    STOR R6, [R7+1]     ; mid-1\n    ADD R2, 2\n    JMP STACK_LOOP\n\nPUSH_RIGHT:\n    ; Push [mid+1, high]\n    MOV R7, R2\n    ADD R7, 2000\n    MOV R6, R5\n    INC R6\n    STOR R6, [R7+0]     ; mid+1\n    STOR R4, [R7+1]     ; high\n    ADD R2, 2\n    JMP STACK_LOOP\n\nFOUND:\n    OUT R5\n    HALT\n\nNOT_FOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 9,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "large",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 57,
+        "program_size_bin": "large",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          161,
+          497,
+          1841,
+          7217,
+          28721
+        ],
+        "raw_hwms": [
+          615,
+          663,
+          855,
+          1623,
+          4695
+        ],
+        "source": "; Binary search using interpolation-search-inspired index calculation\n; but falling back to correct binary search behavior.\n; Key difference: we use a \"three-way partition\" approach where we\n; simultaneously maintain low, high, and check BOTH endpoints before\n; computing mid, shrinking from both ends when endpoints don't match.\n; Array stored at base 600. Uses R0-R7 differently from prior solutions.\n;\n; R0 = n\n; R1 = target\n; R2 = lo index\n; R3 = hi index\n; R4 = temp address\n; R5 = temp value\n; R6 = mid index\n; R7 = temp\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base 600\n    CLR R7\nRLOOP:\n    JGE R7, R0, RDONE\n    IN R5\n    MOV R4, R7\n    ADD R4, 600\n    STOR R5, [R4+0]\n    INC R7\n    JMP RLOOP\nRDONE:\n\n    IN R1           ; R1 = target\n\n    ; n==0 edge case\n    JZ R0, NOTFOUND\n\n    ; lo=0, hi=n-1\n    CLR R2\n    MOV R3, R0\n    DEC R3\n\nMAINLOOP:\n    ; if lo > hi: not found\n    JGT R2, R3, NOTFOUND\n\n    ; Check lo endpoint\n    MOV R4, R2\n    ADD R4, 600\n    LOAD R5, [R4+0]     ; R5 = arr[lo]\n\n    MOV R7, R5\n    SUB R7, R1\n    JZ R7, FOUND_LO\n\n    ; if arr[lo] > target: not found (sorted, target can't be here)\n    JGT R5, R1, NOTFOUND\n\n    ; Check hi endpoint\n    MOV R4, R3\n    ADD R4, 600\n    LOAD R5, [R4+0]     ; R5 = arr[hi]\n\n    MOV R7, R5\n    SUB R7, R1\n    JZ R7, FOUND_HI\n\n    ; if arr[hi] < target: not found\n    JLT R5, R1, NOTFOUND\n\n    ; Both endpoints checked and not equal to target.\n    ; arr[lo] < target < arr[hi]\n    ; Advance lo and shrink hi (already know they don't match)\n    INC R2\n    DEC R3\n\n    ; if lo > hi: not found\n    JGT R2, R3, NOTFOUND\n\n    ; Compute mid = lo + (hi - lo) / 2\n    MOV R6, R3\n    SUB R6, R2          ; R6 = hi - lo\n    DIV R6, 2           ; R6 = (hi - lo) / 2\n    ADD R6, R2          ; R6 = mid\n\n    ; Load arr[mid]\n    MOV R4, R6\n    ADD R4, 600\n    LOAD R5, [R4+0]     ; R5 = arr[mid]\n\n    ; if arr[mid] == target -> found\n    MOV R7, R5\n    SUB R7, R1\n    JZ R7, FOUND_MID\n\n    ; if arr[mid] < target -> lo = mid+1\n    JLT R5, R1, GORIGHT\n\n    ; arr[mid] > target -> hi = mid-1\n    MOV R3, R6\n    DEC R3\n    JMP MAINLOOP\n\nGORIGHT:\n    MOV R2, R6\n    INC R2\n    JMP MAINLOOP\n\nFOUND_LO:\n    OUT R2\n    HALT\n\nFOUND_HI:\n    OUT R3\n    HALT\n\nFOUND_MID:\n    OUT R6\n    HALT\n\nNOTFOUND:\n    OUT -1\n    HALT"
+      },
+      {
+        "attempt": 10,
+        "correct": true,
+        "new_cell": false,
+        "cell": [
+          "O(n)",
+          "O(n)",
+          "medium",
+          "r0-r7"
+        ],
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 41,
+        "program_size_bin": "medium",
+        "register_pressure": "r0-r7",
+        "max_register": 7,
+        "raw_insns": [
+          202,
+          570,
+          1946,
+          7354,
+          28890
+        ],
+        "raw_hwms": [
+          715,
+          763,
+          955,
+          1723,
+          4795
+        ],
+        "source": "; Binary search using a \"bit-mask / fixed-point\" approach:\n; We compute the answer index by building it one bit at a time,\n; from the most significant bit down to bit 0.\n; This is fundamentally different: no low/high pointers at all.\n; Instead, we maintain a single \"candidate\" index and a \"step\" (power of 2),\n; testing each bit independently.\n;\n; Algorithm (Eytzinger-free, purely bit-by-bit index construction):\n;   candidate = 0\n;   step = largest_power_of_2_less_than_n  (or equal)\n;   For each bit from MSB to LSB:\n;     probe = candidate | step   (set this bit)\n;     if probe < n AND arr[probe] <= target:\n;       candidate = probe        (keep this bit set)\n;     step >>= 1\n;   After all bits: if candidate < n AND arr[candidate] == target -> found\n;   else not found\n;\n; Array stored at base address 700\n; R0 = n\n; R1 = target\n; R2 = candidate index (built bit by bit)\n; R3 = step (current power of 2)\n; R4 = probe index (candidate | step)\n; R5 = arr[probe] value\n; R6 = temp address\n; R7 = temp\n\n    IN R0           ; R0 = n\n\n    ; Read array into memory at base 700\n    CLR R7\nREADLOOP:\n    JGE R7, R0, READDONE\n    IN R5\n    MOV R6, R7\n    ADD R6, 700\n    STOR R5, [R6+0]\n    INC R7\n    JMP READLOOP\nREADDONE:\n\n    IN R1           ; R1 = target\n\n    ; Handle n=0\n    JZ R0, NOTFOUND\n\n    ; Find largest power of 2 <= n\n    ; R3 = 1, keep doubling while R3*2 <= n\n    MOV R3, 1\nFINDPOW:\n    MOV R6, R3\n    MUL R6, 2\n    JGT R6, R0, POWDONE\n    MOV R3, R6\n    JMP FINDPOW\nPOWDONE:\n    ; R3 = largest power of 2 <= n\n\n    ; candidate = 0\n    CLR R2\n\nBITLOOP:\n    ; if step == 0, done building\n    JZ R3, BITDONE\n\n    ; probe = candidate + step  (since bits are disjoint, OR = ADD here)\n    MOV R4, R2\n    ADD R4, R3          ; R4 = candidate | step = probe\n\n    ; if probe >= n: skip (out of bounds)\n    JGE R4, R0, SKIPBIT\n\n    ; load arr[probe] from address 700 + probe\n    MOV R6, R4\n    ADD R6, 700\n    LOAD R5, [R6+0]     ; R5 = arr[probe]\n\n    ; if arr[probe] <= target: candidate = probe (keep this bit)\n    JLE R5, R1, KEEPBIT\n    JMP SKIPBIT\n\nKEEPBIT:\n    MOV R2, R4          ; candidate = probe\n\nSKIPBIT:\n    DIV R3, 2           ; step >>= 1\n    JMP BITLOOP\n\nBITDONE:\n    ; R2 = candidate index\n    ; Check bounds\n    JGE R2, R0, NOTFOUND\n\n    ; Load arr[candidate]\n    MOV R6, R2\n    ADD R6, 700\n    LOAD R5, [R6+0]     ; R5 = arr[candidate]\n\n    ; if arr[candidate] == target -> found\n    MOV R7, R5\n    SUB R7, R1\n    JZ R7, FOUND\n\nNOTFOUND:\n    OUT -1\n    HALT\n\nFOUND:\n    OUT R2\n    HALT"
       }
     ]
   }

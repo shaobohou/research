@@ -4,13 +4,14 @@ MAP-Elites ISA coding benchmark.
 For each problem:
   - Prompt an LLM to write ISA assembly
   - Check correctness by running the interpreter
-  - Extract features: time_complexity, space_complexity, program_size_bin
-  - Fill MAP-Elites archive: score = distinct (time, space, size) cells occupied
+  - Extract features: time_complexity, space_complexity, program_size_bin, register_pressure
+  - Fill MAP-Elites archive: score = distinct cells occupied
 
 Feature axes (cell dimensions):
-  time_complexity   6 classes  O(1) … O(2^n)
-  space_complexity  6 classes  O(1) … O(2^n)
-  program_size_bin  4 bins     tiny / small / medium / large
+  time_complexity    6 classes  O(1) … O(2^n)
+  space_complexity   6 classes  O(1) … O(2^n)
+  program_size_bin   4 bins     tiny / small / medium / large
+  register_pressure  3 bins     r0-r2 / r0-r4 / r0-r7
 """
 
 import json
@@ -27,7 +28,7 @@ from problems import PROBLEMS
 
 RESULTS_FILE = os.path.join(os.path.dirname(__file__), "results.json")
 MAX_ATTEMPTS       = 25
-MAX_CONSEC_MISSES  = 4
+MAX_CONSEC_MISSES  = 6
 
 # ── ISA cheatsheet included in every prompt ───────────────────────────────────
 
@@ -180,17 +181,19 @@ def run_problem(name: str, problem: dict) -> dict:
         new_cell = cell not in archive
 
         record = {
-            "attempt":          attempts,
-            "correct":          True,
-            "new_cell":         new_cell,
-            "cell":             list(cell),
-            "time_complexity":  feats["time_complexity"],
-            "space_complexity": feats["space_complexity"],
-            "program_size":     feats["program_size"],
-            "program_size_bin": feats["program_size_bin"],
-            "raw_insns":        feats["raw_insns"],
-            "raw_hwms":         feats["raw_hwms"],
-            "source":           source,
+            "attempt":           attempts,
+            "correct":           True,
+            "new_cell":          new_cell,
+            "cell":              list(cell),
+            "time_complexity":   feats["time_complexity"],
+            "space_complexity":  feats["space_complexity"],
+            "program_size":      feats["program_size"],
+            "program_size_bin":  feats["program_size_bin"],
+            "register_pressure": feats["register_pressure"],
+            "max_register":      feats["max_register"],
+            "raw_insns":         feats["raw_insns"],
+            "raw_hwms":          feats["raw_hwms"],
+            "source":            source,
         }
         records.append(record)
         all_correct.append(source)
@@ -198,7 +201,7 @@ def run_problem(name: str, problem: dict) -> dict:
         if new_cell:
             archive[cell] = record
             consec_misses = 0
-            print(f"  [{attempts}] NEW CELL {cell} — archive: {len(archive)}")
+            print(f"  [{attempts}] NEW CELL {cell} reg={feats['register_pressure']} sz={feats['program_size']} — archive: {len(archive)}")
         else:
             consec_misses += 1
             print(f"  [{attempts}] correct but cell {cell} already filled")

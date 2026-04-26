@@ -5,15 +5,17 @@ Feature axes:
   time_complexity   — best-fit complexity class of insn_count vs input size
   space_complexity  — best-fit complexity class of mem_hwm vs input size
   program_size_bin  — static bin of instruction count after macro expansion
+  register_pressure — max register index used (static, from parse)
 """
 
 import math
+import re
 import statistics
 import sys
 import os
 
 sys.path.insert(0, os.path.dirname(__file__))
-from interpreter import run, parse
+from interpreter import run, parse, REGISTERS
 
 COMPLEXITY_CLASSES = ["O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n²)", "O(2^n)"]
 
@@ -56,6 +58,20 @@ def bin_program_size(n: int) -> str:
     return "large"
 
 
+def max_register_used(source: str) -> int:
+    """Return the highest register index (0-7) referenced anywhere in source."""
+    highest = -1
+    for token in re.findall(r'\bR([0-7])\b', source, re.IGNORECASE):
+        highest = max(highest, int(token))
+    return highest
+
+
+def bin_register_pressure(max_reg: int) -> str:
+    if max_reg <= 2:  return "r0-r2"
+    if max_reg <= 4:  return "r0-r4"
+    return "r0-r7"
+
+
 def extract_features(source: str, sizes: list, encode_fn,
                      max_steps: int = 10_000_000) -> dict:
     """
@@ -91,15 +107,20 @@ def extract_features(source: str, sizes: list, encode_fn,
     except Exception:
         prog_size = 0
 
+    max_reg  = max_register_used(source)
+    reg_bin  = bin_register_pressure(max_reg)
+
     return {
-        "time_complexity":  tc,
-        "space_complexity": sc,
-        "program_size":     prog_size,
-        "program_size_bin": bin_program_size(prog_size),
-        "raw_insns":        insns,
-        "raw_hwms":         hwms,
-        "valid_sizes":      valid_sizes,
-        "errors":           errors,
+        "time_complexity":   tc,
+        "space_complexity":  sc,
+        "program_size":      prog_size,
+        "program_size_bin":  bin_program_size(prog_size),
+        "register_pressure": reg_bin,
+        "max_register":      max_reg,
+        "raw_insns":         insns,
+        "raw_hwms":          hwms,
+        "valid_sizes":       valid_sizes,
+        "errors":            errors,
     }
 
 
@@ -108,4 +129,5 @@ def cell_key(features: dict) -> tuple:
         features["time_complexity"],
         features["space_complexity"],
         features["program_size_bin"],
+        features["register_pressure"],
     )
