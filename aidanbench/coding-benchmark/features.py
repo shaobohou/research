@@ -145,8 +145,15 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
             return {"time_complexity": "O(1)", "space_complexity": "O(1)", "instruction_count": insns[-1] if insns else 0}
 
         vs, vt, vm = zip(*valid)
+        # Fit instruction counts to complexity classes — more deterministic than timing.
+        # Filter insns to match the valid (non-zero-time) subset.
+        valid_insns = [insns[i] for i, (s, t, m) in enumerate(zip(sizes, times, mems)) if t > 1e-9] if insns else []
+        if len(valid_insns) >= 2:
+            time_class = _best_fit(vs, valid_insns)
+        else:
+            time_class = _best_fit(vs, vt)
         return {
-            "time_complexity":  _best_fit(vs, vt),
+            "time_complexity":  time_class,
             "space_complexity": _best_fit(vs, vm),
             "raw_times": list(vt),
             "raw_mems":  list(vm),
@@ -224,33 +231,20 @@ def bin_builtins(br: int) -> str:
     if br <= 3:  return "few"
     return "many"
 
-def bin_instructions(ic: int) -> str:
-    """Bin median instruction count (line events) at largest measured input size."""
-    if ic <= 50:    return "tiny"
-    if ic <= 500:   return "low"
-    if ic <= 5000:  return "medium"
-    return "high"
-
-
 # ── Full feature vector ───────────────────────────────────────────────────────
 
 def extract_features(code: str, sizes: list, size_input_fn) -> dict:
-    """Return all 5 features for a solution."""
+    """Return all 4 features for a solution."""
     empirical = measure_complexity(code, sizes, size_input_fn)
     cc = cyclomatic_complexity(code)
     br = builtin_reliance(code)
-    # Use instruction count at the largest input size (last entry)
-    raw_insns = empirical.get("raw_insns", [])
-    ic = raw_insns[-1] if raw_insns else 0
     return {
-        "time_complexity":   empirical.get("time_complexity",  "unknown"),
-        "space_complexity":  empirical.get("space_complexity", "unknown"),
-        "cyclomatic":        bin_cyclomatic(cc),
-        "builtin_reliance":  bin_builtins(br),
-        "instruction_count": bin_instructions(ic),
-        "cyclomatic_raw":    cc,
-        "builtin_raw":       br,
-        "instruction_raw":   ic,
+        "time_complexity":  empirical.get("time_complexity",  "unknown"),
+        "space_complexity": empirical.get("space_complexity", "unknown"),
+        "cyclomatic":       bin_cyclomatic(cc),
+        "builtin_reliance": bin_builtins(br),
+        "cyclomatic_raw":   cc,
+        "builtin_raw":      br,
     }
 
 
@@ -260,5 +254,4 @@ def cell_key(features: dict) -> tuple:
         features["space_complexity"],
         features["cyclomatic"],
         features["builtin_reliance"],
-        features["instruction_count"],
     )
