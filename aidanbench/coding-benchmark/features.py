@@ -52,7 +52,7 @@ def _best_fit(sizes, values):
 
 _MEASURE_TEMPLATE = """
 import tracemalloc, time, sys, timeit, functools, gc
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(max(100000, max({sizes}) * 2))
 
 {code}
 

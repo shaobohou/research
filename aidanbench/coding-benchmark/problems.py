@@ -9,9 +9,10 @@ import random
 #   reference:   correct implementation for generating expected outputs
 
 def _ref_fibonacci(n):
+    MOD = 10**9 + 7
     a, b = 0, 1
     for _ in range(n):
-        a, b = b, a + b
+        a, b = b, (a + b) % MOD
     return a
 
 def _ref_sort(lst):
@@ -50,18 +51,18 @@ def _ref_factorial(n):
 PROBLEMS = {
     "fibonacci": {
         "description": (
-            "Given a non-negative integer n, return the nth Fibonacci number "
-            "(0-indexed: fib(0)=0, fib(1)=1, fib(2)=1, fib(7)=13, fib(10)=55)."
+            "Given a non-negative integer n, return the nth Fibonacci number modulo 10^9+7 "
+            "(0-indexed: fib(0)=0, fib(1)=1, fib(2)=1, fib(7)=13, fib(50)=586268941). "
+            "Using a modulus keeps values bounded so you must apply % (10**9+7) at each step."
         ),
         "signature": "solve(n: int) -> int",
         "test_cases": [
             ((0,), 0), ((1,), 1), ((2,), 1), ((5,), 5),
             ((7,), 13), ((10,), 55), ((15,), 610),
+            ((50,), 586268941), ((100,), 687995182),
         ],
-        # Two-phase: [small sizes to detect O(2^n)] + [large sizes for polynomial fit]
-        # measure_complexity handles the O(2^n) early-exit via overall timeout
         "size_input": lambda n: (n,),
-        "sizes": [20, 25, 100, 500, 2000, 8000],
+        "sizes": [100, 500, 2000, 10000, 50000, 200000],
         "timeout_per_run": 2.0,
     },
     "sort_list": {
