@@ -12,10 +12,6 @@ Fibonacci
   Input tape : [n]
   Output tape: [fib(n) % (10^9+7)]
   fib(0)=0, fib(1)=1, fib(2)=1, fib(7)=13
-
-Binary search
-  Input tape : [array_len, arr[0], arr[1], ..., arr[n-1], target]
-  Output tape: [index]  (0-based), or [-1] if not found
 """
 
 MOD = 10**9 + 7
@@ -52,31 +48,5 @@ PROBLEMS = {
         ],
         "sizes":     [100, 500, 1000, 2000, 5000, 10000],
         "encode_fn": lambda n: [n],
-    },
-
-    "binary_search": {
-        "description": (
-            "A sorted array of integers is provided on the input tape followed by a target "
-            "integer.  Find the index (0-based) of the target in the array.  "
-            "Output that index, or -1 if the target is not present.\n"
-            "Use binary search — the input tape format is:\n"
-            "  n  arr[0]  arr[1]  ...  arr[n-1]  target"
-        ),
-        "io_description": (
-            "IN reads: n (array length), then n sorted integers, then target.\n"
-            "OUT writes the 0-based index of target in the array, or -1 if absent."
-        ),
-        "test_cases": [
-            ([5, 1, 3, 5, 7, 9,  5],  [2]),   # mid element
-            ([5, 1, 3, 5, 7, 9,  1],  [0]),   # first
-            ([5, 1, 3, 5, 7, 9,  9],  [4]),   # last
-            ([5, 1, 3, 5, 7, 9,  4],  [-1]),  # missing
-            ([1, 7,              7],  [0]),   # single-element found
-            ([1, 7,              8],  [-1]),  # single-element missing
-            ([4, 2, 4, 6, 8,     6],  [2]),   # even-length, middle
-        ],
-        # encode_fn: array [0,2,4,...,2n-2] (n elements), target = 2*(n//2) at index n//2
-        "sizes":     [16, 64, 256, 1024, 4096],
-        "encode_fn": lambda n: [n] + list(range(0, 2 * n, 2)) + [2 * (n // 2)],
     },
 }
