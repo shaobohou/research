@@ -1,6 +1,10 @@
 """
 ISA interpreter for MAP-Elites coding benchmark.
 
+Two ISA tiers:
+  core     — 12 opcodes only; programs fall off end to terminate
+  extended — adds MOD, JNZ, JLE, HALT + 6 macros (default)
+
 Machine state:
   - Registers R0-R7 (32-bit signed, init 0)
   - Memory: sparse flat array of 32-bit signed ints, addr 0-65535
@@ -11,8 +15,23 @@ Machine state:
 
 import math
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
+
+# ── ISA tiers ─────────────────────────────────────────────────────────────────
+
+CORE_OPCODES = frozenset({
+    'MOV', 'ADD', 'SUB', 'MUL', 'DIV',
+    'LOAD', 'STOR',
+    'JMP', 'JZ', 'JLT',
+    'IN', 'OUT',
+})
+
+EXTENDED_OPCODES = frozenset({'MOD', 'JNZ', 'JLE', 'HALT'})
+
+MACRO_NAMES = frozenset({'INC', 'DEC', 'CLR', 'NEG', 'JGT', 'JGE'})
+
+ALL_OPCODES = CORE_OPCODES | EXTENDED_OPCODES
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -130,17 +149,35 @@ def parse(source: str) -> tuple[list, dict]:
 def run(source: str,
         inputs:      list[int],
         constraints: dict | None = None,
-        max_steps:   int         = 10_000_000) -> RunResult:
+        max_steps:   int         = 10_000_000,
+        isa:         str         = 'extended') -> RunResult:
     """
     Execute an ISA program.
+
+    isa: 'core'     — only CORE_OPCODES allowed; macros and HALT forbidden
+         'extended' — CORE_OPCODES + EXTENDED_OPCODES + macros (default)
 
     constraints keys (all optional):
       register_budget  int   max register index + 1 (e.g. 4 → R0-R3 only)
       memory_budget    int   max writable/readable address (exclusive)
       program_size     int   max instruction count after macro expansion
-      whitelist        list  allowed opcodes (strings); HALT always allowed
+      whitelist        list  allowed opcodes (strings); overrides isa tier
     """
     constraints = constraints or {}
+
+    # ── ISA tier check (scans raw source before macro expansion) ─────────────
+    if isa == 'core':
+        disallowed = EXTENDED_OPCODES | MACRO_NAMES
+        for raw in source.splitlines():
+            line = raw.split(';')[0].split('#')[0].strip()
+            while re.match(r'^[A-Za-z_][A-Za-z0-9_]*\s*:', line):
+                line = line.split(':', 1)[1].strip()
+            if not line:
+                continue
+            token = line.split()[0].upper()
+            if token in disallowed:
+                return RunResult([], 0, 0,
+                    f'{token!r} is not in the core ISA')
 
     try:
         instructions, label_map = parse(source)

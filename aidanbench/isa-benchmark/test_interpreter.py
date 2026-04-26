@@ -1,7 +1,8 @@
 """Full test suite for the ISA interpreter."""
 
 import unittest
-from interpreter import run, parse, RunResult, _wrap32, _MAX32, _MIN32
+from interpreter import (run, parse, RunResult, _wrap32, _MAX32, _MIN32,
+                         CORE_OPCODES, EXTENDED_OPCODES, MACRO_NAMES)
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -836,6 +837,131 @@ class TestParser(unittest.TestCase):
     def test_case_insensitive_opcodes(self):
         r = ok('mov R0, 42\n out R0\n halt')
         self.assertEqual(r.outputs, [42])
+
+
+# ── ISA tiers ─────────────────────────────────────────────────────────────────
+
+class TestISATiers(unittest.TestCase):
+
+    # ── core accepts all 12 base opcodes ─────────────────────────────────────
+
+    def test_core_accepts_base_opcodes(self):
+        prog = 'MOV R0, 5\n ADD R0, 3\n SUB R0, 1\n OUT R0\n'
+        r = run(prog, [], isa='core')
+        self.assertTrue(r.ok)
+        self.assertEqual(r.outputs, [7])
+
+    def test_core_program_falls_off_end(self):
+        # core has no HALT; execution stops at end of program
+        r = run('MOV R0, 42\n OUT R0', [], isa='core')
+        self.assertTrue(r.ok)
+        self.assertEqual(r.outputs, [42])
+
+    # ── core rejects every extended opcode ───────────────────────────────────
+
+    def test_core_rejects_mod(self):
+        r = run('MOV R0, 10\n MOD R0, 3\n OUT R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('MOD', r.error)
+
+    def test_core_rejects_jnz(self):
+        r = run('MOV R0, 1\n JNZ R0, done\ndone: OUT R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('JNZ', r.error)
+
+    def test_core_rejects_jle(self):
+        r = run('MOV R0, 3\n JLE R0, 5, done\ndone: OUT R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('JLE', r.error)
+
+    def test_core_rejects_halt(self):
+        r = run('MOV R0, 1\n HALT', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('HALT', r.error)
+
+    # ── core rejects every macro ──────────────────────────────────────────────
+
+    def test_core_rejects_inc(self):
+        r = run('MOV R0, 1\n INC R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('INC', r.error)
+
+    def test_core_rejects_dec(self):
+        r = run('MOV R0, 1\n DEC R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('DEC', r.error)
+
+    def test_core_rejects_clr(self):
+        r = run('CLR R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('CLR', r.error)
+
+    def test_core_rejects_neg(self):
+        r = run('MOV R0, 5\n NEG R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('NEG', r.error)
+
+    def test_core_rejects_jgt(self):
+        r = run('MOV R0, 5\n JGT R0, 3, done\ndone: OUT R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('JGT', r.error)
+
+    def test_core_rejects_jge(self):
+        r = run('MOV R0, 5\n JGE R0, 5, done\ndone: OUT R0', [], isa='core')
+        self.assertFalse(r.ok)
+        self.assertIn('JGE', r.error)
+
+    # ── extended accepts everything ───────────────────────────────────────────
+
+    def test_extended_accepts_all_extended_opcodes(self):
+        for op in EXTENDED_OPCODES:
+            with self.subTest(op=op):
+                r = run('OUT 0\n HALT', [], isa='extended')
+                self.assertTrue(r.ok)
+
+    def test_extended_accepts_all_macros(self):
+        r = run('MOV R0, 5\n INC R0\n DEC R0\n CLR R1\n NEG R0\n OUT R0\n HALT',
+                [], isa='extended')
+        self.assertTrue(r.ok)
+
+    # ── core fibonacci (no HALT, no macros, no MOD) ───────────────────────────
+
+    def test_core_fibonacci(self):
+        core_fib = """
+            IN   R0
+            MOV  R1, 0
+            MOV  R2, 1
+loop:
+            JZ   R0, done
+            MOV  R3, R2
+            ADD  R2, R1
+            MOV  R1, R3
+            SUB  R0, 1
+            JMP  loop
+done:
+            OUT  R1
+        """
+        for n, expected in [(0, 0), (1, 1), (7, 13), (10, 55)]:
+            with self.subTest(n=n):
+                r = run(core_fib, [n], isa='core')
+                self.assertTrue(r.ok, r.error)
+                self.assertEqual(r.outputs[0], expected)
+
+    # ── tier constants are consistent ─────────────────────────────────────────
+
+    def test_no_overlap_between_tiers(self):
+        self.assertEqual(CORE_OPCODES & EXTENDED_OPCODES, frozenset())
+        self.assertEqual(CORE_OPCODES & MACRO_NAMES, frozenset())
+        self.assertEqual(EXTENDED_OPCODES & MACRO_NAMES, frozenset())
+
+    def test_extended_opcodes_count(self):
+        self.assertEqual(len(EXTENDED_OPCODES), 4)   # MOD JNZ JLE HALT
+
+    def test_macro_names_count(self):
+        self.assertEqual(len(MACRO_NAMES), 6)         # INC DEC CLR NEG JGT JGE
+
+    def test_core_opcodes_count(self):
+        self.assertEqual(len(CORE_OPCODES), 12)
 
 
 if __name__ == '__main__':
