@@ -254,6 +254,9 @@ def extract_features(code: str, sizes: list, size_input_fn) -> dict:
         "builtin_reliance":       bin_builtins(br),
         "cyclomatic_raw":         cc,
         "builtin_raw":            br,
+        "raw_times":              empirical.get("raw_times", []),
+        "raw_mems":               empirical.get("raw_mems",  []),
+        "raw_insns":              empirical.get("raw_insns", []),
     }
 
 
