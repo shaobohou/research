@@ -233,9 +233,9 @@ well across algorithm families.
 
 **Option 4** (sweet-spot 8–10 instruction ISA). The builtin-reliance axis
 collapses to `none` for all programs, but this is recovered by replacing it
-with `program_size_bin` and `register_pressure` — giving a clean 4-axis
-feature space: time complexity, space complexity, program size, and register
-pressure. The measurement environment is cleaner than Python in every other
+with `program_size_bin` and `cyclomatic_bin` — giving a clean 4-axis
+feature space: time complexity, space complexity, program size, and cyclomatic
+complexity. The measurement environment is cleaner than Python in every other
 respect: exact instruction counting, no GC noise, no big-integer growth.
 
 The ISA spec goes in the prompt; the interpreter is our infrastructure. Models

@@ -4,7 +4,7 @@ MAP-Elites ISA coding benchmark.
 For each problem:
   - Prompt an LLM to write ISA assembly
   - Check correctness by running the interpreter
-  - Extract features: time_complexity, space_complexity, program_size_bin, register_pressure
+  - Extract features: time_complexity, space_complexity, program_size_bin, cyclomatic_bin
   - Fill MAP-Elites archive: score = distinct cells occupied
 
 Feature axes (cell dimensions):
