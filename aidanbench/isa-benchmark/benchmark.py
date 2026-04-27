@@ -11,7 +11,7 @@ Feature axes (cell dimensions):
   time_complexity    6 classes  O(1) … O(2^n)
   space_complexity   6 classes  O(1) … O(2^n)
   program_size_bin   4 bins     tiny / small / medium / large
-  register_pressure  3 bins     r0-r2 / r0-r4 / r0-r7
+  cyclomatic         3 bins     simple / moderate / complex
 """
 
 import json
@@ -189,8 +189,8 @@ def run_problem(name: str, problem: dict) -> dict:
             "space_complexity":  feats["space_complexity"],
             "program_size":      feats["program_size"],
             "program_size_bin":  feats["program_size_bin"],
-            "register_pressure": feats["register_pressure"],
-            "max_register":      feats["max_register"],
+            "cyclomatic":        feats["cyclomatic"],
+            "cyclomatic_bin":    feats["cyclomatic_bin"],
             "raw_insns":         feats["raw_insns"],
             "raw_hwms":          feats["raw_hwms"],
             "source":            source,
@@ -201,7 +201,7 @@ def run_problem(name: str, problem: dict) -> dict:
         if new_cell:
             archive[cell] = record
             consec_misses = 0
-            print(f"  [{attempts}] NEW CELL {cell} reg={feats['register_pressure']} sz={feats['program_size']} — archive: {len(archive)}")
+            print(f"  [{attempts}] NEW CELL {cell} cc={feats['cyclomatic_bin']} sz={feats['program_size']} — archive: {len(archive)}")
         else:
             consec_misses += 1
             print(f"  [{attempts}] correct but cell {cell} already filled")

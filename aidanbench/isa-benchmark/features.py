@@ -2,14 +2,13 @@
 Feature extraction for ISA MAP-Elites benchmark.
 
 Feature axes:
-  time_complexity   — best-fit complexity class of insn_count vs input size
-  space_complexity  — best-fit complexity class of mem_hwm vs input size
-  program_size_bin  — static bin of instruction count after macro expansion
-  register_pressure — max register index used (static, from parse)
+  time_complexity  — best-fit complexity class of insn_count vs input size
+  space_complexity — best-fit complexity class of mem_hwm vs input size
+  program_size_bin — static bin of instruction count after macro expansion
+  cyclomatic       — 1 + count of conditional jumps after macro expansion
 """
 
 import math
-import re
 import statistics
 import sys
 import os
@@ -18,6 +17,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from interpreter import run, parse
 
 COMPLEXITY_CLASSES = ["O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n²)", "O(2^n)"]
+
+CONDITIONAL_JUMPS = frozenset({'JZ', 'JNZ', 'JLT', 'JLE'})
 
 
 def _basis(name: str, n: int) -> float:
@@ -58,18 +59,19 @@ def bin_program_size(n: int) -> str:
     return "large"
 
 
-def max_register_used(source: str) -> int:
-    """Return the highest register index (0-7) referenced anywhere in source."""
-    highest = -1
-    for token in re.findall(r'\bR([0-7])\b', source, re.IGNORECASE):
-        highest = max(highest, int(token))
-    return highest
+def cyclomatic_complexity(source: str) -> int:
+    """1 + number of conditional jump instructions after macro expansion."""
+    try:
+        instructions, _ = parse(source)
+    except Exception:
+        return 0
+    return 1 + sum(1 for op, _ in instructions if op in CONDITIONAL_JUMPS)
 
 
-def bin_register_pressure(max_reg: int) -> str:
-    if max_reg <= 2:  return "r0-r2"
-    if max_reg <= 4:  return "r0-r4"
-    return "r0-r7"
+def bin_cyclomatic(cc: int) -> str:
+    if cc <= 3:  return "simple"
+    if cc <= 7:  return "moderate"
+    return "complex"
 
 
 def extract_features(source: str, sizes: list, encode_fn,
@@ -107,20 +109,20 @@ def extract_features(source: str, sizes: list, encode_fn,
     except Exception:
         prog_size = 0
 
-    max_reg  = max_register_used(source)
-    reg_bin  = bin_register_pressure(max_reg)
+    cc     = cyclomatic_complexity(source)
+    cc_bin = bin_cyclomatic(cc)
 
     return {
-        "time_complexity":   tc,
-        "space_complexity":  sc,
-        "program_size":      prog_size,
-        "program_size_bin":  bin_program_size(prog_size),
-        "register_pressure": reg_bin,
-        "max_register":      max_reg,
-        "raw_insns":         insns,
-        "raw_hwms":          hwms,
-        "valid_sizes":       valid_sizes,
-        "errors":            errors,
+        "time_complexity":  tc,
+        "space_complexity": sc,
+        "program_size":     prog_size,
+        "program_size_bin": bin_program_size(prog_size),
+        "cyclomatic":       cc,
+        "cyclomatic_bin":   cc_bin,
+        "raw_insns":        insns,
+        "raw_hwms":         hwms,
+        "valid_sizes":      valid_sizes,
+        "errors":           errors,
     }
 
 
@@ -129,5 +131,5 @@ def cell_key(features: dict) -> tuple:
         features["time_complexity"],
         features["space_complexity"],
         features["program_size_bin"],
-        features["register_pressure"],
+        features["cyclomatic_bin"],
     )

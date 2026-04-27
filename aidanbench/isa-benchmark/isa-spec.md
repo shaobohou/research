@@ -143,13 +143,15 @@ Programs that use only registers have mem_hwm = 0 across all sizes → O(1).
 
 ### 5.2 Static Features (source analysis)
 
-**Register pressure** — highest register index referenced in source:
-- r0-r2: uses at most R2
-- r0-r4: uses at most R4
-- r0-r7: uses R5 or higher
+**Cyclomatic complexity** — 1 + number of conditional jump instructions after
+macro expansion (JZ, JNZ, JLT, JLE; JMP excluded as unconditional):
+- simple: ≤ 3
+- moderate: 4–7
+- complex: ≥ 8
 
-Captures how heavily the solution exploits the register file. A low-register
-solution must spill to memory or restructure the algorithm.
+Separates straight-line and single-loop programs (simple) from multi-branch
+control flow (moderate/complex). Fast-doubling lands in moderate; iterative
+loops land in simple.
 
 **Program size** — total instruction count after macro expansion:
 - tiny: ≤ 10
@@ -160,11 +162,11 @@ solution must spill to memory or restructure the algorithm.
 ### 5.3 Default Cell Key (4 dimensions)
 
 ```
-(time_complexity, space_complexity, program_size_bin, register_pressure)
+(time_complexity, space_complexity, program_size_bin, cyclomatic_bin)
 ```
 
 Replaces Python's `builtin_reliance` (always zero in assembly) with
-`program_size_bin` and `register_pressure`, both of which vary meaningfully
+`program_size_bin` and `cyclomatic_bin`, both of which vary meaningfully
 across ISA solutions.
 
 ---
@@ -259,7 +261,7 @@ even if both are O(n log n) time.
 | time_complexity | empirical (insn_count fit) | O(1) O(log n) O(n) O(n log n) O(n²) O(2^n) |
 | space_complexity | empirical (mem_hwm fit) | O(1) O(log n) O(n) O(n log n) O(n²) O(2^n) |
 | program_size_bin | static (insn count after expansion) | tiny small medium large |
-| register_pressure | static (max reg index) | r0-r2 r0-r4 r0-r7 |
+| cyclomatic_bin | static (1 + conditional jumps) | simple moderate complex |
 
 Maximum possible cells per problem: 6 × 6 × 4 × 3 = **432**
 Realistically reachable: 10–30 (most complexity combinations are
@@ -277,19 +279,19 @@ for problems like sort where many strategies exist.
 
 Expected distinct cells across algorithm families (no constraints):
 
-| Algorithm | time | space | prog_size | reg_pressure |
-|-----------|------|-------|-----------|--------------|
-| iterative | O(n) | O(1) | small | r0-r4 |
-| dp in memory | O(n) | O(n) | small/medium | r0-r4 |
-| fast-doubling | O(log n) | O(1) | medium | r0-r7 |
-| matrix exp (stack) | O(log n) | O(log n) | large | r0-r7 |
-| naive recursive* | O(2^n) | O(n) | medium | r0-r4 |
-| unrolled (fixed n) | O(1) | O(1) | large | r0-r4 |
+| Algorithm | time | space | prog_size | cyclomatic |
+|-----------|------|-------|-----------|------------|
+| iterative | O(n) | O(1) | small | simple |
+| dp in memory | O(n) | O(n) | small/medium | simple |
+| fast-doubling | O(log n) | O(1) | medium | moderate |
+| matrix exp (stack) | O(log n) | O(log n) | large | moderate |
+| naive recursive* | O(2^n) | O(n) | medium | moderate |
+| unrolled (fixed n) | O(1) | O(1) | large | simple |
 
 *Requires manual stack management via STOR/LOAD since ISA has no CALL/RET.
 
-Observed in benchmark runs: 9 distinct cells across 25 attempts, including
-fast-doubling (O(log n)/O(1)/medium/r0-r7). Under `memory_budget=0`:
+Observed in benchmark runs: 4 distinct cells across 13 attempts, including
+O(log n)/O(log n)/large/moderate (matrix-exp with manual stack). Under `memory_budget=0`:
 - dp in memory and naive recursive become *impossible* (need memory for table/stack)
 - Only iterative, fast-doubling, and unrolled survive — constraint-induced pruning
 
