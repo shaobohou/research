@@ -442,8 +442,8 @@ readability.
 MOD dst, src
 ```
 
-Set `dst` to `dst mod src`. The sign of the result follows the dividend
-(same sign as `dst`). Division by zero is a **runtime error**.
+Set `dst` to `dst mod src` (Python-style). The sign of the result follows
+the **divisor** (same sign as `src`). Division by zero is a **runtime error**.
 
 ```asm
 MOV R0, 10
@@ -510,7 +510,7 @@ zero_case:
 ## Macros (+6, extended only)
 
 Macros are expanded at parse time into their base instruction equivalents.
-They do not appear in the instruction count.
+The expanded instructions are executed normally and counted in `insn_count`.
 
 | Macro | Expands to | Effect |
 |-------|-----------|--------|

@@ -224,7 +224,7 @@ well across algorithm families.
 | Readable programs | no | no | yes | yes |
 | Big integer issues | no | no | no | no |
 | Exact instr counting | yes | yes | yes | yes |
-| Useful feature axes | 1 (time) | 2 | 3 | 3 |
+| Useful feature axes | 1 (time) | 2 | 3 | 4 |
 | Expresses all 6 problems | barely | barely | yes (verbose) | yes (natural) |
 
 ---
@@ -232,9 +232,11 @@ well across algorithm families.
 ## Recommendation
 
 **Option 4** (sweet-spot 8–10 instruction ISA). The builtin-reliance axis
-collapses to `none` for all programs, reducing the MAP-Elites space to 3D,
-but the time/space/cyclomatic axes remain fully discriminating and the
-measurement environment is cleaner than Python in every other respect.
+collapses to `none` for all programs, but this is recovered by replacing it
+with `program_size_bin` and `register_pressure` — giving a clean 4-axis
+feature space: time complexity, space complexity, program size, and register
+pressure. The measurement environment is cleaner than Python in every other
+respect: exact instruction counting, no GC noise, no big-integer growth.
 
 The ISA spec goes in the prompt; the interpreter is our infrastructure. Models
 already have a strong prior for this style of assembly from MIPS/RISC-V

@@ -62,13 +62,29 @@ The score for each question = sum of embedding dissimilarity scores of accepted 
 
 ```
 aidanbench/
-├── README.md          # This file
-├── notes.md           # Progress log
+├── README.md              # This file
+├── notes.md               # AidanBench run log
 ├── run/
-│   ├── run_benchmark.py   # Main runner script
-│   ├── models.py          # Anthropic API adapter
-│   └── results.json       # Raw benchmark results
-└── AidanBench/        # Cloned benchmark repo (excluded from git)
+│   ├── run_benchmark.py   # AidanBench runner script
+│   ├── models.py          # Anthropic API adapter (shared)
+│   └── results.json       # AidanBench raw results
+├── python-benchmark/      # MAP-Elites benchmark: Python as target language
+│   ├── benchmark.py       # Runner (prompts model, fills MAP-Elites archive)
+│   ├── features.py        # Feature extraction (time, space, cyclomatic, builtin)
+│   ├── problems.py        # Problem definitions (fibonacci, sort, search, …)
+│   ├── python-spec.md     # Design specification
+│   └── notes.md           # Implementation notes
+├── isa-benchmark/         # MAP-Elites benchmark: custom ISA as target language
+│   ├── benchmark.py       # Runner
+│   ├── features.py        # Feature extraction (time, space, program size, registers)
+│   ├── problems.py        # Problem definitions (fibonacci; more planned)
+│   ├── interpreter.py     # ISA interpreter with insn_count and mem_hwm tracking
+│   ├── test_interpreter.py # 146-test suite for the interpreter
+│   ├── MANUAL.md          # Programmer's manual for the ISA
+│   ├── isa-spec.md        # Design specification and feature space
+│   ├── isa-options.md     # Comparison of ISA options considered
+│   └── results.json       # Latest benchmark results
+└── AidanBench/            # Cloned benchmark repo (excluded from git)
 ```
 
 ## Running

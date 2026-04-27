@@ -94,8 +94,8 @@ Input is passed entirely via IN; output via OUT before HALT.
 
 **Arrays**: first IN reads the length n, then n INs read the elements.
 
-**Multiple inputs**: read in order (e.g. binary search: IN length, then n
-elements, then the target).
+**Multiple inputs**: read in order (e.g. two_sum: IN length, then n
+elements, then the target sum).
 
 **Return value**: one or more OUTs before HALT. For boolean problems, OUT 1
 (true) or OUT 0 (false).
