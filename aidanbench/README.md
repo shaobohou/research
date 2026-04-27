@@ -103,7 +103,6 @@ Instruction counts are exact and deterministic (no OS scheduling noise, no GC, n
 ```
 aidanbench/
 ├── README.md              # This file
-├── notes.md               # AidanBench run log
 ├── run/
 │   ├── run_benchmark.py   # AidanBench runner script
 │   ├── models.py          # Anthropic API adapter (shared)
@@ -112,8 +111,7 @@ aidanbench/
 │   ├── benchmark.py       # Runner (prompts model, fills MAP-Elites archive)
 │   ├── features.py        # Feature extraction (time, space, cyclomatic, builtin)
 │   ├── problems.py        # Problem definitions (fibonacci, sort, search, …)
-│   ├── python-spec.md     # Design specification
-│   └── notes.md           # Implementation notes
+│   └── python-spec.md     # Design specification
 ├── isa-benchmark/         # MAP-Elites benchmark: custom ISA as target language
 │   ├── benchmark.py       # Runner
 │   ├── features.py        # Feature extraction (time, space, program size, cyclomatic)
