@@ -2,17 +2,19 @@
 Runner script for AidanBench using Anthropic API.
 Tests claude-sonnet-4-6 on all 63 questions.
 """
+
 import sys
 import os
 
 # Add our custom models.py directory first (so it overrides AidanBench's models.py)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # Add AidanBench benchmark directory to path
-AIDANBENCH_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'AidanBench', 'benchmark')
+AIDANBENCH_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "AidanBench", "benchmark")
 sys.path.insert(1, os.path.abspath(AIDANBENCH_DIR))
 
 # Verify our models module is used
-import models
+import models  # noqa: E402
+
 print(f"Using models from: {models.__file__}")
 
 # Quick smoke test
@@ -25,26 +27,32 @@ e = models.embed("test sentence")
 print(f"Embedding dim: {len(e)}")
 
 # Now run the benchmark
-import main as _main_module
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import main as _main_module  # noqa: E402
+from concurrent.futures import ThreadPoolExecutor, as_completed  # noqa: E402
 
 # Patch max_workers to limit parallelism and avoid rate limits
 _orig_multithreaded = _main_module._run_multithreaded
+
+
 def _patched_multithreaded(model_params, chain_of_thought, use_llm, results, results_file, thresholds):
     from main import _process_question, _can_skip_question, _save_results
     from colorama import Fore, Style
+
     with ThreadPoolExecutor(max_workers=8) as executor:
         all_futures = []
         active_models = []
         for model, model_tasks in model_params.items():
-            if all(_can_skip_question(results, question, model, temp, use_llm, thresholds)
-                   for question, model, temp in model_tasks):
+            if all(
+                _can_skip_question(results, question, model, temp, use_llm, thresholds)
+                for question, model, temp in model_tasks
+            ):
                 print(f"Skipping all questions for {model} - already completed")
                 continue
             active_models.append(model)
             model_futures = [
-                executor.submit(_process_question, question, model, temp,
-                                chain_of_thought, use_llm, results, thresholds)
+                executor.submit(
+                    _process_question, question, model, temp, chain_of_thought, use_llm, results, thresholds
+                )
                 for question, model, temp in model_tasks
             ]
             all_futures.extend(model_futures)
@@ -66,28 +74,25 @@ def _patched_multithreaded(model_params, chain_of_thought, use_llm, results, res
             if completed % 20 == 0 or completed == total:
                 _save_results(results, results_file)
 
+
 _main_module._run_multithreaded = _patched_multithreaded
-from main import run_benchmark
+from main import run_benchmark  # noqa: E402
 
-RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'results.json')
+RESULTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results.json")
 
-print("\n" + "="*60)
+print("\n" + "=" * 60)
 print("Starting AidanBench on claude-sonnet-4-6")
-print("="*60 + "\n")
+print("=" * 60 + "\n")
 
 run_benchmark(
     model_names=["anthropic/claude-sonnet-4"],  # mapped to claude-sonnet-4-6
     temperatures=[0.7],
     chain_of_thought=False,
     use_llm=False,
-    multithreaded=True,   # parallel to speed things up
-    num_questions=None,   # all 61 questions
+    multithreaded=True,  # parallel to speed things up
+    num_questions=None,  # all 61 questions
     results_file=RESULTS_FILE,
-    thresholds={
-        'coherence_score': 15,
-        'embedding_dissimilarity_score': 0.15,
-        'llm_dissimilarity_score': 0.15
-    }
+    thresholds={"coherence_score": 15, "embedding_dissimilarity_score": 0.15, "llm_dissimilarity_score": 0.15},
 )
 
 print(f"\nResults saved to: {RESULTS_FILE}")

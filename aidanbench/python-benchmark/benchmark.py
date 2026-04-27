@@ -22,11 +22,12 @@ from features import extract_features, cell_key
 from problems import PROBLEMS
 
 RESULTS_FILE = os.path.join(os.path.dirname(__file__), "results.json")
-MAX_ATTEMPTS  = 25
-MAX_CONSEC_MISSES = 4   # stop after this many consecutive (fail or filled-cell) attempts
+MAX_ATTEMPTS = 25
+MAX_CONSEC_MISSES = 4  # stop after this many consecutive (fail or filled-cell) attempts
 
 
 # ── Code extraction ───────────────────────────────────────────────────────────
+
 
 def _extract_code(text: str) -> str | None:
     m = re.search(r"<code>(.*?)</code>", text, re.DOTALL)
@@ -54,16 +55,14 @@ for args, expected in test_cases:
 print("PASS")
 """
 
+
 def check_correctness(code: str, test_cases: list) -> tuple[bool, str]:
     script = _CORRECTNESS_TEMPLATE.format(code=code, test_cases=repr(test_cases))
     with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
         f.write(script)
         fname = f.name
     try:
-        r = subprocess.run(
-            [sys.executable, fname],
-            capture_output=True, text=True, timeout=10
-        )
+        r = subprocess.run([sys.executable, fname], capture_output=True, text=True, timeout=10)
         if r.stdout.strip() == "PASS":
             return True, ""
         return False, (r.stderr or r.stdout).strip()
@@ -77,6 +76,7 @@ def check_correctness(code: str, test_cases: list) -> tuple[bool, str]:
 
 # ── Prompt generation ─────────────────────────────────────────────────────────
 
+
 def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
     prompt = (
         f"Write a Python function called `solve` that solves the following problem:\n\n"
@@ -89,10 +89,7 @@ def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
         "- Provide only the code, no explanation\n"
     )
     if previous_solutions:
-        prev_str = "\n\n".join(
-            f"<solution id='{i+1}'>\n{s}\n</solution>"
-            for i, s in enumerate(previous_solutions)
-        )
+        prev_str = "\n\n".join(f"<solution id='{i + 1}'>\n{s}\n</solution>" for i, s in enumerate(previous_solutions))
         prompt += (
             "\nIMPORTANT: You must use a FUNDAMENTALLY DIFFERENT algorithm, approach, "
             "or data structure from all previous solutions. Aim for a different "
@@ -104,16 +101,17 @@ def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
 
 # ── Main benchmark loop ───────────────────────────────────────────────────────
 
-def run_problem(name: str, problem: dict) -> dict:
-    archive    = {}   # cell_key -> solution record
-    all_correct = []  # code strings of all correct solutions so far
-    attempts   = 0
-    consec_misses = 0
-    records    = []
 
-    print(f"\n{'='*60}")
+def run_problem(name: str, problem: dict) -> dict:
+    archive = {}  # cell_key -> solution record
+    all_correct = []  # code strings of all correct solutions so far
+    attempts = 0
+    consec_misses = 0
+    records = []
+
+    print(f"\n{'=' * 60}")
     print(f"Problem: {name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     while attempts < MAX_ATTEMPTS and consec_misses < MAX_CONSEC_MISSES:
         attempts += 1
@@ -121,8 +119,7 @@ def run_problem(name: str, problem: dict) -> dict:
 
         try:
             response = models.chat_with_model(
-                prompt, model="anthropic/claude-sonnet-4",
-                max_tokens=1500, temperature=0.7
+                prompt, model="anthropic/claude-sonnet-4", max_tokens=1500, temperature=0.7
             )
         except Exception as e:
             print(f"  [{attempts}] API error: {e}")
@@ -144,22 +141,22 @@ def run_problem(name: str, problem: dict) -> dict:
 
         # Correct — extract features
         feats = extract_features(code, problem["sizes"], problem["size_input"])
-        cell  = cell_key(feats)
+        cell = cell_key(feats)
         new_cell = cell not in archive
 
         record = {
-            "attempt":                attempts,
-            "correct":                True,
-            "new_cell":               new_cell,
-            "cell":                   list(cell),
-            "time_complexity":        feats["time_complexity"],
+            "attempt": attempts,
+            "correct": True,
+            "new_cell": new_cell,
+            "cell": list(cell),
+            "time_complexity": feats["time_complexity"],
             "time_complexity_timing": feats["time_complexity_timing"],
-            "space_complexity":       feats["space_complexity"],
-            "cyclomatic":             feats["cyclomatic"],
-            "builtin_reliance":       feats["builtin_reliance"],
-            "cyclomatic_raw":         feats["cyclomatic_raw"],
-            "builtin_raw":            feats["builtin_raw"],
-            "code":                   code,
+            "space_complexity": feats["space_complexity"],
+            "cyclomatic": feats["cyclomatic"],
+            "builtin_reliance": feats["builtin_reliance"],
+            "cyclomatic_raw": feats["cyclomatic_raw"],
+            "builtin_raw": feats["builtin_raw"],
+            "code": code,
         }
         records.append(record)
         all_correct.append(code)
@@ -174,10 +171,10 @@ def run_problem(name: str, problem: dict) -> dict:
 
     print(f"  Done — {len(archive)} distinct cells from {attempts} attempts")
     return {
-        "score":    len(archive),
+        "score": len(archive),
         "attempts": attempts,
-        "cells":    {str(k): v for k, v in archive.items()},
-        "records":  records,
+        "cells": {str(k): v for k, v in archive.items()},
+        "records": records,
     }
 
 
@@ -188,8 +185,8 @@ def run_benchmark():
         _save(results)
 
     total = sum(r["score"] for r in results.values())
-    avg   = total / len(results)
-    print(f"\n{'='*60}")
+    avg = total / len(results)
+    print(f"\n{'=' * 60}")
     print(f"Overall: {total} total cells across {len(results)} problems (avg {avg:.1f})")
     for name, r in results.items():
         print(f"  {r['score']:2d} cells  {name}")

@@ -3,6 +3,7 @@ Modified models.py for AidanBench that uses:
 - Anthropic API (Bearer token auth) instead of OpenRouter
 - sentence-transformers for local embeddings instead of OpenAI
 """
+
 import json
 import os
 import urllib.request
@@ -11,7 +12,7 @@ from retry import retry
 from sentence_transformers import SentenceTransformer
 
 # Auth
-BEARER_TOKEN = open('/home/claude/.claude/remote/.session_ingress_token').read().strip()
+BEARER_TOKEN = open("/home/claude/.claude/remote/.session_ingress_token").read().strip()
 ANTHROPIC_BASE_URL = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com")
 
 # Map OpenRouter-style model names to Anthropic model IDs
@@ -35,7 +36,7 @@ _embed_model = None
 def _get_embed_model():
     global _embed_model
     if _embed_model is None:
-        _embed_model = SentenceTransformer('all-MiniLM-L6-v2')
+        _embed_model = SentenceTransformer("all-MiniLM-L6-v2")
     return _embed_model
 
 
@@ -47,12 +48,14 @@ def _resolve_model(model: str) -> str:
 @retry(tries=3, delay=1, backoff=2)
 def chat_with_model(prompt: str, model: str, max_tokens: int = 4000, temperature: float = 0) -> str:
     model_id = _resolve_model(model)
-    data = json.dumps({
-        "model": model_id,
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-        "messages": [{"role": "user", "content": prompt}]
-    }).encode()
+    data = json.dumps(
+        {
+            "model": model_id,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "messages": [{"role": "user", "content": prompt}],
+        }
+    ).encode()
 
     req = urllib.request.Request(
         f"{ANTHROPIC_BASE_URL}/v1/messages",
@@ -60,8 +63,8 @@ def chat_with_model(prompt: str, model: str, max_tokens: int = 4000, temperature
         headers={
             "anthropic-version": "2023-06-01",
             "content-type": "application/json",
-            "Authorization": f"Bearer {BEARER_TOKEN}"
-        }
+            "Authorization": f"Bearer {BEARER_TOKEN}",
+        },
     )
     resp = urllib.request.urlopen(req, timeout=120)
     result = json.loads(resp.read())

@@ -32,21 +32,19 @@ PROBLEMS = {
             "fib(0)=0, fib(1)=1, fib(2)=1, fib(7)=13, fib(10)=55.\n"
             "Apply the modulus at each addition step to keep values in 32-bit range."
         ),
-        "io_description": (
-            "IN reads n.  OUT writes fib(n) % 1000000007."
-        ),
+        "io_description": ("IN reads n.  OUT writes fib(n) % 1000000007."),
         "test_cases": [
-            ([0],  [0]),
-            ([1],  [1]),
-            ([2],  [1]),
-            ([5],  [5]),
-            ([7],  [13]),
+            ([0], [0]),
+            ([1], [1]),
+            ([2], [1]),
+            ([5], [5]),
+            ([7], [13]),
             ([10], [55]),
             ([15], [610]),
             ([20], [6765]),
             ([30], [832040]),
         ],
-        "sizes":     [100, 500, 1000, 2000, 5000, 10000],
+        "sizes": [100, 500, 1000, 2000, 5000, 10000],
         "encode_fn": lambda n: [n],
     },
 }

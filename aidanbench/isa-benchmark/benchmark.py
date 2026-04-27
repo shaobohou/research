@@ -27,8 +27,8 @@ from features import extract_features, cell_key
 from problems import PROBLEMS
 
 RESULTS_FILE = os.path.join(os.path.dirname(__file__), "results.json")
-MAX_ATTEMPTS       = 25
-MAX_CONSEC_MISSES  = 6
+MAX_ATTEMPTS = 25
+MAX_CONSEC_MISSES = 6
 
 # ── ISA cheatsheet included in every prompt ───────────────────────────────────
 
@@ -78,6 +78,7 @@ JGE Ra,Rb,lbl →  JLE Rb, Ra, lbl
 
 # ── Assembly extraction ───────────────────────────────────────────────────────
 
+
 def _extract_asm(text: str) -> str | None:
     """Pull assembly from <code>…</code> or a fenced code block."""
     m = re.search(r"<code>(.*?)</code>", text, re.DOTALL)
@@ -91,6 +92,7 @@ def _extract_asm(text: str) -> str | None:
 
 # ── Correctness check ─────────────────────────────────────────────────────────
 
+
 def check_correctness(source: str, test_cases: list) -> tuple[bool, str]:
     """
     Run source on each test case's input tape and compare outputs.
@@ -101,14 +103,12 @@ def check_correctness(source: str, test_cases: list) -> tuple[bool, str]:
         if not result.ok:
             return False, f"case {i}: runtime error — {result.error}"
         if result.outputs != expected:
-            return False, (
-                f"case {i}: inputs={inputs} → outputs={result.outputs}, "
-                f"expected={expected}"
-            )
+            return False, (f"case {i}: inputs={inputs} → outputs={result.outputs}, expected={expected}")
     return True, ""
 
 
 # ── Prompt generation ─────────────────────────────────────────────────────────
+
 
 def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
     prompt = (
@@ -122,10 +122,7 @@ def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
         "- Provide only the assembly, no explanation\n"
     )
     if previous_solutions:
-        prev_str = "\n\n".join(
-            f"<solution id='{i+1}'>\n{s}\n</solution>"
-            for i, s in enumerate(previous_solutions)
-        )
+        prev_str = "\n\n".join(f"<solution id='{i + 1}'>\n{s}\n</solution>" for i, s in enumerate(previous_solutions))
         prompt += (
             "\nIMPORTANT: Use a FUNDAMENTALLY DIFFERENT algorithm or structure "
             "from all previous solutions — aim for a different time/space trade-off "
@@ -138,16 +135,17 @@ def _build_prompt(problem: dict, previous_solutions: list[str]) -> str:
 
 # ── Main benchmark loop ───────────────────────────────────────────────────────
 
-def run_problem(name: str, problem: dict) -> dict:
-    archive       = {}
-    all_correct   = []
-    attempts      = 0
-    consec_misses = 0
-    records       = []
 
-    print(f"\n{'='*60}")
+def run_problem(name: str, problem: dict) -> dict:
+    archive = {}
+    all_correct = []
+    attempts = 0
+    consec_misses = 0
+    records = []
+
+    print(f"\n{'=' * 60}")
     print(f"Problem: {name}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     while attempts < MAX_ATTEMPTS and consec_misses < MAX_CONSEC_MISSES:
         attempts += 1
@@ -155,8 +153,7 @@ def run_problem(name: str, problem: dict) -> dict:
 
         try:
             response = models.chat_with_model(
-                prompt, model="anthropic/claude-sonnet-4",
-                max_tokens=2000, temperature=0.7
+                prompt, model="anthropic/claude-sonnet-4", max_tokens=2000, temperature=0.7
             )
         except Exception as e:
             print(f"  [{attempts}] API error: {e}")
@@ -176,24 +173,24 @@ def run_problem(name: str, problem: dict) -> dict:
             records.append({"attempt": attempts, "correct": False, "error": err[:160]})
             continue
 
-        feats    = extract_features(source, problem["sizes"], problem["encode_fn"])
-        cell     = cell_key(feats)
+        feats = extract_features(source, problem["sizes"], problem["encode_fn"])
+        cell = cell_key(feats)
         new_cell = cell not in archive
 
         record = {
-            "attempt":           attempts,
-            "correct":           True,
-            "new_cell":          new_cell,
-            "cell":              list(cell),
-            "time_complexity":   feats["time_complexity"],
-            "space_complexity":  feats["space_complexity"],
-            "program_size":      feats["program_size"],
-            "program_size_bin":  feats["program_size_bin"],
-            "cyclomatic":        feats["cyclomatic"],
-            "cyclomatic_bin":    feats["cyclomatic_bin"],
-            "raw_insns":         feats["raw_insns"],
-            "raw_hwms":          feats["raw_hwms"],
-            "source":            source,
+            "attempt": attempts,
+            "correct": True,
+            "new_cell": new_cell,
+            "cell": list(cell),
+            "time_complexity": feats["time_complexity"],
+            "space_complexity": feats["space_complexity"],
+            "program_size": feats["program_size"],
+            "program_size_bin": feats["program_size_bin"],
+            "cyclomatic": feats["cyclomatic"],
+            "cyclomatic_bin": feats["cyclomatic_bin"],
+            "raw_insns": feats["raw_insns"],
+            "raw_hwms": feats["raw_hwms"],
+            "source": source,
         }
         records.append(record)
         all_correct.append(source)
@@ -201,17 +198,19 @@ def run_problem(name: str, problem: dict) -> dict:
         if new_cell:
             archive[cell] = record
             consec_misses = 0
-            print(f"  [{attempts}] NEW CELL {cell} cc={feats['cyclomatic_bin']} sz={feats['program_size']} — archive: {len(archive)}")
+            print(
+                f"  [{attempts}] NEW CELL {cell} cc={feats['cyclomatic_bin']} sz={feats['program_size']} — archive: {len(archive)}"
+            )
         else:
             consec_misses += 1
             print(f"  [{attempts}] correct but cell {cell} already filled")
 
     print(f"  Done — {len(archive)} distinct cells from {attempts} attempts")
     return {
-        "score":    len(archive),
+        "score": len(archive),
         "attempts": attempts,
-        "cells":    {str(k): v for k, v in archive.items()},
-        "records":  records,
+        "cells": {str(k): v for k, v in archive.items()},
+        "records": records,
     }
 
 
@@ -225,8 +224,8 @@ def run_benchmark(problems: list[str] | None = None):
         _save(results)
 
     total = sum(r["score"] for r in results.values())
-    avg   = total / len(results) if results else 0
-    print(f"\n{'='*60}")
+    avg = total / len(results) if results else 0
+    print(f"\n{'=' * 60}")
     print(f"Overall: {total} total cells across {len(results)} problems (avg {avg:.1f})")
     for name, r in results.items():
         print(f"  {r['score']:2d} cells  {name}")
@@ -240,8 +239,8 @@ def _save(results: dict):
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("problems", nargs="*",
-                        help="problem names to run (default: all)")
+    parser.add_argument("problems", nargs="*", help="problem names to run (default: all)")
     args = parser.parse_args()
     run_benchmark(args.problems or None)

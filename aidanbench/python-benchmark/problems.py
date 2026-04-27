@@ -8,6 +8,7 @@ import random
 #   size_input:  callable(n) -> args tuple for empirical complexity measurement
 #   reference:   correct implementation for generating expected outputs
 
+
 def _ref_fibonacci(n):
     MOD = 10**9 + 7
     a, b = 0, 1
@@ -15,8 +16,10 @@ def _ref_fibonacci(n):
         a, b = b, (a + b) % MOD
     return a
 
+
 def _ref_sort(lst):
     return sorted(lst)
+
 
 def _ref_binary_search(arr, target):
     lo, hi = 0, len(arr) - 1
@@ -30,6 +33,7 @@ def _ref_binary_search(arr, target):
             hi = mid - 1
     return -1
 
+
 def _ref_two_sum(nums, target):
     seen = {}
     for i, n in enumerate(nums):
@@ -38,8 +42,10 @@ def _ref_two_sum(nums, target):
         seen[n] = i
     return []
 
+
 def _ref_is_palindrome(s):
     return s == s[::-1]
+
 
 def _ref_factorial(n):
     r = 1
@@ -57,18 +63,22 @@ PROBLEMS = {
         ),
         "signature": "solve(n: int) -> int",
         "test_cases": [
-            ((0,), 0), ((1,), 1), ((2,), 1), ((5,), 5),
-            ((7,), 13), ((10,), 55), ((15,), 610),
-            ((50,), 586268941), ((100,), 687995182),
+            ((0,), 0),
+            ((1,), 1),
+            ((2,), 1),
+            ((5,), 5),
+            ((7,), 13),
+            ((10,), 55),
+            ((15,), 610),
+            ((50,), 586268941),
+            ((100,), 687995182),
         ],
         "size_input": lambda n: (n,),
         "sizes": [100, 500, 1000, 2000, 5000, 10000],
         "timeout_per_run": 2.0,
     },
     "sort_list": {
-        "description": (
-            "Given a list of integers, return a new list sorted in ascending order."
-        ),
+        "description": ("Given a list of integers, return a new list sorted in ascending order."),
         "signature": "solve(lst: list) -> list",
         "test_cases": [
             (([3, 1, 2],), [1, 2, 3]),
@@ -117,10 +127,7 @@ PROBLEMS = {
         "timeout_per_run": 5.0,
     },
     "is_palindrome": {
-        "description": (
-            "Given a string s, return True if it reads the same forwards and backwards, "
-            "False otherwise."
-        ),
+        "description": ("Given a string s, return True if it reads the same forwards and backwards, False otherwise."),
         "signature": "solve(s: str) -> bool",
         "test_cases": [
             (("racecar",), True),
@@ -136,13 +143,15 @@ PROBLEMS = {
     },
     "factorial": {
         "description": (
-            "Given a non-negative integer n, return n! (n factorial). "
-            "factorial(0) = 1, factorial(5) = 120."
+            "Given a non-negative integer n, return n! (n factorial). factorial(0) = 1, factorial(5) = 120."
         ),
         "signature": "solve(n: int) -> int",
         "test_cases": [
-            ((0,), 1), ((1,), 1), ((5,), 120),
-            ((10,), 3628800), ((15,), 1307674368000),
+            ((0,), 1),
+            ((1,), 1),
+            ((5,), 120),
+            ((10,), 3628800),
+            ((15,), 1307674368000),
         ],
         "size_input": lambda n: (n,),
         "sizes": [50, 100, 200, 400, 800, 1000],
@@ -159,9 +168,9 @@ def _two_sum_input(n):
     target = nums[i] + nums[j]
     # ensure uniqueness: remove any other pair that sums to target
     for k in range(n):
-        for l in range(k + 1, n):
-            if (k, l) != (i, j) and nums[k] + nums[l] == target:
-                nums[l] = random.randint(1001, 2000)
+        for m in range(k + 1, n):
+            if (k, m) != (i, j) and nums[k] + nums[m] == target:
+                nums[m] = random.randint(1001, 2000)
     return (nums, target)
 
 

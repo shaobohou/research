@@ -11,21 +11,27 @@ import statistics
 import subprocess
 import sys
 import tempfile
-import time
-import tracemalloc
 
 
 # ── Complexity classification ─────────────────────────────────────────────────
 
 COMPLEXITY_CLASSES = ["O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n²)", "O(2^n)"]
 
+
 def _basis(name, n):
-    if name == "O(1)":       return 1.0
-    if name == "O(log n)":   return math.log2(max(n, 2))
-    if name == "O(n)":       return float(n)
-    if name == "O(n log n)": return n * math.log2(max(n, 2))
-    if name == "O(n²)":      return float(n * n)
-    if name == "O(2^n)":     return 2.0 ** min(n, 60)
+    if name == "O(1)":
+        return 1.0
+    if name == "O(log n)":
+        return math.log2(max(n, 2))
+    if name == "O(n)":
+        return float(n)
+    if name == "O(n log n)":
+        return n * math.log2(max(n, 2))
+    if name == "O(n²)":
+        return float(n * n)
+    if name == "O(2^n)":
+        return 2.0 ** min(n, 60)
+
 
 def _best_fit(sizes, values):
     """Return the complexity class with best R² fit."""
@@ -117,25 +123,21 @@ print("MEMS",  mems)
 print("INSNS", insns)
 """
 
+
 def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
     """
     Run code on inputs of increasing size, return classified time and space complexity.
     Returns dict with keys: time_complexity, space_complexity, raw_times, raw_mems
     """
     inputs = [size_input_fn(n) for n in sizes]
-    script = _MEASURE_TEMPLATE.format(
-        code=code, sizes=sizes, inputs=inputs
-    )
+    script = _MEASURE_TEMPLATE.format(code=code, sizes=sizes, inputs=inputs)
 
     with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
         f.write(script)
         fname = f.name
 
     try:
-        result = subprocess.run(
-            [sys.executable, fname],
-            capture_output=True, text=True, timeout=30
-        )
+        result = subprocess.run([sys.executable, fname], capture_output=True, text=True, timeout=30)
         lines = result.stdout.strip().splitlines()
         times = mems = insns = None
         for line in lines:
@@ -159,11 +161,11 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
         time_by_insns = _best_fit(vs, valid_insns) if len(valid_insns) >= 2 else "unknown"
         time_by_timing = _best_fit(vs, vt)
         return {
-            "time_complexity":        time_by_insns,
+            "time_complexity": time_by_insns,
             "time_complexity_timing": time_by_timing,
-            "space_complexity":       _best_fit(vs, vm),
+            "space_complexity": _best_fit(vs, vm),
             "raw_times": list(vt),
-            "raw_mems":  list(vm),
+            "raw_mems": list(vm),
             "raw_insns": insns or [],
         }
     except subprocess.TimeoutExpired:
@@ -171,34 +173,122 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
     except Exception:
         return {"time_complexity": "unknown", "space_complexity": "unknown"}
     finally:
-        import os; os.unlink(fname)
+        import os
+
+        os.unlink(fname)
 
 
 # ── Static analysis ───────────────────────────────────────────────────────────
 
 PYTHON_BUILTINS = {
-    "abs", "all", "any", "bin", "bool", "bytes", "callable", "chr", "dict",
-    "divmod", "enumerate", "filter", "float", "format", "frozenset", "getattr",
-    "hasattr", "hash", "hex", "int", "isinstance", "iter", "len", "list",
-    "map", "max", "min", "next", "oct", "ord", "pow", "print", "range",
-    "reduce", "repr", "reversed", "round", "set", "setattr", "slice",
-    "sorted", "str", "sum", "tuple", "type", "vars", "zip",
+    "abs",
+    "all",
+    "any",
+    "bin",
+    "bool",
+    "bytes",
+    "callable",
+    "chr",
+    "dict",
+    "divmod",
+    "enumerate",
+    "filter",
+    "float",
+    "format",
+    "frozenset",
+    "getattr",
+    "hasattr",
+    "hash",
+    "hex",
+    "int",
+    "isinstance",
+    "iter",
+    "len",
+    "list",
+    "map",
+    "max",
+    "min",
+    "next",
+    "oct",
+    "ord",
+    "pow",
+    "print",
+    "range",
+    "reduce",
+    "repr",
+    "reversed",
+    "round",
+    "set",
+    "setattr",
+    "slice",
+    "sorted",
+    "str",
+    "sum",
+    "tuple",
+    "type",
+    "vars",
+    "zip",
     # commonly imported stdlib callables used as bare names
-    "lru_cache", "cache", "partial", "wraps",
-    "defaultdict", "Counter", "deque", "OrderedDict",
-    "heappush", "heappop", "heapify",
-    "bisect", "bisect_left", "bisect_right", "insort",
-    "factorial", "gcd", "lcm", "sqrt", "log", "ceil", "floor",
-    "product", "permutations", "combinations",
+    "lru_cache",
+    "cache",
+    "partial",
+    "wraps",
+    "defaultdict",
+    "Counter",
+    "deque",
+    "OrderedDict",
+    "heappush",
+    "heappop",
+    "heapify",
+    "bisect",
+    "bisect_left",
+    "bisect_right",
+    "insort",
+    "factorial",
+    "gcd",
+    "lcm",
+    "sqrt",
+    "log",
+    "ceil",
+    "floor",
+    "product",
+    "permutations",
+    "combinations",
     "deepcopy",
 }
 
 STDLIB_ATTRS = {
     # common method calls that indicate stdlib/builtin usage
-    "sort", "append", "extend", "insert", "pop", "remove", "count",
-    "index", "copy", "clear", "update", "get", "items", "keys", "values",
-    "join", "split", "strip", "replace", "find", "upper", "lower",
-    "lru_cache", "cache", "factorial", "gcd", "log", "sqrt", "ceil", "floor",
+    "sort",
+    "append",
+    "extend",
+    "insert",
+    "pop",
+    "remove",
+    "count",
+    "index",
+    "copy",
+    "clear",
+    "update",
+    "get",
+    "items",
+    "keys",
+    "values",
+    "join",
+    "split",
+    "strip",
+    "replace",
+    "find",
+    "upper",
+    "lower",
+    "lru_cache",
+    "cache",
+    "factorial",
+    "gcd",
+    "log",
+    "sqrt",
+    "ceil",
+    "floor",
 }
 
 
@@ -210,8 +300,7 @@ def cyclomatic_complexity(code: str) -> int:
         return 0
     count = 1
     for node in ast.walk(tree):
-        if isinstance(node, (ast.If, ast.IfExp, ast.For, ast.While,
-                              ast.ExceptHandler, ast.With, ast.Assert)):
+        if isinstance(node, (ast.If, ast.IfExp, ast.For, ast.While, ast.ExceptHandler, ast.With, ast.Assert)):
             count += 1
         elif isinstance(node, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
             count += sum(1 for g in node.generators for _ in g.ifs)
@@ -237,16 +326,23 @@ def builtin_reliance(code: str) -> int:
 
 
 def bin_cyclomatic(cc: int) -> str:
-    if cc <= 3:  return "simple"
-    if cc <= 7:  return "moderate"
+    if cc <= 3:
+        return "simple"
+    if cc <= 7:
+        return "moderate"
     return "complex"
 
+
 def bin_builtins(br: int) -> str:
-    if br == 0:  return "none"
-    if br <= 3:  return "few"
+    if br == 0:
+        return "none"
+    if br <= 3:
+        return "few"
     return "many"
 
+
 # ── Full feature vector ───────────────────────────────────────────────────────
+
 
 def extract_features(code: str, sizes: list, size_input_fn) -> dict:
     """Return all features for a solution, including both time complexity variants."""
@@ -254,16 +350,16 @@ def extract_features(code: str, sizes: list, size_input_fn) -> dict:
     cc = cyclomatic_complexity(code)
     br = builtin_reliance(code)
     return {
-        "time_complexity":        empirical.get("time_complexity",        "unknown"),
+        "time_complexity": empirical.get("time_complexity", "unknown"),
         "time_complexity_timing": empirical.get("time_complexity_timing", "unknown"),
-        "space_complexity":       empirical.get("space_complexity",       "unknown"),
-        "cyclomatic":             bin_cyclomatic(cc),
-        "builtin_reliance":       bin_builtins(br),
-        "cyclomatic_raw":         cc,
-        "builtin_raw":            br,
-        "raw_times":              empirical.get("raw_times", []),
-        "raw_mems":               empirical.get("raw_mems",  []),
-        "raw_insns":              empirical.get("raw_insns", []),
+        "space_complexity": empirical.get("space_complexity", "unknown"),
+        "cyclomatic": bin_cyclomatic(cc),
+        "builtin_reliance": bin_builtins(br),
+        "cyclomatic_raw": cc,
+        "builtin_raw": br,
+        "raw_times": empirical.get("raw_times", []),
+        "raw_mems": empirical.get("raw_mems", []),
+        "raw_insns": empirical.get("raw_insns", []),
     }
 
 
