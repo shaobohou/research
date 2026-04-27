@@ -203,11 +203,11 @@ These capture structural diversity without hard-rejecting solutions.
 | Axis | Source | Values |
 |------|--------|--------|
 | time_complexity | empirical (insn_count fit) | 6 classes |
-| space_complexity | empirical (tracemalloc fit) | 4 classes |
+| space_complexity | empirical (tracemalloc fit) | 6 classes |
 | cyclomatic | static AST | simple / moderate / complex |
 | builtin_reliance | static AST | none / few / many |
 
-Maximum possible cells per problem: 6 × 4 × 3 × 3 = **216**
+Maximum possible cells per problem: 6 × 6 × 3 × 3 = **324**
 Realistically reachable: 10–20.
 
 ### Extended (add constraint-derived axes)

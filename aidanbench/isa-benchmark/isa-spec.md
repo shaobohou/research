@@ -32,7 +32,7 @@ ADD  dst, src          # dst += src
 SUB  dst, src          # dst -= src
 MUL  dst, src          # dst *= src
 DIV  dst, src          # dst = int(dst / src)  (truncates toward zero)
-MOD  dst, src          # dst = dst % src       (sign follows dividend)
+MOD  dst, src          # dst = dst % src       (Python-style: sign follows divisor)
 ```
 
 ### Memory
@@ -136,7 +136,7 @@ Classes: O(1), O(log n), O(n), O(n log n), O(n²), O(2^n)
 Cleaner than Python wall-clock: exact, deterministic, no OS noise.
 
 **Space complexity** — series: `mem_hwm(n₁), mem_hwm(n₂), ...`
-Classes: O(1), O(log n), O(n), O(n²)
+Classes: O(1), O(log n), O(n), O(n log n), O(n²), O(2^n)
 
 Pure algorithm space — no allocator overhead, no GC, no object headers.
 Programs that use only registers have mem_hwm = 0 across all sizes → O(1).
@@ -214,8 +214,8 @@ Cap total instructions in source.
 | 64 | moderate | All benchmark problems solvable; multiple strategies viable |
 | unlimited | default | No constraint |
 
-Forces algorithmic compression: a model cannot solve binary search with a
-linear scan when constrained to 20 instructions.
+Forces algorithmic compression: a model cannot sort a list with an O(n²)
+approach when constrained to 20 instructions.
 
 ### 6.4 Instruction Whitelist
 
@@ -242,7 +242,7 @@ along constraint dimensions without enforcing them:
 | peak_registers_used | 1–2, 3–4, 5–8 | Register economy |
 | memory_cells_used | 0, 1–16, 17–256, 256+ | Space strategy |
 | distinct_opcodes | ≤4, 5–8, 9+ | Instruction variety |
-| source_lines | tiny, short, medium, long | Compression |
+| source_lines | tiny, small, medium, large | Compression |
 
 A solution that sorts a list using only R0–R1 and no memory occupies a
 genuinely different cell from one that uses 6 registers and a scratch buffer,

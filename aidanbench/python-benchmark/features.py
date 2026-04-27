@@ -168,7 +168,7 @@ def measure_complexity(code: str, sizes: list, size_input_fn) -> dict:
         }
     except subprocess.TimeoutExpired:
         return {"time_complexity": "O(2^n)", "time_complexity_timing": "O(2^n)", "space_complexity": "O(2^n)"}
-    except Exception as e:
+    except Exception:
         return {"time_complexity": "unknown", "space_complexity": "unknown"}
     finally:
         import os; os.unlink(fname)

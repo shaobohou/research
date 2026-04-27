@@ -1,6 +1,6 @@
 """
 Runner script for AidanBench using Anthropic API.
-Tests claude-sonnet-4-6 on all 61 questions.
+Tests claude-sonnet-4-6 on all 63 questions.
 """
 import sys
 import os

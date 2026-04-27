@@ -75,7 +75,6 @@ _MACROS = {
 }
 
 _MEM_RE  = re.compile(r'^\[(\w+)([+-]\d+)?\]$')
-_LABEL_RE = re.compile(r'^[A-Za-z_][A-Za-z0-9_]*$')
 
 
 def _split_args(s: str) -> list[str]:
