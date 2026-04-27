@@ -58,6 +58,46 @@ The score for each question = sum of embedding dissimilarity scores of accepted 
 2. **Narrow questions break early**: "What's one way to use oregano?" — answers quickly become repetitive despite 31 attempts
 3. **Rate limiting severely impacted results**: 41/63 questions got no answers due to API 429 errors from 8-worker parallelism
 
+---
+
+## Major Findings
+
+### AidanBench
+
+**Causal plurality drives divergence more than topic breadth.**
+"What is a cause of World War 1?" scored 33.19 with 102 answers — higher than "Why did Rome fall?" (3.18, 11 answers) despite similar apparent breadth. The difference: WW1 has many independent causal threads (assassination, alliances, imperialism, nationalism, mobilisation timetables…), while Rome's fall invites a single narrative that quickly becomes self-similar. Questions that are *factually open-ended* (many valid distinct causes/solutions) consistently outperform questions that are *creatively open-ended* but converge on a canonical answer.
+
+**High answer counts do not guarantee high scores.**
+The top two questions (chess rules, LLM scaling) both reached 120+ answers. Many answers are accepted but contribute small dissimilarity increments as the model exhausts genuinely novel directions. The per-answer contribution shrinks across the run — early answers contribute ~0.3–0.4 each; late answers contribute ~0.1–0.2. This means the score curve is concave: diversity is front-loaded.
+
+**Rate limiting is the dominant confounder in this run.**
+Official score 5.41 vs intrinsic 15.50 — a 2.9× gap caused entirely by 41/63 questions scoring zero due to HTTP 429 errors from 8-worker parallelism. The intrinsic score is the more meaningful number for model comparison; the official score is not usable for cross-model benchmarking without re-running with reduced parallelism.
+
+**Narrow-domain questions hit a ceiling fast.**
+"What activities might I include at a party for firefighters?" and "What's one way to use oregano?" exhaust genuine variety within 6–31 answers. The embedding dissimilarity threshold (0.15) catches near-duplicates, but even superficially different answers can be semantically close once the domain is saturated.
+
+---
+
+### ISA MAP-Elites (Fibonacci)
+
+**4 distinct cells from 13 attempts; correctness rate ~54% (7/13).**
+The model reliably writes correct iterative fibonacci in the custom ISA. Sub-optimal solutions (address-out-of-range, wrong off-by-one) account for most failures. Failure rate is comparable to Python despite the custom language — the ISA's MIPS/RISC-V-style syntax is familiar enough that the model rarely generates syntactically invalid programs.
+
+**The cyclomatic axis cleanly separates algorithm families.**
+`simple` (cc ≤ 3) captures pure iterative loops with one comparison. `moderate` (cc 4–7) captures fast-doubling and matrix-exponentiation approaches with multiple conditional branches. This axis turned out more discriminating than register pressure, which collapsed to `r0-r7` for every solution (all fibonacci implementations naturally use 4–6 registers).
+
+**Program size and cyclomatic are genuinely independent.**
+The `small/simple` cell (17 instructions, 1 branch) and `medium/moderate` cell (27 instructions, 4–5 branches) are both O(n)/O(1) — same time and space complexity, different structural character. Without both axes these would be the same cell.
+
+**The O(log n) cell requires correct manual stack management.**
+The `('O(log n)', 'O(log n)', 'large', 'moderate')` cell — matrix exponentiation — needs STOR/LOAD for a 2×2 matrix scratch area since the ISA has no CALL/RET. The model successfully produced this (insn_count grows by ~30 per input doubling at large n, consistent with O(log n)). The memory high-water mark grows slowly (6→10 addresses as n goes 100→10000) confirming O(log n) space from the recursion-depth-equivalent stack.
+
+**Binary search was removed: O(n) I/O loading collapses diversity.**
+Any correct binary-search implementation must read all n input elements before searching — making time complexity O(n) and mem_hwm O(n) for all correct solutions regardless of the search algorithm. All valid solutions land in the same cell, so the problem contributes nothing to MAP-Elites diversity.
+
+**The ISA measurement environment is cleaner than Python's.**
+Instruction counts are exact and deterministic (no OS scheduling noise, no GC, no big-integer arithmetic growth). The R² curve-fitting converges faster and more reliably than wall-clock timing. Fibonacci at n=10,000 produces exactly 100,006 instructions for a simple iterative loop — the count is a pure function of the algorithm.
+
 ## Code Structure
 
 ```
@@ -76,7 +116,7 @@ aidanbench/
 │   └── notes.md           # Implementation notes
 ├── isa-benchmark/         # MAP-Elites benchmark: custom ISA as target language
 │   ├── benchmark.py       # Runner
-│   ├── features.py        # Feature extraction (time, space, program size, registers)
+│   ├── features.py        # Feature extraction (time, space, program size, cyclomatic)
 │   ├── problems.py        # Problem definitions (fibonacci; more planned)
 │   ├── interpreter.py     # ISA interpreter with insn_count and mem_hwm tracking
 │   ├── test_interpreter.py # 146-test suite for the interpreter
