@@ -1,0 +1,108 @@
+{
+  "fibonacci": {
+    "score": 4,
+    "attempts": 13,
+    "cells": {
+      "('O(n)', 'O(1)', 'medium', 'moderate')": {
+        "attempt": 1,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "cyclomatic": 5,
+        "cyclomatic_bin": "moderate",
+        "raw_insns": [
+          1006,
+          5006,
+          10006,
+          20006,
+          50006,
+          100006
+        ],
+        "raw_hwms": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "('O(n)', 'O(1)', 'small', 'simple')": {
+        "attempt": 2,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "program_size": 17,
+        "program_size_bin": "small",
+        "cyclomatic": 3,
+        "cyclomatic_bin": "simple",
+        "raw_insns": [
+          708,
+          3508,
+          7008,
+          14008,
+          35008,
+          70008
+        ],
+        "raw_hwms": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "('O(n)', 'O(n)', 'medium', 'moderate')": {
+        "attempt": 4,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "program_size": 27,
+        "program_size_bin": "medium",
+        "cyclomatic": 4,
+        "cyclomatic_bin": "moderate",
+        "raw_insns": [
+          1204,
+          6004,
+          12004,
+          24004,
+          60004,
+          120004
+        ],
+        "raw_hwms": [
+          100,
+          500,
+          1000,
+          2000,
+          5000,
+          10000
+        ]
+      },
+      "('O(log n)', 'O(log n)', 'large', 'moderate')": {
+        "attempt": 7,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "program_size": 51,
+        "program_size_bin": "large",
+        "cyclomatic": 6,
+        "cyclomatic_bin": "moderate",
+        "raw_insns": [
+          230,
+          303,
+          332,
+          361,
+          414,
+          443
+        ],
+        "raw_hwms": [
+          6,
+          8,
+          9,
+          10,
+          12,
+          13
+        ]
+      }
+    }
+  }
+}

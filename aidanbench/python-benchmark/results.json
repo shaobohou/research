@@ -1,0 +1,570 @@
+{
+  "fibonacci": {
+    "score": 14,
+    "attempts": 25,
+    "cells": {
+      "('O(n)', 'O(log n)', 'moderate', 'few')": {
+        "attempt": 1,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(n\u00b2)', 'moderate', 'none')": {
+        "attempt": 2,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "none"
+      },
+      "('O(log n)', 'O(n)', 'simple', 'none')": {
+        "attempt": 3,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "none"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'few')": {
+        "attempt": 4,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'simple', 'few')": {
+        "attempt": 5,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(n)', 'complex', 'many')": {
+        "attempt": 9,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'many')": {
+        "attempt": 12,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'none')": {
+        "attempt": 16,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "none"
+      },
+      "('O(n)', 'O(1)', 'simple', 'few')": {
+        "attempt": 17,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(log n)', 'simple', 'few')": {
+        "attempt": 18,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(n)', 'moderate', 'few')": {
+        "attempt": 19,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(n)', 'moderate', 'none')": {
+        "attempt": 21,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "none"
+      },
+      "('O(1)', 'O(n log n)', 'simple', 'few')": {
+        "attempt": 22,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(1)', 'complex', 'many')": {
+        "attempt": 23,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(1)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      }
+    }
+  },
+  "sort_list": {
+    "score": 9,
+    "attempts": 16,
+    "cells": {
+      "('O(1)', 'O(n)', 'simple', 'few')": {
+        "attempt": 1,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'simple', 'many')": {
+        "attempt": 2,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(n log n)', 'O(n)', 'moderate', 'many')": {
+        "attempt": 3,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(n log n)', 'O(n)', 'complex', 'many')": {
+        "attempt": 4,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(n log n)', 'O(n)', 'moderate', 'few')": {
+        "attempt": 6,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'simple', 'none')": {
+        "attempt": 7,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "none"
+      },
+      "('O(n\u00b2)', 'O(n)', 'moderate', 'few')": {
+        "attempt": 8,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(n\u00b2)', 'O(n)', 'simple', 'few')": {
+        "attempt": 11,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n\u00b2)', 'O(n)', 'complex', 'many')": {
+        "attempt": 12,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      }
+    }
+  },
+  "binary_search": {
+    "score": 14,
+    "attempts": 25,
+    "cells": {
+      "('O(log n)', 'O(log n)', 'moderate', 'few')": {
+        "attempt": 1,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(1)', 'O(log n)', 'simple', 'few')": {
+        "attempt": 2,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(1)', 'O(log n)', 'complex', 'few')": {
+        "attempt": 3,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n log n)', 'moderate', 'few')": {
+        "attempt": 7,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'many')": {
+        "attempt": 8,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'complex', 'many')": {
+        "attempt": 12,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(log n)', 'complex', 'many')": {
+        "attempt": 14,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(log n)', 'simple', 'few')": {
+        "attempt": 15,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'complex', 'few')": {
+        "attempt": 16,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(log n)', 'moderate', 'few')": {
+        "attempt": 18,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(log n)', 'complex', 'few')": {
+        "attempt": 20,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n log n)', 'moderate', 'many')": {
+        "attempt": 21,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(1)', 'O(n)', 'simple', 'many')": {
+        "attempt": 24,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(n log n)', 'O(n log n)', 'complex', 'many')": {
+        "attempt": 25,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      }
+    }
+  },
+  "two_sum": {
+    "score": 18,
+    "attempts": 25,
+    "cells": {
+      "('O(n log n)', 'O(n)', 'simple', 'few')": {
+        "attempt": 1,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n log n)', 'O(n log n)', 'moderate', 'many')": {
+        "attempt": 2,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(n\u00b2)', 'O(n log n)', 'simple', 'few')": {
+        "attempt": 4,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n\u00b2)', 'O(n)', 'moderate', 'many')": {
+        "attempt": 5,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(n\u00b2)', 'O(n\u00b2)', 'moderate', 'many')": {
+        "attempt": 6,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'few')": {
+        "attempt": 8,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(log n)', 'O(n\u00b2)', 'simple', 'few')": {
+        "attempt": 9,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n\u00b2)', 'O(log n)', 'simple', 'many')": {
+        "attempt": 10,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'moderate', 'many')": {
+        "attempt": 11,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(n log n)', 'O(n)', 'complex', 'many')": {
+        "attempt": 12,
+        "time_complexity": "O(n log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(n)', 'moderate', 'many')": {
+        "attempt": 14,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(n log n)', 'moderate', 'many')": {
+        "attempt": 15,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(log n)', 'simple', 'many')": {
+        "attempt": 16,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(n)', 'moderate', 'many')": {
+        "attempt": 17,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(n log n)', 'simple', 'many')": {
+        "attempt": 18,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(log n)', 'O(n)', 'complex', 'many')": {
+        "attempt": 20,
+        "time_complexity": "O(log n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(n\u00b2)', 'O(n log n)', 'simple', 'many')": {
+        "attempt": 23,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(n)', 'complex', 'many')": {
+        "attempt": 25,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      }
+    }
+  },
+  "is_palindrome": {
+    "score": 6,
+    "attempts": 10,
+    "cells": {
+      "('O(1)', 'O(n)', 'simple', 'none')": {
+        "attempt": 1,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "none"
+      },
+      "('O(n)', 'O(log n)', 'simple', 'few')": {
+        "attempt": 2,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'simple', 'few')": {
+        "attempt": 3,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(log n)', 'simple', 'many')": {
+        "attempt": 4,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(n\u00b2)', 'simple', 'few')": {
+        "attempt": 5,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'moderate', 'many')": {
+        "attempt": 6,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      }
+    }
+  },
+  "factorial": {
+    "score": 15,
+    "attempts": 25,
+    "cells": {
+      "('O(n)', 'O(n log n)', 'simple', 'few')": {
+        "attempt": 1,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(1)', 'O(n\u00b2)', 'simple', 'few')": {
+        "attempt": 2,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n)', 'simple', 'few')": {
+        "attempt": 3,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n\u00b2)', 'simple', 'none')": {
+        "attempt": 4,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "none"
+      },
+      "('O(n)', 'O(n\u00b2)', 'moderate', 'none')": {
+        "attempt": 5,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "none"
+      },
+      "('O(n)', 'O(n log n)', 'complex', 'many')": {
+        "attempt": 6,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(n log n)', 'moderate', 'many')": {
+        "attempt": 7,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(n)', 'O(n)', 'simple', 'many')": {
+        "attempt": 9,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "many"
+      },
+      "('O(1)', 'O(n log n)', 'simple', 'few')": {
+        "attempt": 10,
+        "time_complexity": "O(1)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n\u00b2)', 'simple', 'few')": {
+        "attempt": 12,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "simple",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n\u00b2)', 'complex', 'few')": {
+        "attempt": 16,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "complex",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n log n)', 'moderate', 'few')": {
+        "attempt": 17,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(n)', 'O(n\u00b2)', 'moderate', 'few')": {
+        "attempt": 20,
+        "time_complexity": "O(n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "few"
+      },
+      "('O(n\u00b2)', 'O(n log n)', 'moderate', 'many')": {
+        "attempt": 21,
+        "time_complexity": "O(n\u00b2)",
+        "space_complexity": "O(n log n)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      },
+      "('O(2^n)', 'O(n\u00b2)', 'moderate', 'many')": {
+        "attempt": 22,
+        "time_complexity": "O(2^n)",
+        "space_complexity": "O(n\u00b2)",
+        "cyclomatic": "moderate",
+        "builtin_reliance": "many"
+      }
+    }
+  }
+}
