@@ -5,14 +5,6 @@
     "cells": {
       "('O(n)', 'O(1)', 'medium', 'moderate')": {
         "attempt": 1,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium",
-          "moderate"
-        ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
         "program_size": 27,
@@ -34,19 +26,10 @@
           0,
           0,
           0
-        ],
-        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, BASE0    ; if n == 0, output 0\n    MOV R1, 1\n    JZ R1, BASE1    ; never, placeholder\n    ; Check if n == 1\n    MOV R2, 1\n    SUB R2, R0      ; R2 = 1 - n\n    JZ R2, BASE1    ; if n == 1, output 1\n\n    ; General case: iterative fibonacci\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n\n    ; R4 = modulus = 1000000007\n\n    MOV R1, 0       ; fib(0)\n    MOV R2, 1       ; fib(1)\n    MOV R3, 1       ; counter = 1\n    MOV R4, 1000000007\n\nLOOP:\n    ; if counter == n, we're done\n    MOV R5, R3\n    SUB R5, R0      ; R5 = counter - n\n    JZ R5, DONE\n\n    ; compute next fib\n    MOV R6, R2      ; R6 = fib(i)\n    ADD R6, R1      ; R6 = fib(i) + fib(i-1)\n    MOD R6, R4      ; R6 = fib(i+1) % MOD\n\n    MOV R1, R2      ; fib(i-1) = fib(i)\n    MOV R2, R6      ; fib(i) = fib(i+1)\n\n    INC R3          ; counter++\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nBASE0:\n    OUT 0\n    HALT\n\nBASE1:\n    OUT 1\n    HALT"
+        ]
       },
       "('O(n)', 'O(1)', 'small', 'simple')": {
         "attempt": 2,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "small",
-          "simple"
-        ],
         "time_complexity": "O(n)",
         "space_complexity": "O(1)",
         "program_size": 17,
@@ -68,19 +51,10 @@
           0,
           0,
           0
-        ],
-        "source": "; Read n into R0\n    IN R0\n\n    ; R1 = a = fib(0) = 0\n    ; R2 = b = fib(1) = 1\n    ; R3 = modulus\n    ; R4 = loop counter (counts down from n to 0)\n    ; Use a count-down loop with a different structure\n\n    MOV R1, 0\n    MOV R2, 1\n    MOV R3, 1000000007\n    MOV R4, R0      ; R4 = n (countdown)\n\n    ; If n == 0, output 0 immediately\n    JZ R4, OUT0\n\n    ; Loop: we do n iterations, each time:\n    ;   temp = a + b\n    ;   a = b\n    ;   b = temp % MOD\n    ; After n iterations, a = fib(n)\n    ; Start: a=fib(0)=0, b=fib(1)=1\n    ; After 1 iter: a=1, b=1  => a=fib(1)\n    ; After 2 iter: a=1, b=2  => a=fib(2)\n    ; So after n iters, a = fib(n)\n\nLOOP:\n    MOV R5, R1      ; R5 = a\n    ADD R5, R2      ; R5 = a + b\n    MOD R5, R3      ; R5 = (a+b) % MOD\n    MOV R1, R2      ; a = b\n    MOV R2, R5      ; b = new value\n    DEC R4          ; countdown--\n    JNZ R4, LOOP    ; if not zero, continue\n\n    OUT R1          ; output a = fib(n)\n    HALT\n\nOUT0:\n    OUT 0\n    HALT"
+        ]
       },
       "('O(n)', 'O(n)', 'medium', 'moderate')": {
         "attempt": 4,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(n)",
-          "medium",
-          "moderate"
-        ],
         "time_complexity": "O(n)",
         "space_complexity": "O(n)",
         "program_size": 27,
@@ -102,19 +76,10 @@
           2000,
           5000,
           10000
-        ],
-        "source": "; Fibonacci using memory to store the sequence\n; Store fib values in memory, then read fib(n) from memory\n; This uses a memory-based approach rather than register-only iteration\n\n    IN R0           ; R0 = n\n    MOV R1, 1000000007  ; modulus\n\n    ; Store fib(0) and fib(1) in memory\n    MOV R2, 0\n    STOR R2, [R2+0]     ; mem[0] = 0 = fib(0)\n    MOV R3, 1\n    STOR R3, [R2+1]     ; mem[1] = 1 = fib(1)\n\n    ; If n == 0, output mem[0] = 0\n    JZ R0, OUTPUT\n\n    ; If n == 1, output mem[1] = 1\n    MOV R4, 1\n    MOV R5, R0\n    SUB R5, 1\n    JZ R5, OUTPUT\n\n    ; Build fib table from index 2 up to n\n    ; R3 = current index, starts at 2\n    MOV R3, 2\n\nBUILDLOOP:\n    ; if R3 > R0, done building\n    JGT R3, R0, OUTPUT\n\n    ; mem[R3] = (mem[R3-1] + mem[R3-2]) % MOD\n    MOV R4, R3\n    SUB R4, 1\n    LOAD R5, [R4+0]     ; R5 = mem[R3-1]\n\n    MOV R4, R3\n    SUB R4, 2\n    LOAD R6, [R4+0]     ; R6 = mem[R3-2]\n\n    ADD R5, R6          ; R5 = fib(R3-1) + fib(R3-2)\n    MOD R5, R1          ; R5 %= MOD\n\n    STOR R5, [R3+0]     ; mem[R3] = R5\n\n    INC R3\n    JMP BUILDLOOP\n\nOUTPUT:\n    ; Output mem[n]\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT"
+        ]
       },
       "('O(log n)', 'O(log n)', 'large', 'moderate')": {
         "attempt": 7,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(log n)",
-          "O(log n)",
-          "large",
-          "moderate"
-        ],
         "time_complexity": "O(log n)",
         "space_complexity": "O(log n)",
         "program_size": 51,
@@ -136,279 +101,8 @@
           10,
           12,
           13
-        ],
-        "source": "; Fibonacci using matrix exponentiation approach (iterative doubling method)\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; This is O(log n) time, fundamentally different from all previous O(n) iterative solutions\n\n; We'll use a recursive-style stack simulation stored in memory\n; Stack stores bits of n (LSB to MSB), then we process from MSB to LSB\n\n    IN R0               ; R0 = n\n    MOV R6, 1000000007  ; R6 = MOD\n\n    ; Base cases\n    JZ R0, OUTZERO\n\n    MOV R1, R0\n    SUB R1, 1\n    JZ R1, OUTONE\n\n    ; Extract bits of n and store them in memory (LSB first)\n    ; mem[0], mem[1], ... = bits from LSB to MSB\n    MOV R1, R0          ; R1 = n (working copy)\n    MOV R2, 0           ; R2 = bit index / count\n\nEXTRACT:\n    JZ R1, EXTRACTED\n    MOV R3, R1\n    MOD R3, 2           ; R3 = R1 % 2 (LSB)\n    STOR R3, [R2+0]     ; mem[R2] = bit\n    INC R2\n    DIV R1, 2           ; R1 >>= 1\n    JMP EXTRACT\n\nEXTRACTED:\n    ; R2 = number of bits stored\n    ; Process from MSB (index R2-1) down to 0\n    ; Start with a=fib(0)=0, b=fib(1)=1\n    MOV R3, 0           ; R3 = a = fib(k)\n    MOV R4, 1           ; R4 = b = fib(k+1)\n\n    ; Start from MSB: index = R2-1\n    DEC R2              ; R2 = index of MSB\n\nBITLOOP:\n    ; Doubling step:\n    ; c = a * (2*b - a) mod MOD\n    ; d = a*a + b*b mod MOD\n    ; a = c, b = d\n\n    ; Compute 2*b - a\n    MOV R5, R4\n    MUL R5, 2           ; R5 = 2*b\n    SUB R5, R3          ; R5 = 2*b - a\n    MOD R5, R6          ; R5 %= MOD\n\n    ; Compute c = a * (2*b - a) mod MOD\n    MOV R7, R3\n    MUL R7, R5          ; R7 = a * (2*b - a)\n    MOD R7, R6          ; R7 = c = fib(2k)\n\n    ; Compute d = a*a + b*b mod MOD\n    MOV R5, R3\n    MUL R5, R3          ; R5 = a*a\n    MOD R5, R6\n    MOV R1, R4\n    MUL R1, R4          ; R1 = b*b\n    MOD R1, R6\n    ADD R5, R1          ; R5 = a*a + b*b\n    MOD R5, R6          ; R5 = d = fib(2k+1)\n\n    ; a = c, b = d\n    MOV R3, R7\n    MOV R4, R5\n\n    ; Check current bit\n    LOAD R1, [R2+0]     ; R1 = bit at index R2\n    JZ R1, BITISZERO\n\n    ; Bit is 1: advance one step\n    ; new_a = b, new_b = a + b\n    MOV R5, R3\n    ADD R5, R4          ; R5 = a + b\n    MOD R5, R6\n    MOV R3, R4          ; a = b\n    MOV R4, R5          ; b = a + b\n\nBITISZERO:\n    ; Move to next bit (going toward LSB)\n    JZ R2, DONE\n    DEC R2\n    JMP BITLOOP\n\nDONE:\n    OUT R3\n    HALT\n\nOUTZERO:\n    OUT 0\n    HALT\n\nOUTONE:\n    OUT 1\n    HALT"
+        ]
       }
-    },
-    "records": [
-      {
-        "attempt": 1,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium",
-          "moderate"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 27,
-        "program_size_bin": "medium",
-        "cyclomatic": 5,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          1006,
-          5006,
-          10006,
-          20006,
-          50006,
-          100006
-        ],
-        "raw_hwms": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "source": "IN R0           ; R0 = n\n\n    ; Handle base cases\n    JZ R0, BASE0    ; if n == 0, output 0\n    MOV R1, 1\n    JZ R1, BASE1    ; never, placeholder\n    ; Check if n == 1\n    MOV R2, 1\n    SUB R2, R0      ; R2 = 1 - n\n    JZ R2, BASE1    ; if n == 1, output 1\n\n    ; General case: iterative fibonacci\n    ; R1 = fib(i-1) = 0 (fib(0))\n    ; R2 = fib(i)   = 1 (fib(1))\n    ; R3 = counter, starts at 1, goes up to n\n    ; R4 = modulus = 1000000007\n\n    MOV R1, 0       ; fib(0)\n    MOV R2, 1       ; fib(1)\n    MOV R3, 1       ; counter = 1\n    MOV R4, 1000000007\n\nLOOP:\n    ; if counter == n, we're done\n    MOV R5, R3\n    SUB R5, R0      ; R5 = counter - n\n    JZ R5, DONE\n\n    ; compute next fib\n    MOV R6, R2      ; R6 = fib(i)\n    ADD R6, R1      ; R6 = fib(i) + fib(i-1)\n    MOD R6, R4      ; R6 = fib(i+1) % MOD\n\n    MOV R1, R2      ; fib(i-1) = fib(i)\n    MOV R2, R6      ; fib(i) = fib(i+1)\n\n    INC R3          ; counter++\n    JMP LOOP\n\nDONE:\n    OUT R2\n    HALT\n\nBASE0:\n    OUT 0\n    HALT\n\nBASE1:\n    OUT 1\n    HALT"
-      },
-      {
-        "attempt": 2,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "small",
-          "simple"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 17,
-        "program_size_bin": "small",
-        "cyclomatic": 3,
-        "cyclomatic_bin": "simple",
-        "raw_insns": [
-          708,
-          3508,
-          7008,
-          14008,
-          35008,
-          70008
-        ],
-        "raw_hwms": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "source": "; Read n into R0\n    IN R0\n\n    ; R1 = a = fib(0) = 0\n    ; R2 = b = fib(1) = 1\n    ; R3 = modulus\n    ; R4 = loop counter (counts down from n to 0)\n    ; Use a count-down loop with a different structure\n\n    MOV R1, 0\n    MOV R2, 1\n    MOV R3, 1000000007\n    MOV R4, R0      ; R4 = n (countdown)\n\n    ; If n == 0, output 0 immediately\n    JZ R4, OUT0\n\n    ; Loop: we do n iterations, each time:\n    ;   temp = a + b\n    ;   a = b\n    ;   b = temp % MOD\n    ; After n iterations, a = fib(n)\n    ; Start: a=fib(0)=0, b=fib(1)=1\n    ; After 1 iter: a=1, b=1  => a=fib(1)\n    ; After 2 iter: a=1, b=2  => a=fib(2)\n    ; So after n iters, a = fib(n)\n\nLOOP:\n    MOV R5, R1      ; R5 = a\n    ADD R5, R2      ; R5 = a + b\n    MOD R5, R3      ; R5 = (a+b) % MOD\n    MOV R1, R2      ; a = b\n    MOV R2, R5      ; b = new value\n    DEC R4          ; countdown--\n    JNZ R4, LOOP    ; if not zero, continue\n\n    OUT R1          ; output a = fib(n)\n    HALT\n\nOUT0:\n    OUT 0\n    HALT"
-      },
-      {
-        "attempt": 3,
-        "correct": false,
-        "error": "case 0: runtime error \u2014 Address 1000000007 out of range"
-      },
-      {
-        "attempt": 4,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(n)",
-          "O(n)",
-          "medium",
-          "moderate"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(n)",
-        "program_size": 27,
-        "program_size_bin": "medium",
-        "cyclomatic": 4,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          1204,
-          6004,
-          12004,
-          24004,
-          60004,
-          120004
-        ],
-        "raw_hwms": [
-          100,
-          500,
-          1000,
-          2000,
-          5000,
-          10000
-        ],
-        "source": "; Fibonacci using memory to store the sequence\n; Store fib values in memory, then read fib(n) from memory\n; This uses a memory-based approach rather than register-only iteration\n\n    IN R0           ; R0 = n\n    MOV R1, 1000000007  ; modulus\n\n    ; Store fib(0) and fib(1) in memory\n    MOV R2, 0\n    STOR R2, [R2+0]     ; mem[0] = 0 = fib(0)\n    MOV R3, 1\n    STOR R3, [R2+1]     ; mem[1] = 1 = fib(1)\n\n    ; If n == 0, output mem[0] = 0\n    JZ R0, OUTPUT\n\n    ; If n == 1, output mem[1] = 1\n    MOV R4, 1\n    MOV R5, R0\n    SUB R5, 1\n    JZ R5, OUTPUT\n\n    ; Build fib table from index 2 up to n\n    ; R3 = current index, starts at 2\n    MOV R3, 2\n\nBUILDLOOP:\n    ; if R3 > R0, done building\n    JGT R3, R0, OUTPUT\n\n    ; mem[R3] = (mem[R3-1] + mem[R3-2]) % MOD\n    MOV R4, R3\n    SUB R4, 1\n    LOAD R5, [R4+0]     ; R5 = mem[R3-1]\n\n    MOV R4, R3\n    SUB R4, 2\n    LOAD R6, [R4+0]     ; R6 = mem[R3-2]\n\n    ADD R5, R6          ; R5 = fib(R3-1) + fib(R3-2)\n    MOD R5, R1          ; R5 %= MOD\n\n    STOR R5, [R3+0]     ; mem[R3] = R5\n\n    INC R3\n    JMP BUILDLOOP\n\nOUTPUT:\n    ; Output mem[n]\n    LOAD R7, [R0+0]\n    OUT R7\n    HALT"
-      },
-      {
-        "attempt": 5,
-        "correct": true,
-        "new_cell": false,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium",
-          "moderate"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 43,
-        "program_size_bin": "medium",
-        "cyclomatic": 6,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          1054,
-          5254,
-          10504,
-          21004,
-          52504,
-          105004
-        ],
-        "raw_hwms": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ],
-        "source": "; Fibonacci using a sliding window with two memory cells\n; and a forward-counting loop that steps by 2 each iteration\n; (unrolled style: do two fib steps per loop iteration)\n\n    IN R0               ; R0 = n\n    MOV R4, 1000000007  ; R4 = MOD\n\n    ; Base cases\n    JZ R0, OUTZERO      ; n == 0 -> output 0\n\n    MOV R5, R0\n    SUB R5, 1\n    JZ R5, OUTONE       ; n == 1 -> output 1\n\n    MOV R5, R0\n    SUB R5, 2\n    JZ R5, OUTONE       ; n == 2 -> output 1\n\n    ; General iterative case\n    ; We'll use two memory slots:\n    ;   mem[0] = fib(even index)\n    ;   mem[1] = fib(odd index)\n    ; Start: mem[0]=fib(0)=0, mem[1]=fib(1)=1\n    ; Each full loop iteration advances by 2:\n    ;   new_even = old_even + old_odd  (mod)\n    ;   new_odd  = new_even + old_odd  (mod)\n    ; Counter R3 starts at 2, increments by 2, until >= n\n\n    MOV R1, 0\n    STOR R1, [R1+0]     ; mem[0] = 0\n    MOV R2, 1\n    STOR R2, [R1+1]     ; mem[1] = 1\n\n    MOV R3, 2           ; R3 = current index (starts at 2)\n\nLOOP2:\n    ; Load current even and odd fib values\n    MOV R6, 0\n    LOAD R1, [R6+0]     ; R1 = fib(even)\n    LOAD R2, [R6+1]     ; R2 = fib(odd)\n\n    ; Step 1: compute fib(even+2) = fib(even) + 2*fib(odd) ... \n    ; Actually: fib(i) = fib(i-2) + fib(i-1)\n    ; fib(R3) = fib(R3-2) + fib(R3-1) = R1 + R2\n    MOV R5, R1\n    ADD R5, R2\n    MOD R5, R4          ; R5 = fib(R3) = new even\n\n    ; Check if R3 == n\n    MOV R7, R3\n    SUB R7, R0\n    JZ R7, OUTEVEN      ; if R3 == n, output R5\n\n    ; Step 2: fib(R3+1) = fib(R3) + fib(R3-1) = R5 + R2\n    MOV R1, R5\n    ADD R1, R2\n    MOD R1, R4          ; R1 = fib(R3+1) = new odd\n\n    ; Check if R3+1 == n\n    MOV R7, R3\n    ADD R7, 1\n    SUB R7, R0\n    JZ R7, OUTODD       ; if R3+1 == n, output R1\n\n    ; Store updated values back to memory\n    MOV R6, 0\n    STOR R5, [R6+0]     ; mem[0] = fib(R3)\n    STOR R1, [R6+1]     ; mem[1] = fib(R3+1)\n\n    ADD R3, 2\n    JMP LOOP2\n\nOUTEVEN:\n    OUT R5\n    HALT\n\nOUTODD:\n    OUT R1\n    HALT\n\nOUTZERO:\n    OUT 0\n    HALT\n\nOUTONE:\n    OUT 1\n    HALT"
-      },
-      {
-        "attempt": 6,
-        "correct": false,
-        "error": "case 2: inputs=[2] \u2192 outputs=[0], expected=[1]"
-      },
-      {
-        "attempt": 7,
-        "correct": true,
-        "new_cell": true,
-        "cell": [
-          "O(log n)",
-          "O(log n)",
-          "large",
-          "moderate"
-        ],
-        "time_complexity": "O(log n)",
-        "space_complexity": "O(log n)",
-        "program_size": 51,
-        "program_size_bin": "large",
-        "cyclomatic": 6,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          230,
-          303,
-          332,
-          361,
-          414,
-          443
-        ],
-        "raw_hwms": [
-          6,
-          8,
-          9,
-          10,
-          12,
-          13
-        ],
-        "source": "; Fibonacci using matrix exponentiation approach (iterative doubling method)\n; fib(2k)   = fib(k) * (2*fib(k+1) - fib(k))\n; fib(2k+1) = fib(k)^2 + fib(k+1)^2\n; This is O(log n) time, fundamentally different from all previous O(n) iterative solutions\n\n; We'll use a recursive-style stack simulation stored in memory\n; Stack stores bits of n (LSB to MSB), then we process from MSB to LSB\n\n    IN R0               ; R0 = n\n    MOV R6, 1000000007  ; R6 = MOD\n\n    ; Base cases\n    JZ R0, OUTZERO\n\n    MOV R1, R0\n    SUB R1, 1\n    JZ R1, OUTONE\n\n    ; Extract bits of n and store them in memory (LSB first)\n    ; mem[0], mem[1], ... = bits from LSB to MSB\n    MOV R1, R0          ; R1 = n (working copy)\n    MOV R2, 0           ; R2 = bit index / count\n\nEXTRACT:\n    JZ R1, EXTRACTED\n    MOV R3, R1\n    MOD R3, 2           ; R3 = R1 % 2 (LSB)\n    STOR R3, [R2+0]     ; mem[R2] = bit\n    INC R2\n    DIV R1, 2           ; R1 >>= 1\n    JMP EXTRACT\n\nEXTRACTED:\n    ; R2 = number of bits stored\n    ; Process from MSB (index R2-1) down to 0\n    ; Start with a=fib(0)=0, b=fib(1)=1\n    MOV R3, 0           ; R3 = a = fib(k)\n    MOV R4, 1           ; R4 = b = fib(k+1)\n\n    ; Start from MSB: index = R2-1\n    DEC R2              ; R2 = index of MSB\n\nBITLOOP:\n    ; Doubling step:\n    ; c = a * (2*b - a) mod MOD\n    ; d = a*a + b*b mod MOD\n    ; a = c, b = d\n\n    ; Compute 2*b - a\n    MOV R5, R4\n    MUL R5, 2           ; R5 = 2*b\n    SUB R5, R3          ; R5 = 2*b - a\n    MOD R5, R6          ; R5 %= MOD\n\n    ; Compute c = a * (2*b - a) mod MOD\n    MOV R7, R3\n    MUL R7, R5          ; R7 = a * (2*b - a)\n    MOD R7, R6          ; R7 = c = fib(2k)\n\n    ; Compute d = a*a + b*b mod MOD\n    MOV R5, R3\n    MUL R5, R3          ; R5 = a*a\n    MOD R5, R6\n    MOV R1, R4\n    MUL R1, R4          ; R1 = b*b\n    MOD R1, R6\n    ADD R5, R1          ; R5 = a*a + b*b\n    MOD R5, R6          ; R5 = d = fib(2k+1)\n\n    ; a = c, b = d\n    MOV R3, R7\n    MOV R4, R5\n\n    ; Check current bit\n    LOAD R1, [R2+0]     ; R1 = bit at index R2\n    JZ R1, BITISZERO\n\n    ; Bit is 1: advance one step\n    ; new_a = b, new_b = a + b\n    MOV R5, R3\n    ADD R5, R4          ; R5 = a + b\n    MOD R5, R6\n    MOV R3, R4          ; a = b\n    MOV R4, R5          ; b = a + b\n\nBITISZERO:\n    ; Move to next bit (going toward LSB)\n    JZ R2, DONE\n    DEC R2\n    JMP BITLOOP\n\nDONE:\n    OUT R3\n    HALT\n\nOUTZERO:\n    OUT 0\n    HALT\n\nOUTONE:\n    OUT 1\n    HALT"
-      },
-      {
-        "attempt": 8,
-        "correct": false,
-        "error": "case 2: runtime error \u2014 Address -2 out of range"
-      },
-      {
-        "attempt": 9,
-        "correct": false,
-        "error": "case 2: runtime error \u2014 Address -1 out of range"
-      },
-      {
-        "attempt": 10,
-        "correct": false,
-        "error": "case 8: runtime error \u2014 Step limit exceeded"
-      },
-      {
-        "attempt": 11,
-        "correct": false,
-        "error": "case 2: inputs=[2] \u2192 outputs=[0], expected=[1]"
-      },
-      {
-        "attempt": 12,
-        "correct": true,
-        "new_cell": false,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium",
-          "moderate"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 40,
-        "program_size_bin": "medium",
-        "cyclomatic": 4,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          1586,
-          7986,
-          15986,
-          31986,
-          79986,
-          159986
-        ],
-        "raw_hwms": [
-          2,
-          2,
-          2,
-          2,
-          2,
-          2
-        ],
-        "source": "IN R0               ; R0 = n\n    MOV R5, 1000000007  ; R5 = MOD\n\n    ; Store fib values in a rotating buffer of size 3 in memory\n    ; mem[0]=0, mem[1]=1, mem[2]=1 initially (fib(0),fib(1),fib(2))\n    ; Then for i>=3: mem[i%3] = (mem[(i-1)%3] + mem[(i-2)%3]) % MOD\n    ; Answer is mem[n%3]\n\n    ; Handle n=0\n    JZ R0, OUTZERO\n\n    ; Initialize buffer\n    MOV R1, 0\n    STOR R1, [R1+0]     ; mem[0] = 0 = fib(0)\n    MOV R1, 1\n    MOV R2, 0\n    STOR R1, [R2+1]     ; mem[1] = 1 = fib(1)\n    STOR R1, [R2+2]     ; mem[2] = 1 = fib(2)\n\n    ; If n <= 2, answer is mem[n] directly (fib(1)=1, fib(2)=1)\n    MOV R3, 3\n    JLT R0, R3, DIRECTOUT\n\n    ; General loop: i goes from 3 to n\n    MOV R3, 3           ; R3 = i\n\nMAINLOOP:\n    JGT R3, R0, LOOPEND\n\n    ; Compute index slots: i%3, (i-1)%3, (i-2)%3\n    MOV R1, R3\n    MOD R1, 3           ; R1 = i%3\n\n    MOV R2, R3\n    SUB R2, 1\n    MOD R2, 3           ; R2 = (i-1)%3\n\n    MOV R4, R3\n    SUB R4, 2\n    MOD R4, 3           ; R4 = (i-2)%3\n\n    LOAD R6, [R2+0]     ; R6 = mem[(i-1)%3] = fib(i-1)\n    LOAD R7, [R4+0]     ; R7 = mem[(i-2)%3] = fib(i-2)\n\n    ADD R6, R7          ; R6 = fib(i-1) + fib(i-2)\n    MOD R6, R5          ; R6 %= MOD\n\n    STOR R6, [R1+0]     ; mem[i%3] = fib(i)\n\n    INC R3\n    JMP MAINLOOP\n\nLOOPEND:\n    ; Answer is mem[n%3]\n    MOV R1, R0\n    MOD R1, 3\n    LOAD R7, [R1+0]\n    OUT R7\n    HALT\n\nDIRECTOUT:\n    ; n is 1 or 2, both give fib=1; or general small\n    MOV R1, R0\n    MOD R1, 3\n    LOAD R7, [R1+0]\n    OUT R7\n    HALT\n\nOUTZERO:\n    OUT 0\n    HALT"
-      },
-      {
-        "attempt": 13,
-        "correct": true,
-        "new_cell": false,
-        "cell": [
-          "O(n)",
-          "O(1)",
-          "medium",
-          "moderate"
-        ],
-        "time_complexity": "O(n)",
-        "space_complexity": "O(1)",
-        "program_size": 50,
-        "program_size_bin": "medium",
-        "cyclomatic": 6,
-        "cyclomatic_bin": "moderate",
-        "raw_insns": [
-          1550,
-          7750,
-          15500,
-          31000,
-          77500,
-          155000
-        ],
-        "raw_hwms": [
-          11,
-          11,
-          11,
-          11,
-          11,
-          11
-        ],
-        "source": "; Fibonacci using parity-based dual-chain update\n; Chain A: holds fib at even steps, Chain B: holds fib at odd steps\n; mem[10] = chain A value, mem[11] = chain B value\n; We track parity of current index and update accordingly\n; This is structurally different: no \"swap\" of registers, instead\n; we use memory slots selected by parity bit\n\n    IN R0               ; R0 = n\n    MOV R1, 1000000007  ; R1 = MOD\n\n    ; Handle n == 0\n    JZ R0, OUTZERO\n\n    ; Initialize:\n    ; mem[10] = fib(0) = 0  (even chain)\n    ; mem[11] = fib(1) = 1  (odd chain)\n    MOV R2, 0\n    STOR R2, [R2+10]    ; mem[10] = 0\n    MOV R3, 1\n    MOV R4, 0\n    STOR R3, [R4+11]    ; mem[11] = 1\n\n    ; If n == 1, answer is mem[11] = 1\n    MOV R5, R0\n    SUB R5, 1\n    JZ R5, OUTONE\n\n    ; R3 = current index, starts at 2\n    ; R4 = parity of current index (0=even, 1=odd)\n    MOV R3, 2           ; current index\n    MOV R4, 0           ; parity = even (index 2 is even)\n\nLOOP:\n    ; We compute fib(R3) = fib(R3-1) + fib(R3-2)\n    ; fib(R3-1) is in the opposite parity chain from R3\n    ; fib(R3-2) is in the same parity chain as R3\n    ; If R3 is even: fib(R3-1) in mem[11] (odd), fib(R3-2) in mem[10] (even)\n    ; If R3 is odd:  fib(R3-1) in mem[10] (even), fib(R3-2) in mem[11] (odd)\n\n    JNZ R4, ODDINDEX\n\n    ; Even index: fib(R3) = mem[11] + mem[10]\n    MOV R5, 0\n    LOAD R6, [R5+11]    ; R6 = fib(R3-1) from odd chain\n    LOAD R7, [R5+10]    ; R7 = fib(R3-2) from even chain\n    ADD R6, R7\n    MOD R6, R1          ; R6 = fib(R3)\n    STOR R6, [R5+10]    ; update even chain\n    JMP CHECKDONE\n\nODDINDEX:\n    ; Odd index: fib(R3) = mem[10] + mem[11]\n    MOV R5, 0\n    LOAD R6, [R5+10]    ; R6 = fib(R3-1) from even chain\n    LOAD R7, [R5+11]    ; R7 = fib(R3-2) from odd chain\n    ADD R6, R7\n    MOD R6, R1          ; R6 = fib(R3)\n    STOR R6, [R5+11]    ; update odd chain\n\nCHECKDONE:\n    ; Check if R3 == n\n    MOV R7, R3\n    SUB R7, R0\n    JZ R7, DONE\n\n    ; Advance: flip parity, increment index\n    ; Flip parity: if R4==0 set R4=1, else set R4=0\n    MOV R7, 1\n    SUB R7, R4\n    MOV R4, R7\n\n    INC R3\n    JMP LOOP\n\nDONE:\n    ; Answer is in the chain corresponding to parity of n\n    MOV R5, R0\n    MOD R5, 2           ; R5 = n % 2 (parity of n)\n    JNZ R5, ODDOUT\n\n    ; Even: answer in mem[10]\n    MOV R7, 0\n    LOAD R6, [R7+10]\n    OUT R6\n    HALT\n\nODDOUT:\n    ; Odd: answer in mem[11]\n    MOV R7, 0\n    LOAD R6, [R7+11]\n    OUT R6\n    HALT\n\nOUTZERO:\n    OUT 0\n    HALT\n\nOUTONE:\n    OUT 1\n    HALT"
-      }
-    ]
+    }
   }
 }
