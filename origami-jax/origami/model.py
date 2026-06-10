@@ -47,7 +47,10 @@ def _nominal_angles(pos: np.ndarray, faces: np.ndarray) -> np.ndarray:
         return v / np.linalg.norm(v, axis=-1, keepdims=True)
 
     ab, ac, bc = unit(b - a), unit(c - a), unit(c - b)
-    dot = lambda u, v: np.clip(np.sum(u * v, axis=-1), -1.0, 1.0)
+
+    def dot(u, v):
+        return np.clip(np.sum(u * v, axis=-1), -1.0, 1.0)
+
     return np.stack(
         [np.arccos(dot(ab, ac)), np.arccos(-dot(ab, bc)), np.arccos(dot(ac, bc))],
         axis=-1,

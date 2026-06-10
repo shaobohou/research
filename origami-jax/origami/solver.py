@@ -21,7 +21,6 @@ from typing import NamedTuple
 
 import jax
 import jax.numpy as jnp
-import numpy as np
 
 from .model import OrigamiModel
 
@@ -164,7 +163,9 @@ def step(c: SolverConstants, state: SolverState, crease_percent) -> SolverState:
     uab = ab / lab[:, None]
     uac = ac / lac[:, None]
     ubc = bc / lbc[:, None]
-    dot = lambda u, w: jnp.clip(jnp.sum(u * w, axis=-1), -1.0, 1.0)
+    def dot(u, w):
+        return jnp.clip(jnp.sum(u * w, axis=-1), -1.0, 1.0)
+
     angles = jnp.stack(
         [jnp.arccos(dot(uab, uac)), jnp.arccos(-dot(uab, ubc)), jnp.arccos(dot(uac, ubc))],
         axis=-1)

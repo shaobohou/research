@@ -41,7 +41,9 @@ for r in renders:
     diff = np.abs(img.astype(np.int16) - ref.astype(np.int16)).max(axis=2)
 
     name = os.path.basename(gt_dir.rstrip("/")) + "_" + r["image"].removesuffix(".png")
-    pct = lambda t: 100.0 * np.mean(diff <= t)
+    def pct(t):
+        return 100.0 * np.mean(diff <= t)
+
     print(f"{name}: identical {pct(0):6.2f}%  |d|<=2 {pct(2):6.2f}%  "
           f"|d|<=8 {pct(8):6.2f}%  mean|d| {diff.mean():6.3f}  max|d| {diff.max()}")
 
