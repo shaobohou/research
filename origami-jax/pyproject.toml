@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = []
+dev = ["pytest"]
 
 [tool.uv]
 package = false

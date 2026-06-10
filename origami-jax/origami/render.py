@@ -175,7 +175,9 @@ def render(
     tri_w = clip_w[faces]  # (F,3)
     tri_world = positions[faces]
 
-    a2 = np.cross(tri_xy[:, 1] - tri_xy[:, 0], tri_xy[:, 2] - tri_xy[:, 0])
+    e1 = tri_xy[:, 1] - tri_xy[:, 0]
+    e2 = tri_xy[:, 2] - tri_xy[:, 0]
+    a2 = e1[:, 0] * e2[:, 1] - e1[:, 1] * e2[:, 0]  # 2D cross (signed area * 2)
     # screen y points down here; GL front-facing (CCW in GL window coords) => a2 < 0
     is_front = a2 < 0.0
 
