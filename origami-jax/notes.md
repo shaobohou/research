@@ -124,3 +124,21 @@ w (angular velocity) output but unused (damping term on crease commented out in 
   becomes face1. After fix: 0 differing crease entries, trajectory bit-faithful.
 - Quad triangulation in the original splits along the *shorter diagonal*
   (not a fan) - matched in load_fold.
+- Stress tests (looking for models with bigger differences): hypar (chaotic,
+  all-facet), Bistable/curvedPleatSimple, langOrchid (complex SVG) all match
+  *tighter* than the crane (settled-state error 1e-6..7e-6 relative across
+  0/30/60/90%, pixels 93-99% exact). Bistability doesn't split the solvers
+  because both follow the same deterministic ramp from the same flat reset.
+- crane at 99% fold: worst finite physics case, 1.6e-3 relative max error
+  (collapsing creases -> tiny moment arms -> fp32 sensitivity); render still
+  97.9% exact.
+- REAL divergence found: needsCollisions/rose.svg. The ORIGINAL GPU solver
+  NaNs at step <=1 (positions read back as 2^127 float garbage; reference
+  screenshots render a blank canvas). Cause: the SVG import produces 27
+  exactly-degenerate triangles (area ~1e-11, |dot| = 1.0 to 10 decimals);
+  in fp32 the dot rounds slightly above 1 and the face-constraint shader's
+  acos() is UNCLAMPED in the original (thetaCalc clamps, velocityCalc's face
+  angles don't) -> NaN forces -> whole state NaN in one step. Our JAX port
+  clips acos inputs to [-1,1] and stays stable (max|p| ~ 0.95 over 3000 steps,
+  plausible crumpled rose). So the only model with a "significant difference"
+  is one where the original itself breaks down.

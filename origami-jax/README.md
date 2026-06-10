@@ -58,6 +58,25 @@ Side-by-side (original left, NumPy right), 60% folded:
 
 Fold animation (JAX + NumPy only): `output/crane_fold.gif`, `output/waterbomb_fold.gif`.
 
+### Stress tests: where do the implementations diverge?
+
+Models picked to provoke differences (chaotic, bistable, complex SVG imports,
+self-intersecting): the hypar, the bistable curved pleat, and Lang's orchid all
+agree *tighter* than the crane (settled-state physics error 1e-6–7e-6 relative,
+93–99% pixels exact across 0/30/60/90%). Bistability doesn't separate the
+solvers because both follow the same deterministic ramp from the same reset.
+The crane at 99% fold is the worst finite physics case (1.6e-3 relative —
+collapsing creases mean tiny moment arms and float32 sensitivity; still 97.9%
+of pixels exact).
+
+The one model with a qualitative difference is `needsCollisions/rose.svg`,
+and there the **original** breaks, not the port: its SVG import yields 27
+exactly-degenerate triangles, float32 rounds their angle dot-products just
+above 1, and the original's face-constraint shader calls `acos()` unclamped →
+the GPU state is NaN within one step (the reference canvas renders blank).
+The JAX port clamps `acos` inputs and remains stable, producing a plausible
+(collision-free) crumpled rose. See `output/rose_render_60_side_by_side.png`.
+
 ## Layout
 
 ```

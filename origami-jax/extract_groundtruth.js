@@ -129,8 +129,9 @@ const W = 800, H = 600;
   });
 
   // reference renders at several fold percents (after settling), plus camera + positions
+  const PCTS = (process.env.PCTS || '0,0.3,0.6,0.9').split(',').map(Number);
   const renders = [];
-  for (const pct of [0.0, 0.3, 0.6, 0.9]) {
+  for (const pct of PCTS) {
     await page.evaluate(p => {
       globals.creasePercent = p;
       globals.shouldChangeCreasePercent = true;
