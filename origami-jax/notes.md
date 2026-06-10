@@ -142,3 +142,12 @@ w (angular velocity) output but unused (damping term on crease commented out in 
   clips acos inputs to [-1,1] and stays stable (max|p| ~ 0.95 over 3000 steps,
   plausible crumpled rose). So the only model with a "significant difference"
   is one where the original itself breaks down.
+- Multi-view comparison (extract_views.js / compare_views.py): iso + six axis
+  views x 5 models at 60% fold, all using setCameraX/Y/Z/Iso (TrackballControls
+  reset keeps the sqrt(75) orbit radius -> axis cams at +-8.66). All 35 views
+  agree 89.6-99.5% exact, >=97.1% within +-2. Side views best; top/bottom worst
+  (full crease grid on screen; 99.5% of >2-off pixels lie on the 1px lines).
+  Top/bottom views needed r87 Matrix4.lookAt's degenerate-up nudge
+  (z.z += 1e-4 when up || view dir) added to look_at_inverse; analytic camera
+  matches all dumped matrices to 1e-5. Front/back material switch verified
+  (top all pink, bottom all gray).

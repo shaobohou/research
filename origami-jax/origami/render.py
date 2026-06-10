@@ -60,11 +60,23 @@ def hex_to_rgb(h: str) -> np.ndarray:
 
 
 def look_at_inverse(eye, target, up) -> np.ndarray:
-    """three.js Object3D.lookAt camera convention -> matrixWorldInverse (view matrix)."""
-    eye, target, up = map(np.asarray, (eye, target, up))
+    """three.js Object3D.lookAt camera convention -> matrixWorldInverse (view matrix).
+
+    Replicates r87 Matrix4.lookAt, including the epsilon nudge when the view
+    direction is parallel to `up` (straight top/bottom views)."""
+    eye, target, up = (np.asarray(v, dtype=np.float64) for v in (eye, target, up))
     z = eye - target
+    if z @ z == 0.0:
+        z = np.array([0.0, 0.0, 1.0])
     z = z / np.linalg.norm(z)
     x = np.cross(up, z)
+    if x @ x == 0.0:  # up and z parallel
+        if abs(up[2]) == 1.0:
+            z = z + [1e-4, 0.0, 0.0]
+        else:
+            z = z + [0.0, 0.0, 1e-4]
+        z = z / np.linalg.norm(z)
+        x = np.cross(up, z)
     x = x / np.linalg.norm(x)
     y = np.cross(z, x)
     view = np.eye(4)

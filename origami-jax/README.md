@@ -77,6 +77,29 @@ the GPU state is NaN within one step (the reference canvas renders blank).
 The JAX port clamps `acos` inputs and remains stable, producing a plausible
 (collision-free) crumpled rose. See `output/rose_render_60_side_by_side.png`.
 
+### Multi-view rendering comparison
+
+`extract_views.js` + `compare_views.py` compare renders from every camera view
+the original app exposes (iso + the six axis views, 60% folded). Pixels exactly
+identical / within ±2 per view:
+
+| model | iso | ±x | +y (top) | -y (bottom) | ±z |
+|---|---|---|---|---|---|
+| crane | 98.1 / 99.5% | 98.6 / 99.7% | 96.9 / 99.3% | 98.0 / 99.2% | 98.6 / 99.7% |
+| waterbomb | 95.7 / 98.5% | 98.5 / 99.5% | 93.5 / 97.3% | 95.3 / 97.7% | 98.2 / 99.4% |
+| box pleat | 98.0 / 99.1% | 99.1 / 99.6% | 96.4 / 98.2% | 94.9 / 98.3% | 99.1 / 99.5% |
+| orchid | 97.7 / 99.3% | 99.2 / 99.7% | 96.7 / 98.8% | 98.1 / 99.0% | 99.2 / 99.8% |
+| hypar | 95.4 / 99.5% | 99.5 / 99.9% | 89.6 / 97.2% | 93.5 / 97.1% | 99.4 / 99.9% |
+
+Side (±x/±z) views agree best; straight-down/up views are the hardest because
+the full crease-line grid fills the screen — in the worst case (hypar top view)
+99.5% of the differing pixels lie on the 1px black lines (AA rules), with face
+shading still exact. This also exercises the front/back material switch (top
+view all #ec008b, bottom all #dddddd) and three.js's degenerate `lookAt`
+handling when the view direction is parallel to the up vector (replicated in
+`look_at_inverse`). Contact sheets: `output/<model>_views_contact_sheet.png`
+(rows: original / NumPy / diff heat map).
+
 ## Layout
 
 ```
