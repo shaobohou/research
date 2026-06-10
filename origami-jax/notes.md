@@ -160,3 +160,23 @@ w (angular velocity) output but unused (damping term on crease commented out in 
   no static equilibrium exists). Comparisons are unaffected: both solvers ran
   the identical reset + N-step protocol, so all fidelity numbers compare
   matched mid-relaxation states (a stricter, trajectory-level test).
+- Standalone SVG importer (origami/svg_import.py), reimplementing the
+  pattern.js loadSVG/parseSVG pipeline + the fold.js helpers it uses:
+  stroke-color classification (fold angle = opacity*180), per-kind parse order
+  (paths, lines, rects, polygons, polylines per color pass - this ordering
+  MATTERS: it decides merge representatives; document-order parsing made the
+  orchid's coords drift by tolerance-scale 1.7e-3), grid-hash vertex merge
+  (strict < tol, last coordinate wins per fold.js remapField), loop/duplicate
+  edge removal (last assignment wins), pairwise crossing-edge splitting with
+  endpoint snapping (replicating findIntersections' splice arithmetic), stray
+  vertex removal, collinear degree-2 dissolution (dot ~ -1, eps 0.01, only
+  when assignments agree), planar faces via CCW angular sort + next-edge
+  traversal keeping positive orientation, border-only face (hole) removal,
+  face winding reversal. Validated on 5 SVGs vs the browser's own import:
+  identical vertices/edges/faces/creases, positions to float32 noise (1.2e-7);
+  the orchid has 8 creases stored orientation-flipped (crease vector + both
+  node pairs swap together = identical physics; verified theta invariant).
+  Fully browser-free svg->solve->render reproduces original screenshots at
+  95.4-99.1% exact pixels. Limitations: no path curves, no cut (C) splitting
+  (raises SVGImportError). testdata/traditionalCrane.svg copied from the
+  original repo (MIT) for the regression test.

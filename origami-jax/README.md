@@ -100,16 +100,40 @@ handling when the view direction is parallel to the up vector (replicated in
 `look_at_inverse`). Contact sheets: `output/<model>_views_contact_sheet.png`
 (rows: original / NumPy / diff heat map).
 
+### Standalone SVG import
+
+`origami/svg_import.py` reimplements the original's full SVG crease-pattern
+importer in pure Python — no browser needed. `svg_to_fold(path)` parses
+paths/lines/rects/polygons/polylines (presentation attributes, inline styles,
+and `<style>` class rules; transforms applied innermost-first), classifies
+edges by stroke color (black=B, red=M, blue=V, yellow=F, magenta=U; fold angle
+= stroke opacity × 180°), then runs the same cleanup pipeline: vertex merge
+within tolerance (grid hash, 3 SVG units), duplicate/loop edge removal,
+pairwise crossing-edge splitting with endpoint snapping, stray-vertex removal,
+collinear degree-2 vertex dissolution, planar face traversal (CCW angular
+sort), and border-only-face (hole) removal. Output is a FOLD dict that
+`load_fold` accepts directly.
+
+Validated against the original's own import (the browser-extracted
+`model.json` files) on five SVGs — crane, hypar, waterbomb tessellation,
+Lang's orchid, bistable pleat: identical vertex/edge/face/crease structure
+with positions matching to float32 noise (≤1.2e-7), and the fully
+browser-free pipeline (`svg → solve → render`) reproduces the original's
+screenshots at 95.4–99.1% exactly-identical pixels (`compare_svg_import.py`).
+Limitations: no path curve commands (like the original's non-curve importer)
+and no cut ("C") edge splitting — `SVGImportError` is raised for cuts.
+
 ## Layout
 
 ```
 origami-jax/
 ├── origami/
-│   ├── model.py    # model container; load model.json exports or FOLD files
-│   │               # (quad split by shorter diagonal, crease params, centering
-│   │               #  + bounding-sphere scaling, exactly like the original)
-│   ├── solver.py   # JAX solver: step() + jitted simulate(); float32 like the GPU
-│   └── render.py   # NumPy rasterizer: three.js r87 camera/Phong/MSAA replication
+│   ├── model.py       # model container; load model.json exports or FOLD files
+│   │                  # (quad split by shorter diagonal, crease params, centering
+│   │                  #  + bounding-sphere scaling, exactly like the original)
+│   ├── svg_import.py  # standalone SVG -> FOLD importer (pattern.js pipeline)
+│   ├── solver.py      # JAX solver: step() + jitted simulate(); float32 like the GPU
+│   └── render.py      # NumPy rasterizer: three.js r87 camera/Phong/MSAA replication
 ├── extract_groundtruth.js  # drives the real app headless (playwright-core)
 ├── compare_physics.py      # trajectory comparison + benchmark
 ├── compare_render.py       # pixel comparison, writes side-by-side/diff images

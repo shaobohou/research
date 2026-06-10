@@ -90,3 +90,21 @@ def test_end_to_end_fold_and_render(model_and_params):
     img = render(pos, model.faces, visible_line_segments(model.lines), width=200, height=150)
     assert img.shape == (150, 200, 3)
     assert (img != 255).any(), "render should not be blank"
+
+
+def test_svg_import_matches_browser_import():
+    """The standalone SVG importer must reproduce the original app's import
+    (groundtruth/crane/model.json came from the browser importing this SVG)."""
+    from origami.model import load_fold
+    from origami.svg_import import svg_to_fold
+
+    fold = svg_to_fold(str(Path(__file__).parent.parent / "testdata" / "traditionalCrane.svg"))
+    assert not fold["ignored_strokes"]
+    ours = load_fold(fold)
+    ref, _ = load_model_json(str(GT / "model.json"))
+    assert ours.num_nodes == ref.num_nodes == 60
+    assert np.abs(ours.pos0 - ref.pos0).max() < 1e-5
+    assert {tuple(sorted(e)) for e in ours.edges.tolist()} == {tuple(sorted(e)) for e in ref.edges.tolist()}
+    assert {tuple(f) for f in ours.faces.tolist()} == {tuple(f) for f in ref.faces.tolist()}
+    assert len(ours.crease_k) == len(ref.crease_k)
+    np.testing.assert_allclose(np.sort(ours.crease_k), np.sort(ref.crease_k), atol=1e-4)

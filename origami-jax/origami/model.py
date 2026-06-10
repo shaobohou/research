@@ -101,18 +101,23 @@ def load_model_json(path: str) -> tuple[OrigamiModel, dict]:
 
 
 def load_fold(
-    path: str,
+    fold_or_path: str | dict,
     axial_stiffness: float = 20.0,
     crease_stiffness: float = 0.7,
     panel_stiffness: float = 0.7,
     percent_damping: float = 0.45,
 ) -> OrigamiModel:
     """Standalone FOLD loader replicating the original's preprocessing
-    (pattern.js processFold + model.js sync) for FOLD files that already carry
-    edges_foldAngle. Polygon faces are fan-triangulated; new facet edges get
-    assignment "F" with fold angle 0, like triangulatePolys()."""
-    with open(path) as f:
-        fold = json.load(f)
+    (pattern.js processFold + model.js sync) for FOLD data that already carries
+    edges_foldAngle. Accepts a file path or a FOLD dict (e.g. from
+    origami.svg_import.svg_to_fold). Polygon faces are fan-triangulated;
+    new facet edges get assignment "F" with fold angle 0, like
+    triangulatePolys()."""
+    if isinstance(fold_or_path, dict):
+        fold = fold_or_path
+    else:
+        with open(fold_or_path) as f:
+            fold = json.load(f)
 
     verts = [v if len(v) == 3 else [v[0], 0.0, v[1]] for v in fold["vertices_coords"]]
     pos = np.asarray(verts, dtype=np.float64)
