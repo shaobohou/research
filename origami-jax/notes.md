@@ -126,7 +126,7 @@ w (angular velocity) output but unused (damping term on crease commented out in 
   (not a fan) - matched in load_fold.
 - Stress tests (looking for models with bigger differences): hypar (chaotic,
   all-facet), Bistable/curvedPleatSimple, langOrchid (complex SVG) all match
-  *tighter* than the crane (settled-state error 1e-6..7e-6 relative across
+  *tighter* than the crane (error after 3000 steps 1e-6..7e-6 relative across
   0/30/60/90%, pixels 93-99% exact). Bistability doesn't split the solvers
   because both follow the same deterministic ramp from the same flat reset.
 - crane at 99% fold: worst finite physics case, 1.6e-3 relative max error
@@ -151,3 +151,12 @@ w (angular velocity) output but unused (damping term on crease commented out in 
   (z.z += 1e-4 when up || view dir) added to look_at_inverse; analytic camera
   matches all dumped matrices to 1e-5. Front/back material switch verified
   (top all pink, bottom all gray).
+- Convergence check: the 3000-step "settle" used throughout (matching the
+  extraction protocol) is NOT full convergence - residual max|v| 1e-3..3e-2,
+  and 3k->9k steps still drifts geometry by up to 6e-1 of extent (hypar 90%).
+  hypar@90% truly converges by ~30k steps (max|v| 5e-6, then zero drift);
+  crane@60% never converges (max|v| oscillates 5e-3..3e-2 even at 100k steps -
+  sustained ringing from near-degenerate creases around the disable threshold;
+  no static equilibrium exists). Comparisons are unaffected: both solvers ran
+  the identical reset + N-step protocol, so all fidelity numbers compare
+  matched mid-relaxation states (a stricter, trajectory-level test).

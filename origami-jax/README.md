@@ -62,7 +62,7 @@ Fold animation (JAX + NumPy only): `output/crane_fold.gif`, `output/waterbomb_fo
 
 Models picked to provoke differences (chaotic, bistable, complex SVG imports,
 self-intersecting): the hypar, the bistable curved pleat, and Lang's orchid all
-agree *tighter* than the crane (settled-state physics error 1e-6–7e-6 relative,
+agree *tighter* than the crane (state-after-3000-steps physics error 1e-6–7e-6 relative,
 93–99% pixels exact across 0/30/60/90%). Bistability doesn't separate the
 solvers because both follow the same deterministic ramp from the same reset.
 The crane at 99% fold is the worst finite physics case (1.6e-3 relative —
