@@ -9,5 +9,8 @@ dependencies = [
     "pillow",
 ]
 
+[project.optional-dependencies]
+dev = []
+
 [tool.uv]
 package = false

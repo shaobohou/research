@@ -202,6 +202,7 @@ requires-dist = [
     { name = "numpy" },
     { name = "pillow" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "pillow"

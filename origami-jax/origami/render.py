@@ -209,7 +209,7 @@ def render(
         for k in range(3):
             i, j = (k + 1) % 3, (k + 2) % 3
             lam[k] = ((v[i, 0] - sx) * (v[j, 1] - sy) - (v[i, 1] - sy) * (v[j, 0] - sx)) / area2
-        covered = (lam >= 0.0).all(axis=0)  # (ny,nx,S)
+        covered = np.all(lam >= 0.0, axis=0)  # (ny,nx,S)
         if not covered.any():
             continue
 
@@ -218,7 +218,7 @@ def render(
         m = max(abs(plane[0]), abs(plane[1]))
         offset = POLY_OFFSET_FACTOR * m + POLY_OFFSET_UNITS * DEPTH_EPS
 
-        pix_any = covered.any(axis=2)  # (ny,nx) pixels needing shading
+        pix_any = np.any(covered, axis=2)  # (ny,nx) pixels needing shading
         py, px = np.nonzero(pix_any)
 
         # shade once per pixel at the pixel center (MSAA-style)
