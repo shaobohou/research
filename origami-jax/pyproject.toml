@@ -1,0 +1,13 @@
+[project]
+name = "origami-jax"
+version = "0.1.0"
+description = "OrigamiSimulator physics in JAX + rendering in pure NumPy"
+requires-python = ">=3.11"
+dependencies = [
+    "jax>=0.4.30",
+    "numpy",
+    "pillow",
+]
+
+[tool.uv]
+package = false
