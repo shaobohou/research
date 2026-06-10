@@ -6,6 +6,7 @@ feeds its GPU solver. Can be built from:
   - a FOLD file with triangular faces (loads + triangulates quads by fan split,
     centers and scales like model.js sync()).
 """
+
 from __future__ import annotations
 
 import json
@@ -17,20 +18,20 @@ import numpy as np
 
 @dataclass
 class OrigamiModel:
-    pos0: np.ndarray            # (N,3) float32, original (centered+scaled) positions
-    fixed: np.ndarray           # (N,) bool
-    mass: np.ndarray            # (N,) float32
-    edges: np.ndarray           # (E,2) int32
-    edge_k: np.ndarray          # (E,) float32   axialStiffness / restLength
-    edge_d: np.ndarray          # (E,) float32   damping coefficient
-    edge_l0: np.ndarray         # (E,) float32   rest length
-    faces: np.ndarray           # (F,3) int32
+    pos0: np.ndarray  # (N,3) float32, original (centered+scaled) positions
+    fixed: np.ndarray  # (N,) bool
+    mass: np.ndarray  # (N,) float32
+    edges: np.ndarray  # (E,2) int32
+    edge_k: np.ndarray  # (E,) float32   axialStiffness / restLength
+    edge_d: np.ndarray  # (E,) float32   damping coefficient
+    edge_l0: np.ndarray  # (E,) float32   rest length
+    faces: np.ndarray  # (F,3) int32
     nominal_angles: np.ndarray  # (F,3) float32  triangle angles at rest
     # creases: per fold/facet edge with two adjacent faces
-    crease_faces: np.ndarray    # (C,2) int32  [face1, face2]
-    crease_nodes: np.ndarray    # (C,4) int32  [node1(opp f1), node2(opp f2), edge n3, edge n4]
-    crease_k: np.ndarray        # (C,) float32
-    crease_target: np.ndarray   # (C,) float32  target fold angle (radians)
+    crease_faces: np.ndarray  # (C,2) int32  [face1, face2]
+    crease_nodes: np.ndarray  # (C,4) int32  [node1(opp f1), node2(opp f2), edge n3, edge n4]
+    crease_k: np.ndarray  # (C,) float32
+    crease_target: np.ndarray  # (C,) float32  target fold angle (radians)
     dt: float
     # edge index lists per FOLD assignment, for line rendering
     lines: dict[str, np.ndarray]

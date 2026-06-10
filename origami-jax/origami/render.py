@@ -18,14 +18,16 @@ Lighting follows three.js r87 meshphong shaders (legacy, non-physically-correct)
   specular += dotNL * lightColor * F_Schlick(spec, dotLH) * 0.25
               * (shininess*0.5 + 1) * dotNH^shininess
 """
+
 from __future__ import annotations
 
 import numpy as np
 
 # ---------------------------------------------------------------- scene constants
 
-CAMERA = dict(fov=60.0, near=0.1, far=500.0, zoom=7.0,
-              position=(5.0, 5.0, 5.0), target=(0.0, 0.0, 0.0), up=(0.0, 1.0, 0.0))
+CAMERA = dict(
+    fov=60.0, near=0.1, far=500.0, zoom=7.0, position=(5.0, 5.0, 5.0), target=(0.0, 0.0, 0.0), up=(0.0, 1.0, 0.0)
+)
 
 LIGHTS = [  # (position -> direction, intensity), all white, from threeView.js
     ((0.0, 100.0, 0.0), 0.8),
@@ -42,20 +44,20 @@ SPECULAR = 0x11 / 255.0
 SHININESS = 30.0
 POLY_OFFSET_FACTOR = 0.5
 POLY_OFFSET_UNITS = 1.0
-DEPTH_EPS = 2.0 ** -24  # minimum resolvable depth diff (24-bit depth buffer)
+DEPTH_EPS = 2.0**-24  # minimum resolvable depth diff (24-bit depth buffer)
 
 # 4x MSAA sample locations: standard Vulkan/D3D rotated-grid pattern, y-flipped
 # into our image (y-down) coordinates -- empirically the best match against
 # chromium/SwiftShader MSAA output
-MSAA4_OFFSETS = np.array(
-    [(0.375, 0.875), (0.875, 0.625), (0.125, 0.375), (0.625, 0.125)])
+MSAA4_OFFSETS = np.array([(0.375, 0.875), (0.875, 0.625), (0.125, 0.375), (0.625, 0.125)])
 
 
 def hex_to_rgb(h: str) -> np.ndarray:
-    return np.array([int(h[i:i + 2], 16) for i in (0, 2, 4)], dtype=np.float64) / 255.0
+    return np.array([int(h[i : i + 2], 16) for i in (0, 2, 4)], dtype=np.float64) / 255.0
 
 
 # ---------------------------------------------------------------- camera matrices
+
 
 def look_at_inverse(eye, target, up) -> np.ndarray:
     """three.js Object3D.lookAt camera convention -> matrixWorldInverse (view matrix)."""
@@ -92,8 +94,7 @@ def perspective_matrix(fov, aspect, near, far, zoom) -> np.ndarray:
 def default_camera(width: int, height: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Returns (view, projection, camera_position) matching the original app."""
     view = look_at_inverse(CAMERA["position"], CAMERA["target"], CAMERA["up"])
-    proj = perspective_matrix(CAMERA["fov"], width / height, CAMERA["near"],
-                              CAMERA["far"], CAMERA["zoom"])
+    proj = perspective_matrix(CAMERA["fov"], width / height, CAMERA["near"], CAMERA["far"], CAMERA["zoom"])
     return view, proj, np.asarray(CAMERA["position"], dtype=np.float64)
 
 
@@ -107,20 +108,19 @@ def _shade(world_pos, normal, mat_rgb, camera_pos, light_dirs, light_int):
     Returns (P,3) linear colors (unclamped)."""
     view_dir = camera_pos[None] - world_pos
     view_dir /= np.linalg.norm(view_dir, axis=1, keepdims=True)
-    dot_nl = np.clip(light_dirs @ normal, 0.0, 1.0)              # (L,)
-    irradiance = dot_nl * light_int                              # (L,)
-    half = light_dirs[None] + view_dir[:, None]                  # (P,L,3)
+    dot_nl = np.clip(light_dirs @ normal, 0.0, 1.0)  # (L,)
+    irradiance = dot_nl * light_int  # (L,)
+    half = light_dirs[None] + view_dir[:, None]  # (P,L,3)
     half /= np.linalg.norm(half, axis=2, keepdims=True)
-    dot_nh = np.clip(half @ normal, 0.0, 1.0)                    # (P,L)
+    dot_nh = np.clip(half @ normal, 0.0, 1.0)  # (P,L)
     dot_lh = np.clip(np.sum(half * light_dirs[None], axis=2), 0.0, 1.0)
-    fresnel = SPECULAR + (1.0 - SPECULAR) * np.exp2(
-        (-5.55473 * dot_lh - 6.98316) * dot_lh)
-    spec = (irradiance[None] * fresnel * 0.25 * (SHININESS * 0.5 + 1.0)
-            * dot_nh ** SHININESS).sum(axis=1)
+    fresnel = SPECULAR + (1.0 - SPECULAR) * np.exp2((-5.55473 * dot_lh - 6.98316) * dot_lh)
+    spec = (irradiance[None] * fresnel * 0.25 * (SHININESS * 0.5 + 1.0) * dot_nh**SHININESS).sum(axis=1)
     return irradiance.sum() * mat_rgb[None] + spec[:, None]
 
 
 # ---------------------------------------------------------------- rasterization
+
 
 def _project(positions, view, proj, width, height):
     """world -> (screen xy in pixels, window z in [0,1], clip w)."""
@@ -170,9 +170,9 @@ def render(
     light_dirs /= np.linalg.norm(light_dirs, axis=1, keepdims=True)
     light_int = np.array([i for _, i in LIGHTS], dtype=np.float64)
 
-    tri_xy = xy[faces]          # (F,3,2)
-    tri_z = zwin[faces]         # (F,3)
-    tri_w = clip_w[faces]       # (F,3)
+    tri_xy = xy[faces]  # (F,3,2)
+    tri_z = zwin[faces]  # (F,3)
+    tri_w = clip_w[faces]  # (F,3)
     tri_world = positions[faces]
 
     a2 = np.cross(tri_xy[:, 1] - tri_xy[:, 0], tri_xy[:, 2] - tri_xy[:, 0])
@@ -208,15 +208,13 @@ def render(
         lam = np.empty((3, ny, nx, S))
         for k in range(3):
             i, j = (k + 1) % 3, (k + 2) % 3
-            lam[k] = ((v[i, 0] - sx) * (v[j, 1] - sy)
-                      - (v[i, 1] - sy) * (v[j, 0] - sx)) / area2
+            lam[k] = ((v[i, 0] - sx) * (v[j, 1] - sy) - (v[i, 1] - sy) * (v[j, 0] - sx)) / area2
         covered = (lam >= 0.0).all(axis=0)  # (ny,nx,S)
         if not covered.any():
             continue
 
         # depth plane (window z linear in screen space) + polygon offset
-        plane = np.linalg.lstsq(
-            np.concatenate([v, np.ones((3, 1))], axis=1), tri_z[fi], rcond=None)[0]
+        plane = np.linalg.lstsq(np.concatenate([v, np.ones((3, 1))], axis=1), tri_z[fi], rcond=None)[0]
         m = max(abs(plane[0]), abs(plane[1]))
         offset = POLY_OFFSET_FACTOR * m + POLY_OFFSET_UNITS * DEPTH_EPS
 
@@ -229,14 +227,12 @@ def render(
         lam_c = np.empty((3, len(px)))
         for k in range(3):
             i, j = (k + 1) % 3, (k + 2) % 3
-            lam_c[k] = ((v[i, 0] - cx) * (v[j, 1] - cy)
-                        - (v[i, 1] - cy) * (v[j, 0] - cx)) / area2
+            lam_c[k] = ((v[i, 0] - cx) * (v[j, 1] - cy) - (v[i, 1] - cy) * (v[j, 0] - cx)) / area2
         inv_w = lam_c.T @ (1.0 / tri_w[fi])
         world = (lam_c.T @ (tri_world[fi] / tri_w[fi][:, None])) / inv_w[:, None]
         nrm = n_geo[fi] if front else -n_geo[fi]
         mat = front_rgb if front else back_rgb
-        rgb = np.clip(
-            _shade(world, nrm, mat, camera_pos, light_dirs, light_int), 0.0, 1.0)
+        rgb = np.clip(_shade(world, nrm, mat, camera_pos, light_dirs, light_int), 0.0, 1.0)
 
         # per-sample depth test + write
         for s in range(S):
@@ -245,15 +241,14 @@ def render(
                 continue
             ps_y = py[cov_s] + ymin
             ps_x = px[cov_s] + xmin
-            z = (plane[0] * (ps_x + off_x[s]) + plane[1] * (ps_y + off_y[s])
-                 + plane[2] + offset)
+            z = plane[0] * (ps_x + off_x[s]) + plane[1] * (ps_y + off_y[s]) + plane[2] + offset
             ok = z <= depth[ps_y, ps_x, s]
             depth[ps_y[ok], ps_x[ok], s] = z[ok]
             color[ps_y[ok], ps_x[ok], s] = rgb[cov_s][ok]
 
     # ---- 1px black lines (LineBasicMaterial), depth-tested LEQUAL, no offset ----
     if line_segments is not None and len(line_segments):
-        seg_xy = xy[line_segments]   # (n,2,2)
+        seg_xy = xy[line_segments]  # (n,2,2)
         seg_z = zwin[line_segments]  # (n,2)
         half_w = 0.5
         for si in range(len(seg_xy)):

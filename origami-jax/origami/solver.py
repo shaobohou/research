@@ -14,6 +14,7 @@ naturally onto XLA. Everything is float32, like the GPU textures.
 State: positions p (absolute), velocities v, unwrapped crease angles theta.
 Explicit Euler integration (the original's default).
 """
+
 from __future__ import annotations
 
 from functools import partial
@@ -25,13 +26,13 @@ import jax.numpy as jnp
 from .model import OrigamiModel
 
 TWO_PI = 6.283185307179586
-GEO_TOL = 1e-6   # crease degeneracy tolerance (updateCreaseGeo shader)
+GEO_TOL = 1e-6  # crease degeneracy tolerance (updateCreaseGeo shader)
 FACE_TOL = 1e-7  # face edge-length tolerance (velocityCalc shader)
 
 
 class SolverState(NamedTuple):
-    pos: jnp.ndarray    # (N,3) float32
-    vel: jnp.ndarray    # (N,3) float32
+    pos: jnp.ndarray  # (N,3) float32
+    vel: jnp.ndarray  # (N,3) float32
     theta: jnp.ndarray  # (C,)  float32 unwrapped dihedral angles
 
 
@@ -39,7 +40,7 @@ class SolverConstants(NamedTuple):
     pos0: jnp.ndarray
     mass: jnp.ndarray
     fixed: jnp.ndarray
-    edge_i: jnp.ndarray     # (2E,) both directions
+    edge_i: jnp.ndarray  # (2E,) both directions
     edge_j: jnp.ndarray
     edge_k: jnp.ndarray
     edge_d: jnp.ndarray
@@ -133,8 +134,9 @@ def step(c: SolverConstants, state: SolverState, crease_percent) -> SolverState:
     # ---- axial beams ----
     dp = p[c.edge_j] - p[c.edge_i]
     dist = jnp.linalg.norm(dp, axis=-1, keepdims=True)
-    f_beam = dp * (1.0 - c.edge_l0[:, None] / dist) * c.edge_k[:, None] \
-        + (v[c.edge_j] - v[c.edge_i]) * c.edge_d[:, None]
+    f_beam = (
+        dp * (1.0 - c.edge_l0[:, None] / dist) * c.edge_k[:, None] + (v[c.edge_j] - v[c.edge_i]) * c.edge_d[:, None]
+    )
     force = force.at[c.edge_i].add(f_beam)
 
     # ---- crease angular springs ----
@@ -144,10 +146,8 @@ def step(c: SolverConstants, state: SolverState, crease_percent) -> SolverState:
     f2 = (ang_force / h2)[:, None] * n2
     force = force.at[c.crease_nodes[:, 0]].add(f1)
     force = force.at[c.crease_nodes[:, 1]].add(f2)
-    force = force.at[c.crease_nodes[:, 2]].add(
-        -((1.0 - coef1)[:, None] * f1 + (1.0 - coef2)[:, None] * f2))
-    force = force.at[c.crease_nodes[:, 3]].add(
-        -(coef1[:, None] * f1 + coef2[:, None] * f2))
+    force = force.at[c.crease_nodes[:, 2]].add(-((1.0 - coef1)[:, None] * f1 + (1.0 - coef2)[:, None] * f2))
+    force = force.at[c.crease_nodes[:, 3]].add(-(coef1[:, None] * f1 + coef2[:, None] * f2))
 
     # ---- face angular constraints ----
     ab = fb - fa
@@ -163,12 +163,11 @@ def step(c: SolverConstants, state: SolverState, crease_percent) -> SolverState:
     uab = ab / lab[:, None]
     uac = ac / lac[:, None]
     ubc = bc / lbc[:, None]
+
     def dot(u, w):
         return jnp.clip(jnp.sum(u * w, axis=-1), -1.0, 1.0)
 
-    angles = jnp.stack(
-        [jnp.arccos(dot(uab, uac)), jnp.arccos(-dot(uab, ubc)), jnp.arccos(dot(uac, ubc))],
-        axis=-1)
+    angles = jnp.stack([jnp.arccos(dot(uab, uac)), jnp.arccos(-dot(uab, ubc)), jnp.arccos(dot(uac, ubc))], axis=-1)
     a_diff = (c.nominal_angles - angles) * c.face_stiffness * ok[:, None]
     n_x_ab = jnp.cross(normals, uab) / lab[:, None]
     n_x_ac = jnp.cross(normals, uac) / lac[:, None]
@@ -191,8 +190,7 @@ def step(c: SolverConstants, state: SolverState, crease_percent) -> SolverState:
 @partial(jax.jit, static_argnames="n_steps", donate_argnames="state")
 def simulate(c: SolverConstants, state: SolverState, crease_percent, n_steps: int) -> SolverState:
     crease_percent = jnp.float32(crease_percent)
-    return jax.lax.fori_loop(
-        0, n_steps, lambda _, s: step(c, s, crease_percent), state)
+    return jax.lax.fori_loop(0, n_steps, lambda _, s: step(c, s, crease_percent), state)
 
 
 def fold_to_percent(
