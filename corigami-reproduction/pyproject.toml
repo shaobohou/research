@@ -1,0 +1,34 @@
+[project]
+name = "corigami-repro"
+version = "0.1.0"
+description = "Faithful reproduction of the C.Origami model (Tan et al., Nat Biotechnol 2023)"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0",
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "matplotlib",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+  "pyright",
+]
+
+[dependency-groups]
+dev = [
+  "pytest",
+  "ruff",
+  "pyright",
+]
+
+[tool.setuptools.packages.find]
+include = ["corigami_repro*"]
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"

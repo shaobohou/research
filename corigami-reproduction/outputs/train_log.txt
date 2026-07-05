@@ -1,0 +1,56 @@
+config=demo {'mid_hidden': 64, 'num_blocks': 5, 'map_size': 64, 'decoder_hidden': 64} device=cpu
+model params=1.17M window_bp=4096 map=64
+windows: train=284 val=71 test=71
+epoch  0 | lr 3.33e-05 | train MSE 3.2241 | val MSE 1.9079 | val map-r 0.543 | val ins-r 0.133 | val o/e-r -0.005
+epoch  1 | lr 6.67e-05 | train MSE 1.3931 | val MSE 1.8859 | val map-r 0.740 | val ins-r 0.184 | val o/e-r 0.003
+epoch  2 | lr 1.00e-04 | train MSE 0.8624 | val MSE 0.8505 | val map-r 0.805 | val ins-r 0.253 | val o/e-r 0.014
+epoch  3 | lr 1.33e-04 | train MSE 0.7553 | val MSE 0.7972 | val map-r 0.814 | val ins-r 0.270 | val o/e-r 0.000
+epoch  4 | lr 1.67e-04 | train MSE 0.7383 | val MSE 0.7411 | val map-r 0.819 | val ins-r 0.272 | val o/e-r 0.024
+epoch  5 | lr 2.00e-04 | train MSE 0.7165 | val MSE 0.6853 | val map-r 0.830 | val ins-r 0.306 | val o/e-r 0.034
+epoch  6 | lr 2.00e-04 | train MSE 0.6932 | val MSE 0.6556 | val map-r 0.839 | val ins-r 0.320 | val o/e-r 0.169
+epoch  7 | lr 1.98e-04 | train MSE 0.5824 | val MSE 0.4974 | val map-r 0.884 | val ins-r 0.696 | val o/e-r 0.510
+epoch  8 | lr 1.96e-04 | train MSE 0.4425 | val MSE 0.4001 | val map-r 0.914 | val ins-r 0.831 | val o/e-r 0.673
+epoch  9 | lr 1.93e-04 | train MSE 0.3644 | val MSE 0.2976 | val map-r 0.932 | val ins-r 0.880 | val o/e-r 0.748
+epoch 10 | lr 1.90e-04 | train MSE 0.3300 | val MSE 0.2736 | val map-r 0.941 | val ins-r 0.912 | val o/e-r 0.783
+epoch 11 | lr 1.85e-04 | train MSE 0.3009 | val MSE 0.2230 | val map-r 0.948 | val ins-r 0.936 | val o/e-r 0.812
+epoch 12 | lr 1.80e-04 | train MSE 0.2808 | val MSE 0.2236 | val map-r 0.949 | val ins-r 0.950 | val o/e-r 0.814
+epoch 13 | lr 1.74e-04 | train MSE 0.2622 | val MSE 0.1973 | val map-r 0.954 | val ins-r 0.959 | val o/e-r 0.833
+epoch 14 | lr 1.68e-04 | train MSE 0.2579 | val MSE 0.2216 | val map-r 0.951 | val ins-r 0.949 | val o/e-r 0.823
+epoch 15 | lr 1.60e-04 | train MSE 0.2490 | val MSE 0.1933 | val map-r 0.957 | val ins-r 0.958 | val o/e-r 0.842
+epoch 16 | lr 1.53e-04 | train MSE 0.2409 | val MSE 0.1787 | val map-r 0.959 | val ins-r 0.965 | val o/e-r 0.849
+epoch 17 | lr 1.45e-04 | train MSE 0.2420 | val MSE 0.1891 | val map-r 0.957 | val ins-r 0.955 | val o/e-r 0.844
+epoch 18 | lr 1.36e-04 | train MSE 0.2370 | val MSE 0.1708 | val map-r 0.961 | val ins-r 0.966 | val o/e-r 0.856
+epoch 19 | lr 1.28e-04 | train MSE 0.2325 | val MSE 0.1697 | val map-r 0.961 | val ins-r 0.968 | val o/e-r 0.857
+epoch 20 | lr 1.19e-04 | train MSE 0.2290 | val MSE 0.1688 | val map-r 0.961 | val ins-r 0.967 | val o/e-r 0.861
+epoch 21 | lr 1.09e-04 | train MSE 0.2299 | val MSE 0.1619 | val map-r 0.963 | val ins-r 0.968 | val o/e-r 0.868
+epoch 22 | lr 1.00e-04 | train MSE 0.2236 | val MSE 0.1642 | val map-r 0.963 | val ins-r 0.970 | val o/e-r 0.862
+epoch 23 | lr 9.10e-05 | train MSE 0.2235 | val MSE 0.1633 | val map-r 0.963 | val ins-r 0.971 | val o/e-r 0.863
+epoch 24 | lr 8.19e-05 | train MSE 0.2184 | val MSE 0.1567 | val map-r 0.964 | val ins-r 0.972 | val o/e-r 0.869
+epoch 25 | lr 7.29e-05 | train MSE 0.2194 | val MSE 0.1591 | val map-r 0.963 | val ins-r 0.969 | val o/e-r 0.866
+epoch 26 | lr 6.41e-05 | train MSE 0.2154 | val MSE 0.1575 | val map-r 0.964 | val ins-r 0.973 | val o/e-r 0.868
+epoch 27 | lr 5.57e-05 | train MSE 0.2111 | val MSE 0.1534 | val map-r 0.965 | val ins-r 0.974 | val o/e-r 0.870
+epoch 28 | lr 4.76e-05 | train MSE 0.2110 | val MSE 0.1521 | val map-r 0.965 | val ins-r 0.973 | val o/e-r 0.871
+epoch 29 | lr 3.99e-05 | train MSE 0.2050 | val MSE 0.1619 | val map-r 0.963 | val ins-r 0.971 | val o/e-r 0.866
+epoch 30 | lr 3.28e-05 | train MSE 0.2069 | val MSE 0.1560 | val map-r 0.964 | val ins-r 0.971 | val o/e-r 0.865
+epoch 31 | lr 2.63e-05 | train MSE 0.2021 | val MSE 0.1485 | val map-r 0.966 | val ins-r 0.974 | val o/e-r 0.874
+epoch 32 | lr 2.04e-05 | train MSE 0.2012 | val MSE 0.1623 | val map-r 0.963 | val ins-r 0.967 | val o/e-r 0.861
+epoch 33 | lr 1.51e-05 | train MSE 0.2063 | val MSE 0.1474 | val map-r 0.966 | val ins-r 0.975 | val o/e-r 0.877
+epoch 34 | lr 1.06e-05 | train MSE 0.2013 | val MSE 0.1450 | val map-r 0.967 | val ins-r 0.975 | val o/e-r 0.877
+epoch 35 | lr 6.85e-06 | train MSE 0.2022 | val MSE 0.1453 | val map-r 0.966 | val ins-r 0.975 | val o/e-r 0.876
+epoch 36 | lr 3.89e-06 | train MSE 0.2006 | val MSE 0.1438 | val map-r 0.967 | val ins-r 0.975 | val o/e-r 0.878
+epoch 37 | lr 1.75e-06 | train MSE 0.2064 | val MSE 0.1436 | val map-r 0.967 | val ins-r 0.976 | val o/e-r 0.879
+epoch 38 | lr 4.51e-07 | train MSE 0.2014 | val MSE 0.1434 | val map-r 0.967 | val ins-r 0.975 | val o/e-r 0.878
+epoch 39 | lr 3.48e-10 | train MSE 0.2010 | val MSE 0.1433 | val map-r 0.967 | val ins-r 0.975 | val o/e-r 0.878
+training done in 1046s
+TEST metrics: {
+  "mse": 0.14693555907464365,
+  "map_pearson": 0.9665780663490295,
+  "insulation_pearson": 0.9738232493400574,
+  "obs_vs_exp": 0.8803253173828125
+}
+saved checkpoint, figures, and training_report.json to outputs/
+
+=== SUMMARY ===
+Held-out test map Pearson : 0.967 (mean-map baseline 0.846)
+Held-out test insulation-r: 0.974 (baseline 0.314)
+Held-out test MSE         : 0.1469 (baseline 0.6262)

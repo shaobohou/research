@@ -1,0 +1,10 @@
+{
+  "boundary_bp": 23104,
+  "boundary_ablation_impact": 0.2780918478965759,
+  "control_ablation_impact": 0.004633176140487194,
+  "impact_ratio_boundary_over_control": 60.02185961946476,
+  "screen_impact_vs_ctcf_corr": 0.9261620232699914,
+  "impact_peak_bp": 23085,
+  "nearest_true_boundary_bp": 23104,
+  "peak_to_boundary_dist_bp": 19
+}
