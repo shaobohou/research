@@ -1,0 +1,67 @@
+[
+  {
+    "name": "seedling",
+    "prompt": "a sprouting seedling with two leaves and a root",
+    "sticks": 3,
+    "rivers": 0,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 4,
+    "grid_used": 4,
+    "mean_strain": 2.1653825301133477e-16,
+    "uniaxial_rms": 3.051711199014825e-16,
+    "seconds": 0.01
+  },
+  {
+    "name": "bird",
+    "prompt": "a soaring bird with spread wings, a head and a tail",
+    "sticks": 5,
+    "rivers": 1,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 7,
+    "grid_used": 10,
+    "mean_strain": 4.233713820332316e-16,
+    "uniaxial_rms": 5.209039732002896e-16,
+    "seconds": 1.41
+  },
+  {
+    "name": "human",
+    "prompt": "a standing human figure with head, two arms and two legs",
+    "sticks": 6,
+    "rivers": 1,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 7,
+    "grid_used": 7,
+    "mean_strain": 3.023398908785852e-16,
+    "uniaxial_rms": 4.0802008019470882e-16,
+    "seconds": 0.05
+  },
+  {
+    "name": "lizard",
+    "prompt": "a lizard with a head, four splayed legs and a long tail",
+    "sticks": 7,
+    "rivers": 1,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 8,
+    "grid_used": 10,
+    "mean_strain": 3.3786646024289116e-16,
+    "uniaxial_rms": 5.302498948762487e-16,
+    "seconds": 1.05
+  },
+  {
+    "name": "antenna beetle",
+    "prompt": "a beetle with two long antennae and four legs",
+    "sticks": 7,
+    "rivers": 1,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 7,
+    "grid_used": 10,
+    "mean_strain": 3.43993123602754e-16,
+    "uniaxial_rms": 7.246726250297038e-16,
+    "seconds": 1.53
+  }
+]
