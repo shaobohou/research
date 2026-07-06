@@ -24,7 +24,8 @@ with the paper's own verification mathematics used as ground truth at every stag
 | Tree similarity via Procrustes (App. C.2) | ✅ `corigami/similarity.py` |
 | Pipeline pass-rate accounting (Fig. 6/7) | ✅ `corigami/pipeline.py` + `scripts/run_all.py` on random tree candidates |
 | VLM judge, Single-Model Rubrics prompt (§3.8, App. I) | ⚠️ harness + verbatim prompt in `corigami/judge.py`; Claude scores the renders instead of Gemini 3 Flash (documented substitution) |
-| Tree-shaping simple folds + clip-pattern narrowing (§3.4–3.6) | ❌ out of scope |
+| Tree-shaping — hinge posing (first slice of §3.4/App. G) | ✅ `corigami/shaping.py` — flaps pivot at their base hinges to a 3D posture; verified isometric (~1e-16 strain) |
+| Tree-shaping mid-flap simple folds + clip-pattern narrowing (rest of §3.5–3.6) | ❌ out of scope |
 | RL fine-tuning of Gemini 2.5 Flash Lite (§3.6) | ❌ out of scope (requires Gemini training access) |
 | Global layer-ordering check (facewise CSP, Akitaya et al.) | ❌ out of scope; strain + local checks + uniaxiality used instead |
 | 560k-candidate scale, VLM tournaments, human folding | ❌ out of scope |
@@ -104,6 +105,11 @@ Run: `uv run --extra dev pytest` · `uv run python scripts/run_all.py 150`
    assignment + greedy hinge search. At paper scale their staging is what makes the
    problem tractable; at our scale completeness is affordable and finds the same class of
    solutions.
-4. **No shaping stage**, so folded outputs are collapsed bases (the paper's stage-3
-   artifact), not posed models; renders show the flat-folded base with layers separated
-   for visibility, plus a 92%-fold view.
+4. **Partial shaping only.** `corigami/shaping.py` implements hinge posing — the first
+   simple fold of the paper's tree-shaping algorithm — which pivots each flap out of the
+   base plane at its base hinge to give the models a recognisable 3D posture
+   (`outputs/posed-views.png`). The pivot angles here are set by hand from the stick
+   figure's limb angles, standing in for the paper's RL-tuned Gemini orchestration. The
+   remaining shaping techniques (mid-flap simple folds, clip-pattern narrowing) are not
+   implemented, so appendages stay full grid-width rather than tapering. `outputs/*-folded-flat.png`
+   still shows the pre-shaping collapsed base (layers separated) for reference.

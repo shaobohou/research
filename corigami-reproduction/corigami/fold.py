@@ -54,9 +54,25 @@ def _rot_about_line(p: np.ndarray, d: np.ndarray, angle: float) -> np.ndarray:
     return T
 
 
-def fold(cp: CreasePattern, fold_fraction: float = 1.0) -> FoldedState:
-    """Fold a crease pattern; ``fold_fraction`` scales all fold angles (1 = flat)."""
-    cp = cp.planarize()
+def _seg_key(p1, p2):
+    q1 = (round(p1[0] * 8) / 8, round(p1[1] * 8) / 8)
+    q2 = (round(p2[0] * 8) / 8, round(p2[1] * 8) / 8)
+    return (min(q1, q2), max(q1, q2))
+
+
+def fold(cp: CreasePattern, fold_fraction: float = 1.0,
+         angle_overrides: dict | None = None,
+         planarize: bool = True) -> FoldedState:
+    """Fold a crease pattern; ``fold_fraction`` scales all fold angles (1 = flat).
+
+    ``angle_overrides`` maps geometric segment keys (see ``_seg_key``) to a
+    signed delta (radians) added to the crease's base fold angle — used by
+    the shaping stage to pivot flaps at their hinges. ``planarize=False``
+    skips re-planarization for already-planar patterns so face/vertex
+    indices stay stable across calls.
+    """
+    if planarize:
+        cp = cp.planarize()
     faces = cp.faces()
     if not faces:
         raise ValueError("crease pattern has no faces")
@@ -83,6 +99,9 @@ def fold(cp: CreasePattern, fold_fraction: float = 1.0) -> FoldedState:
                     continue
                 asg = assignment.get(e, UNASSIGNED)
                 angle = FOLD_ANGLES[asg] * fold_fraction
+                if angle_overrides:
+                    k = _seg_key(pts2[a], pts2[b])
+                    angle += angle_overrides.get(k, 0.0) * fold_fraction
                 # rotation direction depends on which side the child face
                 # lies: traverse the shared edge as oriented in the parent
                 # face so the child is on its right; folding is then a

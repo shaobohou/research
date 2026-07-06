@@ -113,3 +113,23 @@ Interesting reproduction insight: in this formulation "solving" is easy once pac
 the paper's 79.2% solving pass rate is a statement about how permissive their packer is, not about
 M/V assignment difficulty per se. At their generality (free-form rivers), strictness at packing
 time is presumably impossible to guarantee, hence the staged greedy hinge search.
+
+## Shaping stage: hinge posing (2026-07-06, follow-up)
+
+Feedback: renders looked poor vs the paper. Correct diagnosis — the gap was the missing
+shaping stage, not the geometry (my own judge said perfect bases score 0.1-0.2). Implemented
+the first and most visually important simple fold of the paper's tree-shaping algorithm:
+pivoting each flap out of the base plane at its base hinge.
+
+Math: in a folded uniaxial base a flap's base boundary maps to a single line (the joint's
+axis position). Pivoting the flap by delta is a rigid rotation about that line, realised as
+a per-crease fold-angle delta on the base-hinge creases. Sign depends on the layer parity of
+the *static-side* neighbour face (rotation conjugated through an orientation-reversing map
+flips sign) — computed from the flat-folded face normals' z-sign. Global mirror ambiguity
+resolved by trying both and keeping the isometric one.
+
+Validated first try: all 5 posed models stay isometric at ~1e-16 strain with flaps lifted
+out of plane. Added corigami/shaping.py + tests/test_shaping.py (8 new tests, 28 total).
+Posed gallery outputs/posed-views.png — bird now reads as swept wings, lizard as splayed
+legs, seedling as a sprout. Pivot angles hand-set from stick-figure limb angles (stand-in
+for the paper's RL orchestration). Still no narrowing, so limbs stay full grid-width.
