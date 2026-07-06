@@ -1,0 +1,182 @@
+[
+  {
+    "name": "random-0",
+    "sticks": 6,
+    "rivers": 1,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 29.96
+  },
+  {
+    "name": "random-1",
+    "sticks": 5,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 6,
+    "error": "",
+    "seconds": 0.04
+  },
+  {
+    "name": "random-2",
+    "sticks": 6,
+    "rivers": 0,
+    "stage_reached": "done",
+    "grid_used": 8,
+    "error": "",
+    "seconds": 19.73
+  },
+  {
+    "name": "random-3",
+    "sticks": 6,
+    "rivers": 0,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 33.97
+  },
+  {
+    "name": "random-4",
+    "sticks": 4,
+    "rivers": 0,
+    "stage_reached": "done",
+    "grid_used": 4,
+    "error": "",
+    "seconds": 0.02
+  },
+  {
+    "name": "random-5",
+    "sticks": 7,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 10,
+    "error": "",
+    "seconds": 0.77
+  },
+  {
+    "name": "random-6",
+    "sticks": 6,
+    "rivers": 0,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 33.38
+  },
+  {
+    "name": "random-7",
+    "sticks": 5,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 8,
+    "error": "",
+    "seconds": 0.1
+  },
+  {
+    "name": "random-8",
+    "sticks": 5,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 7,
+    "error": "",
+    "seconds": 0.06
+  },
+  {
+    "name": "random-9",
+    "sticks": 5,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 9,
+    "error": "",
+    "seconds": 0.11
+  },
+  {
+    "name": "random-10",
+    "sticks": 8,
+    "rivers": 1,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 22.15
+  },
+  {
+    "name": "random-11",
+    "sticks": 7,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 12,
+    "error": "",
+    "seconds": 7.78
+  },
+  {
+    "name": "random-12",
+    "sticks": 4,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 9,
+    "error": "",
+    "seconds": 0.12
+  },
+  {
+    "name": "random-13",
+    "sticks": 7,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 9,
+    "error": "",
+    "seconds": 0.16
+  },
+  {
+    "name": "random-14",
+    "sticks": 6,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 9,
+    "error": "",
+    "seconds": 0.66
+  },
+  {
+    "name": "random-15",
+    "sticks": 6,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 10,
+    "error": "",
+    "seconds": 0.22
+  },
+  {
+    "name": "random-16",
+    "sticks": 6,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 7,
+    "error": "",
+    "seconds": 0.07
+  },
+  {
+    "name": "random-17",
+    "sticks": 8,
+    "rivers": 1,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 34.11
+  },
+  {
+    "name": "random-18",
+    "sticks": 8,
+    "rivers": 1,
+    "stage_reached": "done",
+    "grid_used": 9,
+    "error": "",
+    "seconds": 0.16
+  },
+  {
+    "name": "random-19",
+    "sticks": 6,
+    "rivers": 0,
+    "stage_reached": "packing",
+    "grid_used": 0,
+    "error": "no valid packing in grid sweep",
+    "seconds": 39.3
+  }
+]
