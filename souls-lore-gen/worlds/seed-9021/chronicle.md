@@ -36,6 +36,9 @@
 - **Year 403** — *heresy*: Queluveth of the Last Door was cast out of Church of Ruthmere and founded the Cult of the Open Door, teaching that the gods themselves caused the waning.
   - _Hidden:_ The heresy is nearer the truth than the sermon.
 - **Year 429** — *founding*: Mazirdis the Adamant united the river-clans and was crowned in Fenearamere; the realm took the name Morulaspire.
+  - **Year 425** — *testimony*: An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger.
+  - **Year 428** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence.
+    - _Hidden:_ What they came for was not what the chronicles assumed.
 - **Year 473** — *rite of restoration*: At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed.
   - _Hidden:_ The rite did not restore anything. It only fed the waning more slowly — and Eloach suspected as much.
 - **Year 511** — *betrayal*: Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on.
@@ -61,6 +64,7 @@
 - **Kariadane** Half-remembered (pilgrim saint) — of Church of Ruthmere. Fate: given to the rite of restoration (year 473).
 - **Oloula** the Lantern-eyed (oathbreaker general) — of Morulaspire. Fate: succumbed to the Gutter-mark (year 517).
 - **Banudane** the Latecomer (wandering knight) — of Order of the Ember. Fate: fate contested (year 676).
+- **Ishaott** the Younger (quartermaster).
 
 ## Factions
 - **Cyraricreach** (kingdom), seat Fenulacrown, founded year 66.

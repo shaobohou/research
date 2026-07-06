@@ -3,4 +3,4 @@ name = "souls-lore-gen"
 version = "0.1.0"
 description = "Dwarf Fortress-style history sim rendered as Dark Souls-style item lore via Claude"
 requires-python = ">=3.12"
-dependencies = ["anthropic>=0.90"]
+dependencies = ["anthropic>=0.90", "mcp>=1.2"]

@@ -42,6 +42,12 @@ A ring that grants a small, stubborn blessing.
 
 The Brand of Yorthas was wrought as regalia of Yorthas's throne. Held long enough, it suggests the waning is no accident. Whether this was mercy or malice, none agree.
 
+### Effects of Ishaott
+
+A ring that grants a small, stubborn blessing.
+
+An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger. What became of it after is not written.
+
 ### Ring of the Ember Vigil
 
 A ring that grants a small, stubborn blessing.

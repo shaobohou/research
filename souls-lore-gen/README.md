@@ -68,6 +68,45 @@ uv run main.py codex --seed 107      # re-render chronicle.md / codex.md
 Outputs land in `worlds/seed-<N>/`: `ledger.json` (canon), `codex.md`,
 `chronicle.md` (nested timeline, veils under a spoiler warning), `answers.md`.
 
+## Exploring as an LLM agent (MCP)
+
+The world is also playable by *another agent* as a discovery game, over MCP:
+
+```sh
+claude mcp add lore -- uv run --project . mcp_server.py --world worlds/seed-9021
+```
+
+The exploring agent is a **player, not a reader of the repo** — the server
+enforces the epistemic boundary. Six tools form the discovery loop:
+
+| tool | cost | what it does |
+|---|---|---|
+| `survey()` | free | the shop window: item names/types, factions heard of, budget |
+| `examine(item)` | free | an item's description + **leads** (names it mentions) |
+| `ask(question)` | 1 ask | an in-world fragment, from canon, never the veils |
+| `delve(target)` | 1 delve | follow a lead (item/figure/place/event id): expands the world behind it, returning new accounts and sometimes **new items** |
+| `theorize(claims)` | free | each claim graded: `established` (true + you have evidence) / `consistent` (true, unevidenced) / `unsupported` / `contradicted` / `veiled` ("the archives go quiet") |
+| `progress()` | free | items examined, budget left, best theory score |
+
+Design properties:
+
+- **Fog of war is server state, not model discipline** — per-explorer
+  progress persists in `worlds/seed-N/explorations/<name>.json`; the seeker
+  never sees `hidden` fields, veils, or false-rumor flags.
+- **Errors are diegetic** ("no record survives of such a thing") — nothing
+  leaks through error strings.
+- **`delve` drives depth on demand**: exploration is what materializes new
+  history, budgeted so agents must strategize about where to dig.
+- **`theorize` makes it a benchmark**: ground truth is machine-readable, so
+  a seeker agent's lore reconstruction is scorable (offline lexical judge, or
+  Claude judge with `--model`). Score = established×3 + consistent×2 +
+  veiled×1 − contradicted.
+- **Two lenses**: `--role archivist` adds a `canon()` tool (full ledger) for
+  GM/eval harnesses; seekers calling it are barred in-world.
+
+`explore.py` is the same API as a plain Python class (`Exploration`), usable
+without MCP.
+
 ## Guarantees
 
 - **Genesis is byte-deterministic** per seed; **expansion skeletons are
@@ -97,6 +136,9 @@ Outputs land in `worlds/seed-<N>/`: `ledger.json` (canon), `codex.md`,
   (streamed, adaptive thinking, JSON-schema structured output), template
   fallbacks.
 - [`main.py`](main.py) — CLI (`generate | deepen | ask | codex`).
+- [`explore.py`](explore.py) — the agent-facing exploration API: fog-of-war
+  state, leads extraction, delve resolution, and the two judges.
+- [`mcp_server.py`](mcp_server.py) — FastMCP stdio wrapper over `explore.py`.
 - [`worlds/`](worlds/) — committed samples (template mode; this container has
   no API key): seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the

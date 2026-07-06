@@ -44,7 +44,9 @@
       "Ruthgrim",
       "Ruthmere",
       "Wrenrionspire",
-      "Yorthas"
+      "Yorthas",
+      "Ishaott",
+      "Effects of Ishaott"
     ]
   },
   "ages": [
@@ -512,7 +514,7 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": false,
+      "expanded": true,
       "source": "sim"
     },
     "e18": {
@@ -906,6 +908,64 @@
       "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.",
       "depth": 0,
       "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Ishaott",
+      "epithet": "the Younger",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e17"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 425,
+      "text": "An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": "e17",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e17"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 428,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e17",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e17"
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Effects of Ishaott",
+      "item_type": "ring",
+      "created_year": 425,
+      "origin_faction": null,
+      "provenance": [
+        "e26"
+      ],
+      "knowledge": [
+        "(year 425) An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e17"
     }
   },
   "notes": []

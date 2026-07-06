@@ -95,3 +95,31 @@ biased fragment of that history.
 - LLM paths (`describe_items`/`elaborate`/`ask_world` with a model) are
   untested in this container (401, no key) — they share the merge/validation
   code with the fallback paths, which are tested.
+
+### 2026-07-06 — agent exploration API (MCP)
+- Core decision: an exploring agent is a *player*, not a repo reader. The
+  epistemic boundary is enforced server-side — fog of war is state
+  (`explorations/<name>.json`), never model discipline. Seeker sees only
+  item names/descriptions and what it has uncovered; `hidden` fields,
+  veils, and false-rumor flags stay on the server.
+- `explore.py`: `Exploration` class with the five-tool discovery loop —
+  survey (free) → examine (free; returns *leads*: entity/place names found
+  in the description) → ask (budgeted; reuses ask_world) → delve (budgeted;
+  resolves a lead to the nearest unexpanded event, runs expand+elaborate,
+  returns new accounts + minted items; misses are refunded) → theorize
+  (claims graded established/consistent/unsupported/contradicted/veiled).
+- Two judges: Claude judge (structured output, sees canon + seeker's
+  discovered material, notes must not spoil) and an offline lexical judge
+  (word-overlap vs canon/veils/discovered text; conservative — cannot
+  detect contradictions, documented). Scoring: 3/2/1/0/−1 → makes the whole
+  thing a lore-comprehension benchmark with machine-readable ground truth.
+- `mcp_server.py`: thin FastMCP stdio wrapper; `--role archivist` adds a
+  `canon()` tool for GM/eval harnesses; seekers get an in-world refusal.
+- Verified offline on seed-9021: full loop via direct Python (examine
+  Oathbreaker → 5 leads → ask → delve Mazirdis → new item "Effects of
+  Ishaott" → theorize scored 6 with all four verdict types correct) AND via
+  a real MCP stdio handshake (list_tools shows the 6 seeker tools, no canon;
+  survey/examine/theorize round-trip; budget persisted across sessions).
+- Gotcha: FastMCP tool registration happens per-process with the world dir
+  from argv, so one server = one world + one explorer; run several servers
+  for several seekers (state files keep them isolated anyway).
