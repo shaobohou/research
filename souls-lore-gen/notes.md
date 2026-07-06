@@ -123,3 +123,24 @@ biased fragment of that history.
 - Gotcha: FastMCP tool registration happens per-process with the world dir
   from argv, so one server = one world + one explorer; run several servers
   for several seekers (state files keep them isolated anyway).
+
+### 2026-07-06 — documented exploration (seed-9)
+- Played a full seeker run against a fresh sea-archetype world (seed 9) and
+  wrote it up as `worlds/seed-9/exploration-journal.md`: 16/16 items, 5
+  delves, 4 asks, 10-claim theory scored 24; one veil hit verbatim
+  (graded `veiled`), the divine-treason hidden fact missed entirely (the
+  dice never leaked it into an item — good difficulty gradient evidence).
+- Emergent coherence worth keeping: the secret traitor god rolled as
+  Veloryne, *god of storms and unkept promises*, and the sim independently
+  hung both broken-promise institutions (Thalenien's church, the cult) off
+  his lineage. Nobody wrote that correspondence; the generator's causality
+  produced it.
+- Delve resolver behavior observed: repeated delves on the same figure
+  drill depth-first into freshly created children (Ishirula #2 expanded the
+  new battle, not the sealing) because expansion children inherit the
+  figure as participant and sort earlier by year. Reasonable, but a
+  breadth-first option might serve seekers better.
+- Confirmed two lexical-judge over-credits (documented in the journal's
+  epilogue): causal speculation and unheld hidden truths can score
+  `established` on word overlap. The Claude judge path grades against the
+  seeker's actual discovered material.

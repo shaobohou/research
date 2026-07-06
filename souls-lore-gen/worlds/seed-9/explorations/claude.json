@@ -1,0 +1,161 @@
+{
+  "explorer": "claude",
+  "discovered": [
+    "a8",
+    "a9",
+    "a7",
+    "a10",
+    "a11",
+    "a12",
+    "a13",
+    "a6",
+    "a3",
+    "a1",
+    "a2",
+    "a4",
+    "a5",
+    "a14",
+    "a15",
+    "a16"
+  ],
+  "asks": [
+    {
+      "id": "frag:q1",
+      "question": "Who was Thalenien, who urged the rite of restoration?",
+      "fragment": "Some claim the Church of Veloryne was raised at Ostenthasvault; Thalenien the Unbowed took its first pulpit, preaching that the waning is a trial and the faithful will be spared. Of Thalenien, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q2",
+      "question": "What did Mazamund find in the place where Sylorien was lost?",
+      "fragment": "None now living can say whether Sylorien, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne. Of Sylorien, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q3",
+      "question": "Who was Veremis, who walked at the saint's left hand?",
+      "fragment": "The tellings differ, but most agree the saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running. Of Veremis, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q4",
+      "question": "What became of the wardens who keep the seal of Ishirula?",
+      "fragment": "Some claim Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war. Of Ishirula, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    }
+  ],
+  "delves": [
+    {
+      "target": "Tide of Saint Yormere",
+      "node": "e21",
+      "found": [
+        "frag:e29",
+        "frag:e30",
+        "a14"
+      ]
+    },
+    {
+      "target": "Ishirula",
+      "node": "e14",
+      "found": [
+        "frag:e31",
+        "frag:e32",
+        "a15"
+      ]
+    },
+    {
+      "target": "Ishirula",
+      "node": "e31",
+      "found": [
+        "frag:e33",
+        "frag:e34"
+      ]
+    },
+    {
+      "target": "Mazamund",
+      "node": "e27",
+      "found": [
+        "frag:e35",
+        "frag:e36"
+      ]
+    },
+    {
+      "target": "War-Brine",
+      "node": "e15",
+      "found": [
+        "frag:e37",
+        "frag:e38",
+        "a16"
+      ]
+    }
+  ],
+  "theories": [
+    {
+      "claims": [
+        "Hestirdane the Grey opened the gates of Quelwynbarrow to the Order of the Brine, betraying Ezric the Forsworn.",
+        "Hestirdane acted on a promise from the Cult of the Second Dawn that the marked of their house would be spared; the promise was not kept.",
+        "The rite of restoration did not restore anything; it only fed the waning more slowly, and Thalenien suspected as much.",
+        "Saint Yormere was not the first choice for the rite; the first choice ran, and was let run.",
+        "The champions' duel before the last assault was fought not to a death but to a bargain.",
+        "The seal beneath Aldranarahollow has been failing on its own since the waning began; the cult only follows the cracks.",
+        "The Drowned Radiance never drowned \u2014 it was drowned, by the very gods who now pray for its return.",
+        "Sylorien descended below the world because the first covenant itself was broken.",
+        "Mazamund slew Sylorien below the world and took his silence as a trophy.",
+        "Nimos led the gods to war against Ishirula, and the seal was bought with the lives of nine champions."
+      ],
+      "verdicts": [
+        {
+          "claim": "Hestirdane the Grey opened the gates of Quelwynbarrow to the Order of the Brine, betraying Ezric the Forsworn.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "Hestirdane acted on a promise from the Cult of the Second Dawn that the marked of their house would be spared; the promise was not kept.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The rite of restoration did not restore anything; it only fed the waning more slowly, and Thalenien suspected as much.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "Saint Yormere was not the first choice for the rite; the first choice ran, and was let run.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The champions' duel before the last assault was fought not to a death but to a bargain.",
+          "verdict": "consistent",
+          "note": "Nothing you have found says so \u2014 but nothing denies it."
+        },
+        {
+          "claim": "The seal beneath Aldranarahollow has been failing on its own since the waning began; the cult only follows the cracks.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The Drowned Radiance never drowned \u2014 it was drowned, by the very gods who now pray for its return.",
+          "verdict": "veiled",
+          "note": "Here the archives go quiet."
+        },
+        {
+          "claim": "Sylorien descended below the world because the first covenant itself was broken.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "Mazamund slew Sylorien below the world and took his silence as a trophy.",
+          "verdict": "unsupported",
+          "note": "No surviving record speaks to this."
+        },
+        {
+          "claim": "Nimos led the gods to war against Ishirula, and the seal was bought with the lives of nine champions.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        }
+      ],
+      "score": 24
+    }
+  ],
+  "budget": {
+    "delves": 0,
+    "asks": 4
+  }
+}

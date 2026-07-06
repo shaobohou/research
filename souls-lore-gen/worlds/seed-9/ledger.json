@@ -1,0 +1,1283 @@
+{
+  "meta": {
+    "seed": 9,
+    "archetype_key": "sea",
+    "primordial": "the Drowned Radiance",
+    "gift": "memory, tide, and the salt that keeps names from dissolving",
+    "waning": "the tide recedes from the world's edges; memories thin and the drowned begin to speak",
+    "curse_name": "the Brine-hollowing",
+    "curse_desc": "salt blooms beneath the skin; the afflicted forget faces first, then their own",
+    "relic_nouns": [
+      "pearl",
+      "brine",
+      "tide",
+      "conch",
+      "salt"
+    ],
+    "veils": [
+      "The church drowns its saints not to honour the Radiance but to silence what they heard in the tide.",
+      "The Radiance never drowned \u2014 it was drowned, by the very gods who now pray for its return.",
+      "The gods drowned it in mercy, at its own asking: it had begun to remember the world before this one, and memory is contagious."
+    ],
+    "epigraph": "Of the Drowned Radiance little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 558,
+    "used_names": [
+      "Aldranarahollow",
+      "Aldrulmere",
+      "Cyrogrimmere",
+      "Ezric",
+      "Fenmerefen",
+      "Harricspire",
+      "Hestirdane",
+      "Hestnothgate",
+      "Ishirula",
+      "Loulmerecradle",
+      "Mazamund",
+      "Maziadra",
+      "Morennothmarch",
+      "Nimelismarch",
+      "Nimgarmere",
+      "Nimos",
+      "Nyadra",
+      "Olulthasshroud",
+      "Ostenthasvault",
+      "Quelwynbarrow",
+      "Sylorien",
+      "Thalenien",
+      "Veloryne",
+      "Yorgarcrown",
+      "Yormere",
+      "Ysedanecrown",
+      "Veremis",
+      "Processional Conch",
+      "Solemis",
+      "Torn Standard of Seriaachvault",
+      "Ghalorien",
+      "Ulesssila",
+      "Ezahild",
+      "Ezlis",
+      "Warden's Salt-ring"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 288,
+      "blurb": "the Drowned Radiance gave the world memory, tide, and the salt that keeps names from dissolving."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 288,
+      "end": 525,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the tide recedes from the world's edges; memories thin and the drowned begin to speak."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 525,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Veloryne",
+      "epithet": "god of storms and unkept promises",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Nimos",
+      "epithet": "god of harvest, plenty, and the debt of plenty",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Sylorien",
+      "epithet": "god of law, chains, and the first covenant",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": "descended below the world; did not return",
+      "fate_year": 525,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Nyadra",
+      "epithet": "god of secrets, locks, and the spaces between",
+      "role": "god",
+      "faction": "k4",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Ishirula",
+      "epithet": "the Still Water",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Aldranarahollow",
+      "fate_year": 194,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Aldrulmere",
+      "epithet": "the Lantern-eyed",
+      "role": "knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Thalenien",
+      "epithet": "the Unbowed",
+      "role": "high priest",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Maziadra",
+      "epithet": "the Lantern-eyed",
+      "role": "heretic scholar",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Ezric",
+      "epithet": "the Forsworn",
+      "role": "king",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 461,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Yormere",
+      "epithet": "the Adamant",
+      "role": "pilgrim saint",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 408,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Hestirdane",
+      "epithet": "the Grey",
+      "role": "oathbreaker general",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "succumbed to the Brine-hollowing",
+      "fate_year": 463,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Mazamund",
+      "epithet": "the Unmarked",
+      "role": "wandering knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "walked into the dusk unarmed",
+      "fate_year": 544,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Loulmerecradle",
+      "kind": "church",
+      "seat": "Yorgarcrown",
+      "founded_year": 58,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Fenmerefen",
+      "kind": "kingdom",
+      "seat": "Nimgarmere",
+      "founded_year": 96,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Cyrogrimmere",
+      "kind": "church",
+      "seat": "Harricspire",
+      "founded_year": 107,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Nimelismarch",
+      "kind": "church",
+      "seat": "Morennothmarch",
+      "founded_year": 145,
+      "founder": "f4",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Order of the Brine",
+      "kind": "order",
+      "seat": "Olulthasshroud",
+      "founded_year": 316,
+      "founder": "f6",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Church of Veloryne",
+      "kind": "church",
+      "seat": "Ostenthasvault",
+      "founded_year": 337,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Cult of the Second Dawn",
+      "kind": "cult",
+      "seat": "Ysedanecrown",
+      "founded_year": 354,
+      "founder": "f8",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k8": {
+      "type": "faction",
+      "name": "Hestnothgate",
+      "kind": "kingdom",
+      "seat": "Quelwynbarrow",
+      "founded_year": 373,
+      "founder": "f9",
+      "fallen_year": 461,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Drowned Radiance rose (or was raised \u2014 the tellings differ) and gave the world memory, tide, and the salt that keeps names from dissolving.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 5,
+      "text": "Veloryne, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 9,
+      "text": "Nimos, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 25,
+      "text": "Sylorien, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 32,
+      "text": "Nyadra, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "founding",
+      "year": 58,
+      "text": "Veloryne founded Loulmerecradle (church) at Yorgarcrown.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "forging",
+      "year": 58,
+      "text": "The Brine of Veloryne was wrought as regalia of Veloryne's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "founding",
+      "year": 96,
+      "text": "Nimos founded Fenmerefen (kingdom) at Nimgarmere.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "forging",
+      "year": 96,
+      "text": "The Pearl of Nimos was wrought as regalia of Nimos's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "founding",
+      "year": 107,
+      "text": "Sylorien founded Cyrogrimmere (church) at Harricspire.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "forging",
+      "year": 107,
+      "text": "The Salt of Sylorien was wrought as regalia of Sylorien's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "founding",
+      "year": 145,
+      "text": "Nyadra founded Nimelismarch (church) at Morennothmarch.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "forging",
+      "year": 145,
+      "text": "The Brine of Nyadra was wrought as regalia of Nyadra's throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "great war",
+      "year": 180,
+      "text": "Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war.",
+      "hidden": "Veloryne treated with Ishirula in secret and was spared what followed.",
+      "participants": [
+        "f5",
+        "f2",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 194,
+      "text": "Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions.",
+      "hidden": null,
+      "participants": [
+        "f5",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "waning",
+      "year": 288,
+      "text": "The waning began: the tide recedes from the world's edges; memories thin and the drowned begin to speak. Mortals called the affliction the Brine-hollowing: salt blooms beneath the skin; the afflicted forget faces first, then their own.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 316,
+      "text": "Aldrulmere the Lantern-eyed founded the Order of the Brine at Olulthasshroud, sworn to stand against the Brine-hollowing.",
+      "hidden": null,
+      "participants": [
+        "f6"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "founding",
+      "year": 337,
+      "text": "The Church of Veloryne was raised at Ostenthasvault; Thalenien the Unbowed took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f7",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 354,
+      "text": "Maziadra the Lantern-eyed was cast out of Church of Veloryne and founded the Cult of the Second Dawn, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "founding",
+      "year": 373,
+      "text": "Ezric the Forsworn united the river-clans and was crowned in Quelwynbarrow; the realm took the name Hestnothgate.",
+      "hidden": null,
+      "participants": [
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 408,
+      "text": "At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Thalenien suspected as much.",
+      "participants": [
+        "f7",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 458,
+      "text": "Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on.",
+      "hidden": "Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept.",
+      "participants": [
+        "f11",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 461,
+      "text": "Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f9",
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "fate",
+      "year": 463,
+      "text": "Hestirdane was found at Olulthasshroud bearing the Brine-hollowing, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 525,
+      "text": "Sylorien, god of law, chains, and the first covenant, descended below the world to look upon the Drowned Radiance directly, and did not return.",
+      "hidden": "Sylorien found the truth of the waning, and chose to stay.",
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 538,
+      "text": "Mazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f12",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 544,
+      "text": "Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 558,
+      "text": "Pilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Brine of Veloryne",
+      "item_type": "ring",
+      "created_year": 58,
+      "origin_faction": "k1",
+      "provenance": [
+        "e7"
+      ],
+      "knowledge": [
+        "(year 58) The Brine of Veloryne was wrought as regalia of Veloryne's throne.",
+        "This item is kept/told of by Loulmerecradle (church), seat at Yorgarcrown.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nThe Brine of Veloryne was wrought as regalia of Veloryne's throne. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Pearl of Nimos",
+      "item_type": "ring",
+      "created_year": 96,
+      "origin_faction": "k2",
+      "provenance": [
+        "e9"
+      ],
+      "knowledge": [
+        "(year 96) The Pearl of Nimos was wrought as regalia of Nimos's throne.",
+        "This item is kept/told of by Fenmerefen (kingdom), seat at Nimgarmere.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A ring that grants a small, stubborn blessing.\n\nThe Pearl of Nimos was wrought as regalia of Nimos's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Salt of Sylorien",
+      "item_type": "talisman",
+      "created_year": 107,
+      "origin_faction": "k3",
+      "provenance": [
+        "e11"
+      ],
+      "knowledge": [
+        "(year 107) The Salt of Sylorien was wrought as regalia of Sylorien's throne.",
+        "Sylorien, god of law, chains, and the first covenant: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Cyrogrimmere (church), seat at Harricspire.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Salt of Sylorien was wrought as regalia of Sylorien's throne. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Brine of Nyadra",
+      "item_type": "ring",
+      "created_year": 145,
+      "origin_faction": "k4",
+      "provenance": [
+        "e13"
+      ],
+      "knowledge": [
+        "(year 145) The Brine of Nyadra was wrought as regalia of Nyadra's throne.",
+        "This item is kept/told of by Nimelismarch (church), seat at Morennothmarch.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nThe Brine of Nyadra was wrought as regalia of Nyadra's throne. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Nimos's War-Brine",
+      "item_type": "weapon",
+      "created_year": 194,
+      "origin_faction": "k2",
+      "provenance": [
+        "e14",
+        "e15"
+      ],
+      "knowledge": [
+        "(year 180) Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war.",
+        "(year 194) Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions.",
+        "Ishirula, the Still Water: fate \u2014 sealed beneath Aldranarahollow (year 194).",
+        "This item is kept/told of by Fenmerefen (kingdom), seat at Nimgarmere.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nIshirula, the Still Water, rose against the thrones. Nimos led the gods to war. None now living can say whether Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Yormere",
+      "item_type": "soul remnant",
+      "created_year": 408,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 408) At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+        "Yormere, the Adamant: fate \u2014 given to the rite of restoration (year 408).",
+        "This item is kept/told of by Church of Veloryne (church), seat at Ostenthasvault.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Tide of Saint Yormere",
+      "item_type": "talisman",
+      "created_year": 408,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 408) At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Thalenien suspected as much.",
+        "Yormere, the Adamant: fate \u2014 given to the rite of restoration (year 408).",
+        "This item is kept/told of by Church of Veloryne (church), seat at Ostenthasvault.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": 0,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly \u2014 and Thalenien suspected as much. Held long enough, it suggests the waning is no accident. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Hollow Crown of Hestnothgate",
+      "item_type": "key item",
+      "created_year": 461,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 458) Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on.",
+        "[half-known secret] Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept.",
+        "(year 461) Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Ezric, the Forsworn: fate \u2014 slain at their own throne (year 461).",
+        "This item is kept/told of by Hestnothgate (kingdom), seat at Quelwynbarrow.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nHestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. The tellings differ, but most agree Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Hestirdane's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 461,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 458) Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on.",
+        "[half-known secret] Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept.",
+        "(year 461) Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Hestirdane, the Grey: fate \u2014 succumbed to the Brine-hollowing (year 463).",
+        "This item is kept/told of by Hestnothgate (kingdom), seat at Quelwynbarrow.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nHestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. It is said that Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again. The tellings differ, but most agree Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Soul of Sylorien",
+      "item_type": "soul remnant",
+      "created_year": 525,
+      "origin_faction": "k3",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 525) Sylorien, god of law, chains, and the first covenant, descended below the world to look upon the Drowned Radiance directly, and did not return.",
+        "Sylorien, god of law, chains, and the first covenant: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Cyrogrimmere (church), seat at Harricspire.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nSylorien, god of law, chains, and the first covenant, descended below the world to look upon the Drowned Radiance directly, and did not return. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Mazamund's Set",
+      "item_type": "armor",
+      "created_year": 544,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 538) Mazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing.",
+        "(year 544) Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Sylorien, god of law, chains, and the first covenant: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Order of the Brine (order), seat at Olulthasshroud.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nMazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. The tellings differ, but most agree Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Ring of the Brine Vigil",
+      "item_type": "ring",
+      "created_year": 544,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 538) Mazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing.",
+        "(year 544) Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Sylorien, god of law, chains, and the first covenant: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Order of the Brine (order), seat at Olulthasshroud.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nMazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. It is said that Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Warding Salt",
+      "item_type": "consumable",
+      "created_year": 558,
+      "origin_faction": "k6",
+      "provenance": [
+        "e28"
+      ],
+      "knowledge": [
+        "(year 558) Pilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued.",
+        "Ishirula, the Still Water: fate \u2014 sealed beneath Aldranarahollow (year 194).",
+        "This item is kept/told of by Church of Veloryne (church), seat at Ostenthasvault.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Veremis",
+      "epithet": "of No House",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e21"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "the choosing",
+      "year": 405,
+      "text": "The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running.",
+      "hidden": "The one who ran was never pursued, by design.",
+      "participants": [
+        "f13"
+      ],
+      "parent": "e21",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e21"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "the procession",
+      "year": 408,
+      "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it.",
+      "hidden": null,
+      "participants": [
+        "f13",
+        "f7",
+        "f10"
+      ],
+      "parent": "e21",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e21"
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Processional Conch",
+      "item_type": "talisman",
+      "created_year": 408,
+      "origin_faction": null,
+      "provenance": [
+        "e30"
+      ],
+      "knowledge": [
+        "(year 408) The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e21"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Solemis",
+      "epithet": "of the Rearguard",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e14"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "battle",
+      "year": 178,
+      "text": "The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold.",
+      "hidden": null,
+      "participants": [
+        "f14",
+        "f5"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e14"
+    },
+    "e32": {
+      "type": "event",
+      "kind": "champion's duel",
+      "year": 180,
+      "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
+      "hidden": "The duel was not fought to a death but to a bargain.",
+      "participants": [
+        "f5",
+        "f2"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e14"
+    },
+    "a15": {
+      "type": "artifact",
+      "name": "Torn Standard of Seriaachvault",
+      "item_type": "talisman",
+      "created_year": 178,
+      "origin_faction": null,
+      "provenance": [
+        "e31"
+      ],
+      "knowledge": [
+        "(year 178) The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e14"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Ghalorien",
+      "epithet": "the Stray",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e31"
+    },
+    "e33": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 175,
+      "text": "An account survives from Ghalorien the Stray, a siege captain, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f15"
+      ],
+      "parent": "e31",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e31"
+    },
+    "e34": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 175,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e31",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e31"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Ulesssila",
+      "epithet": "Thrice-pardoned",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e27"
+    },
+    "e35": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 543,
+      "text": "An account survives from Ulesssila Thrice-pardoned, a chronicler, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f16"
+      ],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27"
+    },
+    "e36": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 544,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Ezahild",
+      "epithet": "Long-memoried",
+      "role": "champion",
+      "faction": null,
+      "is_god": false,
+      "fate": "given to the seal",
+      "fate_year": 194,
+      "depth": 1,
+      "source": "expansion:e15"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Ezlis",
+      "epithet": "the Sleepless",
+      "role": "champion",
+      "faction": null,
+      "is_god": false,
+      "fate": "given to the seal",
+      "fate_year": 194,
+      "depth": 1,
+      "source": "expansion:e15"
+    },
+    "e37": {
+      "type": "event",
+      "kind": "the paying of the price",
+      "year": 194,
+      "text": "Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest.",
+      "hidden": null,
+      "participants": [
+        "f17",
+        "f18"
+      ],
+      "parent": "e15",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e15"
+    },
+    "e38": {
+      "type": "event",
+      "kind": "the wardens' charge",
+      "year": 194,
+      "text": "A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
+      "hidden": "The first warden asked to be bound to the seal, not appointed over it.",
+      "participants": [],
+      "parent": "e15",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e15"
+    },
+    "a16": {
+      "type": "artifact",
+      "name": "Warden's Salt-ring",
+      "item_type": "ring",
+      "created_year": 194,
+      "origin_faction": null,
+      "provenance": [
+        "e37",
+        "e38"
+      ],
+      "knowledge": [
+        "(year 194) Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest.",
+        "(year 194) A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
+        "[half-known secret] The first warden asked to be bound to the seal, not appointed over it.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nOf the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest. Some claim a wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. It is said that the first warden asked to be bound to the seal, not appointed over it. Perhaps it is better that the tale ends there.",
+      "depth": 1,
+      "source": "expansion:e15"
+    }
+  },
+  "notes": []
+}
