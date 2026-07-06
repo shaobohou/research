@@ -20,6 +20,12 @@ The Silver of Karengar was wrought as regalia of Karengar's throne. Whether this
 
 ## Consumables
 
+### Effects of Velwyn
+
+A humble ward, spent in a moment.
+
+An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall. The rest of the story is kept by no one.
+
 ### Warding Silver
 
 A humble ward, spent in a moment.
@@ -60,7 +66,7 @@ At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moo
 
 The lingering soul of one who would not wholly pass.
 
-Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat. The tellings differ, but most agree What unmade the god was not violence but understanding — a truth arrived at, all at once. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.
+Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat. The tellings differ, but most agree What unmade the god was not violence but understanding — a truth arrived at, all at once. Those who keep it too long begin to doubt the sermons. The rest of the story is kept by no one.
 
 ## Talismans
 
@@ -69,6 +75,12 @@ Mazirast, god of storms and unkept promises, was unmade upon their own throne. N
 A talisman for the invoking of half-forgotten rites.
 
 The Veil of Mazirast was wrought as regalia of Mazirast's throne. The rest of the story is kept by no one.
+
+### Torn Standard of Haruienreach
+
+A talisman for the invoking of half-forgotten rites.
+
+The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold. The rest of the story is kept by no one.
 
 ### Shard of Saint Ulmund
 
@@ -94,4 +106,4 @@ Syldra, the Unreflected, rose against the thrones. Karengar led the gods to war.
 
 A weapon of an older make, still keen despite its years.
 
-Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. In its presence, the old prayers feel like apologies. The name endures; little else does.
+Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. Those who keep it too long begin to doubt the sermons. The name endures; little else does.

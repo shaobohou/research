@@ -41,9 +41,9 @@ PLACE_SUFFIXES = [
 class Namer:
     """Deterministic name factory that never repeats a name within a world."""
 
-    def __init__(self, rng: random.Random):
+    def __init__(self, rng: random.Random, used: set[str] | None = None):
         self.rng = rng
-        self.used: set[str] = set()
+        self.used: set[str] = set(used or ())
 
     def _raw(self) -> str:
         parts = [self.rng.choice(ONSETS)]
@@ -82,10 +82,10 @@ ARCHETYPES = {
         "curse_desc": "a grey brand that spreads over the heart; the marked wander until their names burn out",
         "adversary_title": "the Cinder-Eater",
         "relic_nouns": ["ember", "cinder", "brand", "pyre", "ash"],
-        "mysteries": [
+        "veils": [
+            "The rites of rekindling consume souls faster than the Ember returns them, and the church keeps the arithmetic hidden.",
             "The Ember is not dying — the gods siphon it to prolong their reign, and the curse is the siphon's residue.",
-            "The Ember was stolen, not given; its true keeper still waits below the world, and every rekindling deepens the debt.",
-            "The first soul ever kindled was unwilling, and the Ember remembers; the curse is its slow act of accounting.",
+            "The siphon was the Ember's own bargain: it feeds the gods so that something older, asleep in its heart, stays asleep. The gods know, and keep feeding.",
         ],
     },
     "sea": {
@@ -96,10 +96,10 @@ ARCHETYPES = {
         "curse_desc": "salt blooms beneath the skin; the afflicted forget faces first, then their own",
         "adversary_title": "the Still Water",
         "relic_nouns": ["pearl", "brine", "tide", "conch", "salt"],
-        "mysteries": [
+        "veils": [
+            "The church drowns its saints not to honour the Radiance but to silence what they heard in the tide.",
             "The Radiance never drowned — it was drowned, by the very gods who now pray for its return.",
-            "The sea is one vast sleeper, and the gift of memory is only what leaks from its dream; waking it would end all names at once.",
-            "Every prayer said over water is swallowed and hoarded; the Radiance answers none, because it is saving them for a single terrible reply.",
+            "The gods drowned it in mercy, at its own asking: it had begun to remember the world before this one, and memory is contagious.",
         ],
     },
     "root": {
@@ -110,10 +110,10 @@ ARCHETYPES = {
         "curse_desc": "growth rings surface on the flesh of the afflicted, one for each hour they relive",
         "adversary_title": "the Ungrown",
         "relic_nouns": ["seed", "sap", "ring", "graft", "bough"],
-        "mysteries": [
+        "veils": [
+            "The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.",
             "The Root grew from a buried corpse, and the order it grants is that corpse's refusal to be forgotten.",
-            "The seasons were a cage built to hold something seasonless; the rot is the cage rusting.",
-            "Whoever prunes the Root decides what may happen next; the gods' war was never for the Root but for the shears.",
+            "The corpse is not dead but dreaming in sequence; the seasons are its heartbeats, and the rot began when it started to wake.",
         ],
     },
     "moon": {
@@ -124,10 +124,10 @@ ARCHETYPES = {
         "curse_desc": "moonlight pools in the eyes of the afflicted, who weep light until none is left to see by",
         "adversary_title": "the Unreflected",
         "relic_nouns": ["shard", "silver", "veil", "mirror", "lament"],
-        "mysteries": [
-            "The Moon was not sundered by war — it broke itself to escape what it saw approaching, and the shards are still fleeing.",
-            "Each god keeps a shard and calls it holy; assembled, the shards spell out a name no god survives hearing.",
+        "veils": [
+            "The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.",
             "The gentle light was never the Moon's — it is borrowed, and the lender has begun to collect.",
+            "The Moon broke itself to hide the lender's name among its shards; assembled, they would speak it, and the debt would come due all at once.",
         ],
     },
     "song": {
@@ -138,10 +138,10 @@ ARCHETYPES = {
         "curse_desc": "the voices of the afflicted fade to a hum, and what they built beside begins to loosen",
         "adversary_title": "the Discordant",
         "relic_nouns": ["chord", "bell", "hymn", "echo", "tongue"],
-        "mysteries": [
+        "veils": [
+            "The bells are not rung to honour the Chord but to drown out something singing underneath it.",
             "The Chord is not fading — it is being sung backwards, deliberately, from somewhere beneath the oldest bell.",
-            "Speech was the Chord's prison, not its gift; every word spent brings its silence, and its freedom, closer.",
-            "The gods harmonised over a note that was already there; the world's true key belongs to the thing that hummed first.",
+            "The backwards singer is the Chord's own first note, cast out so the harmony could begin; it does not want silence — it wants its place back.",
         ],
     },
 }
@@ -168,6 +168,23 @@ FIGURE_ROLES_A2 = [
 ITEM_TYPES = [
     "weapon", "armor", "ring", "talisman", "soul remnant",
     "key item", "consumable", "catalyst",
+]
+
+# Perspective colouring, keyed by the kind of faction that keeps the item.
+BIAS_BY_KIND = {
+    "kingdom": "courtly and proud; flatters its founders, omits their crimes",
+    "church": "liturgical; frames all loss as trial and all doubt as sin",
+    "order": "austere and dutiful; honours oaths, distrusts miracles",
+    "cult": "conspiratorial; blames the gods, half-right and overreaching",
+    None: "a peddler's patter; wonder-struck, unreliable on names and dates",
+}
+
+FALSE_RUMORS = [
+    "names the wrong slayer for a famous death",
+    "claims the relic was a gift when it was plunder",
+    "places the event a whole age too early",
+    "attributes the deed to a god who had no part in it",
+    "insists the dead figure still lives, in hiding",
 ]
 
 
@@ -236,7 +253,9 @@ class World:
     archetype_key: str
     archetype: dict
     primordial_name: str
-    mystery: str
+    mystery: str                                  # veils[1], kept for convenience
+    veils: list[str] = field(default_factory=list)
+    used_names: list[str] = field(default_factory=list)
     ages: list[Age] = field(default_factory=list)
     figures: list[Figure] = field(default_factory=list)
     factions: list[Faction] = field(default_factory=list)
@@ -275,7 +294,8 @@ class _Gen:
             archetype_key=key,
             archetype=arch,
             primordial_name=arch["primordial"],
-            mystery=self.rng.choice(arch["mysteries"]),
+            mystery=arch["veils"][1],
+            veils=list(arch["veils"]),
         )
         self.year = 0
 
@@ -639,22 +659,6 @@ class _Gen:
         w, rng = self.world, self.rng
         arch = w.archetype
 
-        bias_by_kind = {
-            "kingdom": "courtly and proud; flatters its founders, omits their crimes",
-            "church": "liturgical; frames all loss as trial and all doubt as sin",
-            "order": "austere and dutiful; honours oaths, distrusts miracles",
-            "cult": "conspiratorial; blames the gods, half-right and overreaching",
-            None: "a peddler's patter; wonder-struck, unreliable on names and dates",
-        }
-
-        false_rumors = [
-            "names the wrong slayer for a famous death",
-            "claims the relic was a gift when it was plunder",
-            "places the event a whole age too early",
-            "attributes the deed to a god who had no part in it",
-            "insists the dead figure still lives, in hiding",
-        ]
-
         # Trim or pad the artifact list to n_items, keeping type variety.
         arts = w.artifacts
         rng.shuffle(arts)
@@ -681,7 +685,7 @@ class _Gen:
 
         for a in w.artifacts:
             fac = w.fac(a.origin_faction_id) if a.origin_faction_id else None
-            a.bias = bias_by_kind[fac.kind if fac else None]
+            a.bias = BIAS_BY_KIND[fac.kind if fac else None]
 
             facts: list[str] = []
             for eid in a.provenance:
@@ -702,7 +706,7 @@ class _Gen:
 
             a.knowledge = facts
             if rng.random() < 0.35:
-                a.false_rumor = rng.choice(false_rumors)
+                a.false_rumor = rng.choice(FALSE_RUMORS)
 
     # -- entry point -----------------------------------------------------------
     def run(self) -> World:
@@ -710,54 +714,12 @@ class _Gen:
         self.age_of_names()
         self.age_of_dusk()
         self.assign_knowledge()
+        self.world.used_names = sorted(self.namer.used)
         return self.world
 
 
 def generate_world(seed: int, n_items: int = 14) -> World:
     return _Gen(seed, n_items).run()
 
-
-# ---------------------------------------------------------------------------
-# Chronicle rendering (the ground-truth document)
-# ---------------------------------------------------------------------------
-
-def render_chronicle(w: World) -> str:
-    lines: list[str] = []
-    lines.append(f"# The True Chronicle (seed {w.seed})")
-    lines.append("")
-    lines.append("> **Spoilers.** This is the ground truth the items only hint at.")
-    lines.append("")
-    lines.append(f"**Cosmology:** {w.primordial_name} — gift of {w.archetype['gift']}.")
-    lines.append(f"**The waning:** {w.archetype['waning']}.")
-    lines.append(f"**The curse:** {w.archetype['curse_name']} — {w.archetype['curse_desc']}.")
-    lines.append("")
-    lines.append(f"**THE CENTRAL MYSTERY (never stated by any item):** {w.mystery}")
-    lines.append("")
-
-    lines.append("## Ages")
-    for a in w.ages:
-        end = a.end if a.end is not None else "present"
-        lines.append(f"- **{a.name}** (years {a.start}–{end}): {a.blurb}")
-    lines.append("")
-
-    lines.append("## Timeline")
-    for e in w.events:
-        lines.append(f"- **Year {e.year}** — *{e.kind}*: {e.text}")
-        if e.hidden:
-            lines.append(f"  - _Hidden:_ {e.hidden}")
-    lines.append("")
-
-    lines.append("## Dramatis Personae")
-    for f in w.figures:
-        fac = f" — of {w.fac(f.faction_id).name}" if f.faction_id else ""
-        fate = f" Fate: {f.fate} (year {f.fate_year})." if f.fate else ""
-        god = " [god]" if f.is_god else ""
-        lines.append(f"- **{f.name}** {f.epithet}{god} ({f.role}){fac}.{fate}")
-    lines.append("")
-
-    lines.append("## Factions")
-    for k in w.factions:
-        fallen = f", fell year {k.fallen_year}" if k.fallen_year else ""
-        lines.append(f"- **{k.name}** ({k.kind}), seat {k.seat}, founded year {k.founded_year}{fallen}.")
-    lines.append("")
-    return "\n".join(lines)
+# Chronicle/codex rendering lives in ledger.py — the ledger is the single
+# source of truth once a world exists on disk.

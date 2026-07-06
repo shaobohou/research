@@ -3,87 +3,122 @@
 A Dwarf Fortress-style procedural history generator whose player-facing output
 is **Dark Souls / Elden Ring style item descriptions** — the true history is
 simulated, then deliberately shattered into incomplete, biased fragments that
-must be triangulated across items.
+must be triangulated across items. The world is **deep on demand**: any event
+can be expanded into finer sub-events (with new minor figures and new items)
+lazily, reproducibly, and without ever contradicting established canon.
 
 ## How it works
 
 ```
-seed ──▶ worldsim.py ──▶ true chronicle (gods, ages, wars, betrayals,
-              │           artifacts with provenance, one hidden mystery)
+seed ──▶ worldsim.py ──▶ genesis: gods, ages, wars, betrayals, artifacts
+              │                   with provenance, 3 nested mystery VEILS
               ▼
-         knowledge packets   each item gets: a few true facts, a faction
-              │              bias, sometimes a false rumor, and (rarely)
-              ▼              permission to *hint* at the mystery
-         loregen.py ──▶ Claude Opus 4.8 (one batched, schema-constrained
-              │          call) or a deterministic template fallback
+         ledger.py      the canon ledger (worlds/seed-N/ledger.json):
+              │         append-only fact store; every later assertion is
+              │         validated against it (years, deaths, name collisions)
               ▼
-         codex.md  (the deliverable — item lore, no spoilers)
-         chronicle.md  (ground truth, for the curious / for debugging)
+   ┌─ deepen ─────────────────────────────────────────────────┐
+   │  expand.py   deterministic skeleton: hash(seed, node_id)  │
+   │      │       → sub-events, minor figures, 0–2 new items   │
+   │      ▼                                                    │
+   │  loregen.elaborate   LLM enriches prose + adds texture    │
+   │                      notes, merged through validated      │
+   │                      ledger paths (write-back = canon)    │
+   └───────────────────────────────────────────────────────────┘
+              ▼
+         codex.md  (item lore, no spoilers)   chronicle.md  (nested ground truth)
 ```
 
-The design mirrors why Souls lore feels the way it does:
+Why it feels like Souls lore:
 
-- **Simulate first, narrate second** (the DF move): every item description is
-  backed by real events with real causality, so fragments cross-reference
-  correctly — the same betrayal shows up in a crown, a blade, and a hanged
-  traitor's fate.
-- **Knowledge packets**: an item only "knows" the events in its provenance
-  chain, plus a hedged glimpse (50% chance per secret) of any hidden layer.
-- **Bias**: the church relic frames loss as trial; the cult trinket blames
-  the gods (and, Souls-classically, the heretics are *nearer* the truth);
-  the peddler's item gets names wrong.
-- **False rumors**: ~35% of items embed one confidently wrong belief, unmarked.
-- **The central mystery is never stated**: 2–3 items may gesture at it in a
-  single deniable clause. The chronicle prints it under a spoiler warning.
+- **Simulate first, narrate second** (the DF move): every description is
+  backed by real events with causality, so fragments cross-reference — the
+  same betrayal shows up in a crown, a blade, and a hanged traitor's fate.
+- **Knowledge packets**: an item only "knows" its provenance chain, plus a
+  hedged glimpse (50%) of any hidden layer. ~35% of items embed one
+  confidently wrong rumor, unmarked. Faction bias colors everything (and,
+  Souls-classically, the heretics are *nearer* the truth than the church).
+- **Layered veils instead of one secret**: each world has a 3-veil mystery
+  chain — each veil partially true, reframed by the next. Depth-k content may
+  hint only at veil k, so deepening doesn't just add trivia; it *reinterprets*
+  what shallower items already said.
+- **Depth on demand**: expansion is seeded from `(world_seed, node_id)`, so
+  expanding a node always yields the same skeleton no matter when you do it.
+  New facts — including the LLM's inventions — are persisted to the ledger,
+  so the world *remembers*: ask about the same envoy twice and the answers
+  agree.
 
 ## Usage
 
 ```sh
-# Full experience — needs ANTHROPIC_API_KEY (or an `ant auth login` profile)
-uv run main.py --seed 107 --items 14
+# Full experience — needs ANTHROPIC_API_KEY (or an `ant auth login` profile).
+# Add --no-llm to any command for deterministic template prose, no key needed.
+uv run main.py generate --seed 107 --items 14
 
-# Offline demo — deterministic template prose, no key needed
-uv run main.py --seed 107 --no-llm
+# Depth on demand: expand the event behind an item (or --node e14).
+# Repeating walks down: parent -> first unexpanded child -> ...
+uv run main.py deepen --seed 107 --item "Oathbreaker"
+
+# Ask the world a question; answered in-world, from canon only.
+uv run main.py ask --seed 107 "Who was Irveth the Saltborn?"
+
+uv run main.py codex --seed 107      # re-render chronicle.md / codex.md
 ```
 
-Outputs land in `worlds/seed-<N>/`: `codex.md`, `chronicle.md`, `world.json`.
-Same seed ⇒ byte-identical world (verified), so you can compare the template
-and LLM renderings of the *same* history.
+Outputs land in `worlds/seed-<N>/`: `ledger.json` (canon), `codex.md`,
+`chronicle.md` (nested timeline, veils under a spoiler warning), `answers.md`.
+
+## Guarantees
+
+- **Genesis is byte-deterministic** per seed; **expansion skeletons are
+  deterministic per node** (verified in testing: expanding `e14` on two
+  divergent copies of a world yields identical children). Full-world identity
+  holds when the same expansion sequence is applied.
+- **Canon is enforced mechanically**: the ledger rejects events dated outside
+  the world's span, participants acting after their recorded fate
+  ("Mazirast cannot act in year 533: fate sealed in year 523"), duplicate
+  names, and references to unknown ids. LLM output merges only through these
+  validated paths — bad notes are dropped, never written.
+- **LLM-optional**: every surface (describe, elaborate, ask) has a template
+  fallback that obeys the same fragment/bias/veil rules.
 
 ## Files
 
-- [`worldsim.py`](worldsim.py) — seeded history sim: 5 cosmology archetypes
-  (flame / sea / root / moon / song), 3 ages, ~28 events, ~12 named figures,
-  ~13 artifacts per world.
-- [`loregen.py`](loregen.py) — style guide + one streamed
-  `claude-opus-4-8` call with adaptive thinking and a `json_schema`
-  structured output; template fallback mirrors the same constraints.
-- [`main.py`](main.py) — CLI.
-- [`worlds/`](worlds/) — committed sample output (template mode; this
-  container has no API key). Example fragment, seed 9021 (flame world):
-
-  > **Cinder of Tormund** — A catalyst attuned to the old gift.
-  > The Cinder of Tormund was wrought as regalia of Tormund's throne. It
-  > hums, faintly, as if answering something far below. What became of it
-  > after is not written.
+- [`worldsim.py`](worldsim.py) — genesis sim: 5 cosmology archetypes
+  (flame / sea / root / moon / song) × 3-veil mystery chains, 3 ages,
+  ~25–28 events, ~13 artifacts.
+- [`ledger.py`](ledger.py) — the canon fact store + validators + rendering.
+- [`expand.py`](expand.py) — per-event-kind expansion templates (great war →
+  battles and a champions' bargain; betrayal → the go-between and the price;
+  rite → the choosing and the procession; sealing → the named dead and the
+  wardenship; twilight → last audiences and the empty seat; generic →
+  testimony and aftermath), plus item minting.
+- [`loregen.py`](loregen.py) — style guide, three Claude Opus 4.8 surfaces
+  (streamed, adaptive thinking, JSON-schema structured output), template
+  fallbacks.
+- [`main.py`](main.py) — CLI (`generate | deepen | ask | codex`).
+- [`worlds/`](worlds/) — committed samples (template mode; this container has
+  no API key): seed-9021 is genesis-only; seed-107 has been deepened five
+  times (see its nested `chronicle.md` — e.g. the great war now contains the
+  battle of Haruienreach and a champions' duel that was "not fought to a
+  death but to a bargain", and minted the *Torn Standard of Haruienreach*).
 
 ## Key findings / notes
 
-- One **batched** LLM call (whole chronicle + all items in context) beats
-  per-item calls: contradictions stay deliberate, names stay consistent, and
-  the epigraph can echo the item set. Structured output keeps parsing safe.
-- The **hidden layer** (per-event `hidden:` truths + one world-level mystery)
-  is what creates the "archaeology" feel — without facts the items *withhold*,
-  descriptions read as flavor text rather than evidence.
-- Template mode is a useful floor: it proves the fragment/bias mechanics work
-  without any model, and gives a fixed baseline to judge LLM prose against.
+- The **write-back is what makes it deep rather than improvised**: LLM
+  texture becomes canon, so subsequent expansions must honor it.
+- Skeleton-then-elaborate degrades gracefully: if the LLM call fails, the
+  deterministic skeleton still commits, and elaboration can't corrupt canon
+  because merging goes through the validators.
+- Prompt-caching note for heavy use: the chronicle is rendered at the top of
+  every prompt — putting a `cache_control` breakpoint after it would make
+  repeated deepening cheap within the TTL.
 
 ## Next steps
 
-- Feed `world.json` back in for **NPC dialogue** and **area descriptions**
-  drawn from the same knowledge-packet mechanic.
-- Multi-generation item drift: re-describe the same item "an age later" with
-  degraded knowledge.
-- A small validator that asks Claude to *reconstruct* the chronicle from the
-  codex alone, scoring how much of the true history is recoverable (lore
-  difficulty tuning).
+- `deepen --auto N`: let the model choose the N most narratively load-bearing
+  nodes to expand.
+- Item re-description after deepening (an item's provenance got richer — let
+  its description sharpen, as a "remembering" mechanic).
+- A reconstruction validator: ask Claude to rebuild the chronicle from the
+  codex alone, scoring how much truth is recoverable (lore difficulty tuning).

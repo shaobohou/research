@@ -1,0 +1,1243 @@
+{
+  "meta": {
+    "seed": 107,
+    "archetype_key": "moon",
+    "primordial": "the Sundered Moon",
+    "gift": "longing, tide of the blood, and light gentle enough to lie by",
+    "waning": "the shards drift apart; nights arrive unscheduled and grief acquires weight",
+    "curse_name": "the Silver Lament",
+    "curse_desc": "moonlight pools in the eyes of the afflicted, who weep light until none is left to see by",
+    "relic_nouns": [
+      "shard",
+      "silver",
+      "veil",
+      "mirror",
+      "lament"
+    ],
+    "veils": [
+      "The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.",
+      "The gentle light was never the Moon's \u2014 it is borrowed, and the lender has begun to collect.",
+      "The Moon broke itself to hide the lender's name among its shards; assembled, they would speak it, and the debt would come due all at once."
+    ],
+    "epigraph": "Of the Sundered Moon little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 553,
+    "used_names": [
+      "Aldrienmere",
+      "Athorachcradle",
+      "Cyrorsilaspire",
+      "Draastbarrow",
+      "Galastcradle",
+      "Galeeth",
+      "Galilisshroud",
+      "Ghalaedra",
+      "Ghalsila",
+      "Hestvanevault",
+      "Irveth",
+      "Kaaemothbarrow",
+      "Kardane",
+      "Karengar",
+      "Mazirast",
+      "Morast",
+      "Nimenasthollow",
+      "Queliaottshroud",
+      "Ranulornmarch",
+      "Sylara",
+      "Syldra",
+      "Thalemiscrown",
+      "Toraeastdeep",
+      "Ulara",
+      "Ulmund",
+      "Yorachvault",
+      "Syligar",
+      "Moraula",
+      "Fenach",
+      "Torn Standard of Haruienreach",
+      "Hestcael",
+      "Velwyn",
+      "Effects of Velwyn"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 326,
+      "blurb": "the Sundered Moon gave the world longing, tide of the blood, and light gentle enough to lie by."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 326,
+      "end": 523,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 523,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Ghalsila",
+      "epithet": "god of the hunt and the mercy of endings",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Mazirast",
+      "epithet": "god of storms and unkept promises",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": "unmade upon their throne",
+      "fate_year": 523,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Karengar",
+      "epithet": "god of harvest, plenty, and the debt of plenty",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Ghalaedra",
+      "epithet": "god of craft, measure, and the forge",
+      "role": "god",
+      "faction": "k4",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Syldra",
+      "epithet": "the Unreflected",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Ranulornmarch",
+      "fate_year": 234,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Sylara",
+      "epithet": "the Kindly",
+      "role": "knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Ulara",
+      "epithet": "the Forsworn",
+      "role": "high priest",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Galeeth",
+      "epithet": "the Grey",
+      "role": "heretic scholar",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Morast",
+      "epithet": "the Adamant",
+      "role": "king",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 453,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Ulmund",
+      "epithet": "the Quiet",
+      "role": "pilgrim saint",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 427,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Irveth",
+      "epithet": "the Saltborn",
+      "role": "oathbreaker general",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "succumbed to the Silver Lament",
+      "fate_year": 461,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Kardane",
+      "epithet": "the Latecomer",
+      "role": "wandering knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "walked into the dusk unarmed",
+      "fate_year": 544,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Cyrorsilaspire",
+      "kind": "kingdom",
+      "seat": "Queliaottshroud",
+      "founded_year": 75,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Galastcradle",
+      "kind": "kingdom",
+      "seat": "Aldrienmere",
+      "founded_year": 104,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Yorachvault",
+      "kind": "kingdom",
+      "seat": "Thalemiscrown",
+      "founded_year": 121,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Hestvanevault",
+      "kind": "kingdom",
+      "seat": "Nimenasthollow",
+      "founded_year": 156,
+      "founder": "f4",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Order of the Lament",
+      "kind": "order",
+      "seat": "Draastbarrow",
+      "founded_year": 348,
+      "founder": "f6",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Church of Ghalaedra",
+      "kind": "church",
+      "seat": "Athorachcradle",
+      "founded_year": 366,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Cult of the Open Door",
+      "kind": "cult",
+      "seat": "Toraeastdeep",
+      "founded_year": 373,
+      "founder": "f8",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k8": {
+      "type": "faction",
+      "name": "Kaaemothbarrow",
+      "kind": "kingdom",
+      "seat": "Galilisshroud",
+      "founded_year": 398,
+      "founder": "f9",
+      "fallen_year": 453,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Sundered Moon rose (or was raised \u2014 the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 12,
+      "text": "Ghalsila, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 23,
+      "text": "Mazirast, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 30,
+      "text": "Karengar, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 35,
+      "text": "Ghalaedra, god of craft, measure, and the forge, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "founding",
+      "year": 75,
+      "text": "Ghalsila founded Cyrorsilaspire (kingdom) at Queliaottshroud.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "forging",
+      "year": 75,
+      "text": "The Silver of Ghalsila was wrought as regalia of Ghalsila's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "founding",
+      "year": 104,
+      "text": "Mazirast founded Galastcradle (kingdom) at Aldrienmere.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "forging",
+      "year": 104,
+      "text": "The Veil of Mazirast was wrought as regalia of Mazirast's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "founding",
+      "year": 121,
+      "text": "Karengar founded Yorachvault (kingdom) at Thalemiscrown.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "forging",
+      "year": 121,
+      "text": "The Silver of Karengar was wrought as regalia of Karengar's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "founding",
+      "year": 156,
+      "text": "Ghalaedra founded Hestvanevault (kingdom) at Nimenasthollow.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "forging",
+      "year": 156,
+      "text": "The Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "great war",
+      "year": 229,
+      "text": "Syldra, the Unreflected, rose against the thrones. Karengar led the gods to war.",
+      "hidden": "Mazirast treated with Syldra in secret and was spared what followed.",
+      "participants": [
+        "f5",
+        "f3",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 234,
+      "text": "Syldra was defeated and sealed beneath Ranulornmarch; the seal was bought with the lives of 7 champions.",
+      "hidden": null,
+      "participants": [
+        "f5",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "waning",
+      "year": 326,
+      "text": "The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 348,
+      "text": "Sylara the Kindly founded the Order of the Lament at Draastbarrow, sworn to stand against the Silver Lament.",
+      "hidden": null,
+      "participants": [
+        "f6"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "founding",
+      "year": 366,
+      "text": "The Church of Ghalaedra was raised at Athorachcradle; Ulara the Forsworn took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f7",
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 373,
+      "text": "Galeeth the Grey was cast out of Church of Ghalaedra and founded the Cult of the Open Door, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "founding",
+      "year": 398,
+      "text": "Morast the Adamant united the river-clans and was crowned in Galilisshroud; the realm took the name Kaaemothbarrow.",
+      "hidden": null,
+      "participants": [
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 427,
+      "text": "At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much.",
+      "participants": [
+        "f7",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 449,
+      "text": "Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on.",
+      "hidden": "Irveth acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Silver Lament. The promise was not kept.",
+      "participants": [
+        "f11",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 453,
+      "text": "Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f9",
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "fate",
+      "year": 461,
+      "text": "Irveth was found at Draastbarrow bearing the Silver Lament, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 523,
+      "text": "Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat.",
+      "hidden": "What unmade the god was not violence but understanding \u2014 a truth arrived at, all at once.",
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 541,
+      "text": "Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f12",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 544,
+      "text": "Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 553,
+      "text": "Pilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Silver of Ghalsila",
+      "item_type": "weapon",
+      "created_year": 75,
+      "origin_faction": "k1",
+      "provenance": [
+        "e7"
+      ],
+      "knowledge": [
+        "(year 75) The Silver of Ghalsila was wrought as regalia of Ghalsila's throne.",
+        "This item is kept/told of by Cyrorsilaspire (kingdom), seat at Queliaottshroud.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThe Silver of Ghalsila was wrought as regalia of Ghalsila's throne. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Veil of Mazirast",
+      "item_type": "talisman",
+      "created_year": 104,
+      "origin_faction": "k2",
+      "provenance": [
+        "e9"
+      ],
+      "knowledge": [
+        "(year 104) The Veil of Mazirast was wrought as regalia of Mazirast's throne.",
+        "Mazirast, god of storms and unkept promises: fate \u2014 unmade upon their throne (year 523).",
+        "This item is kept/told of by Galastcradle (kingdom), seat at Aldrienmere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Veil of Mazirast was wrought as regalia of Mazirast's throne. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Silver of Karengar",
+      "item_type": "catalyst",
+      "created_year": 121,
+      "origin_faction": "k3",
+      "provenance": [
+        "e11"
+      ],
+      "knowledge": [
+        "(year 121) The Silver of Karengar was wrought as regalia of Karengar's throne.",
+        "This item is kept/told of by Yorachvault (kingdom), seat at Thalemiscrown.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Silver of Karengar was wrought as regalia of Karengar's throne. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Shard of Ghalaedra",
+      "item_type": "ring",
+      "created_year": 156,
+      "origin_faction": "k4",
+      "provenance": [
+        "e13"
+      ],
+      "knowledge": [
+        "(year 156) The Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne.",
+        "This item is kept/told of by Hestvanevault (kingdom), seat at Nimenasthollow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nThe Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Karengar's War-Veil",
+      "item_type": "weapon",
+      "created_year": 234,
+      "origin_faction": "k3",
+      "provenance": [
+        "e14",
+        "e15"
+      ],
+      "knowledge": [
+        "(year 229) Syldra, the Unreflected, rose against the thrones. Karengar led the gods to war.",
+        "(year 234) Syldra was defeated and sealed beneath Ranulornmarch; the seal was bought with the lives of 7 champions.",
+        "Syldra, the Unreflected: fate \u2014 sealed beneath Ranulornmarch (year 234).",
+        "This item is kept/told of by Yorachvault (kingdom), seat at Thalemiscrown.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nSyldra, the Unreflected, rose against the thrones. Karengar led the gods to war. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Ulmund",
+      "item_type": "soul remnant",
+      "created_year": 427,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 427) At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much.",
+        "Ulmund, the Quiet: fate \u2014 given to the rite of restoration (year 427).",
+        "This item is kept/told of by Church of Ghalaedra (church), seat at Athorachcradle.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Shard of Saint Ulmund",
+      "item_type": "talisman",
+      "created_year": 427,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 427) At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much.",
+        "Ulmund, the Quiet: fate \u2014 given to the rite of restoration (year 427).",
+        "This item is kept/told of by Church of Ghalaedra (church), seat at Athorachcradle.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Hollow Crown of Kaaemothbarrow",
+      "item_type": "key item",
+      "created_year": 453,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 449) Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on.",
+        "[half-known secret] Irveth acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Silver Lament. The promise was not kept.",
+        "(year 453) Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Morast, the Adamant: fate \u2014 slain at their own throne (year 453).",
+        "This item is kept/told of by Kaaemothbarrow (kingdom), seat at Galilisshroud.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nIrveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Irveth's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 453,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 449) Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on.",
+        "(year 453) Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Irveth, the Saltborn: fate \u2014 succumbed to the Silver Lament (year 461).",
+        "This item is kept/told of by Kaaemothbarrow (kingdom), seat at Galilisshroud.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": 0,
+      "description": "A weapon of an older make, still keen despite its years.\n\nIrveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. Those who keep it too long begin to doubt the sermons. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Soul of Mazirast",
+      "item_type": "soul remnant",
+      "created_year": 523,
+      "origin_faction": "k2",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 523) Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat.",
+        "[half-known secret] What unmade the god was not violence but understanding \u2014 a truth arrived at, all at once.",
+        "Mazirast, god of storms and unkept promises: fate \u2014 unmade upon their throne (year 523).",
+        "This item is kept/told of by Galastcradle (kingdom), seat at Aldrienmere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "The lingering soul of one who would not wholly pass.\n\nMazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat. The tellings differ, but most agree What unmade the god was not violence but understanding \u2014 a truth arrived at, all at once. Those who keep it too long begin to doubt the sermons. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Kardane's Set",
+      "item_type": "armor",
+      "created_year": 544,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 541) Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing.",
+        "(year 544) Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Mazirast, god of storms and unkept promises: fate \u2014 unmade upon their throne (year 523).",
+        "This item is kept/told of by Order of the Lament (order), seat at Draastbarrow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nKardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing. Old verses hold that Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Ring of the Lament Vigil",
+      "item_type": "ring",
+      "created_year": 544,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 541) Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing.",
+        "(year 544) Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Kardane, the Latecomer: fate \u2014 walked into the dusk unarmed (year 544).",
+        "This item is kept/told of by Order of the Lament (order), seat at Draastbarrow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nKardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing. The tellings differ, but most agree Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Warding Silver",
+      "item_type": "consumable",
+      "created_year": 553,
+      "origin_faction": "k6",
+      "provenance": [
+        "e28"
+      ],
+      "knowledge": [
+        "(year 553) Pilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued.",
+        "[half-known secret] The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+        "Syldra, the Unreflected: fate \u2014 sealed beneath Ranulornmarch (year 234).",
+        "This item is kept/told of by Church of Ghalaedra (church), seat at Athorachcradle.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Syligar",
+      "epithet": "the Younger",
+      "role": "bell-ringer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e23"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 448,
+      "text": "An account survives from Syligar the Younger, a bell-ringer, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f13"
+      ],
+      "parent": "e23",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e23"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 448,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e23",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e23"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Moraula",
+      "epithet": "of No House",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e29"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 448,
+      "text": "An account survives from Moraula of No House, a novice, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "parent": "e29",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e29"
+    },
+    "e32": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 448,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e29",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e29"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Fenach",
+      "epithet": "the Meek",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e14"
+    },
+    "e33": {
+      "type": "event",
+      "kind": "battle",
+      "year": 226,
+      "text": "The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold.",
+      "hidden": null,
+      "participants": [
+        "f15",
+        "f5"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e14"
+    },
+    "e34": {
+      "type": "event",
+      "kind": "champion's duel",
+      "year": 227,
+      "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
+      "hidden": "The duel was not fought to a death but to a bargain.",
+      "participants": [
+        "f5",
+        "f3"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e14"
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Torn Standard of Haruienreach",
+      "item_type": "talisman",
+      "created_year": 226,
+      "origin_faction": null,
+      "provenance": [
+        "e33"
+      ],
+      "knowledge": [
+        "(year 226) The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e14"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Hestcael",
+      "epithet": "One-hand",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e10"
+    },
+    "e35": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 121,
+      "text": "An account survives from Hestcael One-hand, a quartermaster, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f16"
+      ],
+      "parent": "e10",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e10"
+    },
+    "e36": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 121,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e10",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e10"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Velwyn",
+      "epithet": "the Plain",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e26"
+    },
+    "e37": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 539,
+      "text": "An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f17"
+      ],
+      "parent": "e26",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e26"
+    },
+    "e38": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 540,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e26",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e26"
+    },
+    "a15": {
+      "type": "artifact",
+      "name": "Effects of Velwyn",
+      "item_type": "consumable",
+      "created_year": 539,
+      "origin_faction": null,
+      "provenance": [
+        "e37"
+      ],
+      "knowledge": [
+        "(year 539) An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e26"
+    }
+  },
+  "notes": []
+}

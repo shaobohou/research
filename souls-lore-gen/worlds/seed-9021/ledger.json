@@ -1,0 +1,912 @@
+{
+  "meta": {
+    "seed": 9021,
+    "archetype_key": "flame",
+    "primordial": "the First Ember",
+    "gift": "warmth, disparity, and the colour of souls",
+    "waning": "the Ember gutters; shadows lengthen and the dead forget to lie down",
+    "curse_name": "the Gutter-mark",
+    "curse_desc": "a grey brand that spreads over the heart; the marked wander until their names burn out",
+    "relic_nouns": [
+      "ember",
+      "cinder",
+      "brand",
+      "pyre",
+      "ash"
+    ],
+    "veils": [
+      "The rites of rekindling consume souls faster than the Ember returns them, and the church keeps the arithmetic hidden.",
+      "The Ember is not dying \u2014 the gods siphon it to prolong their reign, and the curse is the siphon's residue.",
+      "The siphon was the Ember's own bargain: it feeds the gods so that something older, asleep in its heart, stays asleep. The gods know, and keep feeding."
+    ],
+    "epigraph": "Of the First Ember little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 683,
+    "used_names": [
+      "Banudane",
+      "Caliamothgate",
+      "Cyraricreach",
+      "Elaegargate",
+      "Elessastgate",
+      "Eloach",
+      "Eloros",
+      "Fenearamere",
+      "Fenulacrown",
+      "Hareastvault",
+      "Hestanaramarch",
+      "Kariadane",
+      "Mazannoth",
+      "Mazirdis",
+      "Morulaspire",
+      "Olearacradle",
+      "Oloula",
+      "Osthildfen",
+      "Queluveth",
+      "Ruthgrim",
+      "Ruthmere",
+      "Wrenrionspire",
+      "Yorthas"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 328,
+      "blurb": "the First Ember gave the world warmth, disparity, and the colour of souls."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 328,
+      "end": 635,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the Ember gutters; shadows lengthen and the dead forget to lie down."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 635,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Yorthas",
+      "epithet": "god of the hunt and the mercy of endings",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Ruthmere",
+      "epithet": "god of storms and unkept promises",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": "took the Gutter-mark and wandered",
+      "fate_year": 635,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Mazannoth",
+      "epithet": "god of healing and the price of healing",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Eloros",
+      "epithet": "the Cinder-Eater",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Hestanaramarch",
+      "fate_year": 206,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Ruthgrim",
+      "epithet": "the Forsworn",
+      "role": "knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Eloach",
+      "epithet": "the Twice-crowned",
+      "role": "high priest",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Queluveth",
+      "epithet": "of the Last Door",
+      "role": "heretic scholar",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Mazirdis",
+      "epithet": "the Adamant",
+      "role": "king",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 515,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Kariadane",
+      "epithet": "Half-remembered",
+      "role": "pilgrim saint",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 473,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Oloula",
+      "epithet": "the Lantern-eyed",
+      "role": "oathbreaker general",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "succumbed to the Gutter-mark",
+      "fate_year": 517,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Banudane",
+      "epithet": "the Latecomer",
+      "role": "wandering knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": "fate contested",
+      "fate_year": 676,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Cyraricreach",
+      "kind": "kingdom",
+      "seat": "Fenulacrown",
+      "founded_year": 66,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Osthildfen",
+      "kind": "kingdom",
+      "seat": "Olearacradle",
+      "founded_year": 97,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Elessastgate",
+      "kind": "church",
+      "seat": "Caliamothgate",
+      "founded_year": 121,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Order of the Ember",
+      "kind": "order",
+      "seat": "Elaegargate",
+      "founded_year": 356,
+      "founder": "f5",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Church of Ruthmere",
+      "kind": "church",
+      "seat": "Hareastvault",
+      "founded_year": 379,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Cult of the Open Door",
+      "kind": "cult",
+      "seat": "Wrenrionspire",
+      "founded_year": 403,
+      "founder": "f7",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Morulaspire",
+      "kind": "kingdom",
+      "seat": "Fenearamere",
+      "founded_year": 429,
+      "founder": "f8",
+      "fallen_year": 515,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the First Ember rose (or was raised \u2014 the tellings differ) and gave the world warmth, disparity, and the colour of souls.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 20,
+      "text": "Yorthas, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 24,
+      "text": "Ruthmere, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 39,
+      "text": "Mazannoth, god of healing and the price of healing, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "founding",
+      "year": 66,
+      "text": "Yorthas founded Cyraricreach (kingdom) at Fenulacrown.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "forging",
+      "year": 66,
+      "text": "The Brand of Yorthas was wrought as regalia of Yorthas's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "founding",
+      "year": 97,
+      "text": "Ruthmere founded Osthildfen (kingdom) at Olearacradle.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "forging",
+      "year": 97,
+      "text": "The Pyre of Ruthmere was wrought as regalia of Ruthmere's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "founding",
+      "year": 121,
+      "text": "Mazannoth founded Elessastgate (church) at Caliamothgate.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "forging",
+      "year": 121,
+      "text": "The Cinder of Mazannoth was wrought as regalia of Mazannoth's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "great war",
+      "year": 196,
+      "text": "Eloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war.",
+      "hidden": "Ruthmere treated with Eloros in secret and was spared what followed.",
+      "participants": [
+        "f4",
+        "f1",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 206,
+      "text": "Eloros was defeated and sealed beneath Hestanaramarch; the seal was bought with the lives of 7 champions.",
+      "hidden": null,
+      "participants": [
+        "f4",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "waning",
+      "year": 328,
+      "text": "The waning began: the Ember gutters; shadows lengthen and the dead forget to lie down. Mortals called the affliction the Gutter-mark: a grey brand that spreads over the heart; the marked wander until their names burn out.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "founding",
+      "year": 356,
+      "text": "Ruthgrim the Forsworn founded the Order of the Ember at Elaegargate, sworn to stand against the Gutter-mark.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "founding",
+      "year": 379,
+      "text": "The Church of Ruthmere was raised at Hareastvault; Eloach the Twice-crowned took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f6",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 403,
+      "text": "Queluveth of the Last Door was cast out of Church of Ruthmere and founded the Cult of the Open Door, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f7"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 429,
+      "text": "Mazirdis the Adamant united the river-clans and was crowned in Fenearamere; the realm took the name Morulaspire.",
+      "hidden": null,
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 473,
+      "text": "At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Eloach suspected as much.",
+      "participants": [
+        "f6",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 511,
+      "text": "Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on.",
+      "hidden": "Oloula acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Gutter-mark. The promise was not kept.",
+      "participants": [
+        "f10",
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 515,
+      "text": "Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f8",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "fate",
+      "year": 517,
+      "text": "Oloula was found at Wrenrionspire bearing the Gutter-mark, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 635,
+      "text": "Ruthmere, god of storms and unkept promises, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+      "hidden": "The curse does not distinguish gods from mortals. It never did.",
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 669,
+      "text": "Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f11",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 676,
+      "text": "Word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 683,
+      "text": "Pilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Brand of Yorthas",
+      "item_type": "ring",
+      "created_year": 66,
+      "origin_faction": "k1",
+      "provenance": [
+        "e6"
+      ],
+      "knowledge": [
+        "(year 66) The Brand of Yorthas was wrought as regalia of Yorthas's throne.",
+        "This item is kept/told of by Cyraricreach (kingdom), seat at Fenulacrown.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A ring that grants a small, stubborn blessing.\n\nThe Brand of Yorthas was wrought as regalia of Yorthas's throne. Held long enough, it suggests the waning is no accident. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Pyre of Ruthmere",
+      "item_type": "talisman",
+      "created_year": 97,
+      "origin_faction": "k2",
+      "provenance": [
+        "e8"
+      ],
+      "knowledge": [
+        "(year 97) The Pyre of Ruthmere was wrought as regalia of Ruthmere's throne.",
+        "Ruthmere, god of storms and unkept promises: fate \u2014 took the Gutter-mark and wandered (year 635).",
+        "This item is kept/told of by Osthildfen (kingdom), seat at Olearacradle.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Pyre of Ruthmere was wrought as regalia of Ruthmere's throne. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Cinder of Mazannoth",
+      "item_type": "catalyst",
+      "created_year": 121,
+      "origin_faction": "k3",
+      "provenance": [
+        "e10"
+      ],
+      "knowledge": [
+        "(year 121) The Cinder of Mazannoth was wrought as regalia of Mazannoth's throne.",
+        "This item is kept/told of by Elessastgate (church), seat at Caliamothgate.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Cinder of Mazannoth was wrought as regalia of Mazannoth's throne. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Yorthas's War-Ash",
+      "item_type": "weapon",
+      "created_year": 206,
+      "origin_faction": "k1",
+      "provenance": [
+        "e11",
+        "e12"
+      ],
+      "knowledge": [
+        "(year 196) Eloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war.",
+        "[half-known secret] Ruthmere treated with Eloros in secret and was spared what followed.",
+        "(year 206) Eloros was defeated and sealed beneath Hestanaramarch; the seal was bought with the lives of 7 champions.",
+        "Ruthmere, god of storms and unkept promises: fate \u2014 took the Gutter-mark and wandered (year 635).",
+        "This item is kept/told of by Cyraricreach (kingdom), seat at Fenulacrown.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nEloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war. Of Ruthmere, god of storms and unkept promises, the last word is this: took the Gutter-mark and wandered. None now living can say whether Ruthmere treated with Eloros in secret and was spared what followed. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Kariadane",
+      "item_type": "soul remnant",
+      "created_year": 473,
+      "origin_faction": "k5",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 473) At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+        "Kariadane, Half-remembered: fate \u2014 given to the rite of restoration (year 473).",
+        "This item is kept/told of by Church of Ruthmere (church), seat at Hareastvault.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Ash of Saint Kariadane",
+      "item_type": "talisman",
+      "created_year": 473,
+      "origin_faction": "k5",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 473) At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+        "Kariadane, Half-remembered: fate \u2014 given to the rite of restoration (year 473).",
+        "This item is kept/told of by Church of Ruthmere (church), seat at Hareastvault.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": 0,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Those who keep it too long begin to doubt the sermons. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Hollow Crown of Morulaspire",
+      "item_type": "key item",
+      "created_year": 515,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 511) Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on.",
+        "(year 515) Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Mazirdis, the Adamant: fate \u2014 slain at their own throne (year 515).",
+        "This item is kept/told of by Morulaspire (kingdom), seat at Fenearamere.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. It is said that Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Oloula's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 515,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 511) Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on.",
+        "[half-known secret] Oloula acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Gutter-mark. The promise was not kept.",
+        "(year 515) Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Mazirdis, the Adamant: fate \u2014 slain at their own throne (year 515).",
+        "This item is kept/told of by Morulaspire (kingdom), seat at Fenearamere.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. None now living can say whether Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Soul of Ruthmere",
+      "item_type": "soul remnant",
+      "created_year": 635,
+      "origin_faction": "k2",
+      "provenance": [
+        "e22"
+      ],
+      "knowledge": [
+        "(year 635) Ruthmere, god of storms and unkept promises, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+        "[half-known secret] The curse does not distinguish gods from mortals. It never did.",
+        "Ruthmere, god of storms and unkept promises: fate \u2014 took the Gutter-mark and wandered (year 635).",
+        "This item is kept/told of by Osthildfen (kingdom), seat at Olearacradle.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nRuthmere, god of storms and unkept promises, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat. It is said that the curse does not distinguish gods from mortals. It never did. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Banudane's Set",
+      "item_type": "armor",
+      "created_year": 676,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 669) Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing.",
+        "(year 676) Word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither.",
+        "Ruthmere, god of storms and unkept promises: fate \u2014 took the Gutter-mark and wandered (year 635).",
+        "This item is kept/told of by Order of the Ember (order), seat at Elaegargate.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nBanudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. Some claim word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Ring of the Ember Vigil",
+      "item_type": "ring",
+      "created_year": 676,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 669) Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing.",
+        "(year 676) Word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither.",
+        "Ruthmere, god of storms and unkept promises: fate \u2014 took the Gutter-mark and wandered (year 635).",
+        "This item is kept/told of by Order of the Ember (order), seat at Elaegargate.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nBanudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim"
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Warding Ember",
+      "item_type": "consumable",
+      "created_year": 683,
+      "origin_faction": "k5",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 683) Pilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued.",
+        "[half-known secret] The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+        "Eloros, the Cinder-Eater: fate \u2014 sealed beneath Hestanaramarch (year 206).",
+        "This item is kept/told of by Church of Ruthmere (church), seat at Hareastvault.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim"
+    }
+  },
+  "notes": []
+}

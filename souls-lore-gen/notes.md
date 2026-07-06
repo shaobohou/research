@@ -53,3 +53,45 @@ biased fragment of that history.
 - `worlds/seed-107/` and `worlds/seed-9021/` generated with `--no-llm`
   (template mode) since this container has no API key. Rerun without
   `--no-llm` and with `ANTHROPIC_API_KEY` set for the real prose.
+
+### 2026-07-06 — depth on demand
+- Goal: make depth a *query operation* instead of a bigger upfront sim.
+  Design: fractal + lazy expansion, deterministic sub-seeds, append-only
+  canon ledger, LLM as constrained elaborator with validated write-back.
+- New pieces:
+  - `ledger.py` — canon fact store persisted as `ledger.json`; all mutation
+    goes through validators (year bounds, participants-can't-act-after-fate,
+    unique names, id existence). Chronicle/codex now render from the ledger
+    (removed `render_chronicle` from worldsim — single source of truth).
+  - `expand.py` — `expand_event(ledger, node)` seeded from
+    `hash(seed:node_id)`: per-event-kind templates (great war, betrayal,
+    rite, sealing, twilight, generic) produce 2 sub-events + minor figures
+    + 0–2 new items whose knowledge packets come from the new sub-events.
+  - `loregen.py` rewritten against the ledger; three surfaces
+    (describe_items / elaborate / ask_world), each with template fallback.
+    `elaborate` merges LLM output only through ledger paths; invalid notes
+    are dropped with a warning, and the deterministic skeleton survives any
+    LLM failure.
+  - Veils: replaced each archetype's flat mystery list with an authored
+    3-veil chain (surface secret → the mystery → the deepest reframe).
+    Depth-k content may hint only at veil ≤ k.
+  - CLI: `generate | deepen | ask | codex`; bare flags still mean generate.
+- Verified offline: deepen walks down on repeat (`--item Oathbreaker`
+  expanded e23, then e29); expansion of e14 on two divergent world copies
+  yields identical children (determinism); the fate-guard rejects
+  "Mazirast acting in year 533" (died 523); nested chronicle renders;
+  minted items (Torn Standard of Haruienreach) appear in the codex; `ask`
+  answers in-world from canon.
+- Gotchas hit:
+  - Expansion ids depend on expansion *order* (e29 vs e33 for the same
+    children) — content is order-independent, ids are not. Documented
+    rather than fought; content determinism is what matters for canon.
+  - Place names used only inside event text aren't ledger-claimed (only
+    full entity names are), so a later expansion could in principle reuse
+    one. Collision space is large; accepted.
+  - RNG stream shifted vs v1 (removed one `rng.choice` at genesis), so the
+    same seeds now produce different worlds than the first commit. Samples
+    regenerated.
+- LLM paths (`describe_items`/`elaborate`/`ask_world` with a model) are
+  untested in this container (401, no key) — they share the merge/validation
+  code with the fallback paths, which are tested.

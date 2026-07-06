@@ -4,94 +4,88 @@
 
 ## Armors
 
-### Wrenendane's Set
+### Banudane's Set
 
 Worn armor that remembers the shape of its last bearer.
 
-Wrenendane the Latecomer, last-sworn of the Order of the Ash, set out for the place where Ghalanorn was lost, carrying the order's final blessing. Some claim Wrenendane was last seen at the edge of the deep roads. The order keeps a vigil that has not ended. Whether this was mercy or malice, none agree.
+Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. Some claim word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither. The name endures; little else does.
 
 ## Catalysts
 
-### Cinder of Tormund
+### Cinder of Mazannoth
 
 A catalyst attuned to the old gift.
 
-The Cinder of Tormund was wrought as regalia of Tormund's throne. It hums, faintly, as if answering something far below. What became of it after is not written.
-
-### Brand of Hestamoth
-
-A catalyst attuned to the old gift.
-
-The Brand of Hestamoth was wrought as regalia of Hestamoth's throne. What became of it after is not written.
+The Cinder of Mazannoth was wrought as regalia of Mazannoth's throne. Perhaps it is better that the tale ends there.
 
 ## Consumables
 
-### Warding Ash
+### Warding Ember
 
 A humble ward, spent in a moment.
 
-Pilgrims of the Cult of the Patient Below were found digging at the seal of Hareast. The wardens hanged nine; the digging continued. The name endures; little else does.
+Pilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.
 
 ## Key Items
 
-### Hollow Crown of Cyrvanecradle
+### Hollow Crown of Morulaspire
 
 An object of no use in battle, and of great consequence.
 
-Omthas of the Long Vigil, sword-hand of Quelnoth, opened the gates of Banudanespire to the Order of the Ash over a grievance no chronicle agrees on. Some claim Cyrvanecradle fell. Quelnoth the Unbowed died at the foot of their own throne; the crown was carried away and never worn again. It is said that Omthas acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Gutter-mark. The promise was not kept. Whether this was mercy or malice, none agree.
+Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. It is said that Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.
 
 ## Rings
 
-### Ash of Ghalanorn
+### Brand of Yorthas
 
 A ring that grants a small, stubborn blessing.
 
-The Ash of Ghalanorn was wrought as regalia of Ghalanorn's throne. Perhaps it is better that the tale ends there.
+The Brand of Yorthas was wrought as regalia of Yorthas's throne. Held long enough, it suggests the waning is no accident. Whether this was mercy or malice, none agree.
 
-### Ring of the Ash Vigil
+### Ring of the Ember Vigil
 
 A ring that grants a small, stubborn blessing.
 
-Wrenendane the Latecomer, last-sworn of the Order of the Ash, set out for the place where Ghalanorn was lost, carrying the order's final blessing. Some claim Wrenendane was last seen at the edge of the deep roads. The order keeps a vigil that has not ended. Whether this was mercy or malice, none agree.
+Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. The name endures; little else does.
 
 ## Soul Remnants
 
-### Remnant Soul of Saint Morric
+### Remnant Soul of Saint Kariadane
 
 The lingering soul of one who would not wholly pass.
 
-At the urging of Hesteyne, the saint Morric the Adamant was given to the First Ember in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly — and Hesteyne suspected as much. The rest of the story is kept by no one.
+At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.
 
-### Soul of Ghalanorn
+### Soul of Ruthmere
 
 The lingering soul of one who would not wholly pass.
 
-Ghalanorn, god of graves and the ledger of names, was unmade upon their own throne. No wound was found, and no successor dared the seat. Some claim What unmade the god was not violence but understanding — a truth arrived at, all at once. Those who keep it too long begin to doubt the sermons. The rest of the story is kept by no one.
+Ruthmere, god of storms and unkept promises, took the Gutter-mark — the first of the gods to bear it — and wandered from their seat. It is said that the curse does not distinguish gods from mortals. It never did. What became of it after is not written.
 
 ## Talismans
 
-### Ember of Saint Morric
+### Pyre of Ruthmere
 
 A talisman for the invoking of half-forgotten rites.
 
-At the urging of Hesteyne, the saint Morric the Adamant was given to the First Ember in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly — and Hesteyne suspected as much. What became of it after is not written.
+The Pyre of Ruthmere was wrought as regalia of Ruthmere's throne. What became of it after is not written.
+
+### Ash of Saint Kariadane
+
+A talisman for the invoking of half-forgotten rites.
+
+At the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Those who keep it too long begin to doubt the sermons. What became of it after is not written.
 
 ## Weapons
 
-### Ash of Aldranara
+### Yorthas's War-Ash
 
 A weapon of an older make, still keen despite its years.
 
-The Ash of Aldranara was wrought as regalia of Aldranara's throne. What became of it after is not written.
+Eloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war. Of Ruthmere, god of storms and unkept promises, the last word is this: took the Gutter-mark and wandered. None now living can say whether Ruthmere treated with Eloros in secret and was spared what followed. The name endures; little else does.
 
-### Tormund's War-Ash
-
-A weapon of an older make, still keen despite its years.
-
-Hareast, the Cinder-Eater, rose against the thrones. Tormund led the gods to war. Old verses hold that Hareast was defeated and sealed beneath Queldrashroud; the seal was bought with the lives of 9 champions. What became of it after is not written.
-
-### Omthas's Oathbreaker Blade
+### Oloula's Oathbreaker Blade
 
 A weapon of an older make, still keen despite its years.
 
-Omthas of the Long Vigil, sword-hand of Quelnoth, opened the gates of Banudanespire to the Order of the Ash over a grievance no chronicle agrees on. Old verses hold that Cyrvanecradle fell. Quelnoth the Unbowed died at the foot of their own throne; the crown was carried away and never worn again. What became of it after is not written.
+Oloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. None now living can say whether Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.
