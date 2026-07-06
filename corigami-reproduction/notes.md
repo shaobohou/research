@@ -97,3 +97,19 @@ are out of scope.
 - Renders: CPs look like genuine box-pleated patterns (ridge diagonals, refracting pleats,
   alternating accordion M/V). Partial-fold views of unshaped bases look crumpled, as expected
   (no shaping stage) — added layer-separated flat-fold views for judging instead.
+
+## Final results (2026-07-06)
+
+Batch: 100 random tree candidates (seed 2606), 20 s/figure budget:
+- packing 77/100 (77%); solving 77/77 (100%); folding+verification 77/77 (100%).
+- Failures all at packing, growing with stick count (8 sticks: 36% pass) — Fig. 7 trend reproduced.
+- Solving never fails because the restricted packing class is hinge-consistent by construction;
+  the paper's broader packer needs a rejecting solver (79.2%). Documented in README.
+- Examples: all 5 pass; strain and uniaxiality RMS both ~1e-16.
+- Judge (Claude-as-VLM, paper's verbatim rubric): unshaped bases score 0.1-0.2 normalised, as the
+  rubric demands — illustrates why the paper needs the shaping/RL stage.
+
+Interesting reproduction insight: in this formulation "solving" is easy once packing is strict;
+the paper's 79.2% solving pass rate is a statement about how permissive their packer is, not about
+M/V assignment difficulty per se. At their generality (free-form rivers), strictness at packing
+time is presumably impossible to guarantee, hence the staged greedy hinge search.

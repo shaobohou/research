@@ -46,8 +46,7 @@ ax.set_xlim(0, n * 1.35)
 ax.xaxis.grid(True, color=GRID, lw=0.8, zorder=0)
 ax.spines[["top", "right", "left"]].set_visible(False)
 ax.set_title(
-    f"Pipeline survival over {n} random tree candidates "
-    f"(overall {done / n:.0%}; paper Fig. 6 reports 5.0% at 560k scale)",
+    f"Pipeline survival over {n} random tree candidates — overall {done / n:.0%}",
     fontsize=10, loc="left",
 )
 fig.tight_layout()

@@ -1,0 +1,38 @@
+{
+  "n_candidates": 100,
+  "packing_pass": 77,
+  "packing_rate": 0.77,
+  "solving_pass": 77,
+  "solving_rate": 1.0,
+  "folding_pass": 77,
+  "folding_rate": 1.0,
+  "overall_rate": 0.77,
+  "by_stage": {
+    "packing": 23,
+    "done": 77
+  },
+  "by_n_sticks": {
+    "3": {
+      "done": 6
+    },
+    "4": {
+      "done": 16
+    },
+    "5": {
+      "done": 21,
+      "packing": 6
+    },
+    "6": {
+      "packing": 9,
+      "done": 18
+    },
+    "7": {
+      "done": 12,
+      "packing": 1
+    },
+    "8": {
+      "packing": 7,
+      "done": 4
+    }
+  }
+}

@@ -31,16 +31,51 @@ with the paper's own verification mathematics used as ground truth at every stag
 
 ## Key results
 
-All five authored example figures pass the full pipeline (RESULTS_PLACEHOLDER_EXAMPLES):
+All five authored example figures pass the full pipeline:
 
-- every interior vertex satisfies Kawasaki + Maekawa + the crimping test (Algorithm 1),
-- the geometric simulator folds each solved pattern completely flat with mean axial
-  strain ~1e-16 (paper reports ~1e-5 for patterns 100× larger),
-- a reproduction-specific **uniaxiality check** (RMS deviation of folded axis position vs.
-  the packing's elevation function, per-region sign fits) passes at ~1e-16, confirming the
-  folded bases really are uniaxial bases realising the target tree.
+| figure | flaps | rivers | grid | mean axial strain | uniaxiality RMS |
+|---|---|---|---|---|---|
+| seedling | 3 | 0 | 4 | 2.2e-16 | 3.1e-16 |
+| bird | 4 | 1 | 10 | 4.2e-16 | 5.2e-16 |
+| human | 5 | 1 | 7 | 3.0e-16 | 4.1e-16 |
+| lizard | 6 | 1 | 10 | 3.4e-16 | 5.3e-16 |
+| antenna beetle | 6 | 1 | 10 | 3.4e-16 | 7.2e-16 |
 
-RESULTS_PLACEHOLDER_BATCH
+For each: every interior vertex satisfies Kawasaki + Maekawa + the crimping test
+(Algorithm 1); the geometric simulator folds the solved pattern completely flat with
+~1e-16 mean axial strain (the paper's Fig. 15 shows ~1e-5 vertex errors on patterns
+with thousands of creases); and a reproduction-specific **uniaxiality check** (RMS of
+folded axis position vs. the packing's elevation function, per-region sign fits)
+confirms the folded bases realise the target tree. Renders in `outputs/`
+(`*-packing.png`, `*-cp.png`, `*-folded-*.png`).
+
+### Random-candidate survival (paper Fig. 6/7 analog)
+
+Over 100 random tree candidates in the supported class (`outputs/batch_stats.json`,
+charts `outputs/pass-rates.png`, `outputs/failure-by-size.png`):
+
+| stage | this repro (n=100) | paper (n=560k) |
+|---|---|---|
+| valid packing | **77%** | 55.3% |
+| flat-foldable solving | **100%** of packed | 79.2% |
+| shaping | — (not implemented) | 92.0% |
+| folded + verified (strain < 1e-6) | **100%** of solved | — |
+
+Two observations. First, failures concentrate at the packing stage and grow with
+stick count (3–4 sticks: 100% pass; 8 sticks: 36%), reproducing the qualitative
+trend of the paper's Fig. 7. Second, solving **never** fails here, unlike the
+paper's 79.2%: in our restricted packing class the elevation-function construction
+makes internal boundaries hinge-consistent *by design*, so every accepted packing
+admits an M/V assignment. The paper's broader packer (wall-following rivers,
+multi-joint pockets) accepts layouts whose solvability is not guaranteed — which is
+exactly why it needs a solving stage that can reject.
+
+### Judge results
+
+`outputs/judge_results.md`: applying the paper's verbatim rubric (with Claude in
+place of Gemini 3 Flash), the geometrically perfect but unshaped bases score
+0.1–0.2 normalised — a direct illustration of the paper's point that mathematical
+fidelity does not yield visual recognisability without the shaping/RL stage.
 
 ## Layout
 
