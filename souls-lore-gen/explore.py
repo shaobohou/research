@@ -377,3 +377,82 @@ class Exploration:
         if self.role != "archivist":
             return {"error": "The inner archive is barred to seekers."}
         return self.lg.d
+
+    def compendium(self) -> str:
+        """Everything this explorer has discovered, as one in-world document.
+
+        Rendered purely from exploration state + public surfaces — never the
+        hidden layer — so it is safe to hand to (or have written by) a seeker.
+        """
+        m = self.lg.meta
+        st = self.state
+        lines = [f"# The Book of Found Things",
+                 "",
+                 f"*World seed-{m['seed']} ({m['archetype_key']}), as uncovered "
+                 f"by the seeker \"{self.explorer}\".*",
+                 ""]
+        if m["epigraph"]:
+            lines += [f"> {m['epigraph']}", ""]
+        p = self.progress()
+        lines += [f"*Items examined: {p['items_examined']} — asks spent: "
+                  f"{DEFAULT_BUDGET['asks'] - st['budget']['asks']}/"
+                  f"{DEFAULT_BUDGET['asks']} — delves spent: "
+                  f"{DEFAULT_BUDGET['delves'] - st['budget']['delves']}/"
+                  f"{DEFAULT_BUDGET['delves']}"
+                  + (f" — best theory score: {p['best_theory_score']}"
+                     if p["best_theory_score"] is not None else "") + "*",
+                  ""]
+
+        if st["discovered"]:
+            lines += ["## Relics Examined", ""]
+            by_type: dict[str, list[dict]] = {}
+            for aid in st["discovered"]:
+                a = self.lg.get(aid)
+                by_type.setdefault(a["item_type"], []).append(a)
+            for itype in sorted(by_type):
+                title = itype.title() if itype.endswith("s") else itype.title() + "s"
+                lines += [f"### {title}", ""]
+                for a in sorted(by_type[itype], key=lambda x: x["created_year"]):
+                    lines += [f"**{a['name']}**", "",
+                              a["description"] or "(unreadable)", ""]
+
+        if st["delves"]:
+            lines += ["## Accounts Unearthed", "",
+                      "*Recovered by delving — testimony the chronicles kept "
+                      "poorly, or not at all.*", ""]
+            for d in st["delves"]:
+                lines += [f"### On the trail of {d['target']}", ""]
+                for fid in d["found"]:
+                    if fid.startswith("frag:"):
+                        e = self.lg.get(fid.split(":", 1)[1])
+                        lines += [f"- *(year {e['year']}, {e['kind']})* {e['text']}"]
+                    else:
+                        a = self.lg.get(fid)
+                        lines += [f"- **Brought back:** {a['name']} ({a['item_type']})"]
+                lines += [""]
+
+        if st["asks"]:
+            lines += ["## Words of the Archives", ""]
+            for a in st["asks"]:
+                lines += [f"**{a['question']}**", "",
+                          "> " + a["fragment"].replace("\n", "\n> "), ""]
+
+        if st["theories"]:
+            lines += ["## Theories Laid Before the Judge", ""]
+            for i, t in enumerate(st["theories"], 1):
+                lines += [f"### Theory {i} (score {t['score']})", ""]
+                for v in t["verdicts"]:
+                    lines += [f"- **[{v['verdict']}]** {v['claim']}",
+                              f"  - *{v['note']}*"]
+                lines += [""]
+
+        unfound = [a["name"] for aid, a in sorted(self.lg.of_type("artifact"))
+                   if aid not in st["discovered"]]
+        lines += ["## What Remains Unfound", ""]
+        if unfound:
+            lines += ["Items known by name and nothing else: "
+                      + ", ".join(f"*{n}*" for n in unfound) + ".", ""]
+        lines += [f"Budget remaining: {st['budget']['delves']} delves, "
+                  f"{st['budget']['asks']} asks. The rest of the world keeps "
+                  f"its counsel.", ""]
+        return "\n".join(lines)

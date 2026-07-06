@@ -140,6 +140,15 @@ def cmd_ask(args) -> int:
     return 0
 
 
+def cmd_lore(args) -> int:
+    from explore import Exploration
+    exp = Exploration(_world_dir(args), explorer=args.explorer, model=None)
+    out = _world_dir(args) / "explorations" / f"{args.explorer}-lore.md"
+    out.write_text(exp.compendium())
+    print(f"wrote {out}", file=sys.stderr)
+    return 0
+
+
 def cmd_codex(args) -> int:
     lg = _load(args)
     _write(args, lg)
@@ -177,6 +186,11 @@ def main() -> int:
     c = sub.add_parser("codex", help="re-render chronicle.md and codex.md")
     common(c)
     c.set_defaults(fn=cmd_codex)
+
+    lo = sub.add_parser("lore", help="write an explorer's discovered-lore compendium")
+    common(lo)
+    lo.add_argument("--explorer", default="seeker")
+    lo.set_defaults(fn=cmd_lore)
 
     argv = sys.argv[1:]
     if not argv or argv[0].startswith("-"):

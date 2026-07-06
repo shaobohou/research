@@ -144,3 +144,15 @@ biased fragment of that history.
   epilogue): causal speculation and unheld hidden truths can score
   `established` on word overlap. The Claude judge path grades against the
   seeker's actual discovered material.
+
+### 2026-07-06 — discovered-lore compendium
+- `Exploration.compendium()` renders "The Book of Found Things": everything
+  one explorer has uncovered (examined relics grouped by type, delve
+  accounts, archive answers, graded theories, what remains unfound) —
+  built purely from exploration state + public surfaces, so it is
+  seeker-safe by construction. Exposed as `main.py lore --explorer NAME`
+  and as a free `compendium` MCP tool (verified over stdio; tool list now
+  7 for seekers).
+- Generated for both explorations: seed-9/claude (complete sweep — nothing
+  unfound) and seed-9021/seeker (early run — 11 items still unfound), a
+  nice contrast between a finished and a barely-started dig.

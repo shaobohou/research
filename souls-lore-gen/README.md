@@ -87,6 +87,7 @@ enforces the epistemic boundary. Six tools form the discovery loop:
 | `delve(target)` | 1 delve | follow a lead (item/figure/place/event id): expands the world behind it, returning new accounts and sometimes **new items** |
 | `theorize(claims)` | free | each claim graded: `established` (true + you have evidence) / `consistent` (true, unevidenced) / `unsupported` / `contradicted` / `veiled` ("the archives go quiet") |
 | `progress()` | free | items examined, budget left, best theory score |
+| `compendium()` | free | "The Book of Found Things": everything discovered so far, as one markdown document (also via CLI: `uv run main.py lore --seed N --explorer NAME`) |
 
 Design properties:
 

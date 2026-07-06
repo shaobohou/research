@@ -72,6 +72,12 @@ def build_server(exp: Exploration) -> FastMCP:
         """Your exploration status: items examined, budget, best score."""
         return exp.progress()
 
+    @mcp.tool()
+    def compendium() -> str:
+        """The Book of Found Things: everything you have discovered so far,
+        as one markdown document. Free."""
+        return exp.compendium()
+
     if exp.role == "archivist":
         @mcp.tool()
         def canon() -> dict:
