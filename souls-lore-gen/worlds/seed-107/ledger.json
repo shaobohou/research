@@ -48,13 +48,7 @@
       "Ulara",
       "Ulmund",
       "Yorachvault",
-      "Syligar",
-      "Moraula",
-      "Fenach",
-      "Torn Standard of Haruienreach",
-      "Hestcael",
-      "Velwyn",
-      "Effects of Velwyn"
+      "the Pilgrim Roads"
     ]
   },
   "ages": [
@@ -320,7 +314,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e2": {
       "type": "event",
@@ -334,7 +329,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e3": {
       "type": "event",
@@ -348,7 +344,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p3"
     },
     "e4": {
       "type": "event",
@@ -362,7 +359,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e5": {
       "type": "event",
@@ -376,7 +374,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e6": {
       "type": "event",
@@ -390,7 +389,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p10"
     },
     "e7": {
       "type": "event",
@@ -404,7 +404,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e8": {
       "type": "event",
@@ -418,7 +419,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p11"
     },
     "e9": {
       "type": "event",
@@ -432,7 +434,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p3"
     },
     "e10": {
       "type": "event",
@@ -445,8 +448,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
     },
     "e11": {
       "type": "event",
@@ -460,7 +464,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e12": {
       "type": "event",
@@ -474,7 +479,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p13"
     },
     "e13": {
       "type": "event",
@@ -488,7 +494,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e14": {
       "type": "event",
@@ -503,8 +510,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
     },
     "e15": {
       "type": "event",
@@ -519,7 +527,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p14"
     },
     "e16": {
       "type": "event",
@@ -531,7 +540,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e17": {
       "type": "event",
@@ -545,7 +555,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e18": {
       "type": "event",
@@ -560,7 +571,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p7"
     },
     "e19": {
       "type": "event",
@@ -574,7 +586,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p8"
     },
     "e20": {
       "type": "event",
@@ -588,7 +601,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e21": {
       "type": "event",
@@ -603,7 +617,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p7"
     },
     "e22": {
       "type": "event",
@@ -618,7 +633,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e23": {
       "type": "event",
@@ -632,8 +648,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p15"
     },
     "e24": {
       "type": "event",
@@ -647,7 +664,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e25": {
       "type": "event",
@@ -661,7 +679,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p3"
     },
     "e26": {
       "type": "event",
@@ -675,8 +694,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
     },
     "e27": {
       "type": "event",
@@ -690,7 +710,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e28": {
       "type": "event",
@@ -704,7 +725,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "a1": {
       "type": "artifact",
@@ -725,7 +747,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nThe Silver of Ghalsila was wrought as regalia of Ghalsila's throne. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Queliaottshroud, and then kept poorly."
     },
     "a2": {
       "type": "artifact",
@@ -747,7 +771,9 @@
       "hints_veil": null,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Veil of Mazirast was wrought as regalia of Mazirast's throne. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Aldrienmere, and then kept poorly."
     },
     "a3": {
       "type": "artifact",
@@ -768,7 +794,9 @@
       "hints_veil": null,
       "description": "A catalyst attuned to the old gift.\n\nThe Silver of Karengar was wrought as regalia of Karengar's throne. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Thalemiscrown, and then kept poorly."
     },
     "a4": {
       "type": "artifact",
@@ -789,7 +817,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nThe Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept long at Nimenasthollow, and then kept poorly."
     },
     "a5": {
       "type": "artifact",
@@ -813,7 +843,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nSyldra, the Unreflected, rose against the thrones. Karengar led the gods to war. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p14",
+      "placement": "Worn smooth by warders' hands at Ranulornmarch."
     },
     "a7": {
       "type": "artifact",
@@ -836,7 +868,9 @@
       "hints_veil": null,
       "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Athorachcradle, before which the candles will not stay lit."
     },
     "a6": {
       "type": "artifact",
@@ -859,7 +893,9 @@
       "hints_veil": null,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly \u2014 and Ulara suspected as much. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Athorachcradle, before which the candles will not stay lit."
     },
     "a8": {
       "type": "artifact",
@@ -884,7 +920,9 @@
       "hints_veil": null,
       "description": "An object of no use in battle, and of great consequence.\n\nIrveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p15",
+      "placement": "Found at the foot of a throne in Kaaemothbarrow, beneath the dust of the banners."
     },
     "a9": {
       "type": "artifact",
@@ -908,7 +946,9 @@
       "hints_veil": 0,
       "description": "A weapon of an older make, still keen despite its years.\n\nIrveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. Some claim Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. Those who keep it too long begin to doubt the sermons. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p15",
+      "placement": "Found at the foot of a throne in Kaaemothbarrow, beneath the dust of the banners."
     },
     "a10": {
       "type": "artifact",
@@ -931,7 +971,9 @@
       "hints_veil": 0,
       "description": "The lingering soul of one who would not wholly pass.\n\nMazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat. The tellings differ, but most agree What unmade the god was not violence but understanding \u2014 a truth arrived at, all at once. Those who keep it too long begin to doubt the sermons. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p3",
+      "placement": "Taken from a throne room at Aldrienmere where nothing else was disturbed."
     },
     "a11": {
       "type": "artifact",
@@ -955,7 +997,9 @@
       "hints_veil": null,
       "description": "Worn armor that remembers the shape of its last bearer.\n\nKardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing. Old verses hold that Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Draastbarrow, and never reclaimed."
     },
     "a12": {
       "type": "artifact",
@@ -979,7 +1023,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nKardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing. The tellings differ, but most agree Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Draastbarrow, and never reclaimed."
     },
     "a13": {
       "type": "artifact",
@@ -1002,241 +1048,84 @@
       "hints_veil": null,
       "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
     },
-    "f13": {
-      "type": "figure",
-      "name": "Syligar",
-      "epithet": "the Younger",
-      "role": "bell-ringer",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e23"
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
     },
-    "e29": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 448,
-      "text": "An account survives from Syligar the Younger, a bell-ringer, set down against instruction and hidden in a wall.",
-      "hidden": null,
-      "participants": [
-        "f13"
-      ],
-      "parent": "e23",
-      "depth": 1,
-      "expanded": true,
-      "source": "expansion:e23"
+    "p2": {
+      "type": "place",
+      "name": "Queliaottshroud",
+      "source": "geo"
     },
-    "e30": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 448,
-      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
-      "hidden": "What they came for was not what the chronicles assumed.",
-      "participants": [],
-      "parent": "e23",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e23"
+    "p3": {
+      "type": "place",
+      "name": "Aldrienmere",
+      "source": "geo"
     },
-    "f14": {
-      "type": "figure",
-      "name": "Moraula",
-      "epithet": "of No House",
-      "role": "novice",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 2,
-      "source": "expansion:e29"
+    "p4": {
+      "type": "place",
+      "name": "Thalemiscrown",
+      "source": "geo"
     },
-    "e31": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 448,
-      "text": "An account survives from Moraula of No House, a novice, set down against instruction and hidden in a coffin lid.",
-      "hidden": null,
-      "participants": [
-        "f14"
-      ],
-      "parent": "e29",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e29"
+    "p5": {
+      "type": "place",
+      "name": "Nimenasthollow",
+      "source": "geo"
     },
-    "e32": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 448,
-      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
-      "hidden": null,
-      "participants": [],
-      "parent": "e29",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e29"
+    "p6": {
+      "type": "place",
+      "name": "Draastbarrow",
+      "source": "geo"
     },
-    "f15": {
-      "type": "figure",
-      "name": "Fenach",
-      "epithet": "the Meek",
-      "role": "siege captain",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e14"
+    "p7": {
+      "type": "place",
+      "name": "Athorachcradle",
+      "source": "geo"
     },
-    "e33": {
-      "type": "event",
-      "kind": "battle",
-      "year": 226,
-      "text": "The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold.",
-      "hidden": null,
-      "participants": [
-        "f15",
-        "f5"
-      ],
-      "parent": "e14",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e14"
+    "p8": {
+      "type": "place",
+      "name": "Toraeastdeep",
+      "source": "geo"
     },
-    "e34": {
-      "type": "event",
-      "kind": "champion's duel",
-      "year": 227,
-      "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
-      "hidden": "The duel was not fought to a death but to a bargain.",
-      "participants": [
-        "f5",
-        "f3"
-      ],
-      "parent": "e14",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e14"
+    "p9": {
+      "type": "place",
+      "name": "Galilisshroud",
+      "source": "geo"
     },
-    "a14": {
-      "type": "artifact",
-      "name": "Torn Standard of Haruienreach",
-      "item_type": "talisman",
-      "created_year": 226,
-      "origin_faction": null,
-      "provenance": [
-        "e33"
-      ],
-      "knowledge": [
-        "(year 226) The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold.",
-        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": null,
-      "hints_veil": null,
-      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold. The rest of the story is kept by no one.",
-      "depth": 1,
-      "source": "expansion:e14"
+    "p10": {
+      "type": "place",
+      "name": "Cyrorsilaspire",
+      "source": "geo"
     },
-    "f16": {
-      "type": "figure",
-      "name": "Hestcael",
-      "epithet": "One-hand",
-      "role": "quartermaster",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e10"
+    "p11": {
+      "type": "place",
+      "name": "Galastcradle",
+      "source": "geo"
     },
-    "e35": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 121,
-      "text": "An account survives from Hestcael One-hand, a quartermaster, set down against instruction and hidden in a ledger.",
-      "hidden": null,
-      "participants": [
-        "f16"
-      ],
-      "parent": "e10",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e10"
+    "p12": {
+      "type": "place",
+      "name": "Yorachvault",
+      "source": "geo"
     },
-    "e36": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 121,
-      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
-      "hidden": "What they came for was not what the chronicles assumed.",
-      "participants": [],
-      "parent": "e10",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e10"
+    "p13": {
+      "type": "place",
+      "name": "Hestvanevault",
+      "source": "geo"
     },
-    "f17": {
-      "type": "figure",
-      "name": "Velwyn",
-      "epithet": "the Plain",
-      "role": "chronicler",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e26"
+    "p14": {
+      "type": "place",
+      "name": "Ranulornmarch",
+      "source": "geo"
     },
-    "e37": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 539,
-      "text": "An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall.",
-      "hidden": null,
-      "participants": [
-        "f17"
-      ],
-      "parent": "e26",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e26"
-    },
-    "e38": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 540,
-      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
-      "hidden": null,
-      "participants": [],
-      "parent": "e26",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e26"
-    },
-    "a15": {
-      "type": "artifact",
-      "name": "Effects of Velwyn",
-      "item_type": "consumable",
-      "created_year": 539,
-      "origin_faction": null,
-      "provenance": [
-        "e37"
-      ],
-      "knowledge": [
-        "(year 539) An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall.",
-        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "names the wrong slayer for a famous death",
-      "hints_veil": null,
-      "description": "A humble ward, spent in a moment.\n\nAn account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall. The rest of the story is kept by no one.",
-      "depth": 1,
-      "source": "expansion:e26"
+    "p15": {
+      "type": "place",
+      "name": "Kaaemothbarrow",
+      "source": "geo"
     }
   },
   "notes": []

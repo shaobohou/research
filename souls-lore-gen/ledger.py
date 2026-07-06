@@ -15,10 +15,11 @@ Layout (worlds/seed-N/ledger.json):
 from __future__ import annotations
 
 import json
+import random
 import re
 from pathlib import Path
 
-from worldsim import World
+from worldsim import PLACE_SUFFIXES, World
 
 
 class LedgerError(ValueError):
@@ -129,6 +130,15 @@ class Ledger:
                 best = max(best, int(m.group(1)))
         return f"{prefix}{best + 1}"
 
+    def find_place(self, needle: str) -> tuple[str, dict]:
+        needle = needle.lower()
+        hits = [(i, e) for i, e in self.of_type("place")
+                if needle in e["name"].lower()]
+        if not hits:
+            raise LedgerError(f"no place matching {needle!r}")
+        hits.sort(key=lambda p: len(p[1]["name"]))
+        return hits[0]
+
     def find_artifact(self, needle: str) -> tuple[str, dict]:
         needle = needle.lower()
         hits = [(i, e) for i, e in self.of_type("artifact")
@@ -231,6 +241,110 @@ class Ledger:
 
 
 # ---------------------------------------------------------------------------
+# Geography: places, event locations, item placement
+# ---------------------------------------------------------------------------
+# Derived rather than simulated: place names already live inside event texts
+# (they come from the same Namer), so geography can be reconstructed for any
+# ledger — including pre-geography ones — deterministically and idempotently.
+
+ROADS_NAME = "the Pilgrim Roads"
+
+# Placement lines are an EVIDENCE channel, so they are sim-controlled (like
+# knowledge packets), never free prose: derived from where an item's story
+# ended. Keyed by the kind of the last provenance event, with item-type
+# fallbacks.
+_PLACEMENT_BY_KIND = {
+    "fall of a kingdom": "Found at the foot of a throne in {place}, beneath the dust of the banners.",
+    "hero's end": "Left behind at {place}, and never reclaimed.",
+    "sealing": "Worn smooth by warders' hands at {place}.",
+    "the paying of the price": "Set among the grave-offerings at {place}; the offerings were counted, once.",
+    "the wardens' charge": "Passed down at {place}, hand to reluctant hand.",
+    "betrayal": "Recovered from a gatehouse at {place} that no one will garrison again.",
+    "the price named": "Found sewn into a courier's coat on the roads out of {place}.",
+    "rite of restoration": "Kept in a reliquary at {place}, before which the candles will not stay lit.",
+    "the procession": "Dropped along the procession road near {place}, and left where it fell.",
+    "the choosing": "Found in an empty cell at {place}, the door unlocked.",
+    "twilight of a god": "Taken from a throne room at {place} where nothing else was disturbed.",
+    "the empty seat": "Taken from a throne room at {place} where nothing else was disturbed.",
+    "great war": "Dug from the old battle-earth near {place}.",
+    "battle": "Dug from the old battle-earth near {place}.",
+    "champion's duel": "Found on the dueling ground at {place}, laid down rather than dropped.",
+    "the seal weakens": "Confiscated from pilgrims on the roads to {place}.",
+    "last pilgrimage": "Recovered from a wayside camp on the road to {place}, struck in haste.",
+    "forging": "Kept long at {place}, and then kept poorly.",
+    "founding": "Displayed at {place} until display became burial.",
+}
+
+_PLACEMENT_BY_TYPE = {
+    "weapon": "Found driven upright in the earth near {place}.",
+    "armor": "Found arranged, empty, at {place} — as if for a burial without a body.",
+    "ring": "Pried from a hand at {place}; the hand did not object.",
+    "talisman": "Left upon a roadside shrine near {place}.",
+    "soul remnant": "Lingers at {place}, where it was loosed.",
+    "key item": "Found where it was abandoned, at {place}.",
+    "consumable": "Bought from a peddler working the roads near {place}.",
+    "catalyst": "Recovered from a scholar's cell at {place}, its door locked from within.",
+}
+
+
+def ensure_geography(lg: Ledger) -> bool:
+    """Create place entities, locate events, and place items. Idempotent;
+    returns True if the ledger changed. Safe to run on old ledgers and after
+    every expansion (fills only missing fields)."""
+    changed = False
+    places: dict[str, str] = {e["name"]: pid for pid, e in lg.of_type("place")}
+    suffix_re = re.compile(
+        r"\b([A-Z][a-z]+(?:" + "|".join(PLACE_SUFFIXES) + r"))\b")
+
+    def ensure_place(name: str) -> str:
+        nonlocal changed
+        if name in places:
+            return places[name]
+        pid = lg.next_id("p")
+        lg.entities[pid] = {"type": "place", "name": name, "source": "geo"}
+        if name not in lg.meta["used_names"]:
+            lg.meta["used_names"].append(name)
+        places[name] = pid
+        changed = True
+        return pid
+
+    roads = ensure_place(ROADS_NAME)
+    for _, k in lg.of_type("faction"):
+        ensure_place(k["seat"])
+
+    for eid, e in lg.of_type("event"):
+        mentioned = suffix_re.findall(e["text"])
+        for nm in mentioned:
+            ensure_place(nm)
+        if e.get("place") is None:
+            pid = places[mentioned[0]] if mentioned else None
+            if pid is None:
+                for fid in e["participants"]:
+                    fac = lg.get(fid).get("faction")
+                    if fac:
+                        pid = places[lg.get(fac)["seat"]]
+                        break
+            e["place"] = pid or roads
+            changed = True
+
+    for aid, a in lg.of_type("artifact"):
+        if a.get("site") is None:
+            if a["provenance"]:
+                a["site"] = lg.get(a["provenance"][-1])["place"]
+            elif a["origin_faction"]:
+                a["site"] = places[lg.get(a["origin_faction"])["seat"]]
+            else:
+                a["site"] = roads
+            kind = (lg.get(a["provenance"][-1])["kind"]
+                    if a["provenance"] else None)
+            tpl = _PLACEMENT_BY_KIND.get(kind) or _PLACEMENT_BY_TYPE.get(
+                a["item_type"], "Found upon the roads near {place}.")
+            a["placement"] = tpl.format(place=lg.get(a["site"])["name"])
+            changed = True
+    return changed
+
+
+# ---------------------------------------------------------------------------
 # Rendering
 # ---------------------------------------------------------------------------
 
@@ -259,7 +373,10 @@ def render_chronicle(lg: Ledger) -> str:
 
     def emit(eid: str, e: dict, indent: int):
         pad = "  " * indent
-        lines.append(f"{pad}- **Year {e['year']}** — *{e['kind']}*: {e['text']}")
+        at = ""
+        if e.get("place"):
+            at = f" _(at {lg.get(e['place'])['name']})_"
+        lines.append(f"{pad}- **Year {e['year']}** — *{e['kind']}*: {e['text']}{at}")
         if e["hidden"]:
             lines.append(f"{pad}  - _Hidden:_ {e['hidden']}")
         for nt in lg.notes_for(eid):
@@ -291,6 +408,16 @@ def render_chronicle(lg: Ledger) -> str:
         for nt in lg.notes_for(kid):
             lines.append(f"  - _Note:_ {nt}")
     lines.append("")
+
+    places = lg.of_type("place")
+    if places:
+        lines.append("## Places")
+        for pid, p in places:
+            items_here = [a["name"] for _, a in lg.of_type("artifact")
+                          if a.get("site") == pid]
+            held = f" — holds {', '.join(items_here)}" if items_here else ""
+            lines.append(f"- **{p['name']}**{held}.")
+        lines.append("")
     return "\n".join(lines)
 
 
@@ -311,5 +438,8 @@ def render_codex(lg: Ledger) -> str:
             lines.append(f"### {a['name']}")
             lines.append("")
             lines.append(a["description"] or "(no description generated)")
+            if a.get("placement"):
+                lines.append("")
+                lines.append(f"*{a['placement']}*")
             lines.append("")
     return "\n".join(lines)

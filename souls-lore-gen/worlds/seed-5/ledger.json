@@ -1,0 +1,1237 @@
+{
+  "meta": {
+    "seed": 5,
+    "archetype_key": "song",
+    "primordial": "the Founding Chord",
+    "gift": "speech, covenant, and the resonance that holds stone to stone",
+    "waning": "the Chord decays into echoes; oaths slip, bridges forget their arches",
+    "curse_name": "the Unsinging",
+    "curse_desc": "the voices of the afflicted fade to a hum, and what they built beside begins to loosen",
+    "relic_nouns": [
+      "chord",
+      "bell",
+      "hymn",
+      "echo",
+      "tongue"
+    ],
+    "veils": [
+      "The bells are not rung to honour the Chord but to drown out something singing underneath it.",
+      "The Chord is not fading \u2014 it is being sung backwards, deliberately, from somewhere beneath the oldest bell.",
+      "The backwards singer is the Chord's own first note, cast out so the harmony could begin; it does not want silence \u2014 it wants its place back."
+    ],
+    "epigraph": "Of the Founding Chord little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 560,
+    "used_names": [
+      "Athagarcradle",
+      "Belawyn",
+      "Belmundfen",
+      "Draansila",
+      "Elaedaneshroud",
+      "Fendis",
+      "Ghalmundreach",
+      "Iraevethvault",
+      "Ishencaeldeep",
+      "Kardiscrown",
+      "Karesswyncrown",
+      "Loachgate",
+      "Mazoscrown",
+      "Mazucaelcrown",
+      "Nimaeast",
+      "Nyorott",
+      "Ommoth",
+      "Sereth",
+      "Sylenmoth",
+      "Thaliast",
+      "Thalulgarbarrow",
+      "Thalulhild",
+      "Toressgrim",
+      "Ulorast",
+      "Wrenwynreach",
+      "Ysiosreach",
+      "the Pilgrim Roads",
+      "Thaleeth",
+      "Mormoth",
+      "Effects of Mormoth"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 301,
+      "blurb": "the Founding Chord gave the world speech, covenant, and the resonance that holds stone to stone."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 301,
+      "end": 525,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the Chord decays into echoes; oaths slip, bridges forget their arches."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 525,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Ommoth",
+      "epithet": "god of healing and the price of healing",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Nyorott",
+      "epithet": "god of law, chains, and the first covenant",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Sylenmoth",
+      "epithet": "god of war and the keeping of thresholds",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": "descended below the world; did not return",
+      "fate_year": 525,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Thaliast",
+      "epithet": "god of secrets, locks, and the spaces between",
+      "role": "god",
+      "faction": "k4",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Toressgrim",
+      "epithet": "the Discordant",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Ysiosreach",
+      "fate_year": 182,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Draansila",
+      "epithet": "Half-remembered",
+      "role": "knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Nimaeast",
+      "epithet": "the Grey",
+      "role": "high priest",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Fendis",
+      "epithet": "the Twice-crowned",
+      "role": "heretic scholar",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Belawyn",
+      "epithet": "of the Last Door",
+      "role": "queen",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 427,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Sereth",
+      "epithet": "the Unbowed",
+      "role": "pilgrim saint",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 393,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Thalulhild",
+      "epithet": "the Grey",
+      "role": "oathbreaker general",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "succumbed to the Unsinging",
+      "fate_year": 430,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Ulorast",
+      "epithet": "Last-sworn",
+      "role": "wandering knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "fate contested",
+      "fate_year": 541,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Ishencaeldeep",
+      "kind": "church",
+      "seat": "Athagarcradle",
+      "founded_year": 47,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Kardiscrown",
+      "kind": "kingdom",
+      "seat": "Thalulgarbarrow",
+      "founded_year": 84,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Elaedaneshroud",
+      "kind": "kingdom",
+      "seat": "Mazoscrown",
+      "founded_year": 105,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Iraevethvault",
+      "kind": "kingdom",
+      "seat": "Belmundfen",
+      "founded_year": 124,
+      "founder": "f4",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Order of the Chord",
+      "kind": "order",
+      "seat": "Loachgate",
+      "founded_year": 322,
+      "founder": "f6",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Church of Ommoth",
+      "kind": "church",
+      "seat": "Wrenwynreach",
+      "founded_year": 336,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Cult of the Patient Below",
+      "kind": "cult",
+      "seat": "Karesswyncrown",
+      "founded_year": 351,
+      "founder": "f8",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k8": {
+      "type": "faction",
+      "name": "Ghalmundreach",
+      "kind": "kingdom",
+      "seat": "Mazucaelcrown",
+      "founded_year": 365,
+      "founder": "f9",
+      "fallen_year": 427,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Founding Chord rose (or was raised \u2014 the tellings differ) and gave the world speech, covenant, and the resonance that holds stone to stone.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 4,
+      "text": "Ommoth, god of healing and the price of healing, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 14,
+      "text": "Nyorott, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 17,
+      "text": "Sylenmoth, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 32,
+      "text": "Thaliast, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "founding",
+      "year": 47,
+      "text": "Ommoth founded Ishencaeldeep (church) at Athagarcradle.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "forging",
+      "year": 47,
+      "text": "The Bell of Ommoth was wrought as regalia of Ommoth's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "founding",
+      "year": 84,
+      "text": "Nyorott founded Kardiscrown (kingdom) at Thalulgarbarrow.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p11"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "forging",
+      "year": 84,
+      "text": "The Hymn of Nyorott was wrought as regalia of Nyorott's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "founding",
+      "year": 105,
+      "text": "Sylenmoth founded Elaedaneshroud (kingdom) at Mazoscrown.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "forging",
+      "year": 105,
+      "text": "The Hymn of Sylenmoth was wrought as regalia of Sylenmoth's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "founding",
+      "year": 124,
+      "text": "Thaliast founded Iraevethvault (kingdom) at Belmundfen.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p13"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "forging",
+      "year": 124,
+      "text": "The Chord of Thaliast was wrought as regalia of Thaliast's throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "great war",
+      "year": 177,
+      "text": "Toressgrim, the Discordant, rose against the thrones. Thaliast led the gods to war.",
+      "hidden": "Sylenmoth treated with Toressgrim in secret and was spared what followed.",
+      "participants": [
+        "f5",
+        "f4",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 182,
+      "text": "Toressgrim was defeated and sealed beneath Ysiosreach; the seal was bought with the lives of 3 champions.",
+      "hidden": null,
+      "participants": [
+        "f5",
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p14"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "waning",
+      "year": 301,
+      "text": "The waning began: the Chord decays into echoes; oaths slip, bridges forget their arches. Mortals called the affliction the Unsinging: the voices of the afflicted fade to a hum, and what they built beside begins to loosen.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 322,
+      "text": "Draansila Half-remembered founded the Order of the Chord at Loachgate, sworn to stand against the Unsinging.",
+      "hidden": null,
+      "participants": [
+        "f6"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "founding",
+      "year": 336,
+      "text": "The Church of Ommoth was raised at Wrenwynreach; Nimaeast the Grey took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f7",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 351,
+      "text": "Fendis the Twice-crowned was cast out of Church of Ommoth and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "founding",
+      "year": 365,
+      "text": "Belawyn of the Last Door united the river-clans and was crowned in Mazucaelcrown; the realm took the name Ghalmundreach.",
+      "hidden": null,
+      "participants": [
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 393,
+      "text": "At the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Nimaeast suspected as much.",
+      "participants": [
+        "f7",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 423,
+      "text": "Thalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on.",
+      "hidden": "Thalulhild acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Unsinging. The promise was not kept.",
+      "participants": [
+        "f11",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 427,
+      "text": "Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f9",
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p15"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "fate",
+      "year": 430,
+      "text": "Thalulhild was found at Loachgate bearing the Unsinging, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 525,
+      "text": "Sylenmoth, god of war and the keeping of thresholds, descended below the world to look upon the Founding Chord directly, and did not return.",
+      "hidden": "Sylenmoth found the truth of the waning, and chose to stay.",
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 536,
+      "text": "Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f12",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 541,
+      "text": "Word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 560,
+      "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Bell of Ommoth",
+      "item_type": "talisman",
+      "created_year": 47,
+      "origin_faction": "k1",
+      "provenance": [
+        "e7"
+      ],
+      "knowledge": [
+        "(year 47) The Bell of Ommoth was wrought as regalia of Ommoth's throne.",
+        "This item is kept/told of by Ishencaeldeep (church), seat at Athagarcradle.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Bell of Ommoth was wrought as regalia of Ommoth's throne. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Athagarcradle, and then kept poorly."
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Hymn of Nyorott",
+      "item_type": "weapon",
+      "created_year": 84,
+      "origin_faction": "k2",
+      "provenance": [
+        "e9"
+      ],
+      "knowledge": [
+        "(year 84) The Hymn of Nyorott was wrought as regalia of Nyorott's throne.",
+        "This item is kept/told of by Kardiscrown (kingdom), seat at Thalulgarbarrow.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThe Hymn of Nyorott was wrought as regalia of Nyorott's throne. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Thalulgarbarrow, and then kept poorly."
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Hymn of Sylenmoth",
+      "item_type": "weapon",
+      "created_year": 105,
+      "origin_faction": "k3",
+      "provenance": [
+        "e11"
+      ],
+      "knowledge": [
+        "(year 105) The Hymn of Sylenmoth was wrought as regalia of Sylenmoth's throne.",
+        "Sylenmoth, god of war and the keeping of thresholds: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Elaedaneshroud (kingdom), seat at Mazoscrown.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThe Hymn of Sylenmoth was wrought as regalia of Sylenmoth's throne. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Mazoscrown, and then kept poorly."
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Chord of Thaliast",
+      "item_type": "catalyst",
+      "created_year": 124,
+      "origin_faction": "k4",
+      "provenance": [
+        "e13"
+      ],
+      "knowledge": [
+        "(year 124) The Chord of Thaliast was wrought as regalia of Thaliast's throne.",
+        "This item is kept/told of by Iraevethvault (kingdom), seat at Belmundfen.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Chord of Thaliast was wrought as regalia of Thaliast's throne. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept long at Belmundfen, and then kept poorly."
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Thaliast's War-Bell",
+      "item_type": "weapon",
+      "created_year": 182,
+      "origin_faction": "k4",
+      "provenance": [
+        "e14",
+        "e15"
+      ],
+      "knowledge": [
+        "(year 177) Toressgrim, the Discordant, rose against the thrones. Thaliast led the gods to war.",
+        "(year 182) Toressgrim was defeated and sealed beneath Ysiosreach; the seal was bought with the lives of 3 champions.",
+        "Toressgrim, the Discordant: fate \u2014 sealed beneath Ysiosreach (year 182).",
+        "This item is kept/told of by Iraevethvault (kingdom), seat at Belmundfen.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nToressgrim, the Discordant, rose against the thrones. Thaliast led the gods to war. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p14",
+      "placement": "Worn smooth by warders' hands at Ysiosreach."
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Sereth",
+      "item_type": "soul remnant",
+      "created_year": 393,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 393) At the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed.",
+        "Sereth, the Unbowed: fate \u2014 given to the rite of restoration (year 393).",
+        "This item is kept/told of by Church of Ommoth (church), seat at Wrenwynreach.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Wrenwynreach, before which the candles will not stay lit."
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Echo of Saint Sereth",
+      "item_type": "talisman",
+      "created_year": 393,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 393) At the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Nimaeast suspected as much.",
+        "Sereth, the Unbowed: fate \u2014 given to the rite of restoration (year 393).",
+        "This item is kept/told of by Church of Ommoth (church), seat at Wrenwynreach.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly \u2014 and Nimaeast suspected as much. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Wrenwynreach, before which the candles will not stay lit."
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Hollow Crown of Ghalmundreach",
+      "item_type": "key item",
+      "created_year": 427,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 423) Thalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on.",
+        "[half-known secret] Thalulhild acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Unsinging. The promise was not kept.",
+        "(year 427) Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Belawyn, of the Last Door: fate \u2014 slain at their own throne (year 427).",
+        "This item is kept/told of by Ghalmundreach (kingdom), seat at Mazucaelcrown.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "An object of no use in battle, and of great consequence.\n\nThalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on. None now living can say whether Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again. The tellings differ, but most agree Thalulhild acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Unsinging. The promise was not kept. Held long enough, it suggests the waning is no accident. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p15",
+      "placement": "Found at the foot of a throne in Ghalmundreach, beneath the dust of the banners."
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Thalulhild's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 427,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 423) Thalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on.",
+        "[half-known secret] Thalulhild acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Unsinging. The promise was not kept.",
+        "(year 427) Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Belawyn, of the Last Door: fate \u2014 slain at their own throne (year 427).",
+        "This item is kept/told of by Ghalmundreach (kingdom), seat at Mazucaelcrown.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on. Some claim Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p15",
+      "placement": "Found at the foot of a throne in Ghalmundreach, beneath the dust of the banners."
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Soul of Sylenmoth",
+      "item_type": "soul remnant",
+      "created_year": 525,
+      "origin_faction": "k3",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 525) Sylenmoth, god of war and the keeping of thresholds, descended below the world to look upon the Founding Chord directly, and did not return.",
+        "[half-known secret] Sylenmoth found the truth of the waning, and chose to stay.",
+        "Sylenmoth, god of war and the keeping of thresholds: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Elaedaneshroud (kingdom), seat at Mazoscrown.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nSylenmoth, god of war and the keeping of thresholds, descended below the world to look upon the Founding Chord directly, and did not return. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Taken from a throne room at Mazoscrown where nothing else was disturbed."
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Ulorast's Set",
+      "item_type": "armor",
+      "created_year": 541,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 536) Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing.",
+        "(year 541) Word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither.",
+        "Sylenmoth, god of war and the keeping of thresholds: fate \u2014 descended below the world; did not return (year 525).",
+        "This item is kept/told of by Order of the Chord (order), seat at Loachgate.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": 0,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nUlorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing. It is said that word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither. Held long enough, it suggests the waning is no accident. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Loachgate, and never reclaimed."
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Ring of the Chord Vigil",
+      "item_type": "ring",
+      "created_year": 541,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 536) Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing.",
+        "(year 541) Word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither.",
+        "Ulorast, Last-sworn: fate \u2014 fate contested (year 541).",
+        "This item is kept/told of by Order of the Chord (order), seat at Loachgate.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nUlorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing. Old verses hold that word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Loachgate, and never reclaimed."
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Warding Echo",
+      "item_type": "consumable",
+      "created_year": 560,
+      "origin_faction": "k6",
+      "provenance": [
+        "e28"
+      ],
+      "knowledge": [
+        "(year 560) Pilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued.",
+        "[half-known secret] The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+        "Toressgrim, the Discordant: fate \u2014 sealed beneath Ysiosreach (year 182).",
+        "This item is kept/told of by Church of Ommoth (church), seat at Wrenwynreach.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
+    },
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
+    },
+    "p2": {
+      "type": "place",
+      "name": "Athagarcradle",
+      "source": "geo"
+    },
+    "p3": {
+      "type": "place",
+      "name": "Thalulgarbarrow",
+      "source": "geo"
+    },
+    "p4": {
+      "type": "place",
+      "name": "Mazoscrown",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Belmundfen",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Loachgate",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Wrenwynreach",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Karesswyncrown",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Mazucaelcrown",
+      "source": "geo"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Ishencaeldeep",
+      "source": "geo"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Kardiscrown",
+      "source": "geo"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Elaedaneshroud",
+      "source": "geo"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Iraevethvault",
+      "source": "geo"
+    },
+    "p14": {
+      "type": "place",
+      "name": "Ysiosreach",
+      "source": "geo"
+    },
+    "p15": {
+      "type": "place",
+      "name": "Ghalmundreach",
+      "source": "geo"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Thaleeth",
+      "epithet": "of the Rearguard",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e27"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 538,
+      "text": "An account survives from Thaleeth of the Rearguard, a cartwright, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f13"
+      ],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27",
+      "place": "p1"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 540,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27",
+      "place": "p1"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Mormoth",
+      "epithet": "the Sleepless",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e4"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 13,
+      "text": "An account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "parent": "e4",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e4",
+      "place": "p1"
+    },
+    "e32": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 13,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e4",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e4",
+      "place": "p1"
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Effects of Mormoth",
+      "item_type": "ring",
+      "created_year": 13,
+      "origin_faction": null,
+      "provenance": [
+        "e31"
+      ],
+      "knowledge": [
+        "(year 13) An account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Unsinging \u2014 the voices of the afflicted fade to a hum, and what they built beside begins to loosen."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e4",
+      "site": "p1",
+      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+    }
+  },
+  "notes": []
+}

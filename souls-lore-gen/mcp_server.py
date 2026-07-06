@@ -27,24 +27,42 @@ def build_server(exp: Exploration) -> FastMCP:
     mcp = FastMCP(
         "souls-lore",
         instructions=(
-            "You are exploring the lore of a lost world through what its "
-            "objects remember. Descriptions are fragmentary, biased, and "
-            "sometimes wrong; the truth must be triangulated. Loop: survey, "
-            "examine items, follow leads (ask about names, delve into "
-            "places/events), and when you believe you understand what truly "
-            "happened, submit theories. Budgets are limited — spend delves "
-            "and asks where the story feels deliberately silent."),
+            "You are a body in a lost world, reading its history off the "
+            "objects it left behind. You learn a place's relics only by "
+            "walking there; each relic's resting place is itself a clue. "
+            "Descriptions are fragmentary, biased, and sometimes wrong — the "
+            "truth must be triangulated across many. Loop: survey (your map), "
+            "travel, look, examine, follow leads (ask, delve), travel on. "
+            "When you have a theory, lay it before the antiquary — but know "
+            "that in this world no one will ever tell you that you are right. "
+            "Silence, where you expected an answer, is itself the answer. "
+            "Steps, asks, and delves are limited; spend them where the story "
+            "feels deliberately quiet."),
     )
 
     @mcp.tool()
     def survey() -> dict:
-        """List what exists: items, factions heard of, ages, your budget."""
+        """Your charted map: where you stand, the places you know (walked vs
+        only heard of), the ages, and your remaining strength. Not a
+        catalogue — you learn what a place holds only by going there."""
         return exp.survey()
 
     @mcp.tool()
+    def look() -> dict:
+        """What lies where you stand: the relics here (with how each was
+        found — a clue in itself) and the ways onward."""
+        return exp.look()
+
+    @mcp.tool()
+    def travel(place: str) -> dict:
+        """Walk to a place you have heard of. New ground costs a step;
+        returning is free. Arriving reveals what lies there and the ways on."""
+        return exp.travel(place)
+
+    @mcp.tool()
     def examine(item: str) -> dict:
-        """Read an item's description (by name or substring). Free. Returns
-        leads: names the description mentions, each a thread to pull."""
+        """Study a relic you stand beside or have already found. Free.
+        Returns its description, how it lies, and leads (names it mentions)."""
         return exp.examine(item)
 
     @mcp.tool()
@@ -62,9 +80,9 @@ def build_server(exp: Exploration) -> FastMCP:
 
     @mcp.tool()
     def theorize(claims: list[str]) -> dict:
-        """Submit up to 12 claims about the true history. Each is graded:
-        established / consistent / unsupported / contradicted / veiled —
-        without revealing what you haven't found."""
+        """Lay up to 12 claims before a fellow antiquary. You receive their
+        in-world reaction — never a verdict. The world will not confirm you;
+        if they fall silent on a claim, you have touched something buried."""
         return exp.theorize(claims)
 
     @mcp.tool()
@@ -94,13 +112,17 @@ def main():
     ap.add_argument("--explorer", default="seeker",
                     help="named exploration state (fog of war) to use")
     ap.add_argument("--role", choices=["seeker", "archivist"], default="seeker")
+    ap.add_argument("--benchmark", action="store_true",
+                    help="expose theorize verdicts+scores (for eval harnesses; "
+                         "off by default — seekers play in purist mode)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--no-llm", action="store_true",
                     help="template answering/grading, no API key needed")
     args = ap.parse_args()
 
     exp = Exploration(args.world, explorer=args.explorer, role=args.role,
-                      model=None if args.no_llm else args.model)
+                      model=None if args.no_llm else args.model,
+                      purist=not args.benchmark)
     build_server(exp).run()
 
 

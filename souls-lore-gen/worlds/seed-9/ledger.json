@@ -48,15 +48,7 @@
       "Yorgarcrown",
       "Yormere",
       "Ysedanecrown",
-      "Veremis",
-      "Processional Conch",
-      "Solemis",
-      "Torn Standard of Seriaachvault",
-      "Ghalorien",
-      "Ulesssila",
-      "Ezahild",
-      "Ezlis",
-      "Warden's Salt-ring"
+      "the Pilgrim Roads"
     ]
   },
   "ages": [
@@ -322,7 +314,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e2": {
       "type": "event",
@@ -336,7 +329,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e3": {
       "type": "event",
@@ -350,7 +344,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p3"
     },
     "e4": {
       "type": "event",
@@ -364,7 +359,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e5": {
       "type": "event",
@@ -378,7 +374,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e6": {
       "type": "event",
@@ -392,7 +389,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p10"
     },
     "e7": {
       "type": "event",
@@ -406,7 +404,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e8": {
       "type": "event",
@@ -420,7 +419,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p11"
     },
     "e9": {
       "type": "event",
@@ -434,7 +434,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p3"
     },
     "e10": {
       "type": "event",
@@ -448,7 +449,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p12"
     },
     "e11": {
       "type": "event",
@@ -462,7 +464,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e12": {
       "type": "event",
@@ -476,7 +479,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p13"
     },
     "e13": {
       "type": "event",
@@ -490,7 +494,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e14": {
       "type": "event",
@@ -505,8 +510,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
     },
     "e15": {
       "type": "event",
@@ -520,8 +526,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p14"
     },
     "e16": {
       "type": "event",
@@ -533,7 +540,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e17": {
       "type": "event",
@@ -547,7 +555,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p15"
     },
     "e18": {
       "type": "event",
@@ -562,7 +571,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p7"
     },
     "e19": {
       "type": "event",
@@ -576,7 +586,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p8"
     },
     "e20": {
       "type": "event",
@@ -590,7 +601,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e21": {
       "type": "event",
@@ -604,8 +616,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p17"
     },
     "e22": {
       "type": "event",
@@ -620,7 +633,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e23": {
       "type": "event",
@@ -635,7 +649,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p16"
     },
     "e24": {
       "type": "event",
@@ -649,7 +664,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e25": {
       "type": "event",
@@ -663,7 +679,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e26": {
       "type": "event",
@@ -678,7 +695,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e27": {
       "type": "event",
@@ -691,8 +709,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
     },
     "e28": {
       "type": "event",
@@ -706,7 +725,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "a1": {
       "type": "artifact",
@@ -727,7 +747,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nThe Brine of Veloryne was wrought as regalia of Veloryne's throne. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Yorgarcrown, and then kept poorly."
     },
     "a2": {
       "type": "artifact",
@@ -748,7 +770,9 @@
       "hints_veil": 0,
       "description": "A ring that grants a small, stubborn blessing.\n\nThe Pearl of Nimos was wrought as regalia of Nimos's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Nimgarmere, and then kept poorly."
     },
     "a3": {
       "type": "artifact",
@@ -770,7 +794,9 @@
       "hints_veil": null,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Salt of Sylorien was wrought as regalia of Sylorien's throne. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Harricspire, and then kept poorly."
     },
     "a4": {
       "type": "artifact",
@@ -791,7 +817,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nThe Brine of Nyadra was wrought as regalia of Nyadra's throne. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept long at Morennothmarch, and then kept poorly."
     },
     "a5": {
       "type": "artifact",
@@ -815,7 +843,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nIshirula, the Still Water, rose against the thrones. Nimos led the gods to war. None now living can say whether Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p14",
+      "placement": "Worn smooth by warders' hands at Aldranarahollow."
     },
     "a7": {
       "type": "artifact",
@@ -837,7 +867,9 @@
       "hints_veil": null,
       "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p17",
+      "placement": "Kept in a reliquary at Yormere, before which the candles will not stay lit."
     },
     "a6": {
       "type": "artifact",
@@ -860,7 +892,9 @@
       "hints_veil": 0,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly \u2014 and Thalenien suspected as much. Held long enough, it suggests the waning is no accident. Perhaps it is better that the tale ends there.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p17",
+      "placement": "Kept in a reliquary at Yormere, before which the candles will not stay lit."
     },
     "a8": {
       "type": "artifact",
@@ -885,7 +919,9 @@
       "hints_veil": null,
       "description": "An object of no use in battle, and of great consequence.\n\nHestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. The tellings differ, but most agree Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p16",
+      "placement": "Found at the foot of a throne in Hestnothgate, beneath the dust of the banners."
     },
     "a9": {
       "type": "artifact",
@@ -910,7 +946,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nHestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. It is said that Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again. The tellings differ, but most agree Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p16",
+      "placement": "Found at the foot of a throne in Hestnothgate, beneath the dust of the banners."
     },
     "a10": {
       "type": "artifact",
@@ -932,7 +970,9 @@
       "hints_veil": null,
       "description": "The lingering soul of one who would not wholly pass.\n\nSylorien, god of law, chains, and the first covenant, descended below the world to look upon the Drowned Radiance directly, and did not return. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p4",
+      "placement": "Taken from a throne room at Harricspire where nothing else was disturbed."
     },
     "a11": {
       "type": "artifact",
@@ -956,7 +996,9 @@
       "hints_veil": null,
       "description": "Worn armor that remembers the shape of its last bearer.\n\nMazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. The tellings differ, but most agree Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Olulthasshroud, and never reclaimed."
     },
     "a12": {
       "type": "artifact",
@@ -980,7 +1022,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nMazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. It is said that Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Olulthasshroud, and never reclaimed."
     },
     "a13": {
       "type": "artifact",
@@ -1002,281 +1046,94 @@
       "hints_veil": null,
       "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued. Perhaps it is better that the tale ends there.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
     },
-    "f13": {
-      "type": "figure",
-      "name": "Veremis",
-      "epithet": "of No House",
-      "role": "novice",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e21"
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
     },
-    "e29": {
-      "type": "event",
-      "kind": "the choosing",
-      "year": 405,
-      "text": "The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running.",
-      "hidden": "The one who ran was never pursued, by design.",
-      "participants": [
-        "f13"
-      ],
-      "parent": "e21",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e21"
+    "p2": {
+      "type": "place",
+      "name": "Yorgarcrown",
+      "source": "geo"
     },
-    "e30": {
-      "type": "event",
-      "kind": "the procession",
-      "year": 408,
-      "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it.",
-      "hidden": null,
-      "participants": [
-        "f13",
-        "f7",
-        "f10"
-      ],
-      "parent": "e21",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e21"
+    "p3": {
+      "type": "place",
+      "name": "Nimgarmere",
+      "source": "geo"
     },
-    "a14": {
-      "type": "artifact",
-      "name": "Processional Conch",
-      "item_type": "talisman",
-      "created_year": 408,
-      "origin_faction": null,
-      "provenance": [
-        "e30"
-      ],
-      "knowledge": [
-        "(year 408) The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it.",
-        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "claims the relic was a gift when it was plunder",
-      "hints_veil": null,
-      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it. What became of it after is not written.",
-      "depth": 1,
-      "source": "expansion:e21"
+    "p4": {
+      "type": "place",
+      "name": "Harricspire",
+      "source": "geo"
     },
-    "f14": {
-      "type": "figure",
-      "name": "Solemis",
-      "epithet": "of the Rearguard",
-      "role": "siege captain",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e14"
+    "p5": {
+      "type": "place",
+      "name": "Morennothmarch",
+      "source": "geo"
     },
-    "e31": {
-      "type": "event",
-      "kind": "battle",
-      "year": 178,
-      "text": "The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold.",
-      "hidden": null,
-      "participants": [
-        "f14",
-        "f5"
-      ],
-      "parent": "e14",
-      "depth": 1,
-      "expanded": true,
-      "source": "expansion:e14"
+    "p6": {
+      "type": "place",
+      "name": "Olulthasshroud",
+      "source": "geo"
     },
-    "e32": {
-      "type": "event",
-      "kind": "champion's duel",
-      "year": 180,
-      "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
-      "hidden": "The duel was not fought to a death but to a bargain.",
-      "participants": [
-        "f5",
-        "f2"
-      ],
-      "parent": "e14",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e14"
+    "p7": {
+      "type": "place",
+      "name": "Ostenthasvault",
+      "source": "geo"
     },
-    "a15": {
-      "type": "artifact",
-      "name": "Torn Standard of Seriaachvault",
-      "item_type": "talisman",
-      "created_year": 178,
-      "origin_faction": null,
-      "provenance": [
-        "e31"
-      ],
-      "knowledge": [
-        "(year 178) The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold.",
-        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": null,
-      "hints_veil": null,
-      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold. What became of it after is not written.",
-      "depth": 1,
-      "source": "expansion:e14"
+    "p8": {
+      "type": "place",
+      "name": "Ysedanecrown",
+      "source": "geo"
     },
-    "f15": {
-      "type": "figure",
-      "name": "Ghalorien",
-      "epithet": "the Stray",
-      "role": "siege captain",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 2,
-      "source": "expansion:e31"
+    "p9": {
+      "type": "place",
+      "name": "Quelwynbarrow",
+      "source": "geo"
     },
-    "e33": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 175,
-      "text": "An account survives from Ghalorien the Stray, a siege captain, set down against instruction and hidden in a wall.",
-      "hidden": null,
-      "participants": [
-        "f15"
-      ],
-      "parent": "e31",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e31"
+    "p10": {
+      "type": "place",
+      "name": "Loulmerecradle",
+      "source": "geo"
     },
-    "e34": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 175,
-      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
-      "hidden": null,
-      "participants": [],
-      "parent": "e31",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e31"
+    "p11": {
+      "type": "place",
+      "name": "Fenmerefen",
+      "source": "geo"
     },
-    "f16": {
-      "type": "figure",
-      "name": "Ulesssila",
-      "epithet": "Thrice-pardoned",
-      "role": "chronicler",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e27"
+    "p12": {
+      "type": "place",
+      "name": "Cyrogrimmere",
+      "source": "geo"
     },
-    "e35": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 543,
-      "text": "An account survives from Ulesssila Thrice-pardoned, a chronicler, set down against instruction and hidden in a psalter.",
-      "hidden": null,
-      "participants": [
-        "f16"
-      ],
-      "parent": "e27",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e27"
+    "p13": {
+      "type": "place",
+      "name": "Nimelismarch",
+      "source": "geo"
     },
-    "e36": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 544,
-      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
-      "hidden": null,
-      "participants": [],
-      "parent": "e27",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e27"
+    "p14": {
+      "type": "place",
+      "name": "Aldranarahollow",
+      "source": "geo"
     },
-    "f17": {
-      "type": "figure",
-      "name": "Ezahild",
-      "epithet": "Long-memoried",
-      "role": "champion",
-      "faction": null,
-      "is_god": false,
-      "fate": "given to the seal",
-      "fate_year": 194,
-      "depth": 1,
-      "source": "expansion:e15"
+    "p15": {
+      "type": "place",
+      "name": "Aldrulmere",
+      "source": "geo"
     },
-    "f18": {
-      "type": "figure",
-      "name": "Ezlis",
-      "epithet": "the Sleepless",
-      "role": "champion",
-      "faction": null,
-      "is_god": false,
-      "fate": "given to the seal",
-      "fate_year": 194,
-      "depth": 1,
-      "source": "expansion:e15"
+    "p16": {
+      "type": "place",
+      "name": "Hestnothgate",
+      "source": "geo"
     },
-    "e37": {
-      "type": "event",
-      "kind": "the paying of the price",
-      "year": 194,
-      "text": "Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest.",
-      "hidden": null,
-      "participants": [
-        "f17",
-        "f18"
-      ],
-      "parent": "e15",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e15"
-    },
-    "e38": {
-      "type": "event",
-      "kind": "the wardens' charge",
-      "year": 194,
-      "text": "A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
-      "hidden": "The first warden asked to be bound to the seal, not appointed over it.",
-      "participants": [],
-      "parent": "e15",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e15"
-    },
-    "a16": {
-      "type": "artifact",
-      "name": "Warden's Salt-ring",
-      "item_type": "ring",
-      "created_year": 194,
-      "origin_faction": null,
-      "provenance": [
-        "e37",
-        "e38"
-      ],
-      "knowledge": [
-        "(year 194) Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest.",
-        "(year 194) A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
-        "[half-known secret] The first warden asked to be bound to the seal, not appointed over it.",
-        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": null,
-      "hints_veil": null,
-      "description": "A ring that grants a small, stubborn blessing.\n\nOf the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Ezahild Long-memoried and Ezlis the Sleepless \u2014 though none can say what distinguishes the remembered dead from the rest. Some claim a wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. It is said that the first warden asked to be bound to the seal, not appointed over it. Perhaps it is better that the tale ends there.",
-      "depth": 1,
-      "source": "expansion:e15"
+    "p17": {
+      "type": "place",
+      "name": "Yormere",
+      "source": "geo"
     }
   },
   "notes": []

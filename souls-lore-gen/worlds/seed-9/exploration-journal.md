@@ -1,5 +1,12 @@
 # A Seeker's Journal — seed-9, the world of the Drowned Radiance
 
+> **Note:** this run predates the *space dimension* and *purist mode*. It uses
+> the earlier catalogue-style API (all item names visible up front) and the
+> benchmark judge (explicit verdicts + score). For a playthrough with the
+> current spatial, no-verdict experience, see
+> [`../seed-5/exploration-journal.md`](../seed-5/exploration-journal.md).
+> Kept as-is because its narrative synthesis and epilogue still stand.
+
 *A documented exploration of a generated world through the agent API
 (`explore.py`), played by Claude as the seeker. All quoted material is
 verbatim tool output (template mode — no API key in this environment; the

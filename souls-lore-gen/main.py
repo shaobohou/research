@@ -15,7 +15,8 @@ import argparse
 import sys
 from pathlib import Path
 
-from ledger import Ledger, LedgerError, render_chronicle, render_codex
+from ledger import (Ledger, LedgerError, ensure_geography,
+                    render_chronicle, render_codex)
 from loregen import DEFAULT_MODEL, ask_world, describe_items, elaborate
 from expand import expand_event
 from worldsim import generate_world
@@ -35,6 +36,7 @@ def _load(args) -> Ledger:
 def _write(args, lg: Ledger):
     d = _world_dir(args)
     d.mkdir(parents=True, exist_ok=True)
+    ensure_geography(lg)
     lg.save(d / "ledger.json")
     (d / "chronicle.md").write_text(render_chronicle(lg))
     (d / "codex.md").write_text(render_codex(lg))

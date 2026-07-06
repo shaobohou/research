@@ -77,36 +77,54 @@ claude mcp add lore -- uv run --project . mcp_server.py --world worlds/seed-9021
 ```
 
 The exploring agent is a **player, not a reader of the repo** — the server
-enforces the epistemic boundary. Six tools form the discovery loop:
+enforces the epistemic boundary. The loop is spatial: chart a map, walk it,
+study what you find, and venture theories no one will confirm.
 
 | tool | cost | what it does |
 |---|---|---|
-| `survey()` | free | the shop window: item names/types, factions heard of, budget |
-| `examine(item)` | free | an item's description + **leads** (names it mentions) |
+| `survey()` | free | your **charted map**: where you stand, places known (walked vs only heard of), budget. *Not* a catalogue — you learn a place's relics only by going there |
+| `look()` | free | what lies where you stand: relics here **with how each was found**, and the ways onward |
+| `travel(place)` | 1 step | walk to a place you've heard of (returning is free); reveals its relics and neighbours |
+| `examine(item)` | free | a relic you stand beside or have found: description, **how it lies**, and leads (names it mentions) |
 | `ask(question)` | 1 ask | an in-world fragment, from canon, never the veils |
-| `delve(target)` | 1 delve | follow a lead (item/figure/place/event id): expands the world behind it, returning new accounts and sometimes **new items** |
-| `theorize(claims)` | free | each claim graded: `established` (true + you have evidence) / `consistent` (true, unevidenced) / `unsupported` / `contradicted` / `veiled` ("the archives go quiet") |
-| `progress()` | free | items examined, budget left, best theory score |
-| `compendium()` | free | "The Book of Found Things": everything discovered so far, as one markdown document (also via CLI: `uv run main.py lore --seed N --explorer NAME`) |
+| `delve(target)` | 1 delve | dig into a lead: expands the world behind it, returning new accounts, sometimes **new relics**, and any **new ground** they name (added to your map) |
+| `theorize(claims)` | free | **purist mode (default):** a fellow antiquary's in-world *reaction* — a nod, a doubt, or a **silence** where you touched a veil. Never a verdict, never a score |
+| `progress()` / `compendium()` | free | status; and "The Book of Found Things" (also `uv run main.py lore --seed N --explorer NAME`) |
 
-Design properties:
+Two design commitments make this feel like Elden Ring rather than a wiki:
+
+- **Space (the *where* is a clue).** Places are entities; every relic lies
+  *somewhere*, and you discover a place's relics only by `travel`-ing there,
+  spending from a step budget. Each relic carries a **placement line** — "found
+  at the foot of a throne, beneath the dust of the banners" — a sim-controlled
+  evidence channel independent of its description. A region you never walk to
+  is a history you never learn (the seed-5 journal walks past an entire
+  kingdom's betrayal for want of one road). `delve` forges new geography, so
+  digging literally opens the map.
+- **Purist mode (the world never confirms you).** By default `theorize`
+  returns an antiquary's reaction, not a verdict — agreement on what you can
+  support, doubt on what you overreach, and **silence** on anything that
+  touches a veil. That silence is the only confirmation of hidden truth you
+  ever get: directional, deniable, unscored — exactly how an ER NPC who
+  changes the subject tells you you've found something.
+
+Under it all the ground truth is still machine-readable, so the system
+doubles as a **benchmark**: run the server with `--benchmark` (or construct
+`Exploration(..., purist=False)`) and `theorize` returns graded verdicts
+(`established`/`consistent`/`unsupported`/`contradicted`/`veiled`, scored
+3/2/0/−1/+1) for automated scoring — a mode meant for eval harnesses, never
+shown to seekers. `--role archivist` additionally exposes `canon()`.
 
 - **Fog of war is server state, not model discipline** — per-explorer
-  progress persists in `worlds/seed-N/explorations/<name>.json`; the seeker
-  never sees `hidden` fields, veils, or false-rumor flags.
-- **Errors are diegetic** ("no record survives of such a thing") — nothing
-  leaks through error strings.
-- **`delve` drives depth on demand**: exploration is what materializes new
-  history, budgeted so agents must strategize about where to dig.
-- **`theorize` makes it a benchmark**: ground truth is machine-readable, so
-  a seeker agent's lore reconstruction is scorable (offline lexical judge, or
-  Claude judge with `--model`). Score = established×3 + consistent×2 +
-  veiled×1 − contradicted.
-- **Two lenses**: `--role archivist` adds a `canon()` tool (full ledger) for
-  GM/eval harnesses; seekers calling it are barred in-world.
+  progress (location, map, finds) persists in
+  `worlds/seed-N/explorations/<name>.json`; the seeker never sees `hidden`
+  fields, veils, or false-rumor flags.
+- **Errors are diegetic** ("no road you know leads there") — nothing leaks
+  through error strings.
 
 `explore.py` is the same API as a plain Python class (`Exploration`), usable
-without MCP.
+without MCP. Geography is derived idempotently by `ensure_geography`, so old
+worlds migrate on first load.
 
 ## Guarantees
 
@@ -137,9 +155,13 @@ without MCP.
   (streamed, adaptive thinking, JSON-schema structured output), template
   fallbacks.
 - [`main.py`](main.py) — CLI (`generate | deepen | ask | codex`).
-- [`explore.py`](explore.py) — the agent-facing exploration API: fog-of-war
-  state, leads extraction, delve resolution, and the two judges.
+- [`explore.py`](explore.py) — the agent-facing exploration API: spatial
+  fog-of-war state, travel/adjacency, placement-as-evidence, delve
+  resolution, and purist-reception vs benchmark-verdict theorizing.
 - [`mcp_server.py`](mcp_server.py) — FastMCP stdio wrapper over `explore.py`.
+- Documented playthroughs: [`worlds/seed-5/exploration-journal.md`](worlds/seed-5/exploration-journal.md)
+  (spatial + purist), [`worlds/seed-9/exploration-journal.md`](worlds/seed-9/exploration-journal.md)
+  (the earlier catalogue-era run).
 - [`worlds/`](worlds/) — committed samples (template mode; this container has
   no API key): seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the

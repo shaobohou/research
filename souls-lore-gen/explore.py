@@ -2,38 +2,42 @@
 
 An exploring agent is a *player*, not a reader of the repo. This module
 enforces the epistemic boundary: the seeker sees only the diegetic surface
-(item names, descriptions, in-world fragments) plus whatever it has
-uncovered, while the ledger's hidden layer (event `hidden` fields, veils,
-false-rumor flags) stays server-side. Fog of war is state, not model
-discipline: per-explorer progress persists in
+plus what it has physically reached, while the ledger's hidden layer (event
+`hidden` fields, veils, false-rumor flags) stays server-side. Fog of war is
+state, not model discipline; per-explorer progress persists in
 worlds/seed-N/explorations/<name>.json.
 
-Five tools form the discovery loop:
+Two design commitments, added to bring this closer to the Elden Ring feel:
 
-    survey     the shop window: item names/types, factions heard of
-    examine    an item's description + leads (names it mentions)
-    ask        an in-world fragment answering a question (costs budget)
-    delve      follow a lead: expands the world behind it (costs budget)
-    theorize   claims graded against hidden canon, without revealing it
+  SPACE — you are a body somewhere. Items lie at places; you learn a place's
+  items only by TRAVELLING there. `survey` shows the map you have charted,
+  not a catalogue of everything. Each item's placement line ("found at the
+  foot of a throne...") is its own evidence channel — the *where* is a clue.
 
-Errors are diegetic ("no record survives...") so nothing leaks through
-error strings. All methods return JSON-serializable dicts, so the MCP
-wrapper (mcp_server.py) is a one-liner per tool.
+  PURIST MODE (default) — the world never tells you that you are right.
+  `theorize` returns an in-world RECEPTION (a rival antiquary's reaction),
+  never a verdict. Touch a veil and they go cold — which is itself the only
+  confirmation you will ever get. A separate benchmark mode (purist=False,
+  used by eval harnesses) restores machine verdicts; seekers never see them.
+
+The loop: survey (map) -> travel -> look -> examine -> ask / delve ->
+travel on -> theorize.
 """
 
 from __future__ import annotations
 
 import json
 import os
-import re
+import random
 import sys
 from pathlib import Path
 
-from ledger import Ledger, LedgerError, render_chronicle, render_codex
+from ledger import (Ledger, LedgerError, ROADS_NAME, ensure_geography,
+                    render_chronicle, render_codex)
 from expand import expand_event
 from loregen import ask_world, elaborate
 
-DEFAULT_BUDGET = {"delves": 5, "asks": 8}
+DEFAULT_BUDGET = {"steps": 8, "delves": 5, "asks": 8}
 
 VERDICTS = ["established", "consistent", "unsupported", "contradicted", "veiled"]
 
@@ -52,25 +56,39 @@ def _llm_guard(fn, *args, fallback):
 
 class Exploration:
     def __init__(self, world_dir: Path, explorer: str = "seeker",
-                 role: str = "seeker", model: str | None = None):
+                 role: str = "seeker", model: str | None = None,
+                 purist: bool = True):
         self.world_dir = Path(world_dir)
         ledger_path = self.world_dir / "ledger.json"
         if not ledger_path.exists():
             raise FileNotFoundError(f"no world at {ledger_path}")
         self.lg = Ledger.load(ledger_path)
+        if ensure_geography(self.lg):          # migrate old ledgers in place
+            self.lg.save(ledger_path)
         self.explorer = explorer
         self.role = role
         self.model = model
+        self.purist = purist and role != "archivist"
+        self.roads_id = self.lg.find_place(ROADS_NAME)[0]
         self.state_path = self.world_dir / "explorations" / f"{explorer}.json"
         if self.state_path.exists():
             self.state = json.loads(self.state_path.read_text())
+            self.state.setdefault("location", self.roads_id)
+            self.state.setdefault("visited", [self.roads_id])
+            self.state.setdefault("known_places", self._roads_neighbours())
+            self.state.setdefault("found_items", [])
+            self.state["budget"].setdefault("steps", DEFAULT_BUDGET["steps"])
         else:
             self.state = {
                 "explorer": explorer,
-                "discovered": [],          # artifact ids examined
-                "asks": [],                # {question, fragment}
-                "delves": [],              # {target, node, found}
-                "theories": [],            # {claims, verdicts}
+                "location": self.roads_id,
+                "visited": [self.roads_id],
+                "known_places": self._roads_neighbours(),
+                "found_items": [],         # item ids whose site you've reached
+                "discovered": [],          # item ids examined
+                "asks": [],
+                "delves": [],
+                "theories": [],
                 "budget": dict(DEFAULT_BUDGET),
             }
 
@@ -81,67 +99,187 @@ class Exploration:
         self.state_path.write_text(json.dumps(self.state, indent=2))
 
     def _save_world(self):
+        ensure_geography(self.lg)
         self.lg.save(self.world_dir / "ledger.json")
         (self.world_dir / "chronicle.md").write_text(render_chronicle(self.lg))
         (self.world_dir / "codex.md").write_text(render_codex(self.lg))
 
     def _spend(self, kind: str) -> bool:
-        if self.state["budget"][kind] <= 0:
+        if self.state["budget"].get(kind, 0) <= 0:
             return False
         self.state["budget"][kind] -= 1
         return True
 
+    def _pname(self, pid: str) -> str:
+        return self.lg.get(pid)["name"]
+
+    # -- geography ---------------------------------------------------------------
+
+    def _roads_neighbours(self) -> list[str]:
+        """From the roads, every faction seat is reachable."""
+        seats = {self.lg.find_place(k["seat"])[0]
+                 for _, k in self.lg.of_type("faction")}
+        seats.add(self.roads_id)
+        return sorted(seats)
+
+    def _neighbours(self, place_id: str) -> list[str]:
+        """Ways onward from a place: the other places named in the events
+        that happened here (the world points you along its own history),
+        plus the roads, which are always regainable."""
+        if place_id == self.roads_id:
+            return self._roads_neighbours()
+        out = {self.roads_id}
+        for eid, e in self.lg.of_type("event"):
+            if e.get("place") != place_id:
+                continue
+            # places named in this event's text, or in its parent/children
+            related = [e]
+            if e.get("parent"):
+                related.append(self.lg.get(e["parent"]))
+            related += [c for _, c in self.lg.children_of(eid)]
+            for r in related:
+                for pid, p in self.lg.of_type("place"):
+                    if pid != place_id and p["name"] in r["text"]:
+                        out.add(pid)
+        out.discard(place_id)
+        return sorted(out)
+
+    def _items_at(self, place_id: str) -> list[str]:
+        return [aid for aid, a in sorted(self.lg.of_type("artifact"))
+                if a.get("site") == place_id]
+
+    # -- tools: MAP & MOVEMENT ---------------------------------------------------
+
+    def survey(self) -> dict:
+        """The map you have charted: where you stand, the places you know,
+        which you have walked, and your remaining strength. Not a catalogue —
+        you learn what a place holds only by going there."""
+        loc = self.state["location"]
+        known = self.state["known_places"]
+        visited = set(self.state["visited"])
+        places = []
+        for pid in sorted(known, key=self._pname):
+            walked = pid in visited
+            here = self._items_at(pid) if walked else []
+            places.append({
+                "place": self._pname(pid),
+                "status": "here" if pid == loc else
+                          ("walked" if walked else "heard of"),
+                "relics_seen": len(here),
+            })
+        return {
+            "world": f"seed-{self.lg.meta['seed']} ({self.lg.meta['archetype_key']})",
+            "epigraph": self.lg.meta["epigraph"],
+            "ages": [a["name"] for a in self.lg.d["ages"]],
+            "you_are_at": self._pname(loc),
+            "places_known": places,
+            "budget": dict(self.state["budget"]),
+            "hint": "travel(place) to walk somewhere you have heard of; "
+                    "look() to see what lies where you stand.",
+        }
+
+    def look(self) -> dict:
+        """What lies where you stand: relics here (with how each was found),
+        and the ways onward."""
+        loc = self.state["location"]
+        here = self._items_at(loc)
+        # arriving/looking reveals the names of what is here
+        changed = False
+        for aid in here:
+            if aid not in self.state["found_items"]:
+                self.state["found_items"].append(aid)
+                changed = True
+        relics = [{"id": aid, "name": self.lg.get(aid)["name"],
+                   "type": self.lg.get(aid)["item_type"],
+                   "how_it_lies": self.lg.get(aid).get("placement"),
+                   "examined": aid in self.state["discovered"]}
+                  for aid in here]
+        onward = [self._pname(pid) for pid in self._neighbours(loc)
+                  if pid != loc]
+        if changed:
+            self._save_state()
+        return {
+            "place": self._pname(loc),
+            "relics_here": relics,
+            "ways_onward": onward,
+            "hint": "examine(name) to study a relic here; a relic's resting "
+                    "place is itself a clue.",
+        }
+
+    def travel(self, place: str) -> dict:
+        """Walk to a place you have heard of. New ground costs a step;
+        returning to somewhere you have walked is free. Arriving reveals what
+        lies there and the ways onward."""
+        try:
+            pid, _ = self.lg.find_place(place)
+        except LedgerError:
+            return {"error": f"No road you know leads to \"{place}\". "
+                             "Consult your map with survey()."}
+        loc = self.state["location"]
+        reachable = set(self._neighbours(loc)) | set(self.state["known_places"])
+        if pid not in reachable:
+            return {"error": f"{self._pname(pid)} lies beyond any road you have "
+                             "charted. Reach it by way of somewhere nearer."}
+        new_ground = pid not in self.state["visited"]
+        if new_ground and not self._spend("steps"):
+            return {"error": "Your strength for the road is spent. "
+                             "(step budget exhausted — you may still study "
+                             "what you have found)"}
+        self.state["location"] = pid
+        if new_ground:
+            self.state["visited"].append(pid)
+        # learn the ways onward as places-heard-of
+        for nb in self._neighbours(pid):
+            if nb not in self.state["known_places"]:
+                self.state["known_places"].append(nb)
+        self._save_state()
+        return {"arrived": self._pname(pid),
+                "steps_left": self.state["budget"]["steps"],
+                **self.look()}
+
+    # -- tools: STUDY -------------------------------------------------------------
+
     def _leads(self, text: str, exclude: set[str]) -> list[dict]:
         leads, seen = [], set()
         for eid, e in self.lg.entities.items():
-            if eid in exclude or e["type"] == "event":
+            if eid in exclude or e["type"] in ("event", "place"):
                 continue
             nm = e.get("name")
             if nm and nm in text and nm not in seen:
                 seen.add(nm)
                 kind = "item" if e["type"] == "artifact" else e["type"]
                 leads.append({"name": nm, "kind": kind})
-        for _, k in self.of_factions():
-            if k["seat"] in text and k["seat"] not in seen:
-                seen.add(k["seat"])
-                leads.append({"name": k["seat"], "kind": "place"})
+        for pid, p in self.lg.of_type("place"):
+            if p["name"] in text and p["name"] not in seen:
+                seen.add(p["name"])
+                known = pid in self.state["known_places"]
+                leads.append({"name": p["name"], "kind": "place",
+                              "reachable": known})
         return leads
 
-    def of_factions(self):
-        return self.lg.of_type("faction")
-
-    # -- tools --------------------------------------------------------------------
-
-    def survey(self) -> dict:
-        """The shop window: what exists, no lore."""
-        items = [{"id": aid, "name": a["name"], "type": a["item_type"],
-                  "examined": aid in self.state["discovered"]}
-                 for aid, a in sorted(self.lg.of_type("artifact"))]
-        factions = [{"name": k["name"], "kind": k["kind"], "seat": k["seat"]}
-                    for _, k in self.of_factions()]
-        return {
-            "world": f"seed-{self.lg.meta['seed']} ({self.lg.meta['archetype_key']})",
-            "epigraph": self.lg.meta["epigraph"],
-            "ages": [a["name"] for a in self.lg.d["ages"]],
-            "items": items,
-            "factions_heard_of": factions,
-            "budget": dict(self.state["budget"]),
-        }
-
     def examine(self, item: str) -> dict:
-        """Read an item's description; marks it discovered, returns leads."""
+        """Study a relic — one you stand beside, or one you have already
+        found. Returns its description, how it lies, and leads."""
         try:
             aid, a = self.lg.find_artifact(item)
         except LedgerError:
             return {"error": f"No record survives of a thing called "
-                             f"\"{item}\". Perhaps it goes by another name."}
+                             f"\"{item}\"."}
+        here = a.get("site") == self.state["location"]
+        if not (here or aid in self.state["found_items"]
+                or aid in self.state["discovered"]):
+            return {"error": f"You have not found the {a['name']}. It lies "
+                             "somewhere you have not yet walked."}
         if aid not in self.state["discovered"]:
             self.state["discovered"].append(aid)
-            self._save_state()
+        if aid not in self.state["found_items"]:
+            self.state["found_items"].append(aid)
+        self._save_state()
         desc = a["description"] or "(the entry is water-stained and unreadable)"
         return {
             "id": aid, "name": a["name"], "type": a["item_type"],
             "description": desc,
+            "how_it_lies": a.get("placement"),
             "leads": self._leads(desc, exclude={aid}),
         }
 
@@ -173,48 +311,51 @@ class Exploration:
         return None
 
     def _resolve_delve(self, target: str) -> str | None:
+        import re
         t = target.strip()
-        # direct event id
         if re.fullmatch(r"e\d+", t) and t in self.lg.entities:
             return self._first_unexpanded([t])
-        # item -> its provenance
         try:
             _, a = self.lg.find_artifact(t)
             return self._first_unexpanded(list(reversed(a["provenance"])))
         except LedgerError:
             pass
         tl = t.lower()
-        # figure -> events they took part in
         for fid, f in self.lg.of_type("figure"):
             if f["name"].lower() in tl or tl in f["name"].lower():
                 roots = [eid for eid, e in self.lg.of_type("event")
                          if fid in e["participants"]]
                 roots.sort(key=lambda eid: self.lg.get(eid)["year"])
                 return self._first_unexpanded(roots)
-        # faction or place -> events whose text mentions the name
-        names = [(k["name"], k["name"]) for _, k in self.of_factions()]
-        names += [(k["seat"], k["seat"]) for _, k in self.of_factions()]
-        for nm, _ in names:
-            if nm.lower() in tl or tl == nm.lower():
+        # place / faction: events located there or naming it
+        for pid, p in self.lg.of_type("place"):
+            if p["name"].lower() == tl or tl in p["name"].lower():
                 roots = [eid for eid, e in self.lg.of_type("event")
-                         if nm in e["text"]]
+                         if e.get("place") == pid or p["name"] in e["text"]]
+                roots.sort(key=lambda eid: self.lg.get(eid)["year"])
+                return self._first_unexpanded(roots)
+        for _, k in self.lg.of_type("faction"):
+            if k["name"].lower() in tl or tl in k["name"].lower():
+                roots = [eid for eid, e in self.lg.of_type("event")
+                         if k["name"] in e["text"]]
                 roots.sort(key=lambda eid: self.lg.get(eid)["year"])
                 return self._first_unexpanded(roots)
         return None
 
     def delve(self, target: str) -> dict:
-        """Follow a lead: materialize a level of depth behind it."""
+        """Dig into a lead (item, figure, faction, place, or event id).
+        Materializes deeper history behind it: new accounts, sometimes new
+        relics — and any new ground they name is added to your map."""
         if not self._spend("delves"):
             self._save_state()
             return {"error": "The lanterns are spent; no more delving today. "
                              "(delve budget spent)"}
         node = self._resolve_delve(target)
         if node is None:
-            self.state["budget"]["delves"] += 1     # refund a miss
+            self.state["budget"]["delves"] += 1
             self._save_state()
             return {"error": f"The trail of \"{target}\" leads nowhere the "
-                             f"records reach — or it has been dug bare "
-                             f"already. Try another name, or a place."}
+                             "records reach — or it has been dug bare already."}
         try:
             child_ids, item_ids = expand_event(self.lg, node)
         except LedgerError as e:
@@ -227,24 +368,35 @@ class Exploration:
             fallback=lambda: elaborate(self.lg, node, child_ids, item_ids, None))
         self._save_world()
 
-        findings = []
+        findings, new_places = [], []
         for cid in child_ids:
             c = self.lg.get(cid)
             findings.append({"id": f"frag:{cid}", "year": c["year"],
-                             "account": c["text"]})   # hidden stays hidden
-        new_items = [{"id": aid, "name": self.lg.get(aid)["name"],
-                      "type": self.lg.get(aid)["item_type"]}
-                     for aid in item_ids]
+                             "account": c["text"]})
+            pid = c.get("place")
+            if pid and pid not in self.state["known_places"]:
+                self.state["known_places"].append(pid)
+                new_places.append(self._pname(pid))
+        new_items = []
+        for aid in item_ids:
+            a = self.lg.get(aid)
+            new_items.append({"id": aid, "name": a["name"],
+                              "type": a["item_type"],
+                              "lies_at": self._pname(a["site"]) if a.get("site") else None})
+            if a.get("site") and a["site"] not in self.state["known_places"]:
+                self.state["known_places"].append(a["site"])
+                new_places.append(self._pname(a["site"]))
         self.state["delves"].append(
             {"target": target, "node": node,
              "found": [f["id"] for f in findings] + [i["id"] for i in new_items]})
         self._save_state()
         return {"findings": findings, "new_items": new_items,
+                "new_ground": sorted(set(new_places)),
                 "delves_left": self.state["budget"]["delves"],
-                "note": "New items can be examined; new names can be asked "
-                        "after or delved into."}
+                "note": "New relics lie where the accounts place them — travel "
+                        "there to recover them."}
 
-    # -- theorize -----------------------------------------------------------------
+    # -- theorize: purist reception vs benchmark verdicts ------------------------
 
     _JUDGE_SCHEMA = {
         "type": "object",
@@ -269,22 +421,18 @@ class Exploration:
 
     def _judge_llm(self, claims: list[str]) -> list[dict]:
         from loregen import _stream_json, _veil_block
-
         discovered = [self.lg.get(aid) for aid in self.state["discovered"]]
-        found_frags = [d for d in self.state["asks"]] + self.state["delves"]
+        found_frags = list(self.state["asks"]) + self.state["delves"]
         user = (
             "You are the hidden judge of a lore-discovery game. Grade each "
             "claim against the TRUE chronicle:\n"
-            "- established: true, AND the seeker's discovered material "
-            "supports it\n"
+            "- established: true, AND the seeker's discovered material supports it\n"
             "- consistent: true in canon, but the seeker has no evidence yet\n"
             "- unsupported: canon is silent either way\n"
             "- contradicted: false per canon\n"
-            "- veiled: the claim touches a veil (whether right or wrong)\n"
-            "The note must be one in-world sentence that NEVER reveals canon "
-            "the seeker hasn't found, and never states a veil. For veiled "
-            "claims the note should be some variant of the archives going "
-            "quiet.\n\n"
+            "- veiled: the claim touches a veil (right or wrong)\n"
+            "The note must be one in-world sentence that reveals nothing the "
+            "seeker hasn't found and never states a veil.\n\n"
             "=== TRUE CHRONICLE ===\n" + render_chronicle(self.lg) + "\n"
             "=== VEILS ===\n" + _veil_block(self.lg) + "\n"
             "=== SEEKER'S DISCOVERED MATERIAL ===\n" +
@@ -292,30 +440,24 @@ class Exploration:
                                             "description": d["description"]}
                                            for d in discovered],
                         "fragments": found_frags}, indent=2) + "\n\n"
-            "=== CLAIMS ===\n" + json.dumps(claims, indent=2)
-        )
+            "=== CLAIMS ===\n" + json.dumps(claims, indent=2))
         data = _stream_json(self.model, "You grade precisely and reveal nothing.",
                             user, self._JUDGE_SCHEMA)
         return [v for v in data["verdicts"] if v["verdict"] in VERDICTS]
 
     def _judge_lexical(self, claims: list[str]) -> list[dict]:
-        """Offline judge: overlap-based, conservative. Cannot detect
-        contradictions; 'established' requires overlap with discovered text."""
         def words(s: str) -> set[str]:
             return {w.strip(".,;:—\"'()").lower() for w in s.split()
                     if len(w) > 3}
-
         canon_texts = []
         for eid, e in self.lg.of_type("event"):
             canon_texts.append(e["text"])
             if e["hidden"]:
                 canon_texts.append(e["hidden"])
         canon_texts += [n["text"] for n in self.lg.d["notes"]]
-        discovered_text = " ".join(
+        discovered_words = words(" ".join(
             (self.lg.get(aid)["description"] or "")
-            for aid in self.state["discovered"])
-        discovered_words = words(discovered_text)
-
+            for aid in self.state["discovered"]))
         out = []
         for claim in claims:
             cw = words(claim)
@@ -340,16 +482,85 @@ class Exploration:
             out.append({"claim": claim, "verdict": v, "note": note})
         return out
 
+    def _graded(self, claims: list[str]) -> list[dict]:
+        if self.model is None:
+            return self._judge_lexical(claims)
+        return _llm_guard(self._judge_llm, claims,
+                          fallback=lambda: self._judge_lexical(claims))
+
+    # in-world reactions, keyed by the true verdict but NEVER exposing it.
+    # Purist: the seeker gets a fellow antiquary's response, not a score.
+    _RECEPTION = {
+        "established": [
+            "The antiquary nods slowly. \"Aye. The stones I have read say the same.\"",
+            "\"This much I will grant you — it agrees with what the old things remember.\"",
+        ],
+        "consistent": [
+            "\"It could be so. I have found nothing to forbid it — and nothing to swear by.\"",
+            "The antiquary tilts a hand, palm up. \"Plausible. Bring me a stone that says it.\"",
+        ],
+        "unsupported": [
+            "\"On what? I have read no record that carries this. You reach past your evidence.\"",
+            "The antiquary frowns. \"A pretty guess with nothing under it.\"",
+        ],
+        "contradicted": [
+            "\"No. The tellings I trust run otherwise; I would set this one down.\"",
+            "The antiquary shakes their head. \"That is not the story the relics tell me.\"",
+        ],
+        "veiled": [
+            "The antiquary goes still, and will not meet your eye. \"Speak no further on this. Some doors are shut for cause.\"",
+            "A long silence. \"You should not have said that aloud. Ask me something else.\"",
+        ],
+    }
+
+    def _reception(self, claims: list[str]) -> dict:
+        graded = self._graded(claims)
+        rng = random.Random(f"{self.lg.meta['seed']}:{self.explorer}:"
+                            f"{len(self.state['theories'])}")
+        reactions = []
+        touched_veil = False
+        for g in graded:
+            pool = self._RECEPTION[g["verdict"]]
+            reactions.append({"claim": g["claim"],
+                              "reception": rng.choice(pool)})
+            if g["verdict"] == "veiled":
+                touched_veil = True
+        if touched_veil:
+            closing = ("The antiquary rises. \"Enough for tonight. You wander "
+                       "toward things better left buried.\"")
+        else:
+            warm = sum(1 for g in graded
+                       if g["verdict"] in ("established", "consistent"))
+            if warm >= max(1, len(graded) * 2 // 3):
+                closing = ("\"You have walked far and read closely. Keep on — "
+                           "but the deepest of it, no scholar will confirm for you.\"")
+            else:
+                closing = ("\"Come back when you have found more than you have "
+                           "guessed. The relics do not reward haste.\"")
+        # store the true grading server-side (for later benchmark/replay),
+        # expose only the reception.
+        self.state["theories"].append(
+            {"claims": claims, "verdicts": graded,
+             "score": sum({"established": 3, "consistent": 2, "veiled": 1,
+                           "unsupported": 0, "contradicted": -1}[g["verdict"]]
+                          for g in graded)})
+        self._save_state()
+        return {"reception": reactions, "closing": closing,
+                "note": "This is one antiquary's reading, not a verdict. "
+                        "No one in this world will tell you that you are right."}
+
     def theorize(self, claims: list[str]) -> dict:
-        """Submit claims about the true history; graded without spoilers."""
+        """Lay your theory before a fellow antiquary. In purist mode (the
+        default) you receive their reaction, never a verdict — the world will
+        not confirm you. Touch a veil and they fall silent, which is the only
+        answer of that kind you will get."""
         claims = [c for c in claims if c.strip()][:12]
         if not claims:
-            return {"error": "The judge waits, but nothing was claimed."}
-        if self.model is None:
-            verdicts = self._judge_lexical(claims)
-        else:
-            verdicts = _llm_guard(self._judge_llm, claims,
-                                  fallback=lambda: self._judge_lexical(claims))
+            return {"error": "The antiquary waits, but you have said nothing."}
+        if self.purist:
+            return self._reception(claims)
+        # benchmark mode
+        verdicts = self._graded(claims)
         score = sum({"established": 3, "consistent": 2, "veiled": 1,
                      "unsupported": 0, "contradicted": -1}[v["verdict"]]
                     for v in verdicts)
@@ -362,46 +573,58 @@ class Exploration:
 
     def progress(self) -> dict:
         n_items = len(self.lg.of_type("artifact"))
-        return {
+        n_places = len(self.lg.of_type("place"))
+        p = {
             "explorer": self.explorer,
-            "items_examined": f"{len(self.state['discovered'])}/{n_items}",
+            "at": self._pname(self.state["location"]),
+            "places_walked": f"{len(self.state['visited'])}/{n_places}",
+            "relics_found": f"{len(self.state['found_items'])}/{n_items}",
+            "relics_examined": f"{len(self.state['discovered'])}/{n_items}",
+            "steps_left": self.state["budget"]["steps"],
             "asks_left": self.state["budget"]["asks"],
             "delves_left": self.state["budget"]["delves"],
             "theories_submitted": len(self.state["theories"]),
-            "best_theory_score": max(
-                (t["score"] for t in self.state["theories"]), default=None),
         }
+        if not self.purist:
+            p["best_theory_score"] = max(
+                (t["score"] for t in self.state["theories"]), default=None)
+        return p
 
     def canon(self) -> dict:
-        """Full ledger + veils. Archivist lens only."""
         if self.role != "archivist":
             return {"error": "The inner archive is barred to seekers."}
         return self.lg.d
 
     def compendium(self) -> str:
         """Everything this explorer has discovered, as one in-world document.
-
-        Rendered purely from exploration state + public surfaces — never the
-        hidden layer — so it is safe to hand to (or have written by) a seeker.
-        """
-        m = self.lg.meta
-        st = self.state
-        lines = [f"# The Book of Found Things",
-                 "",
+        Rendered from exploration state + public surfaces only — seeker-safe."""
+        m, st = self.lg.meta, self.state
+        lines = ["# The Book of Found Things", "",
                  f"*World seed-{m['seed']} ({m['archetype_key']}), as uncovered "
-                 f"by the seeker \"{self.explorer}\".*",
-                 ""]
+                 f"by the seeker \"{self.explorer}\".*", ""]
         if m["epigraph"]:
             lines += [f"> {m['epigraph']}", ""]
-        p = self.progress()
-        lines += [f"*Items examined: {p['items_examined']} — asks spent: "
-                  f"{DEFAULT_BUDGET['asks'] - st['budget']['asks']}/"
-                  f"{DEFAULT_BUDGET['asks']} — delves spent: "
-                  f"{DEFAULT_BUDGET['delves'] - st['budget']['delves']}/"
-                  f"{DEFAULT_BUDGET['delves']}"
-                  + (f" — best theory score: {p['best_theory_score']}"
-                     if p["best_theory_score"] is not None else "") + "*",
-                  ""]
+        b = st["budget"]
+        spent = lambda k: DEFAULT_BUDGET[k] - b[k]
+        lines += [f"*Places walked: {len(st['visited'])} — relics examined: "
+                  f"{len(st['discovered'])} — steps {spent('steps')}/"
+                  f"{DEFAULT_BUDGET['steps']}, asks {spent('asks')}/"
+                  f"{DEFAULT_BUDGET['asks']}, delves {spent('delves')}/"
+                  f"{DEFAULT_BUDGET['delves']}*", ""]
+
+        walked = [pid for pid in st["visited"]]
+        if walked:
+            lines += ["## Roads Walked", ""]
+            for pid in sorted(walked, key=self._pname):
+                here = [self.lg.get(a) for a in self._items_at(pid)
+                        if a in st["discovered"]]
+                lines += [f"### {self._pname(pid)}", ""]
+                if here:
+                    for a in here:
+                        lines += [f"- **{a['name']}** — *{a.get('placement','')}*"]
+                else:
+                    lines += ["- (walked, nothing studied here)"]
+                lines += [""]
 
         if st["discovered"]:
             lines += ["## Relics Examined", ""]
@@ -410,16 +633,16 @@ class Exploration:
                 a = self.lg.get(aid)
                 by_type.setdefault(a["item_type"], []).append(a)
             for itype in sorted(by_type):
-                title = itype.title() if itype.endswith("s") else itype.title() + "s"
+                title = itype.title() + ("" if itype.endswith("s") else "s")
                 lines += [f"### {title}", ""]
                 for a in sorted(by_type[itype], key=lambda x: x["created_year"]):
                     lines += [f"**{a['name']}**", "",
                               a["description"] or "(unreadable)", ""]
+                    if a.get("placement"):
+                        lines += [f"*{a['placement']}*", ""]
 
         if st["delves"]:
-            lines += ["## Accounts Unearthed", "",
-                      "*Recovered by delving — testimony the chronicles kept "
-                      "poorly, or not at all.*", ""]
+            lines += ["## Accounts Unearthed", ""]
             for d in st["delves"]:
                 lines += [f"### On the trail of {d['target']}", ""]
                 for fid in d["found"]:
@@ -438,21 +661,20 @@ class Exploration:
                           "> " + a["fragment"].replace("\n", "\n> "), ""]
 
         if st["theories"]:
-            lines += ["## Theories Laid Before the Judge", ""]
+            lines += ["## Theories Ventured", ""]
             for i, t in enumerate(st["theories"], 1):
-                lines += [f"### Theory {i} (score {t['score']})", ""]
-                for v in t["verdicts"]:
-                    lines += [f"- **[{v['verdict']}]** {v['claim']}",
-                              f"  - *{v['note']}*"]
+                lines += [f"### Theory {i}", ""]
+                for c in t["claims"]:
+                    lines += [f"- {c}"]
                 lines += [""]
 
         unfound = [a["name"] for aid, a in sorted(self.lg.of_type("artifact"))
-                   if aid not in st["discovered"]]
-        lines += ["## What Remains Unfound", ""]
+                   if aid not in st["found_items"]]
+        lines += ["## Beyond the Charted Roads", ""]
         if unfound:
-            lines += ["Items known by name and nothing else: "
-                      + ", ".join(f"*{n}*" for n in unfound) + ".", ""]
-        lines += [f"Budget remaining: {st['budget']['delves']} delves, "
-                  f"{st['budget']['asks']} asks. The rest of the world keeps "
-                  f"its counsel.", ""]
+            lines += [f"{len(unfound)} relics remain somewhere unwalked, their "
+                      "names not yet even known to you.", ""]
+        lines += [f"Strength remaining: {b['steps']} steps, {b['delves']} "
+                  f"delves, {b['asks']} asks. The rest of the world keeps its "
+                  "counsel.", ""]
         return "\n".join(lines)

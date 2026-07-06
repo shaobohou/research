@@ -17,52 +17,39 @@
 - **the Age of Dusk** (years 523–present): The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure.
 
 ## Timeline
-- **Year 0** — *cosmogony*: the Sundered Moon rose (or was raised — the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by.
-- **Year 12** — *claiming*: Ghalsila, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne.
-- **Year 23** — *claiming*: Mazirast, god of storms and unkept promises, claimed a portion of the gift and took a throne.
-- **Year 30** — *claiming*: Karengar, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.
-- **Year 35** — *claiming*: Ghalaedra, god of craft, measure, and the forge, claimed a portion of the gift and took a throne.
-- **Year 75** — *founding*: Ghalsila founded Cyrorsilaspire (kingdom) at Queliaottshroud.
-- **Year 75** — *forging*: The Silver of Ghalsila was wrought as regalia of Ghalsila's throne.
-- **Year 104** — *founding*: Mazirast founded Galastcradle (kingdom) at Aldrienmere.
-- **Year 104** — *forging*: The Veil of Mazirast was wrought as regalia of Mazirast's throne.
-- **Year 121** — *founding*: Karengar founded Yorachvault (kingdom) at Thalemiscrown.
-  - **Year 121** — *testimony*: An account survives from Hestcael One-hand, a quartermaster, set down against instruction and hidden in a ledger.
-  - **Year 121** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence.
-    - _Hidden:_ What they came for was not what the chronicles assumed.
-- **Year 121** — *forging*: The Silver of Karengar was wrought as regalia of Karengar's throne.
-- **Year 156** — *founding*: Ghalaedra founded Hestvanevault (kingdom) at Nimenasthollow.
-- **Year 156** — *forging*: The Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne.
-- **Year 229** — *great war*: Syldra, the Unreflected, rose against the thrones. Karengar led the gods to war.
+- **Year 0** — *cosmogony*: the Sundered Moon rose (or was raised — the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by. _(at the Pilgrim Roads)_
+- **Year 12** — *claiming*: Ghalsila, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne. _(at Queliaottshroud)_
+- **Year 23** — *claiming*: Mazirast, god of storms and unkept promises, claimed a portion of the gift and took a throne. _(at Aldrienmere)_
+- **Year 30** — *claiming*: Karengar, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne. _(at Thalemiscrown)_
+- **Year 35** — *claiming*: Ghalaedra, god of craft, measure, and the forge, claimed a portion of the gift and took a throne. _(at Nimenasthollow)_
+- **Year 75** — *founding*: Ghalsila founded Cyrorsilaspire (kingdom) at Queliaottshroud. _(at Cyrorsilaspire)_
+- **Year 75** — *forging*: The Silver of Ghalsila was wrought as regalia of Ghalsila's throne. _(at Queliaottshroud)_
+- **Year 104** — *founding*: Mazirast founded Galastcradle (kingdom) at Aldrienmere. _(at Galastcradle)_
+- **Year 104** — *forging*: The Veil of Mazirast was wrought as regalia of Mazirast's throne. _(at Aldrienmere)_
+- **Year 121** — *founding*: Karengar founded Yorachvault (kingdom) at Thalemiscrown. _(at Yorachvault)_
+- **Year 121** — *forging*: The Silver of Karengar was wrought as regalia of Karengar's throne. _(at Thalemiscrown)_
+- **Year 156** — *founding*: Ghalaedra founded Hestvanevault (kingdom) at Nimenasthollow. _(at Hestvanevault)_
+- **Year 156** — *forging*: The Shard of Ghalaedra was wrought as regalia of Ghalaedra's throne. _(at Nimenasthollow)_
+- **Year 229** — *great war*: Syldra, the Unreflected, rose against the thrones. Karengar led the gods to war. _(at Thalemiscrown)_
   - _Hidden:_ Mazirast treated with Syldra in secret and was spared what followed.
-  - **Year 226** — *battle*: The war's worst day was at Haruienreach, where the line held for a night and a morning under Fenach the Meek, and then did not hold.
-  - **Year 227** — *champion's duel*: Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.
-    - _Hidden:_ The duel was not fought to a death but to a bargain.
-- **Year 234** — *sealing*: Syldra was defeated and sealed beneath Ranulornmarch; the seal was bought with the lives of 7 champions.
-- **Year 326** — *waning*: The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.
-- **Year 348** — *founding*: Sylara the Kindly founded the Order of the Lament at Draastbarrow, sworn to stand against the Silver Lament.
-- **Year 366** — *founding*: The Church of Ghalaedra was raised at Athorachcradle; Ulara the Forsworn took its first pulpit, preaching that the waning is a trial and the faithful will be spared.
-- **Year 373** — *heresy*: Galeeth the Grey was cast out of Church of Ghalaedra and founded the Cult of the Open Door, teaching that the gods themselves caused the waning.
+- **Year 234** — *sealing*: Syldra was defeated and sealed beneath Ranulornmarch; the seal was bought with the lives of 7 champions. _(at Ranulornmarch)_
+- **Year 326** — *waning*: The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by. _(at the Pilgrim Roads)_
+- **Year 348** — *founding*: Sylara the Kindly founded the Order of the Lament at Draastbarrow, sworn to stand against the Silver Lament. _(at Draastbarrow)_
+- **Year 366** — *founding*: The Church of Ghalaedra was raised at Athorachcradle; Ulara the Forsworn took its first pulpit, preaching that the waning is a trial and the faithful will be spared. _(at Athorachcradle)_
+- **Year 373** — *heresy*: Galeeth the Grey was cast out of Church of Ghalaedra and founded the Cult of the Open Door, teaching that the gods themselves caused the waning. _(at Toraeastdeep)_
   - _Hidden:_ The heresy is nearer the truth than the sermon.
-- **Year 398** — *founding*: Morast the Adamant united the river-clans and was crowned in Galilisshroud; the realm took the name Kaaemothbarrow.
-- **Year 427** — *rite of restoration*: At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.
+- **Year 398** — *founding*: Morast the Adamant united the river-clans and was crowned in Galilisshroud; the realm took the name Kaaemothbarrow. _(at Galilisshroud)_
+- **Year 427** — *rite of restoration*: At the urging of Ulara, the saint Ulmund the Quiet was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. _(at Athorachcradle)_
   - _Hidden:_ The rite did not restore anything. It only fed the waning more slowly — and Ulara suspected as much.
-- **Year 449** — *betrayal*: Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on.
+- **Year 449** — *betrayal*: Irveth the Saltborn, sword-hand of Morast, opened the gates of Galilisshroud to the Order of the Lament over a grievance no chronicle agrees on. _(at Galilisshroud)_
   - _Hidden:_ Irveth acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Silver Lament. The promise was not kept.
-- **Year 453** — *fall of a kingdom*: Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again.
-  - **Year 448** — *testimony*: An account survives from Syligar the Younger, a bell-ringer, set down against instruction and hidden in a wall.
-    - **Year 448** — *testimony*: An account survives from Moraula of No House, a novice, set down against instruction and hidden in a coffin lid.
-    - **Year 448** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence.
-  - **Year 448** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence.
-    - _Hidden:_ What they came for was not what the chronicles assumed.
-- **Year 461** — *fate*: Irveth was found at Draastbarrow bearing the Silver Lament, and was not spared.
-- **Year 523** — *twilight of a god*: Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat.
+- **Year 453** — *fall of a kingdom*: Kaaemothbarrow fell. Morast the Adamant died at the foot of their own throne; the crown was carried away and never worn again. _(at Kaaemothbarrow)_
+- **Year 461** — *fate*: Irveth was found at Draastbarrow bearing the Silver Lament, and was not spared. _(at Draastbarrow)_
+- **Year 523** — *twilight of a god*: Mazirast, god of storms and unkept promises, was unmade upon their own throne. No wound was found, and no successor dared the seat. _(at Aldrienmere)_
   - _Hidden:_ What unmade the god was not violence but understanding — a truth arrived at, all at once.
-- **Year 541** — *last pilgrimage*: Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing.
-  - **Year 539** — *testimony*: An account survives from Velwyn the Plain, a chronicler, set down against instruction and hidden in a wall.
-  - **Year 540** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence.
-- **Year 544** — *hero's end*: Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.
-- **Year 553** — *the seal weakens*: Pilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued.
+- **Year 541** — *last pilgrimage*: Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing. _(at Draastbarrow)_
+- **Year 544** — *hero's end*: Kardane returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. _(at Draastbarrow)_
+- **Year 553** — *the seal weakens*: Pilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued. _(at the Pilgrim Roads)_
   - _Hidden:_ The seal has been failing on its own since the waning began. The cult only follows the cracks.
 
 ## Dramatis Personae
@@ -78,11 +65,6 @@
 - **Ulmund** the Quiet (pilgrim saint) — of Church of Ghalaedra. Fate: given to the rite of restoration (year 427).
 - **Irveth** the Saltborn (oathbreaker general) — of Kaaemothbarrow. Fate: succumbed to the Silver Lament (year 461).
 - **Kardane** the Latecomer (wandering knight) — of Order of the Lament. Fate: walked into the dusk unarmed (year 544).
-- **Syligar** the Younger (bell-ringer).
-- **Moraula** of No House (novice).
-- **Fenach** the Meek (siege captain).
-- **Hestcael** One-hand (quartermaster).
-- **Velwyn** the Plain (chronicler).
 
 ## Factions
 - **Cyrorsilaspire** (kingdom), seat Queliaottshroud, founded year 75.
@@ -93,3 +75,20 @@
 - **Church of Ghalaedra** (church), seat Athorachcradle, founded year 366.
 - **Cult of the Open Door** (cult), seat Toraeastdeep, founded year 373.
 - **Kaaemothbarrow** (kingdom), seat Galilisshroud, founded year 398, fell year 453.
+
+## Places
+- **the Pilgrim Roads** — holds Warding Silver.
+- **Queliaottshroud** — holds Silver of Ghalsila.
+- **Aldrienmere** — holds Veil of Mazirast, Soul of Mazirast.
+- **Thalemiscrown** — holds Silver of Karengar.
+- **Nimenasthollow** — holds Shard of Ghalaedra.
+- **Draastbarrow** — holds Kardane's Set, Ring of the Lament Vigil.
+- **Athorachcradle** — holds Remnant Soul of Saint Ulmund, Shard of Saint Ulmund.
+- **Toraeastdeep**.
+- **Galilisshroud**.
+- **Cyrorsilaspire**.
+- **Galastcradle**.
+- **Yorachvault**.
+- **Hestvanevault**.
+- **Ranulornmarch** — holds Karengar's War-Veil.
+- **Kaaemothbarrow** — holds Hollow Crown of Kaaemothbarrow, Irveth's Oathbreaker Blade.

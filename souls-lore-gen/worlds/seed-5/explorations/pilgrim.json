@@ -1,0 +1,114 @@
+{
+  "explorer": "pilgrim",
+  "location": "p4",
+  "visited": [
+    "p1",
+    "p6",
+    "p7",
+    "p2",
+    "p8",
+    "p4"
+  ],
+  "known_places": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9"
+  ],
+  "found_items": [
+    "a13",
+    "a11",
+    "a12",
+    "a6",
+    "a7",
+    "a1",
+    "a10",
+    "a3"
+  ],
+  "discovered": [
+    "a10",
+    "a6",
+    "a11",
+    "a3"
+  ],
+  "asks": [
+    {
+      "id": "frag:q1",
+      "question": "Who was Nimaeast, who urged the rite of restoration?",
+      "fragment": "It is said that the Church of Ommoth was raised at Wrenwynreach; Nimaeast the Grey took its first pulpit, preaching that the waning is a trial and the faithful will be spared. Of Nimaeast, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q2",
+      "question": "Did Ulorast fall to the marked, or lead them?",
+      "fragment": "Old verses hold that Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing. Of Ulorast, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    }
+  ],
+  "delves": [
+    {
+      "target": "Ulorast",
+      "node": "e27",
+      "found": [
+        "frag:e29",
+        "frag:e30"
+      ]
+    },
+    {
+      "target": "Sylenmoth",
+      "node": "e4",
+      "found": [
+        "frag:e31",
+        "frag:e32",
+        "a14"
+      ]
+    }
+  ],
+  "theories": [
+    {
+      "claims": [
+        "Sylenmoth descended below the world to look on the Founding Chord and did not return.",
+        "The rite of restoration did not restore the Chord; it only slowed the waning, and Nimaeast suspected as much.",
+        "Ulorast, last-sworn of the Order of the Chord, went after Sylenmoth and neither fell to the marked nor led them cleanly \u2014 the order believes no telling.",
+        "The bells are rung not to honour the Chord but to drown out something singing beneath it.",
+        "The waning is no accident."
+      ],
+      "verdicts": [
+        {
+          "claim": "Sylenmoth descended below the world to look on the Founding Chord and did not return.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The rite of restoration did not restore the Chord; it only slowed the waning, and Nimaeast suspected as much.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "Ulorast, last-sworn of the Order of the Chord, went after Sylenmoth and neither fell to the marked nor led them cleanly \u2014 the order believes no telling.",
+          "verdict": "unsupported",
+          "note": "No surviving record speaks to this."
+        },
+        {
+          "claim": "The bells are rung not to honour the Chord but to drown out something singing beneath it.",
+          "verdict": "veiled",
+          "note": "Here the archives go quiet."
+        },
+        {
+          "claim": "The waning is no accident.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        }
+      ],
+      "score": 10
+    }
+  ],
+  "budget": {
+    "steps": 3,
+    "delves": 3,
+    "asks": 6
+  }
+}

@@ -156,3 +156,42 @@ biased fragment of that history.
 - Generated for both explorations: seed-9/claude (complete sweep — nothing
   unfound) and seed-9021/seeker (early run — 11 items still unfound), a
   nice contrast between a finished and a barely-started dig.
+
+### 2026-07-06 — purist mode + the space dimension
+- Two features to close the gap with the actual ER experience (per the
+  "does this emulate ER" analysis): geography, and no verdicts.
+- SPACE (ledger.py `ensure_geography`, derived not simulated — idempotent,
+  migrates old ledgers on load):
+  - place entities (faction seats + a `the Pilgrim Roads` hub + any place
+    name appearing in event text, matched by PLACE_SUFFIXES).
+  - every event gets a `place`; every artifact a `site` + a `placement`
+    line chosen by its last-provenance event kind (sim-controlled evidence
+    channel, e.g. fall-of-kingdom → "found at the foot of a throne...").
+  - chronicle renders a Places section + per-event "(at X)"; codex prints
+    each item's placement in italics.
+- explore.py reworked into a spatial loop: survey = your charted MAP (not a
+  catalogue); travel (step budget; new ground costs 1, returning free;
+  reveals a place's relics + neighbours); look; examine gated to
+  current-location-or-found. Adjacency = places named in events at your
+  location, + roads always regainable (mostly hub-and-spoke until delving
+  forges cross-links). delve now also reveals `new_ground`.
+- PURIST MODE (default for seekers): theorize returns a fellow antiquary's
+  in-world reception — nod / doubt / SILENCE on a veil — never a verdict or
+  score. The true grading is still computed and stored server-side (for
+  replay/benchmark) but not exposed. `--benchmark` / `purist=False` restores
+  verdicts for eval harnesses; `--role archivist` still gets canon().
+- Verified offline: examine-before-travel blocked; placement lines surface
+  on look/examine; travel adjacency enforced (can't jump to a far seat);
+  purist theorize hides scores and goes silent on a veil claim; benchmark
+  mode still returns verdicts+score; MCP now lists 9 tools (survey/look/
+  travel/examine/ask/delve/theorize/progress/compendium).
+- Documented run: `worlds/seed-5/exploration-journal.md` (song archetype),
+  played blind in purist+space mode. Key demonstration: the seeker never
+  walked to Mazucaelcrown and so missed the entire central betrayal — under
+  the old catalogue API those item names showed up in the opening survey;
+  under space, a region unwalked is a plot unknown. The veil was "reached"
+  only as the antiquary's refusal to discuss it.
+- Minor known blemishes (accepted): kingdom names ending in a place-suffix
+  (e.g. Hestnothgate) also become place entities — thematically fine (ER
+  blurs realm/place names) but a mild dup; the "seal weakens" placement can
+  read "on the roads to the Pilgrim Roads" when its event sits at the hub.

@@ -45,8 +45,7 @@
       "Ruthmere",
       "Wrenrionspire",
       "Yorthas",
-      "Ishaott",
-      "Effects of Ishaott"
+      "the Pilgrim Roads"
     ]
   },
   "ages": [
@@ -289,7 +288,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e2": {
       "type": "event",
@@ -303,7 +303,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e3": {
       "type": "event",
@@ -317,7 +318,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e4": {
       "type": "event",
@@ -331,7 +333,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e5": {
       "type": "event",
@@ -345,7 +348,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p10"
     },
     "e6": {
       "type": "event",
@@ -359,7 +363,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e7": {
       "type": "event",
@@ -373,7 +378,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e8": {
       "type": "event",
@@ -387,7 +393,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e9": {
       "type": "event",
@@ -401,7 +408,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p12"
     },
     "e10": {
       "type": "event",
@@ -415,7 +423,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p4"
     },
     "e11": {
       "type": "event",
@@ -431,7 +440,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p2"
     },
     "e12": {
       "type": "event",
@@ -446,7 +456,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p13"
     },
     "e13": {
       "type": "event",
@@ -458,7 +469,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "e14": {
       "type": "event",
@@ -472,7 +484,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e15": {
       "type": "event",
@@ -487,7 +500,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e16": {
       "type": "event",
@@ -501,7 +515,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e17": {
       "type": "event",
@@ -514,8 +529,9 @@
       ],
       "parent": null,
       "depth": 0,
-      "expanded": true,
-      "source": "sim"
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
     },
     "e18": {
       "type": "event",
@@ -530,7 +546,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p6"
     },
     "e19": {
       "type": "event",
@@ -545,7 +562,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p8"
     },
     "e20": {
       "type": "event",
@@ -560,7 +578,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p14"
     },
     "e21": {
       "type": "event",
@@ -574,7 +593,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p7"
     },
     "e22": {
       "type": "event",
@@ -588,7 +608,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e23": {
       "type": "event",
@@ -603,7 +624,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p9"
     },
     "e24": {
       "type": "event",
@@ -617,7 +639,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p5"
     },
     "e25": {
       "type": "event",
@@ -631,7 +654,8 @@
       "parent": null,
       "depth": 0,
       "expanded": false,
-      "source": "sim"
+      "source": "sim",
+      "place": "p1"
     },
     "a1": {
       "type": "artifact",
@@ -652,7 +676,9 @@
       "hints_veil": 0,
       "description": "A ring that grants a small, stubborn blessing.\n\nThe Brand of Yorthas was wrought as regalia of Yorthas's throne. Held long enough, it suggests the waning is no accident. Whether this was mercy or malice, none agree.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Fenulacrown, and then kept poorly."
     },
     "a2": {
       "type": "artifact",
@@ -674,7 +700,9 @@
       "hints_veil": null,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Pyre of Ruthmere was wrought as regalia of Ruthmere's throne. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p9",
+      "placement": "Kept long at Ruthmere, and then kept poorly."
     },
     "a3": {
       "type": "artifact",
@@ -695,7 +723,9 @@
       "hints_veil": null,
       "description": "A catalyst attuned to the old gift.\n\nThe Cinder of Mazannoth was wrought as regalia of Mazannoth's throne. Perhaps it is better that the tale ends there.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Caliamothgate, and then kept poorly."
     },
     "a4": {
       "type": "artifact",
@@ -720,7 +750,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nEloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war. Of Ruthmere, god of storms and unkept promises, the last word is this: took the Gutter-mark and wandered. None now living can say whether Ruthmere treated with Eloros in secret and was spared what followed. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p13",
+      "placement": "Worn smooth by warders' hands at Hestanaramarch."
     },
     "a6": {
       "type": "artifact",
@@ -742,7 +774,9 @@
       "hints_veil": null,
       "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Kept in a reliquary at Hareastvault, before which the candles will not stay lit."
     },
     "a5": {
       "type": "artifact",
@@ -764,7 +798,9 @@
       "hints_veil": 0,
       "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Eloach, the saint Kariadane Half-remembered was given to the First Ember in the rite of restoration. For a generation, the waning slowed. Those who keep it too long begin to doubt the sermons. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p6",
+      "placement": "Kept in a reliquary at Hareastvault, before which the candles will not stay lit."
     },
     "a7": {
       "type": "artifact",
@@ -788,7 +824,9 @@
       "hints_veil": null,
       "description": "An object of no use in battle, and of great consequence.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. It is said that Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p14",
+      "placement": "Found at the foot of a throne in Morulaspire, beneath the dust of the banners."
     },
     "a8": {
       "type": "artifact",
@@ -813,7 +851,9 @@
       "hints_veil": null,
       "description": "A weapon of an older make, still keen despite its years.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. None now living can say whether Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p14",
+      "placement": "Found at the foot of a throne in Morulaspire, beneath the dust of the banners."
     },
     "a9": {
       "type": "artifact",
@@ -836,7 +876,9 @@
       "hints_veil": null,
       "description": "The lingering soul of one who would not wholly pass.\n\nRuthmere, god of storms and unkept promises, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat. It is said that the curse does not distinguish gods from mortals. It never did. What became of it after is not written.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p9",
+      "placement": "Taken from a throne room at Ruthmere where nothing else was disturbed."
     },
     "a10": {
       "type": "artifact",
@@ -860,7 +902,9 @@
       "hints_veil": null,
       "description": "Worn armor that remembers the shape of its last bearer.\n\nBanudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. Some claim word came that Banudane fell to the marked, and then word came that Banudane led the marked. The order believes neither. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Elaegargate, and never reclaimed."
     },
     "a11": {
       "type": "artifact",
@@ -884,7 +928,9 @@
       "hints_veil": null,
       "description": "A ring that grants a small, stubborn blessing.\n\nBanudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing. The name endures; little else does.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Elaegargate, and never reclaimed."
     },
     "a12": {
       "type": "artifact",
@@ -907,65 +953,79 @@
       "hints_veil": null,
       "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued. The rest of the story is kept by no one.",
       "depth": 0,
-      "source": "sim"
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
     },
-    "f12": {
-      "type": "figure",
-      "name": "Ishaott",
-      "epithet": "the Younger",
-      "role": "quartermaster",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e17"
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
     },
-    "e26": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 425,
-      "text": "An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger.",
-      "hidden": null,
-      "participants": [
-        "f12"
-      ],
-      "parent": "e17",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e17"
+    "p2": {
+      "type": "place",
+      "name": "Fenulacrown",
+      "source": "geo"
     },
-    "e27": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 428,
-      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
-      "hidden": "What they came for was not what the chronicles assumed.",
-      "participants": [],
-      "parent": "e17",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e17"
+    "p3": {
+      "type": "place",
+      "name": "Olearacradle",
+      "source": "geo"
     },
-    "a13": {
-      "type": "artifact",
-      "name": "Effects of Ishaott",
-      "item_type": "ring",
-      "created_year": 425,
-      "origin_faction": null,
-      "provenance": [
-        "e26"
-      ],
-      "knowledge": [
-        "(year 425) An account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger.",
-        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "insists the dead figure still lives, in hiding",
-      "hints_veil": null,
-      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ishaott the Younger, a quartermaster, set down against instruction and hidden in a ledger. What became of it after is not written.",
-      "depth": 1,
-      "source": "expansion:e17"
+    "p4": {
+      "type": "place",
+      "name": "Caliamothgate",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Elaegargate",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Hareastvault",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Wrenrionspire",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Fenearamere",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Ruthmere",
+      "source": "geo"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Cyraricreach",
+      "source": "geo"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Osthildfen",
+      "source": "geo"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Elessastgate",
+      "source": "geo"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Hestanaramarch",
+      "source": "geo"
+    },
+    "p14": {
+      "type": "place",
+      "name": "Morulaspire",
+      "source": "geo"
     }
   },
   "notes": []
