@@ -1,0 +1,5919 @@
+{
+  "meta": {
+    "seed": 314,
+    "archetype_key": "moon",
+    "primordial": "the Sundered Moon",
+    "gift": "longing, tide of the blood, and light gentle enough to lie by",
+    "waning": "the shards drift apart; nights arrive unscheduled and grief acquires weight",
+    "curse_name": "the Silver Lament",
+    "curse_desc": "moonlight pools in the eyes of the afflicted, who weep light until none is left to see by",
+    "relic_nouns": [
+      "shard",
+      "silver",
+      "veil",
+      "mirror",
+      "lament"
+    ],
+    "veils": [
+      "The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.",
+      "The gentle light was never the Moon's \u2014 it is borrowed, and the lender has begun to collect.",
+      "The Moon broke itself to hide the lender's name among its shards; assembled, they would speak it, and the debt would come due all at once."
+    ],
+    "epigraph": "Of the Sundered Moon little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 632,
+    "used_names": [
+      "Belthashollow",
+      "Elirvanebarrow",
+      "Galomere",
+      "Harach",
+      "Hestvethshroud",
+      "Kaearaspire",
+      "Kamoth",
+      "Karenienreach",
+      "Nimenmothreach",
+      "Nimgrim",
+      "Nyessorn",
+      "Oliadiscrown",
+      "Quelmund",
+      "Serdis",
+      "Soldismere",
+      "Solendra",
+      "Solosvault",
+      "Thalaemisreach",
+      "Toriagrimbarrow",
+      "Velaeeth",
+      "Velothasmere",
+      "Veranynereach",
+      "Yoryne",
+      "Yseric",
+      "Ysirveth",
+      "Ysrionmarch",
+      "the Pilgrim Roads",
+      "Ruthott",
+      "Effects of Ruthott",
+      "Caledanecrown",
+      "Thaliadra",
+      "Effects of Thaliadra",
+      "Nyemisspire",
+      "Ranulgar",
+      "Effects of Ranulgar",
+      "Ishornhold",
+      "Omdis",
+      "Effects of Omdis",
+      "Draumothmarch",
+      "Calien",
+      "Banlisbarrow",
+      "Torolis",
+      "Omiasilafen",
+      "Ghalenthas",
+      "Aldrenthasmarch",
+      "Ulessach",
+      "Effects of Ulessach",
+      "Velmundmere",
+      "Galorgar",
+      "Effects of Galorgar",
+      "Ezmundcrown",
+      "Solcael",
+      "Ysvethcrown",
+      "Wrenthas",
+      "Ishirlishold",
+      "Ghaldra",
+      "Effects of Ghaldra",
+      "Banhildreach",
+      "Belimere",
+      "Kaastshroud",
+      "Belessos",
+      "Torn Standard of Harthasspire",
+      "Ostgarshroud",
+      "Harthasspire",
+      "Soldis",
+      "Olott",
+      "Warden's Silver-ring",
+      "Kaaravault",
+      "Dragrim",
+      "Effects of Dragrim",
+      "Sylirarashroud",
+      "Solirmere",
+      "Toruldanereach",
+      "Uluast",
+      "Effects of Uluast",
+      "Ysirnothcrown",
+      "Mazaewyn",
+      "Haridisvault",
+      "Nyorveth",
+      "Calirhildfen",
+      "Ghalorula",
+      "Processional Veil",
+      "Irorncradle",
+      "Nyayne",
+      "Unsigned Letter of Banricmarch",
+      "Elornmarch",
+      "Ishos",
+      "Cyressdismere",
+      "Bandis",
+      "Baniaorngate",
+      "Ostessgrim",
+      "Candle of the Loastfen Vigil",
+      "Serulottmarch",
+      "Ezesscael",
+      "Effects of Ezesscael",
+      "Ysienvault",
+      "Galmund",
+      "Effects of Galmund",
+      "Wrengrimshroud",
+      "Moriahild",
+      "Effects of Moriahild",
+      "Mordrashroud",
+      "Drarion",
+      "Wrenanrionfen",
+      "Loulmund",
+      "Effects of Loulmund",
+      "Nyotthold",
+      "Karott",
+      "Athanmothcradle",
+      "Mazsila",
+      "Veldanedeep",
+      "Morula",
+      "Effects of Morula",
+      "Fenamothvault",
+      "Ysyne",
+      "Iroachhollow",
+      "Kamere",
+      "Hestessthasfen",
+      "Iryne",
+      "Galmeremere",
+      "Mazohild",
+      "Aldrirvanegate",
+      "Ghalenemis",
+      "Nimanulahollow",
+      "Belmere",
+      "Fenuldraspire",
+      "Ulenwyn",
+      "Verulgrimmere",
+      "Logrim",
+      "Fennothreach",
+      "Aldreth",
+      "Effects of Aldreth",
+      "Osthildhold",
+      "Hariaveth",
+      "Effects of Hariaveth",
+      "Toriaastdeep",
+      "Olcael",
+      "Solastreach",
+      "Ysaeveth",
+      "Effects of Ysaeveth",
+      "Ulirornfen",
+      "Athocael",
+      "Effects of Athocael",
+      "Quelachmere",
+      "Nyisila",
+      "Ostaeulahold",
+      "Elaric",
+      "Effects of Elaric",
+      "Ranootthollow",
+      "Kaansila",
+      "Effects of Kaansila",
+      "Belthasgate",
+      "Toriremis",
+      "Effects of Toriremis",
+      "Olvanebarrow",
+      "Ezgar",
+      "Ghaleulahollow",
+      "Karaeien",
+      "Mazorulamarch",
+      "Ghalara",
+      "Effects of Ghalara",
+      "Servanevault",
+      "Galara",
+      "Banulwynhold",
+      "Baniadane",
+      "Effects of Baniadane",
+      "Ezianothvault",
+      "Ranenhild",
+      "Ezuwyndeep",
+      "Fenvane",
+      "Hestithasfen",
+      "Serott",
+      "Yorirthasspire",
+      "Galien",
+      "Effects of Galien",
+      "Ostirwynspire",
+      "Kaanien",
+      "Effects of Kaanien",
+      "Irirarabarrow",
+      "Ranirsila",
+      "Wrenirvanespire",
+      "Soluldra",
+      "Effects of Soluldra",
+      "Aldrorsilahold",
+      "Verott",
+      "Athmunddeep",
+      "Mordis",
+      "Effects of Mordis",
+      "Caliremishold",
+      "Wrenveth",
+      "Calthasmarch",
+      "Morehild",
+      "Dragarmarch",
+      "Galvane",
+      "Olirottspire",
+      "Ostien",
+      "Effects of Ostien",
+      "Yorulgrimbarrow",
+      "Calmoth",
+      "Effects of Calmoth",
+      "Elaradeep",
+      "Yorudra",
+      "Ostmundfen",
+      "Ostoryne",
+      "Effects of Ostoryne",
+      "Galanvethdeep",
+      "Ruthlis",
+      "Effects of Ruthlis",
+      "Nyessemisspire",
+      "Wrenulien",
+      "Effects of Wrenulien",
+      "Galaeastshroud",
+      "Ishnoth",
+      "Athiauladeep",
+      "Ostwyn",
+      "Cyrovethdeep",
+      "Belos",
+      "Effects of Belos",
+      "Ezrionfen",
+      "Ulmoth",
+      "Effects of Ulmoth",
+      "Nyessmothcradle",
+      "Omensila",
+      "Effects of Omensila",
+      "Wrenastcrown",
+      "Olirthas",
+      "Effects of Olirthas",
+      "Calimundmarch",
+      "Sylessrion",
+      "Effects of Sylessrion",
+      "Mazwynhold"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 296,
+      "blurb": "the Sundered Moon gave the world longing, tide of the blood, and light gentle enough to lie by."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 296,
+      "end": 565,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 565,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Galomere",
+      "epithet": "god of graves and the ledger of names",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Ysirveth",
+      "epithet": "god of harvest, plenty, and the debt of plenty",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": "took the Silver Lament and wandered",
+      "fate_year": 565,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Yoryne",
+      "epithet": "god of war and the keeping of thresholds",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Quelmund",
+      "epithet": "god of healing and the price of healing",
+      "role": "god",
+      "faction": "k4",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Nimgrim",
+      "epithet": "the Unreflected",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Nimenmothreach",
+      "fate_year": 192,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Yseric",
+      "epithet": "the Adamant",
+      "role": "knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Solendra",
+      "epithet": "of the Long Vigil",
+      "role": "high priest",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Velaeeth",
+      "epithet": "the Lantern-eyed",
+      "role": "heretic scholar",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Nyessorn",
+      "epithet": "the Lantern-eyed",
+      "role": "king",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 465,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Serdis",
+      "epithet": "the Kindly",
+      "role": "pilgrim saint",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 424,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Harach",
+      "epithet": "the Kindly",
+      "role": "oathbreaker general",
+      "faction": "k8",
+      "is_god": false,
+      "fate": "succumbed to the Silver Lament",
+      "fate_year": 467,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Kamoth",
+      "epithet": "the Unmarked",
+      "role": "wandering knight",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "walked into the dusk unarmed",
+      "fate_year": 604,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Karenienreach",
+      "kind": "kingdom",
+      "seat": "Oliadiscrown",
+      "founded_year": 53,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Ysrionmarch",
+      "kind": "kingdom",
+      "seat": "Soldismere",
+      "founded_year": 78,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Kaearaspire",
+      "kind": "kingdom",
+      "seat": "Elirvanebarrow",
+      "founded_year": 109,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Thalaemisreach",
+      "kind": "kingdom",
+      "seat": "Solosvault",
+      "founded_year": 148,
+      "founder": "f4",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Order of the Veil",
+      "kind": "order",
+      "seat": "Toriagrimbarrow",
+      "founded_year": 325,
+      "founder": "f6",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Church of Yoryne",
+      "kind": "church",
+      "seat": "Velothasmere",
+      "founded_year": 337,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Cult of the True Shard",
+      "kind": "cult",
+      "seat": "Veranynereach",
+      "founded_year": 358,
+      "founder": "f8",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k8": {
+      "type": "faction",
+      "name": "Belthashollow",
+      "kind": "kingdom",
+      "seat": "Hestvethshroud",
+      "founded_year": 384,
+      "founder": "f9",
+      "fallen_year": 465,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Sundered Moon rose (or was raised \u2014 the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 20,
+      "text": "Galomere, god of graves and the ledger of names, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 27,
+      "text": "Ysirveth, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 30,
+      "text": "Yoryne, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 39,
+      "text": "Quelmund, god of healing and the price of healing, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "founding",
+      "year": 53,
+      "text": "Galomere founded Karenienreach (kingdom) at Oliadiscrown.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "forging",
+      "year": 53,
+      "text": "The Mirror of Galomere was wrought as regalia of Galomere's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "founding",
+      "year": 78,
+      "text": "Ysirveth founded Ysrionmarch (kingdom) at Soldismere.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "forging",
+      "year": 78,
+      "text": "The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "founding",
+      "year": 109,
+      "text": "Yoryne founded Kaearaspire (kingdom) at Elirvanebarrow.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p13"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "forging",
+      "year": 109,
+      "text": "The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "founding",
+      "year": 148,
+      "text": "Quelmund founded Thalaemisreach (kingdom) at Solosvault.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p14"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "forging",
+      "year": 148,
+      "text": "The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
+      "hidden": null,
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "great war",
+      "year": 182,
+      "text": "Nimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war.",
+      "hidden": "Ysirveth treated with Nimgrim in secret and was spared what followed.",
+      "participants": [
+        "f5",
+        "f4",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 192,
+      "text": "Nimgrim was defeated and sealed beneath Nimenmothreach; the seal was bought with the lives of 9 champions.",
+      "hidden": null,
+      "participants": [
+        "f5",
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p15"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "waning",
+      "year": 296,
+      "text": "The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 325,
+      "text": "Yseric the Adamant founded the Order of the Veil at Toriagrimbarrow, sworn to stand against the Silver Lament.",
+      "hidden": null,
+      "participants": [
+        "f6"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "founding",
+      "year": 337,
+      "text": "The Church of Yoryne was raised at Velothasmere; Solendra of the Long Vigil took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f7",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 358,
+      "text": "Velaeeth the Lantern-eyed was cast out of Church of Yoryne and founded the Cult of the True Shard, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "founding",
+      "year": 384,
+      "text": "Nyessorn the Lantern-eyed united the river-clans and was crowned in Hestvethshroud; the realm took the name Belthashollow.",
+      "hidden": null,
+      "participants": [
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 424,
+      "text": "At the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Solendra suspected as much.",
+      "participants": [
+        "f7",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 462,
+      "text": "Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on.",
+      "hidden": "Harach acted on a promise from the Cult of the True Shard: that the marked of their house would be spared the Silver Lament. The promise was not kept.",
+      "participants": [
+        "f11",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 465,
+      "text": "Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f9",
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p16"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "fate",
+      "year": 467,
+      "text": "Harach was found at Veranynereach bearing the Silver Lament, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 565,
+      "text": "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+      "hidden": "The curse does not distinguish gods from mortals. It never did.",
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 598,
+      "text": "Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f12",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 604,
+      "text": "Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 632,
+      "text": "Pilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p1"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Mirror of Galomere",
+      "item_type": "talisman",
+      "created_year": 53,
+      "origin_faction": "k1",
+      "provenance": [
+        "e7"
+      ],
+      "knowledge": [
+        "(year 53) The Mirror of Galomere was wrought as regalia of Galomere's throne.",
+        "This item is kept/told of by Karenienreach (kingdom), seat at Oliadiscrown.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Mirror of Galomere was wrought as regalia of Galomere's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p10",
+      "placement": "Kept long at Galomere, and then kept poorly."
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Shard of Ysirveth",
+      "item_type": "weapon",
+      "created_year": 78,
+      "origin_faction": "k2",
+      "provenance": [
+        "e9"
+      ],
+      "knowledge": [
+        "(year 78) The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.",
+        "Ysirveth, god of harvest, plenty, and the debt of plenty: fate \u2014 took the Silver Lament and wandered (year 565).",
+        "This item is kept/told of by Ysrionmarch (kingdom), seat at Soldismere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThe Shard of Ysirveth was wrought as regalia of Ysirveth's throne. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Soldismere, and then kept poorly."
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Mirror of Yoryne",
+      "item_type": "catalyst",
+      "created_year": 109,
+      "origin_faction": "k3",
+      "provenance": [
+        "e11"
+      ],
+      "knowledge": [
+        "(year 109) The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
+        "This item is kept/told of by Kaearaspire (kingdom), seat at Elirvanebarrow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Mirror of Yoryne was wrought as regalia of Yoryne's throne. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Elirvanebarrow, and then kept poorly."
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Veil of Quelmund",
+      "item_type": "talisman",
+      "created_year": 148,
+      "origin_faction": "k4",
+      "provenance": [
+        "e13"
+      ],
+      "knowledge": [
+        "(year 148) The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
+        "This item is kept/told of by Thalaemisreach (kingdom), seat at Solosvault.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Veil of Quelmund was wrought as regalia of Quelmund's throne. Those who keep it too long begin to doubt the sermons. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept long at Solosvault, and then kept poorly."
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Quelmund's War-Shard",
+      "item_type": "weapon",
+      "created_year": 192,
+      "origin_faction": "k4",
+      "provenance": [
+        "e14",
+        "e15"
+      ],
+      "knowledge": [
+        "(year 182) Nimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war.",
+        "[half-known secret] Ysirveth treated with Nimgrim in secret and was spared what followed.",
+        "(year 192) Nimgrim was defeated and sealed beneath Nimenmothreach; the seal was bought with the lives of 9 champions.",
+        "Ysirveth, god of harvest, plenty, and the debt of plenty: fate \u2014 took the Silver Lament and wandered (year 565).",
+        "This item is kept/told of by Thalaemisreach (kingdom), seat at Solosvault.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nNimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war. Of Ysirveth, god of harvest, plenty, and the debt of plenty, the last word is this: took the Silver Lament and wandered. Old verses hold that Ysirveth treated with Nimgrim in secret and was spared what followed. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p15",
+      "placement": "Worn smooth by warders' hands at Nimenmothreach."
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Serdis",
+      "item_type": "soul remnant",
+      "created_year": 424,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 424) At the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+        "Serdis, the Kindly: fate \u2014 given to the rite of restoration (year 424).",
+        "This item is kept/told of by Church of Yoryne (church), seat at Velothasmere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Velothasmere, before which the candles will not stay lit."
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Mirror of Saint Serdis",
+      "item_type": "talisman",
+      "created_year": 424,
+      "origin_faction": "k6",
+      "provenance": [
+        "e21"
+      ],
+      "knowledge": [
+        "(year 424) At the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Solendra suspected as much.",
+        "Serdis, the Kindly: fate \u2014 given to the rite of restoration (year 424).",
+        "This item is kept/told of by Church of Yoryne (church), seat at Velothasmere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. The tellings differ, but most agree the rite did not restore anything. It only fed the waning more slowly \u2014 and Solendra suspected as much. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Velothasmere, before which the candles will not stay lit."
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Hollow Crown of Belthashollow",
+      "item_type": "key item",
+      "created_year": 465,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 462) Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on.",
+        "[half-known secret] Harach acted on a promise from the Cult of the True Shard: that the marked of their house would be spared the Silver Lament. The promise was not kept.",
+        "(year 465) Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Nyessorn, the Lantern-eyed: fate \u2014 slain at their own throne (year 465).",
+        "This item is kept/told of by Belthashollow (kingdom), seat at Hestvethshroud.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nHarach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on. None now living can say whether Harach acted on a promise from the Cult of the True Shard: that the marked of their house would be spared the Silver Lament. The promise was not kept. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p16",
+      "placement": "Found at the foot of a throne in Belthashollow, beneath the dust of the banners."
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Harach's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 465,
+      "origin_faction": "k8",
+      "provenance": [
+        "e22",
+        "e23"
+      ],
+      "knowledge": [
+        "(year 462) Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on.",
+        "(year 465) Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Harach, the Kindly: fate \u2014 succumbed to the Silver Lament (year 467).",
+        "This item is kept/told of by Belthashollow (kingdom), seat at Hestvethshroud.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nHarach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on. The tellings differ, but most agree Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p16",
+      "placement": "Found at the foot of a throne in Belthashollow, beneath the dust of the banners."
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Soul of Ysirveth",
+      "item_type": "soul remnant",
+      "created_year": 565,
+      "origin_faction": "k2",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 565) Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+        "Ysirveth, god of harvest, plenty, and the debt of plenty: fate \u2014 took the Silver Lament and wandered (year 565).",
+        "This item is kept/told of by Ysrionmarch (kingdom), seat at Soldismere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nYsirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Taken from a throne room at Soldismere where nothing else was disturbed."
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Kamoth's Set",
+      "item_type": "armor",
+      "created_year": 604,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 598) Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing.",
+        "(year 604) Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Ysirveth, god of harvest, plenty, and the debt of plenty: fate \u2014 took the Silver Lament and wandered (year 565).",
+        "This item is kept/told of by Order of the Veil (order), seat at Toriagrimbarrow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nKamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing. Old verses hold that Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Toriagrimbarrow, and never reclaimed."
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Ring of the Veil Vigil",
+      "item_type": "ring",
+      "created_year": 604,
+      "origin_faction": "k5",
+      "provenance": [
+        "e26",
+        "e27"
+      ],
+      "knowledge": [
+        "(year 598) Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing.",
+        "(year 604) Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Kamoth, the Unmarked: fate \u2014 walked into the dusk unarmed (year 604).",
+        "This item is kept/told of by Order of the Veil (order), seat at Toriagrimbarrow.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nKamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Left behind at Toriagrimbarrow, and never reclaimed."
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Warding Lament",
+      "item_type": "consumable",
+      "created_year": 632,
+      "origin_faction": "k6",
+      "provenance": [
+        "e28"
+      ],
+      "knowledge": [
+        "(year 632) Pilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued.",
+        "Nimgrim, the Unreflected: fate \u2014 sealed beneath Nimenmothreach (year 192).",
+        "This item is kept/told of by Church of Yoryne (church), seat at Velothasmere.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
+    },
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
+    },
+    "p2": {
+      "type": "place",
+      "name": "Oliadiscrown",
+      "source": "geo"
+    },
+    "p3": {
+      "type": "place",
+      "name": "Soldismere",
+      "source": "geo"
+    },
+    "p4": {
+      "type": "place",
+      "name": "Elirvanebarrow",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Solosvault",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Toriagrimbarrow",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Velothasmere",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Veranynereach",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Hestvethshroud",
+      "source": "geo"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Galomere",
+      "source": "geo"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Karenienreach",
+      "source": "geo"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Ysrionmarch",
+      "source": "geo"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Kaearaspire",
+      "source": "geo"
+    },
+    "p14": {
+      "type": "place",
+      "name": "Thalaemisreach",
+      "source": "geo"
+    },
+    "p15": {
+      "type": "place",
+      "name": "Nimenmothreach",
+      "source": "geo"
+    },
+    "p16": {
+      "type": "place",
+      "name": "Belthashollow",
+      "source": "geo"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Ruthott",
+      "epithet": "the Plain",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e1"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 0,
+      "text": "An account survives from Ruthott the Plain, a novice, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f13"
+      ],
+      "parent": "e1",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e1",
+      "place": "p17"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 0,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e1",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e1",
+      "place": "p17"
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Effects of Ruthott",
+      "item_type": "ring",
+      "created_year": 0,
+      "origin_faction": null,
+      "provenance": [
+        "e29"
+      ],
+      "knowledge": [
+        "(year 0) An account survives from Ruthott the Plain, a novice, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ruthott the Plain, a novice, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e1",
+      "site": "p17",
+      "placement": "Recovered at Caledanecrown, off the deep roads, where the account had lain hidden."
+    },
+    "p17": {
+      "type": "place",
+      "name": "Caledanecrown",
+      "source": "expansion:e1"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Thaliadra",
+      "epithet": "Long-memoried",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e2"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 19,
+      "text": "An account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "parent": "e2",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e2",
+      "place": "p18"
+    },
+    "e32": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 20,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e2",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e2",
+      "place": "p18"
+    },
+    "a15": {
+      "type": "artifact",
+      "name": "Effects of Thaliadra",
+      "item_type": "consumable",
+      "created_year": 19,
+      "origin_faction": null,
+      "provenance": [
+        "e31"
+      ],
+      "knowledge": [
+        "(year 19) An account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e2",
+      "site": "p18",
+      "placement": "Recovered at Nyemisspire, off the deep roads, where the account had lain hidden."
+    },
+    "p18": {
+      "type": "place",
+      "name": "Nyemisspire",
+      "source": "expansion:e2"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Ranulgar",
+      "epithet": "the Sleepless",
+      "role": "bell-ringer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e3"
+    },
+    "e33": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 27,
+      "text": "An account survives from Ranulgar the Sleepless, a bell-ringer, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f15"
+      ],
+      "parent": "e3",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e3",
+      "place": "p19"
+    },
+    "e34": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 27,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e3",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e3",
+      "place": "p19"
+    },
+    "a16": {
+      "type": "artifact",
+      "name": "Effects of Ranulgar",
+      "item_type": "ring",
+      "created_year": 27,
+      "origin_faction": null,
+      "provenance": [
+        "e33"
+      ],
+      "knowledge": [
+        "(year 27) An account survives from Ranulgar the Sleepless, a bell-ringer, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ranulgar the Sleepless, a bell-ringer, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e3",
+      "site": "p19",
+      "placement": "Recovered at Ishornhold, off the deep roads, where the account had lain hidden."
+    },
+    "p19": {
+      "type": "place",
+      "name": "Ishornhold",
+      "source": "expansion:e3"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Omdis",
+      "epithet": "Long-memoried",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e4"
+    },
+    "e35": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 26,
+      "text": "An account survives from Omdis Long-memoried, a envoy, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f16"
+      ],
+      "parent": "e4",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e4",
+      "place": "p20"
+    },
+    "e36": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 29,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e4",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e4",
+      "place": "p20"
+    },
+    "a17": {
+      "type": "artifact",
+      "name": "Effects of Omdis",
+      "item_type": "consumable",
+      "created_year": 26,
+      "origin_faction": null,
+      "provenance": [
+        "e35"
+      ],
+      "knowledge": [
+        "(year 26) An account survives from Omdis Long-memoried, a envoy, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Omdis Long-memoried, a envoy, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e4",
+      "site": "p20",
+      "placement": "Recovered at Draumothmarch, off the deep roads, where the account had lain hidden."
+    },
+    "p20": {
+      "type": "place",
+      "name": "Draumothmarch",
+      "source": "expansion:e4"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Calien",
+      "epithet": "One-hand",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e5"
+    },
+    "e37": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 39,
+      "text": "An account survives from Calien One-hand, a gravedigger, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f17"
+      ],
+      "parent": "e5",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e5",
+      "place": "p21"
+    },
+    "e38": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 39,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e5",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e5",
+      "place": "p21"
+    },
+    "p21": {
+      "type": "place",
+      "name": "Banlisbarrow",
+      "source": "expansion:e5"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Torolis",
+      "epithet": "Cinder-shod",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e6"
+    },
+    "e39": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 50,
+      "text": "An account survives from Torolis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f18"
+      ],
+      "parent": "e6",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e6",
+      "place": "p22"
+    },
+    "e40": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 50,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e6",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e6",
+      "place": "p22"
+    },
+    "p22": {
+      "type": "place",
+      "name": "Omiasilafen",
+      "source": "expansion:e6"
+    },
+    "f19": {
+      "type": "figure",
+      "name": "Ghalenthas",
+      "epithet": "of No House",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e7"
+    },
+    "e41": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 48,
+      "text": "An account survives from Ghalenthas of No House, a handmaid, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f19"
+      ],
+      "parent": "e7",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e7",
+      "place": "p23"
+    },
+    "e42": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 49,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e7",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e7",
+      "place": "p23"
+    },
+    "p23": {
+      "type": "place",
+      "name": "Aldrenthasmarch",
+      "source": "expansion:e7"
+    },
+    "f20": {
+      "type": "figure",
+      "name": "Ulessach",
+      "epithet": "the Plain",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e8"
+    },
+    "e43": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 75,
+      "text": "An account survives from Ulessach the Plain, a gravedigger, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f20"
+      ],
+      "parent": "e8",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e8",
+      "place": "p24"
+    },
+    "e44": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 78,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e8",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e8",
+      "place": "p24"
+    },
+    "a18": {
+      "type": "artifact",
+      "name": "Effects of Ulessach",
+      "item_type": "ring",
+      "created_year": 75,
+      "origin_faction": null,
+      "provenance": [
+        "e43"
+      ],
+      "knowledge": [
+        "(year 75) An account survives from Ulessach the Plain, a gravedigger, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ulessach the Plain, a gravedigger, set down against instruction and hidden in a coffin lid. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e8",
+      "site": "p24",
+      "placement": "Recovered at Velmundmere, off the deep roads, where the account had lain hidden."
+    },
+    "p24": {
+      "type": "place",
+      "name": "Velmundmere",
+      "source": "expansion:e8"
+    },
+    "f21": {
+      "type": "figure",
+      "name": "Galorgar",
+      "epithet": "the Meek",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e9"
+    },
+    "e45": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 74,
+      "text": "An account survives from Galorgar the Meek, a cartwright, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f21"
+      ],
+      "parent": "e9",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e9",
+      "place": "p25"
+    },
+    "e46": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 74,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e9",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e9",
+      "place": "p25"
+    },
+    "a19": {
+      "type": "artifact",
+      "name": "Effects of Galorgar",
+      "item_type": "ring",
+      "created_year": 74,
+      "origin_faction": null,
+      "provenance": [
+        "e45"
+      ],
+      "knowledge": [
+        "(year 74) An account survives from Galorgar the Meek, a cartwright, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Galorgar the Meek, a cartwright, set down against instruction and hidden in a ledger. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e9",
+      "site": "p25",
+      "placement": "Recovered at Ezmundcrown, off the deep roads, where the account had lain hidden."
+    },
+    "p25": {
+      "type": "place",
+      "name": "Ezmundcrown",
+      "source": "expansion:e9"
+    },
+    "f22": {
+      "type": "figure",
+      "name": "Solcael",
+      "epithet": "the Stray",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e10"
+    },
+    "e47": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 108,
+      "text": "An account survives from Solcael the Stray, a witness, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f22"
+      ],
+      "parent": "e10",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e10",
+      "place": "p26"
+    },
+    "e48": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 108,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e10",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e10",
+      "place": "p26"
+    },
+    "p26": {
+      "type": "place",
+      "name": "Ysvethcrown",
+      "source": "expansion:e10"
+    },
+    "f23": {
+      "type": "figure",
+      "name": "Wrenthas",
+      "epithet": "the Younger",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e11"
+    },
+    "e49": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 109,
+      "text": "An account survives from Wrenthas the Younger, a siege captain, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f23"
+      ],
+      "parent": "e11",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e11",
+      "place": "p27"
+    },
+    "e50": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 109,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e11",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e11",
+      "place": "p27"
+    },
+    "p27": {
+      "type": "place",
+      "name": "Ishirlishold",
+      "source": "expansion:e11"
+    },
+    "f24": {
+      "type": "figure",
+      "name": "Ghaldra",
+      "epithet": "the Meek",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e12"
+    },
+    "e51": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 143,
+      "text": "An account survives from Ghaldra the Meek, a witness, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f24"
+      ],
+      "parent": "e12",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e12",
+      "place": "p28"
+    },
+    "e52": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 145,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e12",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e12",
+      "place": "p28"
+    },
+    "a20": {
+      "type": "artifact",
+      "name": "Effects of Ghaldra",
+      "item_type": "consumable",
+      "created_year": 143,
+      "origin_faction": null,
+      "provenance": [
+        "e51"
+      ],
+      "knowledge": [
+        "(year 143) An account survives from Ghaldra the Meek, a witness, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Ghaldra the Meek, a witness, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e12",
+      "site": "p28",
+      "placement": "Recovered at Banhildreach, off the deep roads, where the account had lain hidden."
+    },
+    "p28": {
+      "type": "place",
+      "name": "Banhildreach",
+      "source": "expansion:e12"
+    },
+    "f25": {
+      "type": "figure",
+      "name": "Belimere",
+      "epithet": "Thrice-pardoned",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e13"
+    },
+    "e53": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 143,
+      "text": "An account survives from Belimere Thrice-pardoned, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f25"
+      ],
+      "parent": "e13",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e13",
+      "place": "p29"
+    },
+    "e54": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 143,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e13",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e13",
+      "place": "p29"
+    },
+    "p29": {
+      "type": "place",
+      "name": "Kaastshroud",
+      "source": "expansion:e13"
+    },
+    "p30": {
+      "type": "place",
+      "name": "Belimere",
+      "source": "geo"
+    },
+    "f26": {
+      "type": "figure",
+      "name": "Belessos",
+      "epithet": "the Plain",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e14"
+    },
+    "e55": {
+      "type": "event",
+      "kind": "battle",
+      "year": 181,
+      "text": "The war's worst day was at Harthasspire, where the line held for a night and a morning under Belessos the Plain, and then did not hold.",
+      "hidden": null,
+      "participants": [
+        "f26",
+        "f5"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e14",
+      "place": "p31"
+    },
+    "e56": {
+      "type": "event",
+      "kind": "champion's duel",
+      "year": 182,
+      "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
+      "hidden": "The duel was not fought to a death but to a bargain.",
+      "participants": [
+        "f5",
+        "f4"
+      ],
+      "parent": "e14",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e14",
+      "place": "p31"
+    },
+    "a21": {
+      "type": "artifact",
+      "name": "Torn Standard of Harthasspire",
+      "item_type": "talisman",
+      "created_year": 181,
+      "origin_faction": null,
+      "provenance": [
+        "e55"
+      ],
+      "knowledge": [
+        "(year 181) The war's worst day was at Harthasspire, where the line held for a night and a morning under Belessos the Plain, and then did not hold.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Harthasspire, where the line held for a night and a morning under Belessos the Plain, and then did not hold. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e14",
+      "site": "p31",
+      "placement": "Recovered at Ostgarshroud, off the deep roads, where the account had lain hidden."
+    },
+    "p31": {
+      "type": "place",
+      "name": "Ostgarshroud",
+      "source": "expansion:e14"
+    },
+    "p32": {
+      "type": "place",
+      "name": "Harthasspire",
+      "source": "geo"
+    },
+    "f27": {
+      "type": "figure",
+      "name": "Soldis",
+      "epithet": "the Younger",
+      "role": "champion",
+      "faction": null,
+      "is_god": false,
+      "fate": "given to the seal",
+      "fate_year": 192,
+      "depth": 1,
+      "source": "expansion:e15"
+    },
+    "f28": {
+      "type": "figure",
+      "name": "Olott",
+      "epithet": "of the Rearguard",
+      "role": "champion",
+      "faction": null,
+      "is_god": false,
+      "fate": "given to the seal",
+      "fate_year": 192,
+      "depth": 1,
+      "source": "expansion:e15"
+    },
+    "e57": {
+      "type": "event",
+      "kind": "the paying of the price",
+      "year": 192,
+      "text": "Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Soldis the Younger and Olott of the Rearguard \u2014 though none can say what distinguishes the remembered dead from the rest.",
+      "hidden": null,
+      "participants": [
+        "f27",
+        "f28"
+      ],
+      "parent": "e15",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e15",
+      "place": "p33"
+    },
+    "e58": {
+      "type": "event",
+      "kind": "the wardens' charge",
+      "year": 192,
+      "text": "A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
+      "hidden": "The first warden asked to be bound to the seal, not appointed over it.",
+      "participants": [],
+      "parent": "e15",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e15",
+      "place": "p33"
+    },
+    "a22": {
+      "type": "artifact",
+      "name": "Warden's Silver-ring",
+      "item_type": "ring",
+      "created_year": 192,
+      "origin_faction": null,
+      "provenance": [
+        "e57",
+        "e58"
+      ],
+      "knowledge": [
+        "(year 192) Of the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Soldis the Younger and Olott of the Rearguard \u2014 though none can say what distinguishes the remembered dead from the rest.",
+        "(year 192) A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nOf the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Soldis the Younger and Olott of the Rearguard \u2014 though none can say what distinguishes the remembered dead from the rest. The tellings differ, but most agree a wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. Whether this was mercy or malice, none agree.",
+      "depth": 1,
+      "source": "expansion:e15",
+      "site": "p33",
+      "placement": "Recovered at Kaaravault, off the deep roads, where the account had lain hidden."
+    },
+    "p33": {
+      "type": "place",
+      "name": "Kaaravault",
+      "source": "expansion:e15"
+    },
+    "f29": {
+      "type": "figure",
+      "name": "Dragrim",
+      "epithet": "the Sleepless",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e16"
+    },
+    "e59": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 295,
+      "text": "An account survives from Dragrim the Sleepless, a novice, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f29"
+      ],
+      "parent": "e16",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e16",
+      "place": "p34"
+    },
+    "e60": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 296,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e16",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e16",
+      "place": "p34"
+    },
+    "a23": {
+      "type": "artifact",
+      "name": "Effects of Dragrim",
+      "item_type": "ring",
+      "created_year": 295,
+      "origin_faction": null,
+      "provenance": [
+        "e59"
+      ],
+      "knowledge": [
+        "(year 295) An account survives from Dragrim the Sleepless, a novice, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Dragrim the Sleepless, a novice, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e16",
+      "site": "p34",
+      "placement": "Recovered at Sylirarashroud, off the deep roads, where the account had lain hidden."
+    },
+    "p34": {
+      "type": "place",
+      "name": "Sylirarashroud",
+      "source": "expansion:e16"
+    },
+    "f30": {
+      "type": "figure",
+      "name": "Solirmere",
+      "epithet": "of No House",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e17"
+    },
+    "e61": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 323,
+      "text": "An account survives from Solirmere of No House, a lantern-bearer, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f30"
+      ],
+      "parent": "e17",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e17",
+      "place": "p35"
+    },
+    "e62": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 323,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e17",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e17",
+      "place": "p35"
+    },
+    "p35": {
+      "type": "place",
+      "name": "Toruldanereach",
+      "source": "expansion:e17"
+    },
+    "p36": {
+      "type": "place",
+      "name": "Solirmere",
+      "source": "geo"
+    },
+    "f31": {
+      "type": "figure",
+      "name": "Uluast",
+      "epithet": "the Stray",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e18"
+    },
+    "e63": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 336,
+      "text": "An account survives from Uluast the Stray, a handmaid, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f31"
+      ],
+      "parent": "e18",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e18",
+      "place": "p37"
+    },
+    "e64": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 336,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e18",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e18",
+      "place": "p37"
+    },
+    "a24": {
+      "type": "artifact",
+      "name": "Effects of Uluast",
+      "item_type": "ring",
+      "created_year": 336,
+      "origin_faction": null,
+      "provenance": [
+        "e63"
+      ],
+      "knowledge": [
+        "(year 336) An account survives from Uluast the Stray, a handmaid, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Uluast the Stray, a handmaid, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e18",
+      "site": "p37",
+      "placement": "Recovered at Ysirnothcrown, off the deep roads, where the account had lain hidden."
+    },
+    "p37": {
+      "type": "place",
+      "name": "Ysirnothcrown",
+      "source": "expansion:e18"
+    },
+    "f32": {
+      "type": "figure",
+      "name": "Mazaewyn",
+      "epithet": "Long-memoried",
+      "role": "deserter",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e19"
+    },
+    "e65": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 354,
+      "text": "An account survives from Mazaewyn Long-memoried, a deserter, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f32"
+      ],
+      "parent": "e19",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e19",
+      "place": "p38"
+    },
+    "e66": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 354,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e19",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e19",
+      "place": "p38"
+    },
+    "p38": {
+      "type": "place",
+      "name": "Haridisvault",
+      "source": "expansion:e19"
+    },
+    "f33": {
+      "type": "figure",
+      "name": "Nyorveth",
+      "epithet": "the Younger",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e20"
+    },
+    "e67": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 379,
+      "text": "An account survives from Nyorveth the Younger, a handmaid, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f33"
+      ],
+      "parent": "e20",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e20",
+      "place": "p39"
+    },
+    "e68": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 380,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e20",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e20",
+      "place": "p39"
+    },
+    "p39": {
+      "type": "place",
+      "name": "Calirhildfen",
+      "source": "expansion:e20"
+    },
+    "f34": {
+      "type": "figure",
+      "name": "Ghalorula",
+      "epithet": "of No House",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e21"
+    },
+    "e69": {
+      "type": "event",
+      "kind": "the choosing",
+      "year": 424,
+      "text": "The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running.",
+      "hidden": "The one who ran was never pursued, by design.",
+      "participants": [
+        "f34"
+      ],
+      "parent": "e21",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e21",
+      "place": "p40"
+    },
+    "e70": {
+      "type": "event",
+      "kind": "the procession",
+      "year": 424,
+      "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it.",
+      "hidden": null,
+      "participants": [
+        "f34",
+        "f7",
+        "f10"
+      ],
+      "parent": "e21",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e21",
+      "place": "p40"
+    },
+    "a25": {
+      "type": "artifact",
+      "name": "Processional Veil",
+      "item_type": "talisman",
+      "created_year": 424,
+      "origin_faction": null,
+      "provenance": [
+        "e70"
+      ],
+      "knowledge": [
+        "(year 424) The procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e21",
+      "site": "p40",
+      "placement": "Recovered at Irorncradle, off the deep roads, where the account had lain hidden."
+    },
+    "p40": {
+      "type": "place",
+      "name": "Irorncradle",
+      "source": "expansion:e21"
+    },
+    "f35": {
+      "type": "figure",
+      "name": "Nyayne",
+      "epithet": "Thrice-pardoned",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e22"
+    },
+    "e71": {
+      "type": "event",
+      "kind": "secret council",
+      "year": 459,
+      "text": "Twice before the gates opened, a go-between came by night \u2014 Nyayne Thrice-pardoned, who carried no letters and remembered everything.",
+      "hidden": null,
+      "participants": [
+        "f35",
+        "f11"
+      ],
+      "parent": "e22",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e22",
+      "place": "p41"
+    },
+    "e72": {
+      "type": "event",
+      "kind": "the price named",
+      "year": 461,
+      "text": "The grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked.",
+      "hidden": "The promise was made in another's name, without their knowledge.",
+      "participants": [
+        "f11"
+      ],
+      "parent": "e22",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e22",
+      "place": "p41"
+    },
+    "a26": {
+      "type": "artifact",
+      "name": "Unsigned Letter of Banricmarch",
+      "item_type": "key item",
+      "created_year": 461,
+      "origin_faction": null,
+      "provenance": [
+        "e71",
+        "e72"
+      ],
+      "knowledge": [
+        "(year 459) Twice before the gates opened, a go-between came by night \u2014 Nyayne Thrice-pardoned, who carried no letters and remembered everything.",
+        "(year 461) The grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked.",
+        "[half-known secret] The promise was made in another's name, without their knowledge.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nTwice before the gates opened, a go-between came by night \u2014 Nyayne Thrice-pardoned, who carried no letters and remembered everything. The tellings differ, but most agree the grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked. Whether this was mercy or malice, none agree.",
+      "depth": 1,
+      "source": "expansion:e22",
+      "site": "p41",
+      "placement": "Recovered at Elornmarch, off the deep roads, where the account had lain hidden."
+    },
+    "p41": {
+      "type": "place",
+      "name": "Elornmarch",
+      "source": "expansion:e22"
+    },
+    "f36": {
+      "type": "figure",
+      "name": "Ishos",
+      "epithet": "Cinder-shod",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e23"
+    },
+    "e73": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 459,
+      "text": "An account survives from Ishos Cinder-shod, a chronicler, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f36"
+      ],
+      "parent": "e23",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e23",
+      "place": "p42"
+    },
+    "e74": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 462,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e23",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e23",
+      "place": "p42"
+    },
+    "p42": {
+      "type": "place",
+      "name": "Cyressdismere",
+      "source": "expansion:e23"
+    },
+    "f37": {
+      "type": "figure",
+      "name": "Bandis",
+      "epithet": "of No House",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e24"
+    },
+    "e75": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 462,
+      "text": "An account survives from Bandis of No House, a lantern-bearer, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f37"
+      ],
+      "parent": "e24",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e24",
+      "place": "p43"
+    },
+    "e76": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 462,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e24",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e24",
+      "place": "p43"
+    },
+    "p43": {
+      "type": "place",
+      "name": "Baniaorngate",
+      "source": "expansion:e24"
+    },
+    "f38": {
+      "type": "figure",
+      "name": "Ostessgrim",
+      "epithet": "the Stray",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e25"
+    },
+    "e77": {
+      "type": "event",
+      "kind": "last audience",
+      "year": 560,
+      "text": "In the god's final season, audiences grew strange: petitioners were answered before they spoke, and one \u2014 Ostessgrim the Stray \u2014 was sent away with an apology no one understood.",
+      "hidden": null,
+      "participants": [
+        "f38",
+        "f2"
+      ],
+      "parent": "e25",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e25",
+      "place": "p44"
+    },
+    "e78": {
+      "type": "event",
+      "kind": "the empty seat",
+      "year": 565,
+      "text": "The throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since.",
+      "hidden": "The arrangement was the god's own last act, and it was an answer.",
+      "participants": [],
+      "parent": "e25",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e25",
+      "place": "p44"
+    },
+    "a27": {
+      "type": "artifact",
+      "name": "Candle of the Loastfen Vigil",
+      "item_type": "consumable",
+      "created_year": 565,
+      "origin_faction": null,
+      "provenance": [
+        "e78"
+      ],
+      "knowledge": [
+        "(year 565) The throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since.",
+        "[half-known secret] The arrangement was the god's own last act, and it was an answer.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A humble ward, spent in a moment.\n\nThe throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since. The tellings differ, but most agree the arrangement was the god's own last act, and it was an answer. In its presence, the old prayers feel like apologies. The name endures; little else does.",
+      "depth": 1,
+      "source": "expansion:e25",
+      "site": "p44",
+      "placement": "Recovered at Serulottmarch, off the deep roads, where the account had lain hidden."
+    },
+    "p44": {
+      "type": "place",
+      "name": "Serulottmarch",
+      "source": "expansion:e25"
+    },
+    "f39": {
+      "type": "figure",
+      "name": "Ezesscael",
+      "epithet": "Cinder-shod",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e26"
+    },
+    "e79": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 596,
+      "text": "An account survives from Ezesscael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f39"
+      ],
+      "parent": "e26",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e26",
+      "place": "p45"
+    },
+    "e80": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 598,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e26",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e26",
+      "place": "p45"
+    },
+    "a28": {
+      "type": "artifact",
+      "name": "Effects of Ezesscael",
+      "item_type": "consumable",
+      "created_year": 596,
+      "origin_faction": null,
+      "provenance": [
+        "e79"
+      ],
+      "knowledge": [
+        "(year 596) An account survives from Ezesscael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Ezesscael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e26",
+      "site": "p45",
+      "placement": "Recovered at Ysienvault, off the deep roads, where the account had lain hidden."
+    },
+    "p45": {
+      "type": "place",
+      "name": "Ysienvault",
+      "source": "expansion:e26"
+    },
+    "f40": {
+      "type": "figure",
+      "name": "Galmund",
+      "epithet": "the Meek",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e27"
+    },
+    "e81": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 600,
+      "text": "An account survives from Galmund the Meek, a handmaid, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f40"
+      ],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27",
+      "place": "p46"
+    },
+    "e82": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 602,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e27",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e27",
+      "place": "p46"
+    },
+    "a29": {
+      "type": "artifact",
+      "name": "Effects of Galmund",
+      "item_type": "consumable",
+      "created_year": 600,
+      "origin_faction": null,
+      "provenance": [
+        "e81"
+      ],
+      "knowledge": [
+        "(year 600) An account survives from Galmund the Meek, a handmaid, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 1,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Galmund the Meek, a handmaid, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
+      "depth": 1,
+      "source": "expansion:e27",
+      "site": "p46",
+      "placement": "Recovered at Wrengrimshroud, off the deep roads, where the account had lain hidden."
+    },
+    "p46": {
+      "type": "place",
+      "name": "Wrengrimshroud",
+      "source": "expansion:e27"
+    },
+    "f41": {
+      "type": "figure",
+      "name": "Moriahild",
+      "epithet": "the Sleepless",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e28"
+    },
+    "e83": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 629,
+      "text": "An account survives from Moriahild the Sleepless, a lantern-bearer, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f41"
+      ],
+      "parent": "e28",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e28",
+      "place": "p47"
+    },
+    "e84": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 630,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e28",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e28",
+      "place": "p47"
+    },
+    "a30": {
+      "type": "artifact",
+      "name": "Effects of Moriahild",
+      "item_type": "ring",
+      "created_year": 629,
+      "origin_faction": null,
+      "provenance": [
+        "e83"
+      ],
+      "knowledge": [
+        "(year 629) An account survives from Moriahild the Sleepless, a lantern-bearer, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Moriahild the Sleepless, a lantern-bearer, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 1,
+      "source": "expansion:e28",
+      "site": "p47",
+      "placement": "Recovered at Mordrashroud, off the deep roads, where the account had lain hidden."
+    },
+    "p47": {
+      "type": "place",
+      "name": "Mordrashroud",
+      "source": "expansion:e28"
+    },
+    "f42": {
+      "type": "figure",
+      "name": "Drarion",
+      "epithet": "One-hand",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e29"
+    },
+    "e85": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 0,
+      "text": "An account survives from Drarion One-hand, a cartwright, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f42"
+      ],
+      "parent": "e29",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e29",
+      "place": "p48"
+    },
+    "e86": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 0,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e29",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e29",
+      "place": "p48"
+    },
+    "p48": {
+      "type": "place",
+      "name": "Wrenanrionfen",
+      "source": "expansion:e29"
+    },
+    "f43": {
+      "type": "figure",
+      "name": "Loulmund",
+      "epithet": "of the Rearguard",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e30"
+    },
+    "e87": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 0,
+      "text": "An account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f43"
+      ],
+      "parent": "e30",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e30",
+      "place": "p49"
+    },
+    "e88": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 0,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e30",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e30",
+      "place": "p49"
+    },
+    "a31": {
+      "type": "artifact",
+      "name": "Effects of Loulmund",
+      "item_type": "consumable",
+      "created_year": 0,
+      "origin_faction": null,
+      "provenance": [
+        "e87"
+      ],
+      "knowledge": [
+        "(year 0) An account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e30",
+      "site": "p49",
+      "placement": "Recovered at Nyotthold, off the deep roads, where the account had lain hidden."
+    },
+    "p49": {
+      "type": "place",
+      "name": "Nyotthold",
+      "source": "expansion:e30"
+    },
+    "f44": {
+      "type": "figure",
+      "name": "Karott",
+      "epithet": "the Sleepless",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e31"
+    },
+    "e89": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 18,
+      "text": "An account survives from Karott the Sleepless, a envoy, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f44"
+      ],
+      "parent": "e31",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e31",
+      "place": "p50"
+    },
+    "e90": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 18,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e31",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e31",
+      "place": "p50"
+    },
+    "p50": {
+      "type": "place",
+      "name": "Athanmothcradle",
+      "source": "expansion:e31"
+    },
+    "f45": {
+      "type": "figure",
+      "name": "Mazsila",
+      "epithet": "the Plain",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e32"
+    },
+    "e91": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 17,
+      "text": "An account survives from Mazsila the Plain, a lantern-bearer, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f45"
+      ],
+      "parent": "e32",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e32",
+      "place": "p51"
+    },
+    "e92": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 18,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e32",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e32",
+      "place": "p51"
+    },
+    "p51": {
+      "type": "place",
+      "name": "Veldanedeep",
+      "source": "expansion:e32"
+    },
+    "f46": {
+      "type": "figure",
+      "name": "Morula",
+      "epithet": "One-hand",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e33"
+    },
+    "e93": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 26,
+      "text": "An account survives from Morula One-hand, a quartermaster, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f46"
+      ],
+      "parent": "e33",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e33",
+      "place": "p52"
+    },
+    "e94": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 27,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e33",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e33",
+      "place": "p52"
+    },
+    "a32": {
+      "type": "artifact",
+      "name": "Effects of Morula",
+      "item_type": "ring",
+      "created_year": 26,
+      "origin_faction": null,
+      "provenance": [
+        "e93"
+      ],
+      "knowledge": [
+        "(year 26) An account survives from Morula One-hand, a quartermaster, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Morula One-hand, a quartermaster, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e33",
+      "site": "p52",
+      "placement": "Recovered at Fenamothvault, off the deep roads, where the account had lain hidden."
+    },
+    "p52": {
+      "type": "place",
+      "name": "Fenamothvault",
+      "source": "expansion:e33"
+    },
+    "f47": {
+      "type": "figure",
+      "name": "Ysyne",
+      "epithet": "Cinder-shod",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e34"
+    },
+    "e95": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 22,
+      "text": "An account survives from Ysyne Cinder-shod, a handmaid, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f47"
+      ],
+      "parent": "e34",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e34",
+      "place": "p53"
+    },
+    "e96": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 22,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e34",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e34",
+      "place": "p53"
+    },
+    "p53": {
+      "type": "place",
+      "name": "Iroachhollow",
+      "source": "expansion:e34"
+    },
+    "f48": {
+      "type": "figure",
+      "name": "Kamere",
+      "epithet": "the Plain",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e35"
+    },
+    "e97": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 22,
+      "text": "An account survives from Kamere the Plain, a siege captain, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f48"
+      ],
+      "parent": "e35",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e35",
+      "place": "p54"
+    },
+    "e98": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 22,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e35",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e35",
+      "place": "p54"
+    },
+    "p54": {
+      "type": "place",
+      "name": "Hestessthasfen",
+      "source": "expansion:e35"
+    },
+    "p55": {
+      "type": "place",
+      "name": "Kamere",
+      "source": "geo"
+    },
+    "f49": {
+      "type": "figure",
+      "name": "Iryne",
+      "epithet": "Thrice-pardoned",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e36"
+    },
+    "e99": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 25,
+      "text": "An account survives from Iryne Thrice-pardoned, a lantern-bearer, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f49"
+      ],
+      "parent": "e36",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e36",
+      "place": "p56"
+    },
+    "e100": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 27,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e36",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e36",
+      "place": "p56"
+    },
+    "p56": {
+      "type": "place",
+      "name": "Galmeremere",
+      "source": "expansion:e36"
+    },
+    "f50": {
+      "type": "figure",
+      "name": "Mazohild",
+      "epithet": "of the Rearguard",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e37"
+    },
+    "e101": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 37,
+      "text": "An account survives from Mazohild of the Rearguard, a chronicler, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f50"
+      ],
+      "parent": "e37",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e37",
+      "place": "p57"
+    },
+    "e102": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 39,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e37",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e37",
+      "place": "p57"
+    },
+    "p57": {
+      "type": "place",
+      "name": "Aldrirvanegate",
+      "source": "expansion:e37"
+    },
+    "f51": {
+      "type": "figure",
+      "name": "Ghalenemis",
+      "epithet": "the Unlettered",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e38"
+    },
+    "e103": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 38,
+      "text": "An account survives from Ghalenemis the Unlettered, a lantern-bearer, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f51"
+      ],
+      "parent": "e38",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e38",
+      "place": "p58"
+    },
+    "e104": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 39,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e38",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e38",
+      "place": "p58"
+    },
+    "p58": {
+      "type": "place",
+      "name": "Nimanulahollow",
+      "source": "expansion:e38"
+    },
+    "f52": {
+      "type": "figure",
+      "name": "Belmere",
+      "epithet": "Long-memoried",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e39"
+    },
+    "e105": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 45,
+      "text": "An account survives from Belmere Long-memoried, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f52"
+      ],
+      "parent": "e39",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e39",
+      "place": "p59"
+    },
+    "e106": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 45,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e39",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e39",
+      "place": "p59"
+    },
+    "p59": {
+      "type": "place",
+      "name": "Fenuldraspire",
+      "source": "expansion:e39"
+    },
+    "p60": {
+      "type": "place",
+      "name": "Belmere",
+      "source": "geo"
+    },
+    "f53": {
+      "type": "figure",
+      "name": "Ulenwyn",
+      "epithet": "of the Rearguard",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e40"
+    },
+    "e107": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 50,
+      "text": "An account survives from Ulenwyn of the Rearguard, a chronicler, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f53"
+      ],
+      "parent": "e40",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e40",
+      "place": "p61"
+    },
+    "e108": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 50,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e40",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e40",
+      "place": "p61"
+    },
+    "p61": {
+      "type": "place",
+      "name": "Verulgrimmere",
+      "source": "expansion:e40"
+    },
+    "f54": {
+      "type": "figure",
+      "name": "Logrim",
+      "epithet": "the Sleepless",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e41"
+    },
+    "e109": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 47,
+      "text": "An account survives from Logrim the Sleepless, a novice, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f54"
+      ],
+      "parent": "e41",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e41",
+      "place": "p62"
+    },
+    "e110": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 48,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e41",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e41",
+      "place": "p62"
+    },
+    "p62": {
+      "type": "place",
+      "name": "Fennothreach",
+      "source": "expansion:e41"
+    },
+    "f55": {
+      "type": "figure",
+      "name": "Aldreth",
+      "epithet": "Thrice-pardoned",
+      "role": "deserter",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e42"
+    },
+    "e111": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 49,
+      "text": "An account survives from Aldreth Thrice-pardoned, a deserter, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f55"
+      ],
+      "parent": "e42",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e42",
+      "place": "p63"
+    },
+    "e112": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 49,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e42",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e42",
+      "place": "p63"
+    },
+    "a33": {
+      "type": "artifact",
+      "name": "Effects of Aldreth",
+      "item_type": "ring",
+      "created_year": 49,
+      "origin_faction": null,
+      "provenance": [
+        "e111"
+      ],
+      "knowledge": [
+        "(year 49) An account survives from Aldreth Thrice-pardoned, a deserter, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Aldreth Thrice-pardoned, a deserter, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e42",
+      "site": "p63",
+      "placement": "Recovered at Osthildhold, off the deep roads, where the account had lain hidden."
+    },
+    "p63": {
+      "type": "place",
+      "name": "Osthildhold",
+      "source": "expansion:e42"
+    },
+    "f56": {
+      "type": "figure",
+      "name": "Hariaveth",
+      "epithet": "the Plain",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e43"
+    },
+    "e113": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 74,
+      "text": "An account survives from Hariaveth the Plain, a handmaid, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f56"
+      ],
+      "parent": "e43",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e43",
+      "place": "p64"
+    },
+    "e114": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 75,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e43",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e43",
+      "place": "p64"
+    },
+    "a34": {
+      "type": "artifact",
+      "name": "Effects of Hariaveth",
+      "item_type": "consumable",
+      "created_year": 74,
+      "origin_faction": null,
+      "provenance": [
+        "e113"
+      ],
+      "knowledge": [
+        "(year 74) An account survives from Hariaveth the Plain, a handmaid, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Hariaveth the Plain, a handmaid, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e43",
+      "site": "p64",
+      "placement": "Recovered at Toriaastdeep, off the deep roads, where the account had lain hidden."
+    },
+    "p64": {
+      "type": "place",
+      "name": "Toriaastdeep",
+      "source": "expansion:e43"
+    },
+    "f57": {
+      "type": "figure",
+      "name": "Olcael",
+      "epithet": "Cinder-shod",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e44"
+    },
+    "e115": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 73,
+      "text": "An account survives from Olcael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f57"
+      ],
+      "parent": "e44",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e44",
+      "place": "p65"
+    },
+    "e116": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 76,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e44",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e44",
+      "place": "p65"
+    },
+    "p65": {
+      "type": "place",
+      "name": "Solastreach",
+      "source": "expansion:e44"
+    },
+    "f58": {
+      "type": "figure",
+      "name": "Ysaeveth",
+      "epithet": "Thrice-pardoned",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e45"
+    },
+    "e117": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 71,
+      "text": "An account survives from Ysaeveth Thrice-pardoned, a handmaid, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f58"
+      ],
+      "parent": "e45",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e45",
+      "place": "p66"
+    },
+    "e118": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 74,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e45",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e45",
+      "place": "p66"
+    },
+    "a35": {
+      "type": "artifact",
+      "name": "Effects of Ysaeveth",
+      "item_type": "consumable",
+      "created_year": 71,
+      "origin_faction": null,
+      "provenance": [
+        "e117"
+      ],
+      "knowledge": [
+        "(year 71) An account survives from Ysaeveth Thrice-pardoned, a handmaid, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Ysaeveth Thrice-pardoned, a handmaid, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e45",
+      "site": "p66",
+      "placement": "Recovered at Ulirornfen, off the deep roads, where the account had lain hidden."
+    },
+    "p66": {
+      "type": "place",
+      "name": "Ulirornfen",
+      "source": "expansion:e45"
+    },
+    "f59": {
+      "type": "figure",
+      "name": "Athocael",
+      "epithet": "the Stray",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e46"
+    },
+    "e119": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 72,
+      "text": "An account survives from Athocael the Stray, a witness, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f59"
+      ],
+      "parent": "e46",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e46",
+      "place": "p67"
+    },
+    "e120": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 72,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e46",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e46",
+      "place": "p67"
+    },
+    "a36": {
+      "type": "artifact",
+      "name": "Effects of Athocael",
+      "item_type": "consumable",
+      "created_year": 72,
+      "origin_faction": null,
+      "provenance": [
+        "e119"
+      ],
+      "knowledge": [
+        "(year 72) An account survives from Athocael the Stray, a witness, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Athocael the Stray, a witness, set down against instruction and hidden in a wall. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e46",
+      "site": "p67",
+      "placement": "Recovered at Quelachmere, off the deep roads, where the account had lain hidden."
+    },
+    "p67": {
+      "type": "place",
+      "name": "Quelachmere",
+      "source": "expansion:e46"
+    },
+    "f60": {
+      "type": "figure",
+      "name": "Nyisila",
+      "epithet": "of No House",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e47"
+    },
+    "e121": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 103,
+      "text": "An account survives from Nyisila of No House, a handmaid, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f60"
+      ],
+      "parent": "e47",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e47",
+      "place": "p68"
+    },
+    "e122": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 103,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e47",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e47",
+      "place": "p68"
+    },
+    "p68": {
+      "type": "place",
+      "name": "Ostaeulahold",
+      "source": "expansion:e47"
+    },
+    "f61": {
+      "type": "figure",
+      "name": "Elaric",
+      "epithet": "the Stray",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e48"
+    },
+    "e123": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 105,
+      "text": "An account survives from Elaric the Stray, a envoy, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f61"
+      ],
+      "parent": "e48",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e48",
+      "place": "p69"
+    },
+    "e124": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 108,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e48",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e48",
+      "place": "p69"
+    },
+    "a37": {
+      "type": "artifact",
+      "name": "Effects of Elaric",
+      "item_type": "ring",
+      "created_year": 105,
+      "origin_faction": null,
+      "provenance": [
+        "e123"
+      ],
+      "knowledge": [
+        "(year 105) An account survives from Elaric the Stray, a envoy, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Elaric the Stray, a envoy, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e48",
+      "site": "p69",
+      "placement": "Recovered at Ranootthollow, off the deep roads, where the account had lain hidden."
+    },
+    "p69": {
+      "type": "place",
+      "name": "Ranootthollow",
+      "source": "expansion:e48"
+    },
+    "f62": {
+      "type": "figure",
+      "name": "Kaansila",
+      "epithet": "the Plain",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e49"
+    },
+    "e125": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 107,
+      "text": "An account survives from Kaansila the Plain, a gravedigger, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f62"
+      ],
+      "parent": "e49",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e49",
+      "place": "p70"
+    },
+    "e126": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 108,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e49",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e49",
+      "place": "p70"
+    },
+    "a38": {
+      "type": "artifact",
+      "name": "Effects of Kaansila",
+      "item_type": "ring",
+      "created_year": 107,
+      "origin_faction": null,
+      "provenance": [
+        "e125"
+      ],
+      "knowledge": [
+        "(year 107) An account survives from Kaansila the Plain, a gravedigger, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Kaansila the Plain, a gravedigger, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e49",
+      "site": "p70",
+      "placement": "Recovered at Belthasgate, off the deep roads, where the account had lain hidden."
+    },
+    "p70": {
+      "type": "place",
+      "name": "Belthasgate",
+      "source": "expansion:e49"
+    },
+    "f63": {
+      "type": "figure",
+      "name": "Toriremis",
+      "epithet": "Cinder-shod",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e50"
+    },
+    "e127": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 106,
+      "text": "An account survives from Toriremis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f63"
+      ],
+      "parent": "e50",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e50",
+      "place": "p71"
+    },
+    "e128": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 106,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e50",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e50",
+      "place": "p71"
+    },
+    "a39": {
+      "type": "artifact",
+      "name": "Effects of Toriremis",
+      "item_type": "consumable",
+      "created_year": 106,
+      "origin_faction": null,
+      "provenance": [
+        "e127"
+      ],
+      "knowledge": [
+        "(year 106) An account survives from Toriremis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Toriremis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e50",
+      "site": "p71",
+      "placement": "Recovered at Olvanebarrow, off the deep roads, where the account had lain hidden."
+    },
+    "p71": {
+      "type": "place",
+      "name": "Olvanebarrow",
+      "source": "expansion:e50"
+    },
+    "f64": {
+      "type": "figure",
+      "name": "Ezgar",
+      "epithet": "the Stray",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e51"
+    },
+    "e129": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 137,
+      "text": "An account survives from Ezgar the Stray, a cartwright, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f64"
+      ],
+      "parent": "e51",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e51",
+      "place": "p72"
+    },
+    "e130": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 138,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e51",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e51",
+      "place": "p72"
+    },
+    "p72": {
+      "type": "place",
+      "name": "Ghaleulahollow",
+      "source": "expansion:e51"
+    },
+    "f65": {
+      "type": "figure",
+      "name": "Karaeien",
+      "epithet": "One-hand",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e52"
+    },
+    "e131": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 145,
+      "text": "An account survives from Karaeien One-hand, a quartermaster, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f65"
+      ],
+      "parent": "e52",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e52",
+      "place": "p73"
+    },
+    "e132": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 145,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e52",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e52",
+      "place": "p73"
+    },
+    "p73": {
+      "type": "place",
+      "name": "Mazorulamarch",
+      "source": "expansion:e52"
+    },
+    "f66": {
+      "type": "figure",
+      "name": "Ghalara",
+      "epithet": "the Stray",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e53"
+    },
+    "e133": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 137,
+      "text": "An account survives from Ghalara the Stray, a quartermaster, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f66"
+      ],
+      "parent": "e53",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e53",
+      "place": "p74"
+    },
+    "e134": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 140,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e53",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e53",
+      "place": "p74"
+    },
+    "a40": {
+      "type": "artifact",
+      "name": "Effects of Ghalara",
+      "item_type": "ring",
+      "created_year": 137,
+      "origin_faction": null,
+      "provenance": [
+        "e133"
+      ],
+      "knowledge": [
+        "(year 137) An account survives from Ghalara the Stray, a quartermaster, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ghalara the Stray, a quartermaster, set down against instruction and hidden in a wall. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e53",
+      "site": "p74",
+      "placement": "Recovered at Servanevault, off the deep roads, where the account had lain hidden."
+    },
+    "p74": {
+      "type": "place",
+      "name": "Servanevault",
+      "source": "expansion:e53"
+    },
+    "f67": {
+      "type": "figure",
+      "name": "Galara",
+      "epithet": "Thrice-pardoned",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e54"
+    },
+    "e135": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 139,
+      "text": "An account survives from Galara Thrice-pardoned, a gravedigger, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f67"
+      ],
+      "parent": "e54",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e54",
+      "place": "p75"
+    },
+    "e136": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 142,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e54",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e54",
+      "place": "p75"
+    },
+    "p75": {
+      "type": "place",
+      "name": "Banulwynhold",
+      "source": "expansion:e54"
+    },
+    "f68": {
+      "type": "figure",
+      "name": "Baniadane",
+      "epithet": "the Younger",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e55"
+    },
+    "e137": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 178,
+      "text": "An account survives from Baniadane the Younger, a siege captain, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f68"
+      ],
+      "parent": "e55",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e55",
+      "place": "p76"
+    },
+    "e138": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 179,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e55",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e55",
+      "place": "p76"
+    },
+    "a41": {
+      "type": "artifact",
+      "name": "Effects of Baniadane",
+      "item_type": "consumable",
+      "created_year": 178,
+      "origin_faction": null,
+      "provenance": [
+        "e137"
+      ],
+      "knowledge": [
+        "(year 178) An account survives from Baniadane the Younger, a siege captain, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Baniadane the Younger, a siege captain, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e55",
+      "site": "p76",
+      "placement": "Recovered at Ezianothvault, off the deep roads, where the account had lain hidden."
+    },
+    "p76": {
+      "type": "place",
+      "name": "Ezianothvault",
+      "source": "expansion:e55"
+    },
+    "f69": {
+      "type": "figure",
+      "name": "Ranenhild",
+      "epithet": "Thrice-pardoned",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e56"
+    },
+    "e139": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 178,
+      "text": "An account survives from Ranenhild Thrice-pardoned, a gravedigger, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f69"
+      ],
+      "parent": "e56",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e56",
+      "place": "p77"
+    },
+    "e140": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 179,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e56",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e56",
+      "place": "p77"
+    },
+    "p77": {
+      "type": "place",
+      "name": "Ezuwyndeep",
+      "source": "expansion:e56"
+    },
+    "f70": {
+      "type": "figure",
+      "name": "Fenvane",
+      "epithet": "One-hand",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e57"
+    },
+    "e141": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 190,
+      "text": "An account survives from Fenvane One-hand, a lantern-bearer, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f70"
+      ],
+      "parent": "e57",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e57",
+      "place": "p78"
+    },
+    "e142": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 192,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e57",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e57",
+      "place": "p78"
+    },
+    "p78": {
+      "type": "place",
+      "name": "Hestithasfen",
+      "source": "expansion:e57"
+    },
+    "f71": {
+      "type": "figure",
+      "name": "Serott",
+      "epithet": "the Meek",
+      "role": "cartwright",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e58"
+    },
+    "e143": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 192,
+      "text": "An account survives from Serott the Meek, a cartwright, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f71"
+      ],
+      "parent": "e58",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e58",
+      "place": "p79"
+    },
+    "e144": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 192,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e58",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e58",
+      "place": "p79"
+    },
+    "p79": {
+      "type": "place",
+      "name": "Yorirthasspire",
+      "source": "expansion:e58"
+    },
+    "f72": {
+      "type": "figure",
+      "name": "Galien",
+      "epithet": "the Stray",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e59"
+    },
+    "e145": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 293,
+      "text": "An account survives from Galien the Stray, a witness, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f72"
+      ],
+      "parent": "e59",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e59",
+      "place": "p80"
+    },
+    "e146": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 294,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e59",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e59",
+      "place": "p80"
+    },
+    "a42": {
+      "type": "artifact",
+      "name": "Effects of Galien",
+      "item_type": "ring",
+      "created_year": 293,
+      "origin_faction": null,
+      "provenance": [
+        "e145"
+      ],
+      "knowledge": [
+        "(year 293) An account survives from Galien the Stray, a witness, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Galien the Stray, a witness, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e59",
+      "site": "p80",
+      "placement": "Recovered at Ostirwynspire, off the deep roads, where the account had lain hidden."
+    },
+    "p80": {
+      "type": "place",
+      "name": "Ostirwynspire",
+      "source": "expansion:e59"
+    },
+    "f73": {
+      "type": "figure",
+      "name": "Kaanien",
+      "epithet": "the Plain",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e60"
+    },
+    "e147": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 294,
+      "text": "An account survives from Kaanien the Plain, a siege captain, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f73"
+      ],
+      "parent": "e60",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e60",
+      "place": "p81"
+    },
+    "e148": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 294,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e60",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e60",
+      "place": "p81"
+    },
+    "a43": {
+      "type": "artifact",
+      "name": "Effects of Kaanien",
+      "item_type": "ring",
+      "created_year": 294,
+      "origin_faction": null,
+      "provenance": [
+        "e147"
+      ],
+      "knowledge": [
+        "(year 294) An account survives from Kaanien the Plain, a siege captain, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Kaanien the Plain, a siege captain, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e60",
+      "site": "p81",
+      "placement": "Recovered at Irirarabarrow, off the deep roads, where the account had lain hidden."
+    },
+    "p81": {
+      "type": "place",
+      "name": "Irirarabarrow",
+      "source": "expansion:e60"
+    },
+    "f74": {
+      "type": "figure",
+      "name": "Ranirsila",
+      "epithet": "of No House",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e61"
+    },
+    "e149": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 323,
+      "text": "An account survives from Ranirsila of No House, a handmaid, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f74"
+      ],
+      "parent": "e61",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e61",
+      "place": "p82"
+    },
+    "e150": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 323,
+      "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e61",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e61",
+      "place": "p82"
+    },
+    "p82": {
+      "type": "place",
+      "name": "Wrenirvanespire",
+      "source": "expansion:e61"
+    },
+    "f75": {
+      "type": "figure",
+      "name": "Soluldra",
+      "epithet": "Cinder-shod",
+      "role": "deserter",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e62"
+    },
+    "e151": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 322,
+      "text": "An account survives from Soluldra Cinder-shod, a deserter, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f75"
+      ],
+      "parent": "e62",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e62",
+      "place": "p83"
+    },
+    "e152": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 322,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e62",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e62",
+      "place": "p83"
+    },
+    "a44": {
+      "type": "artifact",
+      "name": "Effects of Soluldra",
+      "item_type": "consumable",
+      "created_year": 322,
+      "origin_faction": null,
+      "provenance": [
+        "e151"
+      ],
+      "knowledge": [
+        "(year 322) An account survives from Soluldra Cinder-shod, a deserter, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 2,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Soluldra Cinder-shod, a deserter, set down against instruction and hidden in a coffin lid. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
+      "depth": 2,
+      "source": "expansion:e62",
+      "site": "p83",
+      "placement": "Recovered at Aldrorsilahold, off the deep roads, where the account had lain hidden."
+    },
+    "p83": {
+      "type": "place",
+      "name": "Aldrorsilahold",
+      "source": "expansion:e62"
+    },
+    "f76": {
+      "type": "figure",
+      "name": "Verott",
+      "epithet": "Long-memoried",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e63"
+    },
+    "e153": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 334,
+      "text": "An account survives from Verott Long-memoried, a gravedigger, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f76"
+      ],
+      "parent": "e63",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e63",
+      "place": "p84"
+    },
+    "e154": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 335,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e63",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e63",
+      "place": "p84"
+    },
+    "p84": {
+      "type": "place",
+      "name": "Athmunddeep",
+      "source": "expansion:e63"
+    },
+    "f77": {
+      "type": "figure",
+      "name": "Mordis",
+      "epithet": "the Sleepless",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e64"
+    },
+    "e155": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 331,
+      "text": "An account survives from Mordis the Sleepless, a siege captain, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f77"
+      ],
+      "parent": "e64",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e64",
+      "place": "p85"
+    },
+    "e156": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 332,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e64",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e64",
+      "place": "p85"
+    },
+    "a45": {
+      "type": "artifact",
+      "name": "Effects of Mordis",
+      "item_type": "ring",
+      "created_year": 331,
+      "origin_faction": null,
+      "provenance": [
+        "e155"
+      ],
+      "knowledge": [
+        "(year 331) An account survives from Mordis the Sleepless, a siege captain, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": 2,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Mordis the Sleepless, a siege captain, set down against instruction and hidden in a coffin lid. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
+      "depth": 2,
+      "source": "expansion:e64",
+      "site": "p85",
+      "placement": "Recovered at Caliremishold, off the deep roads, where the account had lain hidden."
+    },
+    "p85": {
+      "type": "place",
+      "name": "Caliremishold",
+      "source": "expansion:e64"
+    },
+    "f78": {
+      "type": "figure",
+      "name": "Wrenveth",
+      "epithet": "One-hand",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e65"
+    },
+    "e157": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 352,
+      "text": "An account survives from Wrenveth One-hand, a siege captain, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f78"
+      ],
+      "parent": "e65",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e65",
+      "place": "p86"
+    },
+    "e158": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 353,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e65",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e65",
+      "place": "p86"
+    },
+    "p86": {
+      "type": "place",
+      "name": "Calthasmarch",
+      "source": "expansion:e65"
+    },
+    "f79": {
+      "type": "figure",
+      "name": "Morehild",
+      "epithet": "the Stray",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e66"
+    },
+    "e159": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 348,
+      "text": "An account survives from Morehild the Stray, a handmaid, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f79"
+      ],
+      "parent": "e66",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e66",
+      "place": "p87"
+    },
+    "e160": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 349,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e66",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e66",
+      "place": "p87"
+    },
+    "p87": {
+      "type": "place",
+      "name": "Dragarmarch",
+      "source": "expansion:e66"
+    },
+    "f80": {
+      "type": "figure",
+      "name": "Galvane",
+      "epithet": "the Stray",
+      "role": "lantern-bearer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e67"
+    },
+    "e161": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 375,
+      "text": "An account survives from Galvane the Stray, a lantern-bearer, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f80"
+      ],
+      "parent": "e67",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e67",
+      "place": "p88"
+    },
+    "e162": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 378,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e67",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e67",
+      "place": "p88"
+    },
+    "p88": {
+      "type": "place",
+      "name": "Olirottspire",
+      "source": "expansion:e67"
+    },
+    "f81": {
+      "type": "figure",
+      "name": "Ostien",
+      "epithet": "the Unlettered",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e68"
+    },
+    "e163": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 376,
+      "text": "An account survives from Ostien the Unlettered, a novice, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f81"
+      ],
+      "parent": "e68",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e68",
+      "place": "p89"
+    },
+    "e164": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 378,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e68",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e68",
+      "place": "p89"
+    },
+    "a46": {
+      "type": "artifact",
+      "name": "Effects of Ostien",
+      "item_type": "consumable",
+      "created_year": 376,
+      "origin_faction": null,
+      "provenance": [
+        "e163"
+      ],
+      "knowledge": [
+        "(year 376) An account survives from Ostien the Unlettered, a novice, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Ostien the Unlettered, a novice, set down against instruction and hidden in a wall. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e68",
+      "site": "p89",
+      "placement": "Recovered at Yorulgrimbarrow, off the deep roads, where the account had lain hidden."
+    },
+    "p89": {
+      "type": "place",
+      "name": "Yorulgrimbarrow",
+      "source": "expansion:e68"
+    },
+    "f82": {
+      "type": "figure",
+      "name": "Calmoth",
+      "epithet": "the Meek",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e69"
+    },
+    "e165": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 423,
+      "text": "An account survives from Calmoth the Meek, a novice, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f82"
+      ],
+      "parent": "e69",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e69",
+      "place": "p90"
+    },
+    "e166": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 424,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e69",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e69",
+      "place": "p90"
+    },
+    "a47": {
+      "type": "artifact",
+      "name": "Effects of Calmoth",
+      "item_type": "consumable",
+      "created_year": 423,
+      "origin_faction": null,
+      "provenance": [
+        "e165"
+      ],
+      "knowledge": [
+        "(year 423) An account survives from Calmoth the Meek, a novice, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Calmoth the Meek, a novice, set down against instruction and hidden in a psalter. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e69",
+      "site": "p90",
+      "placement": "Recovered at Elaradeep, off the deep roads, where the account had lain hidden."
+    },
+    "p90": {
+      "type": "place",
+      "name": "Elaradeep",
+      "source": "expansion:e69"
+    },
+    "f83": {
+      "type": "figure",
+      "name": "Yorudra",
+      "epithet": "the Plain",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e70"
+    },
+    "e167": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 424,
+      "text": "An account survives from Yorudra the Plain, a gravedigger, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f83"
+      ],
+      "parent": "e70",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e70",
+      "place": "p91"
+    },
+    "e168": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 424,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e70",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e70",
+      "place": "p91"
+    },
+    "p91": {
+      "type": "place",
+      "name": "Ostmundfen",
+      "source": "expansion:e70"
+    },
+    "f84": {
+      "type": "figure",
+      "name": "Ostoryne",
+      "epithet": "the Meek",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e71"
+    },
+    "e169": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 453,
+      "text": "An account survives from Ostoryne the Meek, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f84"
+      ],
+      "parent": "e71",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e71",
+      "place": "p92"
+    },
+    "e170": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 454,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e71",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e71",
+      "place": "p92"
+    },
+    "a48": {
+      "type": "artifact",
+      "name": "Effects of Ostoryne",
+      "item_type": "ring",
+      "created_year": 453,
+      "origin_faction": null,
+      "provenance": [
+        "e169"
+      ],
+      "knowledge": [
+        "(year 453) An account survives from Ostoryne the Meek, a chronicler, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ostoryne the Meek, a chronicler, set down against instruction and hidden in a wall. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e71",
+      "site": "p92",
+      "placement": "Recovered at Galanvethdeep, off the deep roads, where the account had lain hidden."
+    },
+    "p92": {
+      "type": "place",
+      "name": "Galanvethdeep",
+      "source": "expansion:e71"
+    },
+    "f85": {
+      "type": "figure",
+      "name": "Ruthlis",
+      "epithet": "Cinder-shod",
+      "role": "quartermaster",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e72"
+    },
+    "e171": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 459,
+      "text": "An account survives from Ruthlis Cinder-shod, a quartermaster, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f85"
+      ],
+      "parent": "e72",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e72",
+      "place": "p93"
+    },
+    "e172": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 461,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e72",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e72",
+      "place": "p93"
+    },
+    "a49": {
+      "type": "artifact",
+      "name": "Effects of Ruthlis",
+      "item_type": "ring",
+      "created_year": 459,
+      "origin_faction": null,
+      "provenance": [
+        "e171"
+      ],
+      "knowledge": [
+        "(year 459) An account survives from Ruthlis Cinder-shod, a quartermaster, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ruthlis Cinder-shod, a quartermaster, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e72",
+      "site": "p93",
+      "placement": "Recovered at Nyessemisspire, off the deep roads, where the account had lain hidden."
+    },
+    "p93": {
+      "type": "place",
+      "name": "Nyessemisspire",
+      "source": "expansion:e72"
+    },
+    "f86": {
+      "type": "figure",
+      "name": "Wrenulien",
+      "epithet": "of the Rearguard",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e73"
+    },
+    "e173": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 459,
+      "text": "An account survives from Wrenulien of the Rearguard, a envoy, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f86"
+      ],
+      "parent": "e73",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e73",
+      "place": "p94"
+    },
+    "e174": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 459,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e73",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e73",
+      "place": "p94"
+    },
+    "a50": {
+      "type": "artifact",
+      "name": "Effects of Wrenulien",
+      "item_type": "ring",
+      "created_year": 459,
+      "origin_faction": null,
+      "provenance": [
+        "e173"
+      ],
+      "knowledge": [
+        "(year 459) An account survives from Wrenulien of the Rearguard, a envoy, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Wrenulien of the Rearguard, a envoy, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e73",
+      "site": "p94",
+      "placement": "Recovered at Galaeastshroud, off the deep roads, where the account had lain hidden."
+    },
+    "p94": {
+      "type": "place",
+      "name": "Galaeastshroud",
+      "source": "expansion:e73"
+    },
+    "f87": {
+      "type": "figure",
+      "name": "Ishnoth",
+      "epithet": "the Meek",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e74"
+    },
+    "e175": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 460,
+      "text": "An account survives from Ishnoth the Meek, a novice, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f87"
+      ],
+      "parent": "e74",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e74",
+      "place": "p95"
+    },
+    "e176": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 460,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e74",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e74",
+      "place": "p95"
+    },
+    "p95": {
+      "type": "place",
+      "name": "Athiauladeep",
+      "source": "expansion:e74"
+    },
+    "f88": {
+      "type": "figure",
+      "name": "Ostwyn",
+      "epithet": "the Younger",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e75"
+    },
+    "e177": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 461,
+      "text": "An account survives from Ostwyn the Younger, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f88"
+      ],
+      "parent": "e75",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e75",
+      "place": "p96"
+    },
+    "e178": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 461,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e75",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e75",
+      "place": "p96"
+    },
+    "p96": {
+      "type": "place",
+      "name": "Cyrovethdeep",
+      "source": "expansion:e75"
+    },
+    "f89": {
+      "type": "figure",
+      "name": "Belos",
+      "epithet": "Long-memoried",
+      "role": "gravedigger",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e76"
+    },
+    "e179": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 457,
+      "text": "An account survives from Belos Long-memoried, a gravedigger, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f89"
+      ],
+      "parent": "e76",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e76",
+      "place": "p97"
+    },
+    "e180": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 458,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e76",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e76",
+      "place": "p97"
+    },
+    "a51": {
+      "type": "artifact",
+      "name": "Effects of Belos",
+      "item_type": "ring",
+      "created_year": 457,
+      "origin_faction": null,
+      "provenance": [
+        "e179"
+      ],
+      "knowledge": [
+        "(year 457) An account survives from Belos Long-memoried, a gravedigger, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Belos Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e76",
+      "site": "p97",
+      "placement": "Recovered at Ezrionfen, off the deep roads, where the account had lain hidden."
+    },
+    "p97": {
+      "type": "place",
+      "name": "Ezrionfen",
+      "source": "expansion:e76"
+    },
+    "f90": {
+      "type": "figure",
+      "name": "Ulmoth",
+      "epithet": "the Sleepless",
+      "role": "deserter",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e77"
+    },
+    "e181": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 558,
+      "text": "An account survives from Ulmoth the Sleepless, a deserter, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f90"
+      ],
+      "parent": "e77",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e77",
+      "place": "p98"
+    },
+    "e182": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 559,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e77",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e77",
+      "place": "p98"
+    },
+    "a52": {
+      "type": "artifact",
+      "name": "Effects of Ulmoth",
+      "item_type": "consumable",
+      "created_year": 558,
+      "origin_faction": null,
+      "provenance": [
+        "e181"
+      ],
+      "knowledge": [
+        "(year 558) An account survives from Ulmoth the Sleepless, a deserter, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Ulmoth the Sleepless, a deserter, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e77",
+      "site": "p98",
+      "placement": "Recovered at Nyessmothcradle, off the deep roads, where the account had lain hidden."
+    },
+    "p98": {
+      "type": "place",
+      "name": "Nyessmothcradle",
+      "source": "expansion:e77"
+    },
+    "f91": {
+      "type": "figure",
+      "name": "Omensila",
+      "epithet": "Thrice-pardoned",
+      "role": "bell-ringer",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e78"
+    },
+    "e183": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 561,
+      "text": "An account survives from Omensila Thrice-pardoned, a bell-ringer, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f91"
+      ],
+      "parent": "e78",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e78",
+      "place": "p99"
+    },
+    "e184": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 564,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e78",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e78",
+      "place": "p99"
+    },
+    "a53": {
+      "type": "artifact",
+      "name": "Effects of Omensila",
+      "item_type": "consumable",
+      "created_year": 561,
+      "origin_faction": null,
+      "provenance": [
+        "e183"
+      ],
+      "knowledge": [
+        "(year 561) An account survives from Omensila Thrice-pardoned, a bell-ringer, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Omensila Thrice-pardoned, a bell-ringer, set down against instruction and hidden in a ledger. What became of it after is not written.",
+      "depth": 2,
+      "source": "expansion:e78",
+      "site": "p99",
+      "placement": "Recovered at Wrenastcrown, off the deep roads, where the account had lain hidden."
+    },
+    "p99": {
+      "type": "place",
+      "name": "Wrenastcrown",
+      "source": "expansion:e78"
+    },
+    "f92": {
+      "type": "figure",
+      "name": "Olirthas",
+      "epithet": "of the Rearguard",
+      "role": "siege captain",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e79"
+    },
+    "e185": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 595,
+      "text": "An account survives from Olirthas of the Rearguard, a siege captain, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f92"
+      ],
+      "parent": "e79",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e79",
+      "place": "p100"
+    },
+    "e186": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 596,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e79",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e79",
+      "place": "p100"
+    },
+    "a54": {
+      "type": "artifact",
+      "name": "Effects of Olirthas",
+      "item_type": "ring",
+      "created_year": 595,
+      "origin_faction": null,
+      "provenance": [
+        "e185"
+      ],
+      "knowledge": [
+        "(year 595) An account survives from Olirthas of the Rearguard, a siege captain, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": 2,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Olirthas of the Rearguard, a siege captain, set down against instruction and hidden in a wall. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
+      "depth": 2,
+      "source": "expansion:e79",
+      "site": "p100",
+      "placement": "Recovered at Calimundmarch, off the deep roads, where the account had lain hidden."
+    },
+    "p100": {
+      "type": "place",
+      "name": "Calimundmarch",
+      "source": "expansion:e79"
+    },
+    "f93": {
+      "type": "figure",
+      "name": "Sylessrion",
+      "epithet": "the Younger",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e80"
+    },
+    "e187": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 593,
+      "text": "An account survives from Sylessrion the Younger, a handmaid, set down against instruction and hidden in a psalter.",
+      "hidden": null,
+      "participants": [
+        "f93"
+      ],
+      "parent": "e80",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e80",
+      "place": "p101"
+    },
+    "e188": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 596,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e80",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e80",
+      "place": "p101"
+    },
+    "a55": {
+      "type": "artifact",
+      "name": "Effects of Sylessrion",
+      "item_type": "consumable",
+      "created_year": 593,
+      "origin_faction": null,
+      "provenance": [
+        "e187"
+      ],
+      "knowledge": [
+        "(year 593) An account survives from Sylessrion the Younger, a handmaid, set down against instruction and hidden in a psalter.",
+        "The affliction of this world: the Silver Lament \u2014 moonlight pools in the eyes of the afflicted, who weep light until none is left to see by."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": 2,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Sylessrion the Younger, a handmaid, set down against instruction and hidden in a psalter. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
+      "depth": 2,
+      "source": "expansion:e80",
+      "site": "p101",
+      "placement": "Recovered at Mazwynhold, off the deep roads, where the account had lain hidden."
+    },
+    "p101": {
+      "type": "place",
+      "name": "Mazwynhold",
+      "source": "expansion:e80"
+    }
+  },
+  "notes": []
+}

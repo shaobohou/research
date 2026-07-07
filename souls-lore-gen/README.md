@@ -166,7 +166,9 @@ worlds migrate on first load.
   [`worlds/seed-5/exploration-journal.md`](worlds/seed-5/exploration-journal.md)
   — a narrated spatial + purist run;
   [`worlds/seed-9/exploration-journal.md`](worlds/seed-9/exploration-journal.md)
-  — the earlier catalogue-era run.
+  — the earlier catalogue-era run;
+  [`worlds/seed-314/walkthrough-100steps.md`](worlds/seed-314/walkthrough-100steps.md)
+  — a large-budget run (100 steps) showing delving grow the map 16→101 places.
 - [`worlds/`](worlds/) — committed samples (template mode; this container has
   no API key): seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the

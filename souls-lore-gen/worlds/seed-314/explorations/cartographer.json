@@ -1,0 +1,1087 @@
+{
+  "explorer": "cartographer",
+  "location": "p101",
+  "visited": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p16",
+    "p17",
+    "p18",
+    "p10",
+    "p11",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p12",
+    "p25",
+    "p26",
+    "p13",
+    "p27",
+    "p28",
+    "p14",
+    "p29",
+    "p30",
+    "p31",
+    "p32",
+    "p33",
+    "p15",
+    "p34",
+    "p35",
+    "p36",
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p41",
+    "p42",
+    "p43",
+    "p44",
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49",
+    "p50",
+    "p51",
+    "p52",
+    "p53",
+    "p54",
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p59",
+    "p60",
+    "p61",
+    "p62",
+    "p63",
+    "p64",
+    "p65",
+    "p66",
+    "p67",
+    "p68",
+    "p69",
+    "p70",
+    "p71",
+    "p72",
+    "p73",
+    "p74",
+    "p75",
+    "p76",
+    "p77",
+    "p78",
+    "p79",
+    "p80",
+    "p81",
+    "p82",
+    "p83",
+    "p84",
+    "p85",
+    "p86",
+    "p87",
+    "p88",
+    "p89",
+    "p90",
+    "p91",
+    "p92",
+    "p93",
+    "p94",
+    "p95",
+    "p96",
+    "p97",
+    "p98",
+    "p99",
+    "p100",
+    "p101"
+  ],
+  "known_places": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p16",
+    "p17",
+    "p18",
+    "p10",
+    "p11",
+    "p19",
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24",
+    "p12",
+    "p25",
+    "p26",
+    "p13",
+    "p27",
+    "p28",
+    "p14",
+    "p29",
+    "p30",
+    "p31",
+    "p32",
+    "p33",
+    "p15",
+    "p34",
+    "p35",
+    "p36",
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p41",
+    "p42",
+    "p43",
+    "p44",
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49",
+    "p50",
+    "p51",
+    "p52",
+    "p53",
+    "p54",
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p59",
+    "p60",
+    "p61",
+    "p62",
+    "p63",
+    "p64",
+    "p65",
+    "p66",
+    "p67",
+    "p68",
+    "p69",
+    "p70",
+    "p71",
+    "p72",
+    "p73",
+    "p74",
+    "p75",
+    "p76",
+    "p77",
+    "p78",
+    "p79",
+    "p80",
+    "p81",
+    "p82",
+    "p83",
+    "p84",
+    "p85",
+    "p86",
+    "p87",
+    "p88",
+    "p89",
+    "p90",
+    "p91",
+    "p92",
+    "p93",
+    "p94",
+    "p95",
+    "p96",
+    "p97",
+    "p98",
+    "p99",
+    "p100",
+    "p101"
+  ],
+  "found_items": [
+    "a10",
+    "a2",
+    "a3",
+    "a4",
+    "a11",
+    "a12",
+    "a6",
+    "a7",
+    "a8",
+    "a9",
+    "a14",
+    "a15",
+    "a1",
+    "a16",
+    "a17",
+    "a18",
+    "a19",
+    "a20",
+    "a21",
+    "a22",
+    "a5",
+    "a23",
+    "a24",
+    "a25",
+    "a26",
+    "a27",
+    "a28",
+    "a29",
+    "a30",
+    "a31",
+    "a32",
+    "a33",
+    "a34",
+    "a35",
+    "a36",
+    "a37",
+    "a38",
+    "a39",
+    "a40",
+    "a41",
+    "a42",
+    "a43",
+    "a44",
+    "a45",
+    "a46",
+    "a47",
+    "a48",
+    "a49",
+    "a50",
+    "a51",
+    "a52",
+    "a53",
+    "a54",
+    "a55"
+  ],
+  "discovered": [
+    "a10",
+    "a2",
+    "a3",
+    "a4",
+    "a11",
+    "a12",
+    "a6",
+    "a7",
+    "a8",
+    "a9",
+    "a14",
+    "a15",
+    "a1",
+    "a16",
+    "a17",
+    "a18",
+    "a19",
+    "a20",
+    "a21",
+    "a22",
+    "a5",
+    "a23",
+    "a24",
+    "a25",
+    "a26",
+    "a27",
+    "a28",
+    "a29",
+    "a30",
+    "a31",
+    "a32",
+    "a33",
+    "a34",
+    "a35",
+    "a36",
+    "a37",
+    "a38",
+    "a39",
+    "a40",
+    "a41",
+    "a42",
+    "a43",
+    "a44",
+    "a45",
+    "a46",
+    "a47",
+    "a48",
+    "a49",
+    "a50",
+    "a51",
+    "a52",
+    "a53",
+    "a54",
+    "a55"
+  ],
+  "asks": [
+    {
+      "id": "frag:q1",
+      "question": "Who was Ysirveth, and what became of them?",
+      "fragment": "Some claim Ysirveth, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne. Of Ysirveth, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q2",
+      "question": "Who was Quelmund, and what became of them?",
+      "fragment": "The tellings differ, but most agree Quelmund, god of healing and the price of healing, claimed a portion of the gift and took a throne. Of Quelmund, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q3",
+      "question": "Who was Kamoth, and what became of them?",
+      "fragment": "The tellings differ, but most agree Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing. Of Kamoth, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q4",
+      "question": "Who was Solendra, and what became of them?",
+      "fragment": "The tellings differ, but most agree the Church of Yoryne was raised at Velothasmere; Solendra of the Long Vigil took its first pulpit, preaching that the waning is a trial and the faithful will be spared. Of Solendra, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q5",
+      "question": "Who was Serdis, and what became of them?",
+      "fragment": "The tellings differ, but most agree at the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. Of Serdis, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q6",
+      "question": "Who was Nyessorn, and what became of them?",
+      "fragment": "The tellings differ, but most agree Nyessorn the Lantern-eyed united the river-clans and was crowned in Hestvethshroud; the realm took the name Belthashollow. Of Nyessorn, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    }
+  ],
+  "delves": [
+    {
+      "target": "e1",
+      "node": "e1",
+      "found": [
+        "frag:e29",
+        "frag:e30",
+        "a14"
+      ]
+    },
+    {
+      "target": "e2",
+      "node": "e2",
+      "found": [
+        "frag:e31",
+        "frag:e32",
+        "a15"
+      ]
+    },
+    {
+      "target": "e3",
+      "node": "e3",
+      "found": [
+        "frag:e33",
+        "frag:e34",
+        "a16"
+      ]
+    },
+    {
+      "target": "e4",
+      "node": "e4",
+      "found": [
+        "frag:e35",
+        "frag:e36",
+        "a17"
+      ]
+    },
+    {
+      "target": "e5",
+      "node": "e5",
+      "found": [
+        "frag:e37",
+        "frag:e38"
+      ]
+    },
+    {
+      "target": "e6",
+      "node": "e6",
+      "found": [
+        "frag:e39",
+        "frag:e40"
+      ]
+    },
+    {
+      "target": "e7",
+      "node": "e7",
+      "found": [
+        "frag:e41",
+        "frag:e42"
+      ]
+    },
+    {
+      "target": "e8",
+      "node": "e8",
+      "found": [
+        "frag:e43",
+        "frag:e44",
+        "a18"
+      ]
+    },
+    {
+      "target": "e9",
+      "node": "e9",
+      "found": [
+        "frag:e45",
+        "frag:e46",
+        "a19"
+      ]
+    },
+    {
+      "target": "e10",
+      "node": "e10",
+      "found": [
+        "frag:e47",
+        "frag:e48"
+      ]
+    },
+    {
+      "target": "e11",
+      "node": "e11",
+      "found": [
+        "frag:e49",
+        "frag:e50"
+      ]
+    },
+    {
+      "target": "e12",
+      "node": "e12",
+      "found": [
+        "frag:e51",
+        "frag:e52",
+        "a20"
+      ]
+    },
+    {
+      "target": "e13",
+      "node": "e13",
+      "found": [
+        "frag:e53",
+        "frag:e54"
+      ]
+    },
+    {
+      "target": "e14",
+      "node": "e14",
+      "found": [
+        "frag:e55",
+        "frag:e56",
+        "a21"
+      ]
+    },
+    {
+      "target": "e15",
+      "node": "e15",
+      "found": [
+        "frag:e57",
+        "frag:e58",
+        "a22"
+      ]
+    },
+    {
+      "target": "e16",
+      "node": "e16",
+      "found": [
+        "frag:e59",
+        "frag:e60",
+        "a23"
+      ]
+    },
+    {
+      "target": "e17",
+      "node": "e17",
+      "found": [
+        "frag:e61",
+        "frag:e62"
+      ]
+    },
+    {
+      "target": "e18",
+      "node": "e18",
+      "found": [
+        "frag:e63",
+        "frag:e64",
+        "a24"
+      ]
+    },
+    {
+      "target": "e19",
+      "node": "e19",
+      "found": [
+        "frag:e65",
+        "frag:e66"
+      ]
+    },
+    {
+      "target": "e20",
+      "node": "e20",
+      "found": [
+        "frag:e67",
+        "frag:e68"
+      ]
+    },
+    {
+      "target": "e21",
+      "node": "e21",
+      "found": [
+        "frag:e69",
+        "frag:e70",
+        "a25"
+      ]
+    },
+    {
+      "target": "e22",
+      "node": "e22",
+      "found": [
+        "frag:e71",
+        "frag:e72",
+        "a26"
+      ]
+    },
+    {
+      "target": "e23",
+      "node": "e23",
+      "found": [
+        "frag:e73",
+        "frag:e74"
+      ]
+    },
+    {
+      "target": "e24",
+      "node": "e24",
+      "found": [
+        "frag:e75",
+        "frag:e76"
+      ]
+    },
+    {
+      "target": "e25",
+      "node": "e25",
+      "found": [
+        "frag:e77",
+        "frag:e78",
+        "a27"
+      ]
+    },
+    {
+      "target": "e26",
+      "node": "e26",
+      "found": [
+        "frag:e79",
+        "frag:e80",
+        "a28"
+      ]
+    },
+    {
+      "target": "e27",
+      "node": "e27",
+      "found": [
+        "frag:e81",
+        "frag:e82",
+        "a29"
+      ]
+    },
+    {
+      "target": "e28",
+      "node": "e28",
+      "found": [
+        "frag:e83",
+        "frag:e84",
+        "a30"
+      ]
+    },
+    {
+      "target": "e29",
+      "node": "e29",
+      "found": [
+        "frag:e85",
+        "frag:e86"
+      ]
+    },
+    {
+      "target": "e30",
+      "node": "e30",
+      "found": [
+        "frag:e87",
+        "frag:e88",
+        "a31"
+      ]
+    },
+    {
+      "target": "e31",
+      "node": "e31",
+      "found": [
+        "frag:e89",
+        "frag:e90"
+      ]
+    },
+    {
+      "target": "e32",
+      "node": "e32",
+      "found": [
+        "frag:e91",
+        "frag:e92"
+      ]
+    },
+    {
+      "target": "e33",
+      "node": "e33",
+      "found": [
+        "frag:e93",
+        "frag:e94",
+        "a32"
+      ]
+    },
+    {
+      "target": "e34",
+      "node": "e34",
+      "found": [
+        "frag:e95",
+        "frag:e96"
+      ]
+    },
+    {
+      "target": "e35",
+      "node": "e35",
+      "found": [
+        "frag:e97",
+        "frag:e98"
+      ]
+    },
+    {
+      "target": "e36",
+      "node": "e36",
+      "found": [
+        "frag:e99",
+        "frag:e100"
+      ]
+    },
+    {
+      "target": "e37",
+      "node": "e37",
+      "found": [
+        "frag:e101",
+        "frag:e102"
+      ]
+    },
+    {
+      "target": "e38",
+      "node": "e38",
+      "found": [
+        "frag:e103",
+        "frag:e104"
+      ]
+    },
+    {
+      "target": "e39",
+      "node": "e39",
+      "found": [
+        "frag:e105",
+        "frag:e106"
+      ]
+    },
+    {
+      "target": "e40",
+      "node": "e40",
+      "found": [
+        "frag:e107",
+        "frag:e108"
+      ]
+    },
+    {
+      "target": "e41",
+      "node": "e41",
+      "found": [
+        "frag:e109",
+        "frag:e110"
+      ]
+    },
+    {
+      "target": "e42",
+      "node": "e42",
+      "found": [
+        "frag:e111",
+        "frag:e112",
+        "a33"
+      ]
+    },
+    {
+      "target": "e43",
+      "node": "e43",
+      "found": [
+        "frag:e113",
+        "frag:e114",
+        "a34"
+      ]
+    },
+    {
+      "target": "e44",
+      "node": "e44",
+      "found": [
+        "frag:e115",
+        "frag:e116"
+      ]
+    },
+    {
+      "target": "e45",
+      "node": "e45",
+      "found": [
+        "frag:e117",
+        "frag:e118",
+        "a35"
+      ]
+    },
+    {
+      "target": "e46",
+      "node": "e46",
+      "found": [
+        "frag:e119",
+        "frag:e120",
+        "a36"
+      ]
+    },
+    {
+      "target": "e47",
+      "node": "e47",
+      "found": [
+        "frag:e121",
+        "frag:e122"
+      ]
+    },
+    {
+      "target": "e48",
+      "node": "e48",
+      "found": [
+        "frag:e123",
+        "frag:e124",
+        "a37"
+      ]
+    },
+    {
+      "target": "e49",
+      "node": "e49",
+      "found": [
+        "frag:e125",
+        "frag:e126",
+        "a38"
+      ]
+    },
+    {
+      "target": "e50",
+      "node": "e50",
+      "found": [
+        "frag:e127",
+        "frag:e128",
+        "a39"
+      ]
+    },
+    {
+      "target": "e51",
+      "node": "e51",
+      "found": [
+        "frag:e129",
+        "frag:e130"
+      ]
+    },
+    {
+      "target": "e52",
+      "node": "e52",
+      "found": [
+        "frag:e131",
+        "frag:e132"
+      ]
+    },
+    {
+      "target": "e53",
+      "node": "e53",
+      "found": [
+        "frag:e133",
+        "frag:e134",
+        "a40"
+      ]
+    },
+    {
+      "target": "e54",
+      "node": "e54",
+      "found": [
+        "frag:e135",
+        "frag:e136"
+      ]
+    },
+    {
+      "target": "e55",
+      "node": "e55",
+      "found": [
+        "frag:e137",
+        "frag:e138",
+        "a41"
+      ]
+    },
+    {
+      "target": "e56",
+      "node": "e56",
+      "found": [
+        "frag:e139",
+        "frag:e140"
+      ]
+    },
+    {
+      "target": "e57",
+      "node": "e57",
+      "found": [
+        "frag:e141",
+        "frag:e142"
+      ]
+    },
+    {
+      "target": "e58",
+      "node": "e58",
+      "found": [
+        "frag:e143",
+        "frag:e144"
+      ]
+    },
+    {
+      "target": "e59",
+      "node": "e59",
+      "found": [
+        "frag:e145",
+        "frag:e146",
+        "a42"
+      ]
+    },
+    {
+      "target": "e60",
+      "node": "e60",
+      "found": [
+        "frag:e147",
+        "frag:e148",
+        "a43"
+      ]
+    },
+    {
+      "target": "e61",
+      "node": "e61",
+      "found": [
+        "frag:e149",
+        "frag:e150"
+      ]
+    },
+    {
+      "target": "e62",
+      "node": "e62",
+      "found": [
+        "frag:e151",
+        "frag:e152",
+        "a44"
+      ]
+    },
+    {
+      "target": "e63",
+      "node": "e63",
+      "found": [
+        "frag:e153",
+        "frag:e154"
+      ]
+    },
+    {
+      "target": "e64",
+      "node": "e64",
+      "found": [
+        "frag:e155",
+        "frag:e156",
+        "a45"
+      ]
+    },
+    {
+      "target": "e65",
+      "node": "e65",
+      "found": [
+        "frag:e157",
+        "frag:e158"
+      ]
+    },
+    {
+      "target": "e66",
+      "node": "e66",
+      "found": [
+        "frag:e159",
+        "frag:e160"
+      ]
+    },
+    {
+      "target": "e67",
+      "node": "e67",
+      "found": [
+        "frag:e161",
+        "frag:e162"
+      ]
+    },
+    {
+      "target": "e68",
+      "node": "e68",
+      "found": [
+        "frag:e163",
+        "frag:e164",
+        "a46"
+      ]
+    },
+    {
+      "target": "e69",
+      "node": "e69",
+      "found": [
+        "frag:e165",
+        "frag:e166",
+        "a47"
+      ]
+    },
+    {
+      "target": "e70",
+      "node": "e70",
+      "found": [
+        "frag:e167",
+        "frag:e168"
+      ]
+    },
+    {
+      "target": "e71",
+      "node": "e71",
+      "found": [
+        "frag:e169",
+        "frag:e170",
+        "a48"
+      ]
+    },
+    {
+      "target": "e72",
+      "node": "e72",
+      "found": [
+        "frag:e171",
+        "frag:e172",
+        "a49"
+      ]
+    },
+    {
+      "target": "e73",
+      "node": "e73",
+      "found": [
+        "frag:e173",
+        "frag:e174",
+        "a50"
+      ]
+    },
+    {
+      "target": "e74",
+      "node": "e74",
+      "found": [
+        "frag:e175",
+        "frag:e176"
+      ]
+    },
+    {
+      "target": "e75",
+      "node": "e75",
+      "found": [
+        "frag:e177",
+        "frag:e178"
+      ]
+    },
+    {
+      "target": "e76",
+      "node": "e76",
+      "found": [
+        "frag:e179",
+        "frag:e180",
+        "a51"
+      ]
+    },
+    {
+      "target": "e77",
+      "node": "e77",
+      "found": [
+        "frag:e181",
+        "frag:e182",
+        "a52"
+      ]
+    },
+    {
+      "target": "e78",
+      "node": "e78",
+      "found": [
+        "frag:e183",
+        "frag:e184",
+        "a53"
+      ]
+    },
+    {
+      "target": "e79",
+      "node": "e79",
+      "found": [
+        "frag:e185",
+        "frag:e186",
+        "a54"
+      ]
+    },
+    {
+      "target": "e80",
+      "node": "e80",
+      "found": [
+        "frag:e187",
+        "frag:e188",
+        "a55"
+      ]
+    }
+  ],
+  "theories": [
+    {
+      "claims": [
+        "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+        "The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.",
+        "The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
+        "The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
+        "The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule."
+      ],
+      "verdicts": [
+        {
+          "claim": "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule.",
+          "verdict": "veiled",
+          "note": "Here the archives go quiet."
+        }
+      ],
+      "score": 13
+    }
+  ],
+  "budget": {
+    "steps": 0,
+    "delves": 0,
+    "asks": 44
+  },
+  "start_budget": {
+    "steps": 100,
+    "delves": 80,
+    "asks": 50
+  }
+}

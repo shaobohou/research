@@ -195,3 +195,25 @@ biased fragment of that history.
   (e.g. Hestnothgate) also become place entities — thematically fine (ER
   blurs realm/place names) but a mild dup; the "seal weakens" placement can
   read "on the roads to the Pilgrim Roads" when its event sits at the hub.
+
+### 2026-07-06 — configurable budget + delving opens new ground (100-step run)
+- Request: a 100-step walkthrough. Default step budget was 8, so added an
+  optional `budget=` arg to Exploration (records `start_budget` for correct
+  spent-so-far reporting in the compendium).
+- First 100-step run exposed a real design gap: delving grew *history* huge
+  (+160 events, +81 figures) but only +5 places, so the seeker spent 14/100
+  steps — geography, not steps, was the limiter. In ER, digging into a lead
+  opens a new *area*. Fixed it: every expansion now mints a fresh locale
+  ("off the deep roads") and sites its child events + minted relics there;
+  `ensure_geography` now fills `placement` independently of `site` so those
+  pre-set sites keep. Delve already reports child/​item places as new_ground,
+  so digging now grows the *map*.
+- Re-run (seed-314, Sundered Moon): 100/100 steps, 80/80 delves, world grew
+  28→188 events, 13→55 relics, 16→101 places, 12→93 figures; walked 101/101
+  places, examined 54/55 relics. Report: worlds/seed-314/walkthrough-100steps.md
+  (world-growth table, abridged run log, purist theory with a veil-1 probe
+  that drew the antiquary's silence, full compendium of all discovered lore).
+- Determinism note: locale minting draws one namer.place() AFTER the template
+  runs, so child-event/relic *content* is unchanged; only a place is appended.
+  Committed pre-existing worlds aren't re-expanded, so they're unaffected;
+  their ledgers just gain nothing on load (placement already set).

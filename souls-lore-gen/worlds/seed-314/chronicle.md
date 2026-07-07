@@ -1,0 +1,469 @@
+# The True Chronicle (seed 314)
+
+> **Spoilers.** This is the ground truth the items only hint at.
+
+**Cosmology:** the Sundered Moon — gift of longing, tide of the blood, and light gentle enough to lie by.
+**The waning:** the shards drift apart; nights arrive unscheduled and grief acquires weight.
+**The curse:** the Silver Lament — moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.
+
+**THE VEILS (each partially true, reframed by the next; never stated by any item):**
+1. The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.
+2. The gentle light was never the Moon's — it is borrowed, and the lender has begun to collect.
+3. The Moon broke itself to hide the lender's name among its shards; assembled, they would speak it, and the debt would come due all at once.
+
+## Ages
+- **the Age of the Gift** (years 0–296): the Sundered Moon gave the world longing, tide of the blood, and light gentle enough to lie by.
+- **the Age of Names** (years 296–565): The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight.
+- **the Age of Dusk** (years 565–present): The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure.
+
+## Timeline
+- **Year 0** — *cosmogony*: the Sundered Moon rose (or was raised — the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by. _(at the Pilgrim Roads)_
+  - **Year 0** — *testimony*: An account survives from Ruthott the Plain, a novice, set down against instruction and hidden in a wall. _(at Caledanecrown)_
+    - **Year 0** — *testimony*: An account survives from Drarion One-hand, a cartwright, set down against instruction and hidden in a psalter. _(at Wrenanrionfen)_
+    - **Year 0** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Wrenanrionfen)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 0** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Caledanecrown)_
+    - **Year 0** — *testimony*: An account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall. _(at Nyotthold)_
+    - **Year 0** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Nyotthold)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 20** — *claiming*: Galomere, god of graves and the ledger of names, claimed a portion of the gift and took a throne. _(at Galomere)_
+  - **Year 19** — *testimony*: An account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. _(at Nyemisspire)_
+    - **Year 18** — *testimony*: An account survives from Karott the Sleepless, a envoy, set down against instruction and hidden in a ledger. _(at Athanmothcradle)_
+    - **Year 18** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Athanmothcradle)_
+  - **Year 20** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Nyemisspire)_
+    - **Year 17** — *testimony*: An account survives from Mazsila the Plain, a lantern-bearer, set down against instruction and hidden in a wall. _(at Veldanedeep)_
+    - **Year 18** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Veldanedeep)_
+- **Year 27** — *claiming*: Ysirveth, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne. _(at Soldismere)_
+  - **Year 27** — *testimony*: An account survives from Ranulgar the Sleepless, a bell-ringer, set down against instruction and hidden in a wall. _(at Ishornhold)_
+    - **Year 26** — *testimony*: An account survives from Morula One-hand, a quartermaster, set down against instruction and hidden in a psalter. _(at Fenamothvault)_
+    - **Year 27** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Fenamothvault)_
+  - **Year 27** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Ishornhold)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 22** — *testimony*: An account survives from Ysyne Cinder-shod, a handmaid, set down against instruction and hidden in a psalter. _(at Iroachhollow)_
+    - **Year 22** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Iroachhollow)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 30** — *claiming*: Yoryne, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne. _(at Elirvanebarrow)_
+  - **Year 26** — *testimony*: An account survives from Omdis Long-memoried, a envoy, set down against instruction and hidden in a coffin lid. _(at Draumothmarch)_
+    - **Year 22** — *testimony*: An account survives from Kamere the Plain, a siege captain, set down against instruction and hidden in a psalter. _(at Hestessthasfen)_
+    - **Year 22** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Hestessthasfen)_
+  - **Year 29** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Draumothmarch)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 25** — *testimony*: An account survives from Iryne Thrice-pardoned, a lantern-bearer, set down against instruction and hidden in a ledger. _(at Galmeremere)_
+    - **Year 27** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Galmeremere)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 39** — *claiming*: Quelmund, god of healing and the price of healing, claimed a portion of the gift and took a throne. _(at Solosvault)_
+  - **Year 39** — *testimony*: An account survives from Calien One-hand, a gravedigger, set down against instruction and hidden in a ledger. _(at Banlisbarrow)_
+    - **Year 37** — *testimony*: An account survives from Mazohild of the Rearguard, a chronicler, set down against instruction and hidden in a coffin lid. _(at Aldrirvanegate)_
+    - **Year 39** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Aldrirvanegate)_
+  - **Year 39** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Banlisbarrow)_
+    - **Year 38** — *testimony*: An account survives from Ghalenemis the Unlettered, a lantern-bearer, set down against instruction and hidden in a ledger. _(at Nimanulahollow)_
+    - **Year 39** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Nimanulahollow)_
+- **Year 53** — *founding*: Galomere founded Karenienreach (kingdom) at Oliadiscrown. _(at Galomere)_
+  - **Year 50** — *testimony*: An account survives from Torolis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid. _(at Omiasilafen)_
+    - **Year 45** — *testimony*: An account survives from Belmere Long-memoried, a chronicler, set down against instruction and hidden in a wall. _(at Fenuldraspire)_
+    - **Year 45** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Fenuldraspire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 50** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Omiasilafen)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 50** — *testimony*: An account survives from Ulenwyn of the Rearguard, a chronicler, set down against instruction and hidden in a coffin lid. _(at Verulgrimmere)_
+    - **Year 50** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Verulgrimmere)_
+- **Year 53** — *forging*: The Mirror of Galomere was wrought as regalia of Galomere's throne. _(at Galomere)_
+  - **Year 48** — *testimony*: An account survives from Ghalenthas of No House, a handmaid, set down against instruction and hidden in a coffin lid. _(at Aldrenthasmarch)_
+    - **Year 47** — *testimony*: An account survives from Logrim the Sleepless, a novice, set down against instruction and hidden in a coffin lid. _(at Fennothreach)_
+    - **Year 48** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Fennothreach)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 49** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Aldrenthasmarch)_
+    - **Year 49** — *testimony*: An account survives from Aldreth Thrice-pardoned, a deserter, set down against instruction and hidden in a psalter. _(at Osthildhold)_
+    - **Year 49** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Osthildhold)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 78** — *founding*: Ysirveth founded Ysrionmarch (kingdom) at Soldismere. _(at Ysrionmarch)_
+  - **Year 75** — *testimony*: An account survives from Ulessach the Plain, a gravedigger, set down against instruction and hidden in a coffin lid. _(at Velmundmere)_
+    - **Year 74** — *testimony*: An account survives from Hariaveth the Plain, a handmaid, set down against instruction and hidden in a coffin lid. _(at Toriaastdeep)_
+    - **Year 75** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Toriaastdeep)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 78** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Velmundmere)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 73** — *testimony*: An account survives from Olcael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger. _(at Solastreach)_
+    - **Year 76** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Solastreach)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 78** — *forging*: The Shard of Ysirveth was wrought as regalia of Ysirveth's throne. _(at Soldismere)_
+  - **Year 74** — *testimony*: An account survives from Galorgar the Meek, a cartwright, set down against instruction and hidden in a ledger. _(at Ezmundcrown)_
+    - **Year 71** — *testimony*: An account survives from Ysaeveth Thrice-pardoned, a handmaid, set down against instruction and hidden in a coffin lid. _(at Ulirornfen)_
+    - **Year 74** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Ulirornfen)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 74** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Ezmundcrown)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 72** — *testimony*: An account survives from Athocael the Stray, a witness, set down against instruction and hidden in a wall. _(at Quelachmere)_
+    - **Year 72** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Quelachmere)_
+- **Year 109** — *founding*: Yoryne founded Kaearaspire (kingdom) at Elirvanebarrow. _(at Kaearaspire)_
+  - **Year 108** — *testimony*: An account survives from Solcael the Stray, a witness, set down against instruction and hidden in a psalter. _(at Ysvethcrown)_
+    - **Year 103** — *testimony*: An account survives from Nyisila of No House, a handmaid, set down against instruction and hidden in a wall. _(at Ostaeulahold)_
+    - **Year 103** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Ostaeulahold)_
+  - **Year 108** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Ysvethcrown)_
+    - **Year 105** — *testimony*: An account survives from Elaric the Stray, a envoy, set down against instruction and hidden in a ledger. _(at Ranootthollow)_
+    - **Year 108** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Ranootthollow)_
+- **Year 109** — *forging*: The Mirror of Yoryne was wrought as regalia of Yoryne's throne. _(at Elirvanebarrow)_
+  - **Year 109** — *testimony*: An account survives from Wrenthas the Younger, a siege captain, set down against instruction and hidden in a wall. _(at Ishirlishold)_
+    - **Year 107** — *testimony*: An account survives from Kaansila the Plain, a gravedigger, set down against instruction and hidden in a psalter. _(at Belthasgate)_
+    - **Year 108** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Belthasgate)_
+  - **Year 109** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Ishirlishold)_
+    - **Year 106** — *testimony*: An account survives from Toriremis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid. _(at Olvanebarrow)_
+    - **Year 106** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Olvanebarrow)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 148** — *founding*: Quelmund founded Thalaemisreach (kingdom) at Solosvault. _(at Thalaemisreach)_
+  - **Year 143** — *testimony*: An account survives from Ghaldra the Meek, a witness, set down against instruction and hidden in a psalter. _(at Banhildreach)_
+    - **Year 137** — *testimony*: An account survives from Ezgar the Stray, a cartwright, set down against instruction and hidden in a psalter. _(at Ghaleulahollow)_
+    - **Year 138** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Ghaleulahollow)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 145** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Banhildreach)_
+    - **Year 145** — *testimony*: An account survives from Karaeien One-hand, a quartermaster, set down against instruction and hidden in a ledger. _(at Mazorulamarch)_
+    - **Year 145** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Mazorulamarch)_
+- **Year 148** — *forging*: The Veil of Quelmund was wrought as regalia of Quelmund's throne. _(at Solosvault)_
+  - **Year 143** — *testimony*: An account survives from Belimere Thrice-pardoned, a chronicler, set down against instruction and hidden in a wall. _(at Kaastshroud)_
+    - **Year 137** — *testimony*: An account survives from Ghalara the Stray, a quartermaster, set down against instruction and hidden in a wall. _(at Servanevault)_
+    - **Year 140** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Servanevault)_
+  - **Year 143** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Kaastshroud)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 139** — *testimony*: An account survives from Galara Thrice-pardoned, a gravedigger, set down against instruction and hidden in a coffin lid. _(at Banulwynhold)_
+    - **Year 142** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Banulwynhold)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 182** — *great war*: Nimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war. _(at Solosvault)_
+  - _Hidden:_ Ysirveth treated with Nimgrim in secret and was spared what followed.
+  - **Year 181** — *battle*: The war's worst day was at Harthasspire, where the line held for a night and a morning under Belessos the Plain, and then did not hold. _(at Ostgarshroud)_
+    - **Year 178** — *testimony*: An account survives from Baniadane the Younger, a siege captain, set down against instruction and hidden in a psalter. _(at Ezianothvault)_
+    - **Year 179** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Ezianothvault)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 182** — *champion's duel*: Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war. _(at Ostgarshroud)_
+    - _Hidden:_ The duel was not fought to a death but to a bargain.
+    - **Year 178** — *testimony*: An account survives from Ranenhild Thrice-pardoned, a gravedigger, set down against instruction and hidden in a psalter. _(at Ezuwyndeep)_
+    - **Year 179** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Ezuwyndeep)_
+- **Year 192** — *sealing*: Nimgrim was defeated and sealed beneath Nimenmothreach; the seal was bought with the lives of 9 champions. _(at Nimenmothreach)_
+  - **Year 192** — *the paying of the price*: Of the champions spent on the seal, most are a list now; two are still prayed to by name — Soldis the Younger and Olott of the Rearguard — though none can say what distinguishes the remembered dead from the rest. _(at Kaaravault)_
+    - **Year 190** — *testimony*: An account survives from Fenvane One-hand, a lantern-bearer, set down against instruction and hidden in a psalter. _(at Hestithasfen)_
+    - **Year 192** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Hestithasfen)_
+  - **Year 192** — *the wardens' charge*: A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. _(at Kaaravault)_
+    - _Hidden:_ The first warden asked to be bound to the seal, not appointed over it.
+    - **Year 192** — *testimony*: An account survives from Serott the Meek, a cartwright, set down against instruction and hidden in a coffin lid. _(at Yorirthasspire)_
+    - **Year 192** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Yorirthasspire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 296** — *waning*: The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by. _(at the Pilgrim Roads)_
+  - **Year 295** — *testimony*: An account survives from Dragrim the Sleepless, a novice, set down against instruction and hidden in a psalter. _(at Sylirarashroud)_
+    - **Year 293** — *testimony*: An account survives from Galien the Stray, a witness, set down against instruction and hidden in a psalter. _(at Ostirwynspire)_
+    - **Year 294** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Ostirwynspire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 296** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Sylirarashroud)_
+    - **Year 294** — *testimony*: An account survives from Kaanien the Plain, a siege captain, set down against instruction and hidden in a coffin lid. _(at Irirarabarrow)_
+    - **Year 294** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Irirarabarrow)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 325** — *founding*: Yseric the Adamant founded the Order of the Veil at Toriagrimbarrow, sworn to stand against the Silver Lament. _(at Toriagrimbarrow)_
+  - **Year 323** — *testimony*: An account survives from Solirmere of No House, a lantern-bearer, set down against instruction and hidden in a psalter. _(at Toruldanereach)_
+    - **Year 323** — *testimony*: An account survives from Ranirsila of No House, a handmaid, set down against instruction and hidden in a ledger. _(at Wrenirvanespire)_
+    - **Year 323** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Wrenirvanespire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 323** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Toruldanereach)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 322** — *testimony*: An account survives from Soluldra Cinder-shod, a deserter, set down against instruction and hidden in a coffin lid. _(at Aldrorsilahold)_
+    - **Year 322** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Aldrorsilahold)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 337** — *founding*: The Church of Yoryne was raised at Velothasmere; Solendra of the Long Vigil took its first pulpit, preaching that the waning is a trial and the faithful will be spared. _(at Velothasmere)_
+  - **Year 336** — *testimony*: An account survives from Uluast the Stray, a handmaid, set down against instruction and hidden in a ledger. _(at Ysirnothcrown)_
+    - **Year 334** — *testimony*: An account survives from Verott Long-memoried, a gravedigger, set down against instruction and hidden in a coffin lid. _(at Athmunddeep)_
+    - **Year 335** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Athmunddeep)_
+  - **Year 336** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Ysirnothcrown)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 331** — *testimony*: An account survives from Mordis the Sleepless, a siege captain, set down against instruction and hidden in a coffin lid. _(at Caliremishold)_
+    - **Year 332** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Caliremishold)_
+- **Year 358** — *heresy*: Velaeeth the Lantern-eyed was cast out of Church of Yoryne and founded the Cult of the True Shard, teaching that the gods themselves caused the waning. _(at Veranynereach)_
+  - _Hidden:_ The heresy is nearer the truth than the sermon.
+  - **Year 354** — *testimony*: An account survives from Mazaewyn Long-memoried, a deserter, set down against instruction and hidden in a coffin lid. _(at Haridisvault)_
+    - **Year 352** — *testimony*: An account survives from Wrenveth One-hand, a siege captain, set down against instruction and hidden in a psalter. _(at Calthasmarch)_
+    - **Year 353** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Calthasmarch)_
+  - **Year 354** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Haridisvault)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 348** — *testimony*: An account survives from Morehild the Stray, a handmaid, set down against instruction and hidden in a coffin lid. _(at Dragarmarch)_
+    - **Year 349** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Dragarmarch)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 384** — *founding*: Nyessorn the Lantern-eyed united the river-clans and was crowned in Hestvethshroud; the realm took the name Belthashollow. _(at Hestvethshroud)_
+  - **Year 379** — *testimony*: An account survives from Nyorveth the Younger, a handmaid, set down against instruction and hidden in a coffin lid. _(at Calirhildfen)_
+    - **Year 375** — *testimony*: An account survives from Galvane the Stray, a lantern-bearer, set down against instruction and hidden in a ledger. _(at Olirottspire)_
+    - **Year 378** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Olirottspire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 380** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Calirhildfen)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 376** — *testimony*: An account survives from Ostien the Unlettered, a novice, set down against instruction and hidden in a wall. _(at Yorulgrimbarrow)_
+    - **Year 378** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Yorulgrimbarrow)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 424** — *rite of restoration*: At the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed. _(at Velothasmere)_
+  - _Hidden:_ The rite did not restore anything. It only fed the waning more slowly — and Solendra suspected as much.
+  - **Year 424** — *the choosing*: The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running. _(at Irorncradle)_
+    - _Hidden:_ The one who ran was never pursued, by design.
+    - **Year 423** — *testimony*: An account survives from Calmoth the Meek, a novice, set down against instruction and hidden in a psalter. _(at Elaradeep)_
+    - **Year 424** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Elaradeep)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 424** — *the procession*: The procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it. _(at Irorncradle)_
+    - **Year 424** — *testimony*: An account survives from Yorudra the Plain, a gravedigger, set down against instruction and hidden in a coffin lid. _(at Ostmundfen)_
+    - **Year 424** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Ostmundfen)_
+- **Year 462** — *betrayal*: Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on. _(at Hestvethshroud)_
+  - _Hidden:_ Harach acted on a promise from the Cult of the True Shard: that the marked of their house would be spared the Silver Lament. The promise was not kept.
+  - **Year 459** — *secret council*: Twice before the gates opened, a go-between came by night — Nyayne Thrice-pardoned, who carried no letters and remembered everything. _(at Elornmarch)_
+    - **Year 453** — *testimony*: An account survives from Ostoryne the Meek, a chronicler, set down against instruction and hidden in a wall. _(at Galanvethdeep)_
+    - **Year 454** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Galanvethdeep)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 461** — *the price named*: The grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked. _(at Elornmarch)_
+    - _Hidden:_ The promise was made in another's name, without their knowledge.
+    - **Year 459** — *testimony*: An account survives from Ruthlis Cinder-shod, a quartermaster, set down against instruction and hidden in a ledger. _(at Nyessemisspire)_
+    - **Year 461** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Nyessemisspire)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 465** — *fall of a kingdom*: Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again. _(at Belthashollow)_
+  - **Year 459** — *testimony*: An account survives from Ishos Cinder-shod, a chronicler, set down against instruction and hidden in a coffin lid. _(at Cyressdismere)_
+    - **Year 459** — *testimony*: An account survives from Wrenulien of the Rearguard, a envoy, set down against instruction and hidden in a coffin lid. _(at Galaeastshroud)_
+    - **Year 459** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Galaeastshroud)_
+  - **Year 462** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Cyressdismere)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 460** — *testimony*: An account survives from Ishnoth the Meek, a novice, set down against instruction and hidden in a coffin lid. _(at Athiauladeep)_
+    - **Year 460** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Athiauladeep)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 467** — *fate*: Harach was found at Veranynereach bearing the Silver Lament, and was not spared. _(at Veranynereach)_
+  - **Year 462** — *testimony*: An account survives from Bandis of No House, a lantern-bearer, set down against instruction and hidden in a psalter. _(at Baniaorngate)_
+    - **Year 461** — *testimony*: An account survives from Ostwyn the Younger, a chronicler, set down against instruction and hidden in a wall. _(at Cyrovethdeep)_
+    - **Year 461** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Cyrovethdeep)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 462** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Baniaorngate)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+    - **Year 457** — *testimony*: An account survives from Belos Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. _(at Ezrionfen)_
+    - **Year 458** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Ezrionfen)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 565** — *twilight of a god*: Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament — the first of the gods to bear it — and wandered from their seat. _(at Soldismere)_
+  - _Hidden:_ The curse does not distinguish gods from mortals. It never did.
+  - **Year 560** — *last audience*: In the god's final season, audiences grew strange: petitioners were answered before they spoke, and one — Ostessgrim the Stray — was sent away with an apology no one understood. _(at Serulottmarch)_
+    - **Year 558** — *testimony*: An account survives from Ulmoth the Sleepless, a deserter, set down against instruction and hidden in a ledger. _(at Nyessmothcradle)_
+    - **Year 559** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Nyessmothcradle)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+  - **Year 565** — *the empty seat*: The throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since. _(at Serulottmarch)_
+    - _Hidden:_ The arrangement was the god's own last act, and it was an answer.
+    - **Year 561** — *testimony*: An account survives from Omensila Thrice-pardoned, a bell-ringer, set down against instruction and hidden in a ledger. _(at Wrenastcrown)_
+    - **Year 564** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Wrenastcrown)_
+      - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 598** — *last pilgrimage*: Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing. _(at Toriagrimbarrow)_
+  - **Year 596** — *testimony*: An account survives from Ezesscael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger. _(at Ysienvault)_
+    - **Year 595** — *testimony*: An account survives from Olirthas of the Rearguard, a siege captain, set down against instruction and hidden in a wall. _(at Calimundmarch)_
+    - **Year 596** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Calimundmarch)_
+  - **Year 598** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Ysienvault)_
+    - **Year 593** — *testimony*: An account survives from Sylessrion the Younger, a handmaid, set down against instruction and hidden in a psalter. _(at Mazwynhold)_
+    - **Year 596** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Mazwynhold)_
+- **Year 604** — *hero's end*: Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. _(at Toriagrimbarrow)_
+  - **Year 600** — *testimony*: An account survives from Galmund the Meek, a handmaid, set down against instruction and hidden in a wall. _(at Wrengrimshroud)_
+  - **Year 602** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Wrengrimshroud)_
+    - _Hidden:_ What they came for was not what the chronicles assumed.
+- **Year 632** — *the seal weakens*: Pilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued. _(at the Pilgrim Roads)_
+  - _Hidden:_ The seal has been failing on its own since the waning began. The cult only follows the cracks.
+  - **Year 629** — *testimony*: An account survives from Moriahild the Sleepless, a lantern-bearer, set down against instruction and hidden in a ledger. _(at Mordrashroud)_
+  - **Year 630** — *aftermath*: In the months after, crows came in unusual numbers, and left in unusual silence. _(at Mordrashroud)_
+
+## Dramatis Personae
+- **Galomere** god of graves and the ledger of names [god] (god) — of Karenienreach.
+- **Ysirveth** god of harvest, plenty, and the debt of plenty [god] (god) — of Ysrionmarch. Fate: took the Silver Lament and wandered (year 565).
+- **Yoryne** god of war and the keeping of thresholds [god] (god) — of Kaearaspire.
+- **Quelmund** god of healing and the price of healing [god] (god) — of Thalaemisreach.
+- **Nimgrim** the Unreflected [god] (adversary). Fate: sealed beneath Nimenmothreach (year 192).
+- **Yseric** the Adamant (knight) — of Order of the Veil.
+- **Solendra** of the Long Vigil (high priest) — of Church of Yoryne.
+- **Velaeeth** the Lantern-eyed (heretic scholar) — of Cult of the True Shard.
+- **Nyessorn** the Lantern-eyed (king) — of Belthashollow. Fate: slain at their own throne (year 465).
+- **Serdis** the Kindly (pilgrim saint) — of Church of Yoryne. Fate: given to the rite of restoration (year 424).
+- **Harach** the Kindly (oathbreaker general) — of Belthashollow. Fate: succumbed to the Silver Lament (year 467).
+- **Kamoth** the Unmarked (wandering knight) — of Order of the Veil. Fate: walked into the dusk unarmed (year 604).
+- **Ruthott** the Plain (novice).
+- **Thaliadra** Long-memoried (gravedigger).
+- **Ranulgar** the Sleepless (bell-ringer).
+- **Omdis** Long-memoried (envoy).
+- **Calien** One-hand (gravedigger).
+- **Torolis** Cinder-shod (siege captain).
+- **Ghalenthas** of No House (handmaid).
+- **Ulessach** the Plain (gravedigger).
+- **Galorgar** the Meek (cartwright).
+- **Solcael** the Stray (witness).
+- **Wrenthas** the Younger (siege captain).
+- **Ghaldra** the Meek (witness).
+- **Belimere** Thrice-pardoned (chronicler).
+- **Belessos** the Plain (siege captain).
+- **Soldis** the Younger (champion). Fate: given to the seal (year 192).
+- **Olott** of the Rearguard (champion). Fate: given to the seal (year 192).
+- **Dragrim** the Sleepless (novice).
+- **Solirmere** of No House (lantern-bearer).
+- **Uluast** the Stray (handmaid).
+- **Mazaewyn** Long-memoried (deserter).
+- **Nyorveth** the Younger (handmaid).
+- **Ghalorula** of No House (novice).
+- **Nyayne** Thrice-pardoned (envoy).
+- **Ishos** Cinder-shod (chronicler).
+- **Bandis** of No House (lantern-bearer).
+- **Ostessgrim** the Stray (witness).
+- **Ezesscael** Cinder-shod (siege captain).
+- **Galmund** the Meek (handmaid).
+- **Moriahild** the Sleepless (lantern-bearer).
+- **Drarion** One-hand (cartwright).
+- **Loulmund** of the Rearguard (cartwright).
+- **Karott** the Sleepless (envoy).
+- **Mazsila** the Plain (lantern-bearer).
+- **Morula** One-hand (quartermaster).
+- **Ysyne** Cinder-shod (handmaid).
+- **Kamere** the Plain (siege captain).
+- **Iryne** Thrice-pardoned (lantern-bearer).
+- **Mazohild** of the Rearguard (chronicler).
+- **Ghalenemis** the Unlettered (lantern-bearer).
+- **Belmere** Long-memoried (chronicler).
+- **Ulenwyn** of the Rearguard (chronicler).
+- **Logrim** the Sleepless (novice).
+- **Aldreth** Thrice-pardoned (deserter).
+- **Hariaveth** the Plain (handmaid).
+- **Olcael** Cinder-shod (siege captain).
+- **Ysaeveth** Thrice-pardoned (handmaid).
+- **Athocael** the Stray (witness).
+- **Nyisila** of No House (handmaid).
+- **Elaric** the Stray (envoy).
+- **Kaansila** the Plain (gravedigger).
+- **Toriremis** Cinder-shod (siege captain).
+- **Ezgar** the Stray (cartwright).
+- **Karaeien** One-hand (quartermaster).
+- **Ghalara** the Stray (quartermaster).
+- **Galara** Thrice-pardoned (gravedigger).
+- **Baniadane** the Younger (siege captain).
+- **Ranenhild** Thrice-pardoned (gravedigger).
+- **Fenvane** One-hand (lantern-bearer).
+- **Serott** the Meek (cartwright).
+- **Galien** the Stray (witness).
+- **Kaanien** the Plain (siege captain).
+- **Ranirsila** of No House (handmaid).
+- **Soluldra** Cinder-shod (deserter).
+- **Verott** Long-memoried (gravedigger).
+- **Mordis** the Sleepless (siege captain).
+- **Wrenveth** One-hand (siege captain).
+- **Morehild** the Stray (handmaid).
+- **Galvane** the Stray (lantern-bearer).
+- **Ostien** the Unlettered (novice).
+- **Calmoth** the Meek (novice).
+- **Yorudra** the Plain (gravedigger).
+- **Ostoryne** the Meek (chronicler).
+- **Ruthlis** Cinder-shod (quartermaster).
+- **Wrenulien** of the Rearguard (envoy).
+- **Ishnoth** the Meek (novice).
+- **Ostwyn** the Younger (chronicler).
+- **Belos** Long-memoried (gravedigger).
+- **Ulmoth** the Sleepless (deserter).
+- **Omensila** Thrice-pardoned (bell-ringer).
+- **Olirthas** of the Rearguard (siege captain).
+- **Sylessrion** the Younger (handmaid).
+
+## Factions
+- **Karenienreach** (kingdom), seat Oliadiscrown, founded year 53.
+- **Ysrionmarch** (kingdom), seat Soldismere, founded year 78.
+- **Kaearaspire** (kingdom), seat Elirvanebarrow, founded year 109.
+- **Thalaemisreach** (kingdom), seat Solosvault, founded year 148.
+- **Order of the Veil** (order), seat Toriagrimbarrow, founded year 325.
+- **Church of Yoryne** (church), seat Velothasmere, founded year 337.
+- **Cult of the True Shard** (cult), seat Veranynereach, founded year 358.
+- **Belthashollow** (kingdom), seat Hestvethshroud, founded year 384, fell year 465.
+
+## Places
+- **the Pilgrim Roads** — holds Warding Lament.
+- **Oliadiscrown**.
+- **Soldismere** — holds Shard of Ysirveth, Soul of Ysirveth.
+- **Elirvanebarrow** — holds Mirror of Yoryne.
+- **Solosvault** — holds Veil of Quelmund.
+- **Toriagrimbarrow** — holds Kamoth's Set, Ring of the Veil Vigil.
+- **Velothasmere** — holds Remnant Soul of Saint Serdis, Mirror of Saint Serdis.
+- **Veranynereach**.
+- **Hestvethshroud**.
+- **Galomere** — holds Mirror of Galomere.
+- **Karenienreach**.
+- **Ysrionmarch**.
+- **Kaearaspire**.
+- **Thalaemisreach**.
+- **Nimenmothreach** — holds Quelmund's War-Shard.
+- **Belthashollow** — holds Hollow Crown of Belthashollow, Harach's Oathbreaker Blade.
+- **Caledanecrown** — holds Effects of Ruthott.
+- **Nyemisspire** — holds Effects of Thaliadra.
+- **Ishornhold** — holds Effects of Ranulgar.
+- **Draumothmarch** — holds Effects of Omdis.
+- **Banlisbarrow**.
+- **Omiasilafen**.
+- **Aldrenthasmarch**.
+- **Velmundmere** — holds Effects of Ulessach.
+- **Ezmundcrown** — holds Effects of Galorgar.
+- **Ysvethcrown**.
+- **Ishirlishold**.
+- **Banhildreach** — holds Effects of Ghaldra.
+- **Kaastshroud**.
+- **Belimere**.
+- **Ostgarshroud** — holds Torn Standard of Harthasspire.
+- **Harthasspire**.
+- **Kaaravault** — holds Warden's Silver-ring.
+- **Sylirarashroud** — holds Effects of Dragrim.
+- **Toruldanereach**.
+- **Solirmere**.
+- **Ysirnothcrown** — holds Effects of Uluast.
+- **Haridisvault**.
+- **Calirhildfen**.
+- **Irorncradle** — holds Processional Veil.
+- **Elornmarch** — holds Unsigned Letter of Banricmarch.
+- **Cyressdismere**.
+- **Baniaorngate**.
+- **Serulottmarch** — holds Candle of the Loastfen Vigil.
+- **Ysienvault** — holds Effects of Ezesscael.
+- **Wrengrimshroud** — holds Effects of Galmund.
+- **Mordrashroud** — holds Effects of Moriahild.
+- **Wrenanrionfen**.
+- **Nyotthold** — holds Effects of Loulmund.
+- **Athanmothcradle**.
+- **Veldanedeep**.
+- **Fenamothvault** — holds Effects of Morula.
+- **Iroachhollow**.
+- **Hestessthasfen**.
+- **Kamere**.
+- **Galmeremere**.
+- **Aldrirvanegate**.
+- **Nimanulahollow**.
+- **Fenuldraspire**.
+- **Belmere**.
+- **Verulgrimmere**.
+- **Fennothreach**.
+- **Osthildhold** — holds Effects of Aldreth.
+- **Toriaastdeep** — holds Effects of Hariaveth.
+- **Solastreach**.
+- **Ulirornfen** — holds Effects of Ysaeveth.
+- **Quelachmere** — holds Effects of Athocael.
+- **Ostaeulahold**.
+- **Ranootthollow** — holds Effects of Elaric.
+- **Belthasgate** — holds Effects of Kaansila.
+- **Olvanebarrow** — holds Effects of Toriremis.
+- **Ghaleulahollow**.
+- **Mazorulamarch**.
+- **Servanevault** — holds Effects of Ghalara.
+- **Banulwynhold**.
+- **Ezianothvault** — holds Effects of Baniadane.
+- **Ezuwyndeep**.
+- **Hestithasfen**.
+- **Yorirthasspire**.
+- **Ostirwynspire** — holds Effects of Galien.
+- **Irirarabarrow** — holds Effects of Kaanien.
+- **Wrenirvanespire**.
+- **Aldrorsilahold** — holds Effects of Soluldra.
+- **Athmunddeep**.
+- **Caliremishold** — holds Effects of Mordis.
+- **Calthasmarch**.
+- **Dragarmarch**.
+- **Olirottspire**.
+- **Yorulgrimbarrow** — holds Effects of Ostien.
+- **Elaradeep** — holds Effects of Calmoth.
+- **Ostmundfen**.
+- **Galanvethdeep** — holds Effects of Ostoryne.
+- **Nyessemisspire** — holds Effects of Ruthlis.
+- **Galaeastshroud** — holds Effects of Wrenulien.
+- **Athiauladeep**.
+- **Cyrovethdeep**.
+- **Ezrionfen** — holds Effects of Belos.
+- **Nyessmothcradle** — holds Effects of Ulmoth.
+- **Wrenastcrown** — holds Effects of Omensila.
+- **Calimundmarch** — holds Effects of Olirthas.
+- **Mazwynhold** — holds Effects of Sylessrion.

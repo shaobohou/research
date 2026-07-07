@@ -57,7 +57,7 @@ def _llm_guard(fn, *args, fallback):
 class Exploration:
     def __init__(self, world_dir: Path, explorer: str = "seeker",
                  role: str = "seeker", model: str | None = None,
-                 purist: bool = True):
+                 purist: bool = True, budget: dict | None = None):
         self.world_dir = Path(world_dir)
         ledger_path = self.world_dir / "ledger.json"
         if not ledger_path.exists():
@@ -79,6 +79,9 @@ class Exploration:
             self.state.setdefault("found_items", [])
             self.state["budget"].setdefault("steps", DEFAULT_BUDGET["steps"])
         else:
+            start = dict(DEFAULT_BUDGET)
+            if budget:
+                start.update(budget)
             self.state = {
                 "explorer": explorer,
                 "location": self.roads_id,
@@ -89,7 +92,8 @@ class Exploration:
                 "asks": [],
                 "delves": [],
                 "theories": [],
-                "budget": dict(DEFAULT_BUDGET),
+                "budget": dict(start),
+                "start_budget": dict(start),   # for spent-so-far reporting
             }
 
     # -- plumbing ---------------------------------------------------------------
@@ -605,12 +609,13 @@ class Exploration:
         if m["epigraph"]:
             lines += [f"> {m['epigraph']}", ""]
         b = st["budget"]
-        spent = lambda k: DEFAULT_BUDGET[k] - b[k]
+        start = st.get("start_budget", DEFAULT_BUDGET)
+        spent = lambda k: start[k] - b[k]
         lines += [f"*Places walked: {len(st['visited'])} — relics examined: "
                   f"{len(st['discovered'])} — steps {spent('steps')}/"
-                  f"{DEFAULT_BUDGET['steps']}, asks {spent('asks')}/"
-                  f"{DEFAULT_BUDGET['asks']}, delves {spent('delves')}/"
-                  f"{DEFAULT_BUDGET['delves']}*", ""]
+                  f"{start['steps']}, asks {spent('asks')}/"
+                  f"{start['asks']}, delves {spent('delves')}/"
+                  f"{start['delves']}*", ""]
 
         walked = [pid for pid in st["visited"]]
         if walked:

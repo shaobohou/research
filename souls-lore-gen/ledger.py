@@ -335,8 +335,10 @@ def ensure_geography(lg: Ledger) -> bool:
                 a["site"] = places[lg.get(a["origin_faction"])["seat"]]
             else:
                 a["site"] = roads
-            kind = (lg.get(a["provenance"][-1])["kind"]
-                    if a["provenance"] else None)
+            changed = True
+        if a.get("placement") is None:      # fill independently of site so
+            kind = (lg.get(a["provenance"][-1])["kind"]   # expansion-set sites
+                    if a["provenance"] else None)         # keep their own site
             tpl = _PLACEMENT_BY_KIND.get(kind) or _PLACEMENT_BY_TYPE.get(
                 a["item_type"], "Found upon the roads near {place}.")
             a["placement"] = tpl.format(place=lg.get(a["site"])["name"])

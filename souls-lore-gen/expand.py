@@ -262,6 +262,22 @@ class Expander:
         """Returns (child_event_ids, new_artifact_ids)."""
         template = self.TEMPLATES.get(self.parent["kind"], Expander._t_generic)
         events, items = template(self)
+        # Every dig opens a fresh locale off the deep roads — new ground the
+        # seeker can then walk to. Its accounts and relics rest there, so
+        # depth-on-demand grows the *map*, not just the timeline.
+        locale = self.namer.place()
+        pid = self.lg.next_id("p")
+        self.lg.entities[pid] = {"type": "place", "name": locale,
+                                 "source": self.source}
+        if locale not in self.lg.meta["used_names"]:
+            self.lg.meta["used_names"].append(locale)
+        for cid in events:
+            self.lg.get(cid)["place"] = pid
+        for aid in items:
+            a = self.lg.get(aid)
+            a["site"] = pid
+            a["placement"] = (f"Recovered at {locale}, off the deep roads, "
+                              f"where the account had lain hidden.")
         self.parent["expanded"] = True
         return events, items
 
