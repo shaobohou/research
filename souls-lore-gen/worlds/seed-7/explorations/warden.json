@@ -1,0 +1,127 @@
+{
+  "explorer": "warden",
+  "location": "p13",
+  "visited": [
+    "p1",
+    "p8",
+    "p4",
+    "p7",
+    "p6",
+    "p2",
+    "p5",
+    "p3",
+    "p13"
+  ],
+  "known_places": [
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p13"
+  ],
+  "found_items": [
+    "a3",
+    "a15",
+    "a5",
+    "a6",
+    "a1",
+    "a9",
+    "a10",
+    "a11",
+    "a2",
+    "a7",
+    "a8"
+  ],
+  "discovered": [
+    "a3",
+    "a15",
+    "a5",
+    "a6",
+    "a1",
+    "a9",
+    "a10",
+    "a11",
+    "a2",
+    "a7",
+    "a8"
+  ],
+  "asks": [
+    {
+      "id": "frag:q1",
+      "question": "Who was Ghalenmund, and what became of them?",
+      "fragment": "Some claim Ghalenmund, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne. Of Ghalenmund, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    },
+    {
+      "id": "frag:q2",
+      "question": "Who was Belwyn, and what became of them?",
+      "fragment": "Old verses hold that Belwyn the Unbowed was cast out of Church of Queliamund and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning. Of Belwyn, the records otherwise keep their counsel.\n    \u2014 a marginal note, unsigned"
+    }
+  ],
+  "delves": [
+    {
+      "target": "Ghalenmund",
+      "node": "e6",
+      "found": [
+        "frag:e34",
+        "frag:e35"
+      ]
+    },
+    {
+      "target": "Belwyn",
+      "node": "e33",
+      "found": [
+        "frag:e36",
+        "frag:e37",
+        "a16"
+      ]
+    }
+  ],
+  "theories": [
+    {
+      "claims": [
+        "The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
+        "The procession took the long road, through every village, so that all might see what their deliverance cost.",
+        "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
+        "The church's pruning is no mere symbol \u2014 something is cut from the Root each season, and burned.",
+        "The last knight became the god he went to find."
+      ],
+      "verdicts": [
+        {
+          "claim": "The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The procession took the long road, through every village, so that all might see what their deliverance cost.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The church's pruning is no mere symbol \u2014 something is cut from the Root each season, and burned.",
+          "verdict": "veiled",
+          "note": "Here the archives go quiet."
+        },
+        {
+          "claim": "The last knight became the god he went to find.",
+          "verdict": "unsupported",
+          "note": "No surviving record speaks to this."
+        }
+      ],
+      "score": 10
+    }
+  ],
+  "budget": {
+    "steps": 0,
+    "delves": 3,
+    "asks": 6
+  }
+}

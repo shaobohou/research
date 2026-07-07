@@ -159,9 +159,14 @@ worlds migrate on first load.
   fog-of-war state, travel/adjacency, placement-as-evidence, delve
   resolution, and purist-reception vs benchmark-verdict theorizing.
 - [`mcp_server.py`](mcp_server.py) — FastMCP stdio wrapper over `explore.py`.
-- Documented playthroughs: [`worlds/seed-5/exploration-journal.md`](worlds/seed-5/exploration-journal.md)
-  (spatial + purist), [`worlds/seed-9/exploration-journal.md`](worlds/seed-9/exploration-journal.md)
-  (the earlier catalogue-era run).
+- Documented playthroughs:
+  [`worlds/seed-7/full-walkthrough.md`](worlds/seed-7/full-walkthrough.md) — a
+  complete, literal transcript (every tool call + raw output, empty state to
+  final theory);
+  [`worlds/seed-5/exploration-journal.md`](worlds/seed-5/exploration-journal.md)
+  — a narrated spatial + purist run;
+  [`worlds/seed-9/exploration-journal.md`](worlds/seed-9/exploration-journal.md)
+  — the earlier catalogue-era run.
 - [`worlds/`](worlds/) — committed samples (template mode; this container has
   no API key): seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the

@@ -1,0 +1,1369 @@
+{
+  "meta": {
+    "seed": 7,
+    "archetype_key": "root",
+    "primordial": "the Pale Root",
+    "gift": "order, season, and the slow sap that binds moments in sequence",
+    "waning": "the Root greys and splits; hours repeat, orchards fruit with last year's fruit",
+    "curse_name": "the Ringing-rot",
+    "curse_desc": "growth rings surface on the flesh of the afflicted, one for each hour they relive",
+    "relic_nouns": [
+      "seed",
+      "sap",
+      "ring",
+      "graft",
+      "bough"
+    ],
+    "veils": [
+      "The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.",
+      "The Root grew from a buried corpse, and the order it grants is that corpse's refusal to be forgotten.",
+      "The corpse is not dead but dreaming in sequence; the seasons are its heartbeats, and the rot began when it started to wake."
+    ],
+    "epigraph": "Of the Pale Root little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.",
+    "present_year": 559,
+    "used_names": [
+      "Belwyn",
+      "Caliadis",
+      "Draessrion",
+      "Eloric",
+      "Galomerebarrow",
+      "Ghalaecaelhollow",
+      "Ghalenmund",
+      "Hardisshroud",
+      "Iraeienvault",
+      "Iriorn",
+      "Kaemisvault",
+      "Kaonothcrown",
+      "Karaeosvault",
+      "Lohildhollow",
+      "Lowyn",
+      "Olagarcradle",
+      "Ostorthas",
+      "Queliamund",
+      "Thaliagrim",
+      "Toromundmarch",
+      "Ulirwyncradle",
+      "Verenethreach",
+      "Wrensila",
+      "the Pilgrim Roads",
+      "Belanien",
+      "Hesticael",
+      "Effects of Hesticael",
+      "Aldrulveth",
+      "Effects of Aldrulveth",
+      "Rutheemis",
+      "Processional Seed",
+      "Harendane",
+      "Belordra",
+      "Effects of Belordra"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 282,
+      "blurb": "the Pale Root gave the world order, season, and the slow sap that binds moments in sequence."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 282,
+      "end": 519,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the Root greys and splits; hours repeat, orchards fruit with last year's fruit."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 519,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Ghalenmund",
+      "epithet": "god of secrets, locks, and the spaces between",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": "descended below the world; did not return",
+      "fate_year": 519,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Thaliagrim",
+      "epithet": "god of war and the keeping of thresholds",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Queliamund",
+      "epithet": "god of graves and the ledger of names",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Iriorn",
+      "epithet": "the Ungrown",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Iraeienvault",
+      "fate_year": 213,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Draessrion",
+      "epithet": "the Grey",
+      "role": "knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Lowyn",
+      "epithet": "the Twice-crowned",
+      "role": "high priest",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Belwyn",
+      "epithet": "the Unbowed",
+      "role": "heretic scholar",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Ostorthas",
+      "epithet": "the Grey",
+      "role": "queen",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 443,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Caliadis",
+      "epithet": "of the Long Vigil",
+      "role": "pilgrim saint",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 393,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Wrensila",
+      "epithet": "the Quiet",
+      "role": "oathbreaker general",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "succumbed to the Ringing-rot",
+      "fate_year": 450,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Eloric",
+      "epithet": "the Unmarked",
+      "role": "wandering knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": "vanished on the deep roads",
+      "fate_year": 546,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Lohildhollow",
+      "kind": "kingdom",
+      "seat": "Toromundmarch",
+      "founded_year": 70,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Hardisshroud",
+      "kind": "kingdom",
+      "seat": "Verenethreach",
+      "founded_year": 93,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Kaonothcrown",
+      "kind": "church",
+      "seat": "Ghalaecaelhollow",
+      "founded_year": 120,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Order of the Graft",
+      "kind": "order",
+      "seat": "Ulirwyncradle",
+      "founded_year": 295,
+      "founder": "f5",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Church of Queliamund",
+      "kind": "church",
+      "seat": "Karaeosvault",
+      "founded_year": 317,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Cult of the Patient Below",
+      "kind": "cult",
+      "seat": "Kaemisvault",
+      "founded_year": 330,
+      "founder": "f7",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Olagarcradle",
+      "kind": "kingdom",
+      "seat": "Galomerebarrow",
+      "founded_year": 349,
+      "founder": "f8",
+      "fallen_year": 443,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Pale Root rose (or was raised \u2014 the tellings differ) and gave the world order, season, and the slow sap that binds moments in sequence.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 19,
+      "text": "Ghalenmund, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 24,
+      "text": "Thaliagrim, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 30,
+      "text": "Queliamund, god of graves and the ledger of names, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "founding",
+      "year": 70,
+      "text": "Ghalenmund founded Lohildhollow (kingdom) at Toromundmarch.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "forging",
+      "year": 70,
+      "text": "The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "founding",
+      "year": 93,
+      "text": "Thaliagrim founded Hardisshroud (kingdom) at Verenethreach.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "forging",
+      "year": 93,
+      "text": "The Ring of Thaliagrim was wrought as regalia of Thaliagrim's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "founding",
+      "year": 120,
+      "text": "Queliamund founded Kaonothcrown (church) at Ghalaecaelhollow.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p11"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "forging",
+      "year": 120,
+      "text": "The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "great war",
+      "year": 199,
+      "text": "Iriorn, the Ungrown, rose against the thrones. Ghalenmund led the gods to war.",
+      "hidden": "Thaliagrim treated with Iriorn in secret and was spared what followed.",
+      "participants": [
+        "f4",
+        "f1",
+        "f2"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 213,
+      "text": "Iriorn was defeated and sealed beneath Iraeienvault; the seal was bought with the lives of 5 champions.",
+      "hidden": null,
+      "participants": [
+        "f4",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "waning",
+      "year": 282,
+      "text": "The waning began: the Root greys and splits; hours repeat, orchards fruit with last year's fruit. Mortals called the affliction the Ringing-rot: growth rings surface on the flesh of the afflicted, one for each hour they relive.",
+      "hidden": null,
+      "participants": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "founding",
+      "year": 295,
+      "text": "Draessrion the Grey founded the Order of the Graft at Ulirwyncradle, sworn to stand against the Ringing-rot.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "founding",
+      "year": 317,
+      "text": "The Church of Queliamund was raised at Karaeosvault; Lowyn the Twice-crowned took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f6",
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 330,
+      "text": "Belwyn the Unbowed was cast out of Church of Queliamund and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f7"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 349,
+      "text": "Ostorthas the Grey united the river-clans and was crowned in Galomerebarrow; the realm took the name Olagarcradle.",
+      "hidden": null,
+      "participants": [
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 393,
+      "text": "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Belwyn suspected as much.",
+      "participants": [
+        "f7",
+        "f9"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": true,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 439,
+      "text": "Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on.",
+      "hidden": "Wrensila acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Ringing-rot. The promise was not kept.",
+      "participants": [
+        "f10",
+        "f8"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 443,
+      "text": "Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f8",
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p13"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "fate",
+      "year": 450,
+      "text": "Wrensila was found at Kaemisvault bearing the Ringing-rot, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f10"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 519,
+      "text": "Ghalenmund, god of secrets, locks, and the spaces between, descended below the world to look upon the Pale Root directly, and did not return.",
+      "hidden": "Ghalenmund found the truth of the waning, and chose to stay.",
+      "participants": [
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 534,
+      "text": "Eloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f11",
+        "f1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 546,
+      "text": "Eloric was last seen at the edge of the deep roads. The order keeps a vigil that has not ended.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 559,
+      "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Iriorn. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Sap of Ghalenmund",
+      "item_type": "catalyst",
+      "created_year": 70,
+      "origin_faction": "k1",
+      "provenance": [
+        "e6"
+      ],
+      "knowledge": [
+        "(year 70) The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
+        "Ghalenmund, god of secrets, locks, and the spaces between: fate \u2014 descended below the world; did not return (year 519).",
+        "This item is kept/told of by Lohildhollow (kingdom), seat at Toromundmarch.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Toromundmarch, and then kept poorly."
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Ring of Thaliagrim",
+      "item_type": "weapon",
+      "created_year": 93,
+      "origin_faction": "k2",
+      "provenance": [
+        "e8"
+      ],
+      "knowledge": [
+        "(year 93) The Ring of Thaliagrim was wrought as regalia of Thaliagrim's throne.",
+        "This item is kept/told of by Hardisshroud (kingdom), seat at Verenethreach.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nThe Ring of Thaliagrim was wrought as regalia of Thaliagrim's throne. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Verenethreach, and then kept poorly."
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Graft of Queliamund",
+      "item_type": "catalyst",
+      "created_year": 120,
+      "origin_faction": "k3",
+      "provenance": [
+        "e10"
+      ],
+      "knowledge": [
+        "(year 120) The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
+        "This item is kept/told of by Kaonothcrown (church), seat at Ghalaecaelhollow.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A catalyst attuned to the old gift.\n\nThe Graft of Queliamund was wrought as regalia of Queliamund's throne. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Ghalaecaelhollow, and then kept poorly."
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Ghalenmund's War-Bough",
+      "item_type": "weapon",
+      "created_year": 213,
+      "origin_faction": "k1",
+      "provenance": [
+        "e11",
+        "e12"
+      ],
+      "knowledge": [
+        "(year 199) Iriorn, the Ungrown, rose against the thrones. Ghalenmund led the gods to war.",
+        "[half-known secret] Thaliagrim treated with Iriorn in secret and was spared what followed.",
+        "(year 213) Iriorn was defeated and sealed beneath Iraeienvault; the seal was bought with the lives of 5 champions.",
+        "Ghalenmund, god of secrets, locks, and the spaces between: fate \u2014 descended below the world; did not return (year 519).",
+        "This item is kept/told of by Lohildhollow (kingdom), seat at Toromundmarch.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A weapon of an older make, still keen despite its years.\n\nIriorn, the Ungrown, rose against the thrones. Ghalenmund led the gods to war. The rest of the story is kept by no one.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p12",
+      "placement": "Worn smooth by warders' hands at Iraeienvault."
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Caliadis",
+      "item_type": "soul remnant",
+      "created_year": 393,
+      "origin_faction": "k6",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 393) At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Belwyn suspected as much.",
+        "Caliadis, of the Long Vigil: fate \u2014 given to the rite of restoration (year 393).",
+        "This item is kept/told of by Cult of the Patient Below (cult), seat at Kaemisvault.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nAt the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Kaemisvault, before which the candles will not stay lit."
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Sap of Saint Caliadis",
+      "item_type": "talisman",
+      "created_year": 393,
+      "origin_faction": "k6",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 393) At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Belwyn suspected as much.",
+        "Caliadis, of the Long Vigil: fate \u2014 given to the rite of restoration (year 393).",
+        "This item is kept/told of by Cult of the Patient Below (cult), seat at Kaemisvault.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nAt the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly \u2014 and Belwyn suspected as much. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Kept in a reliquary at Kaemisvault, before which the candles will not stay lit."
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Hollow Crown of Olagarcradle",
+      "item_type": "key item",
+      "created_year": 443,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 439) Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on.",
+        "(year 443) Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Wrensila, the Quiet: fate \u2014 succumbed to the Ringing-rot (year 450).",
+        "This item is kept/told of by Olagarcradle (kingdom), seat at Galomerebarrow.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "An object of no use in battle, and of great consequence.\n\nWrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on. Some claim Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p13",
+      "placement": "Found at the foot of a throne in Olagarcradle, beneath the dust of the banners."
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Wrensila's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 443,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 439) Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on.",
+        "(year 443) Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Ostorthas, the Grey: fate \u2014 slain at their own throne (year 443).",
+        "This item is kept/told of by Olagarcradle (kingdom), seat at Galomerebarrow.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A weapon of an older make, still keen despite its years.\n\nWrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on. Old verses hold that Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again. Those who keep it too long begin to doubt the sermons. What became of it after is not written.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p13",
+      "placement": "Found at the foot of a throne in Olagarcradle, beneath the dust of the banners."
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Soul of Ghalenmund",
+      "item_type": "soul remnant",
+      "created_year": 519,
+      "origin_faction": "k1",
+      "provenance": [
+        "e22"
+      ],
+      "knowledge": [
+        "(year 519) Ghalenmund, god of secrets, locks, and the spaces between, descended below the world to look upon the Pale Root directly, and did not return.",
+        "Ghalenmund, god of secrets, locks, and the spaces between: fate \u2014 descended below the world; did not return (year 519).",
+        "This item is kept/told of by Lohildhollow (kingdom), seat at Toromundmarch.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The lingering soul of one who would not wholly pass.\n\nGhalenmund, god of secrets, locks, and the spaces between, descended below the world to look upon the Pale Root directly, and did not return. Whether this was mercy or malice, none agree.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Taken from a throne room at Toromundmarch where nothing else was disturbed."
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Eloric's Set",
+      "item_type": "armor",
+      "created_year": 546,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 534) Eloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing.",
+        "(year 546) Eloric was last seen at the edge of the deep roads. The order keeps a vigil that has not ended.",
+        "Eloric, the Unmarked: fate \u2014 vanished on the deep roads (year 546).",
+        "This item is kept/told of by Order of the Graft (order), seat at Ulirwyncradle.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Worn armor that remembers the shape of its last bearer.\n\nEloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing. Perhaps it is better that the tale ends there.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Ulirwyncradle, and never reclaimed."
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Ring of the Graft Vigil",
+      "item_type": "ring",
+      "created_year": 546,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 534) Eloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing.",
+        "(year 546) Eloric was last seen at the edge of the deep roads. The order keeps a vigil that has not ended.",
+        "Ghalenmund, god of secrets, locks, and the spaces between: fate \u2014 descended below the world; did not return (year 519).",
+        "This item is kept/told of by Order of the Graft (order), seat at Ulirwyncradle.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A ring that grants a small, stubborn blessing.\n\nEloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing. It is said that Eloric was last seen at the edge of the deep roads. The order keeps a vigil that has not ended. Held long enough, it suggests the waning is no accident. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Ulirwyncradle, and never reclaimed."
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Warding Ring",
+      "item_type": "consumable",
+      "created_year": 559,
+      "origin_faction": "k5",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 559) Pilgrims of the Cult of the Patient Below were found digging at the seal of Iriorn. The wardens hanged nine; the digging continued.",
+        "[half-known secret] The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+        "Iriorn, the Ungrown: fate \u2014 sealed beneath Iraeienvault (year 213).",
+        "This item is kept/told of by Church of Queliamund (church), seat at Karaeosvault.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nPilgrims of the Cult of the Patient Below were found digging at the seal of Iriorn. The wardens hanged nine; the digging continued. The name endures; little else does.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
+    },
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
+    },
+    "p2": {
+      "type": "place",
+      "name": "Toromundmarch",
+      "source": "geo"
+    },
+    "p3": {
+      "type": "place",
+      "name": "Verenethreach",
+      "source": "geo"
+    },
+    "p4": {
+      "type": "place",
+      "name": "Ghalaecaelhollow",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Ulirwyncradle",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Karaeosvault",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Kaemisvault",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Galomerebarrow",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Lohildhollow",
+      "source": "geo"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Hardisshroud",
+      "source": "geo"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Kaonothcrown",
+      "source": "geo"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Iraeienvault",
+      "source": "geo"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Olagarcradle",
+      "source": "geo"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Belanien",
+      "epithet": "the Stray",
+      "role": "envoy",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e2"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 19,
+      "text": "An account survives from Belanien the Stray, a envoy, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "parent": "e2",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e2",
+      "place": "p1"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 19,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e2",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e2",
+      "place": "p1"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Hesticael",
+      "epithet": "Long-memoried",
+      "role": "handmaid",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e16"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 329,
+      "text": "An account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger.",
+      "hidden": null,
+      "participants": [
+        "f13"
+      ],
+      "parent": "e16",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e16",
+      "place": "p1"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 329,
+      "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e16",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e16",
+      "place": "p1"
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Effects of Hesticael",
+      "item_type": "ring",
+      "created_year": 329,
+      "origin_faction": null,
+      "provenance": [
+        "e28"
+      ],
+      "knowledge": [
+        "(year 329) An account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger. Perhaps it is better that the tale ends there.",
+      "depth": 1,
+      "source": "expansion:e16",
+      "site": "p1",
+      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Aldrulveth",
+      "epithet": "One-hand",
+      "role": "chronicler",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e5"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 67,
+      "text": "An account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "parent": "e5",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e5",
+      "place": "p1"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 68,
+      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e5",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e5",
+      "place": "p1"
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Effects of Aldrulveth",
+      "item_type": "consumable",
+      "created_year": 67,
+      "origin_faction": null,
+      "provenance": [
+        "e30"
+      ],
+      "knowledge": [
+        "(year 67) An account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "A humble ward, spent in a moment.\n\nAn account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall. Perhaps it is better that the tale ends there.",
+      "depth": 1,
+      "source": "expansion:e5",
+      "site": "p1",
+      "placement": "Bought from a peddler working the roads near the Pilgrim Roads."
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Rutheemis",
+      "epithet": "of the Rearguard",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e18"
+    },
+    "e32": {
+      "type": "event",
+      "kind": "the choosing",
+      "year": 390,
+      "text": "The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running.",
+      "hidden": "The one who ran was never pursued, by design.",
+      "participants": [
+        "f15"
+      ],
+      "parent": "e18",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e18",
+      "place": "p1"
+    },
+    "e33": {
+      "type": "event",
+      "kind": "the procession",
+      "year": 393,
+      "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it.",
+      "hidden": null,
+      "participants": [
+        "f15",
+        "f7",
+        "f9"
+      ],
+      "parent": "e18",
+      "depth": 1,
+      "expanded": true,
+      "source": "expansion:e18",
+      "place": "p7"
+    },
+    "a15": {
+      "type": "artifact",
+      "name": "Processional Seed",
+      "item_type": "talisman",
+      "created_year": 393,
+      "origin_faction": null,
+      "provenance": [
+        "e33"
+      ],
+      "knowledge": [
+        "(year 393) The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it. Perhaps it is better that the tale ends there.",
+      "depth": 1,
+      "source": "expansion:e18",
+      "site": "p7",
+      "placement": "Dropped along the procession road near Kaemisvault, and left where it fell."
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Harendane",
+      "epithet": "Long-memoried",
+      "role": "novice",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 1,
+      "source": "expansion:e6"
+    },
+    "e34": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 64,
+      "text": "An account survives from Harendane Long-memoried, a novice, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f16"
+      ],
+      "parent": "e6",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e6",
+      "place": "p1"
+    },
+    "e35": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 67,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": null,
+      "participants": [],
+      "parent": "e6",
+      "depth": 1,
+      "expanded": false,
+      "source": "expansion:e6",
+      "place": "p1"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Belordra",
+      "epithet": "Cinder-shod",
+      "role": "witness",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 2,
+      "source": "expansion:e33"
+    },
+    "e36": {
+      "type": "event",
+      "kind": "testimony",
+      "year": 387,
+      "text": "An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid.",
+      "hidden": null,
+      "participants": [
+        "f17"
+      ],
+      "parent": "e33",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e33",
+      "place": "p1"
+    },
+    "e37": {
+      "type": "event",
+      "kind": "aftermath",
+      "year": 390,
+      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
+      "hidden": "What they came for was not what the chronicles assumed.",
+      "participants": [],
+      "parent": "e33",
+      "depth": 2,
+      "expanded": false,
+      "source": "expansion:e33",
+      "place": "p1"
+    },
+    "a16": {
+      "type": "artifact",
+      "name": "Effects of Belordra",
+      "item_type": "ring",
+      "created_year": 387,
+      "origin_faction": null,
+      "provenance": [
+        "e36"
+      ],
+      "knowledge": [
+        "(year 387) An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid.",
+        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid. Perhaps it is better that the tale ends there.",
+      "depth": 2,
+      "source": "expansion:e33",
+      "site": "p1",
+      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+    }
+  },
+  "notes": []
+}
