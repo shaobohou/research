@@ -76,7 +76,7 @@ The lingering soul of one who would not wholly pass.
 
 Ruthmere, god of storms and unkept promises, took the Gutter-mark — the first of the gods to bear it — and wandered from their seat. It is said that the curse does not distinguish gods from mortals. It never did. What became of it after is not written.
 
-*Taken from a throne room at Ruthmere where nothing else was disturbed.*
+*Taken from a throne room at Olearacradle where nothing else was disturbed.*
 
 ## Talismans
 
@@ -86,7 +86,7 @@ A talisman for the invoking of half-forgotten rites.
 
 The Pyre of Ruthmere was wrought as regalia of Ruthmere's throne. What became of it after is not written.
 
-*Kept long at Ruthmere, and then kept poorly.*
+*Kept long at Olearacradle, and then kept poorly.*
 
 ### Ash of Saint Kariadane
 

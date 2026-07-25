@@ -26,7 +26,7 @@
     - **Year 0** — *testimony*: An account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall. _(at Nyotthold)_
     - **Year 0** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Nyotthold)_
       - _Hidden:_ What they came for was not what the chronicles assumed.
-- **Year 20** — *claiming*: Galomere, god of graves and the ledger of names, claimed a portion of the gift and took a throne. _(at Galomere)_
+- **Year 20** — *claiming*: Galomere, god of graves and the ledger of names, claimed a portion of the gift and took a throne. _(at Oliadiscrown)_
   - **Year 19** — *testimony*: An account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. _(at Nyemisspire)_
     - **Year 18** — *testimony*: An account survives from Karott the Sleepless, a envoy, set down against instruction and hidden in a ledger. _(at Athanmothcradle)_
     - **Year 18** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Athanmothcradle)_
@@ -58,7 +58,7 @@
   - **Year 39** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Banlisbarrow)_
     - **Year 38** — *testimony*: An account survives from Ghalenemis the Unlettered, a lantern-bearer, set down against instruction and hidden in a ledger. _(at Nimanulahollow)_
     - **Year 39** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Nimanulahollow)_
-- **Year 53** — *founding*: Galomere founded Karenienreach (kingdom) at Oliadiscrown. _(at Galomere)_
+- **Year 53** — *founding*: Galomere founded Karenienreach (kingdom) at Oliadiscrown. _(at Karenienreach)_
   - **Year 50** — *testimony*: An account survives from Torolis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid. _(at Omiasilafen)_
     - **Year 45** — *testimony*: An account survives from Belmere Long-memoried, a chronicler, set down against instruction and hidden in a wall. _(at Fenuldraspire)_
     - **Year 45** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Fenuldraspire)_
@@ -67,7 +67,7 @@
     - _Hidden:_ What they came for was not what the chronicles assumed.
     - **Year 50** — *testimony*: An account survives from Ulenwyn of the Rearguard, a chronicler, set down against instruction and hidden in a coffin lid. _(at Verulgrimmere)_
     - **Year 50** — *aftermath*: In the months after, pilgrims came in unusual numbers, and left in unusual silence. _(at Verulgrimmere)_
-- **Year 53** — *forging*: The Mirror of Galomere was wrought as regalia of Galomere's throne. _(at Galomere)_
+- **Year 53** — *forging*: The Mirror of Galomere was wrought as regalia of Galomere's throne. _(at Oliadiscrown)_
   - **Year 48** — *testimony*: An account survives from Ghalenthas of No House, a handmaid, set down against instruction and hidden in a coffin lid. _(at Aldrenthasmarch)_
     - **Year 47** — *testimony*: An account survives from Logrim the Sleepless, a novice, set down against instruction and hidden in a coffin lid. _(at Fennothreach)_
     - **Year 48** — *aftermath*: In the months after, debt-collectors came in unusual numbers, and left in unusual silence. _(at Fennothreach)_
@@ -367,7 +367,7 @@
 
 ## Places
 - **the Pilgrim Roads** — holds Warding Lament.
-- **Oliadiscrown**.
+- **Oliadiscrown** — holds Mirror of Galomere.
 - **Soldismere** — holds Shard of Ysirveth, Soul of Ysirveth.
 - **Elirvanebarrow** — holds Mirror of Yoryne.
 - **Solosvault** — holds Veil of Quelmund.
@@ -375,7 +375,6 @@
 - **Velothasmere** — holds Remnant Soul of Saint Serdis, Mirror of Saint Serdis.
 - **Veranynereach**.
 - **Hestvethshroud**.
-- **Galomere** — holds Mirror of Galomere.
 - **Karenienreach**.
 - **Ysrionmarch**.
 - **Kaearaspire**.
@@ -395,13 +394,11 @@
 - **Ishirlishold**.
 - **Banhildreach** — holds Effects of Ghaldra.
 - **Kaastshroud**.
-- **Belimere**.
 - **Ostgarshroud** — holds Torn Standard of Harthasspire.
 - **Harthasspire**.
 - **Kaaravault** — holds Warden's Silver-ring.
 - **Sylirarashroud** — holds Effects of Dragrim.
 - **Toruldanereach**.
-- **Solirmere**.
 - **Ysirnothcrown** — holds Effects of Uluast.
 - **Haridisvault**.
 - **Calirhildfen**.
@@ -420,12 +417,10 @@
 - **Fenamothvault** — holds Effects of Morula.
 - **Iroachhollow**.
 - **Hestessthasfen**.
-- **Kamere**.
 - **Galmeremere**.
 - **Aldrirvanegate**.
 - **Nimanulahollow**.
 - **Fenuldraspire**.
-- **Belmere**.
 - **Verulgrimmere**.
 - **Fennothreach**.
 - **Osthildhold** — holds Effects of Aldreth.

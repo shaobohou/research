@@ -1,21 +1,22 @@
 # 100-Step Walkthrough — seed-314, the world of the Sundered Moon
 
-*A large-budget run (100 steps, 80 delves, 50 asks) by the seeker "cartographer", in spatial + purist mode (template writer). The point of a big step budget is to force the world to **grow**: with only a handful of relics per seat, the steps are spent walking to ground that does not exist until you dig for it. Delving mints new sub-history — accounts, figures, relics, and occasionally new places — so an exhaustive run is a loop of *dig to open ground, walk to it, dig again.***
+*A large-budget run (100 steps, 80 delves, 50 asks) by the seeker "cartographer", in spatial + purist mode (template writer). The point of a big step budget is to force the world to **grow**: the steps are spent walking to ground that does not exist until you dig for it. Each dig opens a fresh locale off the deep roads, so an exhaustive run is a loop of *dig to open ground, walk to it, dig again*. Reproduce with `uv run demos.py hundred`.*
 
 ## World growth (the headline)
 
 | | events | relics | places | figures |
 |---|---:|---:|---:|---:|
-| at genesis | 28 | 13 | 16 | 12 |
-| after the run | 188 | 55 | 101 | 93 |
-| **grew by** | **+160** | **+42** | **+85** | **+81** |
+| at genesis | 28 | 13 | 15 | 12 |
+| after the run | 188 | 55 | 96 | 93 |
+| **grew by** | **+160** | **+42** | **+81** | **+81** |
 
-Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places; examined 54/55 relics.
+Budget spent: **95/100 steps**, 80/80 delves, 6/50 asks. Walked 96/96 places; examined 54/55 relics.
 
 ## Run log (abridged — one line per productive action)
 
 ```
-# start: 28 events, 13 items, 16 places, 12 figures
+# start: 28 events, 13 items, 15 places, 12 figures
+  travelled Oliadiscrown (steps 99) — examined 1 relic(s)
   travelled Soldismere (steps 98) — examined 2 relic(s)
   travelled Elirvanebarrow (steps 97) — examined 1 relic(s)
   travelled Solosvault (steps 96) — examined 1 relic(s)
@@ -26,56 +27,55 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
   travelled Caledanecrown (steps 90) — examined 1 relic(s)
   delve e2: +2 accounts, +1 items, new ground: ['Nyemisspire']
   travelled Nyemisspire (steps 89) — examined 1 relic(s)
-  travelled Galomere (steps 88) — examined 1 relic(s)
   delve e3: +2 accounts, +1 items, new ground: ['Ishornhold']
-  travelled Ishornhold (steps 86) — examined 1 relic(s)
+  travelled Ishornhold (steps 88) — examined 1 relic(s)
   delve e4: +2 accounts, +1 items, new ground: ['Draumothmarch']
-  travelled Draumothmarch (steps 85) — examined 1 relic(s)
+  travelled Draumothmarch (steps 87) — examined 1 relic(s)
   delve e5: +2 accounts, +0 items, new ground: ['Banlisbarrow']
   delve e6: +2 accounts, +0 items, new ground: ['Omiasilafen']
   delve e7: +2 accounts, +0 items, new ground: ['Aldrenthasmarch']
   delve e8: +2 accounts, +1 items, new ground: ['Velmundmere']
-  travelled Velmundmere (steps 81) — examined 1 relic(s)
+  travelled Velmundmere (steps 82) — examined 1 relic(s)
   delve e9: +2 accounts, +1 items, new ground: ['Ezmundcrown']
-  travelled Ezmundcrown (steps 79) — examined 1 relic(s)
+  travelled Ezmundcrown (steps 80) — examined 1 relic(s)
   delve e10: +2 accounts, +0 items, new ground: ['Ysvethcrown']
   delve e11: +2 accounts, +0 items, new ground: ['Ishirlishold']
   delve e12: +2 accounts, +1 items, new ground: ['Banhildreach']
-  travelled Banhildreach (steps 75) — examined 1 relic(s)
+  travelled Banhildreach (steps 76) — examined 1 relic(s)
   delve e13: +2 accounts, +0 items, new ground: ['Kaastshroud']
   delve e14: +2 accounts, +1 items, new ground: ['Ostgarshroud']
-  travelled Ostgarshroud (steps 71) — examined 1 relic(s)
+  travelled Ostgarshroud (steps 73) — examined 1 relic(s)
   delve e15: +2 accounts, +1 items, new ground: ['Kaaravault']
-  travelled Kaaravault (steps 69) — examined 1 relic(s)
-  travelled Nimenmothreach (steps 68) — examined 1 relic(s)
+  travelled Kaaravault (steps 71) — examined 1 relic(s)
+  travelled Nimenmothreach (steps 70) — examined 1 relic(s)
   delve e16: +2 accounts, +1 items, new ground: ['Sylirarashroud']
-  travelled Sylirarashroud (steps 67) — examined 1 relic(s)
+  travelled Sylirarashroud (steps 69) — examined 1 relic(s)
   delve e17: +2 accounts, +0 items, new ground: ['Toruldanereach']
   delve e18: +2 accounts, +1 items, new ground: ['Ysirnothcrown']
-  travelled Ysirnothcrown (steps 64) — examined 1 relic(s)
+  travelled Ysirnothcrown (steps 67) — examined 1 relic(s)
   delve e19: +2 accounts, +0 items, new ground: ['Haridisvault']
   delve e20: +2 accounts, +0 items, new ground: ['Calirhildfen']
   delve e21: +2 accounts, +1 items, new ground: ['Irorncradle']
-  travelled Irorncradle (steps 61) — examined 1 relic(s)
+  travelled Irorncradle (steps 64) — examined 1 relic(s)
   delve e22: +2 accounts, +1 items, new ground: ['Elornmarch']
-  travelled Elornmarch (steps 60) — examined 1 relic(s)
+  travelled Elornmarch (steps 63) — examined 1 relic(s)
   delve e23: +2 accounts, +0 items, new ground: ['Cyressdismere']
   delve e24: +2 accounts, +0 items, new ground: ['Baniaorngate']
   delve e25: +2 accounts, +1 items, new ground: ['Serulottmarch']
-  travelled Serulottmarch (steps 57) — examined 1 relic(s)
+  travelled Serulottmarch (steps 60) — examined 1 relic(s)
   delve e26: +2 accounts, +1 items, new ground: ['Ysienvault']
-  travelled Ysienvault (steps 56) — examined 1 relic(s)
+  travelled Ysienvault (steps 59) — examined 1 relic(s)
   delve e27: +2 accounts, +1 items, new ground: ['Wrengrimshroud']
-  travelled Wrengrimshroud (steps 55) — examined 1 relic(s)
+  travelled Wrengrimshroud (steps 58) — examined 1 relic(s)
   delve e28: +2 accounts, +1 items, new ground: ['Mordrashroud']
-  travelled Mordrashroud (steps 54) — examined 1 relic(s)
+  travelled Mordrashroud (steps 57) — examined 1 relic(s)
   delve e29: +2 accounts, +0 items, new ground: ['Wrenanrionfen']
   delve e30: +2 accounts, +1 items, new ground: ['Nyotthold']
-  travelled Nyotthold (steps 52) — examined 1 relic(s)
+  travelled Nyotthold (steps 55) — examined 1 relic(s)
   delve e31: +2 accounts, +0 items, new ground: ['Athanmothcradle']
   delve e32: +2 accounts, +0 items, new ground: ['Veldanedeep']
   delve e33: +2 accounts, +1 items, new ground: ['Fenamothvault']
-  travelled Fenamothvault (steps 49) — examined 1 relic(s)
+  travelled Fenamothvault (steps 52) — examined 1 relic(s)
   delve e34: +2 accounts, +0 items, new ground: ['Iroachhollow']
   delve e35: +2 accounts, +0 items, new ground: ['Hestessthasfen']
   delve e36: +2 accounts, +0 items, new ground: ['Galmeremere']
@@ -85,91 +85,86 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
   delve e40: +2 accounts, +0 items, new ground: ['Verulgrimmere']
   delve e41: +2 accounts, +0 items, new ground: ['Fennothreach']
   delve e42: +2 accounts, +1 items, new ground: ['Osthildhold']
-  travelled Osthildhold (steps 38) — examined 1 relic(s)
+  travelled Osthildhold (steps 43) — examined 1 relic(s)
   delve e43: +2 accounts, +1 items, new ground: ['Toriaastdeep']
-  travelled Toriaastdeep (steps 37) — examined 1 relic(s)
+  travelled Toriaastdeep (steps 42) — examined 1 relic(s)
   delve e44: +2 accounts, +0 items, new ground: ['Solastreach']
   delve e45: +2 accounts, +1 items, new ground: ['Ulirornfen']
-  travelled Ulirornfen (steps 35) — examined 1 relic(s)
+  travelled Ulirornfen (steps 40) — examined 1 relic(s)
   delve e46: +2 accounts, +1 items, new ground: ['Quelachmere']
-  travelled Quelachmere (steps 34) — examined 1 relic(s)
+  travelled Quelachmere (steps 39) — examined 1 relic(s)
   delve e47: +2 accounts, +0 items, new ground: ['Ostaeulahold']
   delve e48: +2 accounts, +1 items, new ground: ['Ranootthollow']
-  travelled Ranootthollow (steps 32) — examined 1 relic(s)
+  travelled Ranootthollow (steps 37) — examined 1 relic(s)
   delve e49: +2 accounts, +1 items, new ground: ['Belthasgate']
-  travelled Belthasgate (steps 31) — examined 1 relic(s)
+  travelled Belthasgate (steps 36) — examined 1 relic(s)
   delve e50: +2 accounts, +1 items, new ground: ['Olvanebarrow']
-  travelled Olvanebarrow (steps 30) — examined 1 relic(s)
+  travelled Olvanebarrow (steps 35) — examined 1 relic(s)
   delve e51: +2 accounts, +0 items, new ground: ['Ghaleulahollow']
   delve e52: +2 accounts, +0 items, new ground: ['Mazorulamarch']
   delve e53: +2 accounts, +1 items, new ground: ['Servanevault']
-  travelled Servanevault (steps 27) — examined 1 relic(s)
+  travelled Servanevault (steps 32) — examined 1 relic(s)
   delve e54: +2 accounts, +0 items, new ground: ['Banulwynhold']
   delve e55: +2 accounts, +1 items, new ground: ['Ezianothvault']
-  travelled Ezianothvault (steps 25) — examined 1 relic(s)
+  travelled Ezianothvault (steps 30) — examined 1 relic(s)
   delve e56: +2 accounts, +0 items, new ground: ['Ezuwyndeep']
   delve e57: +2 accounts, +0 items, new ground: ['Hestithasfen']
   delve e58: +2 accounts, +0 items, new ground: ['Yorirthasspire']
   delve e59: +2 accounts, +1 items, new ground: ['Ostirwynspire']
-  travelled Ostirwynspire (steps 21) — examined 1 relic(s)
+  travelled Ostirwynspire (steps 26) — examined 1 relic(s)
   delve e60: +2 accounts, +1 items, new ground: ['Irirarabarrow']
-  travelled Irirarabarrow (steps 20) — examined 1 relic(s)
+  travelled Irirarabarrow (steps 25) — examined 1 relic(s)
   delve e61: +2 accounts, +0 items, new ground: ['Wrenirvanespire']
   delve e62: +2 accounts, +1 items, new ground: ['Aldrorsilahold']
-  travelled Aldrorsilahold (steps 18) — examined 1 relic(s)
+  travelled Aldrorsilahold (steps 23) — examined 1 relic(s)
   delve e63: +2 accounts, +0 items, new ground: ['Athmunddeep']
   delve e64: +2 accounts, +1 items, new ground: ['Caliremishold']
-  travelled Caliremishold (steps 16) — examined 1 relic(s)
+  travelled Caliremishold (steps 21) — examined 1 relic(s)
   delve e65: +2 accounts, +0 items, new ground: ['Calthasmarch']
   delve e66: +2 accounts, +0 items, new ground: ['Dragarmarch']
   delve e67: +2 accounts, +0 items, new ground: ['Olirottspire']
   delve e68: +2 accounts, +1 items, new ground: ['Yorulgrimbarrow']
-  travelled Yorulgrimbarrow (steps 12) — examined 1 relic(s)
+  travelled Yorulgrimbarrow (steps 17) — examined 1 relic(s)
   delve e69: +2 accounts, +1 items, new ground: ['Elaradeep']
-  travelled Elaradeep (steps 11) — examined 1 relic(s)
+  travelled Elaradeep (steps 16) — examined 1 relic(s)
   delve e70: +2 accounts, +0 items, new ground: ['Ostmundfen']
   delve e71: +2 accounts, +1 items, new ground: ['Galanvethdeep']
-  travelled Galanvethdeep (steps 9) — examined 1 relic(s)
+  travelled Galanvethdeep (steps 14) — examined 1 relic(s)
   delve e72: +2 accounts, +1 items, new ground: ['Nyessemisspire']
-  travelled Nyessemisspire (steps 8) — examined 1 relic(s)
+  travelled Nyessemisspire (steps 13) — examined 1 relic(s)
   delve e73: +2 accounts, +1 items, new ground: ['Galaeastshroud']
-  travelled Galaeastshroud (steps 7) — examined 1 relic(s)
+  travelled Galaeastshroud (steps 12) — examined 1 relic(s)
   delve e74: +2 accounts, +0 items, new ground: ['Athiauladeep']
   delve e75: +2 accounts, +0 items, new ground: ['Cyrovethdeep']
   delve e76: +2 accounts, +1 items, new ground: ['Ezrionfen']
-  travelled Ezrionfen (steps 4) — examined 1 relic(s)
+  travelled Ezrionfen (steps 9) — examined 1 relic(s)
   delve e77: +2 accounts, +1 items, new ground: ['Nyessmothcradle']
-  travelled Nyessmothcradle (steps 3) — examined 1 relic(s)
+  travelled Nyessmothcradle (steps 8) — examined 1 relic(s)
   delve e78: +2 accounts, +1 items, new ground: ['Wrenastcrown']
-  travelled Wrenastcrown (steps 2) — examined 1 relic(s)
+  travelled Wrenastcrown (steps 7) — examined 1 relic(s)
   delve e79: +2 accounts, +1 items, new ground: ['Calimundmarch']
-  travelled Calimundmarch (steps 1) — examined 1 relic(s)
+  travelled Calimundmarch (steps 6) — examined 1 relic(s)
   delve e80: +2 accounts, +1 items, new ground: ['Mazwynhold']
-  travelled Mazwynhold (steps 0) — examined 1 relic(s)
-== step budget exhausted ==
+  travelled Mazwynhold (steps 5) — examined 1 relic(s)
+== delve budget exhausted ==
   asked about 6 recurring figures
-
-# end:   188 events, 55 items, 101 places, 93 figures
-# grew:  +160 events, +42 items, +85 places, +81 figures
-# spent: steps 100/100, delves 80/80, asks 6/50
-# walked 101/101 places, examined 54/55 relics
 ```
 
 ## The theory, and its reception (purist)
+
+- **The Mirror of Galomere was wrought as regalia of Galomere's throne.**
+  - "This much I will grant you — it agrees with what the old things remember."
 
 - **Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament — the first of the gods to bear it — and wandered from their seat.**
   - "This much I will grant you — it agrees with what the old things remember."
 
 - **The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.**
-  - "This much I will grant you — it agrees with what the old things remember."
-
-- **The Mirror of Yoryne was wrought as regalia of Yoryne's throne.**
   - The antiquary nods slowly. "Aye. The stones I have read say the same."
 
-- **The Veil of Quelmund was wrought as regalia of Quelmund's throne.**
+- **The Mirror of Yoryne was wrought as regalia of Yoryne's throne.**
   - "This much I will grant you — it agrees with what the old things remember."
 
-- **The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule.**
+- **The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.**
   - A long silence. "You should not have said that aloud. Ask me something else."
 
 *Closing:* The antiquary rises. "Enough for tonight. You wander toward things better left buried."
@@ -184,7 +179,7 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 
 > Of the Sundered Moon little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.
 
-*Places walked: 101 — relics examined: 54 — steps 100/100, asks 6/50, delves 80/80*
+*Places walked: 96 — relics examined: 54 — steps 95/100, asks 6/50, delves 80/80*
 
 ## Roads Walked
 
@@ -225,14 +220,6 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 - (walked, nothing studied here)
 
 ### Banulwynhold
-
-- (walked, nothing studied here)
-
-### Belimere
-
-- (walked, nothing studied here)
-
-### Belmere
 
 - (walked, nothing studied here)
 
@@ -333,10 +320,6 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 
 - (walked, nothing studied here)
 
-### Galomere
-
-- **Mirror of Galomere** — *Kept long at Galomere, and then kept poorly.*
-
 ### Ghaleulahollow
 
 - (walked, nothing studied here)
@@ -393,10 +376,6 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 
 - (walked, nothing studied here)
 
-### Kamere
-
-- (walked, nothing studied here)
-
 ### Karenienreach
 
 - (walked, nothing studied here)
@@ -439,7 +418,7 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 
 ### Oliadiscrown
 
-- (walked, nothing studied here)
+- **Mirror of Galomere** — *Kept long at Oliadiscrown, and then kept poorly.*
 
 ### Olirottspire
 
@@ -497,10 +476,6 @@ Budget spent: **100/100 steps**, 80/80 delves, 6/50 asks. Walked 101/101 places;
 
 - **Soul of Ysirveth** — *Taken from a throne room at Soldismere where nothing else was disturbed.*
 - **Shard of Ysirveth** — *Kept long at Soldismere, and then kept poorly.*
-
-### Solirmere
-
-- (walked, nothing studied here)
 
 ### Solosvault
 
@@ -986,7 +961,7 @@ A talisman for the invoking of half-forgotten rites.
 
 The Mirror of Galomere was wrought as regalia of Galomere's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.
 
-*Kept long at Galomere, and then kept poorly.*
+*Kept long at Oliadiscrown, and then kept poorly.*
 
 **Veil of Quelmund**
 
@@ -1526,15 +1501,15 @@ Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to
 
 ### Theory 1
 
+- The Mirror of Galomere was wrought as regalia of Galomere's throne.
 - Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament — the first of the gods to bear it — and wandered from their seat.
 - The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.
 - The Mirror of Yoryne was wrought as regalia of Yoryne's throne.
-- The Veil of Quelmund was wrought as regalia of Quelmund's throne.
-- The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule.
+- The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.
 
 ## Beyond the Charted Roads
 
 1 relics remain somewhere unwalked, their names not yet even known to you.
 
-Strength remaining: 0 steps, 0 delves, 44 asks. The rest of the world keeps its counsel.
+Strength remaining: 5 steps, 0 delves, 44 asks. The rest of the world keeps its counsel.
 

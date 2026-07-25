@@ -132,6 +132,13 @@ worlds migrate on first load.
   deterministic per node** (verified in testing: expanding `e14` on two
   divergent copies of a world yields identical children). Full-world identity
   holds when the same expansion sequence is applied.
+- **Invariants are checked, not assumed**: `uv run selfcheck.py` runs ~6,700
+  assertions over every committed world — structural (references resolve,
+  depths/years coherent, geography complete), causal (no figure *acts* after
+  their recorded fate), and epistemic (**no veil text ever appears in a
+  world-authored surface** — descriptions, placements, accounts, codex, ask
+  fragments; a compendium may quote a veil only inside the seeker's own
+  claims).
 - **Canon is enforced mechanically**: the ledger rejects events dated outside
   the world's span, participants acting after their recorded fate
   ("Mazirast cannot act in year 533: fate sealed in year 523"), duplicate
@@ -159,6 +166,10 @@ worlds migrate on first load.
   fog-of-war state, travel/adjacency, placement-as-evidence, delve
   resolution, and purist-reception vs benchmark-verdict theorizing.
 - [`mcp_server.py`](mcp_server.py) — FastMCP stdio wrapper over `explore.py`.
+- [`selfcheck.py`](selfcheck.py) — invariant checker over every world
+  (structural / causal / **epistemic**); non-zero exit on failure, so it runs
+  as a test: `uv run selfcheck.py`.
+- [`demos.py`](demos.py) — the documented runs as reproducible code.
 - Documented playthroughs:
   [`worlds/seed-7/full-walkthrough.md`](worlds/seed-7/full-walkthrough.md) — a
   complete, literal transcript (every tool call + raw output, empty state to
@@ -168,7 +179,12 @@ worlds migrate on first load.
   [`worlds/seed-9/exploration-journal.md`](worlds/seed-9/exploration-journal.md)
   — the earlier catalogue-era run;
   [`worlds/seed-314/walkthrough-100steps.md`](worlds/seed-314/walkthrough-100steps.md)
-  — a large-budget run (100 steps) showing delving grow the map 16→101 places.
+  — a large-budget run (100 steps) showing delving grow the map 15→96 places.
+
+All four documented runs are **reproducible**, not hand-made:
+`uv run demos.py all` regenerates their worlds from seed, replays the same
+seeker actions, and rewrites the reports — so the committed documents stay
+true after any change to the generator.
 - [`worlds/`](worlds/) — committed samples (template mode; this container has
   no API key): seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the

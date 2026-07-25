@@ -1,6 +1,6 @@
 {
   "explorer": "cartographer",
-  "location": "p101",
+  "location": "p96",
   "visited": [
     "p1",
     "p2",
@@ -11,30 +11,30 @@
     "p7",
     "p8",
     "p9",
+    "p15",
     "p16",
     "p17",
     "p18",
-    "p10",
-    "p11",
     "p19",
     "p20",
     "p21",
+    "p10",
     "p22",
     "p23",
+    "p11",
     "p24",
-    "p12",
     "p25",
+    "p12",
     "p26",
-    "p13",
     "p27",
+    "p13",
     "p28",
-    "p14",
     "p29",
     "p30",
     "p31",
+    "p14",
     "p32",
     "p33",
-    "p15",
     "p34",
     "p35",
     "p36",
@@ -97,12 +97,7 @@
     "p93",
     "p94",
     "p95",
-    "p96",
-    "p97",
-    "p98",
-    "p99",
-    "p100",
-    "p101"
+    "p96"
   ],
   "known_places": [
     "p1",
@@ -114,30 +109,30 @@
     "p7",
     "p8",
     "p9",
+    "p15",
     "p16",
     "p17",
     "p18",
-    "p10",
-    "p11",
     "p19",
     "p20",
     "p21",
+    "p10",
     "p22",
     "p23",
+    "p11",
     "p24",
-    "p12",
     "p25",
+    "p12",
     "p26",
-    "p13",
     "p27",
+    "p13",
     "p28",
-    "p14",
     "p29",
     "p30",
     "p31",
+    "p14",
     "p32",
     "p33",
-    "p15",
     "p34",
     "p35",
     "p36",
@@ -200,14 +195,10 @@
     "p93",
     "p94",
     "p95",
-    "p96",
-    "p97",
-    "p98",
-    "p99",
-    "p100",
-    "p101"
+    "p96"
   ],
   "found_items": [
+    "a1",
     "a10",
     "a2",
     "a3",
@@ -220,7 +211,6 @@
     "a9",
     "a14",
     "a15",
-    "a1",
     "a16",
     "a17",
     "a18",
@@ -264,6 +254,7 @@
     "a55"
   ],
   "discovered": [
+    "a1",
     "a10",
     "a2",
     "a3",
@@ -276,7 +267,6 @@
     "a9",
     "a14",
     "a15",
-    "a1",
     "a16",
     "a17",
     "a18",
@@ -1038,13 +1028,18 @@
   "theories": [
     {
       "claims": [
+        "The Mirror of Galomere was wrought as regalia of Galomere's throne.",
         "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
         "The Shard of Ysirveth was wrought as regalia of Ysirveth's throne.",
         "The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
-        "The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
-        "The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule."
+        "The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled."
       ],
       "verdicts": [
+        {
+          "claim": "The Mirror of Galomere was wrought as regalia of Galomere's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
         {
           "claim": "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
           "verdict": "established",
@@ -1061,12 +1056,7 @@
           "note": "The records you hold bear this out."
         },
         {
-          "claim": "The Veil of Quelmund was wrought as regalia of Quelmund's throne.",
-          "verdict": "established",
-          "note": "The records you hold bear this out."
-        },
-        {
-          "claim": "The shards the churches keep are not relics but ransoms, paid to keep the nights on their schedule.",
+          "claim": "The shards the churches keep are not relics but ransoms, paid to keep the nights scheduled.",
           "verdict": "veiled",
           "note": "Here the archives go quiet."
         }
@@ -1075,7 +1065,7 @@
     }
   ],
   "budget": {
-    "steps": 0,
+    "steps": 5,
     "delves": 0,
     "asks": 44
   },

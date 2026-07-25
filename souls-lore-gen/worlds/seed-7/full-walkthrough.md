@@ -1,6 +1,6 @@
 # Full Walkthrough — seed-7, the world of the Pale Root
 
-*A complete, unedited transcript of one seeker ("warden") playing the exploration API in the default **spatial + purist** mode (template writer — no API key here). Every tool call and its literal output, in order. The claims in step 6 are the seeker's, built from what was found plus one probe at the hidden layer and one deliberate overreach.*
+*A complete, unedited transcript of one seeker ("warden") playing the exploration API in the default **spatial + purist** mode (template writer — no API key here). Every tool call and its literal output, in order. Reproduce with `uv run demos.py transcript`.*
 
 > Loop: `survey` (map) → `travel` → `look`/`examine` → `ask` → `delve` → `theorize`. You learn a place's relics only by walking there; no one will ever tell you that you are right.
 
@@ -55,7 +55,7 @@
     {
       "place": "the Pilgrim Roads",
       "status": "here",
-      "relics_seen": 3
+      "relics_seen": 1
     }
   ],
   "budget": {
@@ -142,13 +142,6 @@
   "place": "Kaemisvault",
   "relics_here": [
     {
-      "id": "a15",
-      "name": "Processional Seed",
-      "type": "talisman",
-      "how_it_lies": "Dropped along the procession road near Kaemisvault, and left where it fell.",
-      "examined": false
-    },
-    {
       "id": "a5",
       "name": "Sap of Saint Caliadis",
       "type": "talisman",
@@ -167,24 +160,6 @@
     "the Pilgrim Roads"
   ],
   "hint": "examine(name) to study a relic here; a relic's resting place is itself a clue."
-}
-```
-
-## ▶ `examine("Processional Seed")`
-
-```json
-{
-  "id": "a15",
-  "name": "Processional Seed",
-  "type": "talisman",
-  "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it. Perhaps it is better that the tale ends there.",
-  "how_it_lies": "Dropped along the procession road near Kaemisvault, and left where it fell.",
-  "leads": [
-    {
-      "name": "Rutheemis",
-      "kind": "figure"
-    }
-  ]
 }
 ```
 
@@ -562,20 +537,31 @@
 {
   "findings": [
     {
-      "id": "frag:e34",
-      "year": 64,
-      "account": "An account survives from Harendane Long-memoried, a novice, set down against instruction and hidden in a coffin lid."
+      "id": "frag:e26",
+      "year": 19,
+      "account": "An account survives from Belanien the Stray, a envoy, set down against instruction and hidden in a coffin lid."
     },
     {
-      "id": "frag:e35",
-      "year": 67,
+      "id": "frag:e27",
+      "year": 19,
       "account": "In the months after, pilgrims came in unusual numbers, and left in unusual silence."
     }
   ],
   "new_items": [],
-  "new_ground": [],
+  "new_ground": [
+    "Athulrionbarrow"
+  ],
   "delves_left": 4,
   "note": "New relics lie where the accounts place them \u2014 travel there to recover them."
+}
+```
+
+## ▶ `travel("Athulrionbarrow")`
+*new ground opened by the dig*
+
+```json
+{
+  "error": "Your strength for the road is spent. (step budget exhausted \u2014 you may still study what you have found)"
 }
 ```
 
@@ -585,27 +571,38 @@
 {
   "findings": [
     {
-      "id": "frag:e36",
-      "year": 387,
-      "account": "An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid."
+      "id": "frag:e28",
+      "year": 329,
+      "account": "An account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger."
     },
     {
-      "id": "frag:e37",
-      "year": 390,
-      "account": "In the months after, pilgrims came in unusual numbers, and left in unusual silence."
+      "id": "frag:e29",
+      "year": 329,
+      "account": "In the months after, crows came in unusual numbers, and left in unusual silence."
     }
   ],
   "new_items": [
     {
-      "id": "a16",
-      "name": "Effects of Belordra",
+      "id": "a13",
+      "name": "Effects of Hesticael",
       "type": "ring",
-      "lies_at": "the Pilgrim Roads"
+      "lies_at": "Nycaelfen"
     }
   ],
-  "new_ground": [],
+  "new_ground": [
+    "Nycaelfen"
+  ],
   "delves_left": 3,
   "note": "New relics lie where the accounts place them \u2014 travel there to recover them."
+}
+```
+
+## ▶ `travel("Nycaelfen")`
+*new ground opened by the dig*
+
+```json
+{
+  "error": "Your strength for the road is spent. (step budget exhausted \u2014 you may still study what you have found)"
 }
 ```
 
@@ -620,15 +617,15 @@
       "reception": "The antiquary nods slowly. \"Aye. The stones I have read say the same.\""
     },
     {
-      "claim": "The procession took the long road, through every village, so that all might see what their deliverance cost.",
+      "claim": "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
       "reception": "The antiquary nods slowly. \"Aye. The stones I have read say the same.\""
     },
     {
-      "claim": "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
+      "claim": "The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
       "reception": "\"This much I will grant you \u2014 it agrees with what the old things remember.\""
     },
     {
-      "claim": "The church's pruning is no mere symbol \u2014 something is cut from the Root each season, and burned.",
+      "claim": "The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.",
       "reception": "The antiquary goes still, and will not meet your eye. \"Speak no further on this. Some doors are shut for cause.\""
     },
     {
@@ -647,9 +644,9 @@
 {
   "explorer": "warden",
   "at": "Olagarcradle",
-  "places_walked": "9/13",
-  "relics_found": "11/16",
-  "relics_examined": "11/16",
+  "places_walked": "9/15",
+  "relics_found": "10/13",
+  "relics_examined": "10/13",
   "steps_left": 0,
   "asks_left": 6,
   "delves_left": 3,
@@ -665,7 +662,7 @@
 
 > Of the Pale Root little now is spoken, and less is true. Gather what the old things still remember, and be sparing with belief.
 
-*Places walked: 9 — relics examined: 11 — steps 8/8, asks 2/8, delves 2/5*
+*Places walked: 9 — relics examined: 10 — steps 8/8, asks 2/8, delves 2/5*
 
 ## Roads Walked
 
@@ -679,7 +676,6 @@
 
 ### Kaemisvault
 
-- **Processional Seed** — *Dropped along the procession road near Kaemisvault, and left where it fell.*
 - **Sap of Saint Caliadis** — *Kept in a reliquary at Kaemisvault, before which the candles will not stay lit.*
 - **Remnant Soul of Saint Caliadis** — *Kept in a reliquary at Kaemisvault, before which the candles will not stay lit.*
 
@@ -780,14 +776,6 @@ Ghalenmund, god of secrets, locks, and the spaces between, descended below the w
 
 ### Talismans
 
-**Processional Seed**
-
-A talisman for the invoking of half-forgotten rites.
-
-The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it. Perhaps it is better that the tale ends there.
-
-*Dropped along the procession road near Kaemisvault, and left where it fell.*
-
 **Sap of Saint Caliadis**
 
 A talisman for the invoking of half-forgotten rites.
@@ -818,14 +806,14 @@ Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow 
 
 ### On the trail of Ghalenmund
 
-- *(year 64, testimony)* An account survives from Harendane Long-memoried, a novice, set down against instruction and hidden in a coffin lid.
-- *(year 67, aftermath)* In the months after, pilgrims came in unusual numbers, and left in unusual silence.
+- *(year 19, testimony)* An account survives from Belanien the Stray, a envoy, set down against instruction and hidden in a coffin lid.
+- *(year 19, aftermath)* In the months after, pilgrims came in unusual numbers, and left in unusual silence.
 
 ### On the trail of Belwyn
 
-- *(year 387, testimony)* An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid.
-- *(year 390, aftermath)* In the months after, pilgrims came in unusual numbers, and left in unusual silence.
-- **Brought back:** Effects of Belordra (ring)
+- *(year 329, testimony)* An account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger.
+- *(year 329, aftermath)* In the months after, crows came in unusual numbers, and left in unusual silence.
+- **Brought back:** Effects of Hesticael (ring)
 
 ## Words of the Archives
 
@@ -844,14 +832,14 @@ Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow 
 ### Theory 1
 
 - The Graft of Queliamund was wrought as regalia of Queliamund's throne.
-- The procession took the long road, through every village, so that all might see what their deliverance cost.
 - At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.
-- The church's pruning is no mere symbol — something is cut from the Root each season, and burned.
+- The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.
+- The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.
 - The last knight became the god he went to find.
 
 ## Beyond the Charted Roads
 
-5 relics remain somewhere unwalked, their names not yet even known to you.
+3 relics remain somewhere unwalked, their names not yet even known to you.
 
 Strength remaining: 0 steps, 3 delves, 6 asks. The rest of the world keeps its counsel.
 
@@ -860,11 +848,8 @@ Strength remaining: 0 steps, 3 delves, 6 asks. The rest of the world keeps its c
 
 ## Epilogue — the truth (SPOILERS)
 
-What the run recovered, checked against `chronicle.md` and the veils:
+Checked against `chronicle.md` and the veils:
 
-- **The mortal age, nearly whole.** By walking eight seats the seeker found the fallen god Ghalenmund (his soul *"taken from a throne room where nothing else was disturbed"* — a departure, not a death), the rite that fed Saint Caliadis to the Root while its own priest Belwyn *"suspected as much,"* and — by following the one cross-link, Galomerebarrow → Olagarcradle — the betrayal itself: Wrensila opened the gates, the king Ostorthas died at his throne, the crown was carried away. All true.
-- **The veil, answered only by silence.** The probe *"something is cut from the Root each season, and burned"* is **veil 1 of 3** almost verbatim. In purist mode the antiquary did not confirm it — they *went silent and told the seeker to speak no further*. That refusal is the only signal of hidden truth the seeker gets, and it is deniable. Veils 2 and 3 (the Root grew from a buried corpse; the corpse is not dead but *dreaming in sequence*, and the rot is it beginning to wake) were never approached — correct for a first pilgrimage.
-- **The overreach, correctly doubted.** *"The last knight became the god he went to find"* was pure speculation (Eloric merely *"was last seen at the edge of the deep roads"*); the antiquary answered *"you reach past your evidence"* — a doubt, not a verdict.
-- **Left in the dark:** two full delve-layer secrets the digs only gestured at (testimony *"hidden in a coffin lid"*, pilgrims who *"left in unusual silence"*), and five relics at places the seeker's eight steps never reached. The world keeps them.
-
-The seeker ended with a coherent, largely-true account of the age of kings, one veil brushed and denied, and the cosmology's deepest secret untouched — the intended difficulty gradient, and the intended experience: *no one ever told them they were right.*
+- **The mortal age, largely recovered.** The seeker found the fallen god (his soul *"taken from a throne room where nothing else was disturbed"* — a departure, not a death), the rite that fed a saint to the Root while its own priest *"suspected as much,"* and — by following the one cross-link into the fallen kingdom — the betrayal itself.
+- **The veil, answered only by silence.** The fourth claim is **veil 1 of 3** verbatim. In purist mode the antiquary did not confirm it; they went quiet and told the seeker to speak no further. That refusal is the only signal of hidden truth a seeker gets, and it is deniable. Veils 2 and 3 were never approached — correct for a first pilgrimage.
+- **The overreach, correctly doubted** — *"the last knight became the god he went to find"* drew *"you reach past your evidence"*, a doubt rather than a verdict.

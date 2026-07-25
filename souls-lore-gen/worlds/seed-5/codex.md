@@ -50,7 +50,7 @@ A ring that grants a small, stubborn blessing.
 
 An account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger. What became of it after is not written.
 
-*Pried from a hand at the Pilgrim Roads; the hand did not object.*
+*Recovered at Loengarmarch, off the deep roads, where the account had lain hidden.*
 
 ### Ring of the Chord Vigil
 

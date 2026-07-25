@@ -112,6 +112,6 @@ The Hymn of Sylenmoth was wrought as regalia of Sylenmoth's throne. Perhaps it i
 
 ## Beyond the Charted Roads
 
-6 relics remain somewhere unwalked, their names not yet even known to you.
+7 relics remain somewhere unwalked, their names not yet even known to you.
 
 Strength remaining: 3 steps, 3 delves, 6 asks. The rest of the world keeps its counsel.

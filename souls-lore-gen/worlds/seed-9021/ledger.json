@@ -285,6 +285,7 @@
       "text": "the First Ember rose (or was raised \u2014 the tellings differ) and gave the world warmth, disparity, and the colour of souls.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -300,6 +301,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -315,11 +317,12 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p3"
     },
     "e4": {
       "type": "event",
@@ -330,6 +333,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -345,11 +349,12 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p10"
+      "place": "p9"
     },
     "e6": {
       "type": "event",
@@ -360,6 +365,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -375,11 +381,12 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p10"
     },
     "e8": {
       "type": "event",
@@ -390,11 +397,12 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p3"
     },
     "e9": {
       "type": "event",
@@ -405,11 +413,12 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p12"
+      "place": "p11"
     },
     "e10": {
       "type": "event",
@@ -420,6 +429,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -437,6 +447,7 @@
         "f1",
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -453,11 +464,12 @@
         "f4",
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p13"
+      "place": "p12"
     },
     "e13": {
       "type": "event",
@@ -466,6 +478,7 @@
       "text": "The waning began: the Ember gutters; shadows lengthen and the dead forget to lie down. Mortals called the affliction the Gutter-mark: a grey brand that spreads over the heart; the marked wander until their names burn out.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -481,6 +494,7 @@
       "participants": [
         "f5"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -497,11 +511,12 @@
         "f6",
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p6"
     },
     "e16": {
       "type": "event",
@@ -512,11 +527,12 @@
       "participants": [
         "f7"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p7"
     },
     "e17": {
       "type": "event",
@@ -527,6 +543,7 @@
       "participants": [
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -543,6 +560,7 @@
         "f6",
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -559,6 +577,7 @@
         "f10",
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -575,11 +594,12 @@
         "f8",
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p14"
+      "place": "p13"
     },
     "e21": {
       "type": "event",
@@ -590,6 +610,7 @@
       "participants": [
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -605,11 +626,12 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p3"
     },
     "e23": {
       "type": "event",
@@ -618,14 +640,16 @@
       "text": "Banudane the Latecomer, last-sworn of the Order of the Ember, set out for the place where Ruthmere was lost, carrying the order's final blessing.",
       "hidden": null,
       "participants": [
-        "f11",
+        "f11"
+      ],
+      "referents": [
         "f2"
       ],
       "parent": null,
       "depth": 0,
       "expanded": false,
       "source": "sim",
-      "place": "p9"
+      "place": "p5"
     },
     "e24": {
       "type": "event",
@@ -636,6 +660,7 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -648,7 +673,8 @@
       "year": 683,
       "text": "Pilgrims of the Cult of the Open Door were found digging at the seal of Eloros. The wardens hanged nine; the digging continued.",
       "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
-      "participants": [
+      "participants": [],
+      "referents": [
         "f4"
       ],
       "parent": null,
@@ -701,8 +727,8 @@
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Pyre of Ruthmere was wrought as regalia of Ruthmere's throne. What became of it after is not written.",
       "depth": 0,
       "source": "sim",
-      "site": "p9",
-      "placement": "Kept long at Ruthmere, and then kept poorly."
+      "site": "p3",
+      "placement": "Kept long at Olearacradle, and then kept poorly."
     },
     "a3": {
       "type": "artifact",
@@ -751,7 +777,7 @@
       "description": "A weapon of an older make, still keen despite its years.\n\nEloros, the Cinder-Eater, rose against the thrones. Yorthas led the gods to war. Of Ruthmere, god of storms and unkept promises, the last word is this: took the Gutter-mark and wandered. None now living can say whether Ruthmere treated with Eloros in secret and was spared what followed. The name endures; little else does.",
       "depth": 0,
       "source": "sim",
-      "site": "p13",
+      "site": "p12",
       "placement": "Worn smooth by warders' hands at Hestanaramarch."
     },
     "a6": {
@@ -825,7 +851,7 @@
       "description": "An object of no use in battle, and of great consequence.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. It is said that Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
       "depth": 0,
       "source": "sim",
-      "site": "p14",
+      "site": "p13",
       "placement": "Found at the foot of a throne in Morulaspire, beneath the dust of the banners."
     },
     "a8": {
@@ -852,7 +878,7 @@
       "description": "A weapon of an older make, still keen despite its years.\n\nOloula the Lantern-eyed, sword-hand of Mazirdis, opened the gates of Fenearamere to the Order of the Ember over a grievance no chronicle agrees on. None now living can say whether Morulaspire fell. Mazirdis the Adamant died at the foot of their own throne; the crown was carried away and never worn again. The rest of the story is kept by no one.",
       "depth": 0,
       "source": "sim",
-      "site": "p14",
+      "site": "p13",
       "placement": "Found at the foot of a throne in Morulaspire, beneath the dust of the banners."
     },
     "a9": {
@@ -877,8 +903,8 @@
       "description": "The lingering soul of one who would not wholly pass.\n\nRuthmere, god of storms and unkept promises, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat. It is said that the curse does not distinguish gods from mortals. It never did. What became of it after is not written.",
       "depth": 0,
       "source": "sim",
-      "site": "p9",
-      "placement": "Taken from a throne room at Ruthmere where nothing else was disturbed."
+      "site": "p3",
+      "placement": "Taken from a throne room at Olearacradle where nothing else was disturbed."
     },
     "a10": {
       "type": "artifact",
@@ -999,33 +1025,32 @@
     },
     "p9": {
       "type": "place",
-      "name": "Ruthmere",
-      "source": "geo"
+      "name": "Cyraricreach",
+      "source": "geo",
+      "aka_faction": "k1"
     },
     "p10": {
       "type": "place",
-      "name": "Cyraricreach",
-      "source": "geo"
+      "name": "Osthildfen",
+      "source": "geo",
+      "aka_faction": "k2"
     },
     "p11": {
       "type": "place",
-      "name": "Osthildfen",
-      "source": "geo"
+      "name": "Elessastgate",
+      "source": "geo",
+      "aka_faction": "k3"
     },
     "p12": {
-      "type": "place",
-      "name": "Elessastgate",
-      "source": "geo"
-    },
-    "p13": {
       "type": "place",
       "name": "Hestanaramarch",
       "source": "geo"
     },
-    "p14": {
+    "p13": {
       "type": "place",
       "name": "Morulaspire",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k7"
     }
   },
   "notes": []

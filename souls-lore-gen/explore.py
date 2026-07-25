@@ -29,6 +29,7 @@ from __future__ import annotations
 import json
 import os
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -78,6 +79,9 @@ class Exploration:
             self.state.setdefault("known_places", self._roads_neighbours())
             self.state.setdefault("found_items", [])
             self.state["budget"].setdefault("steps", DEFAULT_BUDGET["steps"])
+            # states written before budgets were configurable have no record
+            # of what they started with; assume the defaults they ran under
+            self.state.setdefault("start_budget", dict(DEFAULT_BUDGET))
         else:
             start = dict(DEFAULT_BUDGET)
             if budget:
@@ -315,7 +319,6 @@ class Exploration:
         return None
 
     def _resolve_delve(self, target: str) -> str | None:
-        import re
         t = target.strip()
         if re.fullmatch(r"e\d+", t) and t in self.lg.entities:
             return self._first_unexpanded([t])
@@ -327,8 +330,10 @@ class Exploration:
         tl = t.lower()
         for fid, f in self.lg.of_type("figure"):
             if f["name"].lower() in tl or tl in f["name"].lower():
+                # events they acted in, or that are about them
                 roots = [eid for eid, e in self.lg.of_type("event")
-                         if fid in e["participants"]]
+                         if fid in e["participants"]
+                         or fid in e.get("referents", [])]
                 roots.sort(key=lambda eid: self.lg.get(eid)["year"])
                 return self._first_unexpanded(roots)
         # place / faction: events located there or naming it

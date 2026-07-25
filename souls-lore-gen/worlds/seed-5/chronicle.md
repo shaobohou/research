@@ -21,8 +21,8 @@
 - **Year 4** — *claiming*: Ommoth, god of healing and the price of healing, claimed a portion of the gift and took a throne. _(at Athagarcradle)_
 - **Year 14** — *claiming*: Nyorott, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne. _(at Thalulgarbarrow)_
 - **Year 17** — *claiming*: Sylenmoth, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne. _(at Mazoscrown)_
-  - **Year 13** — *testimony*: An account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger. _(at the Pilgrim Roads)_
-  - **Year 13** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at the Pilgrim Roads)_
+  - **Year 13** — *testimony*: An account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger. _(at Loengarmarch)_
+  - **Year 13** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Loengarmarch)_
     - _Hidden:_ What they came for was not what the chronicles assumed.
 - **Year 32** — *claiming*: Thaliast, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne. _(at Belmundfen)_
 - **Year 47** — *founding*: Ommoth founded Ishencaeldeep (church) at Athagarcradle. _(at Ishencaeldeep)_
@@ -52,8 +52,8 @@
   - _Hidden:_ Sylenmoth found the truth of the waning, and chose to stay.
 - **Year 536** — *last pilgrimage*: Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing. _(at Loachgate)_
 - **Year 541** — *hero's end*: Word came that Ulorast fell to the marked, and then word came that Ulorast led the marked. The order believes neither. _(at Loachgate)_
-  - **Year 538** — *testimony*: An account survives from Thaleeth of the Rearguard, a cartwright, set down against instruction and hidden in a coffin lid. _(at the Pilgrim Roads)_
-  - **Year 540** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at the Pilgrim Roads)_
+  - **Year 538** — *testimony*: An account survives from Thaleeth of the Rearguard, a cartwright, set down against instruction and hidden in a coffin lid. _(at Belgarhold)_
+  - **Year 540** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Belgarhold)_
 - **Year 560** — *the seal weakens*: Pilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued. _(at the Pilgrim Roads)_
   - _Hidden:_ The seal has been failing on its own since the waning began. The cult only follows the cracks.
 
@@ -84,7 +84,7 @@
 - **Ghalmundreach** (kingdom), seat Mazucaelcrown, founded year 365, fell year 427.
 
 ## Places
-- **the Pilgrim Roads** — holds Warding Echo, Effects of Mormoth.
+- **the Pilgrim Roads** — holds Warding Echo.
 - **Athagarcradle** — holds Bell of Ommoth.
 - **Thalulgarbarrow** — holds Hymn of Nyorott.
 - **Mazoscrown** — holds Hymn of Sylenmoth, Soul of Sylenmoth.
@@ -99,3 +99,5 @@
 - **Iraevethvault**.
 - **Ysiosreach** — holds Thaliast's War-Bell.
 - **Ghalmundreach** — holds Hollow Crown of Ghalmundreach, Thalulhild's Oathbreaker Blade.
+- **Belgarhold**.
+- **Loengarmarch** — holds Effects of Mormoth.

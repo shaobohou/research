@@ -47,15 +47,10 @@
       "Wrensila",
       "the Pilgrim Roads",
       "Belanien",
+      "Athulrionbarrow",
       "Hesticael",
       "Effects of Hesticael",
-      "Aldrulveth",
-      "Effects of Aldrulveth",
-      "Rutheemis",
-      "Processional Seed",
-      "Harendane",
-      "Belordra",
-      "Effects of Belordra"
+      "Nycaelfen"
     ]
   },
   "ages": [
@@ -295,6 +290,7 @@
       "text": "the Pale Root rose (or was raised \u2014 the tellings differ) and gave the world order, season, and the slow sap that binds moments in sequence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -310,6 +306,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -325,6 +322,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -340,6 +338,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -355,9 +354,10 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
-      "expanded": true,
+      "expanded": false,
       "source": "sim",
       "place": "p9"
     },
@@ -370,9 +370,10 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
-      "expanded": true,
+      "expanded": false,
       "source": "sim",
       "place": "p2"
     },
@@ -385,6 +386,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -400,6 +402,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -415,6 +418,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -430,6 +434,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -447,6 +452,7 @@
         "f1",
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -463,6 +469,7 @@
         "f4",
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -476,6 +483,7 @@
       "text": "The waning began: the Root greys and splits; hours repeat, orchards fruit with last year's fruit. Mortals called the affliction the Ringing-rot: growth rings surface on the flesh of the afflicted, one for each hour they relive.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -491,6 +499,7 @@
       "participants": [
         "f5"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -507,6 +516,7 @@
         "f6",
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -522,6 +532,7 @@
       "participants": [
         "f7"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -537,6 +548,7 @@
       "participants": [
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -553,9 +565,10 @@
         "f7",
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
-      "expanded": true,
+      "expanded": false,
       "source": "sim",
       "place": "p7"
     },
@@ -569,6 +582,7 @@
         "f10",
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -585,6 +599,7 @@
         "f8",
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -600,6 +615,7 @@
       "participants": [
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -615,6 +631,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -628,7 +645,9 @@
       "text": "Eloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing.",
       "hidden": null,
       "participants": [
-        "f11",
+        "f11"
+      ],
+      "referents": [
         "f1"
       ],
       "parent": null,
@@ -646,6 +665,7 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -658,7 +678,8 @@
       "year": 559,
       "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Iriorn. The wardens hanged nine; the digging continued.",
       "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
-      "participants": [
+      "participants": [],
+      "referents": [
         "f4"
       ],
       "parent": null,
@@ -1010,17 +1031,20 @@
     "p9": {
       "type": "place",
       "name": "Lohildhollow",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k1"
     },
     "p10": {
       "type": "place",
       "name": "Hardisshroud",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k2"
     },
     "p11": {
       "type": "place",
       "name": "Kaonothcrown",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k3"
     },
     "p12": {
       "type": "place",
@@ -1030,7 +1054,8 @@
     "p13": {
       "type": "place",
       "name": "Olagarcradle",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k7"
     },
     "f12": {
       "type": "figure",
@@ -1053,11 +1078,12 @@
       "participants": [
         "f12"
       ],
+      "referents": [],
       "parent": "e2",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e2",
-      "place": "p1"
+      "place": "p14"
     },
     "e27": {
       "type": "event",
@@ -1066,11 +1092,17 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e2",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e2",
-      "place": "p1"
+      "place": "p14"
+    },
+    "p14": {
+      "type": "place",
+      "name": "Athulrionbarrow",
+      "source": "expansion:e2"
     },
     "f13": {
       "type": "figure",
@@ -1093,11 +1125,12 @@
       "participants": [
         "f13"
       ],
+      "referents": [],
       "parent": "e16",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e16",
-      "place": "p1"
+      "place": "p15"
     },
     "e29": {
       "type": "event",
@@ -1106,11 +1139,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e16",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e16",
-      "place": "p1"
+      "place": "p15"
     },
     "a13": {
       "type": "artifact",
@@ -1131,238 +1165,13 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger. Perhaps it is better that the tale ends there.",
       "depth": 1,
       "source": "expansion:e16",
-      "site": "p1",
-      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+      "site": "p15",
+      "placement": "Recovered at Nycaelfen, off the deep roads, where the account had lain hidden."
     },
-    "f14": {
-      "type": "figure",
-      "name": "Aldrulveth",
-      "epithet": "One-hand",
-      "role": "chronicler",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e5"
-    },
-    "e30": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 67,
-      "text": "An account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall.",
-      "hidden": null,
-      "participants": [
-        "f14"
-      ],
-      "parent": "e5",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e5",
-      "place": "p1"
-    },
-    "e31": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 68,
-      "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
-      "hidden": "What they came for was not what the chronicles assumed.",
-      "participants": [],
-      "parent": "e5",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e5",
-      "place": "p1"
-    },
-    "a14": {
-      "type": "artifact",
-      "name": "Effects of Aldrulveth",
-      "item_type": "consumable",
-      "created_year": 67,
-      "origin_faction": null,
-      "provenance": [
-        "e30"
-      ],
-      "knowledge": [
-        "(year 67) An account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall.",
-        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "insists the dead figure still lives, in hiding",
-      "hints_veil": null,
-      "description": "A humble ward, spent in a moment.\n\nAn account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall. Perhaps it is better that the tale ends there.",
-      "depth": 1,
-      "source": "expansion:e5",
-      "site": "p1",
-      "placement": "Bought from a peddler working the roads near the Pilgrim Roads."
-    },
-    "f15": {
-      "type": "figure",
-      "name": "Rutheemis",
-      "epithet": "of the Rearguard",
-      "role": "novice",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e18"
-    },
-    "e32": {
-      "type": "event",
-      "kind": "the choosing",
-      "year": 390,
-      "text": "The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running.",
-      "hidden": "The one who ran was never pursued, by design.",
-      "participants": [
-        "f15"
-      ],
-      "parent": "e18",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e18",
-      "place": "p1"
-    },
-    "e33": {
-      "type": "event",
-      "kind": "the procession",
-      "year": 393,
-      "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it.",
-      "hidden": null,
-      "participants": [
-        "f15",
-        "f7",
-        "f9"
-      ],
-      "parent": "e18",
-      "depth": 1,
-      "expanded": true,
-      "source": "expansion:e18",
-      "place": "p7"
-    },
-    "a15": {
-      "type": "artifact",
-      "name": "Processional Seed",
-      "item_type": "talisman",
-      "created_year": 393,
-      "origin_faction": null,
-      "provenance": [
-        "e33"
-      ],
-      "knowledge": [
-        "(year 393) The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it.",
-        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "attributes the deed to a god who had no part in it",
-      "hints_veil": null,
-      "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it. Perhaps it is better that the tale ends there.",
-      "depth": 1,
-      "source": "expansion:e18",
-      "site": "p7",
-      "placement": "Dropped along the procession road near Kaemisvault, and left where it fell."
-    },
-    "f16": {
-      "type": "figure",
-      "name": "Harendane",
-      "epithet": "Long-memoried",
-      "role": "novice",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 1,
-      "source": "expansion:e6"
-    },
-    "e34": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 64,
-      "text": "An account survives from Harendane Long-memoried, a novice, set down against instruction and hidden in a coffin lid.",
-      "hidden": null,
-      "participants": [
-        "f16"
-      ],
-      "parent": "e6",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e6",
-      "place": "p1"
-    },
-    "e35": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 67,
-      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
-      "hidden": null,
-      "participants": [],
-      "parent": "e6",
-      "depth": 1,
-      "expanded": false,
-      "source": "expansion:e6",
-      "place": "p1"
-    },
-    "f17": {
-      "type": "figure",
-      "name": "Belordra",
-      "epithet": "Cinder-shod",
-      "role": "witness",
-      "faction": null,
-      "is_god": false,
-      "fate": null,
-      "fate_year": null,
-      "depth": 2,
-      "source": "expansion:e33"
-    },
-    "e36": {
-      "type": "event",
-      "kind": "testimony",
-      "year": 387,
-      "text": "An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid.",
-      "hidden": null,
-      "participants": [
-        "f17"
-      ],
-      "parent": "e33",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e33",
-      "place": "p1"
-    },
-    "e37": {
-      "type": "event",
-      "kind": "aftermath",
-      "year": 390,
-      "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
-      "hidden": "What they came for was not what the chronicles assumed.",
-      "participants": [],
-      "parent": "e33",
-      "depth": 2,
-      "expanded": false,
-      "source": "expansion:e33",
-      "place": "p1"
-    },
-    "a16": {
-      "type": "artifact",
-      "name": "Effects of Belordra",
-      "item_type": "ring",
-      "created_year": 387,
-      "origin_faction": null,
-      "provenance": [
-        "e36"
-      ],
-      "knowledge": [
-        "(year 387) An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid.",
-        "The affliction of this world: the Ringing-rot \u2014 growth rings surface on the flesh of the afflicted, one for each hour they relive."
-      ],
-      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
-      "false_rumor": "places the event a whole age too early",
-      "hints_veil": null,
-      "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid. Perhaps it is better that the tale ends there.",
-      "depth": 2,
-      "source": "expansion:e33",
-      "site": "p1",
-      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+    "p15": {
+      "type": "place",
+      "name": "Nycaelfen",
+      "source": "expansion:e16"
     }
   },
   "notes": []

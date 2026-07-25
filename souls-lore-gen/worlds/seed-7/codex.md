@@ -32,14 +32,6 @@ The Graft of Queliamund was wrought as regalia of Queliamund's throne. The name 
 
 ## Consumables
 
-### Effects of Aldrulveth
-
-A humble ward, spent in a moment.
-
-An account survives from Aldrulveth One-hand, a chronicler, set down against instruction and hidden in a wall. Perhaps it is better that the tale ends there.
-
-*Bought from a peddler working the roads near the Pilgrim Roads.*
-
 ### Warding Ring
 
 A humble ward, spent in a moment.
@@ -66,15 +58,7 @@ A ring that grants a small, stubborn blessing.
 
 An account survives from Hesticael Long-memoried, a handmaid, set down against instruction and hidden in a ledger. Perhaps it is better that the tale ends there.
 
-*Pried from a hand at the Pilgrim Roads; the hand did not object.*
-
-### Effects of Belordra
-
-A ring that grants a small, stubborn blessing.
-
-An account survives from Belordra Cinder-shod, a witness, set down against instruction and hidden in a coffin lid. Perhaps it is better that the tale ends there.
-
-*Pried from a hand at the Pilgrim Roads; the hand did not object.*
+*Recovered at Nycaelfen, off the deep roads, where the account had lain hidden.*
 
 ### Ring of the Graft Vigil
 
@@ -111,14 +95,6 @@ A talisman for the invoking of half-forgotten rites.
 At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed. It is said that the rite did not restore anything. It only fed the waning more slowly — and Belwyn suspected as much. Whether this was mercy or malice, none agree.
 
 *Kept in a reliquary at Kaemisvault, before which the candles will not stay lit.*
-
-### Processional Seed
-
-A talisman for the invoking of half-forgotten rites.
-
-The procession took the long road, through every village, so that all might see what their deliverance cost. Rutheemis walked at the saint's left hand and never afterward spoke of it. Perhaps it is better that the tale ends there.
-
-*Dropped along the procession road near Kaemisvault, and left where it fell.*
 
 ## Weapons
 

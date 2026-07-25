@@ -217,3 +217,46 @@ biased fragment of that history.
   runs, so child-event/relic *content* is unchanged; only a place is appended.
   Committed pre-existing worlds aren't re-expanded, so they're unaffected;
   their ledgers just gain nothing on load (placement already set).
+
+### 2026-07-06 — full review pass
+Wrote `selfcheck.py` (structural / causal / epistemic invariants, non-zero
+exit = test) and ran it over every committed world. 4,848 checks found 50
+failures in three classes; triaged each:
+
+1. FALSE POSITIVE — "veil leak" in seed-5's compendium was line 110 of
+   *Theories Ventured*: the seeker's own claim echoed back. The world never
+   leaked it (the antiquary answered with silence). Tightened the check:
+   veils must not appear in **world-authored** surfaces (descriptions,
+   placements, event accounts, codex, ask fragments); a compendium may quote
+   one only inside the seeker's own claims. Also dropped the "hidden leak"
+   rule for compendia — the template writer copies hidden truths into
+   descriptions *hedged*, which is the design, not a leak.
+
+2. REAL BUG — phantom places. `ensure_geography`'s suffix regex swept event
+   text for capitalised words ending in a PLACE_SUFFIX, but person-name ENDS
+   overlap those suffixes ("-mere"), so figures became walkable places. Worse
+   than map noise: it corrupted the placement evidence channel, siting relics
+   *inside people* ("kept in a reliquary at Yormere" — a saint; "throne room
+   at Ruthmere" — a god). Fixed by excluding names owned by figures; those
+   placements now read "at Ostenthasvault" / "at Olearacradle" (the real
+   seats). 5 of the 100-step run's 101 places were phantoms (now 96).
+
+3. REAL MODELLING FLAW — `participants` conflated actors with referents, so
+   genesis asserted that a god acts 13 years after descending and a sealed
+   adversary acts 364 years after entombment. The ledger's fate validator
+   would reject both, but genesis builds dataclasses directly and bypasses
+   it. Added `Event.referents` (named, not acting): "set out for the place
+   where X was lost" and "digging at the seal of X" now list X as a referent.
+   Ledger carries/validates them, subgraph includes them, delve resolution
+   searches them, selfcheck exempts them from the fate rule.
+
+Also: `start_budget` now backfilled for pre-budget states (compendium
+otherwise misreports spend for a resumed custom-budget run); removed an
+unused `random` import and a function-local `import re`.
+
+Regenerating worlds wiped the expansions the journals quote, so the
+documented runs became unmoored. Fixed properly by making them reproducible:
+`demos.py` (transcript / pilgrim / hundred / seeker) regenerates each world
+from seed, replays the same actions, and rewrites the report. Verified the
+journals' quotes survive the replay. Final state: 6,695 checks, 0 failures;
+MCP surface unchanged (9 seeker tools, purist keys only).

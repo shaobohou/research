@@ -32,15 +32,26 @@
 - **Year 145** — *forging*: The Brine of Nyadra was wrought as regalia of Nyadra's throne. _(at Morennothmarch)_
 - **Year 180** — *great war*: Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war. _(at Nimgarmere)_
   - _Hidden:_ Veloryne treated with Ishirula in secret and was spared what followed.
+  - **Year 178** — *battle*: The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold. _(at Ulucaelfen)_
+    - **Year 175** — *testimony*: An account survives from Ghalorien the Stray, a siege captain, set down against instruction and hidden in a wall. _(at Kaulmerehold)_
+    - **Year 175** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Kaulmerehold)_
+  - **Year 180** — *champion's duel*: Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war. _(at Ulucaelfen)_
+    - _Hidden:_ The duel was not fought to a death but to a bargain.
 - **Year 194** — *sealing*: Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions. _(at Aldranarahollow)_
+  - **Year 194** — *the paying of the price*: Of the champions spent on the seal, most are a list now; two are still prayed to by name — Ezahild Long-memoried and Ezlis the Sleepless — though none can say what distinguishes the remembered dead from the rest. _(at Nyiethhollow)_
+  - **Year 194** — *the wardens' charge*: A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. _(at Nyiethhollow)_
+    - _Hidden:_ The first warden asked to be bound to the seal, not appointed over it.
 - **Year 288** — *waning*: The waning began: the tide recedes from the world's edges; memories thin and the drowned begin to speak. Mortals called the affliction the Brine-hollowing: salt blooms beneath the skin; the afflicted forget faces first, then their own. _(at the Pilgrim Roads)_
-- **Year 316** — *founding*: Aldrulmere the Lantern-eyed founded the Order of the Brine at Olulthasshroud, sworn to stand against the Brine-hollowing. _(at Aldrulmere)_
+- **Year 316** — *founding*: Aldrulmere the Lantern-eyed founded the Order of the Brine at Olulthasshroud, sworn to stand against the Brine-hollowing. _(at Olulthasshroud)_
 - **Year 337** — *founding*: The Church of Veloryne was raised at Ostenthasvault; Thalenien the Unbowed took its first pulpit, preaching that the waning is a trial and the faithful will be spared. _(at Ostenthasvault)_
 - **Year 354** — *heresy*: Maziadra the Lantern-eyed was cast out of Church of Veloryne and founded the Cult of the Second Dawn, teaching that the gods themselves caused the waning. _(at Ysedanecrown)_
   - _Hidden:_ The heresy is nearer the truth than the sermon.
 - **Year 373** — *founding*: Ezric the Forsworn united the river-clans and was crowned in Quelwynbarrow; the realm took the name Hestnothgate. _(at Quelwynbarrow)_
-- **Year 408** — *rite of restoration*: At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. _(at Yormere)_
+- **Year 408** — *rite of restoration*: At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. _(at Ostenthasvault)_
   - _Hidden:_ The rite did not restore anything. It only fed the waning more slowly — and Thalenien suspected as much.
+  - **Year 405** — *the choosing*: The saint was not the first choice. The first choice ran, and was let run; the chronicles kept the saint's serenity and lost the running. _(at Sylgarhold)_
+    - _Hidden:_ The one who ran was never pursued, by design.
+  - **Year 408** — *the procession*: The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it. _(at Sylgarhold)_
 - **Year 458** — *betrayal*: Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. _(at Quelwynbarrow)_
   - _Hidden:_ Hestirdane acted on a promise from the Cult of the Second Dawn: that the marked of their house would be spared the Brine-hollowing. The promise was not kept.
 - **Year 461** — *fall of a kingdom*: Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again. _(at Hestnothgate)_
@@ -49,6 +60,8 @@
   - _Hidden:_ Sylorien found the truth of the waning, and chose to stay.
 - **Year 538** — *last pilgrimage*: Mazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. _(at Olulthasshroud)_
 - **Year 544** — *hero's end*: Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. _(at Olulthasshroud)_
+  - **Year 543** — *testimony*: An account survives from Ulesssila Thrice-pardoned, a chronicler, set down against instruction and hidden in a psalter. _(at Wrenessrionbarrow)_
+  - **Year 544** — *aftermath*: In the months after, singers came in unusual numbers, and left in unusual silence. _(at Wrenessrionbarrow)_
 - **Year 558** — *the seal weakens*: Pilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued. _(at the Pilgrim Roads)_
   - _Hidden:_ The seal has been failing on its own since the waning began. The cult only follows the cracks.
 
@@ -65,6 +78,12 @@
 - **Yormere** the Adamant (pilgrim saint) — of Church of Veloryne. Fate: given to the rite of restoration (year 408).
 - **Hestirdane** the Grey (oathbreaker general) — of Hestnothgate. Fate: succumbed to the Brine-hollowing (year 463).
 - **Mazamund** the Unmarked (wandering knight) — of Order of the Brine. Fate: walked into the dusk unarmed (year 544).
+- **Veremis** of No House (novice).
+- **Solemis** of the Rearguard (siege captain).
+- **Ghalorien** the Stray (siege captain).
+- **Ulesssila** Thrice-pardoned (chronicler).
+- **Ezahild** Long-memoried (champion). Fate: given to the seal (year 194).
+- **Ezlis** the Sleepless (champion). Fate: given to the seal (year 194).
 
 ## Factions
 - **Loulmerecradle** (church), seat Yorgarcrown, founded year 58.
@@ -83,7 +102,7 @@
 - **Harricspire** — holds Salt of Sylorien, Soul of Sylorien.
 - **Morennothmarch** — holds Brine of Nyadra.
 - **Olulthasshroud** — holds Mazamund's Set, Ring of the Brine Vigil.
-- **Ostenthasvault**.
+- **Ostenthasvault** — holds Remnant Soul of Saint Yormere, Tide of Saint Yormere.
 - **Ysedanecrown**.
 - **Quelwynbarrow**.
 - **Loulmerecradle**.
@@ -91,6 +110,10 @@
 - **Cyrogrimmere**.
 - **Nimelismarch**.
 - **Aldranarahollow** — holds Nimos's War-Brine.
-- **Aldrulmere**.
 - **Hestnothgate** — holds Hollow Crown of Hestnothgate, Hestirdane's Oathbreaker Blade.
-- **Yormere** — holds Remnant Soul of Saint Yormere, Tide of Saint Yormere.
+- **Sylgarhold** — holds Processional Conch.
+- **Ulucaelfen** — holds Torn Standard of Seriaachvault.
+- **Seriaachvault**.
+- **Kaulmerehold**.
+- **Wrenessrionbarrow**.
+- **Nyiethhollow** — holds Warden's Salt-ring.

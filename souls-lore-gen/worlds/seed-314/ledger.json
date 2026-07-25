@@ -515,6 +515,7 @@
       "text": "the Sundered Moon rose (or was raised \u2014 the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -530,11 +531,12 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p10"
+      "place": "p2"
     },
     "e3": {
       "type": "event",
@@ -545,6 +547,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -560,6 +563,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -575,6 +579,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -590,6 +595,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -605,11 +611,12 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p10"
+      "place": "p2"
     },
     "e8": {
       "type": "event",
@@ -620,11 +627,12 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p12"
+      "place": "p11"
     },
     "e9": {
       "type": "event",
@@ -635,6 +643,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -650,11 +659,12 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p13"
+      "place": "p12"
     },
     "e11": {
       "type": "event",
@@ -665,6 +675,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -680,11 +691,12 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p14"
+      "place": "p13"
     },
     "e13": {
       "type": "event",
@@ -695,6 +707,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -712,6 +725,7 @@
         "f4",
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -728,11 +742,12 @@
         "f5",
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p15"
+      "place": "p14"
     },
     "e16": {
       "type": "event",
@@ -741,6 +756,7 @@
       "text": "The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -756,6 +772,7 @@
       "participants": [
         "f6"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -772,6 +789,7 @@
         "f7",
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -787,6 +805,7 @@
       "participants": [
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -802,6 +821,7 @@
       "participants": [
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -818,6 +838,7 @@
         "f7",
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -834,6 +855,7 @@
         "f11",
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -850,11 +872,12 @@
         "f9",
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
       "source": "sim",
-      "place": "p16"
+      "place": "p15"
     },
     "e24": {
       "type": "event",
@@ -865,6 +888,7 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -880,6 +904,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -893,7 +918,9 @@
       "text": "Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Ysirveth was lost, carrying the order's final blessing.",
       "hidden": null,
       "participants": [
-        "f12",
+        "f12"
+      ],
+      "referents": [
         "f2"
       ],
       "parent": null,
@@ -911,6 +938,7 @@
       "participants": [
         "f12"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -923,7 +951,8 @@
       "year": 632,
       "text": "Pilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued.",
       "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
-      "participants": [
+      "participants": [],
+      "referents": [
         "f5"
       ],
       "parent": null,
@@ -952,8 +981,8 @@
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe Mirror of Galomere was wrought as regalia of Galomere's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.",
       "depth": 0,
       "source": "sim",
-      "site": "p10",
-      "placement": "Kept long at Galomere, and then kept poorly."
+      "site": "p2",
+      "placement": "Kept long at Oliadiscrown, and then kept poorly."
     },
     "a2": {
       "type": "artifact",
@@ -1049,7 +1078,7 @@
       "description": "A weapon of an older make, still keen despite its years.\n\nNimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war. Of Ysirveth, god of harvest, plenty, and the debt of plenty, the last word is this: took the Silver Lament and wandered. Old verses hold that Ysirveth treated with Nimgrim in secret and was spared what followed. What became of it after is not written.",
       "depth": 0,
       "source": "sim",
-      "site": "p15",
+      "site": "p14",
       "placement": "Worn smooth by warders' hands at Nimenmothreach."
     },
     "a7": {
@@ -1125,7 +1154,7 @@
       "description": "An object of no use in battle, and of great consequence.\n\nHarach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on. None now living can say whether Harach acted on a promise from the Cult of the True Shard: that the marked of their house would be spared the Silver Lament. The promise was not kept. What became of it after is not written.",
       "depth": 0,
       "source": "sim",
-      "site": "p16",
+      "site": "p15",
       "placement": "Found at the foot of a throne in Belthashollow, beneath the dust of the banners."
     },
     "a9": {
@@ -1151,7 +1180,7 @@
       "description": "A weapon of an older make, still keen despite its years.\n\nHarach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on. The tellings differ, but most agree Belthashollow fell. Nyessorn the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again. Perhaps it is better that the tale ends there.",
       "depth": 0,
       "source": "sim",
-      "site": "p16",
+      "site": "p15",
       "placement": "Found at the foot of a throne in Belthashollow, beneath the dust of the banners."
     },
     "a10": {
@@ -1301,38 +1330,38 @@
     },
     "p10": {
       "type": "place",
-      "name": "Galomere",
-      "source": "geo"
+      "name": "Karenienreach",
+      "source": "geo",
+      "aka_faction": "k1"
     },
     "p11": {
       "type": "place",
-      "name": "Karenienreach",
-      "source": "geo"
+      "name": "Ysrionmarch",
+      "source": "geo",
+      "aka_faction": "k2"
     },
     "p12": {
       "type": "place",
-      "name": "Ysrionmarch",
-      "source": "geo"
+      "name": "Kaearaspire",
+      "source": "geo",
+      "aka_faction": "k3"
     },
     "p13": {
       "type": "place",
-      "name": "Kaearaspire",
-      "source": "geo"
+      "name": "Thalaemisreach",
+      "source": "geo",
+      "aka_faction": "k4"
     },
     "p14": {
-      "type": "place",
-      "name": "Thalaemisreach",
-      "source": "geo"
-    },
-    "p15": {
       "type": "place",
       "name": "Nimenmothreach",
       "source": "geo"
     },
-    "p16": {
+    "p15": {
       "type": "place",
       "name": "Belthashollow",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k8"
     },
     "f13": {
       "type": "figure",
@@ -1355,11 +1384,12 @@
       "participants": [
         "f13"
       ],
+      "referents": [],
       "parent": "e1",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e1",
-      "place": "p17"
+      "place": "p16"
     },
     "e30": {
       "type": "event",
@@ -1368,11 +1398,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e1",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e1",
-      "place": "p17"
+      "place": "p16"
     },
     "a14": {
       "type": "artifact",
@@ -1393,10 +1424,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ruthott the Plain, a novice, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e1",
-      "site": "p17",
+      "site": "p16",
       "placement": "Recovered at Caledanecrown, off the deep roads, where the account had lain hidden."
     },
-    "p17": {
+    "p16": {
       "type": "place",
       "name": "Caledanecrown",
       "source": "expansion:e1"
@@ -1422,11 +1453,12 @@
       "participants": [
         "f14"
       ],
+      "referents": [],
       "parent": "e2",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e2",
-      "place": "p18"
+      "place": "p17"
     },
     "e32": {
       "type": "event",
@@ -1435,11 +1467,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e2",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e2",
-      "place": "p18"
+      "place": "p17"
     },
     "a15": {
       "type": "artifact",
@@ -1460,10 +1493,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Thaliadra Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e2",
-      "site": "p18",
+      "site": "p17",
       "placement": "Recovered at Nyemisspire, off the deep roads, where the account had lain hidden."
     },
-    "p18": {
+    "p17": {
       "type": "place",
       "name": "Nyemisspire",
       "source": "expansion:e2"
@@ -1489,11 +1522,12 @@
       "participants": [
         "f15"
       ],
+      "referents": [],
       "parent": "e3",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e3",
-      "place": "p19"
+      "place": "p18"
     },
     "e34": {
       "type": "event",
@@ -1502,11 +1536,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e3",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e3",
-      "place": "p19"
+      "place": "p18"
     },
     "a16": {
       "type": "artifact",
@@ -1527,10 +1562,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ranulgar the Sleepless, a bell-ringer, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e3",
-      "site": "p19",
+      "site": "p18",
       "placement": "Recovered at Ishornhold, off the deep roads, where the account had lain hidden."
     },
-    "p19": {
+    "p18": {
       "type": "place",
       "name": "Ishornhold",
       "source": "expansion:e3"
@@ -1556,11 +1591,12 @@
       "participants": [
         "f16"
       ],
+      "referents": [],
       "parent": "e4",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e4",
-      "place": "p20"
+      "place": "p19"
     },
     "e36": {
       "type": "event",
@@ -1569,11 +1605,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e4",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e4",
-      "place": "p20"
+      "place": "p19"
     },
     "a17": {
       "type": "artifact",
@@ -1594,10 +1631,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Omdis Long-memoried, a envoy, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e4",
-      "site": "p20",
+      "site": "p19",
       "placement": "Recovered at Draumothmarch, off the deep roads, where the account had lain hidden."
     },
-    "p20": {
+    "p19": {
       "type": "place",
       "name": "Draumothmarch",
       "source": "expansion:e4"
@@ -1623,11 +1660,12 @@
       "participants": [
         "f17"
       ],
+      "referents": [],
       "parent": "e5",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e5",
-      "place": "p21"
+      "place": "p20"
     },
     "e38": {
       "type": "event",
@@ -1636,13 +1674,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e5",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e5",
-      "place": "p21"
+      "place": "p20"
     },
-    "p21": {
+    "p20": {
       "type": "place",
       "name": "Banlisbarrow",
       "source": "expansion:e5"
@@ -1668,11 +1707,12 @@
       "participants": [
         "f18"
       ],
+      "referents": [],
       "parent": "e6",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e6",
-      "place": "p22"
+      "place": "p21"
     },
     "e40": {
       "type": "event",
@@ -1681,13 +1721,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e6",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e6",
-      "place": "p22"
+      "place": "p21"
     },
-    "p22": {
+    "p21": {
       "type": "place",
       "name": "Omiasilafen",
       "source": "expansion:e6"
@@ -1713,11 +1754,12 @@
       "participants": [
         "f19"
       ],
+      "referents": [],
       "parent": "e7",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e7",
-      "place": "p23"
+      "place": "p22"
     },
     "e42": {
       "type": "event",
@@ -1726,13 +1768,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e7",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e7",
-      "place": "p23"
+      "place": "p22"
     },
-    "p23": {
+    "p22": {
       "type": "place",
       "name": "Aldrenthasmarch",
       "source": "expansion:e7"
@@ -1758,11 +1801,12 @@
       "participants": [
         "f20"
       ],
+      "referents": [],
       "parent": "e8",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e8",
-      "place": "p24"
+      "place": "p23"
     },
     "e44": {
       "type": "event",
@@ -1771,11 +1815,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e8",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e8",
-      "place": "p24"
+      "place": "p23"
     },
     "a18": {
       "type": "artifact",
@@ -1796,10 +1841,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ulessach the Plain, a gravedigger, set down against instruction and hidden in a coffin lid. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e8",
-      "site": "p24",
+      "site": "p23",
       "placement": "Recovered at Velmundmere, off the deep roads, where the account had lain hidden."
     },
-    "p24": {
+    "p23": {
       "type": "place",
       "name": "Velmundmere",
       "source": "expansion:e8"
@@ -1825,11 +1870,12 @@
       "participants": [
         "f21"
       ],
+      "referents": [],
       "parent": "e9",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e9",
-      "place": "p25"
+      "place": "p24"
     },
     "e46": {
       "type": "event",
@@ -1838,11 +1884,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e9",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e9",
-      "place": "p25"
+      "place": "p24"
     },
     "a19": {
       "type": "artifact",
@@ -1863,10 +1910,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Galorgar the Meek, a cartwright, set down against instruction and hidden in a ledger. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e9",
-      "site": "p25",
+      "site": "p24",
       "placement": "Recovered at Ezmundcrown, off the deep roads, where the account had lain hidden."
     },
-    "p25": {
+    "p24": {
       "type": "place",
       "name": "Ezmundcrown",
       "source": "expansion:e9"
@@ -1892,11 +1939,12 @@
       "participants": [
         "f22"
       ],
+      "referents": [],
       "parent": "e10",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e10",
-      "place": "p26"
+      "place": "p25"
     },
     "e48": {
       "type": "event",
@@ -1905,13 +1953,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e10",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e10",
-      "place": "p26"
+      "place": "p25"
     },
-    "p26": {
+    "p25": {
       "type": "place",
       "name": "Ysvethcrown",
       "source": "expansion:e10"
@@ -1937,11 +1986,12 @@
       "participants": [
         "f23"
       ],
+      "referents": [],
       "parent": "e11",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e11",
-      "place": "p27"
+      "place": "p26"
     },
     "e50": {
       "type": "event",
@@ -1950,13 +2000,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e11",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e11",
-      "place": "p27"
+      "place": "p26"
     },
-    "p27": {
+    "p26": {
       "type": "place",
       "name": "Ishirlishold",
       "source": "expansion:e11"
@@ -1982,11 +2033,12 @@
       "participants": [
         "f24"
       ],
+      "referents": [],
       "parent": "e12",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e12",
-      "place": "p28"
+      "place": "p27"
     },
     "e52": {
       "type": "event",
@@ -1995,11 +2047,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e12",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e12",
-      "place": "p28"
+      "place": "p27"
     },
     "a20": {
       "type": "artifact",
@@ -2020,10 +2073,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Ghaldra the Meek, a witness, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e12",
-      "site": "p28",
+      "site": "p27",
       "placement": "Recovered at Banhildreach, off the deep roads, where the account had lain hidden."
     },
-    "p28": {
+    "p27": {
       "type": "place",
       "name": "Banhildreach",
       "source": "expansion:e12"
@@ -2049,11 +2102,12 @@
       "participants": [
         "f25"
       ],
+      "referents": [],
       "parent": "e13",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e13",
-      "place": "p29"
+      "place": "p28"
     },
     "e54": {
       "type": "event",
@@ -2062,21 +2116,17 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e13",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e13",
-      "place": "p29"
+      "place": "p28"
     },
-    "p29": {
+    "p28": {
       "type": "place",
       "name": "Kaastshroud",
       "source": "expansion:e13"
-    },
-    "p30": {
-      "type": "place",
-      "name": "Belimere",
-      "source": "geo"
     },
     "f26": {
       "type": "figure",
@@ -2100,11 +2150,12 @@
         "f26",
         "f5"
       ],
+      "referents": [],
       "parent": "e14",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e14",
-      "place": "p31"
+      "place": "p29"
     },
     "e56": {
       "type": "event",
@@ -2116,11 +2167,12 @@
         "f5",
         "f4"
       ],
+      "referents": [],
       "parent": "e14",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e14",
-      "place": "p31"
+      "place": "p29"
     },
     "a21": {
       "type": "artifact",
@@ -2141,15 +2193,15 @@
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe war's worst day was at Harthasspire, where the line held for a night and a morning under Belessos the Plain, and then did not hold. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e14",
-      "site": "p31",
+      "site": "p29",
       "placement": "Recovered at Ostgarshroud, off the deep roads, where the account had lain hidden."
     },
-    "p31": {
+    "p29": {
       "type": "place",
       "name": "Ostgarshroud",
       "source": "expansion:e14"
     },
-    "p32": {
+    "p30": {
       "type": "place",
       "name": "Harthasspire",
       "source": "geo"
@@ -2188,11 +2240,12 @@
         "f27",
         "f28"
       ],
+      "referents": [],
       "parent": "e15",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e15",
-      "place": "p33"
+      "place": "p31"
     },
     "e58": {
       "type": "event",
@@ -2201,11 +2254,12 @@
       "text": "A wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete.",
       "hidden": "The first warden asked to be bound to the seal, not appointed over it.",
       "participants": [],
+      "referents": [],
       "parent": "e15",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e15",
-      "place": "p33"
+      "place": "p31"
     },
     "a22": {
       "type": "artifact",
@@ -2228,10 +2282,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nOf the champions spent on the seal, most are a list now; two are still prayed to by name \u2014 Soldis the Younger and Olott of the Rearguard \u2014 though none can say what distinguishes the remembered dead from the rest. The tellings differ, but most agree a wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. Whether this was mercy or malice, none agree.",
       "depth": 1,
       "source": "expansion:e15",
-      "site": "p33",
+      "site": "p31",
       "placement": "Recovered at Kaaravault, off the deep roads, where the account had lain hidden."
     },
-    "p33": {
+    "p31": {
       "type": "place",
       "name": "Kaaravault",
       "source": "expansion:e15"
@@ -2257,11 +2311,12 @@
       "participants": [
         "f29"
       ],
+      "referents": [],
       "parent": "e16",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e16",
-      "place": "p34"
+      "place": "p32"
     },
     "e60": {
       "type": "event",
@@ -2270,11 +2325,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e16",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e16",
-      "place": "p34"
+      "place": "p32"
     },
     "a23": {
       "type": "artifact",
@@ -2295,10 +2351,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Dragrim the Sleepless, a novice, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e16",
-      "site": "p34",
+      "site": "p32",
       "placement": "Recovered at Sylirarashroud, off the deep roads, where the account had lain hidden."
     },
-    "p34": {
+    "p32": {
       "type": "place",
       "name": "Sylirarashroud",
       "source": "expansion:e16"
@@ -2324,11 +2380,12 @@
       "participants": [
         "f30"
       ],
+      "referents": [],
       "parent": "e17",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e17",
-      "place": "p35"
+      "place": "p33"
     },
     "e62": {
       "type": "event",
@@ -2337,21 +2394,17 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e17",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e17",
-      "place": "p35"
+      "place": "p33"
     },
-    "p35": {
+    "p33": {
       "type": "place",
       "name": "Toruldanereach",
       "source": "expansion:e17"
-    },
-    "p36": {
-      "type": "place",
-      "name": "Solirmere",
-      "source": "geo"
     },
     "f31": {
       "type": "figure",
@@ -2374,11 +2427,12 @@
       "participants": [
         "f31"
       ],
+      "referents": [],
       "parent": "e18",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e18",
-      "place": "p37"
+      "place": "p34"
     },
     "e64": {
       "type": "event",
@@ -2387,11 +2441,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e18",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e18",
-      "place": "p37"
+      "place": "p34"
     },
     "a24": {
       "type": "artifact",
@@ -2412,10 +2467,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Uluast the Stray, a handmaid, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e18",
-      "site": "p37",
+      "site": "p34",
       "placement": "Recovered at Ysirnothcrown, off the deep roads, where the account had lain hidden."
     },
-    "p37": {
+    "p34": {
       "type": "place",
       "name": "Ysirnothcrown",
       "source": "expansion:e18"
@@ -2441,11 +2496,12 @@
       "participants": [
         "f32"
       ],
+      "referents": [],
       "parent": "e19",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e19",
-      "place": "p38"
+      "place": "p35"
     },
     "e66": {
       "type": "event",
@@ -2454,13 +2510,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e19",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e19",
-      "place": "p38"
+      "place": "p35"
     },
-    "p38": {
+    "p35": {
       "type": "place",
       "name": "Haridisvault",
       "source": "expansion:e19"
@@ -2486,11 +2543,12 @@
       "participants": [
         "f33"
       ],
+      "referents": [],
       "parent": "e20",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e20",
-      "place": "p39"
+      "place": "p36"
     },
     "e68": {
       "type": "event",
@@ -2499,13 +2557,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e20",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e20",
-      "place": "p39"
+      "place": "p36"
     },
-    "p39": {
+    "p36": {
       "type": "place",
       "name": "Calirhildfen",
       "source": "expansion:e20"
@@ -2531,11 +2590,12 @@
       "participants": [
         "f34"
       ],
+      "referents": [],
       "parent": "e21",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e21",
-      "place": "p40"
+      "place": "p37"
     },
     "e70": {
       "type": "event",
@@ -2548,11 +2608,12 @@
         "f7",
         "f10"
       ],
+      "referents": [],
       "parent": "e21",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e21",
-      "place": "p40"
+      "place": "p37"
     },
     "a25": {
       "type": "artifact",
@@ -2573,10 +2634,10 @@
       "description": "A talisman for the invoking of half-forgotten rites.\n\nThe procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e21",
-      "site": "p40",
+      "site": "p37",
       "placement": "Recovered at Irorncradle, off the deep roads, where the account had lain hidden."
     },
-    "p40": {
+    "p37": {
       "type": "place",
       "name": "Irorncradle",
       "source": "expansion:e21"
@@ -2603,11 +2664,12 @@
         "f35",
         "f11"
       ],
+      "referents": [],
       "parent": "e22",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e22",
-      "place": "p41"
+      "place": "p38"
     },
     "e72": {
       "type": "event",
@@ -2618,11 +2680,12 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": "e22",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e22",
-      "place": "p41"
+      "place": "p38"
     },
     "a26": {
       "type": "artifact",
@@ -2646,10 +2709,10 @@
       "description": "An object of no use in battle, and of great consequence.\n\nTwice before the gates opened, a go-between came by night \u2014 Nyayne Thrice-pardoned, who carried no letters and remembered everything. The tellings differ, but most agree the grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked. Whether this was mercy or malice, none agree.",
       "depth": 1,
       "source": "expansion:e22",
-      "site": "p41",
+      "site": "p38",
       "placement": "Recovered at Elornmarch, off the deep roads, where the account had lain hidden."
     },
-    "p41": {
+    "p38": {
       "type": "place",
       "name": "Elornmarch",
       "source": "expansion:e22"
@@ -2675,11 +2738,12 @@
       "participants": [
         "f36"
       ],
+      "referents": [],
       "parent": "e23",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e23",
-      "place": "p42"
+      "place": "p39"
     },
     "e74": {
       "type": "event",
@@ -2688,13 +2752,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e23",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e23",
-      "place": "p42"
+      "place": "p39"
     },
-    "p42": {
+    "p39": {
       "type": "place",
       "name": "Cyressdismere",
       "source": "expansion:e23"
@@ -2720,11 +2785,12 @@
       "participants": [
         "f37"
       ],
+      "referents": [],
       "parent": "e24",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e24",
-      "place": "p43"
+      "place": "p40"
     },
     "e76": {
       "type": "event",
@@ -2733,13 +2799,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e24",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e24",
-      "place": "p43"
+      "place": "p40"
     },
-    "p43": {
+    "p40": {
       "type": "place",
       "name": "Baniaorngate",
       "source": "expansion:e24"
@@ -2766,11 +2833,12 @@
         "f38",
         "f2"
       ],
+      "referents": [],
       "parent": "e25",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e25",
-      "place": "p44"
+      "place": "p41"
     },
     "e78": {
       "type": "event",
@@ -2779,11 +2847,12 @@
       "text": "The throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since.",
       "hidden": "The arrangement was the god's own last act, and it was an answer.",
       "participants": [],
+      "referents": [],
       "parent": "e25",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e25",
-      "place": "p44"
+      "place": "p41"
     },
     "a27": {
       "type": "artifact",
@@ -2805,10 +2874,10 @@
       "description": "A humble ward, spent in a moment.\n\nThe throne was found attended: candles lit, regalia arranged, as if for a guest expected momentarily. Nothing was disturbed. Nothing has been disturbed since. The tellings differ, but most agree the arrangement was the god's own last act, and it was an answer. In its presence, the old prayers feel like apologies. The name endures; little else does.",
       "depth": 1,
       "source": "expansion:e25",
-      "site": "p44",
+      "site": "p41",
       "placement": "Recovered at Serulottmarch, off the deep roads, where the account had lain hidden."
     },
-    "p44": {
+    "p41": {
       "type": "place",
       "name": "Serulottmarch",
       "source": "expansion:e25"
@@ -2834,11 +2903,12 @@
       "participants": [
         "f39"
       ],
+      "referents": [],
       "parent": "e26",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e26",
-      "place": "p45"
+      "place": "p42"
     },
     "e80": {
       "type": "event",
@@ -2847,11 +2917,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e26",
       "depth": 1,
       "expanded": true,
       "source": "expansion:e26",
-      "place": "p45"
+      "place": "p42"
     },
     "a28": {
       "type": "artifact",
@@ -2872,10 +2943,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Ezesscael Cinder-shod, a siege captain, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e26",
-      "site": "p45",
+      "site": "p42",
       "placement": "Recovered at Ysienvault, off the deep roads, where the account had lain hidden."
     },
-    "p45": {
+    "p42": {
       "type": "place",
       "name": "Ysienvault",
       "source": "expansion:e26"
@@ -2901,11 +2972,12 @@
       "participants": [
         "f40"
       ],
+      "referents": [],
       "parent": "e27",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e27",
-      "place": "p46"
+      "place": "p43"
     },
     "e82": {
       "type": "event",
@@ -2914,11 +2986,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e27",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e27",
-      "place": "p46"
+      "place": "p43"
     },
     "a29": {
       "type": "artifact",
@@ -2939,10 +3012,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Galmund the Meek, a handmaid, set down against instruction and hidden in a wall. It hums, faintly, as if answering something far below. The rest of the story is kept by no one.",
       "depth": 1,
       "source": "expansion:e27",
-      "site": "p46",
+      "site": "p43",
       "placement": "Recovered at Wrengrimshroud, off the deep roads, where the account had lain hidden."
     },
-    "p46": {
+    "p43": {
       "type": "place",
       "name": "Wrengrimshroud",
       "source": "expansion:e27"
@@ -2968,11 +3041,12 @@
       "participants": [
         "f41"
       ],
+      "referents": [],
       "parent": "e28",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e28",
-      "place": "p47"
+      "place": "p44"
     },
     "e84": {
       "type": "event",
@@ -2981,11 +3055,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e28",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e28",
-      "place": "p47"
+      "place": "p44"
     },
     "a30": {
       "type": "artifact",
@@ -3006,10 +3081,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Moriahild the Sleepless, a lantern-bearer, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e28",
-      "site": "p47",
+      "site": "p44",
       "placement": "Recovered at Mordrashroud, off the deep roads, where the account had lain hidden."
     },
-    "p47": {
+    "p44": {
       "type": "place",
       "name": "Mordrashroud",
       "source": "expansion:e28"
@@ -3035,11 +3110,12 @@
       "participants": [
         "f42"
       ],
+      "referents": [],
       "parent": "e29",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e29",
-      "place": "p48"
+      "place": "p45"
     },
     "e86": {
       "type": "event",
@@ -3048,13 +3124,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e29",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e29",
-      "place": "p48"
+      "place": "p45"
     },
-    "p48": {
+    "p45": {
       "type": "place",
       "name": "Wrenanrionfen",
       "source": "expansion:e29"
@@ -3080,11 +3157,12 @@
       "participants": [
         "f43"
       ],
+      "referents": [],
       "parent": "e30",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e30",
-      "place": "p49"
+      "place": "p46"
     },
     "e88": {
       "type": "event",
@@ -3093,11 +3171,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e30",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e30",
-      "place": "p49"
+      "place": "p46"
     },
     "a31": {
       "type": "artifact",
@@ -3118,10 +3197,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Loulmund of the Rearguard, a cartwright, set down against instruction and hidden in a wall. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e30",
-      "site": "p49",
+      "site": "p46",
       "placement": "Recovered at Nyotthold, off the deep roads, where the account had lain hidden."
     },
-    "p49": {
+    "p46": {
       "type": "place",
       "name": "Nyotthold",
       "source": "expansion:e30"
@@ -3147,11 +3226,12 @@
       "participants": [
         "f44"
       ],
+      "referents": [],
       "parent": "e31",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e31",
-      "place": "p50"
+      "place": "p47"
     },
     "e90": {
       "type": "event",
@@ -3160,13 +3240,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e31",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e31",
-      "place": "p50"
+      "place": "p47"
     },
-    "p50": {
+    "p47": {
       "type": "place",
       "name": "Athanmothcradle",
       "source": "expansion:e31"
@@ -3192,11 +3273,12 @@
       "participants": [
         "f45"
       ],
+      "referents": [],
       "parent": "e32",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e32",
-      "place": "p51"
+      "place": "p48"
     },
     "e92": {
       "type": "event",
@@ -3205,13 +3287,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e32",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e32",
-      "place": "p51"
+      "place": "p48"
     },
-    "p51": {
+    "p48": {
       "type": "place",
       "name": "Veldanedeep",
       "source": "expansion:e32"
@@ -3237,11 +3320,12 @@
       "participants": [
         "f46"
       ],
+      "referents": [],
       "parent": "e33",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e33",
-      "place": "p52"
+      "place": "p49"
     },
     "e94": {
       "type": "event",
@@ -3250,11 +3334,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e33",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e33",
-      "place": "p52"
+      "place": "p49"
     },
     "a32": {
       "type": "artifact",
@@ -3275,10 +3360,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Morula One-hand, a quartermaster, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e33",
-      "site": "p52",
+      "site": "p49",
       "placement": "Recovered at Fenamothvault, off the deep roads, where the account had lain hidden."
     },
-    "p52": {
+    "p49": {
       "type": "place",
       "name": "Fenamothvault",
       "source": "expansion:e33"
@@ -3304,11 +3389,12 @@
       "participants": [
         "f47"
       ],
+      "referents": [],
       "parent": "e34",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e34",
-      "place": "p53"
+      "place": "p50"
     },
     "e96": {
       "type": "event",
@@ -3317,13 +3403,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e34",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e34",
-      "place": "p53"
+      "place": "p50"
     },
-    "p53": {
+    "p50": {
       "type": "place",
       "name": "Iroachhollow",
       "source": "expansion:e34"
@@ -3349,11 +3436,12 @@
       "participants": [
         "f48"
       ],
+      "referents": [],
       "parent": "e35",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e35",
-      "place": "p54"
+      "place": "p51"
     },
     "e98": {
       "type": "event",
@@ -3362,21 +3450,17 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e35",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e35",
-      "place": "p54"
+      "place": "p51"
     },
-    "p54": {
+    "p51": {
       "type": "place",
       "name": "Hestessthasfen",
       "source": "expansion:e35"
-    },
-    "p55": {
-      "type": "place",
-      "name": "Kamere",
-      "source": "geo"
     },
     "f49": {
       "type": "figure",
@@ -3399,11 +3483,12 @@
       "participants": [
         "f49"
       ],
+      "referents": [],
       "parent": "e36",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e36",
-      "place": "p56"
+      "place": "p52"
     },
     "e100": {
       "type": "event",
@@ -3412,13 +3497,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e36",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e36",
-      "place": "p56"
+      "place": "p52"
     },
-    "p56": {
+    "p52": {
       "type": "place",
       "name": "Galmeremere",
       "source": "expansion:e36"
@@ -3444,11 +3530,12 @@
       "participants": [
         "f50"
       ],
+      "referents": [],
       "parent": "e37",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e37",
-      "place": "p57"
+      "place": "p53"
     },
     "e102": {
       "type": "event",
@@ -3457,13 +3544,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e37",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e37",
-      "place": "p57"
+      "place": "p53"
     },
-    "p57": {
+    "p53": {
       "type": "place",
       "name": "Aldrirvanegate",
       "source": "expansion:e37"
@@ -3489,11 +3577,12 @@
       "participants": [
         "f51"
       ],
+      "referents": [],
       "parent": "e38",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e38",
-      "place": "p58"
+      "place": "p54"
     },
     "e104": {
       "type": "event",
@@ -3502,13 +3591,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e38",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e38",
-      "place": "p58"
+      "place": "p54"
     },
-    "p58": {
+    "p54": {
       "type": "place",
       "name": "Nimanulahollow",
       "source": "expansion:e38"
@@ -3534,11 +3624,12 @@
       "participants": [
         "f52"
       ],
+      "referents": [],
       "parent": "e39",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e39",
-      "place": "p59"
+      "place": "p55"
     },
     "e106": {
       "type": "event",
@@ -3547,21 +3638,17 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e39",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e39",
-      "place": "p59"
+      "place": "p55"
     },
-    "p59": {
+    "p55": {
       "type": "place",
       "name": "Fenuldraspire",
       "source": "expansion:e39"
-    },
-    "p60": {
-      "type": "place",
-      "name": "Belmere",
-      "source": "geo"
     },
     "f53": {
       "type": "figure",
@@ -3584,11 +3671,12 @@
       "participants": [
         "f53"
       ],
+      "referents": [],
       "parent": "e40",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e40",
-      "place": "p61"
+      "place": "p56"
     },
     "e108": {
       "type": "event",
@@ -3597,13 +3685,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e40",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e40",
-      "place": "p61"
+      "place": "p56"
     },
-    "p61": {
+    "p56": {
       "type": "place",
       "name": "Verulgrimmere",
       "source": "expansion:e40"
@@ -3629,11 +3718,12 @@
       "participants": [
         "f54"
       ],
+      "referents": [],
       "parent": "e41",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e41",
-      "place": "p62"
+      "place": "p57"
     },
     "e110": {
       "type": "event",
@@ -3642,13 +3732,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e41",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e41",
-      "place": "p62"
+      "place": "p57"
     },
-    "p62": {
+    "p57": {
       "type": "place",
       "name": "Fennothreach",
       "source": "expansion:e41"
@@ -3674,11 +3765,12 @@
       "participants": [
         "f55"
       ],
+      "referents": [],
       "parent": "e42",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e42",
-      "place": "p63"
+      "place": "p58"
     },
     "e112": {
       "type": "event",
@@ -3687,11 +3779,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e42",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e42",
-      "place": "p63"
+      "place": "p58"
     },
     "a33": {
       "type": "artifact",
@@ -3712,10 +3805,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Aldreth Thrice-pardoned, a deserter, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e42",
-      "site": "p63",
+      "site": "p58",
       "placement": "Recovered at Osthildhold, off the deep roads, where the account had lain hidden."
     },
-    "p63": {
+    "p58": {
       "type": "place",
       "name": "Osthildhold",
       "source": "expansion:e42"
@@ -3741,11 +3834,12 @@
       "participants": [
         "f56"
       ],
+      "referents": [],
       "parent": "e43",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e43",
-      "place": "p64"
+      "place": "p59"
     },
     "e114": {
       "type": "event",
@@ -3754,11 +3848,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e43",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e43",
-      "place": "p64"
+      "place": "p59"
     },
     "a34": {
       "type": "artifact",
@@ -3779,10 +3874,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Hariaveth the Plain, a handmaid, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e43",
-      "site": "p64",
+      "site": "p59",
       "placement": "Recovered at Toriaastdeep, off the deep roads, where the account had lain hidden."
     },
-    "p64": {
+    "p59": {
       "type": "place",
       "name": "Toriaastdeep",
       "source": "expansion:e43"
@@ -3808,11 +3903,12 @@
       "participants": [
         "f57"
       ],
+      "referents": [],
       "parent": "e44",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e44",
-      "place": "p65"
+      "place": "p60"
     },
     "e116": {
       "type": "event",
@@ -3821,13 +3917,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e44",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e44",
-      "place": "p65"
+      "place": "p60"
     },
-    "p65": {
+    "p60": {
       "type": "place",
       "name": "Solastreach",
       "source": "expansion:e44"
@@ -3853,11 +3950,12 @@
       "participants": [
         "f58"
       ],
+      "referents": [],
       "parent": "e45",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e45",
-      "place": "p66"
+      "place": "p61"
     },
     "e118": {
       "type": "event",
@@ -3866,11 +3964,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e45",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e45",
-      "place": "p66"
+      "place": "p61"
     },
     "a35": {
       "type": "artifact",
@@ -3891,10 +3990,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Ysaeveth Thrice-pardoned, a handmaid, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e45",
-      "site": "p66",
+      "site": "p61",
       "placement": "Recovered at Ulirornfen, off the deep roads, where the account had lain hidden."
     },
-    "p66": {
+    "p61": {
       "type": "place",
       "name": "Ulirornfen",
       "source": "expansion:e45"
@@ -3920,11 +4019,12 @@
       "participants": [
         "f59"
       ],
+      "referents": [],
       "parent": "e46",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e46",
-      "place": "p67"
+      "place": "p62"
     },
     "e120": {
       "type": "event",
@@ -3933,11 +4033,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e46",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e46",
-      "place": "p67"
+      "place": "p62"
     },
     "a36": {
       "type": "artifact",
@@ -3958,10 +4059,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Athocael the Stray, a witness, set down against instruction and hidden in a wall. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e46",
-      "site": "p67",
+      "site": "p62",
       "placement": "Recovered at Quelachmere, off the deep roads, where the account had lain hidden."
     },
-    "p67": {
+    "p62": {
       "type": "place",
       "name": "Quelachmere",
       "source": "expansion:e46"
@@ -3987,11 +4088,12 @@
       "participants": [
         "f60"
       ],
+      "referents": [],
       "parent": "e47",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e47",
-      "place": "p68"
+      "place": "p63"
     },
     "e122": {
       "type": "event",
@@ -4000,13 +4102,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e47",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e47",
-      "place": "p68"
+      "place": "p63"
     },
-    "p68": {
+    "p63": {
       "type": "place",
       "name": "Ostaeulahold",
       "source": "expansion:e47"
@@ -4032,11 +4135,12 @@
       "participants": [
         "f61"
       ],
+      "referents": [],
       "parent": "e48",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e48",
-      "place": "p69"
+      "place": "p64"
     },
     "e124": {
       "type": "event",
@@ -4045,11 +4149,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e48",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e48",
-      "place": "p69"
+      "place": "p64"
     },
     "a37": {
       "type": "artifact",
@@ -4070,10 +4175,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Elaric the Stray, a envoy, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e48",
-      "site": "p69",
+      "site": "p64",
       "placement": "Recovered at Ranootthollow, off the deep roads, where the account had lain hidden."
     },
-    "p69": {
+    "p64": {
       "type": "place",
       "name": "Ranootthollow",
       "source": "expansion:e48"
@@ -4099,11 +4204,12 @@
       "participants": [
         "f62"
       ],
+      "referents": [],
       "parent": "e49",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e49",
-      "place": "p70"
+      "place": "p65"
     },
     "e126": {
       "type": "event",
@@ -4112,11 +4218,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e49",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e49",
-      "place": "p70"
+      "place": "p65"
     },
     "a38": {
       "type": "artifact",
@@ -4137,10 +4244,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Kaansila the Plain, a gravedigger, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e49",
-      "site": "p70",
+      "site": "p65",
       "placement": "Recovered at Belthasgate, off the deep roads, where the account had lain hidden."
     },
-    "p70": {
+    "p65": {
       "type": "place",
       "name": "Belthasgate",
       "source": "expansion:e49"
@@ -4166,11 +4273,12 @@
       "participants": [
         "f63"
       ],
+      "referents": [],
       "parent": "e50",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e50",
-      "place": "p71"
+      "place": "p66"
     },
     "e128": {
       "type": "event",
@@ -4179,11 +4287,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e50",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e50",
-      "place": "p71"
+      "place": "p66"
     },
     "a39": {
       "type": "artifact",
@@ -4204,10 +4313,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Toriremis Cinder-shod, a siege captain, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e50",
-      "site": "p71",
+      "site": "p66",
       "placement": "Recovered at Olvanebarrow, off the deep roads, where the account had lain hidden."
     },
-    "p71": {
+    "p66": {
       "type": "place",
       "name": "Olvanebarrow",
       "source": "expansion:e50"
@@ -4233,11 +4342,12 @@
       "participants": [
         "f64"
       ],
+      "referents": [],
       "parent": "e51",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e51",
-      "place": "p72"
+      "place": "p67"
     },
     "e130": {
       "type": "event",
@@ -4246,13 +4356,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e51",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e51",
-      "place": "p72"
+      "place": "p67"
     },
-    "p72": {
+    "p67": {
       "type": "place",
       "name": "Ghaleulahollow",
       "source": "expansion:e51"
@@ -4278,11 +4389,12 @@
       "participants": [
         "f65"
       ],
+      "referents": [],
       "parent": "e52",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e52",
-      "place": "p73"
+      "place": "p68"
     },
     "e132": {
       "type": "event",
@@ -4291,13 +4403,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e52",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e52",
-      "place": "p73"
+      "place": "p68"
     },
-    "p73": {
+    "p68": {
       "type": "place",
       "name": "Mazorulamarch",
       "source": "expansion:e52"
@@ -4323,11 +4436,12 @@
       "participants": [
         "f66"
       ],
+      "referents": [],
       "parent": "e53",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e53",
-      "place": "p74"
+      "place": "p69"
     },
     "e134": {
       "type": "event",
@@ -4336,11 +4450,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e53",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e53",
-      "place": "p74"
+      "place": "p69"
     },
     "a40": {
       "type": "artifact",
@@ -4361,10 +4476,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ghalara the Stray, a quartermaster, set down against instruction and hidden in a wall. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e53",
-      "site": "p74",
+      "site": "p69",
       "placement": "Recovered at Servanevault, off the deep roads, where the account had lain hidden."
     },
-    "p74": {
+    "p69": {
       "type": "place",
       "name": "Servanevault",
       "source": "expansion:e53"
@@ -4390,11 +4505,12 @@
       "participants": [
         "f67"
       ],
+      "referents": [],
       "parent": "e54",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e54",
-      "place": "p75"
+      "place": "p70"
     },
     "e136": {
       "type": "event",
@@ -4403,13 +4519,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e54",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e54",
-      "place": "p75"
+      "place": "p70"
     },
-    "p75": {
+    "p70": {
       "type": "place",
       "name": "Banulwynhold",
       "source": "expansion:e54"
@@ -4435,11 +4552,12 @@
       "participants": [
         "f68"
       ],
+      "referents": [],
       "parent": "e55",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e55",
-      "place": "p76"
+      "place": "p71"
     },
     "e138": {
       "type": "event",
@@ -4448,11 +4566,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e55",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e55",
-      "place": "p76"
+      "place": "p71"
     },
     "a41": {
       "type": "artifact",
@@ -4473,10 +4592,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Baniadane the Younger, a siege captain, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e55",
-      "site": "p76",
+      "site": "p71",
       "placement": "Recovered at Ezianothvault, off the deep roads, where the account had lain hidden."
     },
-    "p76": {
+    "p71": {
       "type": "place",
       "name": "Ezianothvault",
       "source": "expansion:e55"
@@ -4502,11 +4621,12 @@
       "participants": [
         "f69"
       ],
+      "referents": [],
       "parent": "e56",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e56",
-      "place": "p77"
+      "place": "p72"
     },
     "e140": {
       "type": "event",
@@ -4515,13 +4635,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e56",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e56",
-      "place": "p77"
+      "place": "p72"
     },
-    "p77": {
+    "p72": {
       "type": "place",
       "name": "Ezuwyndeep",
       "source": "expansion:e56"
@@ -4547,11 +4668,12 @@
       "participants": [
         "f70"
       ],
+      "referents": [],
       "parent": "e57",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e57",
-      "place": "p78"
+      "place": "p73"
     },
     "e142": {
       "type": "event",
@@ -4560,13 +4682,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e57",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e57",
-      "place": "p78"
+      "place": "p73"
     },
-    "p78": {
+    "p73": {
       "type": "place",
       "name": "Hestithasfen",
       "source": "expansion:e57"
@@ -4592,11 +4715,12 @@
       "participants": [
         "f71"
       ],
+      "referents": [],
       "parent": "e58",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e58",
-      "place": "p79"
+      "place": "p74"
     },
     "e144": {
       "type": "event",
@@ -4605,13 +4729,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e58",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e58",
-      "place": "p79"
+      "place": "p74"
     },
-    "p79": {
+    "p74": {
       "type": "place",
       "name": "Yorirthasspire",
       "source": "expansion:e58"
@@ -4637,11 +4762,12 @@
       "participants": [
         "f72"
       ],
+      "referents": [],
       "parent": "e59",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e59",
-      "place": "p80"
+      "place": "p75"
     },
     "e146": {
       "type": "event",
@@ -4650,11 +4776,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e59",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e59",
-      "place": "p80"
+      "place": "p75"
     },
     "a42": {
       "type": "artifact",
@@ -4675,10 +4802,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Galien the Stray, a witness, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e59",
-      "site": "p80",
+      "site": "p75",
       "placement": "Recovered at Ostirwynspire, off the deep roads, where the account had lain hidden."
     },
-    "p80": {
+    "p75": {
       "type": "place",
       "name": "Ostirwynspire",
       "source": "expansion:e59"
@@ -4704,11 +4831,12 @@
       "participants": [
         "f73"
       ],
+      "referents": [],
       "parent": "e60",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e60",
-      "place": "p81"
+      "place": "p76"
     },
     "e148": {
       "type": "event",
@@ -4717,11 +4845,12 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e60",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e60",
-      "place": "p81"
+      "place": "p76"
     },
     "a43": {
       "type": "artifact",
@@ -4742,10 +4871,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Kaanien the Plain, a siege captain, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e60",
-      "site": "p81",
+      "site": "p76",
       "placement": "Recovered at Irirarabarrow, off the deep roads, where the account had lain hidden."
     },
-    "p81": {
+    "p76": {
       "type": "place",
       "name": "Irirarabarrow",
       "source": "expansion:e60"
@@ -4771,11 +4900,12 @@
       "participants": [
         "f74"
       ],
+      "referents": [],
       "parent": "e61",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e61",
-      "place": "p82"
+      "place": "p77"
     },
     "e150": {
       "type": "event",
@@ -4784,13 +4914,14 @@
       "text": "In the months after, debt-collectors came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e61",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e61",
-      "place": "p82"
+      "place": "p77"
     },
-    "p82": {
+    "p77": {
       "type": "place",
       "name": "Wrenirvanespire",
       "source": "expansion:e61"
@@ -4816,11 +4947,12 @@
       "participants": [
         "f75"
       ],
+      "referents": [],
       "parent": "e62",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e62",
-      "place": "p83"
+      "place": "p78"
     },
     "e152": {
       "type": "event",
@@ -4829,11 +4961,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e62",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e62",
-      "place": "p83"
+      "place": "p78"
     },
     "a44": {
       "type": "artifact",
@@ -4854,10 +4987,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Soluldra Cinder-shod, a deserter, set down against instruction and hidden in a coffin lid. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
       "depth": 2,
       "source": "expansion:e62",
-      "site": "p83",
+      "site": "p78",
       "placement": "Recovered at Aldrorsilahold, off the deep roads, where the account had lain hidden."
     },
-    "p83": {
+    "p78": {
       "type": "place",
       "name": "Aldrorsilahold",
       "source": "expansion:e62"
@@ -4883,11 +5016,12 @@
       "participants": [
         "f76"
       ],
+      "referents": [],
       "parent": "e63",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e63",
-      "place": "p84"
+      "place": "p79"
     },
     "e154": {
       "type": "event",
@@ -4896,13 +5030,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e63",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e63",
-      "place": "p84"
+      "place": "p79"
     },
-    "p84": {
+    "p79": {
       "type": "place",
       "name": "Athmunddeep",
       "source": "expansion:e63"
@@ -4928,11 +5063,12 @@
       "participants": [
         "f77"
       ],
+      "referents": [],
       "parent": "e64",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e64",
-      "place": "p85"
+      "place": "p80"
     },
     "e156": {
       "type": "event",
@@ -4941,11 +5077,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e64",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e64",
-      "place": "p85"
+      "place": "p80"
     },
     "a45": {
       "type": "artifact",
@@ -4966,10 +5103,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Mordis the Sleepless, a siege captain, set down against instruction and hidden in a coffin lid. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
       "depth": 2,
       "source": "expansion:e64",
-      "site": "p85",
+      "site": "p80",
       "placement": "Recovered at Caliremishold, off the deep roads, where the account had lain hidden."
     },
-    "p85": {
+    "p80": {
       "type": "place",
       "name": "Caliremishold",
       "source": "expansion:e64"
@@ -4995,11 +5132,12 @@
       "participants": [
         "f78"
       ],
+      "referents": [],
       "parent": "e65",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e65",
-      "place": "p86"
+      "place": "p81"
     },
     "e158": {
       "type": "event",
@@ -5008,13 +5146,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e65",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e65",
-      "place": "p86"
+      "place": "p81"
     },
-    "p86": {
+    "p81": {
       "type": "place",
       "name": "Calthasmarch",
       "source": "expansion:e65"
@@ -5040,11 +5179,12 @@
       "participants": [
         "f79"
       ],
+      "referents": [],
       "parent": "e66",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e66",
-      "place": "p87"
+      "place": "p82"
     },
     "e160": {
       "type": "event",
@@ -5053,13 +5193,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e66",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e66",
-      "place": "p87"
+      "place": "p82"
     },
-    "p87": {
+    "p82": {
       "type": "place",
       "name": "Dragarmarch",
       "source": "expansion:e66"
@@ -5085,11 +5226,12 @@
       "participants": [
         "f80"
       ],
+      "referents": [],
       "parent": "e67",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e67",
-      "place": "p88"
+      "place": "p83"
     },
     "e162": {
       "type": "event",
@@ -5098,13 +5240,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e67",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e67",
-      "place": "p88"
+      "place": "p83"
     },
-    "p88": {
+    "p83": {
       "type": "place",
       "name": "Olirottspire",
       "source": "expansion:e67"
@@ -5130,11 +5273,12 @@
       "participants": [
         "f81"
       ],
+      "referents": [],
       "parent": "e68",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e68",
-      "place": "p89"
+      "place": "p84"
     },
     "e164": {
       "type": "event",
@@ -5143,11 +5287,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e68",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e68",
-      "place": "p89"
+      "place": "p84"
     },
     "a46": {
       "type": "artifact",
@@ -5168,10 +5313,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Ostien the Unlettered, a novice, set down against instruction and hidden in a wall. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e68",
-      "site": "p89",
+      "site": "p84",
       "placement": "Recovered at Yorulgrimbarrow, off the deep roads, where the account had lain hidden."
     },
-    "p89": {
+    "p84": {
       "type": "place",
       "name": "Yorulgrimbarrow",
       "source": "expansion:e68"
@@ -5197,11 +5342,12 @@
       "participants": [
         "f82"
       ],
+      "referents": [],
       "parent": "e69",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e69",
-      "place": "p90"
+      "place": "p85"
     },
     "e166": {
       "type": "event",
@@ -5210,11 +5356,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e69",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e69",
-      "place": "p90"
+      "place": "p85"
     },
     "a47": {
       "type": "artifact",
@@ -5235,10 +5382,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Calmoth the Meek, a novice, set down against instruction and hidden in a psalter. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e69",
-      "site": "p90",
+      "site": "p85",
       "placement": "Recovered at Elaradeep, off the deep roads, where the account had lain hidden."
     },
-    "p90": {
+    "p85": {
       "type": "place",
       "name": "Elaradeep",
       "source": "expansion:e69"
@@ -5264,11 +5411,12 @@
       "participants": [
         "f83"
       ],
+      "referents": [],
       "parent": "e70",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e70",
-      "place": "p91"
+      "place": "p86"
     },
     "e168": {
       "type": "event",
@@ -5277,13 +5425,14 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e70",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e70",
-      "place": "p91"
+      "place": "p86"
     },
-    "p91": {
+    "p86": {
       "type": "place",
       "name": "Ostmundfen",
       "source": "expansion:e70"
@@ -5309,11 +5458,12 @@
       "participants": [
         "f84"
       ],
+      "referents": [],
       "parent": "e71",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e71",
-      "place": "p92"
+      "place": "p87"
     },
     "e170": {
       "type": "event",
@@ -5322,11 +5472,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e71",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e71",
-      "place": "p92"
+      "place": "p87"
     },
     "a48": {
       "type": "artifact",
@@ -5347,10 +5498,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ostoryne the Meek, a chronicler, set down against instruction and hidden in a wall. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e71",
-      "site": "p92",
+      "site": "p87",
       "placement": "Recovered at Galanvethdeep, off the deep roads, where the account had lain hidden."
     },
-    "p92": {
+    "p87": {
       "type": "place",
       "name": "Galanvethdeep",
       "source": "expansion:e71"
@@ -5376,11 +5527,12 @@
       "participants": [
         "f85"
       ],
+      "referents": [],
       "parent": "e72",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e72",
-      "place": "p93"
+      "place": "p88"
     },
     "e172": {
       "type": "event",
@@ -5389,11 +5541,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e72",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e72",
-      "place": "p93"
+      "place": "p88"
     },
     "a49": {
       "type": "artifact",
@@ -5414,10 +5567,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Ruthlis Cinder-shod, a quartermaster, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e72",
-      "site": "p93",
+      "site": "p88",
       "placement": "Recovered at Nyessemisspire, off the deep roads, where the account had lain hidden."
     },
-    "p93": {
+    "p88": {
       "type": "place",
       "name": "Nyessemisspire",
       "source": "expansion:e72"
@@ -5443,11 +5596,12 @@
       "participants": [
         "f86"
       ],
+      "referents": [],
       "parent": "e73",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e73",
-      "place": "p94"
+      "place": "p89"
     },
     "e174": {
       "type": "event",
@@ -5456,11 +5610,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e73",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e73",
-      "place": "p94"
+      "place": "p89"
     },
     "a50": {
       "type": "artifact",
@@ -5481,10 +5636,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Wrenulien of the Rearguard, a envoy, set down against instruction and hidden in a coffin lid. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e73",
-      "site": "p94",
+      "site": "p89",
       "placement": "Recovered at Galaeastshroud, off the deep roads, where the account had lain hidden."
     },
-    "p94": {
+    "p89": {
       "type": "place",
       "name": "Galaeastshroud",
       "source": "expansion:e73"
@@ -5510,11 +5665,12 @@
       "participants": [
         "f87"
       ],
+      "referents": [],
       "parent": "e74",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e74",
-      "place": "p95"
+      "place": "p90"
     },
     "e176": {
       "type": "event",
@@ -5523,13 +5679,14 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e74",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e74",
-      "place": "p95"
+      "place": "p90"
     },
-    "p95": {
+    "p90": {
       "type": "place",
       "name": "Athiauladeep",
       "source": "expansion:e74"
@@ -5555,11 +5712,12 @@
       "participants": [
         "f88"
       ],
+      "referents": [],
       "parent": "e75",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e75",
-      "place": "p96"
+      "place": "p91"
     },
     "e178": {
       "type": "event",
@@ -5568,13 +5726,14 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e75",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e75",
-      "place": "p96"
+      "place": "p91"
     },
-    "p96": {
+    "p91": {
       "type": "place",
       "name": "Cyrovethdeep",
       "source": "expansion:e75"
@@ -5600,11 +5759,12 @@
       "participants": [
         "f89"
       ],
+      "referents": [],
       "parent": "e76",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e76",
-      "place": "p97"
+      "place": "p92"
     },
     "e180": {
       "type": "event",
@@ -5613,11 +5773,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e76",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e76",
-      "place": "p97"
+      "place": "p92"
     },
     "a51": {
       "type": "artifact",
@@ -5638,10 +5799,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Belos Long-memoried, a gravedigger, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e76",
-      "site": "p97",
+      "site": "p92",
       "placement": "Recovered at Ezrionfen, off the deep roads, where the account had lain hidden."
     },
-    "p97": {
+    "p92": {
       "type": "place",
       "name": "Ezrionfen",
       "source": "expansion:e76"
@@ -5667,11 +5828,12 @@
       "participants": [
         "f90"
       ],
+      "referents": [],
       "parent": "e77",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e77",
-      "place": "p98"
+      "place": "p93"
     },
     "e182": {
       "type": "event",
@@ -5680,11 +5842,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e77",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e77",
-      "place": "p98"
+      "place": "p93"
     },
     "a52": {
       "type": "artifact",
@@ -5705,10 +5868,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Ulmoth the Sleepless, a deserter, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e77",
-      "site": "p98",
+      "site": "p93",
       "placement": "Recovered at Nyessmothcradle, off the deep roads, where the account had lain hidden."
     },
-    "p98": {
+    "p93": {
       "type": "place",
       "name": "Nyessmothcradle",
       "source": "expansion:e77"
@@ -5734,11 +5897,12 @@
       "participants": [
         "f91"
       ],
+      "referents": [],
       "parent": "e78",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e78",
-      "place": "p99"
+      "place": "p94"
     },
     "e184": {
       "type": "event",
@@ -5747,11 +5911,12 @@
       "text": "In the months after, crows came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e78",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e78",
-      "place": "p99"
+      "place": "p94"
     },
     "a53": {
       "type": "artifact",
@@ -5772,10 +5937,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Omensila Thrice-pardoned, a bell-ringer, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 2,
       "source": "expansion:e78",
-      "site": "p99",
+      "site": "p94",
       "placement": "Recovered at Wrenastcrown, off the deep roads, where the account had lain hidden."
     },
-    "p99": {
+    "p94": {
       "type": "place",
       "name": "Wrenastcrown",
       "source": "expansion:e78"
@@ -5801,11 +5966,12 @@
       "participants": [
         "f92"
       ],
+      "referents": [],
       "parent": "e79",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e79",
-      "place": "p100"
+      "place": "p95"
     },
     "e186": {
       "type": "event",
@@ -5814,11 +5980,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e79",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e79",
-      "place": "p100"
+      "place": "p95"
     },
     "a54": {
       "type": "artifact",
@@ -5839,10 +6006,10 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Olirthas of the Rearguard, a siege captain, set down against instruction and hidden in a wall. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
       "depth": 2,
       "source": "expansion:e79",
-      "site": "p100",
+      "site": "p95",
       "placement": "Recovered at Calimundmarch, off the deep roads, where the account had lain hidden."
     },
-    "p100": {
+    "p95": {
       "type": "place",
       "name": "Calimundmarch",
       "source": "expansion:e79"
@@ -5868,11 +6035,12 @@
       "participants": [
         "f93"
       ],
+      "referents": [],
       "parent": "e80",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e80",
-      "place": "p101"
+      "place": "p96"
     },
     "e188": {
       "type": "event",
@@ -5881,11 +6049,12 @@
       "text": "In the months after, pilgrims came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e80",
       "depth": 2,
       "expanded": false,
       "source": "expansion:e80",
-      "place": "p101"
+      "place": "p96"
     },
     "a55": {
       "type": "artifact",
@@ -5906,10 +6075,10 @@
       "description": "A humble ward, spent in a moment.\n\nAn account survives from Sylessrion the Younger, a handmaid, set down against instruction and hidden in a psalter. Sometimes, near it, one feels counted \u2014 as a debtor is counted. The rest of the story is kept by no one.",
       "depth": 2,
       "source": "expansion:e80",
-      "site": "p101",
+      "site": "p96",
       "placement": "Recovered at Mazwynhold, off the deep roads, where the account had lain hidden."
     },
-    "p101": {
+    "p96": {
       "type": "place",
       "name": "Mazwynhold",
       "source": "expansion:e80"

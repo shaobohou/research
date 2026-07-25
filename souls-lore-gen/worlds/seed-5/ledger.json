@@ -50,8 +50,10 @@
       "Ysiosreach",
       "the Pilgrim Roads",
       "Thaleeth",
+      "Belgarhold",
       "Mormoth",
-      "Effects of Mormoth"
+      "Effects of Mormoth",
+      "Loengarmarch"
     ]
   },
   "ages": [
@@ -314,6 +316,7 @@
       "text": "the Founding Chord rose (or was raised \u2014 the tellings differ) and gave the world speech, covenant, and the resonance that holds stone to stone.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -329,6 +332,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -344,6 +348,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -359,6 +364,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -374,6 +380,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -389,6 +396,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -404,6 +412,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -419,6 +428,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -434,6 +444,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -449,6 +460,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -464,6 +476,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -479,6 +492,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -494,6 +508,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -511,6 +526,7 @@
         "f4",
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -527,6 +543,7 @@
         "f5",
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -540,6 +557,7 @@
       "text": "The waning began: the Chord decays into echoes; oaths slip, bridges forget their arches. Mortals called the affliction the Unsinging: the voices of the afflicted fade to a hum, and what they built beside begins to loosen.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -555,6 +573,7 @@
       "participants": [
         "f6"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -571,6 +590,7 @@
         "f7",
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -586,6 +606,7 @@
       "participants": [
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -601,6 +622,7 @@
       "participants": [
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -617,6 +639,7 @@
         "f7",
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -633,6 +656,7 @@
         "f11",
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -649,6 +673,7 @@
         "f9",
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -664,6 +689,7 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -679,6 +705,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -692,7 +719,9 @@
       "text": "Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing.",
       "hidden": null,
       "participants": [
-        "f12",
+        "f12"
+      ],
+      "referents": [
         "f3"
       ],
       "parent": null,
@@ -710,6 +739,7 @@
       "participants": [
         "f12"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": true,
@@ -722,7 +752,8 @@
       "year": 560,
       "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued.",
       "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
-      "participants": [
+      "participants": [],
+      "referents": [
         "f5"
       ],
       "parent": null,
@@ -1103,22 +1134,26 @@
     "p10": {
       "type": "place",
       "name": "Ishencaeldeep",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k1"
     },
     "p11": {
       "type": "place",
       "name": "Kardiscrown",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k2"
     },
     "p12": {
       "type": "place",
       "name": "Elaedaneshroud",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k3"
     },
     "p13": {
       "type": "place",
       "name": "Iraevethvault",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k4"
     },
     "p14": {
       "type": "place",
@@ -1128,7 +1163,8 @@
     "p15": {
       "type": "place",
       "name": "Ghalmundreach",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k8"
     },
     "f13": {
       "type": "figure",
@@ -1151,11 +1187,12 @@
       "participants": [
         "f13"
       ],
+      "referents": [],
       "parent": "e27",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e27",
-      "place": "p1"
+      "place": "p16"
     },
     "e30": {
       "type": "event",
@@ -1164,11 +1201,17 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": "e27",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e27",
-      "place": "p1"
+      "place": "p16"
+    },
+    "p16": {
+      "type": "place",
+      "name": "Belgarhold",
+      "source": "expansion:e27"
     },
     "f14": {
       "type": "figure",
@@ -1191,11 +1234,12 @@
       "participants": [
         "f14"
       ],
+      "referents": [],
       "parent": "e4",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e4",
-      "place": "p1"
+      "place": "p17"
     },
     "e32": {
       "type": "event",
@@ -1204,11 +1248,12 @@
       "text": "In the months after, singers came in unusual numbers, and left in unusual silence.",
       "hidden": "What they came for was not what the chronicles assumed.",
       "participants": [],
+      "referents": [],
       "parent": "e4",
       "depth": 1,
       "expanded": false,
       "source": "expansion:e4",
-      "place": "p1"
+      "place": "p17"
     },
     "a14": {
       "type": "artifact",
@@ -1229,8 +1274,13 @@
       "description": "A ring that grants a small, stubborn blessing.\n\nAn account survives from Mormoth the Sleepless, a handmaid, set down against instruction and hidden in a ledger. What became of it after is not written.",
       "depth": 1,
       "source": "expansion:e4",
-      "site": "p1",
-      "placement": "Pried from a hand at the Pilgrim Roads; the hand did not object."
+      "site": "p17",
+      "placement": "Recovered at Loengarmarch, off the deep roads, where the account had lain hidden."
+    },
+    "p17": {
+      "type": "place",
+      "name": "Loengarmarch",
+      "source": "expansion:e4"
     }
   },
   "notes": []

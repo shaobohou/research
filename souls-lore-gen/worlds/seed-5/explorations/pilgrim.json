@@ -18,10 +18,11 @@
     "p6",
     "p7",
     "p8",
-    "p9"
+    "p9",
+    "p16",
+    "p17"
   ],
   "found_items": [
-    "a13",
     "a11",
     "a12",
     "a6",
@@ -110,5 +111,10 @@
     "steps": 3,
     "delves": 3,
     "asks": 6
+  },
+  "start_budget": {
+    "steps": 8,
+    "delves": 5,
+    "asks": 8
   }
 }

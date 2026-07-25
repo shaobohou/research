@@ -311,6 +311,7 @@
       "text": "the Sundered Moon rose (or was raised \u2014 the tellings differ) and gave the world longing, tide of the blood, and light gentle enough to lie by.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -326,6 +327,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -341,6 +343,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -356,6 +359,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -371,6 +375,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -386,6 +391,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -401,6 +407,7 @@
       "participants": [
         "f1"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -416,6 +423,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -431,6 +439,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -446,6 +455,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -461,6 +471,7 @@
       "participants": [
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -476,6 +487,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -491,6 +503,7 @@
       "participants": [
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -508,6 +521,7 @@
         "f3",
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -524,6 +538,7 @@
         "f5",
         "f3"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -537,6 +552,7 @@
       "text": "The waning began: the shards drift apart; nights arrive unscheduled and grief acquires weight. Mortals called the affliction the Silver Lament: moonlight pools in the eyes of the afflicted, who weep light until none is left to see by.",
       "hidden": null,
       "participants": [],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -552,6 +568,7 @@
       "participants": [
         "f6"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -568,6 +585,7 @@
         "f7",
         "f4"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -583,6 +601,7 @@
       "participants": [
         "f8"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -598,6 +617,7 @@
       "participants": [
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -614,6 +634,7 @@
         "f7",
         "f10"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -630,6 +651,7 @@
         "f11",
         "f9"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -646,6 +668,7 @@
         "f9",
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -661,6 +684,7 @@
       "participants": [
         "f11"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -676,6 +700,7 @@
       "participants": [
         "f2"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -689,7 +714,9 @@
       "text": "Kardane the Latecomer, last-sworn of the Order of the Lament, set out for the place where Mazirast was lost, carrying the order's final blessing.",
       "hidden": null,
       "participants": [
-        "f12",
+        "f12"
+      ],
+      "referents": [
         "f2"
       ],
       "parent": null,
@@ -707,6 +734,7 @@
       "participants": [
         "f12"
       ],
+      "referents": [],
       "parent": null,
       "depth": 0,
       "expanded": false,
@@ -719,7 +747,8 @@
       "year": 553,
       "text": "Pilgrims of the Cult of the Open Door were found digging at the seal of Syldra. The wardens hanged nine; the digging continued.",
       "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
-      "participants": [
+      "participants": [],
+      "referents": [
         "f5"
       ],
       "parent": null,
@@ -1100,22 +1129,26 @@
     "p10": {
       "type": "place",
       "name": "Cyrorsilaspire",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k1"
     },
     "p11": {
       "type": "place",
       "name": "Galastcradle",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k2"
     },
     "p12": {
       "type": "place",
       "name": "Yorachvault",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k3"
     },
     "p13": {
       "type": "place",
       "name": "Hestvanevault",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k4"
     },
     "p14": {
       "type": "place",
@@ -1125,7 +1158,8 @@
     "p15": {
       "type": "place",
       "name": "Kaaemothbarrow",
-      "source": "geo"
+      "source": "geo",
+      "aka_faction": "k8"
     }
   },
   "notes": []

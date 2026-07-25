@@ -58,6 +58,14 @@ The Brine of Nyadra was wrought as regalia of Nyadra's throne. What became of it
 
 *Kept long at Morennothmarch, and then kept poorly.*
 
+### Warden's Salt-ring
+
+A ring that grants a small, stubborn blessing.
+
+Of the champions spent on the seal, most are a list now; two are still prayed to by name — Ezahild Long-memoried and Ezlis the Sleepless — though none can say what distinguishes the remembered dead from the rest. Some claim a wardenship was sworn over the seal, hereditary and unthanked. Its rolls have never once been complete. It is said that the first warden asked to be bound to the seal, not appointed over it. Perhaps it is better that the tale ends there.
+
+*Recovered at Nyiethhollow, off the deep roads, where the account had lain hidden.*
+
 ### Ring of the Brine Vigil
 
 A ring that grants a small, stubborn blessing.
@@ -74,7 +82,7 @@ The lingering soul of one who would not wholly pass.
 
 At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. Perhaps it is better that the tale ends there.
 
-*Kept in a reliquary at Yormere, before which the candles will not stay lit.*
+*Kept in a reliquary at Ostenthasvault, before which the candles will not stay lit.*
 
 ### Soul of Sylorien
 
@@ -94,13 +102,29 @@ The Salt of Sylorien was wrought as regalia of Sylorien's throne. Whether this w
 
 *Kept long at Harricspire, and then kept poorly.*
 
+### Torn Standard of Seriaachvault
+
+A talisman for the invoking of half-forgotten rites.
+
+The war's worst day was at Seriaachvault, where the line held for a night and a morning under Solemis of the Rearguard, and then did not hold. What became of it after is not written.
+
+*Recovered at Ulucaelfen, off the deep roads, where the account had lain hidden.*
+
 ### Tide of Saint Yormere
 
 A talisman for the invoking of half-forgotten rites.
 
 At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed. None now living can say whether the rite did not restore anything. It only fed the waning more slowly — and Thalenien suspected as much. Held long enough, it suggests the waning is no accident. Perhaps it is better that the tale ends there.
 
-*Kept in a reliquary at Yormere, before which the candles will not stay lit.*
+*Kept in a reliquary at Ostenthasvault, before which the candles will not stay lit.*
+
+### Processional Conch
+
+A talisman for the invoking of half-forgotten rites.
+
+The procession took the long road, through every village, so that all might see what their deliverance cost. Veremis walked at the saint's left hand and never afterward spoke of it. What became of it after is not written.
+
+*Recovered at Sylgarhold, off the deep roads, where the account had lain hidden.*
 
 ## Weapons
 

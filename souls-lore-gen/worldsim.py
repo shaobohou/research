@@ -222,7 +222,11 @@ class Event:
     kind: str
     text: str                     # what truly happened
     hidden: str | None = None     # a secret aspect known to almost no one
-    participants: list[str] = field(default_factory=list)
+    participants: list[str] = field(default_factory=list)   # who ACTED
+    # Figures the event is *about* without their acting — a destination the
+    # dead once was, a sealed adversary others dig toward. Kept distinct so
+    # the causal rule ("no one acts after their fate") stays enforceable.
+    referents: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -305,8 +309,10 @@ class _Gen:
         return f"{prefix}{self._ids[prefix]}"
 
     def event(self, kind: str, text: str, hidden: str | None = None,
-              participants: list[str] | None = None) -> Event:
-        e = Event(self._id("e"), self.year, kind, text, hidden, participants or [])
+              participants: list[str] | None = None,
+              referents: list[str] | None = None) -> Event:
+        e = Event(self._id("e"), self.year, kind, text, hidden,
+                  participants or [], referents or [])
         self.world.events.append(e)
         return e
 
@@ -613,7 +619,7 @@ class _Gen:
             f"{hero.name} {hero.epithet}, last-sworn of the {p['order'].name}, set out "
             f"for the place where {fallen_god.name} was lost, carrying the order's "
             f"final blessing.",
-            participants=[hero.id, fallen_god.id])
+            participants=[hero.id], referents=[fallen_god.id])
         self.advance(3, 12)
         outcome = rng.choice([
             (f"{hero.name} was last seen at the edge of the deep roads. The order "
@@ -644,7 +650,7 @@ class _Gen:
             f"{adversary.name}. The wardens hanged nine; the digging continued.",
             hidden=(f"The seal has been failing on its own since the waning began. "
                     f"The cult only follows the cracks."),
-            participants=[adversary.id])
+            referents=[adversary.id])
 
         # A humble consumable rounds out the set.
         w.artifacts.append(Artifact(
@@ -695,7 +701,8 @@ class _Gen:
                 if e.hidden and rng.random() < 0.5:
                     facts.append(f"[half-known secret] {e.hidden}")
             # A fact about a participant's fate, for texture.
-            part_ids = [pid for eid in a.provenance for pid in w.ev(eid).participants]
+            part_ids = [pid for eid in a.provenance
+                        for pid in (w.ev(eid).participants + w.ev(eid).referents)]
             fated = [w.fig(pid) for pid in part_ids if w.fig(pid).fate]
             if fated:
                 f0 = rng.choice(fated)

@@ -398,7 +398,7 @@ A talisman for the invoking of half-forgotten rites.
 
 The Mirror of Galomere was wrought as regalia of Galomere's throne. Held long enough, it suggests the waning is no accident. The rest of the story is kept by no one.
 
-*Kept long at Galomere, and then kept poorly.*
+*Kept long at Oliadiscrown, and then kept poorly.*
 
 ### Veil of Quelmund
 

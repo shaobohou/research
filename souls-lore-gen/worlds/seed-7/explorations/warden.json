@@ -21,11 +21,12 @@
     "p6",
     "p7",
     "p8",
-    "p13"
+    "p13",
+    "p14",
+    "p15"
   ],
   "found_items": [
     "a3",
-    "a15",
     "a5",
     "a6",
     "a1",
@@ -38,7 +39,6 @@
   ],
   "discovered": [
     "a3",
-    "a15",
     "a5",
     "a6",
     "a1",
@@ -64,19 +64,19 @@
   "delves": [
     {
       "target": "Ghalenmund",
-      "node": "e6",
+      "node": "e2",
       "found": [
-        "frag:e34",
-        "frag:e35"
+        "frag:e26",
+        "frag:e27"
       ]
     },
     {
       "target": "Belwyn",
-      "node": "e33",
+      "node": "e16",
       "found": [
-        "frag:e36",
-        "frag:e37",
-        "a16"
+        "frag:e28",
+        "frag:e29",
+        "a13"
       ]
     }
   ],
@@ -84,9 +84,9 @@
     {
       "claims": [
         "The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
-        "The procession took the long road, through every village, so that all might see what their deliverance cost.",
         "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
-        "The church's pruning is no mere symbol \u2014 something is cut from the Root each season, and burned.",
+        "The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
+        "The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.",
         "The last knight became the god he went to find."
       ],
       "verdicts": [
@@ -96,17 +96,17 @@
           "note": "The records you hold bear this out."
         },
         {
-          "claim": "The procession took the long road, through every village, so that all might see what their deliverance cost.",
-          "verdict": "established",
-          "note": "The records you hold bear this out."
-        },
-        {
           "claim": "At the urging of Belwyn, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration.",
           "verdict": "established",
           "note": "The records you hold bear this out."
         },
         {
-          "claim": "The church's pruning is no mere symbol \u2014 something is cut from the Root each season, and burned.",
+          "claim": "The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
+          "verdict": "established",
+          "note": "The records you hold bear this out."
+        },
+        {
+          "claim": "The pruning-hooks of the church are not symbols; something is still cut from the Root each season, and burned unseen.",
           "verdict": "veiled",
           "note": "Here the archives go quiet."
         },
@@ -123,5 +123,10 @@
     "steps": 0,
     "delves": 3,
     "asks": 6
+  },
+  "start_budget": {
+    "steps": 8,
+    "delves": 5,
+    "asks": 8
   }
 }

@@ -6,6 +6,9 @@
 > current spatial, no-verdict experience, see
 > [`../seed-5/exploration-journal.md`](../seed-5/exploration-journal.md).
 > Kept as-is because its narrative synthesis and epilogue still stand.
+> Its *delves* are replayed by `uv run demos.py seeker`, so the accounts
+> it quotes still exist in the world; its catalogue-era *examines*
+> cannot be replayed literally under spatial gating.
 
 *A documented exploration of a generated world through the agent API
 (`explore.py`), played by Claude as the seeker. All quoted material is

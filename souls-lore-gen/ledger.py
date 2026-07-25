@@ -15,7 +15,6 @@ Layout (worlds/seed-N/ledger.json):
 from __future__ import annotations
 
 import json
-import random
 import re
 from pathlib import Path
 
@@ -53,7 +52,7 @@ class Ledger:
             entities[e.id] = {
                 "type": "event", "kind": e.kind, "year": e.year,
                 "text": e.text, "hidden": e.hidden,
-                "participants": e.participants,
+                "participants": e.participants, "referents": e.referents,
                 "parent": None, "depth": 0, "expanded": False, "source": "sim",
             }
         for a in w.artifacts:
@@ -172,7 +171,8 @@ class Ledger:
 
     def add_event(self, kind: str, year: int, text: str, hidden: str | None,
                   participants: list[str], parent: str | None,
-                  depth: int, source: str) -> str:
+                  depth: int, source: str,
+                  referents: list[str] | None = None) -> str:
         if not (0 <= year <= self.meta["present_year"]):
             raise LedgerError(
                 f"event year {year} outside [0, {self.meta['present_year']}]")
@@ -186,10 +186,14 @@ class Ledger:
                     f"fate ({p['fate']}) sealed in year {p['fate_year']}")
         if parent is not None and self.get(parent)["type"] != "event":
             raise LedgerError(f"parent {parent} is not an event")
+        for rid in referents or []:
+            if self.get(rid)["type"] != "figure":
+                raise LedgerError(f"referent {rid} is not a figure")
         eid = self.next_id("e")
         self.entities[eid] = {
             "type": "event", "kind": kind, "year": year, "text": text,
             "hidden": hidden, "participants": participants,
+            "referents": list(referents or []),
             "parent": parent, "depth": depth, "expanded": False,
             "source": source,
         }
@@ -226,6 +230,7 @@ class Ledger:
         for eid in list(wanted):
             e = self.get(eid)
             wanted.update(e.get("participants", []))
+            wanted.update(e.get("referents", []))
             wanted.update(e.get("provenance", []))
             for key in ("faction", "origin_faction", "parent", "founder"):
                 if e.get(key):
@@ -296,12 +301,22 @@ def ensure_geography(lg: Ledger) -> bool:
     suffix_re = re.compile(
         r"\b([A-Z][a-z]+(?:" + "|".join(PLACE_SUFFIXES) + r"))\b")
 
+    # Person-name endings overlap PLACE_SUFFIXES (e.g. "-mere"), so a bare
+    # regex sweep of event text would mint phantom places named after people.
+    # Realm names legitimately double as places (a fallen kingdom is somewhere
+    # you can stand), but that aliasing is recorded, not accidental.
+    figure_names = {f["name"] for _, f in lg.of_type("figure")}
+    faction_names = {k["name"]: kid for kid, k in lg.of_type("faction")}
+
     def ensure_place(name: str) -> str:
         nonlocal changed
         if name in places:
             return places[name]
         pid = lg.next_id("p")
-        lg.entities[pid] = {"type": "place", "name": name, "source": "geo"}
+        rec = {"type": "place", "name": name, "source": "geo"}
+        if name in faction_names:
+            rec["aka_faction"] = faction_names[name]
+        lg.entities[pid] = rec
         if name not in lg.meta["used_names"]:
             lg.meta["used_names"].append(name)
         places[name] = pid
@@ -313,7 +328,8 @@ def ensure_geography(lg: Ledger) -> bool:
         ensure_place(k["seat"])
 
     for eid, e in lg.of_type("event"):
-        mentioned = suffix_re.findall(e["text"])
+        mentioned = [nm for nm in suffix_re.findall(e["text"])
+                     if nm not in figure_names]
         for nm in mentioned:
             ensure_place(nm)
         if e.get("place") is None:
