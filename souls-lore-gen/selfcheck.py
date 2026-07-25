@@ -230,30 +230,53 @@ def check_determinism(c: Check) -> None:
             c.ok(True, "")
 
 
-def check_purism(c: Check) -> None:
-    """A seeker must never receive verdicts or scores; an archivist must."""
+def check_roles(c: Check) -> None:
+    """Role gating is pure routing — checkable without touching the API."""
     from explore import Exploration
     worlds = sorted(Path("worlds").glob("seed-*/ledger.json"))
     if not worlds:
         return
     wd = worlds[0].parent
-    seeker = Exploration(wd, explorer="_selfcheck_seeker", model=None)
-    out = seeker.theorize(["The gods are silent.", "Something was drowned."])
-    c.ok("verdicts" not in out and "score" not in out,
-         "purist theorize exposed verdicts/score to a seeker")
-    c.ok("reception" in out, "purist theorize returned no reception")
+    seeker = Exploration(wd, explorer="_selfcheck_seeker")
+    arch = Exploration(wd, explorer="_selfcheck_arch", role="archivist")
+    c.ok("error" in seeker.canon(), "seeker was granted canon()")
+    c.ok("error" not in arch.canon(), "archivist was denied canon()")
+    c.ok(seeker.purist, "seeker did not default to purist mode")
+    c.ok(not arch.purist, "archivist was left in purist mode")
     c.ok("best_theory_score" not in seeker.progress(),
          "purist progress exposed a score")
-    bench = Exploration(wd, explorer="_selfcheck_bench", model=None,
-                        purist=False)
-    c.ok("verdicts" in bench.theorize(["The gods are silent."]),
-         "benchmark mode did not return verdicts")
-    arch = Exploration(wd, explorer="_selfcheck_arch", role="archivist",
-                       model=None)
-    c.ok("error" not in arch.canon(), "archivist was denied canon()")
-    c.ok("error" in seeker.canon(), "seeker was granted canon()")
-    for name in ("_selfcheck_seeker", "_selfcheck_bench", "_selfcheck_arch"):
+    for name in ("_selfcheck_seeker", "_selfcheck_arch"):
         (wd / "explorations" / f"{name}.json").unlink(missing_ok=True)
+
+
+def check_purism_live(c: Check) -> bool:
+    """A seeker must never receive verdicts; benchmark mode must. Needs
+    credentials (theorize is model-backed), so it is skipped without them."""
+    from explore import Exploration
+    from loregen import NoCredentials
+    worlds = sorted(Path("worlds").glob("seed-*/ledger.json"))
+    if not worlds:
+        return False
+    wd = worlds[0].parent
+    try:
+        seeker = Exploration(wd, explorer="_selfcheck_live")
+        out = seeker.theorize(["The gods are silent."])
+        c.ok("verdicts" not in out and "score" not in out,
+             "purist theorize exposed verdicts/score to a seeker")
+        c.ok("reception" in out, "purist theorize returned no reception")
+        bench = Exploration(wd, explorer="_selfcheck_livebench", purist=False)
+        c.ok("verdicts" in bench.theorize(["The gods are silent."]),
+             "benchmark mode did not return verdicts")
+        return True
+    except NoCredentials:
+        return False
+    except Exception as e:                    # a live API failure is a warning
+        c.ok(False, f"live purism check errored: {type(e).__name__}: {e}",
+             warn=True)
+        return False
+    finally:
+        for name in ("_selfcheck_live", "_selfcheck_livebench"):
+            (wd / "explorations" / f"{name}.json").unlink(missing_ok=True)
 
 
 def main() -> int:
@@ -263,10 +286,12 @@ def main() -> int:
     for d in dirs:
         check_world(d, c)
     check_determinism(c)
-    check_purism(c)
+    check_roles(c)
+    live = check_purism_live(c)
 
     print(f"{c.n} checks over {len(dirs)} world(s): "
-          f"{len(c.fails)} failure(s), {len(c.warns)} warning(s)")
+          f"{len(c.fails)} failure(s), {len(c.warns)} warning(s)"
+          + ("" if live else "  [live purism check skipped — no credentials]"))
     for w in c.warns[:20]:
         print(f"  WARN {w}")
     for f in c.fails[:40]:

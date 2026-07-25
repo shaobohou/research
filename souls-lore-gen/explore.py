@@ -36,28 +36,16 @@ from pathlib import Path
 from ledger import (Ledger, LedgerError, ROADS_NAME, ensure_geography,
                     render_chronicle, render_codex)
 from expand import expand_event
-from loregen import ask_world, elaborate
+from loregen import DEFAULT_MODEL, ask_world, elaborate
 
 DEFAULT_BUDGET = {"steps": 8, "delves": 5, "asks": 8}
 
 VERDICTS = ["established", "consistent", "unsupported", "contradicted", "veiled"]
 
 
-def _llm_guard(fn, *args, fallback):
-    """Run an LLM path; fall back to templates when no key is configured."""
-    try:
-        return fn(*args)
-    except Exception as e:
-        if os.environ.get("ANTHROPIC_API_KEY"):
-            raise
-        print(f"LLM call failed ({type(e).__name__}); template mode.",
-              file=sys.stderr)
-        return fallback()
-
-
 class Exploration:
     def __init__(self, world_dir: Path, explorer: str = "seeker",
-                 role: str = "seeker", model: str | None = None,
+                 role: str = "seeker", model: str = DEFAULT_MODEL,
                  purist: bool = True, budget: dict | None = None):
         self.world_dir = Path(world_dir)
         ledger_path = self.world_dir / "ledger.json"
@@ -297,9 +285,7 @@ class Exploration:
             self._save_state()
             return {"error": "The archivists will hear no more questions "
                              "today. (ask budget spent)"}
-        fragment = _llm_guard(
-            ask_world, self.lg, question, self.model,
-            fallback=lambda: ask_world(self.lg, question, None))
+        fragment = ask_world(self.lg, question, self.model)
         fid = f"frag:q{len(self.state['asks']) + 1}"
         self.state["asks"].append({"id": fid, "question": question,
                                    "fragment": fragment})
@@ -372,9 +358,7 @@ class Exploration:
             self._save_state()
             return {"error": f"The dig collapses before it begins: {e}"}
 
-        _llm_guard(
-            elaborate, self.lg, node, child_ids, item_ids, self.model,
-            fallback=lambda: elaborate(self.lg, node, child_ids, item_ids, None))
+        elaborate(self.lg, node, child_ids, item_ids, self.model)
         self._save_world()
 
         findings, new_places = [], []
@@ -454,48 +438,8 @@ class Exploration:
                             user, self._JUDGE_SCHEMA)
         return [v for v in data["verdicts"] if v["verdict"] in VERDICTS]
 
-    def _judge_lexical(self, claims: list[str]) -> list[dict]:
-        def words(s: str) -> set[str]:
-            return {w.strip(".,;:—\"'()").lower() for w in s.split()
-                    if len(w) > 3}
-        canon_texts = []
-        for eid, e in self.lg.of_type("event"):
-            canon_texts.append(e["text"])
-            if e["hidden"]:
-                canon_texts.append(e["hidden"])
-        canon_texts += [n["text"] for n in self.lg.d["notes"]]
-        discovered_words = words(" ".join(
-            (self.lg.get(aid)["description"] or "")
-            for aid in self.state["discovered"]))
-        out = []
-        for claim in claims:
-            cw = words(claim)
-            if not cw:
-                out.append({"claim": claim, "verdict": "unsupported",
-                            "note": "The archivists cannot parse silence."})
-                continue
-            veil_hit = max((len(cw & words(v)) / len(cw)
-                            for v in self.lg.meta["veils"]), default=0)
-            best = max((len(cw & words(t)) / len(cw) for t in canon_texts),
-                       default=0)
-            if veil_hit >= 0.35 and veil_hit >= best:
-                v, note = "veiled", "Here the archives go quiet."
-            elif best >= 0.5:
-                if len(cw & discovered_words) / len(cw) >= 0.4:
-                    v, note = "established", "The records you hold bear this out."
-                else:
-                    v, note = "consistent", ("Nothing you have found says so — "
-                                             "but nothing denies it.")
-            else:
-                v, note = "unsupported", "No surviving record speaks to this."
-            out.append({"claim": claim, "verdict": v, "note": note})
-        return out
-
     def _graded(self, claims: list[str]) -> list[dict]:
-        if self.model is None:
-            return self._judge_lexical(claims)
-        return _llm_guard(self._judge_llm, claims,
-                          fallback=lambda: self._judge_lexical(claims))
+        return self._judge_llm(claims)
 
     # in-world reactions, keyed by the true verdict but NEVER exposing it.
     # Purist: the seeker gets a fellow antiquary's response, not a score.

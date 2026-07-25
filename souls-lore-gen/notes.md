@@ -260,3 +260,36 @@ documented runs became unmoored. Fixed properly by making them reproducible:
 from seed, replays the same actions, and rewrites the report. Verified the
 journals' quotes survive the replay. Final state: 6,695 checks, 0 failures;
 MCP surface unchanged (9 seeker tools, purist keys only).
+
+### 2026-07-06 — LLM-only: template fallback removed
+Decision (user): generation is always LLM-backed. Removed every offline path
+rather than leaving it as a hidden second quality tier.
+
+- `loregen.py`: deleted the whole template writer (~88 lines: _FUNCTION_LINES,
+  _HEDGES, _CLOSERS, _VEIL_HINTS, _after_hedge, _strip_year, _fallback_*) and
+  the template branch of `ask_world`. `model` is now a required-with-default
+  arg (`claude-opus-4-8`) on all three surfaces, never `None`.
+- Missing-item handling changed from "fill the gaps with templates" to a
+  **repair pass**: re-ask for just the omitted items, then raise if any are
+  still undescribed. A half-written codex is now an error, not a silent mix.
+- `explore.py`: removed `_llm_guard` and `_judge_lexical`; `_graded` is the
+  Claude judge only. Purist reception is unchanged — it still derives from a
+  real grading, just never an offline one.
+- `main.py` / `mcp_server.py` / `demos.py`: `--no-llm` gone.
+- Failure is loud and single-line everywhere. The SDK defers its auth check to
+  *request* time (constructing `Anthropic()` succeeds without credentials and
+  raises `TypeError` later), so `_stream_json` catches both that and
+  `AuthenticationError` and re-raises `NoCredentials`; `main.py` turns it into
+  `sys.exit(msg)`; `demos.py` surfaces the subprocess's own last stderr line.
+  Verified: `main.py generate` → one sentence, exit 1, no traceback.
+- `selfcheck.py` split: structural/causal/epistemic + determinism + role
+  gating stay **offline** (they only touch ledgers and the pure sim); the
+  live purism check (theorize is model-backed) skips with a printed notice
+  when credentials are absent. Still 6,694 checks, 0 failures here.
+
+Consequence, stated plainly: this container has no key, so worlds can no
+longer be regenerated here and `demos.py` cannot be re-run. The committed
+worlds keep their template-era *prose* (labelled as such in the README);
+their ledgers are pure simulation and are exactly what a live run reproduces.
+Re-running `demos.py all` with credentials rewrites the prose from the same
+facts.

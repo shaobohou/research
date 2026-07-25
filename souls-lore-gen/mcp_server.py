@@ -1,12 +1,12 @@
 """MCP server exposing one world to an exploring LLM agent.
 
     uv run mcp_server.py --world worlds/seed-9021 [--explorer seeker]
-                         [--role seeker|archivist] [--no-llm] [--model ...]
+                         [--role seeker|archivist] [--model ...]
 
 Speaks MCP over stdio; register it with any MCP client, e.g. Claude Code:
 
     claude mcp add lore -- uv run --project /path/to/souls-lore-gen \
-        /path/to/souls-lore-gen/mcp_server.py --world worlds/seed-9021 --no-llm
+        /path/to/souls-lore-gen/mcp_server.py --world worlds/seed-9021
 
 The seeker role sees only the diegetic surface; grading and world state live
 server-side (see explore.py). The archivist role additionally gets `canon`.
@@ -116,12 +116,10 @@ def main():
                     help="expose theorize verdicts+scores (for eval harnesses; "
                          "off by default — seekers play in purist mode)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
-    ap.add_argument("--no-llm", action="store_true",
-                    help="template answering/grading, no API key needed")
     args = ap.parse_args()
 
     exp = Exploration(args.world, explorer=args.explorer, role=args.role,
-                      model=None if args.no_llm else args.model,
+                      model=args.model,
                       purist=not args.benchmark)
     build_server(exp).run()
 

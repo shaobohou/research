@@ -5,8 +5,9 @@
     uv run main.py ask --seed 107 "Who was Irveth?"
     uv run main.py codex --seed 107                          # re-render only
 
-`--no-llm` on any command uses the deterministic template writer (no API key
-needed). Bare `uv run main.py --seed N` still works and means `generate`.
+All prose is written by Claude, so a working credential is required
+(ANTHROPIC_API_KEY or `ant auth login`). Bare `uv run main.py --seed N`
+still works and means `generate`.
 """
 
 from __future__ import annotations
@@ -17,7 +18,8 @@ from pathlib import Path
 
 from ledger import (Ledger, LedgerError, ensure_geography,
                     render_chronicle, render_codex)
-from loregen import DEFAULT_MODEL, ask_world, describe_items, elaborate
+from loregen import (DEFAULT_MODEL, NoCredentials, ask_world, describe_items,
+                     elaborate)
 from expand import expand_event
 from worldsim import generate_world
 
@@ -42,37 +44,12 @@ def _write(args, lg: Ledger):
     (d / "codex.md").write_text(render_codex(lg))
 
 
-def _model(args) -> str | None:
-    return None if args.no_llm else args.model
-
-
-def _llm_guard(fn, *fargs, fallback_fn=None):
-    """Run an LLM path; fall back to templates when no key is configured."""
-    import os
-    try:
-        return fn(*fargs)
-    except Exception as e:
-        if os.environ.get("ANTHROPIC_API_KEY"):
-            raise
-        print(f"LLM call failed ({type(e).__name__}) and no ANTHROPIC_API_KEY "
-              f"is set; using template mode.", file=sys.stderr)
-        if fallback_fn:
-            return fallback_fn()
-        raise
-
-
 def cmd_generate(args) -> int:
     world = generate_world(args.seed, args.items)
     lg = Ledger.from_world(world)
     aids = [i for i, _ in lg.of_type("artifact")]
-    model = _model(args)
-    if model is None:
-        describe_items(lg, aids, None, want_epigraph=True)
-        mode = "template"
-    else:
-        _llm_guard(describe_items, lg, aids, model, True,
-                   fallback_fn=lambda: describe_items(lg, aids, None, want_epigraph=True))
-        mode = f"llm ({model})" if lg.meta["epigraph"] and "sparing with belief" not in lg.meta["epigraph"] else "template (fallback)"
+    describe_items(lg, aids, args.model, want_epigraph=True)
+    mode = args.model
     _write(args, lg)
     print(f"world generated: archetype={lg.meta['archetype_key']}, "
           f"{len(lg.of_type('event'))} events, {len(aids)} items [{mode}]",
@@ -108,13 +85,7 @@ def cmd_deepen(args) -> int:
     except LedgerError as e:
         sys.exit(f"cannot deepen: {e}")
 
-    model = _model(args)
-    if model is None:
-        elaborate(lg, node, child_ids, item_ids, None)
-    else:
-        _llm_guard(elaborate, lg, node, child_ids, item_ids, model,
-                   fallback_fn=lambda: elaborate(lg, node, child_ids, item_ids, None))
-
+    elaborate(lg, node, child_ids, item_ids, args.model)
     _write(args, lg)
     parent = lg.get(node)
     print(f"deepened {node} (\"{parent['kind']}\", year {parent['year']}, "
@@ -130,12 +101,7 @@ def cmd_deepen(args) -> int:
 
 def cmd_ask(args) -> int:
     lg = _load(args)
-    model = _model(args)
-    if model is None:
-        answer = ask_world(lg, args.question, None)
-    else:
-        answer = _llm_guard(ask_world, lg, args.question, model,
-                            fallback_fn=lambda: ask_world(lg, args.question, None))
+    answer = ask_world(lg, args.question, args.model)
     print(answer)
     with (_world_dir(args) / "answers.md").open("a") as fh:
         fh.write(f"\n**Q: {args.question}**\n\n{answer}\n")
@@ -144,7 +110,8 @@ def cmd_ask(args) -> int:
 
 def cmd_lore(args) -> int:
     from explore import Exploration
-    exp = Exploration(_world_dir(args), explorer=args.explorer, model=None)
+    exp = Exploration(_world_dir(args), explorer=args.explorer,
+                      model=args.model)
     out = _world_dir(args) / "explorations" / f"{args.explorer}-lore.md"
     out.write_text(exp.compendium())
     print(f"wrote {out}", file=sys.stderr)
@@ -166,8 +133,6 @@ def main() -> int:
         p.add_argument("--seed", type=int, default=107)
         p.add_argument("--out", type=Path, default=Path("worlds"))
         p.add_argument("--model", default=DEFAULT_MODEL)
-        p.add_argument("--no-llm", action="store_true",
-                       help="deterministic template writer, no API key needed")
 
     g = sub.add_parser("generate", help="create a new world")
     common(g)
@@ -198,7 +163,10 @@ def main() -> int:
     if not argv or argv[0].startswith("-"):
         argv = ["generate"] + argv          # back-compat: bare flags = generate
     args = ap.parse_args(argv)
-    return args.fn(args)
+    try:
+        return args.fn(args)
+    except NoCredentials as e:
+        sys.exit(str(e))                    # a message, not a traceback
 
 
 if __name__ == "__main__":

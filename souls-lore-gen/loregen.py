@@ -1,6 +1,8 @@
 """Lore rendering & elaboration on top of the canon ledger.
 
-Three LLM surfaces, each with an offline template fallback (model=None):
+All prose in this system is written by Claude. There is no template writer:
+a world without a working model is not generated at all, rather than
+generated badly. Three surfaces:
 
   describe_items  item descriptions (genesis codex, or newly minted items)
   elaborate       enrich a fresh expansion: rewrite skeleton prose, add
@@ -9,18 +11,37 @@ Three LLM surfaces, each with an offline template fallback (model=None):
 
 The LLM never gets to contradict the ledger: everything it returns is merged
 through the ledger's validated mutation paths (unknown entity ids and
-malformed additions are dropped, with a warning).
+malformed additions are dropped, with a warning). The *facts* are simulated
+and deterministic; only their telling is generated.
 """
 
 from __future__ import annotations
 
 import json
-import random
 import sys
 
 from ledger import Ledger, LedgerError, render_chronicle
 
 DEFAULT_MODEL = "claude-opus-4-8"
+
+
+class NoCredentials(RuntimeError):
+    """Raised when no Claude credentials are available."""
+
+
+_NO_CREDS_MSG = (
+    "Claude credentials are required — this generator has no offline mode. "
+    "Set ANTHROPIC_API_KEY, or run `ant auth login`."
+)
+
+
+def _client():
+    """An Anthropic client. Credentials resolve from ANTHROPIC_API_KEY,
+    ANTHROPIC_AUTH_TOKEN, or an `ant auth login` profile — so an unset env var
+    alone does not mean unauthenticated. The SDK defers the auth check to
+    request time, so the clear error is raised in `_stream_json` below."""
+    import anthropic
+    return anthropic.Anthropic()
 
 STYLE_GUIDE = """\
 You write item descriptions in the manner of FromSoftware games (Dark Souls,
@@ -92,16 +113,23 @@ def _veil_block(lg: Ledger) -> str:
 def _stream_json(model: str, system: str, user: str, schema: dict) -> dict:
     import anthropic
 
-    client = anthropic.Anthropic()
-    with client.messages.stream(
-        model=model,
-        max_tokens=16000,
-        thinking={"type": "adaptive"},
-        system=system,
-        output_config={"format": {"type": "json_schema", "schema": schema}},
-        messages=[{"role": "user", "content": user}],
-    ) as stream:
-        message = stream.get_final_message()
+    client = _client()
+    try:
+        with client.messages.stream(
+            model=model,
+            max_tokens=16000,
+            thinking={"type": "adaptive"},
+            system=system,
+            output_config={"format": {"type": "json_schema", "schema": schema}},
+            messages=[{"role": "user", "content": user}],
+        ) as stream:
+            message = stream.get_final_message()
+    except anthropic.AuthenticationError as e:
+        raise NoCredentials(_NO_CREDS_MSG) from e
+    except TypeError as e:                  # SDK's unresolved-auth guard
+        if "authentication" in str(e).lower():
+            raise NoCredentials(_NO_CREDS_MSG) from e
+        raise
     text = next(b.text for b in message.content if b.type == "text")
     return json.loads(text)
 
@@ -132,12 +160,8 @@ _DESC_SCHEMA = {
 }
 
 
-def describe_items(lg: Ledger, aids: list[str], model: str | None,
-                   want_epigraph: bool = False):
-    """Fill in `description` on the given artifacts (mutates ledger)."""
-    if model is None:
-        _fallback_describe(lg, aids, want_epigraph)
-        return
+def _describe_call(lg: Ledger, aids: list[str], model: str,
+                   want_epigraph: bool) -> dict:
     user = (
         "Below is the TRUE hidden chronicle, the numbered veils, and the "
         "items to describe. Each item carries only a fragmentary 'knowledge' "
@@ -149,104 +173,36 @@ def describe_items(lg: Ledger, aids: list[str], model: str | None,
         ("\n\nAlso write a 1-2 sentence in-world epigraph for the codex."
          if want_epigraph else "\n\nSet epigraph to an empty string.")
     )
-    data = _stream_json(model, STYLE_GUIDE, user, _DESC_SCHEMA)
+    return _stream_json(model, STYLE_GUIDE, user, _DESC_SCHEMA)
+
+
+def describe_items(lg: Ledger, aids: list[str], model: str = DEFAULT_MODEL,
+                   want_epigraph: bool = False):
+    """Fill in `description` on the given artifacts (mutates ledger).
+
+    If the model omits items, one repair pass asks for just those; a second
+    shortfall is an error rather than a silently half-written codex."""
+    data = _describe_call(lg, aids, model, want_epigraph)
     for it in data["items"]:
         if it["id"] in lg.entities and it["id"] in aids:
             lg.get(it["id"])["description"] = it["description"]
     if want_epigraph and data.get("epigraph"):
         lg.meta["epigraph"] = data["epigraph"]
+
     missing = [aid for aid in aids if not lg.get(aid)["description"]]
     if missing:
-        _fallback_describe(lg, missing, False)
+        print(f"  {len(missing)} item(s) undescribed; asking again",
+              file=sys.stderr)
+        data = _describe_call(lg, missing, model, False)
+        for it in data["items"]:
+            if it["id"] in missing:
+                lg.get(it["id"])["description"] = it["description"]
+        still = [aid for aid in aids if not lg.get(aid)["description"]]
+        if still:
+            raise RuntimeError(
+                f"model did not describe {len(still)} item(s) after a repair "
+                f"pass: {', '.join(lg.get(a)['name'] for a in still)}")
 
-
-# -- template fallback ---------------------------------------------------------
-
-_FUNCTION_LINES = {
-    "weapon": "A weapon of an older make, still keen despite its years.",
-    "armor": "Worn armor that remembers the shape of its last bearer.",
-    "ring": "A ring that grants a small, stubborn blessing.",
-    "talisman": "A talisman for the invoking of half-forgotten rites.",
-    "soul remnant": "The lingering soul of one who would not wholly pass.",
-    "key item": "An object of no use in battle, and of great consequence.",
-    "consumable": "A humble ward, spent in a moment.",
-    "catalyst": "A catalyst attuned to the old gift.",
-}
-
-_HEDGES = ["It is said that", "Some claim", "The tellings differ, but most agree",
-           "Old verses hold that", "None now living can say whether"]
-
-_CLOSERS = [
-    "What became of it after is not written.",
-    "The rest of the story is kept by no one.",
-    "Whether this was mercy or malice, none agree.",
-    "The name endures; little else does.",
-    "Perhaps it is better that the tale ends there.",
-]
-
-_VEIL_HINTS = [
-    ["Held long enough, it suggests the waning is no accident.",
-     "Those who keep it too long begin to doubt the sermons."],
-    ["It hums, faintly, as if answering something far below.",
-     "In its presence, the old prayers feel like apologies."],
-    ["Sometimes, near it, one feels counted — as a debtor is counted.",
-     "It is warm the way a held breath is warm: patiently, and not for you."],
-]
-
-_DETERMINERS = {"The", "A", "An", "At", "It", "Word", "Pilgrims", "None",
-                "For", "Old", "In", "Of", "Twice", "Before"}
-
-
-def _after_hedge(sentence: str) -> str:
-    first = sentence.split(" ", 1)[0]
-    if first in _DETERMINERS:
-        return sentence[0].lower() + sentence[1:]
-    return sentence
-
-
-def _strip_year(fact: str) -> str:
-    if fact.startswith("(year"):
-        return fact.split(") ", 1)[1]
-    return fact
-
-
-def _fallback_one(lg: Ledger, aid: str, rng: random.Random) -> str:
-    a = lg.get(aid)
-    parts = [_FUNCTION_LINES.get(a["item_type"], "A curious thing, of uncertain use.")]
-    facts = [f for f in a["knowledge"]
-             if not f.startswith("[half-known") and not f.startswith("The affliction")]
-    events = [_strip_year(f) for f in facts if f.startswith("(year")]
-    others = [f for f in facts if not f.startswith("(year")]
-    if events:
-        parts.append(events[0])
-    if len(events) > 1 and rng.random() < 0.7:
-        parts.append(f"{rng.choice(_HEDGES)} {_after_hedge(events[1])}")
-    else:
-        fate = next((o for o in others if ": fate —" in o), None)
-        if fate and fate.split(",", 1)[0] not in " ".join(parts):
-            name, rest = fate.split(": fate —", 1)
-            rest = rest.strip().rstrip(".")
-            if "(year" in rest:
-                rest = rest.split(" (year", 1)[0]
-            parts.append(f"Of {name}, the last word is this: {rest}.")
-    secrets = [f.split("] ", 1)[1] for f in a["knowledge"] if f.startswith("[half-known")]
-    if secrets and rng.random() < 0.6:
-        parts.append(f"{rng.choice(_HEDGES)} {_after_hedge(secrets[0])}")
-    if a["hints_veil"] is not None:
-        tier = min(a["hints_veil"], len(_VEIL_HINTS) - 1)
-        parts.append(rng.choice(_VEIL_HINTS[tier]))
-    parts.append(rng.choice(_CLOSERS))
-    return "\n\n".join([parts[0], " ".join(parts[1:])])
-
-
-def _fallback_describe(lg: Ledger, aids: list[str], want_epigraph: bool):
-    rng = random.Random(lg.meta["seed"] ^ 0xC0DE)
-    for aid in aids:
-        lg.get(aid)["description"] = _fallback_one(lg, aid, rng)
-    if want_epigraph:
-        lg.meta["epigraph"] = (
-            f"Of {lg.meta['primordial']} little now is spoken, and less is true. "
-            f"Gather what the old things still remember, and be sparing with belief.")
 
 
 # ---------------------------------------------------------------------------
@@ -300,13 +256,10 @@ _ELAB_SCHEMA = {
 
 
 def elaborate(lg: Ledger, parent_id: str, child_ids: list[str],
-              item_ids: list[str], model: str | None):
-    """Enrich a fresh expansion in place. Skeleton survives if the LLM is
-    unavailable; LLM output merges only through validated paths."""
-    if model is None:
-        describe_items(lg, item_ids, None)
-        return
-
+              item_ids: list[str], model: str = DEFAULT_MODEL):
+    """Enrich a fresh expansion in place. The deterministic skeleton is
+    already committed to the ledger before this runs, so a failed call loses
+    prose, never canon; LLM output merges only through validated paths."""
     depth = lg.get(child_ids[0])["depth"] if child_ids else 1
     allowed_veil = min(depth, len(lg.meta["veils"]) - 1)
     payload = {
@@ -347,7 +300,7 @@ def elaborate(lg: Ledger, parent_id: str, child_ids: list[str],
             lg.get(it["id"])["description"] = it["description"]
     missing = [a for a in item_ids if not lg.get(a)["description"]]
     if missing:
-        _fallback_describe(lg, missing, False)
+        describe_items(lg, missing, model)      # repair pass, same contract
 
 
 # ---------------------------------------------------------------------------
@@ -371,23 +324,8 @@ def _entities_in(lg: Ledger, question: str) -> list[str]:
             if e.get("name") and e["name"].lower() in q]
 
 
-def ask_world(lg: Ledger, question: str, model: str | None) -> str:
+def ask_world(lg: Ledger, question: str, model: str = DEFAULT_MODEL) -> str:
     hits = _entities_in(lg, question)
-    if model is None:
-        if not hits:
-            return ("The archivists turn the question over and hand it back: "
-                    "no name in it appears in any surviving record.")
-        e = lg.get(hits[0])
-        rng = random.Random(f"{lg.meta['seed']}:{question}")
-        lines = []
-        for eid, ev in lg.of_type("event"):
-            if hits[0] in ev["participants"]:
-                lines.append(f"{rng.choice(_HEDGES)} {_after_hedge(ev['text'])}")
-                break
-        name = e.get("name", "that one")
-        lines.append(f"Of {name}, the records otherwise keep their counsel.")
-        return " ".join(lines) + "\n    — a marginal note, unsigned"
-
     subgraph = lg.subgraph(hits) if hits else {}
     user = (
         "Answer the question below *in-world*: as a fragment someone might "

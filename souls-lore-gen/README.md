@@ -51,8 +51,7 @@ Why it feels like Souls lore:
 ## Usage
 
 ```sh
-# Full experience — needs ANTHROPIC_API_KEY (or an `ant auth login` profile).
-# Add --no-llm to any command for deterministic template prose, no key needed.
+# All prose is written by Claude — set ANTHROPIC_API_KEY, or `ant auth login`.
 uv run main.py generate --seed 107 --items 14
 
 # Depth on demand: expand the event behind an item (or --node e14).
@@ -144,8 +143,11 @@ worlds migrate on first load.
   ("Mazirast cannot act in year 533: fate sealed in year 523"), duplicate
   names, and references to unknown ids. LLM output merges only through these
   validated paths — bad notes are dropped, never written.
-- **LLM-optional**: every surface (describe, elaborate, ask) has a template
-  fallback that obeys the same fragment/bias/veil rules.
+- **Always LLM-backed**: there is no template writer and no offline mode.
+  Every surface (describe, elaborate, ask, judge) goes to Claude; without
+  credentials the tool stops with one line rather than degrading to worse
+  prose. The *facts* are still pure simulation — deterministic per seed — so
+  a failed call costs prose, never canon.
 
 ## Files
 
@@ -159,8 +161,8 @@ worlds migrate on first load.
   wardenship; twilight → last audiences and the empty seat; generic →
   testimony and aftermath), plus item minting.
 - [`loregen.py`](loregen.py) — style guide, three Claude Opus 4.8 surfaces
-  (streamed, adaptive thinking, JSON-schema structured output), template
-  fallbacks.
+  (streamed, adaptive thinking, JSON-schema structured output), plus a
+  repair pass when the model omits an item.
 - [`main.py`](main.py) — CLI (`generate | deepen | ask | codex`).
 - [`explore.py`](explore.py) — the agent-facing exploration API: spatial
   fog-of-war state, travel/adjacency, placement-as-evidence, delve
@@ -185,8 +187,11 @@ All four documented runs are **reproducible**, not hand-made:
 `uv run demos.py all` regenerates their worlds from seed, replays the same
 seeker actions, and rewrites the reports — so the committed documents stay
 true after any change to the generator.
-- [`worlds/`](worlds/) — committed samples (template mode; this container has
-  no API key): seed-9021 is genesis-only; seed-107 has been deepened five
+- [`worlds/`](worlds/) — committed samples. **Their prose was written by the
+  since-removed template writer**, so it reads plainer than a real run; the
+  ledgers (events, places, provenance, veils) are pure simulation and remain
+  exactly what a live run reproduces. Re-run `uv run demos.py all` with
+  credentials to rewrite the prose from the same facts. seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the
   battle of Haruienreach and a champions' duel that was "not fought to a
   death but to a bargain", and minted the *Torn Standard of Haruienreach*).

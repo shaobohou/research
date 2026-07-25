@@ -23,24 +23,24 @@ from pathlib import Path
 from explore import Exploration
 
 
-def _world(seed: int) -> Path:
-    d = Path(f"worlds/seed-{seed}")
-    if not (d / "ledger.json").exists():
-        subprocess.run([sys.executable, "main.py", "generate",
-                        "--seed", str(seed), "--no-llm"], check=True)
-    return d
+def _generate(seed: int) -> None:
+    """Regenerate a world, surfacing the CLI's own message on failure —
+    most often "credentials are required", which is not a stack-trace event."""
+    r = subprocess.run([sys.executable, "main.py", "generate",
+                        "--seed", str(seed)],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit((r.stderr or r.stdout).strip().splitlines()[-1])
 
 
 def _fresh(seed: int, explorer: str, **kw) -> Exploration:
     """A world reset to genesis with a clean explorer — demos must not
     accumulate state across runs."""
     d = Path(f"worlds/seed-{seed}")
-    subprocess.run([sys.executable, "main.py", "generate",
-                    "--seed", str(seed), "--no-llm"],
-                   check=True, capture_output=True)
+    _generate(seed)
     (d / "explorations").mkdir(exist_ok=True)
     (d / "explorations" / f"{explorer}.json").unlink(missing_ok=True)
-    return Exploration(d, explorer=explorer, model=None, **kw)
+    return Exploration(d, explorer=explorer, **kw)
 
 
 def _first_sentence(desc: str) -> str:
@@ -123,9 +123,9 @@ def demo_transcript() -> Path:
     lines = [
         "# Full Walkthrough — seed-7, the world of the Pale Root", "",
         "*A complete, unedited transcript of one seeker (\"warden\") playing the "
-        "exploration API in the default **spatial + purist** mode (template "
-        "writer — no API key here). Every tool call and its literal output, in "
-        "order. Reproduce with `uv run demos.py transcript`.*", "",
+        "exploration API in the default **spatial + purist** mode. Every tool "
+        "call and its literal output, in order. Reproduce with "
+        "`uv run demos.py transcript`.*", "",
         "> Loop: `survey` (map) → `travel` → `look`/`examine` → `ask` → `delve` "
         "→ `theorize`. You learn a place's relics only by walking there; no one "
         "will ever tell you that you are right.", ""]
@@ -281,7 +281,7 @@ def demo_hundred() -> Path:
         f"# 100-Step Walkthrough — seed-314, the world of {lg.meta['primordial']}",
         "",
         "*A large-budget run (100 steps, 80 delves, 50 asks) by the seeker "
-        "\"cartographer\", in spatial + purist mode (template writer). The point "
+        "\"cartographer\", in spatial + purist mode. The point "
         "of a big step budget is to force the world to **grow**: the steps are "
         "spent walking to ground that does not exist until you dig for it. Each "
         "dig opens a fresh locale off the deep roads, so an exhaustive run is a "
