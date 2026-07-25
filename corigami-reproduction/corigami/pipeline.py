@@ -39,6 +39,7 @@ class RunResult:
     mean_strain: float = float("nan")
     max_strain: float = float("nan")
     uniaxial_rms: float = float("nan")
+    layers: float = float("nan")
     seconds: float = 0.0
     packing: Packing | None = None
     solved_cp: object = None
@@ -144,6 +145,9 @@ def run_figure(sf: StickFigure, g_max_extra: int = 6,
                 last_err = f"fold strain {st.mean_axial_strain:.2e}"
                 continue
             res.uniaxial_rms = uniaxiality_rms(pk, solved, st)
+            bb = st.vertices3d.max(0) - st.vertices3d.min(0)
+            foot = max(bb[0], 1e-9) * max(bb[1], 1e-9)
+            res.layers = float(G * G / foot)   # paper area / folded footprint
             res.packing = pk
             res.solved_cp = solved
             res.kinds = kinds

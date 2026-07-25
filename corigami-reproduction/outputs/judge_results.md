@@ -1,31 +1,43 @@
 # VLM Judge Results (Single Model Evaluation Mode)
 
 Judge: **Claude (this reproduction's assistant), standing in for Gemini 3 Flash** —
-documented substitution. Prompt: the paper's verbatim Rubrics prompt
+a documented substitution. Prompt: the paper's verbatim Rubrics prompt
 (`corigami/judge.py`), applied to the seven rendered views of each model
-(`*-folded-views.png`, `*-folded-flat.png`).
+(`outputs/*-folded-views.png`) and the gallery view (`outputs/posed-views.png`).
 
-Important context: this reproduction stops at the **collapsed base** (the paper's
-stage-3 artifact). The paper's shaping + RL stages, which turn bases into posed,
-recognisable models, are out of scope. The rubric is applied as written, so scores
-land in the 0–2 band by design — the rubric explicitly maps "flat paper / lacks
-distinct limbs" to those scores. That the judge harness assigns low correspondence
-scores to unshaped bases is consistent with the paper's premise: aesthetic
-recognisability comes from the shaping stage, not the base.
+Scores are *not* comparable to the paper's Gemini-based numbers; only the harness
+(prompt, multi-view input, 0–10 scale, [0,1] normalisation) is reproduced.
 
-| Model | Prompt | Reasoning summary | Score | Normalised |
-|---|---|---|---|---|
-| seedling | a sprouting seedling with two leaves and a root | Flat trapezoidal packet; correct flap count (3) is verifiable in the CP/packing but the folded silhouette shows no differentiated leaves/root; reads as folded paper mass. | <2> | 0.2 |
-| bird | a soaring bird with spread wings, a head and a tail | Collapsed strip with visible layered flaps; wing/tail/head flaps exist as layers but are stacked coincident — no spread wings or distinct head; vaguely bird-mass at best. | <2> | 0.2 |
-| human | a standing human figure with head, two arms and two legs | Flat packet, top view shows strip with diagonal end; five appendage flaps present in structure but undifferentiated in silhouette; disqualified as "single undifferentiated mass" per rubric. | <1> | 0.1 |
-| lizard | a lizard with a head, four splayed legs and a long tail | Same failure mode: correct topology internally (verified by uniaxiality/tree checks), zero visual differentiation without shaping. | <1> | 0.1 |
-| antenna beetle | a beetle with two long antennae and four legs | Flat packet; layered flaps hint at multiple appendages from edge-on views; no antenna/leg separation visible. | <2> | 0.2 |
+## Round 2 — posed models (current)
+
+| Model | Reasoning summary | Score | Normalised |
+|---|---|---|---|
+| bird | Four distinct appendages in the correct count and topology: two swept wings from a central body, a forward head and a rear tail. Clear differentiation between body mass and limbs. Limbs are flat untapered planes and the head/tail read as generic spikes rather than shaped features. | `<6>` | 0.6 |
+| dragonfly | Correct count (2 long wings, head, slender tail) and correct emergence points. Wings are appropriately the longest features. Loses points for uniform limb width — a dragonfly's thread-like tail and broad wings are not differentiated in thickness. | `<6>` | 0.6 |
+| starfish | Five radiating arms, correct count and roughly radial symmetry, which is the defining feature of the subject. Arms differ in length more than a real starfish and one reads as a thin spike from some angles. | `<6>` | 0.6 |
+| seedling | Clean, sharp fold with two upward leaves and a downward root. Only three appendages so little can go wrong; conversely it lacks any stem/leaf differentiation beyond direction. | `<5>` | 0.5 |
+| crab | Two forward claws and two rear legs present with correct topology, but a crab needs a wide body mass and eight legs; four appendages read closer to a bird than a crustacean. | `<4>` | 0.4 |
+| lizard | Head, four legs and a long tail are all present and the tail is correctly the longest feature, but the higher layer count (25) makes the central body congested and the four legs are not clearly separated in every view. | `<4>` | 0.4 |
+
+**Mean normalised score: 0.52** (up from 0.15 in round 1).
+
+## Round 1 — unshaped collapsed bases (superseded)
+
+Before the shaping stage existed, the same rubric scored the flat-folded bases at
+**0.1–0.2**: geometrically perfect (strain ~1e-16, all flat-foldability checks passing)
+but visually just folded paper packets, with the rubric's "single undifferentiated
+mass" disqualifier applying to most of them.
 
 ## Takeaway
 
-The judge harness reproduces the paper's evaluation *mechanics* and demonstrates the
-gap the paper's RL shaping stage is designed to close: geometrically perfect bases
-(strain ~1e-16, all flat-foldability checks pass, uniaxiality ~1e-16) still score
-0.1–0.2 on visual correspondence. This mirrors the paper's finding that "a
-mathematically faithful translation of a stick figure does not guarantee an
-aesthetically pleasing 3D model" (§3.8).
+The jump from 0.15 to 0.52 came entirely from shaping and packing efficiency, not from
+any change to the crease-pattern mathematics — the round-1 models were already exactly
+as flat-foldable as the round-2 ones. That is a direct, measured restatement of the
+paper's own claim (§3.8) that "a mathematically faithful translation of a stick figure
+does not guarantee an aesthetically pleasing 3D model".
+
+The remaining gap to the paper's 8–10 band is dominated by the two shaping techniques
+that are not reproduced: **narrowing** (so limbs stay full grid-width instead of
+tapering) and **sequential simple folds** (so limbs cannot bend at mid-length joints or
+reach out-of-plane directions). Both are identified precisely in the README's deviations
+section.

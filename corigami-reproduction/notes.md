@@ -133,3 +133,43 @@ out of plane. Added corigami/shaping.py + tests/test_shaping.py (8 new tests, 28
 Posed gallery outputs/posed-views.png — bird now reads as swept wings, lizard as splayed
 legs, seedling as a sprout. Pivot angles hand-set from stick-figure limb angles (stand-in
 for the paper's RL orchestration). Still no narrowing, so limbs stay full grid-width.
+
+## Round 2: making the results actually look good (2026-07-06)
+
+Feedback: posed models still looked poor. Diagnosed three separate causes, in order of impact.
+
+**1. Renderer (biggest immediate win).** matplotlib's Poly3DCollection sorts faces by a crude
+centroid heuristic; an origami base is hundreds of nearly-coplanar stacked faces, so layers
+punched through each other and everything read as noise. Wrote corigami/render3d.py: explicit
+camera, per-face Newell normal, two-sided Lambertian paper material + rim term, painter's
+algorithm in view space, drawn as flat 2D polygons. Form became legible immediately.
+
+**2. Paper efficiency (the real geometric cause).** Measured layers = paper area / folded
+footprint. The old bird was 100 units of paper in a 1x3 footprint = ~33 layers, so every
+individual face was a third of the model — hence the "wad" look. Swept designs: 4-flap star
+figures pack at the heuristic grid bound with reach (longest flap / grid) = 0.50 and only
+8-16 layers; river figures need a grid ~3.3x the longest flap. Rebuilt the example set around
+efficient designs (kept the lizard to keep a river in the set). This is what the paper means
+by "optimal use of the paper by minimizing the required grid size".
+
+**3. Pose quality.** Implemented pose_angles_from_figure: closed-form best hinge rotation
+matching each stick's 3D direction. Two corrections were needed after seeing the output:
+ - All hinges in a uniaxial base are parallel => every flap swings in ONE plane. Mirror pairs
+   must therefore be sent to opposite sides; assigning side from sign(sin azimuth) fixed
+   left/right pairs that were previously landing on top of each other.
+ - Matching a horizontal stick wants delta ~ 0, which leaves the flap collapsed inside the
+   base. Added a minimum angular gap between same-side flaps. Without this, limbs are
+   geometrically "correct" but invisible.
+
+**Simple fold + narrowing.** Implemented the paper's §3.5 simple fold tool: intersect the cut
+line with every flat-folded face, pull back through each face's rigid frame, emit shaping
+creases with M/V flipped on orientation-reversed layers. Verified: narrowing the bird added
+146 creases and stayed isometric (1.4e-15).
+BUT narrow + pose fails (strain 5.4e-3): narrowing creases cross the base hinges and pin them,
+so the flap can no longer pivot. That is precisely the failure the paper's base adapters
+prevent ("divert narrowing pleats such that the rest of the model is not impacted", App. G.2).
+Left `narrow()` in as a verified tool with the limitation documented rather than shipping a
+model that silently violates isometry.
+
+Result: judge score 0.15 -> 0.52 with zero change to the crease-pattern mathematics.
+Tests 20 -> 32, all passing.

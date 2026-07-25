@@ -24,31 +24,42 @@ with the paper's own verification mathematics used as ground truth at every stag
 | Tree similarity via Procrustes (App. C.2) | ✅ `corigami/similarity.py` |
 | Pipeline pass-rate accounting (Fig. 6/7) | ✅ `corigami/pipeline.py` + `scripts/run_all.py` on random tree candidates |
 | VLM judge, Single-Model Rubrics prompt (§3.8, App. I) | ⚠️ harness + verbatim prompt in `corigami/judge.py`; Claude scores the renders instead of Gemini 3 Flash (documented substitution) |
-| Tree-shaping — hinge posing (first slice of §3.4/App. G) | ✅ `corigami/shaping.py` — flaps pivot at their base hinges to a 3D posture; verified isometric (~1e-16 strain) |
-| Tree-shaping mid-flap simple folds + clip-pattern narrowing (rest of §3.5–3.6) | ❌ out of scope |
+| Shaping — hinge posing + angle derivation (§3.4, App. G) | ✅ `corigami/shaping.py` — flaps pivot at their base hinges; angles derived from the stick figure in closed form; verified isometric (~1e-16 strain) |
+| Shaping — the simple fold tool (§3.5) | ✅ `simple_fold()` — cuts the flat-folded base with a line, converts each face intersection into a shaping crease, flipping M/V on orientation-reversed layers |
+| Shaping — clip-pattern narrowing with base adapters (§3.5) | ⚠️ `narrow()` narrows the whole base via simple folds and verifies isometry, but without the paper's base adapters it cannot compose with posing (see below) |
+| RL orchestration of shaping tools (§3.6) | ❌ out of scope (needs Gemini fine-tuning) |
+| Rendering | ✅ `corigami/render3d.py` — own painter's-algorithm renderer; matplotlib's 3D sorting mangles stacked coplanar origami layers |
 | RL fine-tuning of Gemini 2.5 Flash Lite (§3.6) | ❌ out of scope (requires Gemini training access) |
 | Global layer-ordering check (facewise CSP, Akitaya et al.) | ❌ out of scope; strain + local checks + uniaxiality used instead |
 | 560k-candidate scale, VLM tournaments, human folding | ❌ out of scope |
 
 ## Key results
 
-All five authored example figures pass the full pipeline:
+All six worked examples pass the full pipeline and are then posed into 3D:
 
-| figure | flaps | rivers | grid | mean axial strain | uniaxiality RMS |
-|---|---|---|---|---|---|
-| seedling | 3 | 0 | 4 | 2.2e-16 | 3.1e-16 |
-| bird | 4 | 1 | 10 | 4.2e-16 | 5.2e-16 |
-| human | 5 | 1 | 7 | 3.0e-16 | 4.1e-16 |
-| lizard | 6 | 1 | 10 | 3.4e-16 | 5.3e-16 |
-| antenna beetle | 6 | 1 | 10 | 3.4e-16 | 7.2e-16 |
+| figure | flaps | rivers | grid (heuristic) | layers | mean axial strain | uniaxiality RMS |
+|---|---|---|---|---|---|---|
+| bird | 4 | 0 | 8 (8) | 16 | 3.2e-16 | ~1e-16 |
+| crab | 4 | 0 | 8 (8) | 16 | 3.2e-16 | ~1e-16 |
+| dragonfly | 4 | 0 | 8 (8) | 16 | 3.3e-16 | ~1e-16 |
+| starfish | 5 | 0 | 8 (6) | 21 | 3.4e-16 | ~1e-16 |
+| seedling | 3 | 0 | 4 (4) | 8 | 2.2e-16 | ~1e-16 |
+| lizard | 6 | 1 | 10 (8) | 25 | 3.4e-16 | ~1e-16 |
 
 For each: every interior vertex satisfies Kawasaki + Maekawa + the crimping test
-(Algorithm 1); the geometric simulator folds the solved pattern completely flat with
-~1e-16 mean axial strain (the paper's Fig. 15 shows ~1e-5 vertex errors on patterns
-with thousands of creases); and a reproduction-specific **uniaxiality check** (RMS of
-folded axis position vs. the packing's elevation function, per-region sign fits)
-confirms the folded bases realise the target tree. Renders in `outputs/`
-(`*-packing.png`, `*-cp.png`, `*-folded-*.png`).
+(Algorithm 1); the geometric simulator folds the pattern completely flat at ~1e-16 mean
+axial strain (the paper's Fig. 15 reports ~1e-5 on patterns with thousands of creases);
+a **uniaxiality check** confirms the folded base realises the target tree; and the posed
+model stays isometric at ~1e-16. Gallery: `outputs/posed-views.png`; per-figure
+seven-view sheets, packings and crease patterns are in `outputs/`.
+
+**Layers** = paper area / folded footprint, i.e. how efficiently the packing uses the
+sheet. It turned out to be the dominant driver of visual quality: an early example set
+whose flaps were short relative to the sheet packed at ~33 layers and folded into an
+illegible wad, because each individual face was a third of the whole model. Designs that
+pack at the heuristic grid bound reach 8–16 layers and read cleanly. This is the
+practical meaning of the paper's claim that its packing achieves "optimal use of the
+paper by minimizing the required grid size" (§3.2).
 
 ### Random-candidate survival (paper Fig. 6/7 analog)
 
@@ -73,10 +84,12 @@ exactly why it needs a solving stage that can reject.
 
 ### Judge results
 
-`outputs/judge_results.md`: applying the paper's verbatim rubric (with Claude in
-place of Gemini 3 Flash), the geometrically perfect but unshaped bases score
-0.1–0.2 normalised — a direct illustration of the paper's point that mathematical
-fidelity does not yield visual recognisability without the shaping/RL stage.
+`outputs/judge_results.md`: applying the paper's verbatim rubric (with Claude in place
+of Gemini 3 Flash), the posed models score **0.52 mean normalised**, up from **0.15**
+for the unshaped collapsed bases. The crease-pattern mathematics is identical in both
+rounds — the entire gain came from shaping and packing efficiency, which is a measured
+restatement of the paper's own point (§3.8) that "a mathematically faithful translation
+of a stick figure does not guarantee an aesthetically pleasing 3D model".
 
 ## Layout
 
@@ -85,7 +98,7 @@ corigami-reproduction/
 ├── corigami/            # the pipeline library
 ├── scripts/dev_run.py   # single-figure debug harness
 ├── scripts/run_all.py   # regenerates outputs/ (examples + random batch)
-├── tests/               # 20 unit/integration tests
+├── tests/               # 32 unit/integration tests
 ├── outputs/             # renders + stats (committed)
 └── notes.md             # working log incl. the box-pleating derivation
 ```
@@ -105,11 +118,21 @@ Run: `uv run --extra dev pytest` · `uv run python scripts/run_all.py 150`
    assignment + greedy hinge search. At paper scale their staging is what makes the
    problem tractable; at our scale completeness is affordable and finds the same class of
    solutions.
-4. **Partial shaping only.** `corigami/shaping.py` implements hinge posing — the first
-   simple fold of the paper's tree-shaping algorithm — which pivots each flap out of the
-   base plane at its base hinge to give the models a recognisable 3D posture
-   (`outputs/posed-views.png`). The pivot angles here are set by hand from the stick
-   figure's limb angles, standing in for the paper's RL-tuned Gemini orchestration. The
-   remaining shaping techniques (mid-flap simple folds, clip-pattern narrowing) are not
-   implemented, so appendages stay full grid-width rather than tapering. `outputs/*-folded-flat.png`
-   still shows the pre-shaping collapsed base (layers separated) for reference.
+4. **Partial shaping.** Hinge posing and the simple-fold tool are implemented and
+   verified; RL orchestration is not, and narrowing does not yet compose with posing.
+   Two consequences are worth stating precisely:
+
+   - *Every hinge in a uniaxial base is parallel*, so a flap has one rotational degree of
+     freedom and all flaps swing within a single plane. Mirror-image limbs are therefore
+     separated by sending them to opposite sides of that plane, and same-side flaps are
+     spread by a minimum angular gap — otherwise limbs that point along the base plane
+     want a zero pivot and stay collapsed on top of each other. The paper reaches
+     arbitrary limb directions instead by applying simple folds *sequentially*, each one
+     re-framing its descendants (App. G); that sequencing is not implemented here.
+   - *Narrowing needs base adapters.* `narrow()` produces a valid, isometric narrowed
+     pattern, but its creases cross the base hinges, which pins them: posing a narrowed
+     flap then breaks isometry (strain jumps to ~5e-3, and the run raises rather than
+     returning a bad model). This is exactly the failure the paper's base adapters exist
+     to prevent — "the role of the base adapter is to divert narrowing pleats such that
+     the rest of the model is not impacted" (App. G.2). Without them, appendages stay
+     full grid-width rather than tapering, which is the main remaining visual gap.

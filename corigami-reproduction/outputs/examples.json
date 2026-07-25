@@ -1,5 +1,65 @@
 [
   {
+    "name": "bird",
+    "prompt": "a bird with two spread wings, a head and a tail",
+    "sticks": 4,
+    "rivers": 0,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 8,
+    "grid_used": 8,
+    "mean_strain": 3.2463665089024057e-16,
+    "uniaxial_rms": 6.280369834735101e-16,
+    "layers": 16.0,
+    "seconds": 0.15,
+    "posed_strain": 4.371768989564185e-16
+  },
+  {
+    "name": "crab",
+    "prompt": "a crab with two big claws and a pair of legs",
+    "sticks": 4,
+    "rivers": 0,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 8,
+    "grid_used": 8,
+    "mean_strain": 3.2463665089024057e-16,
+    "uniaxial_rms": 6.280369834735101e-16,
+    "layers": 16.0,
+    "seconds": 0.15,
+    "posed_strain": 3.319810449327418e-16
+  },
+  {
+    "name": "dragonfly",
+    "prompt": "a dragonfly with long wings, a head and a slender tail",
+    "sticks": 4,
+    "rivers": 0,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 8,
+    "grid_used": 8,
+    "mean_strain": 3.2777762780747496e-16,
+    "uniaxial_rms": 4.890025172686939e-16,
+    "layers": 16.0,
+    "seconds": 0.14,
+    "posed_strain": 3.4624730122370426e-16
+  },
+  {
+    "name": "starfish",
+    "prompt": "a five-armed starfish",
+    "sticks": 5,
+    "rivers": 0,
+    "stage_reached": "done",
+    "error": "",
+    "grid_heuristic": 6,
+    "grid_used": 8,
+    "mean_strain": 3.395480740343806e-16,
+    "uniaxial_rms": 5.467510988409185e-16,
+    "layers": 21.3,
+    "seconds": 21.54,
+    "posed_strain": 3.3219875323398767e-16
+  },
+  {
     "name": "seedling",
     "prompt": "a sprouting seedling with two leaves and a root",
     "sticks": 3,
@@ -10,33 +70,9 @@
     "grid_used": 4,
     "mean_strain": 2.1653825301133477e-16,
     "uniaxial_rms": 3.051711199014825e-16,
-    "seconds": 0.01
-  },
-  {
-    "name": "bird",
-    "prompt": "a soaring bird with spread wings, a head and a tail",
-    "sticks": 5,
-    "rivers": 1,
-    "stage_reached": "done",
-    "error": "",
-    "grid_heuristic": 7,
-    "grid_used": 10,
-    "mean_strain": 4.233713820332316e-16,
-    "uniaxial_rms": 5.209039732002896e-16,
-    "seconds": 1.41
-  },
-  {
-    "name": "human",
-    "prompt": "a standing human figure with head, two arms and two legs",
-    "sticks": 6,
-    "rivers": 1,
-    "stage_reached": "done",
-    "error": "",
-    "grid_heuristic": 7,
-    "grid_used": 7,
-    "mean_strain": 3.023398908785852e-16,
-    "uniaxial_rms": 4.0802008019470882e-16,
-    "seconds": 0.05
+    "layers": 8.0,
+    "seconds": 0.02,
+    "posed_strain": 2.075344771397913e-16
   },
   {
     "name": "lizard",
@@ -49,19 +85,8 @@
     "grid_used": 10,
     "mean_strain": 3.3786646024289116e-16,
     "uniaxial_rms": 5.302498948762487e-16,
-    "seconds": 1.05
-  },
-  {
-    "name": "antenna beetle",
-    "prompt": "a beetle with two long antennae and four legs",
-    "sticks": 7,
-    "rivers": 1,
-    "stage_reached": "done",
-    "error": "",
-    "grid_heuristic": 7,
-    "grid_used": 10,
-    "mean_strain": 3.43993123602754e-16,
-    "uniaxial_rms": 7.246726250297038e-16,
-    "seconds": 1.53
+    "layers": 25.0,
+    "seconds": 1.37,
+    "posed_strain": 4.643992194419355e-16
   }
 ]

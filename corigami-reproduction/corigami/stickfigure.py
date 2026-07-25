@@ -184,54 +184,51 @@ def grid_size_heuristic(sf: StickFigure, symmetric: bool = False) -> int:
 # ---------------------------------------------------------------------------
 
 def example_figures() -> list[StickFigure]:
-    figs = []
+    """Worked examples (Claude-authored, standing in for the Gemini stage).
 
-    # A sprouting seedling: three flaps from one joint (simplest base).
-    figs.append(
-        StickFigure(
-            name="seedling",
-            prompt="a sprouting seedling with two leaves and a root",
-            sticks=[
-                Stick("left leaf", 0, 1, 2, 135, 45),
-                Stick("right leaf", 0, 2, 2, 45, 45),
-                Stick("root", 0, 3, 2, 0, -90),
-            ],
-        )
-    )
+    Lengths are chosen so the packer reaches its heuristic grid bound, which
+    keeps the folded base thin (8-16 layers rather than 30+) — the paper's
+    "optimal use of the paper by minimising the required grid size". The
+    lizard keeps a river to exercise that path, at the cost of efficiency.
+    """
+    def star(name, prompt, specs):
+        return StickFigure(name, prompt, [
+            Stick(label, 0, i + 1, length, azimuth, elevation)
+            for i, (label, length, azimuth, elevation) in enumerate(specs)
+        ])
 
-    # A soaring bird: head, tail, two wings off a short body river.
-    figs.append(
-        StickFigure(
-            name="bird",
-            prompt="a soaring bird with spread wings, a head and a tail",
-            sticks=[
-                Stick("head", 1, 2, 2, 0, 20),
-                Stick("left wing", 1, 3, 3, 90, 10),
-                Stick("right wing", 1, 4, 3, -90, 10),
-                Stick("body", 1, 0, 2, 180, 0),   # river
-                Stick("tail", 0, 5, 2, 180, -10),
-            ],
-        )
-    )
-
-    # A standing human: head, two arms, two legs, torso river.
-    figs.append(
-        StickFigure(
-            name="human",
-            prompt="a standing human figure with head, two arms and two legs",
-            sticks=[
-                Stick("head", 1, 2, 1, 0, 90),
-                Stick("left arm", 1, 3, 2, 120, 0),
-                Stick("right arm", 1, 4, 2, -120, 0),
-                Stick("torso", 1, 0, 2, 180, -90),  # river
-                Stick("left leg", 0, 5, 3, 100, -80),
-                Stick("right leg", 0, 6, 3, -100, -80),
-            ],
-        )
-    )
-
-    # A lizard: head, four legs, tail, body river between hip joints.
-    figs.append(
+    return [
+        star("bird", "a bird with two spread wings, a head and a tail", [
+            ("head", 3, 0, 25),
+            ("left wing", 4, 100, 5),
+            ("right wing", 4, -100, 5),
+            ("tail", 3, 180, -20),
+        ]),
+        star("crab", "a crab with two big claws and a pair of legs", [
+            ("left claw", 4, 55, 15),
+            ("right claw", 4, -55, 15),
+            ("left leg", 3, 130, -25),
+            ("right leg", 3, -130, -25),
+        ]),
+        star("dragonfly", "a dragonfly with long wings, a head and a slender tail", [
+            ("left wing", 4, 95, 8),
+            ("right wing", 4, -95, 8),
+            ("head", 3, 0, 15),
+            ("tail", 4, 180, -8),
+        ]),
+        star("starfish", "a five-armed starfish", [
+            ("arm one", 3, 90, 10),
+            ("arm two", 3, 162, 10),
+            ("arm three", 2, 234, 10),
+            ("arm four", 2, 306, 10),
+            ("arm five", 2, 18, 10),
+        ]),
+        star("seedling", "a sprouting seedling with two leaves and a root", [
+            ("left leaf", 2, 130, 40),
+            ("right leaf", 2, 50, 40),
+            ("root", 2, 180, -85),
+        ]),
+        # keeps a river in the example set (packs less efficiently, by design)
         StickFigure(
             name="lizard",
             prompt="a lizard with a head, four splayed legs and a long tail",
@@ -244,24 +241,5 @@ def example_figures() -> list[StickFigure]:
                 Stick("hind right leg", 0, 6, 2, -60, -20),
                 Stick("tail", 0, 7, 4, 180, 0),
             ],
-        )
-    )
-
-    # A crab: two large claws, four legs (simplified), eyes river-less.
-    figs.append(
-        StickFigure(
-            name="antenna beetle",
-            prompt="a beetle with two long antennae and four legs",
-            sticks=[
-                Stick("left antenna", 1, 2, 3, 30, 20),
-                Stick("right antenna", 1, 3, 3, -30, 20),
-                Stick("thorax", 1, 0, 1, 180, 0),  # river
-                Stick("front left leg", 0, 4, 2, 120, -30),
-                Stick("front right leg", 0, 5, 2, -120, -30),
-                Stick("hind left leg", 0, 6, 2, 60, -30),
-                Stick("hind right leg", 0, 7, 2, -60, -30),
-            ],
-        )
-    )
-
-    return figs
+        ),
+    ]
