@@ -84,6 +84,14 @@
 - **Ulesssila** Thrice-pardoned (chronicler).
 - **Ezahild** Long-memoried (champion). Fate: given to the seal (year 194).
 - **Ezlis** the Sleepless (champion). Fate: given to the seal (year 194).
+- **Aldrireth** the Sleepless (keeper of the reliquary) — of Loulmerecradle.
+- **Serorien** the Younger (hedge-knight of a fallen house) — of Fenmerefen.
+- **Galwyn** the Younger (keeper of the reliquary) — of Cyrogrimmere.
+- **Raniaemis** the Last (keeper of the reliquary) — of Nimelismarch.
+- **Calelis** the Younger (last-sworn of the order) — of Order of the Brine.
+- **Omric** the Grey (keeper of the reliquary) — of Church of Veloryne.
+- **Serulyne** the Patient (pilgrim of the cult) — of Cult of the Second Dawn.
+- **Ishandis** the Last (hedge-knight of a fallen house) — of Hestnothgate.
 
 ## Factions
 - **Loulmerecradle** (church), seat Yorgarcrown, founded year 58.

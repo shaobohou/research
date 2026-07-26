@@ -33,9 +33,9 @@ def build_server(exp: Exploration) -> FastMCP:
             "Descriptions are fragmentary, biased, and sometimes wrong — the "
             "truth must be triangulated across many. Loop: survey (your map), "
             "travel, look, examine, follow leads (ask, delve), travel on. "
-            "When you have a theory, lay it before the antiquary — but know "
-            "that in this world no one will ever tell you that you are right. "
-            "Silence, where you expected an answer, is itself the answer. "
+            "When you have a theory, confide it to someone — but know that no "
+            "one here can confirm you: they answer from their own beliefs, "
+            "which are partial and sometimes wrong. "
             "Steps, asks, and delves are limited; spend them where the story "
             "feels deliberately quiet."),
     )
@@ -66,9 +66,16 @@ def build_server(exp: Exploration) -> FastMCP:
         return exp.examine(item)
 
     @mcp.tool()
+    def talk() -> dict:
+        """Who is here to be spoken to. Free. Most who knew are dead; the
+        living are inheritors who know only what came down to them."""
+        return exp.talk()
+
+    @mcp.tool()
     def ask(question: str) -> dict:
-        """Ask the archives a question; answered in-world, from surviving
-        records only. Costs 1 ask."""
+        """Put a question to whoever stands here. They answer from what they
+        believe — no more, and not always rightly. There is no archive that
+        answers on its own. Costs 1 ask."""
         return exp.ask(question)
 
     @mcp.tool()
@@ -79,11 +86,12 @@ def build_server(exp: Exploration) -> FastMCP:
         return exp.delve(target)
 
     @mcp.tool()
-    def theorize(claims: list[str]) -> dict:
-        """Lay up to 12 claims before a fellow antiquary. You receive their
-        in-world reaction — never a verdict. The world will not confirm you;
-        if they fall silent on a claim, you have touched something buried."""
-        return exp.theorize(claims)
+    def confide(claims: list[str]) -> dict:
+        """Tell whoever is here what you think happened (up to 12 claims).
+        They react from their OWN beliefs: they may endorse something they
+        were taught wrongly, and deny a truth nobody ever told them. No
+        verdict, no score — nobody in this world can confirm you."""
+        return exp.confide(claims)
 
     @mcp.tool()
     def progress() -> dict:

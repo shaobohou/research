@@ -14,14 +14,16 @@ Two design commitments, added to bring this closer to the Elden Ring feel:
   not a catalogue of everything. Each item's placement line ("found at the
   foot of a throne...") is its own evidence channel — the *where* is a clue.
 
-  PURIST MODE (default) — the world never tells you that you are right.
-  `theorize` returns an in-world RECEPTION (a rival antiquary's reaction),
-  never a verdict. Touch a veil and they go cold — which is itself the only
-  confirmation you will ever get. A separate benchmark mode (purist=False,
-  used by eval harnesses) restores machine verdicts; seekers never see them.
+  NO ORACLE (default) — nothing answers "from canon". `ask` and `confide`
+  require a *person* standing where you stand, and that person replies from a
+  bounded belief set (see witness.py) that is partly doctrine and partly
+  wrong. They can endorse a falsehood they were taught and deny a truth no one
+  ever told them. Ground truth is reachable from exactly one method,
+  `_judge_against_truth`, used only by benchmark mode (purist=False) for eval
+  harnesses — never from a seeker action.
 
-The loop: survey (map) -> travel -> look -> examine -> ask / delve ->
-travel on -> theorize.
+The loop: survey (map) -> travel -> look -> examine -> talk / ask / delve ->
+travel on -> confide.
 """
 
 from __future__ import annotations
@@ -36,7 +38,10 @@ from pathlib import Path
 from ledger import (Ledger, LedgerError, ROADS_NAME, ensure_geography,
                     render_chronicle, render_codex)
 from expand import expand_event
-from loregen import DEFAULT_MODEL, ask_world, elaborate
+from loregen import (DEFAULT_MODEL, elaborate, witness_reaction,
+                     witness_reply)
+from witness import (bearing_on, ensure_witnesses, speakable,
+                     witnesses_at)
 
 DEFAULT_BUDGET = {"steps": 8, "delves": 5, "asks": 8}
 
@@ -52,7 +57,9 @@ class Exploration:
         if not ledger_path.exists():
             raise FileNotFoundError(f"no world at {ledger_path}")
         self.lg = Ledger.load(ledger_path)
-        if ensure_geography(self.lg):          # migrate old ledgers in place
+        dirty = ensure_geography(self.lg)      # migrate old ledgers in place
+        dirty = ensure_witnesses(self.lg) or dirty
+        if dirty:
             self.lg.save(ledger_path)
         self.explorer = explorer
         self.role = role
@@ -279,18 +286,45 @@ class Exploration:
             "leads": self._leads(desc, exclude={aid}),
         }
 
+    def talk(self) -> dict:
+        """Who is here to be spoken to. Most who knew are dead; the living are
+        inheritors, and they know only what came down to them."""
+        here = witnesses_at(self.lg, self.state["location"])
+        return {
+            "place": self._pname(self.state["location"]),
+            "people_here": [{"name": w["name"], "role": w["role"],
+                             "of": w["faction_name"]} for _, w in here],
+            "hint": ("ask(question) puts a question to whoever is here. They "
+                     "answer from what they believe — no more, and not always "
+                     "rightly."
+                     if here else
+                     "No one is here. The dead do not answer; find the living, "
+                     "or read what they left."),
+        }
+
     def ask(self, question: str) -> dict:
-        """Ask the archives; answered in-world, from canon, never the veils."""
+        """Put a question to a person standing here. There is no archive to
+        consult: if nobody present holds anything bearing on it, you get
+        nothing. Costs 1 ask (refunded when there is no one to ask)."""
+        here = witnesses_at(self.lg, self.state["location"])
+        if not here:
+            return {"error": "There is no one here to ask. This world keeps no "
+                             "archive that answers on its own."}
         if not self._spend("asks"):
             self._save_state()
-            return {"error": "The archivists will hear no more questions "
-                             "today. (ask budget spent)"}
-        fragment = ask_world(self.lg, question, self.model)
-        fid = f"frag:q{len(self.state['asks']) + 1}"
-        self.state["asks"].append({"id": fid, "question": question,
-                                   "fragment": fragment})
+            return {"error": "You have no more patience for asking today. "
+                             "(ask budget spent)"}
+        fid, w = here[0]
+        relevant = bearing_on(self.lg, w, question)
+        speech = witness_reply(speakable(w), question,
+                               [b["text"] for b in relevant],
+                               knows_nothing=not relevant, model=self.model)
+        fragment = f"{speech}\n    — {w['name']}, {w['role']} of {w['faction_name']}"
+        rid = f"frag:q{len(self.state['asks']) + 1}"
+        self.state["asks"].append({"id": rid, "question": question,
+                                   "fragment": fragment, "witness": w["name"]})
         self._save_state()
-        return {"id": fid, "fragment": fragment,
+        return {"id": rid, "spoke_to": w["name"], "fragment": fragment,
                 "asks_left": self.state["budget"]["asks"]}
 
     # -- delve -----------------------------------------------------------------
@@ -389,7 +423,7 @@ class Exploration:
                 "note": "New relics lie where the accounts place them — travel "
                         "there to recover them."}
 
-    # -- theorize: purist reception vs benchmark verdicts ------------------------
+    # -- confide: a person's reaction, measured against their own beliefs ------
 
     _JUDGE_SCHEMA = {
         "type": "object",
@@ -412,108 +446,62 @@ class Exploration:
         "additionalProperties": False,
     }
 
-    def _judge_llm(self, claims: list[str]) -> list[dict]:
+    def _judge_against_truth(self, claims: list[str]) -> list[dict]:
+        """BENCHMARK ONLY. This is the one place ground truth is consulted, and
+        it is unreachable from any seeker action — an eval harness is allowed
+        to be omniscient; a player's interlocutor is not."""
         from loregen import _stream_json, _veil_block
         discovered = [self.lg.get(aid) for aid in self.state["discovered"]]
-        found_frags = list(self.state["asks"]) + self.state["delves"]
         user = (
-            "You are the hidden judge of a lore-discovery game. Grade each "
-            "claim against the TRUE chronicle:\n"
-            "- established: true, AND the seeker's discovered material supports it\n"
-            "- consistent: true in canon, but the seeker has no evidence yet\n"
-            "- unsupported: canon is silent either way\n"
+            "You grade a seeker's reconstruction of a hidden history.\n"
+            "- established: true, and their discovered material supports it\n"
+            "- consistent: true, but they have no evidence yet\n"
+            "- unsupported: canon is silent\n"
             "- contradicted: false per canon\n"
-            "- veiled: the claim touches a veil (right or wrong)\n"
-            "The note must be one in-world sentence that reveals nothing the "
-            "seeker hasn't found and never states a veil.\n\n"
+            "- veiled: touches a veil\n\n"
             "=== TRUE CHRONICLE ===\n" + render_chronicle(self.lg) + "\n"
             "=== VEILS ===\n" + _veil_block(self.lg) + "\n"
-            "=== SEEKER'S DISCOVERED MATERIAL ===\n" +
-            json.dumps({"examined_items": [{"name": d["name"],
-                                            "description": d["description"]}
-                                           for d in discovered],
-                        "fragments": found_frags}, indent=2) + "\n\n"
+            "=== WHAT THEY HAVE FOUND ===\n" +
+            json.dumps([{"name": d["name"], "description": d["description"]}
+                        for d in discovered], indent=2) + "\n\n"
             "=== CLAIMS ===\n" + json.dumps(claims, indent=2))
         data = _stream_json(self.model, "You grade precisely and reveal nothing.",
                             user, self._JUDGE_SCHEMA)
         return [v for v in data["verdicts"] if v["verdict"] in VERDICTS]
 
-    def _graded(self, claims: list[str]) -> list[dict]:
-        return self._judge_llm(claims)
-
-    # in-world reactions, keyed by the true verdict but NEVER exposing it.
-    # Purist: the seeker gets a fellow antiquary's response, not a score.
-    _RECEPTION = {
-        "established": [
-            "The antiquary nods slowly. \"Aye. The stones I have read say the same.\"",
-            "\"This much I will grant you — it agrees with what the old things remember.\"",
-        ],
-        "consistent": [
-            "\"It could be so. I have found nothing to forbid it — and nothing to swear by.\"",
-            "The antiquary tilts a hand, palm up. \"Plausible. Bring me a stone that says it.\"",
-        ],
-        "unsupported": [
-            "\"On what? I have read no record that carries this. You reach past your evidence.\"",
-            "The antiquary frowns. \"A pretty guess with nothing under it.\"",
-        ],
-        "contradicted": [
-            "\"No. The tellings I trust run otherwise; I would set this one down.\"",
-            "The antiquary shakes their head. \"That is not the story the relics tell me.\"",
-        ],
-        "veiled": [
-            "The antiquary goes still, and will not meet your eye. \"Speak no further on this. Some doors are shut for cause.\"",
-            "A long silence. \"You should not have said that aloud. Ask me something else.\"",
-        ],
-    }
-
-    def _reception(self, claims: list[str]) -> dict:
-        graded = self._graded(claims)
-        rng = random.Random(f"{self.lg.meta['seed']}:{self.explorer}:"
-                            f"{len(self.state['theories'])}")
-        reactions = []
-        touched_veil = False
-        for g in graded:
-            pool = self._RECEPTION[g["verdict"]]
-            reactions.append({"claim": g["claim"],
-                              "reception": rng.choice(pool)})
-            if g["verdict"] == "veiled":
-                touched_veil = True
-        if touched_veil:
-            closing = ("The antiquary rises. \"Enough for tonight. You wander "
-                       "toward things better left buried.\"")
-        else:
-            warm = sum(1 for g in graded
-                       if g["verdict"] in ("established", "consistent"))
-            if warm >= max(1, len(graded) * 2 // 3):
-                closing = ("\"You have walked far and read closely. Keep on — "
-                           "but the deepest of it, no scholar will confirm for you.\"")
-            else:
-                closing = ("\"Come back when you have found more than you have "
-                           "guessed. The relics do not reward haste.\"")
-        # store the true grading server-side (for later benchmark/replay),
-        # expose only the reception.
-        self.state["theories"].append(
-            {"claims": claims, "verdicts": graded,
-             "score": sum({"established": 3, "consistent": 2, "veiled": 1,
-                           "unsupported": 0, "contradicted": -1}[g["verdict"]]
-                          for g in graded)})
-        self._save_state()
-        return {"reception": reactions, "closing": closing,
-                "note": "This is one antiquary's reading, not a verdict. "
-                        "No one in this world will tell you that you are right."}
-
-    def theorize(self, claims: list[str]) -> dict:
-        """Lay your theory before a fellow antiquary. In purist mode (the
-        default) you receive their reaction, never a verdict — the world will
-        not confirm you. Touch a veil and they fall silent, which is the only
-        answer of that kind you will get."""
+    def confide(self, claims: list[str]) -> dict:
+        """Tell someone here what you think happened. They answer from their
+        own beliefs — so they may endorse a thing they were taught wrongly and
+        flatly deny a truth no one ever told them. There is no verdict, no
+        score, and no one in this world who can confirm you."""
         claims = [c for c in claims if c.strip()][:12]
         if not claims:
-            return {"error": "The antiquary waits, but you have said nothing."}
+            return {"error": "You have said nothing."}
+        here = witnesses_at(self.lg, self.state["location"])
+        if not here:
+            return {"error": "There is no one here to tell. A theory told to "
+                             "no one is just weather."}
+        fid, w = here[0]
+        out = witness_reaction(speakable(w), claims, model=self.model)
+        self.state["theories"].append(
+            {"claims": claims, "heard_by": w["name"],
+             "reactions": out["reactions"], "closing": out["closing"]})
+        self._save_state()
+        return {"spoke_to": f"{w['name']}, {w['role']} of {w['faction_name']}",
+                "reactions": out["reactions"], "closing": out["closing"],
+                "note": "One person's reading, from what they happen to "
+                        "believe. It is not a verdict, and they may be wrong."}
+
+    def theorize(self, claims: list[str]) -> dict:
+        """Purist (default): identical to `confide` — your theory goes to a
+        person, never to an oracle. Benchmark mode grades against ground truth
+        for eval harnesses only."""
         if self.purist:
-            return self._reception(claims)
-        # benchmark mode
-        verdicts = self._graded(claims)
+            return self.confide(claims)
+        claims = [c for c in claims if c.strip()][:12]
+        if not claims:
+            return {"error": "no claims"}
+        verdicts = self._judge_against_truth(claims)
         score = sum({"established": 3, "consistent": 2, "veiled": 1,
                      "unsupported": 0, "contradicted": -1}[v["verdict"]]
                     for v in verdicts)

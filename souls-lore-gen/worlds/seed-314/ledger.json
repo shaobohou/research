@@ -252,7 +252,15 @@
       "Calimundmarch",
       "Sylessrion",
       "Effects of Sylessrion",
-      "Mazwynhold"
+      "Mazwynhold",
+      "Morisila",
+      "Galos",
+      "Yoraeos",
+      "Serthas",
+      "Morcael",
+      "Kaogar",
+      "Ishcael",
+      "Ezeth"
     ]
   },
   "ages": [
@@ -6082,7 +6090,758 @@
       "type": "place",
       "name": "Mazwynhold",
       "source": "expansion:e80"
+    },
+    "f94": {
+      "type": "figure",
+      "name": "Morisila",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f95": {
+      "type": "figure",
+      "name": "Galos",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f96": {
+      "type": "figure",
+      "name": "Yoraeos",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f97": {
+      "type": "figure",
+      "name": "Serthas",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f98": {
+      "type": "figure",
+      "name": "Morcael",
+      "epithet": "the Younger",
+      "role": "last-sworn of the order",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f99": {
+      "type": "figure",
+      "name": "Kaogar",
+      "epithet": "the Last",
+      "role": "keeper of the reliquary",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f100": {
+      "type": "figure",
+      "name": "Ishcael",
+      "epithet": "the Grey",
+      "role": "pilgrim of the cult",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f101": {
+      "type": "figure",
+      "name": "Ezeth",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k8",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
     }
   },
-  "notes": []
+  "notes": [],
+  "witnesses": {
+    "f94": {
+      "name": "Morisila",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k1",
+      "faction_name": "Karenienreach",
+      "faction_kind": "kingdom",
+      "site": "p2",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Galomere, god of graves and the ledger of names, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ulessach founded Karenienreach (kingdom) at Oliadiscrown.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Ulessach for Galomere",
+          "about": [
+            "e6",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Mirror of Galomere was wrought as regalia of Galomere's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e7",
+            "f1"
+          ]
+        },
+        {
+          "text": "They say Ghalara was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e7"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f95": {
+      "name": "Galos",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Ysrionmarch",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Ysirveth, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e3",
+            "f2"
+          ]
+        },
+        {
+          "text": "Mazaewyn founded Ysrionmarch (kingdom) at Soldismere.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Mazaewyn for Ysirveth",
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Shard of Belmere was wrought as regalia of Ysirveth's throne.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Belmere for Ysirveth",
+          "about": [
+            "e9",
+            "f2"
+          ]
+        },
+        {
+          "text": "Nimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f4",
+            "f2"
+          ]
+        },
+        {
+          "text": "In the god's final season, audiences grew strange: petitioners were answered before they spoke, and one \u2014 Ostessgrim the Stray \u2014 was sent away with an apology no one understood.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e77",
+            "f38",
+            "f2"
+          ]
+        },
+        {
+          "text": "Ysirveth, god of harvest, plenty, and the debt of plenty, took the Silver Lament \u2014 the first of the gods to bear it \u2014 and wandered from their seat. And Ysirveth is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ysirveth still lives",
+          "about": [
+            "e25",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Dragrim was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e14"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f96": {
+      "name": "Yoraeos",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k3",
+      "faction_name": "Kaearaspire",
+      "faction_kind": "kingdom",
+      "site": "p4",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Yoryne, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Yoryne founded Kaearaspire (kingdom) at Elirvanebarrow.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Mirror of Yoryne was wrought as regalia of Yoryne's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e11",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Church of Yoryne was raised at Velothasmere; Solendra of the Long Vigil took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f7",
+            "f3"
+          ]
+        },
+        {
+          "text": "They say Ruthott was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e18"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f97": {
+      "name": "Serthas",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k4",
+      "faction_name": "Thalaemisreach",
+      "faction_kind": "kingdom",
+      "site": "p5",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "Verott, god of healing and the price of healing, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Verott for Quelmund",
+          "about": [
+            "e5",
+            "f4"
+          ]
+        },
+        {
+          "text": "Quelmund founded Thalaemisreach (kingdom) at Solosvault.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e12",
+            "f4"
+          ]
+        },
+        {
+          "text": "The Veil of Quelmund was wrought as regalia of Quelmund's throne. And Quelmund is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Quelmund still lives",
+          "about": [
+            "e13",
+            "f4"
+          ]
+        },
+        {
+          "text": "Nimgrim, the Unreflected, rose against the thrones. Quelmund led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f4",
+            "f2"
+          ]
+        },
+        {
+          "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e56",
+            "f5",
+            "f4"
+          ]
+        },
+        {
+          "text": "Nimgrim was defeated and sealed beneath Nimenmothreach; the seal was bought with the lives of 9 champions. And Nimgrim is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Nimgrim still lives",
+          "about": [
+            "e15",
+            "f5",
+            "f4"
+          ]
+        },
+        {
+          "text": "They say Mazohild was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e15"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f98": {
+      "name": "Morcael",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k5",
+      "faction_name": "Order of the Veil",
+      "faction_kind": "order",
+      "site": "p6",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "Yseric the Adamant founded the Order of the Veil at Toriagrimbarrow, sworn to stand against the Silver Lament.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f6"
+          ]
+        },
+        {
+          "text": "Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Kamoth the Unmarked, last-sworn of the Order of the Veil, set out for the place where Calmoth was lost, carrying the order's final blessing.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Calmoth for Ysirveth",
+          "about": [
+            "e26",
+            "f12",
+            "f2"
+          ]
+        },
+        {
+          "text": "Kamoth returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e27",
+            "f12"
+          ]
+        },
+        {
+          "text": "They say Kaansila was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e17"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f99": {
+      "name": "Kaogar",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k6",
+      "faction_name": "Church of Yoryne",
+      "faction_kind": "church",
+      "site": "p7",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The Church of Yoryne was raised at Velothasmere; Solendra of the Long Vigil took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f7",
+            "f3"
+          ]
+        },
+        {
+          "text": "Velaeeth the Lantern-eyed was cast out of Church of Yoryne and founded the Cult of the True Shard, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "At the urging of Solendra, the saint Serdis the Kindly was given to the Sundered Moon in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e21",
+            "f7",
+            "f10"
+          ]
+        },
+        {
+          "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Ghalorula walked at the saint's left hand and never afterward spoke of it.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e70",
+            "f34",
+            "f7",
+            "f10"
+          ]
+        },
+        {
+          "text": "They say Calmoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e21"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f100": {
+      "name": "Ishcael",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k7",
+      "faction_name": "Cult of the True Shard",
+      "faction_kind": "cult",
+      "site": "p8",
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Velaeeth the Lantern-eyed was cast out of Church of Yoryne and founded the Cult of the True Shard, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "Karaeien was found at Veranynereach bearing the Silver Lament, and was not spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Karaeien for Harach",
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "Pilgrims of the Cult of the True Shard were found digging at the seal of Nimgrim. The wardens hanged nine; the digging continued.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e28",
+            "f5"
+          ]
+        },
+        {
+          "text": "They say Ghalorula was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e19"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f101": {
+      "name": "Ezeth",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k8",
+      "faction_name": "Belthashollow",
+      "faction_kind": "kingdom",
+      "site": "p9",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "Nyessorn the Lantern-eyed united the river-clans and was crowned in Hestvethshroud; the realm took the name Belthashollow.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f9"
+          ]
+        },
+        {
+          "text": "Twice before the gates opened, a go-between came by night \u2014 Nyayne Thrice-pardoned, who carried no letters and remembered everything.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e71",
+            "f35",
+            "f11"
+          ]
+        },
+        {
+          "text": "The grievance the chronicles cannot agree on was, by one account, no grievance at all, but a promise concerning the marked.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e72",
+            "f11"
+          ]
+        },
+        {
+          "text": "Harach the Kindly, sword-hand of Nyessorn, opened the gates of Hestvethshroud to the Order of the Veil over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Belthashollow fell. Morula the Lantern-eyed died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Morula for Nyessorn",
+          "about": [
+            "e23",
+            "f9",
+            "f11"
+          ]
+        },
+        {
+          "text": "Harach was found at Veranynereach bearing the Silver Lament, and was not spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Velaeeth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e71"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
 }

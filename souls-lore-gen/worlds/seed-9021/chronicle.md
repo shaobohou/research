@@ -61,6 +61,13 @@
 - **Kariadane** Half-remembered (pilgrim saint) — of Church of Ruthmere. Fate: given to the rite of restoration (year 473).
 - **Oloula** the Lantern-eyed (oathbreaker general) — of Morulaspire. Fate: succumbed to the Gutter-mark (year 517).
 - **Banudane** the Latecomer (wandering knight) — of Order of the Ember. Fate: fate contested (year 676).
+- **Olesssila** the Sleepless (hedge-knight of a fallen house) — of Cyraricreach.
+- **Banulrion** the Last (hedge-knight of a fallen house) — of Osthildfen.
+- **Thalnoth** the Grey (keeper of the reliquary) — of Elessastgate.
+- **Belmund** the Younger (last-sworn of the order) — of Order of the Ember.
+- **Calaric** the Younger (keeper of the reliquary) — of Church of Ruthmere.
+- **Soldane** the Grey (pilgrim of the cult) — of Cult of the Open Door.
+- **Ishieth** the Last (hedge-knight of a fallen house) — of Morulaspire.
 
 ## Factions
 - **Cyraricreach** (kingdom), seat Fenulacrown, founded year 66.

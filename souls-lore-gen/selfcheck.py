@@ -230,6 +230,39 @@ def check_determinism(c: Check) -> None:
             c.ok(True, "")
 
 
+def check_witnesses(c: Check) -> None:
+    """The oracle must be gone: what a player's interlocutor can be told must
+    be a bounded belief set with no path to ground truth."""
+    from witness import ensure_witnesses, speakable
+    from ledger import render_chronicle
+    for wd in sorted(p.parent for p in Path("worlds").glob("seed-*/ledger.json")):
+        lg = Ledger.load(wd / "ledger.json")
+        ensure_geography(lg)
+        c.ok(not ensure_witnesses(lg),
+             f"[{wd.name}] witnesses missing from ledger.json on disk")
+        store = lg.d.get("witnesses", {})
+        c.ok(bool(store), f"[{wd.name}] no living witnesses were generated")
+
+        chron = _shingles(render_chronicle(lg))
+        veils = [_shingles(v) for v in lg.meta["veils"]]
+        held_false = 0
+        for fid, w in store.items():
+            c.ok(w["site"] in lg.entities, f"[{wd.name}] {fid}: bad site")
+            c.ok(fid in lg.entities and lg.get(fid)["type"] == "figure",
+                 f"[{wd.name}] {fid}: witness is not a figure entity")
+            # what may be sent to the model must leak neither truth flags nor canon
+            sp = speakable(w)
+            blob = json.dumps(sp)
+            c.ok("true" not in sp and "distortion" not in blob,
+                 f"[{wd.name}] {fid}: speakable() exposes truth bookkeeping")
+            for i, vs in enumerate(veils):
+                c.ok(not (vs & _shingles(blob)),
+                     f"[{wd.name}] {fid}: veil {i} reachable through speakable()")
+            held_false += sum(1 for b in w["beliefs"] if not b["true"])
+        c.ok(held_false > 0,
+             f"[{wd.name}] no witness holds a false belief — nobody is unreliable")
+
+
 def check_roles(c: Check) -> None:
     """Role gating is pure routing — checkable without touching the API."""
     from explore import Exploration
@@ -263,7 +296,8 @@ def check_purism_live(c: Check) -> bool:
         out = seeker.theorize(["The gods are silent."])
         c.ok("verdicts" not in out and "score" not in out,
              "purist theorize exposed verdicts/score to a seeker")
-        c.ok("reception" in out, "purist theorize returned no reception")
+        c.ok("reactions" in out or "error" in out,
+             "purist theorize returned neither reactions nor a diegetic error")
         bench = Exploration(wd, explorer="_selfcheck_livebench", purist=False)
         c.ok("verdicts" in bench.theorize(["The gods are silent."]),
              "benchmark mode did not return verdicts")
@@ -286,6 +320,7 @@ def main() -> int:
     for d in dirs:
         check_world(d, c)
     check_determinism(c)
+    check_witnesses(c)
     check_roles(c)
     live = check_purism_live(c)
 

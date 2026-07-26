@@ -53,7 +53,15 @@
       "Belgarhold",
       "Mormoth",
       "Effects of Mormoth",
-      "Loengarmarch"
+      "Loengarmarch",
+      "Ghalirara",
+      "Fenaewyn",
+      "Aldruyne",
+      "Velormere",
+      "Ranaevane",
+      "Fenulgrim",
+      "Verara",
+      "Lomere"
     ]
   },
   "ages": [
@@ -1281,7 +1289,708 @@
       "type": "place",
       "name": "Loengarmarch",
       "source": "expansion:e4"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Ghalirara",
+      "epithet": "the Patient",
+      "role": "keeper of the reliquary",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Fenaewyn",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Aldruyne",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Velormere",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f19": {
+      "type": "figure",
+      "name": "Ranaevane",
+      "epithet": "the Patient",
+      "role": "last-sworn of the order",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f20": {
+      "type": "figure",
+      "name": "Fenulgrim",
+      "epithet": "the Younger",
+      "role": "keeper of the reliquary",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f21": {
+      "type": "figure",
+      "name": "Verara",
+      "epithet": "the Grey",
+      "role": "pilgrim of the cult",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f22": {
+      "type": "figure",
+      "name": "Lomere",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k8",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
     }
   },
-  "notes": []
+  "notes": [],
+  "witnesses": {
+    "f15": {
+      "name": "Ghalirara",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k1",
+      "faction_name": "Ishencaeldeep",
+      "faction_kind": "church",
+      "site": "p2",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Ommoth, god of healing and the price of healing, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ommoth founded Ishencaeldeep (church) at Athagarcradle.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e6",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Bell of Ommoth was wrought as regalia of Ommoth's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e7",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Church of Ommoth was raised at Wrenwynreach; Nimaeast the Grey took its first pulpit, preaching that the waning is a trial and the faithful will be spared. And Ommoth is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ommoth still lives",
+          "about": [
+            "e18",
+            "f7",
+            "f1"
+          ]
+        },
+        {
+          "text": "They say Ulorast was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e7"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f16": {
+      "name": "Fenaewyn",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Kardiscrown",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Nyorott, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e3",
+            "f2"
+          ]
+        },
+        {
+          "text": "Nyorott founded Kardiscrown (kingdom) at Thalulgarbarrow. And Nyorott is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Nyorott still lives",
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Hymn of Nyorott was wrought as regalia of Nyorott's throne. And Nyorott is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Nyorott still lives",
+          "about": [
+            "e9",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Thaleeth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e3"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f17": {
+      "name": "Aldruyne",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k3",
+      "faction_name": "Elaedaneshroud",
+      "faction_kind": "kingdom",
+      "site": "p4",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Sylenmoth, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Sylenmoth founded Elaedaneshroud (kingdom) at Mazoscrown.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Hymn of Sylenmoth was wrought as regalia of Sylenmoth's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e11",
+            "f3"
+          ]
+        },
+        {
+          "text": "Toressgrim, the Discordant, rose against the thrones. Thaliast led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Sylenmoth, god of war and the keeping of thresholds, descended below the world to look upon the Founding Chord directly, and did not return.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e25",
+            "f3"
+          ]
+        },
+        {
+          "text": "They say Sylenmoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e10"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f18": {
+      "name": "Velormere",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k4",
+      "faction_name": "Iraevethvault",
+      "faction_kind": "kingdom",
+      "site": "p5",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "Thaliast, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne. And Thaliast is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Thaliast still lives",
+          "about": [
+            "e5",
+            "f4"
+          ]
+        },
+        {
+          "text": "Thaliast founded Iraevethvault (kingdom) at Belmundfen. And Thaliast is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Thaliast still lives",
+          "about": [
+            "e12",
+            "f4"
+          ]
+        },
+        {
+          "text": "The Chord of Thaliast was wrought as regalia of Thaliast's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e13",
+            "f4"
+          ]
+        },
+        {
+          "text": "Toressgrim, the Discordant, rose against the thrones. Thaliast led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Toressgrim was defeated and sealed beneath Ysiosreach; the seal was bought with the lives of 3 champions. And Toressgrim is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Toressgrim still lives",
+          "about": [
+            "e15",
+            "f5",
+            "f4"
+          ]
+        },
+        {
+          "text": "They say Ulorast was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e14"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f19": {
+      "name": "Ranaevane",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k5",
+      "faction_name": "Order of the Chord",
+      "faction_kind": "order",
+      "site": "p6",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "Draansila Half-remembered founded the Order of the Chord at Loachgate, sworn to stand against the Unsinging.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f6"
+          ]
+        },
+        {
+          "text": "Thalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on. And Belawyn is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Belawyn still lives",
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Thalulhild was found at Loachgate bearing the Unsinging, and was not spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "Ulorast Last-sworn, last-sworn of the Order of the Chord, set out for the place where Sylenmoth was lost, carrying the order's final blessing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e26",
+            "f12",
+            "f3"
+          ]
+        },
+        {
+          "text": "Word came that Thaliast fell to the marked, and then word came that Ulorast led the marked. The order believes neither.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Thaliast for Ulorast",
+          "about": [
+            "e27",
+            "f12"
+          ]
+        },
+        {
+          "text": "They say Ommoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e22"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f20": {
+      "name": "Fenulgrim",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k6",
+      "faction_name": "Church of Ommoth",
+      "faction_kind": "church",
+      "site": "p7",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The Church of Ommoth was raised at Wrenwynreach; Nimaeast the Grey took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f7",
+            "f1"
+          ]
+        },
+        {
+          "text": "Fendis the Twice-crowned was cast out of Church of Ommoth and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning. And Ommoth is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ommoth still lives",
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "At the urging of Nimaeast, the saint Sereth the Unbowed was given to the Founding Chord in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e21",
+            "f7",
+            "f10"
+          ]
+        },
+        {
+          "text": "They say Sylenmoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e21"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f21": {
+      "name": "Verara",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k7",
+      "faction_name": "Cult of the Patient Below",
+      "faction_kind": "cult",
+      "site": "p8",
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Fendis the Twice-crowned was cast out of Church of Ommoth and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning. And Ommoth is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ommoth still lives",
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Toressgrim. The wardens hanged nine; the digging continued.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e28",
+            "f5"
+          ]
+        },
+        {
+          "text": "They say Toressgrim was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e19"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f22": {
+      "name": "Lomere",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k8",
+      "faction_name": "Ghalmundreach",
+      "faction_kind": "kingdom",
+      "site": "p9",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "Belawyn of the Last Door united the river-clans and was crowned in Mazucaelcrown; the realm took the name Ghalmundreach.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f9"
+          ]
+        },
+        {
+          "text": "Thalulhild the Grey, sword-hand of Belawyn, opened the gates of Mazucaelcrown to the Order of the Chord over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Ghalmundreach fell. Belawyn of the Last Door died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e23",
+            "f9",
+            "f11"
+          ]
+        },
+        {
+          "text": "Thalulhild was found at Loachgate bearing the Unsinging, and was not spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Mormoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e20"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
 }

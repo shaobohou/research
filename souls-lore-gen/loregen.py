@@ -341,3 +341,107 @@ def ask_world(lg: Ledger, question: str, model: str = DEFAULT_MODEL) -> str:
     )
     data = _stream_json(model, STYLE_GUIDE, user, _ASK_SCHEMA)
     return f"{data['fragment']}\n    — {data['attribution']}"
+
+
+# ---------------------------------------------------------------------------
+# Witnesses: the player-facing voice. These two functions are the ONLY ones a
+# player's actions reach, and neither is given the chronicle or the veils —
+# they receive a persona and a list of belief texts, nothing else. Leakage is
+# therefore impossible by construction rather than forbidden by instruction.
+# ---------------------------------------------------------------------------
+
+WITNESS_GUIDE = """\
+You voice one inhabitant of a dying world, speaking aloud to a stranger who
+has asked them something. Rules:
+
+- You know ONLY the beliefs listed for you. They are what you hold to be true.
+  Some may be wrong; you have no way to tell which, and you never hedge a
+  belief on the grounds that it might be false.
+- Never invent a new fact, name, date, or event. If the beliefs do not cover
+  what was asked, say so in your own voice and stop.
+- Speak in first person, 40–110 words, in the register of your manner and
+  bias. Plain, worn, unliterary. No modern idiom, no exclamation marks.
+- You are not a narrator and not an archive. You are a person with a job,
+  interrupted.
+- If you "will not speak of something", and the question circles near the
+  thing you refuse, break off rather than explain — go quiet, change the
+  subject, ask them to leave. Do not hint at content.
+"""
+
+_WITNESS_SCHEMA = {
+    "type": "object",
+    "properties": {"speech": {"type": "string"}},
+    "required": ["speech"],
+    "additionalProperties": False,
+}
+
+
+def witness_reply(speaker: dict, question: str, relevant: list[str],
+                  knows_nothing: bool, model: str = DEFAULT_MODEL) -> str:
+    """What this witness says when asked. `relevant` are the belief texts that
+    bear on the question; `knows_nothing` means none did."""
+    user = (
+        "=== WHO YOU ARE ===\n" + json.dumps(speaker, indent=2) + "\n\n"
+        "=== WHAT BEARS ON THE QUESTION ===\n" +
+        (json.dumps(relevant, indent=2) if relevant else
+         "(nothing you hold bears on this)") + "\n\n"
+        "=== THEY ASKED ===\n" + question + "\n\n" +
+        ("You do not know. Say so in character, briefly, and do not guess."
+         if knows_nothing else
+         "Answer from those beliefs only, in your own voice.")
+    )
+    return _stream_json(model, WITNESS_GUIDE, user, _WITNESS_SCHEMA)["speech"]
+
+
+_REACTION_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "reactions": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "claim": {"type": "string"},
+                    "stance": {"type": "string",
+                               "enum": ["agrees", "disputes", "never heard",
+                                        "will not say"]},
+                    "speech": {"type": "string"},
+                },
+                "required": ["claim", "stance", "speech"],
+                "additionalProperties": False,
+            },
+        },
+        "closing": {"type": "string"},
+    },
+    "required": ["reactions", "closing"],
+    "additionalProperties": False,
+}
+
+CONFIDE_GUIDE = """\
+A stranger is telling you what they think happened. React to each of their
+claims using ONLY your own beliefs as the measure:
+
+- agrees      — it matches something you hold. Say so warmly or grudgingly.
+- disputes    — it contradicts something you hold. Push back with confidence,
+                and say what you believe instead. You may well be the one who
+                is wrong; you will never suspect it.
+- never heard — your beliefs simply do not touch it. Do not evaluate it. Do
+                not guess whether it sounds likely.
+- will not say — only if you "will not speak of something" and the claim
+                circles it. Break off; reveal nothing about why.
+
+You are not a judge and there is no correct answer. Never say "true", "false",
+"correct", or "you are right". 20–50 words per reaction, first person, in your
+manner. Then one closing line as the conversation ends.
+"""
+
+
+def witness_reaction(speaker: dict, claims: list[str],
+                     model: str = DEFAULT_MODEL) -> dict:
+    """How this witness receives a stranger's theory. Measured against their
+    beliefs — so they can endorse a falsehood they hold and dismiss a truth
+    they have never encountered."""
+    user = ("=== WHO YOU ARE ===\n" + json.dumps(speaker, indent=2) + "\n\n"
+            "=== WHAT THEY CLAIM ===\n" + json.dumps(claims, indent=2))
+    return _stream_json(model, WITNESS_GUIDE + "\n" + CONFIDE_GUIDE,
+                        user, _REACTION_SCHEMA)

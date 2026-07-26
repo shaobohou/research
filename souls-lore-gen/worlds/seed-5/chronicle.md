@@ -72,6 +72,14 @@
 - **Ulorast** Last-sworn (wandering knight) — of Order of the Chord. Fate: fate contested (year 541).
 - **Thaleeth** of the Rearguard (cartwright).
 - **Mormoth** the Sleepless (handmaid).
+- **Ghalirara** the Patient (keeper of the reliquary) — of Ishencaeldeep.
+- **Fenaewyn** the Grey (hedge-knight of a fallen house) — of Kardiscrown.
+- **Aldruyne** the Younger (hedge-knight of a fallen house) — of Elaedaneshroud.
+- **Velormere** the Younger (hedge-knight of a fallen house) — of Iraevethvault.
+- **Ranaevane** the Patient (last-sworn of the order) — of Order of the Chord.
+- **Fenulgrim** the Younger (keeper of the reliquary) — of Church of Ommoth.
+- **Verara** the Grey (pilgrim of the cult) — of Cult of the Patient Below.
+- **Lomere** the Grey (hedge-knight of a fallen house) — of Ghalmundreach.
 
 ## Factions
 - **Ishencaeldeep** (church), seat Athagarcradle, founded year 47.

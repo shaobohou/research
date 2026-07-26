@@ -68,6 +68,13 @@
 - **Eloric** the Unmarked (wandering knight) — of Order of the Graft. Fate: vanished on the deep roads (year 546).
 - **Belanien** the Stray (envoy).
 - **Hesticael** Long-memoried (handmaid).
+- **Uluorn** the Last (hedge-knight of a fallen house) — of Lohildhollow.
+- **Quelegar** the Patient (hedge-knight of a fallen house) — of Hardisshroud.
+- **Draessdane** the Patient (keeper of the reliquary) — of Kaonothcrown.
+- **Thalesscael** the Grey (last-sworn of the order) — of Order of the Graft.
+- **Moremis** the Younger (keeper of the reliquary) — of Church of Queliamund.
+- **Solach** the Last (pilgrim of the cult) — of Cult of the Patient Below.
+- **Yorireth** the Sleepless (hedge-knight of a fallen house) — of Olagarcradle.
 
 ## Factions
 - **Lohildhollow** (kingdom), seat Toromundmarch, founded year 70.

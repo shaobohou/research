@@ -293,3 +293,47 @@ worlds keep their template-era *prose* (labelled as such in the README);
 their ledgers are pure simulation and are exactly what a live run reproduces.
 Re-running `demos.py all` with credentials rewrites the prose from the same
 facts.
+
+### 2026-07-06 — witnesses replace the oracle
+User's critique, which was correct: the system assumed a hidden oracle. Two of
+them, in fact.
+  - `ask()` resolved names out of the question against the *whole* chronicle
+    and returned true-if-hedged facts. Nobody was answering; "a marginal note,
+    unsigned" was a costume on a database query, unbounded by geography or by
+    any person who could plausibly know.
+  - Worse, `theorize()`'s antiquary was graded against `render_chronicle` +
+    veils, so a nod *meant true* and the veil-silence was a truth detector
+    that fired whether the guess was right or wrong. Purist mode hid the
+    vocabulary and kept the signal — cosmetic, not real.
+Root cause worth remembering: the grading machinery is legitimate (it backs
+the benchmark), but I let it back the *player* surface too and papered over
+the leak by relabelling output instead of changing the information source.
+
+Fix — `witness.py`: one living inheritor per surviving institution, sited at
+its seat, each with a bounded belief set:
+  - doctrine (church: "the rite was a mercy, and it worked" — FALSE; cult:
+    "the gods made the waning" — TRUE; order/kingdom likewise mixed),
+  - inherited accounts of events their faction figured in, ~34% distorted by
+    one of three degradations (wrong actor, year shifted 60–120, "and X is not
+    dead"),
+  - one invented rumour, always false.
+Nobody who was there is alive, so you always speak to an inheritor. Exactly
+one witness per world is `veil_touched` and will break off rather than explain
+— a character trait, not a detector.
+
+Structural guarantee (the point): `speakable(w)` is the only thing sent to the
+model that voices a witness — persona + belief *texts*. No truth flags, no
+distortion notes, no chronicle, no veils. Leakage is impossible by
+construction. selfcheck asserts per witness that `speakable()` carries no
+truth bookkeeping and no veil shingles, and that every world has at least one
+false belief held somewhere ("nobody is unreliable" is a failure).
+
+API: `talk()` (free, who's here), `ask()` (needs a witness present; refunded
+when there is nobody), `confide()` (replaces the antiquary; reactions are
+agrees/disputes/never heard/will not say, measured against beliefs).
+`theorize()` now delegates to `confide` in purist mode and keeps ground-truth
+grading only under `--benchmark`.
+
+Witnesses are pure simulation, so committed ledgers were migrated in place
+without any model call (7–8 witnesses per world). 7,174 checks, 0 failures.
+Untestable here: the two new voice surfaces need a key.

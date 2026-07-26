@@ -63,7 +63,15 @@
       "Ezahild",
       "Ezlis",
       "Warden's Salt-ring",
-      "Nyiethhollow"
+      "Nyiethhollow",
+      "Aldrireth",
+      "Serorien",
+      "Galwyn",
+      "Raniaemis",
+      "Calelis",
+      "Omric",
+      "Serulyne",
+      "Ishandis"
     ]
   },
   "ages": [
@@ -1503,7 +1511,728 @@
       "type": "place",
       "name": "Nyiethhollow",
       "source": "expansion:e15"
+    },
+    "f19": {
+      "type": "figure",
+      "name": "Aldrireth",
+      "epithet": "the Sleepless",
+      "role": "keeper of the reliquary",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f20": {
+      "type": "figure",
+      "name": "Serorien",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f21": {
+      "type": "figure",
+      "name": "Galwyn",
+      "epithet": "the Younger",
+      "role": "keeper of the reliquary",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f22": {
+      "type": "figure",
+      "name": "Raniaemis",
+      "epithet": "the Last",
+      "role": "keeper of the reliquary",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f23": {
+      "type": "figure",
+      "name": "Calelis",
+      "epithet": "the Younger",
+      "role": "last-sworn of the order",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f24": {
+      "type": "figure",
+      "name": "Omric",
+      "epithet": "the Grey",
+      "role": "keeper of the reliquary",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f25": {
+      "type": "figure",
+      "name": "Serulyne",
+      "epithet": "the Patient",
+      "role": "pilgrim of the cult",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f26": {
+      "type": "figure",
+      "name": "Ishandis",
+      "epithet": "the Last",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k8",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
     }
   },
-  "notes": []
+  "notes": [],
+  "witnesses": {
+    "f19": {
+      "name": "Aldrireth",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k1",
+      "faction_name": "Loulmerecradle",
+      "faction_kind": "church",
+      "site": "p2",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Veloryne, god of storms and unkept promises, claimed a portion of the gift and took a throne. And Veloryne is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Veloryne still lives",
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Veloryne founded Loulmerecradle (church) at Yorgarcrown.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e6",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Brine of Veloryne was wrought as regalia of Veloryne's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e7",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f2",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Church of Veloryne was raised at Ostenthasvault; Thalenien the Unbowed took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f7",
+            "f1"
+          ]
+        },
+        {
+          "text": "They say Hestirdane was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e18"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f20": {
+      "name": "Serorien",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Fenmerefen",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Nimos, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e3",
+            "f2"
+          ]
+        },
+        {
+          "text": "Nimos founded Fenmerefen (kingdom) at Nimgarmere.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Pearl of Nimos was wrought as regalia of Nimos's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e9",
+            "f2"
+          ]
+        },
+        {
+          "text": "Ishirula, the Still Water, rose against the thrones. Nimos led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5",
+            "f2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Before the last assault, champions met between the hosts, as the old law required. What was said there was not recorded; what was done there decided the war. And the one in question is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists the one in question still lives",
+          "about": [
+            "e32",
+            "f5",
+            "f2"
+          ]
+        },
+        {
+          "text": "Ishirula was defeated and sealed beneath Aldranarahollow; the seal was bought with the lives of 9 champions.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e15",
+            "f5",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Thalenien was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e15"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f21": {
+      "name": "Galwyn",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k3",
+      "faction_name": "Cyrogrimmere",
+      "faction_kind": "church",
+      "site": "p4",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Sylorien, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Sylorien founded Cyrogrimmere (church) at Harricspire.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Salt of Sylorien was wrought as regalia of Sylorien's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e11",
+            "f3"
+          ]
+        },
+        {
+          "text": "Sylorien, god of law, chains, and the first covenant, descended below the world to look upon the Drowned Radiance directly, and did not return.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e25",
+            "f3"
+          ]
+        },
+        {
+          "text": "They say Hestirdane was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e10"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f22": {
+      "name": "Raniaemis",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k4",
+      "faction_name": "Nimelismarch",
+      "faction_kind": "church",
+      "site": "p5",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "Nyadra, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e5",
+            "f4"
+          ]
+        },
+        {
+          "text": "Nyadra founded Nimelismarch (church) at Morennothmarch.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e12",
+            "f4"
+          ]
+        },
+        {
+          "text": "The Brine of Nyadra was wrought as regalia of Nyadra's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e13",
+            "f4"
+          ]
+        },
+        {
+          "text": "They say Veremis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e13"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f23": {
+      "name": "Calelis",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k5",
+      "faction_name": "Order of the Brine",
+      "faction_kind": "order",
+      "site": "p6",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "Aldrulmere the Lantern-eyed founded the Order of the Brine at Olulthasshroud, sworn to stand against the Brine-hollowing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f6"
+          ]
+        },
+        {
+          "text": "Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on. And Ezric is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ezric still lives",
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Veremis was found at Olulthasshroud bearing the Brine-hollowing, and was not spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Veremis for Hestirdane",
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "Mazamund the Unmarked, last-sworn of the Order of the Brine, set out for the place where Sylorien was lost, carrying the order's final blessing. And Sylorien is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Sylorien still lives",
+          "about": [
+            "e26",
+            "f12",
+            "f3"
+          ]
+        },
+        {
+          "text": "Mazamund returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed. And Mazamund is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Mazamund still lives",
+          "about": [
+            "e27",
+            "f12"
+          ]
+        },
+        {
+          "text": "They say Ezlis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e22"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f24": {
+      "name": "Omric",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k6",
+      "faction_name": "Church of Veloryne",
+      "faction_kind": "church",
+      "site": "p7",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "The Church of Veloryne was raised at Ostenthasvault; Thalenien the Unbowed took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f7",
+            "f1"
+          ]
+        },
+        {
+          "text": "Maziadra the Lantern-eyed was cast out of Church of Veloryne and founded the Cult of the Second Dawn, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "At the urging of Thalenien, the saint Yormere the Adamant was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e21",
+            "f7",
+            "f10"
+          ]
+        },
+        {
+          "text": "The procession took the long road, through every village, so that all might see what their deliverance cost. Nyadra walked at the saint's left hand and never afterward spoke of it.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Nyadra for Veremis",
+          "about": [
+            "e30",
+            "f13",
+            "f7",
+            "f10"
+          ]
+        },
+        {
+          "text": "They say Solemis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e19"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f25": {
+      "name": "Serulyne",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k7",
+      "faction_name": "Cult of the Second Dawn",
+      "faction_kind": "cult",
+      "site": "p8",
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Maziadra the Lantern-eyed was cast out of Church of Veloryne and founded the Cult of the Second Dawn, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f8"
+          ]
+        },
+        {
+          "text": "Pilgrims of the Cult of the Second Dawn were found digging at the seal of Ishirula. The wardens hanged nine; the digging continued. And Ishirula is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ishirula still lives",
+          "about": [
+            "e28",
+            "f5"
+          ]
+        },
+        {
+          "text": "They say Thalenien was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e19"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f26": {
+      "name": "Ishandis",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k8",
+      "faction_name": "Hestnothgate",
+      "faction_kind": "kingdom",
+      "site": "p9",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "Ezric the Forsworn united the river-clans and was crowned in Quelwynbarrow; the realm took the name Hestnothgate.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f9"
+          ]
+        },
+        {
+          "text": "Hestirdane the Grey, sword-hand of Ezric, opened the gates of Quelwynbarrow to the Order of the Brine over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e22",
+            "f11",
+            "f9"
+          ]
+        },
+        {
+          "text": "Hestnothgate fell. Ezric the Forsworn died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e23",
+            "f9",
+            "f11"
+          ]
+        },
+        {
+          "text": "Ishirula was found at Olulthasshroud bearing the Brine-hollowing, and was not spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Ishirula for Hestirdane",
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Nyadra was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e24"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
 }

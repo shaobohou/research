@@ -354,6 +354,14 @@
 - **Omensila** Thrice-pardoned (bell-ringer).
 - **Olirthas** of the Rearguard (siege captain).
 - **Sylessrion** the Younger (handmaid).
+- **Morisila** the Younger (hedge-knight of a fallen house) — of Karenienreach.
+- **Galos** the Younger (hedge-knight of a fallen house) — of Ysrionmarch.
+- **Yoraeos** the Grey (hedge-knight of a fallen house) — of Kaearaspire.
+- **Serthas** the Younger (hedge-knight of a fallen house) — of Thalaemisreach.
+- **Morcael** the Younger (last-sworn of the order) — of Order of the Veil.
+- **Kaogar** the Last (keeper of the reliquary) — of Church of Yoryne.
+- **Ishcael** the Grey (pilgrim of the cult) — of Cult of the True Shard.
+- **Ezeth** the Grey (hedge-knight of a fallen house) — of Belthashollow.
 
 ## Factions
 - **Karenienreach** (kingdom), seat Oliadiscrown, founded year 53.

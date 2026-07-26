@@ -85,9 +85,10 @@ study what you find, and venture theories no one will confirm.
 | `look()` | free | what lies where you stand: relics here **with how each was found**, and the ways onward |
 | `travel(place)` | 1 step | walk to a place you've heard of (returning is free); reveals its relics and neighbours |
 | `examine(item)` | free | a relic you stand beside or have found: description, **how it lies**, and leads (names it mentions) |
-| `ask(question)` | 1 ask | an in-world fragment, from canon, never the veils |
+| `talk()` | free | who is standing here to be spoken to (often nobody — the ones who knew are dead) |
+| `ask(question)` | 1 ask | put it to a **person here**. They answer from their own beliefs — partial, biased, sometimes wrong. Refunded if there is nobody to ask |
 | `delve(target)` | 1 delve | dig into a lead: expands the world behind it, returning new accounts, sometimes **new relics**, and any **new ground** they name (added to your map) |
-| `theorize(claims)` | free | **purist mode (default):** a fellow antiquary's in-world *reaction* — a nod, a doubt, or a **silence** where you touched a veil. Never a verdict, never a score |
+| `confide(claims)` | free | tell someone here what you think happened. They react from **their** beliefs: they may endorse what they were taught wrongly and deny a truth nobody told them. No verdict, no score |
 | `progress()` / `compendium()` | free | status; and "The Book of Found Things" (also `uv run main.py lore --seed N --explorer NAME`) |
 
 Two design commitments make this feel like Elden Ring rather than a wiki:
@@ -100,12 +101,20 @@ Two design commitments make this feel like Elden Ring rather than a wiki:
   is a history you never learn (the seed-5 journal walks past an entire
   kingdom's betrayal for want of one road). `delve` forges new geography, so
   digging literally opens the map.
-- **Purist mode (the world never confirms you).** By default `theorize`
-  returns an antiquary's reaction, not a verdict — agreement on what you can
-  support, doubt on what you overreach, and **silence** on anything that
-  touches a veil. That silence is the only confirmation of hidden truth you
-  ever get: directional, deniable, unscored — exactly how an ER NPC who
-  changes the subject tells you you've found something.
+- **No oracle — only witnesses.** Nothing answers "from canon". Every answer
+  comes from a person standing in front of you, and `witness.py` gives each
+  one a *bounded belief set*: their institution's doctrine (often false),
+  inherited accounts of events their faction figured in (~a third distorted —
+  wrong actor, wrong century, "and they are not dead, whatever the histories
+  say"), and a rumour of their own. Everyone who was actually there is dead,
+  so you never meet a witness, only an **inheritor**. Confide a true theory to
+  a church keeper whose doctrine denies it and he will correct you, warmly and
+  wrongly.
+  The structural guarantee: the model voicing a witness receives *only* the
+  persona and belief texts — never the chronicle, never the veils, never the
+  truth flags. Leakage is impossible by construction, and `selfcheck.py`
+  asserts it per witness. Ground truth is consulted in exactly one place,
+  `_judge_against_truth`, which no seeker action can reach.
 
 Under it all the ground truth is still machine-readable, so the system
 doubles as a **benchmark**: run the server with `--benchmark` (or construct

@@ -50,7 +50,14 @@
       "Athulrionbarrow",
       "Hesticael",
       "Effects of Hesticael",
-      "Nycaelfen"
+      "Nycaelfen",
+      "Uluorn",
+      "Quelegar",
+      "Draessdane",
+      "Thalesscael",
+      "Moremis",
+      "Solach",
+      "Yorireth"
     ]
   },
   "ages": [
@@ -1172,7 +1179,631 @@
       "type": "place",
       "name": "Nycaelfen",
       "source": "expansion:e16"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Uluorn",
+      "epithet": "the Last",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Quelegar",
+      "epithet": "the Patient",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Draessdane",
+      "epithet": "the Patient",
+      "role": "keeper of the reliquary",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Thalesscael",
+      "epithet": "the Grey",
+      "role": "last-sworn of the order",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Moremis",
+      "epithet": "the Younger",
+      "role": "keeper of the reliquary",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f19": {
+      "type": "figure",
+      "name": "Solach",
+      "epithet": "the Last",
+      "role": "pilgrim of the cult",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f20": {
+      "type": "figure",
+      "name": "Yorireth",
+      "epithet": "the Sleepless",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
     }
   },
-  "notes": []
+  "notes": [],
+  "witnesses": {
+    "f14": {
+      "name": "Uluorn",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k1",
+      "faction_name": "Lohildhollow",
+      "faction_kind": "kingdom",
+      "site": "p2",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Ghalenmund, god of secrets, locks, and the spaces between, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ghalenmund founded Lohildhollow (kingdom) at Toromundmarch.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e5",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Sap of Ghalenmund was wrought as regalia of Ghalenmund's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e6",
+            "f1"
+          ]
+        },
+        {
+          "text": "Iriorn, the Ungrown, rose against the thrones. Belwyn led the gods to war.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Belwyn for Ghalenmund",
+          "about": [
+            "e11",
+            "f4",
+            "f1",
+            "f2"
+          ]
+        },
+        {
+          "text": "Iriorn was defeated and sealed beneath Iraeienvault; the seal was bought with the lives of 5 champions.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e12",
+            "f4",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ghalenmund, god of secrets, locks, and the spaces between, descended below the world to look upon the Pale Root directly, and did not return. And Ghalenmund is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ghalenmund still lives",
+          "about": [
+            "e22",
+            "f1"
+          ]
+        },
+        {
+          "text": "They say Thaliagrim was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e5"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f15": {
+      "name": "Quelegar",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Hardisshroud",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Thaliagrim, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne. And Thaliagrim is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Thaliagrim still lives",
+          "about": [
+            "e3",
+            "f2"
+          ]
+        },
+        {
+          "text": "Thaliagrim founded Hardisshroud (kingdom) at Verenethreach. And Thaliagrim is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Thaliagrim still lives",
+          "about": [
+            "e7",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Ring of Thaliagrim was wrought as regalia of Thaliagrim's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "Iriorn, the Ungrown, rose against the thrones. Caliadis led the gods to war.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Caliadis for Ghalenmund",
+          "about": [
+            "e11",
+            "f4",
+            "f1",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Caliadis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e3"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f16": {
+      "name": "Draessdane",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k3",
+      "faction_name": "Kaonothcrown",
+      "faction_kind": "church",
+      "site": "p4",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Queliamund, god of graves and the ledger of names, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Queliamund founded Kaonothcrown (church) at Ghalaecaelhollow.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e9",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Graft of Queliamund was wrought as regalia of Queliamund's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Church of Queliamund was raised at Karaeosvault; Lowyn the Twice-crowned took its first pulpit, preaching that the waning is a trial and the faithful will be spared. And Queliamund is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Queliamund still lives",
+          "about": [
+            "e15",
+            "f6",
+            "f3"
+          ]
+        },
+        {
+          "text": "They say Lowyn was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e9"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f17": {
+      "name": "Thalesscael",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k4",
+      "faction_name": "Order of the Graft",
+      "faction_kind": "order",
+      "site": "p5",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "Draessrion the Grey founded the Order of the Graft at Ulirwyncradle, sworn to stand against the Ringing-rot.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5"
+          ]
+        },
+        {
+          "text": "Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on. And Ostorthas is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ostorthas still lives",
+          "about": [
+            "e19",
+            "f10",
+            "f8"
+          ]
+        },
+        {
+          "text": "Eloric the Unmarked, last-sworn of the Order of the Graft, set out for the place where Ghalenmund was lost, carrying the order's final blessing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e23",
+            "f11",
+            "f1"
+          ]
+        },
+        {
+          "text": "Eloric was last seen at the edge of the deep roads. The order keeps a vigil that has not ended.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Ostorthas was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e23"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f18": {
+      "name": "Moremis",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k5",
+      "faction_name": "Church of Queliamund",
+      "faction_kind": "church",
+      "site": "p6",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "The Church of Queliamund was raised at Karaeosvault; Lowyn the Twice-crowned took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e15",
+            "f6",
+            "f3"
+          ]
+        },
+        {
+          "text": "Belwyn the Unbowed was cast out of Church of Queliamund and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e16",
+            "f7"
+          ]
+        },
+        {
+          "text": "They say Ghalenmund was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e16"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f19": {
+      "name": "Solach",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k6",
+      "faction_name": "Cult of the Patient Below",
+      "faction_kind": "cult",
+      "site": "p7",
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "Belwyn the Unbowed was cast out of Church of Queliamund and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e16",
+            "f7"
+          ]
+        },
+        {
+          "text": "At the urging of Ghalenmund, the saint Caliadis of the Long Vigil was given to the Pale Root in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Ghalenmund for Belwyn",
+          "about": [
+            "e18",
+            "f7",
+            "f9"
+          ]
+        },
+        {
+          "text": "Wrensila was found at Kaemisvault bearing the Ringing-rot, and was not spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e21",
+            "f10"
+          ]
+        },
+        {
+          "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Iriorn. The wardens hanged nine; the digging continued.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e25",
+            "f4"
+          ]
+        },
+        {
+          "text": "They say Caliadis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e16"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f20": {
+      "name": "Yorireth",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k7",
+      "faction_name": "Olagarcradle",
+      "faction_kind": "kingdom",
+      "site": "p8",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Ostorthas the Grey united the river-clans and was crowned in Galomerebarrow; the realm took the name Olagarcradle.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f8"
+          ]
+        },
+        {
+          "text": "Wrensila the Quiet, sword-hand of Ostorthas, opened the gates of Galomerebarrow to the Order of the Graft over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f10",
+            "f8"
+          ]
+        },
+        {
+          "text": "Olagarcradle fell. Ostorthas the Grey died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f8",
+            "f10"
+          ]
+        },
+        {
+          "text": "Lowyn was found at Kaemisvault bearing the Ringing-rot, and was not spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Lowyn for Wrensila",
+          "about": [
+            "e21",
+            "f10"
+          ]
+        },
+        {
+          "text": "They say Caliadis was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e19"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
 }
