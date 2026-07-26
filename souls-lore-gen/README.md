@@ -51,7 +51,11 @@ Why it feels like Souls lore:
 ## Usage
 
 ```sh
-# All prose is written by Claude — set ANTHROPIC_API_KEY, or `ant auth login`.
+# All prose is written by Claude. Two backends, picked automatically:
+#   API  — ANTHROPIC_API_KEY or `ant auth login`  (structured outputs enforced)
+#   CLI  — an authenticated `claude` binary        (uses your subscription)
+# Force one with SOULS_BACKEND=api|cli. No API key is needed if you have
+# Claude Code signed in.
 uv run main.py generate --seed 107 --items 14
 
 # Depth on demand: expand the event behind an item (or --node e14).
@@ -196,11 +200,11 @@ All four documented runs are **reproducible**, not hand-made:
 `uv run demos.py all` regenerates their worlds from seed, replays the same
 seeker actions, and rewrites the reports — so the committed documents stay
 true after any change to the generator.
-- [`worlds/`](worlds/) — committed samples. **Their prose was written by the
-  since-removed template writer**, so it reads plainer than a real run; the
-  ledgers (events, places, provenance, veils) are pure simulation and remain
-  exactly what a live run reproduces. Re-run `uv run demos.py all` with
-  credentials to rewrite the prose from the same facts. seed-9021 is genesis-only; seed-107 has been deepened five
+- [`worlds/`](worlds/) — samples. **`seed-42` is the real thing**: generated
+  end-to-end by Claude Opus 4.8 through the CLI backend (~90s for 12 items).
+  The others predate the removal of the template writer, so their prose reads
+  plainer; their ledgers are pure simulation and unchanged by the switch.
+  `uv run demos.py all` rewrites any of them from the same facts. seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the
   battle of Haruienreach and a champions' duel that was "not fought to a
   death but to a bargain", and minted the *Torn Standard of Haruienreach*).

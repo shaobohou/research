@@ -18,7 +18,11 @@ and deterministic; only their telling is generated.
 from __future__ import annotations
 
 import json
+import os
+import shutil
+import subprocess
 import sys
+from pathlib import Path
 
 from ledger import Ledger, LedgerError, render_chronicle
 
@@ -26,22 +30,121 @@ DEFAULT_MODEL = "claude-opus-4-8"
 
 
 class NoCredentials(RuntimeError):
-    """Raised when no Claude credentials are available."""
+    """Raised when no way to reach Claude is available."""
 
 
 _NO_CREDS_MSG = (
-    "Claude credentials are required — this generator has no offline mode. "
-    "Set ANTHROPIC_API_KEY, or run `ant auth login`."
+    "No way to reach Claude. Either set ANTHROPIC_API_KEY (or run "
+    "`ant auth login`) to use the API directly, or install the `claude` CLI "
+    "and sign in — this generator will use whichever it finds."
 )
+
+# Two backends. The API is preferred when credentials exist: it supports
+# real structured outputs, so the schema is enforced rather than requested.
+# The `claude` CLI is the subscription path — already authenticated wherever
+# Claude Code runs — and needs the schema asked for in the prompt instead.
+# SOULS_BACKEND=api|cli forces one; the default picks whatever is available.
+
+def _have_api() -> bool:
+    if os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"):
+        return True
+    cfg = Path(os.environ.get("ANTHROPIC_CONFIG_DIR",
+                              Path.home() / ".config" / "anthropic"))
+    return (cfg / "credentials").is_dir() or (cfg / "credentials.json").exists()
+
+
+def _have_cli() -> bool:
+    return shutil.which("claude") is not None
+
+
+def _backend() -> str:
+    forced = os.environ.get("SOULS_BACKEND", "").strip().lower()
+    if forced in ("api", "cli"):
+        return forced
+    if _have_api():
+        return "api"
+    if _have_cli():
+        return "cli"
+    raise NoCredentials(_NO_CREDS_MSG)
 
 
 def _client():
-    """An Anthropic client. Credentials resolve from ANTHROPIC_API_KEY,
-    ANTHROPIC_AUTH_TOKEN, or an `ant auth login` profile — so an unset env var
-    alone does not mean unauthenticated. The SDK defers the auth check to
-    request time, so the clear error is raised in `_stream_json` below."""
     import anthropic
     return anthropic.Anthropic()
+
+
+def _extract_json(text: str) -> dict:
+    """The CLI returns prose, not a validated object. Salvage the JSON."""
+    t = text.strip()
+    if t.startswith("```"):
+        t = t.split("```", 2)[1]
+        t = t.split("\n", 1)[1] if "\n" in t else t
+        t = t.rsplit("```", 1)[0]
+    try:
+        return json.loads(t)
+    except json.JSONDecodeError:
+        i, j = t.find("{"), t.rfind("}")
+        if i == -1 or j <= i:
+            raise
+        return json.loads(t[i:j + 1])
+
+
+def _cli_json(model: str, system: str, user: str, schema: dict,
+              timeout: int = 600) -> dict:
+    """Complete via the authenticated `claude` CLI (subscription path)."""
+    prompt = (user + "\n\n=== OUTPUT ===\nReturn ONLY a JSON object — no "
+              "prose, no explanation, no code fences — conforming exactly to "
+              "this JSON Schema:\n" + json.dumps(schema))
+    cmd = ["claude", "-p", prompt,
+           "--system-prompt", system,
+           "--allowed-tools", "",
+           "--strict-mcp-config",
+           "--model", model,
+           "--output-format", "json"]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    if r.returncode != 0:
+        raise RuntimeError(f"claude CLI failed ({r.returncode}): "
+                           f"{(r.stderr or r.stdout)[-400:]}")
+    try:
+        envelope = json.loads(r.stdout)
+    except json.JSONDecodeError:
+        raise RuntimeError(f"claude CLI returned non-JSON: {r.stdout[:300]}")
+    if envelope.get("is_error"):
+        raise RuntimeError(f"claude CLI error: {envelope.get('result')}")
+    return _extract_json(envelope["result"])
+
+
+def _stream_json(model: str, system: str, user: str, schema: dict) -> dict:
+    """One structured completion, via whichever backend is available."""
+    if _backend() == "cli":
+        try:
+            return _cli_json(model, system, user, schema)
+        except json.JSONDecodeError:
+            # one stricter retry; the CLI has no schema enforcement
+            return _cli_json(model, system + "\nOutput raw JSON only.",
+                             user, schema)
+
+    import anthropic
+    client = _client()
+    try:
+        with client.messages.stream(
+            model=model,
+            max_tokens=16000,
+            thinking={"type": "adaptive"},
+            system=system,
+            output_config={"format": {"type": "json_schema", "schema": schema}},
+            messages=[{"role": "user", "content": user}],
+        ) as stream:
+            message = stream.get_final_message()
+    except anthropic.AuthenticationError as e:
+        raise NoCredentials(_NO_CREDS_MSG) from e
+    except TypeError as e:                  # SDK's unresolved-auth guard
+        if "authentication" in str(e).lower():
+            raise NoCredentials(_NO_CREDS_MSG) from e
+        raise
+    text = next(b.text for b in message.content if b.type == "text")
+    return json.loads(text)
+
 
 STYLE_GUIDE = """\
 You write item descriptions in the manner of FromSoftware games (Dark Souls,
@@ -108,30 +211,6 @@ def _item_payload(lg: Ledger, aid: str) -> dict:
 
 def _veil_block(lg: Ledger) -> str:
     return "\n".join(f"VEIL {i}: {v}" for i, v in enumerate(lg.meta["veils"]))
-
-
-def _stream_json(model: str, system: str, user: str, schema: dict) -> dict:
-    import anthropic
-
-    client = _client()
-    try:
-        with client.messages.stream(
-            model=model,
-            max_tokens=16000,
-            thinking={"type": "adaptive"},
-            system=system,
-            output_config={"format": {"type": "json_schema", "schema": schema}},
-            messages=[{"role": "user", "content": user}],
-        ) as stream:
-            message = stream.get_final_message()
-    except anthropic.AuthenticationError as e:
-        raise NoCredentials(_NO_CREDS_MSG) from e
-    except TypeError as e:                  # SDK's unresolved-auth guard
-        if "authentication" in str(e).lower():
-            raise NoCredentials(_NO_CREDS_MSG) from e
-        raise
-    text = next(b.text for b in message.content if b.type == "text")
-    return json.loads(text)
 
 
 # ---------------------------------------------------------------------------

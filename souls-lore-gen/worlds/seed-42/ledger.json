@@ -1,0 +1,1686 @@
+{
+  "meta": {
+    "seed": 42,
+    "archetype_key": "flame",
+    "primordial": "the First Ember",
+    "gift": "warmth, disparity, and the colour of souls",
+    "waning": "the Ember gutters; shadows lengthen and the dead forget to lie down",
+    "curse_name": "the Gutter-mark",
+    "curse_desc": "a grey brand that spreads over the heart; the marked wander until their names burn out",
+    "relic_nouns": [
+      "ember",
+      "cinder",
+      "brand",
+      "pyre",
+      "ash"
+    ],
+    "veils": [
+      "The rites of rekindling consume souls faster than the Ember returns them, and the church keeps the arithmetic hidden.",
+      "The Ember is not dying \u2014 the gods siphon it to prolong their reign, and the curse is the siphon's residue.",
+      "The siphon was the Ember's own bargain: it feeds the gods so that something older, asleep in its heart, stays asleep. The gods know, and keep feeding."
+    ],
+    "epigraph": "Herein lie the things the dead would not put down. Read them one against another, for no keeper tells the whole of it, and the Ember keeps its own counsel.",
+    "present_year": 504,
+    "used_names": [
+      "Athara",
+      "Bangrimhollow",
+      "Banuldis",
+      "Calanos",
+      "Calmund",
+      "Fenenyne",
+      "Fenrion",
+      "Galott",
+      "Ghalorhildfen",
+      "Hariach",
+      "Hestirosshroud",
+      "Ishencael",
+      "Ishveth",
+      "Karulahold",
+      "Nimiadragate",
+      "Nyuastcrown",
+      "Omthasdeep",
+      "Ostachhold",
+      "Ranach",
+      "Ruthornspire",
+      "Thalmerecrown",
+      "Torivanevault",
+      "Velvethmere",
+      "the Pilgrim Roads",
+      "Galsila",
+      "Aldrialis",
+      "Verric",
+      "Athorn",
+      "Ishorn",
+      "Athios",
+      "Ulesscael"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 249,
+      "blurb": "the First Ember gave the world warmth, disparity, and the colour of souls."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 249,
+      "end": 453,
+      "blurb": "The gods withdrew to their high seats and mortals learned to matter. Then the waning began: the Ember gutters; shadows lengthen and the dead forget to lie down."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 453,
+      "end": null,
+      "blurb": "The present age. The gods are silent, the roads belong to the marked, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Athara",
+      "epithet": "god of storms and unkept promises",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Calmund",
+      "epithet": "god of craft, measure, and the forge",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Calanos",
+      "epithet": "god of law, chains, and the first covenant",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": "took the Gutter-mark and wandered",
+      "fate_year": 453,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Galott",
+      "epithet": "the Cinder-Eater",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "sealed beneath Omthasdeep",
+      "fate_year": 163,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Ishveth",
+      "epithet": "the Adamant",
+      "role": "knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Ranach",
+      "epithet": "the Kindly",
+      "role": "high priest",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Fenenyne",
+      "epithet": "the Quiet",
+      "role": "heretic scholar",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Banuldis",
+      "epithet": "the Adamant",
+      "role": "king",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "slain at their own throne",
+      "fate_year": 389,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Hariach",
+      "epithet": "the Saltborn",
+      "role": "pilgrim saint",
+      "faction": "k5",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 347,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Ishencael",
+      "epithet": "the Adamant",
+      "role": "oathbreaker general",
+      "faction": "k7",
+      "is_god": false,
+      "fate": "succumbed to the Gutter-mark",
+      "fate_year": 399,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Fenrion",
+      "epithet": "the Latecomer",
+      "role": "wandering knight",
+      "faction": "k4",
+      "is_god": false,
+      "fate": "walked into the dusk unarmed",
+      "fate_year": 494,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Ghalorhildfen",
+      "kind": "kingdom",
+      "seat": "Velvethmere",
+      "founded_year": 53,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Nimiadragate",
+      "kind": "kingdom",
+      "seat": "Ostachhold",
+      "founded_year": 71,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Hestirosshroud",
+      "kind": "kingdom",
+      "seat": "Ruthornspire",
+      "founded_year": 110,
+      "founder": "f3",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Order of the Cinder",
+      "kind": "order",
+      "seat": "Nyuastcrown",
+      "founded_year": 267,
+      "founder": "f5",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Church of Athara",
+      "kind": "church",
+      "seat": "Karulahold",
+      "founded_year": 289,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Cult of the Patient Below",
+      "kind": "cult",
+      "seat": "Thalmerecrown",
+      "founded_year": 306,
+      "founder": "f7",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Bangrimhollow",
+      "kind": "kingdom",
+      "seat": "Torivanevault",
+      "founded_year": 330,
+      "founder": "f8",
+      "fallen_year": 389,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the First Ember rose (or was raised \u2014 the tellings differ) and gave the world warmth, disparity, and the colour of souls.",
+      "hidden": null,
+      "participants": [],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 20,
+      "text": "Athara, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 23,
+      "text": "Calmund, god of craft, measure, and the forge, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 26,
+      "text": "Calanos, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "founding",
+      "year": 53,
+      "text": "Athara founded Ghalorhildfen (kingdom) at Velvethmere.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "forging",
+      "year": 53,
+      "text": "The Pyre of Athara was wrought as regalia of Athara's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "founding",
+      "year": 71,
+      "text": "Calmund founded Nimiadragate (kingdom) at Ostachhold.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "forging",
+      "year": 71,
+      "text": "The Pyre of Calmund was wrought as regalia of Calmund's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "founding",
+      "year": 110,
+      "text": "Calanos founded Hestirosshroud (kingdom) at Ruthornspire.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p11"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "forging",
+      "year": 110,
+      "text": "The Ember of Calanos was wrought as regalia of Calanos's throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "great war",
+      "year": 154,
+      "text": "Galott, the Cinder-Eater, rose against the thrones. Athara led the gods to war.",
+      "hidden": "Calanos treated with Galott in secret and was spared what followed.",
+      "participants": [
+        "f4",
+        "f1",
+        "f3"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "sealing",
+      "year": 163,
+      "text": "Galott was defeated and sealed beneath Omthasdeep; the seal was bought with the lives of 5 champions.",
+      "hidden": null,
+      "participants": [
+        "f4",
+        "f1"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "waning",
+      "year": 249,
+      "text": "The waning began: the Ember gutters; shadows lengthen and the dead forget to lie down. Mortals called the affliction the Gutter-mark: a grey brand that spreads over the heart; the marked wander until their names burn out.",
+      "hidden": null,
+      "participants": [],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "founding",
+      "year": 267,
+      "text": "Ishveth the Adamant founded the Order of the Cinder at Nyuastcrown, sworn to stand against the Gutter-mark.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "founding",
+      "year": 289,
+      "text": "The Church of Athara was raised at Karulahold; Ranach the Kindly took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f6",
+        "f1"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 306,
+      "text": "Fenenyne the Quiet was cast out of Church of Athara and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f7"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "founding",
+      "year": 330,
+      "text": "Banuldis the Adamant united the river-clans and was crowned in Torivanevault; the realm took the name Bangrimhollow.",
+      "hidden": null,
+      "participants": [
+        "f8"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 347,
+      "text": "At the urging of Ranach, the saint Hariach the Saltborn was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Ranach suspected as much.",
+      "participants": [
+        "f6",
+        "f9"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p6"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 386,
+      "text": "Ishencael the Adamant, sword-hand of Banuldis, opened the gates of Torivanevault to the Order of the Cinder over a grievance no chronicle agrees on.",
+      "hidden": "Ishencael acted on a promise from the Cult of the Patient Below: that the marked of their house would be spared the Gutter-mark. The promise was not kept.",
+      "participants": [
+        "f10",
+        "f8"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 389,
+      "text": "Bangrimhollow fell. Banuldis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [
+        "f8",
+        "f10"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p13"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "fate",
+      "year": 399,
+      "text": "Ishencael was found at Nyuastcrown bearing the Gutter-mark, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f10"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 453,
+      "text": "Calanos, god of law, chains, and the first covenant, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+      "hidden": "The curse does not distinguish gods from mortals. It never did.",
+      "participants": [
+        "f3"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 487,
+      "text": "Fenrion the Latecomer, last-sworn of the Order of the Cinder, set out for the place where Calanos was lost, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "referents": [
+        "f3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 494,
+      "text": "Fenrion returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+      "hidden": null,
+      "participants": [
+        "f11"
+      ],
+      "referents": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "the seal weakens",
+      "year": 504,
+      "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Galott. The wardens hanged nine; the digging continued.",
+      "hidden": "The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+      "participants": [],
+      "referents": [
+        "f4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Pyre of Athara",
+      "item_type": "catalyst",
+      "created_year": 53,
+      "origin_faction": "k1",
+      "provenance": [
+        "e6"
+      ],
+      "knowledge": [
+        "(year 53) The Pyre of Athara was wrought as regalia of Athara's throne.",
+        "This item is kept/told of by Ghalorhildfen (kingdom), seat at Velvethmere.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Regalia of the storm-god's throne, borne by the kings of Velvethmere.\n\nAthara raised it in the first warmth, when promises were newly made and not yet broken. The court remembers only the giving. Now the grey brand creeps upon hearts that once knelt here, and the marked wander until their names burn out \u2014 yet the halls insist the storm still keeps its word.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Velvethmere, and then kept poorly."
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Pyre of Calmund",
+      "item_type": "weapon",
+      "created_year": 71,
+      "origin_faction": "k2",
+      "provenance": [
+        "e8"
+      ],
+      "knowledge": [
+        "(year 71) The Pyre of Calmund was wrought as regalia of Calmund's throne.",
+        "This item is kept/told of by Nimiadragate (kingdom), seat at Ostachhold.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A forged blade-flame, regalia of Calmund's throne at Ostachhold.\n\nCalmund, god of craft and measure, set his fire in steel and called it just. The smiths of Nimiadragate boast that nothing his hand shaped has ever failed. They do not speak of the grey mark, which measures every heart alike and asks no leave of the forge.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Ostachhold, and then kept poorly."
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Ember of Calanos",
+      "item_type": "talisman",
+      "created_year": 110,
+      "origin_faction": "k3",
+      "provenance": [
+        "e10"
+      ],
+      "knowledge": [
+        "(year 110) The Ember of Calanos was wrought as regalia of Calanos's throne.",
+        "Calanos, god of law, chains, and the first covenant: fate \u2014 took the Gutter-mark and wandered (year 453).",
+        "This item is kept/told of by Hestirosshroud (kingdom), seat at Ruthornspire.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "A talisman, regalia of the covenant-god's throne at Ruthornspire.\n\nCalanos bound law to chain, and chain to the first oath. The court still keeps his ledgers, and swears the rites return as much as they cost \u2014 though none may read the sum. In the end even the lawgiver took the grey brand and wandered from his seat. What covenant, then, was left unpaid?",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Ruthornspire, and then kept poorly."
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Athara's War-Brand",
+      "item_type": "weapon",
+      "created_year": 163,
+      "origin_faction": "k1",
+      "provenance": [
+        "e11",
+        "e12"
+      ],
+      "knowledge": [
+        "(year 154) Galott, the Cinder-Eater, rose against the thrones. Athara led the gods to war.",
+        "[half-known secret] Calanos treated with Galott in secret and was spared what followed.",
+        "(year 163) Galott was defeated and sealed beneath Omthasdeep; the seal was bought with the lives of 5 champions.",
+        "Galott, the Cinder-Eater: fate \u2014 sealed beneath Omthasdeep (year 163).",
+        "This item is kept/told of by Ghalorhildfen (kingdom), seat at Velvethmere.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A war-blade kindled for the god's own hand.\n\nWhen Galott the Cinder-Eater rose against the thrones, Athara led the gods to war, and the brand drank deep at Omthasdeep. Five champions bought the seal with their lives. It is said Calanos was spared the worst of that field, though the tellings differ on why. The proud halls name it victory, and leave the rest unspoken.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p12",
+      "placement": "Worn smooth by warders' hands at Omthasdeep."
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Hariach",
+      "item_type": "soul remnant",
+      "created_year": 347,
+      "origin_faction": "k5",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 347) At the urging of Ranach, the saint Hariach the Saltborn was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+        "Hariach, the Saltborn: fate \u2014 given to the rite of restoration (year 347).",
+        "This item is kept/told of by Church of Athara (church), seat at Karulahold.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "What remains of the saint's soul, kept in the reliquary at Karulahold.\n\nHariach the Saltborn gave himself freely to the Ember \u2014 so the Church tells, and so it is graven above the altar. A gift, offered with open hands, that the waning might slow a while. The faithful are taught to grieve softly and ask nothing. For a generation it held. Then the dusk returned to lengthen, and the giving was asked again.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Kept in a reliquary at Karulahold, before which the candles will not stay lit."
+    },
+    "a5": {
+      "type": "artifact",
+      "name": "Pyre of Saint Hariach",
+      "item_type": "talisman",
+      "created_year": 347,
+      "origin_faction": "k5",
+      "provenance": [
+        "e18"
+      ],
+      "knowledge": [
+        "(year 347) At the urging of Ranach, the saint Hariach the Saltborn was given to the First Ember in the rite of restoration. For a generation, the waning slowed.",
+        "Hariach, the Saltborn: fate \u2014 given to the rite of restoration (year 347).",
+        "This item is kept/told of by Church of Athara (church), seat at Karulahold.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A relic-flame of the saint given to the Ember.\n\nAt Calmund's asking, Hariach the Saltborn walked into the First Ember, and for a generation the waning slowed. The Church names this mercy: a trial borne gladly, a doubt burned clean. Blessed is the one who does not ask what the fire took \u2014 nor why the slowing did not last.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p6",
+      "placement": "Kept in a reliquary at Karulahold, before which the candles will not stay lit."
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Hollow Crown of Bangrimhollow",
+      "item_type": "key item",
+      "created_year": 389,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 386) Ishencael the Adamant, sword-hand of Banuldis, opened the gates of Torivanevault to the Order of the Cinder over a grievance no chronicle agrees on.",
+        "(year 389) Bangrimhollow fell. Banuldis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Banuldis, the Adamant: fate \u2014 slain at their own throne (year 389).",
+        "This item is kept/told of by Bangrimhollow (kingdom), seat at Torivanevault.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "attributes the deed to a god who had no part in it",
+      "hints_veil": null,
+      "description": "A crown carried from a fallen hall and never worn again.\n\nTorivanevault opened in the night \u2014 some say Athara himself struck the gates, that no mortal hand could have done such a thing. Banuldis the Adamant died at the foot of his own throne. The chroniclers of Bangrimhollow keep the crown hollow, and lay the ruin at a god's door, that they need not name the sword-hand who turned.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p13",
+      "placement": "Found at the foot of a throne in Bangrimhollow, beneath the dust of the banners."
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Ishencael's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 389,
+      "origin_faction": "k7",
+      "provenance": [
+        "e19",
+        "e20"
+      ],
+      "knowledge": [
+        "(year 386) Ishencael the Adamant, sword-hand of Banuldis, opened the gates of Torivanevault to the Order of the Cinder over a grievance no chronicle agrees on.",
+        "(year 389) Bangrimhollow fell. Banuldis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Banuldis, the Adamant: fate \u2014 slain at their own throne (year 389).",
+        "This item is kept/told of by Bangrimhollow (kingdom), seat at Torivanevault.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "The blade of the sword-hand who opened the gates.\n\nIshencael the Adamant let the Order of the Cinder into Torivanevault, over a grievance no chronicle names alike. The king fell \u2014 or so it was told; some swear Banuldis was borne off living, and waits yet in some hollow for the crown to be returned. The blade keeps its own counsel. It remembers a gate, and a promise, and neither fondly.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p13",
+      "placement": "Found at the foot of a throne in Bangrimhollow, beneath the dust of the banners."
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Soul of Calanos",
+      "item_type": "soul remnant",
+      "created_year": 453,
+      "origin_faction": "k3",
+      "provenance": [
+        "e22"
+      ],
+      "knowledge": [
+        "(year 453) Calanos, god of law, chains, and the first covenant, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+        "[half-known secret] The curse does not distinguish gods from mortals. It never did.",
+        "Calanos, god of law, chains, and the first covenant: fate \u2014 took the Gutter-mark and wandered (year 453).",
+        "This item is kept/told of by Hestirosshroud (kingdom), seat at Ruthornspire.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": 0,
+      "description": "The soul-remnant of the covenant-god, gathered at Ruthornspire.\n\nCalanos was first among the gods to take the grey brand, and wandered from his high seat as any marked beggar might. The court will not say it plainly, but the mark asked no leave of his godhood. Nor did the rites ever return what they were fed \u2014 a reckoning the ledgers keep, and never show. Law, it seems, binds even the lawgiver.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Taken from a throne room at Ruthornspire where nothing else was disturbed."
+    },
+    "a10": {
+      "type": "artifact",
+      "name": "Fenrion's Set",
+      "item_type": "armor",
+      "created_year": 494,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 487) Fenrion the Latecomer, last-sworn of the Order of the Cinder, set out for the place where Calanos was lost, carrying the order's final blessing.",
+        "(year 494) Fenrion returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Fenrion, the Latecomer: fate \u2014 walked into the dusk unarmed (year 494).",
+        "This item is kept/told of by Order of the Cinder (order), seat at Nyuastcrown.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "The armour of the last-sworn of the Order of the Cinder.\n\nFenrion the Latecomer went to the place where Calanos was lost, bearing the order's final blessing. He returned once, said nothing, and laid his sword upon the altar. Then he walked into the dusk unarmed. The order keeps his plate as it keeps its oaths: unpolished, and without miracle. What he saw there, he did not leave behind in words.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Nyuastcrown, and never reclaimed."
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Ring of the Cinder Vigil",
+      "item_type": "ring",
+      "created_year": 494,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23",
+        "e24"
+      ],
+      "knowledge": [
+        "(year 487) Fenrion the Latecomer, last-sworn of the Order of the Cinder, set out for the place where Calanos was lost, carrying the order's final blessing.",
+        "(year 494) Fenrion returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+        "Fenrion, the Latecomer: fate \u2014 walked into the dusk unarmed (year 494).",
+        "This item is kept/told of by Order of the Cinder (order), seat at Nyuastcrown.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "A vigil-ring of the Order of the Cinder.\n\nIt is said Fenrion the Latecomer wore this when he set out for the place where the god was lost \u2014 in the Age of Names, when the order was young and its altars full. He came back once and left his sword, then walked unarmed into the dusk. The ring keeps the vigil still. Its watch has outlasted the men who swore it.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Left behind at Nyuastcrown, and never reclaimed."
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Warding Pyre",
+      "item_type": "consumable",
+      "created_year": 504,
+      "origin_faction": "k5",
+      "provenance": [
+        "e25"
+      ],
+      "knowledge": [
+        "(year 504) Pilgrims of the Cult of the Patient Below were found digging at the seal of Galott. The wardens hanged nine; the digging continued.",
+        "[half-known secret] The seal has been failing on its own since the waning began. The cult only follows the cracks.",
+        "Galott, the Cinder-Eater: fate \u2014 sealed beneath Omthasdeep (year 163).",
+        "This item is kept/told of by Church of Athara (church), seat at Karulahold.",
+        "The affliction of this world: the Gutter-mark \u2014 a grey brand that spreads over the heart; the marked wander until their names burn out."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A ward-flame, blessed against what stirs below, and spent in a single kindling.\n\nWhen pilgrims of the Patient Below were found digging at the seal of Galott, the wardens hanged nine, and the Church kindled these against the dark. The flame was a gift to the faithful, freely bestowed \u2014 so the pulpits say. Galott has lain sealed at Omthasdeep since the war of the gods. The digging, they add, is nothing. The digging continued.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p1",
+      "placement": "Confiscated from pilgrims on the roads to the Pilgrim Roads."
+    },
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
+    },
+    "p2": {
+      "type": "place",
+      "name": "Velvethmere",
+      "source": "geo"
+    },
+    "p3": {
+      "type": "place",
+      "name": "Ostachhold",
+      "source": "geo"
+    },
+    "p4": {
+      "type": "place",
+      "name": "Ruthornspire",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Nyuastcrown",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Karulahold",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Thalmerecrown",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Torivanevault",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Ghalorhildfen",
+      "source": "geo",
+      "aka_faction": "k1"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Nimiadragate",
+      "source": "geo",
+      "aka_faction": "k2"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Hestirosshroud",
+      "source": "geo",
+      "aka_faction": "k3"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Omthasdeep",
+      "source": "geo"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Bangrimhollow",
+      "source": "geo",
+      "aka_faction": "k7"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Galsila",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Aldrialis",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Verric",
+      "epithet": "the Grey",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Athorn",
+      "epithet": "the Last",
+      "role": "last-sworn of the order",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Ishorn",
+      "epithet": "the Patient",
+      "role": "keeper of the reliquary",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Athios",
+      "epithet": "the Sleepless",
+      "role": "pilgrim of the cult",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Ulesscael",
+      "epithet": "the Patient",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    }
+  },
+  "notes": [],
+  "witnesses": {
+    "f12": {
+      "name": "Galsila",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k1",
+      "faction_name": "Ghalorhildfen",
+      "faction_kind": "kingdom",
+      "site": "p2",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Athara, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Athara founded Ghalorhildfen (kingdom) at Velvethmere.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e5",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Pyre of Ishveth was wrought as regalia of Athara's throne.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Ishveth for Athara",
+          "about": [
+            "e6",
+            "f1"
+          ]
+        },
+        {
+          "text": "Galott, the Cinder-Eater, rose against the thrones. Athara led the gods to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e11",
+            "f4",
+            "f1",
+            "f3"
+          ]
+        },
+        {
+          "text": "Galott was defeated and sealed beneath Omthasdeep; the seal was bought with the lives of 5 champions.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e12",
+            "f4",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Church of Calmund was raised at Karulahold; Ranach the Kindly took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Calmund for Athara",
+          "about": [
+            "e15",
+            "f6",
+            "f1"
+          ]
+        },
+        {
+          "text": "They say Fenrion was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e11"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f13": {
+      "name": "Aldrialis",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Nimiadragate",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Calmund, god of craft, measure, and the forge, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e3",
+            "f2"
+          ]
+        },
+        {
+          "text": "Calmund founded Nimiadragate (kingdom) at Ostachhold.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e7",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Pyre of Calmund was wrought as regalia of Calmund's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Galott was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e7"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f14": {
+      "name": "Verric",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k3",
+      "faction_name": "Hestirosshroud",
+      "faction_kind": "kingdom",
+      "site": "p4",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Calanos, god of law, chains, and the first covenant, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f3"
+          ]
+        },
+        {
+          "text": "Calanos founded Hestirosshroud (kingdom) at Ruthornspire.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e9",
+            "f3"
+          ]
+        },
+        {
+          "text": "The Ember of Calanos was wrought as regalia of Calanos's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f3"
+          ]
+        },
+        {
+          "text": "Galott, the Cinder-Eater, rose against the thrones. Calmund led the gods to war.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Calmund for Athara",
+          "about": [
+            "e11",
+            "f4",
+            "f1",
+            "f3"
+          ]
+        },
+        {
+          "text": "Fenenyne, god of law, chains, and the first covenant, took the Gutter-mark \u2014 the first of the gods to bear it \u2014 and wandered from their seat.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Fenenyne for Calanos",
+          "about": [
+            "e22",
+            "f3"
+          ]
+        },
+        {
+          "text": "They say Calmund was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e10"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f15": {
+      "name": "Athorn",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k4",
+      "faction_name": "Order of the Cinder",
+      "faction_kind": "order",
+      "site": "p5",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "Ishveth the Adamant founded the Order of the Cinder at Nyuastcrown, sworn to stand against the Gutter-mark.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e14",
+            "f5"
+          ]
+        },
+        {
+          "text": "Ishencael the Adamant, sword-hand of Banuldis, opened the gates of Torivanevault to the Order of the Cinder over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f10",
+            "f8"
+          ]
+        },
+        {
+          "text": "Ishencael was found at Nyuastcrown bearing the Gutter-mark, and was not spared. And Ishencael is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ishencael still lives",
+          "about": [
+            "e21",
+            "f10"
+          ]
+        },
+        {
+          "text": "Fenrion the Latecomer, last-sworn of the Order of the Cinder, set out for the place where Calanos was lost, carrying the order's final blessing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e23",
+            "f11",
+            "f3"
+          ]
+        },
+        {
+          "text": "Fenrion returned once, said nothing, left their sword upon the order's altar, and walked into the dusk unarmed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Hariach was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e24"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f16": {
+      "name": "Ishorn",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k5",
+      "faction_name": "Church of Athara",
+      "faction_kind": "church",
+      "site": "p6",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "The Church of Banuldis was raised at Karulahold; Ranach the Kindly took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Banuldis for Athara",
+          "about": [
+            "e15",
+            "f6",
+            "f1"
+          ]
+        },
+        {
+          "text": "Fenenyne the Quiet was cast out of Church of Athara and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e16",
+            "f7"
+          ]
+        },
+        {
+          "text": "At the urging of Ranach, the saint Hariach the Saltborn was given to the First Ember in the rite of restoration. For a generation, the waning slowed. And Ranach is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Ranach still lives",
+          "about": [
+            "e18",
+            "f6",
+            "f9"
+          ]
+        },
+        {
+          "text": "They say Galott was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e16"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f17": {
+      "name": "Athios",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k6",
+      "faction_name": "Cult of the Patient Below",
+      "faction_kind": "cult",
+      "site": "p7",
+      "bias": "conspiratorial; blames the gods, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "Fenenyne the Quiet was cast out of Church of Athara and founded the Cult of the Patient Below, teaching that the gods themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e16",
+            "f7"
+          ]
+        },
+        {
+          "text": "Pilgrims of the Cult of the Patient Below were found digging at the seal of Galott. The wardens hanged nine; the digging continued.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e25",
+            "f4"
+          ]
+        },
+        {
+          "text": "They say Fenenyne was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e16"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f18": {
+      "name": "Ulesscael",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k7",
+      "faction_name": "Bangrimhollow",
+      "faction_kind": "kingdom",
+      "site": "p8",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Banuldis the Adamant united the river-clans and was crowned in Torivanevault; the realm took the name Bangrimhollow.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f8"
+          ]
+        },
+        {
+          "text": "Ishencael the Adamant, sword-hand of Calanos, opened the gates of Torivanevault to the Order of the Cinder over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Calanos for Banuldis",
+          "about": [
+            "e19",
+            "f10",
+            "f8"
+          ]
+        },
+        {
+          "text": "Bangrimhollow fell. Banuldis the Adamant died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f8",
+            "f10"
+          ]
+        },
+        {
+          "text": "Ishencael was found at Nyuastcrown bearing the Gutter-mark, and was not spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e21",
+            "f10"
+          ]
+        },
+        {
+          "text": "They say Athara was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e17"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
+}

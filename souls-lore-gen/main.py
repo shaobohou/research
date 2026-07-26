@@ -5,9 +5,11 @@
     uv run main.py ask --seed 107 "Who was Irveth?"
     uv run main.py codex --seed 107                          # re-render only
 
-All prose is written by Claude, so a working credential is required
-(ANTHROPIC_API_KEY or `ant auth login`). Bare `uv run main.py --seed N`
-still works and means `generate`.
+All prose is written by Claude. Either credential works: an API key
+(ANTHROPIC_API_KEY / `ant auth login`) uses the SDK with enforced structured
+outputs, or an authenticated `claude` CLI uses your subscription. The backend
+is picked automatically; force it with SOULS_BACKEND=api|cli. Bare
+`uv run main.py --seed N` still works and means `generate`.
 """
 
 from __future__ import annotations
@@ -18,6 +20,7 @@ from pathlib import Path
 
 from ledger import (Ledger, LedgerError, ensure_geography,
                     render_chronicle, render_codex)
+from witness import ensure_witnesses
 from loregen import (DEFAULT_MODEL, NoCredentials, ask_world, describe_items,
                      elaborate)
 from expand import expand_event
@@ -39,6 +42,7 @@ def _write(args, lg: Ledger):
     d = _world_dir(args)
     d.mkdir(parents=True, exist_ok=True)
     ensure_geography(lg)
+    ensure_witnesses(lg)
     lg.save(d / "ledger.json")
     (d / "chronicle.md").write_text(render_chronicle(lg))
     (d / "codex.md").write_text(render_codex(lg))

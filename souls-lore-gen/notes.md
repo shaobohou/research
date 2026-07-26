@@ -337,3 +337,50 @@ grading only under `--benchmark`.
 Witnesses are pure simulation, so committed ledgers were migrated in place
 without any model call (7–8 witnesses per world). 7,174 checks, 0 failures.
 Untestable here: the two new voice surfaces need a key.
+
+### 2026-07-06 — the backend was the problem, not the credentials
+User asked why earlier work could reach Claude "through the subscription".
+Answer: nothing about the environment changed — I picked the wrong backend.
+`loregen` was built on the `anthropic` SDK (per the claude-api skill), which
+needs an API key; but `/opt/node22/bin/claude` is installed and already
+authenticated, and `claude -p --output-format json` is a perfectly good
+completion backend. My "no offline mode, credentials required" error was
+reporting a limitation of my implementation as if it were the environment's.
+
+What I checked before concluding: `~/.config/anthropic/` (absent), env
+(`ANTHROPIC_BASE_URL` only; no key/token), the agent proxy (`anthropic.com`
+is in `no_proxy`, so API traffic goes direct and the proxy is not in the
+path), and `~/.claude/.credentials.json` (exists, mode 600 — Claude Code's own
+OAuth). I deliberately did not read that file: it is the harness's private
+credential and a subscription is not an API plan. The CLI is the legitimate
+route to the same subscription, since it *is* the product.
+
+`loregen._stream_json` now dispatches to one of two backends:
+  api — SDK, adaptive thinking, real json_schema structured outputs (enforced)
+  cli — `claude -p --system-prompt ... --allowed-tools "" --strict-mcp-config
+        --output-format json`, schema requested in the prompt, envelope parsed,
+        `_extract_json` salvages fenced/preambled output, one stricter retry.
+Selection: SOULS_BACKEND=api|cli, else API if credentials resolve, else CLI.
+
+Cost/latency measured: first CLI call $0.21 (creates a ~35K system-prompt
+cache), subsequent ~$0.016 with cache reads. A 12-item world = one batched
+call, 1m26s. `--exclude-dynamic-system-prompt-sections` breaks the call —
+do not pass it.
+
+First real-prose world: worlds/seed-42 (flame). Two things worth recording:
+  - The epistemic invariants held against genuine model output for the first
+    time — 7,797 checks over 7 worlds, 0 failures, no veil leaked.
+  - Motivated lying partly emerges for free from the `bias` field. The Hollow
+    Crown's false rumour came out as "some say Athara himself struck the
+    gates... that they need not name the sword-hand who turned" — i.e. the
+    model inferred *why* the chroniclers lie. Issue #6 may need less machinery
+    than planned; worth re-scoping before building it.
+  - Witness voice works: a church keeper asserted "The rite worked. I keep the
+    reliquary and I know it... Do not let the histories put doubt in you" —
+    confident, wrong, and pre-emptively defensive against the truth.
+Known rough edge: a distortion can rename the witness's *own* faction, so his
+beliefs disagree about which church he serves. Exclude self-faction from
+distortion targets when convenient.
+
+Also: `main.py _write` now seeds witnesses, so generate/codex produce
+ledgers that satisfy selfcheck without a migration pass.
