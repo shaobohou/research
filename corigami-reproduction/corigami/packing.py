@@ -27,6 +27,8 @@ from __future__ import annotations
 
 import itertools
 import time
+
+import numpy as np
 from dataclasses import dataclass
 
 from .stickfigure import Stick, StickFigure
@@ -179,7 +181,7 @@ def _flap_candidates(flap: Stick, joint: int, base_elev: int, G: int,
 def _pack_pocket(flaps: list[tuple[Stick, int, int]], G: int,
                  pocket: tuple[int, int, int, int],
                  max_solutions: int = 4,
-                 max_nodes: int = 100_000,
+                 max_nodes: int = 200_000,
                  deadline: float | None = None) -> list[list[FlapRegion]]:
     """Backtracking search tiling the pocket exactly with flap balls.
 
@@ -187,57 +189,87 @@ def _pack_pocket(flaps: list[tuple[Stick, int, int]], G: int,
     some flap must cover it — over all remaining flaps' candidates that do.
     Flaps of equal length at the same joint are geometrically interchangeable,
     so only the first unplaced flap of each length is branched on.
+
+    Every region is an axis-aligned rectangle, so overlap and coverage are
+    rectangle arithmetic on an integer coverage grid; materialising each
+    candidate's cell set instead made candidate generation the bottleneck.
     """
     px0, py0, px1, py1 = pocket
-    pocket_cells = [
-        (i, j) for j in range(py0, py1) for i in range(px0, px1)
-    ]
-    if not flaps and pocket_cells:
+    W, H = px1 - px0, py1 - py0
+    if W <= 0 or H <= 0:
+        return [[]] if not flaps else []
+    if not flaps:
         return []
+
     order = sorted(flaps, key=lambda t: -t[0].length)
     cands = [
-        [(c, frozenset(c.cells())) for c in
-         _flap_candidates(f, joint, elev, G, pocket)]
-        for f, joint, elev in order
+        _flap_candidates(f, joint, elev, G, pocket) for f, joint, elev in order
     ]
-    # cheap infeasibility screens before the exact-tiling search
     if any(not cl for cl in cands):
         return []
-    if sum(max(len(cc) for _, cc in cl) for cl in cands) < len(pocket_cells):
+    # Branching always targets the first uncovered cell in row-major order,
+    # and every earlier cell is already covered. A rectangle covering the
+    # target whose corner sits before it would therefore overlap something
+    # already placed — so only rectangles anchored exactly at the target can
+    # be legal, and we index them by that corner.
+    anchored: list[dict[tuple[int, int], list[FlapRegion]]] = []
+    for cl in cands:
+        idx: dict[tuple[int, int], list[FlapRegion]] = {}
+        for c in cl:
+            idx.setdefault((c.rect[0], c.rect[1]), []).append(c)
+        anchored.append(idx)
+    best_area = [
+        max((c.rect[2] - c.rect[0]) * (c.rect[3] - c.rect[1]) for c in cl)
+        for cl in cands
+    ]
+    if sum(best_area) < W * H:
         return []
+
+    cover = np.zeros((W, H), dtype=np.int16)
     solutions: list[list[FlapRegion]] = []
     nodes = 0
 
-    def rec(placed_mask: int, used: frozenset, placed: list[FlapRegion]):
+    def local(c: FlapRegion):
+        x0, y0, x1, y1 = c.rect
+        return x0 - px0, y0 - py0, x1 - px0, y1 - py0
+
+    def rec(placed_mask: int, placed: list[FlapRegion]):
         nonlocal nodes
         nodes += 1
         if len(solutions) >= max_solutions or nodes > max_nodes:
             return
-        if deadline is not None and nodes % 128 == 0 and time.monotonic() > deadline:
+        if (deadline is not None and nodes % 128 == 0
+                and time.monotonic() > deadline):
             return
-        target = next((c for c in pocket_cells if c not in used), None)
-        if target is None:
+
+        free = np.flatnonzero(cover.T.ravel() == 0)
+        if free.size == 0:
             if placed_mask == (1 << len(order)) - 1:
                 solutions.append(list(placed))
             return
+        ti, tj = int(free[0] % W), int(free[0] // W)
+
         seen_lengths = set()
         for fi in range(len(order)):
             if placed_mask & (1 << fi):
                 continue
-            l = order[fi][0].length
-            if l in seen_lengths:
+            length = order[fi][0].length
+            if length in seen_lengths:
                 continue
-            seen_lengths.add(l)
-            for cand, cc in cands[fi]:
-                if target not in cc or (cc & used):
+            seen_lengths.add(length)
+            for cand in anchored[fi].get((ti + px0, tj + py0), ()):
+                x0, y0, x1, y1 = local(cand)
+                if cover[x0:x1, y0:y1].any():
                     continue
+                cover[x0:x1, y0:y1] += 1
                 placed.append(cand)
-                rec(placed_mask | (1 << fi), used | cc, placed)
+                rec(placed_mask | (1 << fi), placed)
                 placed.pop()
+                cover[x0:x1, y0:y1] -= 1
                 if len(solutions) >= max_solutions:
                     return
 
-    rec(0, frozenset(), [])
+    rec(0, [])
     return solutions
 
 

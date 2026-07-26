@@ -173,3 +173,41 @@ model that silently violates isometry.
 
 Result: judge score 0.15 -> 0.52 with zero change to the crease-pattern mathematics.
 Tests 20 -> 32, all passing.
+
+## Praying mantis (2026-07-06)
+
+Asked for a mantis — 8 appendages, the hardest subject attempted. Three things had to change.
+
+**Packer was too slow for >5 flaps.** Profiling showed two costs: materialising a cell *set*
+per candidate placement, and scanning every candidate at every search node. Fixed both:
+regions are axis-aligned rectangles, so overlap/coverage is rectangle arithmetic on an integer
+coverage grid; and — the big one — since branching always targets the first uncovered cell in
+row-major order and every earlier cell is already covered, any rectangle covering the target
+whose corner sits *before* it must overlap something placed. So only rectangles anchored
+exactly at the target can be legal, and they can be indexed by that corner. 8-flap mantis went
+from "minutes, no result" to 8 s; the whole test suite went 105 s -> 10 s.
+
+**Separation heuristic was destroying the pose.** It redistributed same-side flaps evenly over
+[22,140], which spread everything into a starburst regardless of what the stick figure asked
+for. Replaced with a minimum-gap projection: keep each derived angle, only enforce a floor and
+a minimum gap. Semantics preserved.
+
+**Understanding the reachable set.** All hinges in a uniaxial base are parallel and every flap
+initially points the same way along the axis, so a flap's direction is confined to the
+axis-vertical plane and parameterised by delta: 0 = along the body (tail-ward), 90 = straight
+up, 180 = pointing forward. That means (a) ±delta separates mirror pairs *up/down*, not
+left/right, and (b) the head has to swing past 90 to face opposite the abdomen. Once that was
+clear the mantis pose fell out: abdomen 5, head 168, forelegs 140/120, legs -50/-70.
+
+Crucially, pose() takes explicit angles with no mirror constraint, so *both* forelegs can be
+raised to the same side — which is what makes the "praying" posture read at all.
+
+**Bent forelegs via a selective simple fold.** A mantis's signature is the kinked raptorial
+foreleg. Applied simple_fold restricted to the two foreleg flaps, cutting perpendicular to the
+axis at 35% along. This was the open question from the narrowing work — whether a *selective*
+simple fold can avoid pinning the hinges. It can, when the cut is perpendicular to the axis
+and lands inside the flap: +26 creases, base strain 6.2e-16, and it still poses at 7.5e-16.
+(Narrowing failed because its cuts run *parallel* to the axis and therefore cross the hinges.)
+
+Final: grid 12, 18 layers, 273 creases, every interior vertex flat-foldable, posed strain
+7.5e-16. scripts/make_mantis.py reproduces it end to end.
