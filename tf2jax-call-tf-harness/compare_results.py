@@ -4,9 +4,15 @@
 # ///
 """Compare the harness runs and bucket the tf2jax-only failures.
 
+The first argument is the upstream-call_tf baseline; every later argument is a
+``label=path.json`` tf2jax configuration to compare against it.
+
 Usage:
     uv run compare_results.py results/baseline.json \
-        results/tf2jax.json results/tf2jax_compat.json
+        "tf2jax 0.3.8=results/tf2jax.json" \
+        "tf2jax 0.3.8 + skew fixes=results/tf2jax_compat.json" \
+        "tf2jax main=results/tf2jax_main.json" \
+        "tf2jax main + skew fixes=results/tf2jax_main_compat.json"
 """
 
 from __future__ import annotations
@@ -76,15 +82,20 @@ def tally(data: dict[str, dict[str, str]]) -> str:
 
 
 def main(argv: list[str]) -> int:
-  if len(argv) != 4:
+  if len(argv) < 3:
     print(__doc__)
     return 2
-  base, shipped, patched = (outcomes(p) for p in argv[1:4])
+  base = outcomes(argv[1])
+  configs = []
+  for arg in argv[2:]:
+    label, _, path = arg.partition("=")
+    configs.append((label, outcomes(path)))
 
+  width = max(len(label) for label, _ in configs)
   print("=== totals ===")
-  print(f"  upstream call_tf (baseline) : {tally(base)}")
-  print(f"  tf2jax, as shipped          : {tally(shipped)}")
-  print(f"  tf2jax + version-skew fixes : {tally(patched)}")
+  print(f"  {'upstream call_tf (baseline)':<{width}} : {tally(base)}")
+  for label, data in configs:
+    print(f"  {label:<{width}} : {tally(data)}")
   print()
 
   base_failed = {k for k, v in base.items() if v["outcome"] == "failed"}
@@ -94,8 +105,7 @@ def main(argv: list[str]) -> int:
       print(f"  {k.split('::', 1)[-1]}")
     print()
 
-  for label, data in (("tf2jax as shipped", shipped),
-                      ("tf2jax + version-skew fixes", patched)):
+  for label, data in configs:
     regs = {
         k: v for k, v in data.items()
         if v["outcome"] == "failed" and k not in base_failed
@@ -111,13 +121,22 @@ def main(argv: list[str]) -> int:
         print(f"          {msg[:130]}")
     print()
 
-  fixed = sorted(
-      k for k, v in shipped.items()
-      if v["outcome"] == "failed" and patched.get(k, {}).get("outcome") == "passed"
-  )
-  print(f"=== unmasked by the version-skew fixes: {len(fixed)} tests now pass ===")
-  for k in fixed:
-    print(f"  {k.split('::', 1)[-1]}")
+  # Pairwise deltas between consecutive configurations, so the effect of each
+  # change (skew fixes, tf2jax version) is visible on its own.
+  for (prev_label, prev), (label, cur) in zip(configs, configs[1:]):
+    gained = sorted(
+        k for k, v in cur.items()
+        if v["outcome"] == "passed" and prev.get(k, {}).get("outcome") == "failed")
+    lost = sorted(
+        k for k, v in cur.items()
+        if v["outcome"] == "failed" and prev.get(k, {}).get("outcome") == "passed")
+    print(f"=== {prev_label!r} -> {label!r}: "
+          f"+{len(gained)} pass, -{len(lost)} pass ===")
+    for k in gained:
+      print(f"  now passing: {k.split('::', 1)[-1]}")
+    for k in lost:
+      print(f"  now failing: {k.split('::', 1)[-1]}")
+    print()
   return 0
 
 

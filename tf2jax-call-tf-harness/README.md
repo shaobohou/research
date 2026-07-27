@@ -17,50 +17,68 @@ and points jax's own `call_tf_test.py` (163 tests) at it unchanged, to find out
 which of `call_tf`'s contracts a graph-level converter can honour.
 
 **Result: 116 of the 146 runnable tests pass on tf2jax.** The 30 that fail
-split cleanly into version-skew bugs, three genuine architectural gaps, and a
+split cleanly into three genuine architectural gaps, an ecosystem bug, and a
 tail of error-reporting differences.
+
+Both the released tf2jax (0.3.8) and current main were measured. They land on
+the *same* 116/30, but for different reasons — see finding 1.
 
 | configuration | passed | failed | skipped |
 | --- | --- | --- | --- |
 | upstream `call_tf` (baseline) | 145 | 1 | 17 |
-| tf2jax, as shipped | 87 | 59 | 17 |
-| tf2jax + version-skew fixes | 116 | 30 | 17 |
+| tf2jax 0.3.8 (PyPI) | 87 | 59 | 17 |
+| tf2jax 0.3.8 + skew fixes | 116 | 30 | 17 |
+| tf2jax main (`567b347`) | 87 | 59 | 17 |
+| tf2jax main + warning downgrade only | 116 | 30 | 17 |
+| tf2jax main + all skew fixes | 116 | 30 | 17 |
 
 The single baseline failure (`test_multi_platform`) is a CPU-only-machine
 artifact and is excluded from every comparison.
 
 ## Key findings
 
-### 1. tf2jax 0.3.8 is broken against jax 0.11.0, and it masks everything else
+### 1. A single blocker masks everything else — and on main it is only a warning
 
-Out of the box, **32 of the 59 failures are one bug**. tf2jax's
-`XlaCallModule` parser (`tf2jax/experimental/ops.py`) does:
+In both tf2jax versions, **32 of the 59 failures are one issue**, hitting every
+jax→TF→jax round-trip. But the issue is not the same one.
+
+**On tf2jax 0.3.8 (PyPI, Aug 2025) it is a hard break.** The `XlaCallModule`
+parser (`tf2jax/experimental/ops.py`) does:
 
 ```python
 mhlo_text = jex.mlir.deserialize_portable_artifact(proto.attr["module"].s)
 ```
 
-Two things about that call changed in jax since tf2jax 0.3.8 (Aug 2025): it now
-requires an MLIR `Context` in the surrounding environment, and it returns an
-`ir.Module` rather than a `str`. Without a context it raises:
+Two things about that call changed in jax since: it now requires an MLIR
+`Context` in the surrounding environment, and it returns an `ir.Module` rather
+than a `str`. Without a context:
 
 ```
 RuntimeError: An MLIR function requires a Context but none was provided in the
 call or from the surrounding environment.
 ```
 
-`XlaCallModule` is what `jax2tf.convert` emits under native serialization, so
-this breaks *every* jax→TF→jax round-trip. Two more skew items sit behind it:
+A second break sits behind it: `mlir.aval_to_ir_type(aval)` is now
+`aval_to_ir_type(ctx, aval)`.
 
-- `mlir.aval_to_ir_type(aval)` → now `aval_to_ir_type(ctx, aval)`;
-- `mlir.flatten_ir_values` is deprecated (still functional, but jax's own
-  pytest config escalates the warning to an error).
+**On tf2jax main (`567b347`, Jul 2026) both are already fixed.** The
+deserialize call is wrapped in `with mlir.make_ir_context():` and handles both
+return types, and `aval_to_ir_type` is version-gated behind
+`jax.__version_info__ >= (0, 10, 1)`, building the type via
+`ir.RankedTensorType.get` instead — the same approach this harness's compat
+shim took.
 
-`tf2jax_compat.py` patches past all three. **Fixing them turns 29 failures into
-passes** — including all the round-trip and saved-model tests. This is the
-single highest-value fix for tf2jax, and it is not a design limitation.
+What still blocks those 32 tests on main is only that `mhlo.py` calls
+`mlir.flatten_ir_values`, which is **deprecated but functional**. It is fatal
+here solely because jax's own pytest config escalates warnings to errors.
 
-A fourth skew item is not tf2jax's fault: `test_dtypes_{float16,bfloat16}` fail
+The decisive measurement: on main, downgrading *only* that warning and applying
+**no API patches at all** gives 116 passed / 30 failed — identical to applying
+every patch. So tf2jax main needs no compatibility fixes against jax 0.11.0;
+it needs one deprecated call updated before jax removes it.
+
+A separate ecosystem item, present in both tf2jax versions and not tf2jax's
+fault: `test_dtypes_{float16,bfloat16}` fail
 inside **TensorFlow 2.21's** `tensor_util.MakeNdarray`, which still assigns to
 `ndarray.dtype` — deprecated in NumPy 2.5. tf2jax reaches it when constant-folding
 half-precision constants; upstream `call_tf` never calls it, so it never trips.
@@ -115,9 +133,10 @@ tf2jax either raises a different one or succeeds where TF would have refused:
   structure so only the middle differs; raises rather than papering over gaps.
 - [`tf2jax_plugin.py`](tf2jax_plugin.py) — pytest plugin that rebinds
   `jax2tf.call_tf` to the shim.
-- [`tf2jax_compat.py`](tf2jax_compat.py) — opt-in patches for the three
-  tf2jax↔jax 0.11 API breaks, so "as shipped" and "skew fixed" are measurable
-  separately.
+- [`tf2jax_compat.py`](tf2jax_compat.py) — opt-in patches for the tf2jax↔jax
+  0.11 API breaks, so "as shipped" and "skew fixed" are measurable separately.
+  `TF2JAX_COMPAT=warnings` applies only the DeprecationWarning downgrade and
+  none of the API patches, which is what isolates finding 1 on main.
 - [`report_plugin.py`](report_plugin.py) — dumps per-test outcomes to JSON
   (`-rf` gives no message for unittest-style failures).
 - [`compare_results.py`](compare_results.py) — diffs the runs and buckets
@@ -138,6 +157,10 @@ git fetch --depth 1 origin tag jax-v0.11.0 && git checkout jax-v0.11.0
 uv venv --python 3.12 venv
 VIRTUAL_ENV=$PWD/venv uv pip install 'jax[cpu]==0.11.0' tensorflow-cpu==2.21.0 tf2jax pytest
 
+# for the tf2jax-main runs, replace the released wheel with a git checkout
+git clone --depth 1 https://github.com/google-deepmind/tf2jax.git ../tf2jax-src
+VIRTUAL_ENV=$PWD/venv uv pip install --no-deps ../tf2jax-src
+
 HARNESS=/path/to/tf2jax-call-tf-harness
 export PYTHONPATH=$PWD:$HARNESS JAX_PLATFORMS=cpu
 
@@ -147,6 +170,8 @@ python -m pytest jax/experimental/jax2tf/tests/call_tf_test.py -q
 python -m pytest jax/experimental/jax2tf/tests/call_tf_test.py -q -p tf2jax_plugin
 # tf2jax with the version-skew fixes
 python -m pytest jax/experimental/jax2tf/tests/call_tf_test.py -q -p tf2jax_plugin -p tf2jax_compat
+# tf2jax main, deprecation downgrade only (no API patches)
+TF2JAX_COMPAT=warnings python -m pytest jax/experimental/jax2tf/tests/call_tf_test.py -q -p tf2jax_plugin -p tf2jax_compat
 ```
 
 Pinning to the `jax-v0.11.0` tag matters: the checkout supplies both `jax` and
@@ -154,8 +179,12 @@ the test file, while `jaxlib` comes from PyPI, and the two must agree.
 
 ## Next steps
 
-- File the `deserialize_portable_artifact` / `aval_to_ir_type` breakage
-  upstream against tf2jax — it is three lines and unblocks 29 tests.
+- The `deserialize_portable_artifact` / `aval_to_ir_type` breakage is **already
+  fixed on tf2jax main** — it only needs a release. Anyone on the 0.3.8 PyPI
+  wheel with a recent jax should install from git.
+- Replace `mlir.flatten_ir_values` in `tf2jax/experimental/mhlo.py` with
+  `mlir.ir_tree_registry.flatten`. It works today but is deprecated, and it is
+  the last thing standing between tf2jax main and the round-trip tests.
 - The half-precision `MakeNdarray` failure is a TF 2.21 × NumPy 2.5 bug worth
   reporting to TensorFlow separately.
 - If `call_tf` semantics are actually wanted from tf2jax, the effects gap is the

@@ -1,0 +1,553 @@
+{
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=bfloat16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=bool": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=complex128": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=complex64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int8": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint8": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_bool_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_bool_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_control_flow_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_control_flow_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16": {
+  "outcome": "failed",
+  "reason": "Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)",
+  "traceback": "E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.\n    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16_jit": {
+  "outcome": "failed",
+  "reason": "Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)",
+  "traceback": "E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.\n    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_complex64": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_complex64_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16": {
+  "outcome": "failed",
+  "reason": "Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)",
+  "traceback": "E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.\n    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16_jit": {
+  "outcome": "failed",
+  "reason": "Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)",
+  "traceback": "E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.\n    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int8": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int8_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint8": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint8_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_effectful": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: [] has length of 0.",
+  "traceback": "E   AssertionError: [] has length of 0."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_string": {
+  "outcome": "failed",
+  "reason": "E   TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and was passed to stage at position 0.",
+  "traceback": "E   TypeError: Dtype object is not a valid JAX array type. Only arrays of numeric types are supported by JAX.\n\nThe above exception was the direct cause of the following exception:\nE   TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and was passed to stage at position 0."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_tensorarray": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: \"The called TF function returns a result that is not convertible to JAX\" does not match \"`tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>.\"",
+  "traceback": "ValueError: `tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>.\n\nDuring handling of the above exception, another exception occurred:\nE   AssertionError: \"The called TF function returns a result that is not convertible to JAX\" does not match \"`tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>.\""
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_dynamic_shape": {
+  "outcome": "failed",
+  "reason": "Revise true_fun and/or false_fun so that all output types match.",
+  "traceback": "E   TypeError: cond branches must have equal output types but they differ.\n    \n    true_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1114\n    false_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1115\n    \n    The output of true_fun at path [0] has type bool[1] but the corresponding output of false_fun has type bool[2], so the shapes do not match.\n    \n    Revise true_fun and/or false_fun so that all output types match."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_strings": {
+  "outcome": "failed",
+  "reason": "Support for additional TensorFlow ops are added on an as-needed basis, please contact the library owner(s).",
+  "traceback": "E   ValueError: Unsupported operations in graph: ['StringLength', 'StringFormat']\n    Support for additional TensorFlow ops are added on an as-needed basis, please contact the library owner(s)."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=False": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: AssertionError not raised",
+  "traceback": "E   AssertionError: AssertionError not raised"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=True": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: AssertionError not raised",
+  "traceback": "E   AssertionError: AssertionError not raised"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_arg_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_arg_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_res_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_res_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_pytree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_pytree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_arg_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_arg_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_res_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_res_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_experimental_get_compiler_ir_design_doc": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_function_compile_time_constant_inputs": {
+  "outcome": "failed",
+  "reason": "See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError",
+  "traceback": "E   jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].\n    The error occurred while tracing the function fun_tf at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py:573 for jit. This concrete value was not available in Python because it depends on the value of the argument x.\n    See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_custom_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_custom_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_int_argument": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_int_argument_unused": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_nested": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_pytree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_pytree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_float0_result": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=1": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=1_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=2": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=2_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=3": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=3_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=4": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=4_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_module_documentation": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform_call_tf_graph": {
+  "outcome": "passed",
+  "reason": "Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   tensorflow.python.autograph.impl.api.StagingError: in user code:\n    \n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/jax2tf.py\", line 291, in converted_fun_tf  *\n            impl.before_conversion()\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/jax2tf.py\", line 361, in before_conversion  *\n            self.exported = _export._export_internal(\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py\", line 314, in reraise_with_filtered_traceback  *\n            return fun(*args, **kwargs)  # pyrefly: ignore[not-callable]\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py\", line 312, in jit_trace  *\n            p, args_flat = _infer_params(jit_func._fun, jit_func._jit_info, args, kwargs)\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py\", line 652, in _infer_params  *\n            p = _trace_for_jit(fun, ji, ctx_mesh, dbg_fn(), avals, args, kwargs)\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py\", line 554, in _trace_for_jit  *\n            jaxpr, out_avals = pe.trace_to_jaxpr(fun, in_type, dbg, qdd_token)\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2329, in trace_to_jaxpr  **\n            return trace_to_jaxpr_nocache(\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2290, in trace_to_jaxpr_nocache\n            ans_pytree = fun(*args, **kwargs)\n        File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py\", line 796, in f_jax\n            return jnp.cos(jax2tf.call_tf(tf_fun,\n        File \"/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py\", line 71, in call_tf\n            raise Tf2JaxUnsupported(\n    \n        Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_output_shape_dtype_none": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_output_shape_dtype_not_none": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_pmap": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_repro_193754660": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_result_tuple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_tf_gather": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_capture_then_convert_again": {
+  "outcome": "failed",
+  "reason": "E   ValueError: Unable to to evaluate variables inside a TF tracing context, and `skip_variables_evaluation_inside_tf_tracing` is False.",
+  "traceback": "E   ValueError: Unable to to evaluate variables inside a TF tracing context, and `skip_variables_evaluation_inside_tf_tracing` is False."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_multiple_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_multiple_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_value_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_value_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_different_shape": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_write_error_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_write_error_with_jit=True": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_input_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_input_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_output_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_output_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_bfloat16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_float16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_float32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_call_tf_under_function_context": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_complex_input_gradient_complex64": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_custom_grad": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_custom_grad_saved_model": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_grad_pytree_arg_with_none_leaf": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_pytree": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_no_gradients": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: TypeError not raised",
+  "traceback": "E   AssertionError: TypeError not raised"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_shape_poly": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: 0 != 1",
+  "traceback": "E   AssertionError: 0 != 1"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_simple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_variables": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_shape_poly": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_simple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_without_gradient_saved_model": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: \"Gradient explicitly disabled.*jax2tf-converted function does not support gradients. Use `with_gradient` parameter to enable gradients\" does not match \"Differentiation rule for 'mhlo_apply' not implemented\"",
+  "traceback": "NotImplementedError: Differentiation rule for 'mhlo_apply' not implemented\n\nDuring handling of the above exception, another exception occurred:\nE   AssertionError: \"Gradient explicitly disabled.*jax2tf-converted function does not support gradients. Use `with_gradient` parameter to enable gradients\" does not match \"Differentiation rule for 'mhlo_apply' not implemented\""
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_alternate": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_b279454591": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_multiple_outputs": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_zero_outputs": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_ordered_version_9": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_False_version_9": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_True_version_9": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_save_and_load": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_False_version_9": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_True_version_9": {
+  "outcome": "failed",
+  "reason": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.",
+  "traceback": "E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_function_dynamic_shape": {
+  "outcome": "failed",
+  "reason": "Revise true_fun and/or false_fun so that all output types match.",
+  "traceback": "E   TypeError: cond branches must have equal output types but they differ.\n    \n    true_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1114\n    false_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1115\n    \n    The output of true_fun at path [0] has type int32[3] but the corresponding output of false_fun has type int32[2], so the shapes do not match.\n    \n    Revise true_fun and/or false_fun so that all output types match."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_saved_model": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_saved_model_polymorphic_input_static_output": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=False": {
+  "outcome": "failed",
+  "reason": "E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).",
+  "traceback": "E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,)."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=True": {
+  "outcome": "failed",
+  "reason": "E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).",
+  "traceback": "E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,)."
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_rank_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_rank_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_tree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_tree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=False": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: ValueError not raised",
+  "traceback": "E   AssertionError: ValueError not raised"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=True": {
+  "outcome": "failed",
+  "reason": "E   AssertionError: ValueError not raised",
+  "traceback": "E   AssertionError: ValueError not raised"
+ }
+}

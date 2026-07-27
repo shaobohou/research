@@ -25,6 +25,8 @@ fixed" separately.
 
 from __future__ import annotations
 
+import os
+
 import jax.extend as jex
 from jax._src.interpreters import mlir
 from jax._src.lib.mlir import ir
@@ -65,6 +67,14 @@ _MLIR_MODULES = (mlir, public_mlir)
 
 
 def enable():
+  """Apply the API patches.
+
+  ``TF2JAX_COMPAT=warnings`` applies none of them, leaving only the
+  DeprecationWarning downgrade installed by ``pytest_configure``. tf2jax main
+  has already fixed both API breaks, so that mode measures what is left.
+  """
+  if os.environ.get("TF2JAX_COMPAT") == "warnings":
+    return
   jex.mlir.deserialize_portable_artifact = _deserialize_portable_artifact_compat
   for mod in _MLIR_MODULES:
     mod.aval_to_ir_type = _aval_to_ir_type_compat

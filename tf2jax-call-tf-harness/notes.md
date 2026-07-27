@@ -15,7 +15,7 @@ Pinned to a released jax so the checkout and the installed `jaxlib` agree:
 | jax (source checkout, tag `jax-v0.11.0`, commit `a152174`) | 0.11.0 |
 | jaxlib (PyPI) | 0.11.0 |
 | tensorflow-cpu | 2.21.0 |
-| tf2jax | 0.3.8 (requires jax>=0.7.1) |
+| tf2jax | 0.3.8 (PyPI) **and** main `567b347` (2026-07-05) |
 | python | 3.12 |
 
 - jax repo HEAD was 0.11.1.dev, PyPI latest was 0.11.0 → checked out the
@@ -87,8 +87,11 @@ comparison below.
 | configuration | passed | failed | skipped |
 | --- | --- | --- | --- |
 | upstream `call_tf` (baseline) | 145 | 1 | 17 |
-| tf2jax, as shipped | 87 | 59 | 17 |
-| tf2jax + version-skew fixes | 116 | 30 | 17 |
+| tf2jax 0.3.8 (PyPI) | 87 | 59 | 17 |
+| tf2jax 0.3.8 + skew fixes | 116 | 30 | 17 |
+| tf2jax main (`567b347`) | 87 | 59 | 17 |
+| tf2jax main + warning downgrade only | 116 | 30 | 17 |
+| tf2jax main + all skew fixes | 116 | 30 | 17 |
 
 See README.md for the analysis; raw logs, per-test JSON and `summary.txt` in
 `results/`.
@@ -143,3 +146,32 @@ though JAX does the differentiating.
   no message on the `FAILED` line, so the whole bucket-by-cause analysis came
   out empty. Wrote `report_plugin.py` to pull the exception off the report
   object instead.
+
+## Follow-up: tf2jax main HEAD
+
+Re-ran everything against a git checkout of tf2jax main (`567b347`, 2026-07-05)
+with jax still pinned to `jax-v0.11.0`, so tf2jax was the only variable.
+
+Same headline numbers (59 as-shipped, 30 with the warning handled), but the
+cause of the 32-test blocker is different, and the conclusion changes:
+
+- The two hard API breaks I reported against 0.3.8 are **already fixed on
+  main**: the deserialize call is wrapped in `with mlir.make_ir_context():` and
+  handles the `ir.Module` return, and `aval_to_ir_type` is version-gated behind
+  `jax.__version_info__ >= (0, 10, 1)` using `ir.RankedTensorType.get` — the
+  same fix my compat shim had arrived at independently.
+- What remains on main is `mlir.flatten_ir_values` in `mhlo.py`: deprecated but
+  functional, fatal only because jax's pytest config escalates warnings.
+
+Decisive check: added `TF2JAX_COMPAT=warnings` to the compat plugin, which
+downgrades the DeprecationWarning and applies **no** API patches. On main that
+gives 116/30 — byte-identical outcomes to applying every patch. So tf2jax main
+needs no compatibility fix against jax 0.11.0 at all.
+
+The residual 30 failures are the *same tests* on 0.3.8 and main. One message
+changed: `test_with_capture_then_convert_again` now fails with a deliberate
+`Unable to evaluate variables inside a TF tracing context, and
+`skip_variables_evaluation_inside_tf_tracing` is False` instead of a raw
+`TypeError`. Tried enabling that new config flag; it does not fix the test,
+just moves the error to `Some parameters are missing, ['Variable']` (my shim
+passes conversion-time params, which that path leaves empty). Left as-is.
