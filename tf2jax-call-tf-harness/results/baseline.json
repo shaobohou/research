@@ -1,0 +1,493 @@
+{
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=bfloat16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=bool": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=complex128": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=complex64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=float64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=int8": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint16": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint32": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint64": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_avoid_copy_between_gpu_and_cpu_type=uint8": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_bool_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_bool_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_control_flow_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_control_flow_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_complex64": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_complex64_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int8": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_int8_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint16_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint32_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint8": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_uint8_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_effectful": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_string": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_tensorarray": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_dynamic_shape": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_strings": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_arg_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_arg_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_res_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_numpy_res_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_pytree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_pytree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_arg_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_arg_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_res_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_scalar_res_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_experimental_get_compiler_ir_design_doc": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_function_compile_time_constant_inputs": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_custom_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_custom_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_int_argument": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_int_argument_unused": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_nested": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_pytree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_pytree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_float0_result": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_grad_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=1": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=1_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=2": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=2_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=3": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=3_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=4": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_higher_order_grad_degree=4_jit": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_module_documentation": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform": {
+  "outcome": "failed",
+  "reason": "tf2xla conversion failed while converting __inference_callable_flat_tf_2557[]. Run with TF_DUMP_GRAPH_PREFIX=/path/to/dump/dir and --vmodule=xla_compiler=2 to obtain a dump of the compiled functions.'",
+  "traceback": "arch/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py\", line 554, in _trace_for_jit\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2329, in trace_to_jaxpr\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2290, in trace_to_jaxpr_nocache\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py\", line 759, in f_jax\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py\", line 195, in reraise_with_filtered_traceback\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py\", line 767, in __call__\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py\", line 727, in bind\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py\", line 1019, in bind_with_trace\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2047, in process_custom_vjp_call\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/profiler.py\", line 420, in wrapper\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 2361, in trace_to_jaxpr_dynamic\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/linear_util.py\", line 212, in call_wrapped\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py\", line 105, in _flatten_fun_nokwargs\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py\", line 777, in _check_primal_refs\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py\", line 204, in make_call\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py\", line 727, in bind\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py\", line 735, in bind_with_trace\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 1911, in process_primitive\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 1926, in default_process_primitive\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py\", line 1726, in _cached_abstract_eval\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py\", line 440, in _call_tf_abstract_eval\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py\", line 389, in _get_concrete_function_tf\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py\", line 156, in callable_flat_tf\n    File \"/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py\", line 756, in tf_fun\n    \ttf2xla conversion failed while converting __inference_callable_flat_tf_2557[]. Run with TF_DUMP_GRAPH_PREFIX=/path/to/dump/dir and --vmodule=xla_compiler=2 to obtain a dump of the compiled functions.'"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform_call_tf_graph": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_output_shape_dtype_none": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_output_shape_dtype_not_none": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_pmap": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_repro_193754660": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_result_tuple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_tf_gather": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_capture_then_convert_again": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_multiple_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_multiple_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_tensor_capture_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_value_capture_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_value_capture_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_different_shape": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_read_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_write_error_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_var_write_error_with_jit=True": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_input_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_input_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_output_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_x64_output_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_bfloat16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_float16": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_all_floating_input_gradient_float32": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_call_tf_under_function_context": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_complex_input_gradient_complex64": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_custom_grad": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_custom_grad_saved_model": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_grad_pytree_arg_with_none_leaf": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_pytree": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_no_gradients": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_shape_poly": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_simple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_variables": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_shape_poly": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_simple": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_without_gradient_saved_model": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_alternate": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_b279454591": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_multiple_outputs": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_zero_outputs": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_ordered_version_9": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_False_version_9": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_True_version_9": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_save_and_load": {
+  "outcome": "skipped"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_False_version_9": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_True_version_9": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_function_dynamic_shape": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_saved_model": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_saved_model_polymorphic_input_static_output": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_x64_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dtype_x64_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_rank_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_rank_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_tree_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_tree_with_jit=True": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=False": {
+  "outcome": "passed"
+ },
+ "jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=True": {
+  "outcome": "passed"
+ }
+}

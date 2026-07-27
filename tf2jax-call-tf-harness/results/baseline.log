@@ -1,0 +1,219 @@
+sssssssssssssss......................................................... [ 44%]
+.....F......................s............................s............. [ 87%]
+....................                                                     [100%]
+=================================== FAILURES ===================================
+E   ValueError: Failed getting HLO text: 'Detected unsupported operations when trying to compile graph __inference_callable_flat_tf_2557[] on XLA_TPU_JIT: Sin (No registered 'Sin' OpKernel for XLA_TPU_JIT devices compatible with node {{node Sin}}){{node Sin}}
+    One approach is to outside compile the unsupported ops to run on CPUs by enabling soft placement `tf.config.set_soft_device_placement(True)`. This has a potential performance penalty.
+    
+    The op is created at: 
+    File "<frozen runpy>", line 198, in _run_module_as_main
+    File "<frozen runpy>", line 88, in _run_code
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pytest/__main__.py", line 9, in <module>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 253, in _console_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 229, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 377, in pytest_cmdline_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 330, in wrap_session
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 384, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 408, in pytest_runtestloop
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 118, in pytest_runtest_protocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 139, in runtestprotocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 249, in call_and_report
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 361, in from_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 250, in <lambda>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 184, in pytest_runtest_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/unittest.py", line 410, in runtest
+    File "/usr/lib/python3.12/unittest/case.py", line 690, in __call__
+    File "/usr/lib/python3.12/unittest/case.py", line 634, in run
+    File "/usr/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 779, in test_multi_platform
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/export/_export.py", line 651, in do_export
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 312, in jit_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 652, in _infer_params
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 554, in _trace_for_jit
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2329, in trace_to_jaxpr
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2290, in trace_to_jaxpr_nocache
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 759, in f_jax
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 767, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 1019, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2047, in process_custom_vjp_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/profiler.py", line 420, in wrapper
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2361, in trace_to_jaxpr_dynamic
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/linear_util.py", line 212, in call_wrapped
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 105, in _flatten_fun_nokwargs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 777, in _check_primal_refs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 204, in make_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 735, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1911, in process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1926, in default_process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1726, in _cached_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 440, in _call_tf_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 389, in _get_concrete_function_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 156, in callable_flat_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 756, in tf_fun
+    	tf2xla conversion failed while converting __inference_callable_flat_tf_2557[]. Run with TF_DUMP_GRAPH_PREFIX=/path/to/dump/dir and --vmodule=xla_compiler=2 to obtain a dump of the compiled functions.'
+
+The above exception was the direct cause of the following exception:
+E   jax._src.source_info_util.JaxStackTraceBeforeTransformation: ValueError: Error compiling TensorFlow function (see below for the caught exception).
+    call_tf can used in a staged context (under jax.jit, lax.scan, etc.) only with compilable functions with static output shapes.
+    See https://github.com/jax-ml/jax/blob/main/jax/experimental/jax2tf/README.md#limitations-of-call_tf for a discussion.
+    
+    Caught TensorFlow exception: Failed getting HLO text: 'Detected unsupported operations when trying to compile graph __inference_callable_flat_tf_2557[] on XLA_TPU_JIT: Sin (No registered 'Sin' OpKernel for XLA_TPU_JIT devices compatible with node {{node Sin}}){{node Sin}}
+    One approach is to outside compile the unsupported ops to run on CPUs by enabling soft placement `tf.config.set_soft_device_placement(True)`. This has a potential performance penalty.
+    
+    The op is created at: 
+    File "<frozen runpy>", line 198, in _run_module_as_main
+    File "<frozen runpy>", line 88, in _run_code
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pytest/__main__.py", line 9, in <module>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 253, in _console_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 229, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 377, in pytest_cmdline_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 330, in wrap_session
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 384, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 408, in pytest_runtestloop
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 118, in pytest_runtest_protocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 139, in runtestprotocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 249, in call_and_report
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 361, in from_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 250, in <lambda>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 184, in pytest_runtest_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/unittest.py", line 410, in runtest
+    File "/usr/lib/python3.12/unittest/case.py", line 690, in __call__
+    File "/usr/lib/python3.12/unittest/case.py", line 634, in run
+    File "/usr/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 779, in test_multi_platform
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/export/_export.py", line 651, in do_export
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 312, in jit_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 652, in _infer_params
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 554, in _trace_for_jit
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2329, in trace_to_jaxpr
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2290, in trace_to_jaxpr_nocache
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 759, in f_jax
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 767, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 1019, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2047, in process_custom_vjp_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/profiler.py", line 420, in wrapper
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2361, in trace_to_jaxpr_dynamic
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/linear_util.py", line 212, in call_wrapped
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 105, in _flatten_fun_nokwargs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 777, in _check_primal_refs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 204, in make_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 735, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1911, in process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1926, in default_process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1726, in _cached_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 440, in _call_tf_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 389, in _get_concrete_function_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 156, in callable_flat_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 756, in tf_fun
+    	tf2xla conversion failed while converting __inference_callable_flat_tf_2557[]. Run with TF_DUMP_GRAPH_PREFIX=/path/to/dump/dir and --vmodule=xla_compiler=2 to obtain a dump of the compiled functions.'
+    
+    The preceding stack trace is the source of the JAX operation that, once transformed by JAX, triggered the following exception.
+    
+    --------------------
+
+The above exception was the direct cause of the following exception:
+E   ValueError: Error compiling TensorFlow function (see below for the caught exception).
+    call_tf can used in a staged context (under jax.jit, lax.scan, etc.) only with compilable functions with static output shapes.
+    See https://github.com/jax-ml/jax/blob/main/jax/experimental/jax2tf/README.md#limitations-of-call_tf for a discussion.
+    
+    Caught TensorFlow exception: Failed getting HLO text: 'Detected unsupported operations when trying to compile graph __inference_callable_flat_tf_2557[] on XLA_TPU_JIT: Sin (No registered 'Sin' OpKernel for XLA_TPU_JIT devices compatible with node {{node Sin}}){{node Sin}}
+    One approach is to outside compile the unsupported ops to run on CPUs by enabling soft placement `tf.config.set_soft_device_placement(True)`. This has a potential performance penalty.
+    
+    The op is created at: 
+    File "<frozen runpy>", line 198, in _run_module_as_main
+    File "<frozen runpy>", line 88, in _run_code
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pytest/__main__.py", line 9, in <module>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 253, in _console_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 229, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 377, in pytest_cmdline_main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 330, in wrap_session
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 384, in _main
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/main.py", line 408, in pytest_runtestloop
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 118, in pytest_runtest_protocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 139, in runtestprotocol
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 249, in call_and_report
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 361, in from_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 250, in <lambda>
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121, in _multicall
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/runner.py", line 184, in pytest_runtest_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/_pytest/unittest.py", line 410, in runtest
+    File "/usr/lib/python3.12/unittest/case.py", line 690, in __call__
+    File "/usr/lib/python3.12/unittest/case.py", line 634, in run
+    File "/usr/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 779, in test_multi_platform
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/export/_export.py", line 651, in do_export
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 312, in jit_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 652, in _infer_params
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 554, in _trace_for_jit
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2329, in trace_to_jaxpr
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2290, in trace_to_jaxpr_nocache
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 759, in f_jax
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 195, in reraise_with_filtered_traceback
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 767, in __call__
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 1019, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2047, in process_custom_vjp_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/profiler.py", line 420, in wrapper
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2361, in trace_to_jaxpr_dynamic
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/linear_util.py", line 212, in call_wrapped
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 105, in _flatten_fun_nokwargs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/custom_derivatives.py", line 777, in _check_primal_refs
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 204, in make_call
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 727, in bind
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py", line 735, in bind_with_trace
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1911, in process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1926, in default_process_primitive
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 1726, in _cached_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 440, in _call_tf_abstract_eval
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 389, in _get_concrete_function_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py", line 156, in callable_flat_tf
+    File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 756, in tf_fun
+    	tf2xla conversion failed while converting __inference_callable_flat_tf_2557[]. Run with TF_DUMP_GRAPH_PREFIX=/path/to/dump/dir and --vmodule=xla_compiler=2 to obtain a dump of the compiled functions.'
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/call_tf.py:599: ValueError: Error compiling TensorFlow function (see below for the caught exception).
+=========================== short test summary info ============================
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform
+1 failed, 145 passed, 17 skipped, 1 subtests passed in 34.87s

@@ -1,0 +1,250 @@
+=== totals ===
+  upstream call_tf (baseline) : 145 passed, 1 failed, 17 skipped
+  tf2jax, as shipped          : 87 passed, 59 failed, 17 skipped
+  tf2jax + version-skew fixes : 116 passed, 30 failed, 17 skipped
+
+baseline failures (excluded from every comparison below):
+  CallTfTest::test_multi_platform
+
+=== tf2jax as shipped: 59 failures not present at baseline ===
+
+  [32] jax API skew (MLIR context)
+      CallTfTest::test_grad_int_argument_unused
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      CallTfTest::test_repro_193754660
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_all_floating_input_gradient_bfloat16
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_all_floating_input_gradient_float16
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_all_floating_input_gradient_float32
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_complex_input_gradient_complex64
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_custom_grad
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_custom_grad_saved_model
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_pytree
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_saved_model_no_gradients
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_saved_model_shape_poly
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_saved_model_simple
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_saved_model_variables
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_shape_poly
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_simple
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToJaxTest::test_without_gradient_saved_model
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=False
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+      RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=True
+          E   RuntimeError: An MLIR function requires a Context but none was provided in the call or from the surrounding environment. Eithe
+
+  [9] call_tf_graph unsupported
+      RoundTripToTfTest::test_b279454591
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_non_compilable_multiple_outputs
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_non_compilable_zero_outputs
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_ordered_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_False_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_True_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_False_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_True_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+
+  [4] numpy 2.5 skew via TF MakeNdarray
+      CallTfTest::test_dtypes_bfloat16
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_bfloat16_jit
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_float16
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_float16_jit
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+
+  [4] shape polymorphism
+      CallTfTest::test_error_non_compilable_dynamic_shape
+          Revise true_fun and/or false_fun so that all output types match.
+      RoundTripToTfTest::test_function_dynamic_shape
+          Revise true_fun and/or false_fun so that all output types match.
+      RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=False
+          E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+      RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=True
+          E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+
+  [4] error contract not reproduced
+      CallTfTest::test_eval_devicearray_arg_with_jit=False
+          E   AssertionError: AssertionError not raised
+      CallTfTest::test_eval_devicearray_arg_with_jit=True
+          E   AssertionError: AssertionError not raised
+      RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=False
+          E   AssertionError: ValueError not raised
+      RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=True
+          E   AssertionError: ValueError not raised
+
+  [3] other
+      CallTfTest::test_error_bad_result_string
+          E   TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and w
+      CallTfTest::test_function_compile_time_constant_inputs
+          See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError
+      CallTfTest::test_with_capture_then_convert_again
+          E   TypeError: 'inputs' should be zero or more (nested) Tensors. Received 'None' with type '<class 'NoneType'>'.
+
+  [2] tf2jax op coverage
+      CallTfTest::test_error_bad_result_tensorarray
+          E   AssertionError: "The called TF function returns a result that is not convertible to JAX" does not match "`tensor` should be a 
+      CallTfTest::test_error_non_compilable_strings
+          Support for additional TensorFlow ops are added on an as-needed basis, please contact the library owner(s).
+
+  [1] effects dropped (has_side_effects/ordered)
+      CallTfTest::test_effectful
+          E   AssertionError: [] has length of 0.
+
+=== tf2jax + version-skew fixes: 30 failures not present at baseline ===
+
+  [9] call_tf_graph unsupported
+      RoundTripToTfTest::test_b279454591
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_non_compilable_multiple_outputs
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_non_compilable_zero_outputs
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_ordered_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_False_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_True_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_False_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+      RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_True_version_9
+          E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there
+
+  [6] error contract not reproduced
+      CallTfTest::test_eval_devicearray_arg_with_jit=False
+          E   AssertionError: AssertionError not raised
+      CallTfTest::test_eval_devicearray_arg_with_jit=True
+          E   AssertionError: AssertionError not raised
+      RoundTripToJaxTest::test_saved_model_no_gradients
+          E   AssertionError: TypeError not raised
+      RoundTripToJaxTest::test_without_gradient_saved_model
+          E   AssertionError: "Gradient explicitly disabled.*jax2tf-converted function does not support gradients. Use `with_gradient` param
+      RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=False
+          E   AssertionError: ValueError not raised
+      RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=True
+          E   AssertionError: ValueError not raised
+
+  [4] numpy 2.5 skew via TF MakeNdarray
+      CallTfTest::test_dtypes_bfloat16
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_bfloat16_jit
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_float16
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+      CallTfTest::test_dtypes_float16_jit
+          Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+
+  [4] other
+      CallTfTest::test_error_bad_result_string
+          E   TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and w
+      CallTfTest::test_function_compile_time_constant_inputs
+          See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError
+      CallTfTest::test_with_capture_then_convert_again
+          E   TypeError: 'inputs' should be zero or more (nested) Tensors. Received 'None' with type '<class 'NoneType'>'.
+      RoundTripToJaxTest::test_saved_model_shape_poly
+          E   AssertionError: 0 != 1
+
+  [4] shape polymorphism
+      CallTfTest::test_error_non_compilable_dynamic_shape
+          Revise true_fun and/or false_fun so that all output types match.
+      RoundTripToTfTest::test_function_dynamic_shape
+          Revise true_fun and/or false_fun so that all output types match.
+      RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=False
+          E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+      RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=True
+          E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+
+  [2] tf2jax op coverage
+      CallTfTest::test_error_bad_result_tensorarray
+          E   AssertionError: "The called TF function returns a result that is not convertible to JAX" does not match "`tensor` should be a 
+      CallTfTest::test_error_non_compilable_strings
+          Support for additional TensorFlow ops are added on an as-needed basis, please contact the library owner(s).
+
+  [1] effects dropped (has_side_effects/ordered)
+      CallTfTest::test_effectful
+          E   AssertionError: [] has length of 0.
+
+=== unmasked by the version-skew fixes: 29 tests now pass ===
+  CallTfTest::test_grad_int_argument_unused
+  CallTfTest::test_repro_193754660
+  RoundTripToJaxTest::test_all_floating_input_gradient_bfloat16
+  RoundTripToJaxTest::test_all_floating_input_gradient_float16
+  RoundTripToJaxTest::test_all_floating_input_gradient_float32
+  RoundTripToJaxTest::test_complex_input_gradient_complex64
+  RoundTripToJaxTest::test_custom_grad
+  RoundTripToJaxTest::test_custom_grad_saved_model
+  RoundTripToJaxTest::test_pytree
+  RoundTripToJaxTest::test_saved_model_simple
+  RoundTripToJaxTest::test_saved_model_variables
+  RoundTripToJaxTest::test_shape_poly
+  RoundTripToJaxTest::test_simple
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=False_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=False_f4_function=True_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=False_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=False_f2_saved_model=True_f4_function=True_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=False_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=False_f4_function=True_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=False_f4_saved_model=True
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=False
+  RoundTripToTfTest::test_several_round_trips_f2_function=True_f2_saved_model=True_f4_function=True_f4_saved_model=True
