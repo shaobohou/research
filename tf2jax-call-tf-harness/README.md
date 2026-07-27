@@ -31,9 +31,12 @@ the *same* 116/30, but for different reasons — see finding 1.
 | tf2jax main (`567b347`) | 87 | 59 | 17 |
 | tf2jax main + warning downgrade only | 116 | 30 | 17 |
 | tf2jax main + all skew fixes | 116 | 30 | 17 |
+| **tf2jax main + one-line fix, no harness patches** | **116** | **30** | **17** |
 
 The single baseline failure (`test_multi_platform`) is a CPU-only-machine
-artifact and is excluded from every comparison.
+artifact and is excluded from every comparison — it needs a second platform,
+and fails in tf2xla conversion. It actually *passes* under tf2jax, so the
+tf2jax rows are 30 failures outright, not 30 plus the artifact.
 
 ## Key findings
 
@@ -76,6 +79,28 @@ The decisive measurement: on main, downgrading *only* that warning and applying
 **no API patches at all** gives 116 passed / 30 failed — identical to applying
 every patch. So tf2jax main needs no compatibility fixes against jax 0.11.0;
 it needs one deprecated call updated before jax removes it.
+
+That fix is written and verified — see
+[`tf2jax-flatten-ir-values.diff`](tf2jax-flatten-ir-values.diff). With it
+applied and **no harness patches at all**, the suite gives the same 116/30,
+and the failure set is byte-identical to the proxy run.
+
+**Watch out for jax's own deprecation message here.** It says "Use
+`mlir.ir_tree_registry.flatten` instead", but the two APIs do not have the same
+return type: `flatten_ir_values(args)` returns a flat list, while
+`ir_tree_registry.flatten(args)` returns a `(leaves, treedef)` pair. A literal
+find-and-replace makes the surrounding `len(...)` check compare `2` against the
+argument count. The correct form takes the leaves:
+
+```python
+if hasattr(mlir, "ir_tree_registry"):
+  flat_args, _ = mlir.ir_tree_registry.flatten(args)
+else:
+  flat_args = mlir.flatten_ir_values(args)
+```
+
+I verified the leaves match the old return value exactly by computing both at
+the live call site across several arities before swapping.
 
 A separate ecosystem item, present in both tf2jax versions and not tf2jax's
 fault: `test_dtypes_{float16,bfloat16}` fail
@@ -141,6 +166,8 @@ tf2jax either raises a different one or succeeds where TF would have refused:
   (`-rf` gives no message for unittest-style failures).
 - [`compare_results.py`](compare_results.py) — diffs the runs and buckets
   failures by cause.
+- [`tf2jax-flatten-ir-values.diff`](tf2jax-flatten-ir-values.diff) — the
+  verified one-file fix against tf2jax main (`567b347`).
 - [`results/`](results/) — raw logs, per-test JSON, and `summary.txt`.
 
 ## Reproducing
@@ -182,9 +209,10 @@ the test file, while `jaxlib` comes from PyPI, and the two must agree.
 - The `deserialize_portable_artifact` / `aval_to_ir_type` breakage is **already
   fixed on tf2jax main** — it only needs a release. Anyone on the 0.3.8 PyPI
   wheel with a recent jax should install from git.
-- Replace `mlir.flatten_ir_values` in `tf2jax/experimental/mhlo.py` with
-  `mlir.ir_tree_registry.flatten`. It works today but is deprecated, and it is
-  the last thing standing between tf2jax main and the round-trip tests.
+- Apply [`tf2jax-flatten-ir-values.diff`](tf2jax-flatten-ir-values.diff) to
+  `tf2jax/experimental/mhlo.py` — written and verified here. It works today but
+  is deprecated, and it is the last thing standing between tf2jax main and the
+  round-trip tests. Note the return-type trap described in finding 1.
 - The half-precision `MakeNdarray` failure is a TF 2.21 × NumPy 2.5 bug worth
   reporting to TensorFlow separately.
 - If `call_tf` semantics are actually wanted from tf2jax, the effects gap is the

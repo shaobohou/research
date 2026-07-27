@@ -33,8 +33,8 @@ attribute `jax2tf.call_tf`, resolved at call time. So a pytest plugin that
 rebinds `jax2tf.call_tf` (and `jax2tf.call_tf.call_tf`, for the internal
 re-entry from the upstream VJP and from `jax2tf.py`) at `pytest_configure`
 redirects the entire suite without touching the test file. That is
-`tf2jax_plugin.py`; no diff against the jax checkout is required at all,
-which is why there is no `.diff` in this directory.
+`tf2jax_plugin.py`; no diff against the jax checkout is required at all. The
+one `.diff` here is against *tf2jax*, not jax — see the last section.
 
 ## Shim design (`call_tf_tf2jax.py`)
 
@@ -80,7 +80,8 @@ array). The shim normalises outputs with `jnp.asarray`.
 The single baseline failure is `CallTfTest::test_multi_platform`, which fails
 in tf2xla conversion — it wants more than one platform available and this box
 is CPU-only. Environment-related, not a real defect; it is excluded from the
-comparison below.
+comparison below. (It passes under tf2jax, so the tf2jax rows are 30 failures
+outright rather than 30 plus this artifact.)
 
 ## Results with tf2jax
 
@@ -92,6 +93,7 @@ comparison below.
 | tf2jax main (`567b347`) | 87 | 59 | 17 |
 | tf2jax main + warning downgrade only | 116 | 30 | 17 |
 | tf2jax main + all skew fixes | 116 | 30 | 17 |
+| tf2jax main + `flatten` fix, no harness patches | 116 | 30 | 17 |
 
 See README.md for the analysis; raw logs, per-test JSON and `summary.txt` in
 `results/`.
@@ -175,3 +177,44 @@ changed: `test_with_capture_then_convert_again` now fails with a deliberate
 `TypeError`. Tried enabling that new config flag; it does not fix the test,
 just moves the error to `Some parameters are missing, ['Variable']` (my shim
 passes conversion-time params, which that path leaves empty). Left as-is.
+
+## Follow-up: actually fixing `flatten_ir_values`
+
+Wrote and verified the fix rather than trusting the deprecation message —
+saved as `tf2jax-flatten-ir-values.diff` against tf2jax main `567b347`.
+
+**The deprecation message is a trap.** jax says "Use
+`mlir.ir_tree_registry.flatten` instead", but the return types differ:
+
+```
+PROBE old: list 1 | new: tuple 2 | equal: False
+```
+
+`flatten_ir_values(args)` returns a flat list; `ir_tree_registry.flatten(args)`
+returns `(leaves, treedef)`. Since the only use is
+`len(mlir.flatten_ir_values(args)) == len(args)`, a literal find-and-replace
+turns the check into `2 == len(args)` — it would have fired on any call with
+other than 2 arguments, i.e. silently wrong rather than obviously broken.
+
+Correct form, confirmed by computing both at the live call site across several
+arities (`list 1 | leaves: list 1 | equal: True`,
+`list 2 | leaves: list 2 | equal: True`):
+
+```python
+if hasattr(mlir, "ir_tree_registry"):
+  flat_args, _ = mlir.ir_tree_registry.flatten(args)
+else:
+  flat_args = mlir.flatten_ir_values(args)
+```
+
+The `hasattr` guard keeps older jax working; tf2jax version-gates elsewhere with
+`jax.__version_info__`, but I could not establish which jax version introduced
+`ir_tree_registry`, so a capability check is the honest choice.
+
+Result: **116 passed / 30 failed with no harness patches whatsoever**, and the
+failing set is identical to the `TF2JAX_COMPAT=warnings` proxy run. No
+`flatten_ir_values` warnings remain. The earlier estimate held exactly.
+
+Incidental finding: `test_multi_platform`, the one baseline failure (CPU-only
+box), actually *passes* under tf2jax — so tf2jax fails 30 tests total, not 30
+plus the baseline artifact.

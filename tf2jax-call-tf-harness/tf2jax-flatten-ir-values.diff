@@ -1,0 +1,22 @@
+diff --git a/tf2jax/experimental/mhlo.py b/tf2jax/experimental/mhlo.py
+index 147a6f6..c9bd412 100644
+--- a/tf2jax/experimental/mhlo.py
++++ b/tf2jax/experimental/mhlo.py
+@@ -199,8 +199,15 @@ def mhlo_apply_lowering(
+   result_types = symtab[program_name].type.results  # pytype: disable=attribute-error
+ 
+   # Paranoid checks.
+-  assert len(mlir.flatten_ir_values(args)) == len(args), (
+-      len(mlir.flatten_ir_values(args)),
++  # `mlir.flatten_ir_values` is deprecated in favour of
++  # `mlir.ir_tree_registry.flatten`, which returns (leaves, treedef) rather
++  # than a flat sequence.
++  if hasattr(mlir, "ir_tree_registry"):
++    flat_args, _ = mlir.ir_tree_registry.flatten(args)
++  else:
++    flat_args = mlir.flatten_ir_values(args)
++  assert len(flat_args) == len(args), (
++      len(flat_args),
+       len(args),
+   )
+ 

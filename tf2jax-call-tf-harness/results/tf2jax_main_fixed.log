@@ -1,0 +1,162 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1785182067.998844    6557 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1785182067.999731    6557 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1785182071.441329    6557 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1785182071.442081    6557 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+sssssssssssssss....FF..FF..............FFFFFFF...........F.............. [ 44%]
+.............F..............s.............FF....F.FFFFFFFsFFF......... [ 87%]
+.........FF........FF                                                    [100%]
+=================================== FAILURES ===================================
+E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_util.py:805: DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_util.py:805: DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_util.py:805: DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+E   DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+    Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_util.py:805: DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+E   AssertionError: [] has length of 0.
+/usr/lib/python3.12/unittest/case.py:715: AssertionError: [] has length of 0.
+E   TypeError: Dtype object is not a valid JAX array type. Only arrays of numeric types are supported by JAX.
+
+The above exception was the direct cause of the following exception:
+E   TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and was passed to stage at position 0.
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py:690: TypeError: Error interpreting argument to stage as a JAX value. The problematic value is of type <class 'numpy.ndarray'> and was passed to stage at position 0.
+ValueError: `tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>.
+
+During handling of the above exception, another exception occurred:
+E   AssertionError: "The called TF function returns a result that is not convertible to JAX" does not match "`tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>."
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: "The called TF function returns a result that is not convertible to JAX" does not match "`tensor` should be a tf.Tensor, but got type <class 'tensorflow.python.ops.tensor_array_ops.TensorArray'>."
+E   TypeError: cond branches must have equal output types but they differ.
+    
+    true_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1114
+    false_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1115
+    
+    The output of true_fun at path [0] has type bool[1] but the corresponding output of false_fun has type bool[2], so the shapes do not match.
+    
+    Revise true_fun and/or false_fun so that all output types match.
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/lax/control_flow/conditionals.py:411: TypeError: cond branches must have equal output types but they differ.
+E   ValueError: Unsupported operations in graph: ['StringFormat', 'StringLength']
+    Support for additional TensorFlow ops are added on an as-needed basis, please contact the library owner(s).
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/tf2jax.py:1068: ValueError: Unsupported operations in graph: ['StringFormat', 'StringLength']
+E   AssertionError: AssertionError not raised
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: AssertionError not raised
+E   AssertionError: AssertionError not raised
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: AssertionError not raised
+E   jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].
+    The error occurred while tracing the function fun_tf at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py:573 for jit. This concrete value was not available in Python because it depends on the value of the argument x.
+    See https://docs.jax.dev/en/latest/errors.html#jax.errors.TracerBoolConversionError
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/core.py:1995: jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].
+E   tensorflow.python.autograph.impl.api.StagingError: in user code:
+    
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/jax2tf.py", line 291, in converted_fun_tf  *
+            impl.before_conversion()
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/jax2tf.py", line 361, in before_conversion  *
+            self.exported = _export._export_internal(
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/traceback_util.py", line 314, in reraise_with_filtered_traceback  *
+            return fun(*args, **kwargs)  # pyrefly: ignore[not-callable]
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 312, in jit_trace  *
+            p, args_flat = _infer_params(jit_func._fun, jit_func._jit_info, args, kwargs)
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 652, in _infer_params  *
+            p = _trace_for_jit(fun, ji, ctx_mesh, dbg_fn(), avals, args, kwargs)
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/pjit.py", line 554, in _trace_for_jit  *
+            jaxpr, out_avals = pe.trace_to_jaxpr(fun, in_type, dbg, qdd_token)
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2329, in trace_to_jaxpr  **
+            return trace_to_jaxpr_nocache(
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/interpreters/partial_eval.py", line 2290, in trace_to_jaxpr_nocache
+            ans_pytree = fun(*args, **kwargs)
+        File "/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/experimental/jax2tf/tests/call_tf_test.py", line 796, in f_jax
+            return jnp.cos(jax2tf.call_tf(tf_fun,
+        File "/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py", line 71, in call_tf
+            raise Tf2JaxUnsupported(
+    
+        Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/autograph_util.py:52: tensorflow.python.autograph.impl.api.StagingError: in user code:
+E   ValueError: Unable to to evaluate variables inside a TF tracing context, and `skip_variables_evaluation_inside_tf_tracing` is False.
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/tf2jax.py:1092: ValueError: Unable to to evaluate variables inside a TF tracing context, and `skip_variables_evaluation_inside_tf_tracing` is False.
+E   AssertionError: TypeError not raised
+------------------------------ Captured log call -------------------------------
+WARNING  absl:function_deserialization.py:672 Importing a function (__inference_converted_fun_tf_2436) with ops with unsaved custom gradients. Will likely fail if a gradient is requested.
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: TypeError not raised
+E   AssertionError: 0 != 1
+------------------------------ Captured log call -------------------------------
+WARNING  absl:function_deserialization.py:672 Importing a function (__inference_internal_grad_fn_2627) with ops with unsaved custom gradients. Will likely fail if a gradient is requested.
+/usr/lib/python3.12/unittest/case.py:878: AssertionError: 0 != 1
+NotImplementedError: Differentiation rule for 'mhlo_apply' not implemented
+
+During handling of the above exception, another exception occurred:
+E   AssertionError: "Gradient explicitly disabled.*jax2tf-converted function does not support gradients. Use `with_gradient` parameter to enable gradients" does not match "Differentiation rule for 'mhlo_apply' not implemented"
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: "Gradient explicitly disabled.*jax2tf-converted function does not support gradients. Use `with_gradient` parameter to enable gradients" does not match "Differentiation rule for 'mhlo_apply' not implemented"
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+/home/user/research/tf2jax-call-tf-harness/call_tf_tf2jax.py:71: call_tf_tf2jax.Tf2JaxUnsupported: call_tf_graph=True has no tf2jax equivalent: tf2jax lowers the TF graph to JAX ops, so there is no TF callee left to embed in a stablehlo.custom_call @tf.call_tf_function.
+E   TypeError: cond branches must have equal output types but they differ.
+    
+    true_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1114
+    false_fun is <lambda> at /tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/venv/lib/python3.12/site-packages/tf2jax/_src/ops.py:1115
+    
+    The output of true_fun at path [0] has type int32[3] but the corresponding output of false_fun has type int32[2], so the shapes do not match.
+    
+    Revise true_fun and/or false_fun so that all output types match.
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/lax/control_flow/conditionals.py:411: TypeError: cond branches must have equal output types but they differ.
+E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/lax/lax.py:128: TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+E   TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+/tmp/claude-0/-home-user-research/31cc9f91-f725-5129-a802-b73a22b8057b/scratchpad/jax/jax/_src/lax/lax.py:128: TypeError: add got incompatible shapes for broadcasting: (b,), (b + 5,).
+E   AssertionError: ValueError not raised
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: ValueError not raised
+E   AssertionError: ValueError not raised
+/usr/lib/python3.12/unittest/case.py:200: AssertionError: ValueError not raised
+=========================== short test summary info ============================
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_bfloat16_jit
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_dtypes_float16_jit
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_effectful
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_string
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_bad_result_tensorarray
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_dynamic_shape
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_error_non_compilable_strings
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=False
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_eval_devicearray_arg_with_jit=True
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_function_compile_time_constant_inputs
+SUBFAILED[CPU] jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_multi_platform_call_tf_graph
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::CallTfTest::test_with_capture_then_convert_again
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_no_gradients
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_saved_model_shape_poly
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToJaxTest::test_without_gradient_saved_model
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_b279454591
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_multiple_outputs
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_non_compilable_zero_outputs
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_ordered_version_9
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_False_version_9
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_graph_polymorphic_ordered_True_version_9
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_False_version_9
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_call_tf_ordered_dead_inputs_poly_True_version_9
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_function_dynamic_shape
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=False
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_mismatch_output_shape_dtype_kind=bad_dim_with_jit=True
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=False
+FAILED jax/experimental/jax2tf/tests/call_tf_test.py::RoundTripToTfTest::test_shape_poly_error_no_output_shape_dtype_with_jit=True
+31 failed, 116 passed, 17 skipped, 1 subtests passed in 71.22s (0:01:11)
