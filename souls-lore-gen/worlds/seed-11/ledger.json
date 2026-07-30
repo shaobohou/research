@@ -1,0 +1,1948 @@
+{
+  "meta": {
+    "seed": 11,
+    "archetype_key": "sea",
+    "primordial": "the Drowned Radiance",
+    "gift": "memory, tide, and the salt that keeps names from dissolving",
+    "waning": "the tide recedes from the world's edges; memories thin and the drowned begin to speak",
+    "curse_name": "the Brine-hollowing",
+    "curse_desc": "salt blooms beneath the skin; the afflicted forget faces first, then their own",
+    "relic_nouns": [
+      "pearl",
+      "brine",
+      "tide",
+      "conch",
+      "salt"
+    ],
+    "veils": [
+      "The drownings are not offerings. They are silencings \u2014 of what the drowned heard in the tide.",
+      "The Radiance never drowned \u2014 it was drowned, by the very powers that now pray for its return.",
+      "They drowned it in mercy, at its own asking: it had begun to remember the world before this one, and memory is contagious."
+    ],
+    "epigraph": "The tide gives, and the tide is given to; what remains to us are the keepings, and each was kept by a hand that loved only its own account. Read them against one another, pilgrim, for no single telling was ever meant to hold.",
+    "present_year": 819,
+    "used_names": [
+      "Atherichold",
+      "Athrioncrown",
+      "Belotthollow",
+      "Draehild",
+      "Eluriccradle",
+      "Fenach",
+      "Fenanastshroud",
+      "Galirwynvault",
+      "Galulwyn",
+      "Ghalorncrown",
+      "Hestiaynevault",
+      "Iriaulaspire",
+      "Irric",
+      "Isheneth",
+      "Kawyngate",
+      "Mazorrion",
+      "Olanwyn",
+      "Oloastreach",
+      "Omennoth",
+      "Quelidane",
+      "Ranmoth",
+      "Syliagarhold",
+      "Velanoth",
+      "Vereneth",
+      "Verulisspire",
+      "Yoransila",
+      "Ysengar",
+      "Ysulmund",
+      "the Pilgrim Roads",
+      "Nimayne",
+      "Karveth",
+      "Hestirach",
+      "Mazmund",
+      "Morugrim",
+      "Bangrim",
+      "Kaaula",
+      "Oldis"
+    ]
+  },
+  "ages": [
+    {
+      "name": "the Age of the Gift",
+      "start": 0,
+      "end": 344,
+      "blurb": "the Drowned Radiance gave the world memory, tide, and the salt that keeps names from dissolving."
+    },
+    {
+      "name": "the Age of Names",
+      "start": 344,
+      "end": 717,
+      "blurb": "The powers withdrew to their high seats and mortals learned to matter."
+    },
+    {
+      "name": "the Age of Dusk",
+      "start": 717,
+      "end": null,
+      "blurb": "The present age. What remains keeps the roads, and pilgrims walk toward rumours of a cure."
+    }
+  ],
+  "entities": {
+    "f1": {
+      "type": "figure",
+      "name": "Ysengar",
+      "epithet": "god of the hunt and the mercy of endings",
+      "role": "god",
+      "faction": "k1",
+      "is_god": true,
+      "fate": "unmade at the war's end",
+      "fate_year": 160,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f2": {
+      "type": "figure",
+      "name": "Olanwyn",
+      "epithet": "god of harvest, plenty, and the debt of plenty",
+      "role": "god",
+      "faction": "k2",
+      "is_god": true,
+      "fate": "unmade upon their throne",
+      "fate_year": 793,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f3": {
+      "type": "figure",
+      "name": "Mazorrion",
+      "epithet": "god of storms and unkept promises",
+      "role": "god",
+      "faction": null,
+      "is_god": true,
+      "fate": "cast down in the schism",
+      "fate_year": 199,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f4": {
+      "type": "figure",
+      "name": "Draehild",
+      "epithet": "the Still Water",
+      "role": "adversary",
+      "faction": null,
+      "is_god": true,
+      "fate": "unmade at the war's end",
+      "fate_year": 160,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f5": {
+      "type": "figure",
+      "name": "Velanoth",
+      "epithet": "god of war and the keeping of thresholds",
+      "role": "god",
+      "faction": "k3",
+      "is_god": true,
+      "fate": "slain at their own throne",
+      "fate_year": 483,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f6": {
+      "type": "figure",
+      "name": "Fenach",
+      "epithet": "of the Last Door",
+      "role": "high priest",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f7": {
+      "type": "figure",
+      "name": "Vereneth",
+      "epithet": "of the Last Door",
+      "role": "heretic scholar",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f8": {
+      "type": "figure",
+      "name": "Isheneth",
+      "epithet": "the Lantern-eyed",
+      "role": "oathbreaker general",
+      "faction": "k3",
+      "is_god": false,
+      "fate": "succumbed to the Brine-hollowing",
+      "fate_year": 487,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f9": {
+      "type": "figure",
+      "name": "Omennoth",
+      "epithet": "of the Last Door",
+      "role": "pilgrim saint",
+      "faction": "k4",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 481,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f10": {
+      "type": "figure",
+      "name": "Ranmoth",
+      "epithet": "the Quiet",
+      "role": "knight",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f11": {
+      "type": "figure",
+      "name": "Yoransila",
+      "epithet": "the Lantern-eyed",
+      "role": "pilgrim saint",
+      "faction": "k4",
+      "is_god": false,
+      "fate": "given to the rite of restoration",
+      "fate_year": 519,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f12": {
+      "type": "figure",
+      "name": "Galulwyn",
+      "epithet": "the Grey",
+      "role": "queen",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f13": {
+      "type": "figure",
+      "name": "Quelidane",
+      "epithet": "the Kindly",
+      "role": "queen",
+      "faction": "k8",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f14": {
+      "type": "figure",
+      "name": "Irric",
+      "epithet": "of the Empty Scabbard",
+      "role": "wandering knight",
+      "faction": "k6",
+      "is_god": false,
+      "fate": "fate contested",
+      "fate_year": 754,
+      "depth": 0,
+      "source": "sim"
+    },
+    "f15": {
+      "type": "figure",
+      "name": "Ysulmund",
+      "epithet": "the Quiet",
+      "role": "claimant",
+      "faction": null,
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k1": {
+      "type": "faction",
+      "name": "Verulisspire",
+      "kind": "church",
+      "seat": "Ghalorncrown",
+      "founded_year": 33,
+      "founder": "f1",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k2": {
+      "type": "faction",
+      "name": "Galirwynvault",
+      "kind": "kingdom",
+      "seat": "Fenanastshroud",
+      "founded_year": 70,
+      "founder": "f2",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k3": {
+      "type": "faction",
+      "name": "Iriaulaspire",
+      "kind": "kingdom",
+      "seat": "Atherichold",
+      "founded_year": 217,
+      "founder": "f5",
+      "fallen_year": 483,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k4": {
+      "type": "faction",
+      "name": "Church of Olanwyn",
+      "kind": "church",
+      "seat": "Syliagarhold",
+      "founded_year": 414,
+      "founder": null,
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k5": {
+      "type": "faction",
+      "name": "Cult of the Open Door",
+      "kind": "cult",
+      "seat": "Eluriccradle",
+      "founded_year": 425,
+      "founder": "f7",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k6": {
+      "type": "faction",
+      "name": "Order of the Brine",
+      "kind": "order",
+      "seat": "Hestiaynevault",
+      "founded_year": 503,
+      "founder": "f10",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k7": {
+      "type": "faction",
+      "name": "Belotthollow",
+      "kind": "kingdom",
+      "seat": "Oloastreach",
+      "founded_year": 536,
+      "founder": "f12",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "k8": {
+      "type": "faction",
+      "name": "Kawyngate",
+      "kind": "kingdom",
+      "seat": "Athrioncrown",
+      "founded_year": 584,
+      "founder": "f13",
+      "fallen_year": null,
+      "depth": 0,
+      "source": "sim"
+    },
+    "e1": {
+      "type": "event",
+      "kind": "cosmogony",
+      "year": 0,
+      "text": "the Drowned Radiance rose (or was raised \u2014 the tellings differ) and gave the world memory, tide, and the salt that keeps names from dissolving.",
+      "hidden": null,
+      "participants": [],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e2": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 8,
+      "text": "Ysengar, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e3": {
+      "type": "event",
+      "kind": "founding",
+      "year": 33,
+      "text": "Ysengar founded Verulisspire (church) at Ghalorncrown.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e4": {
+      "type": "event",
+      "kind": "forging",
+      "year": 33,
+      "text": "The Salt of Ysengar was wrought as regalia of Ysengar's throne.",
+      "hidden": null,
+      "participants": [
+        "f1"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e5": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 37,
+      "text": "Olanwyn, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e6": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 54,
+      "text": "Mazorrion, god of storms and unkept promises, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f3"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e7": {
+      "type": "event",
+      "kind": "founding",
+      "year": 70,
+      "text": "Olanwyn founded Galirwynvault (kingdom) at Fenanastshroud.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p11"
+    },
+    "e8": {
+      "type": "event",
+      "kind": "forging",
+      "year": 70,
+      "text": "The Tide of Olanwyn was wrought as regalia of Olanwyn's throne.",
+      "hidden": null,
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e9": {
+      "type": "event",
+      "kind": "great war",
+      "year": 149,
+      "text": "Draehild, the Still Water, rose against the thrones. Ysengar led the powers to war.",
+      "hidden": "Mazorrion treated with Draehild in secret and was spared what followed.",
+      "participants": [
+        "f4",
+        "f1",
+        "f3"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e10": {
+      "type": "event",
+      "kind": "mutual ruin",
+      "year": 160,
+      "text": "Draehild and Ysengar destroyed one another at the war's end. Neither throne nor grave was left to either.",
+      "hidden": "Ysengar chose it, knowing the cost.",
+      "participants": [
+        "f4",
+        "f1"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p2"
+    },
+    "e11": {
+      "type": "event",
+      "kind": "claiming",
+      "year": 175,
+      "text": "Velanoth, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e12": {
+      "type": "event",
+      "kind": "divine schism",
+      "year": 199,
+      "text": "Mazorrion and Velanoth fell to war over a single domain. Velanoth kept it; Mazorrion was cast down and is named in no liturgy since.",
+      "hidden": "The domain was never Velanoth's to keep.",
+      "participants": [
+        "f3",
+        "f5"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e13": {
+      "type": "event",
+      "kind": "founding",
+      "year": 217,
+      "text": "Velanoth founded Iriaulaspire (kingdom) at Atherichold.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e14": {
+      "type": "event",
+      "kind": "forging",
+      "year": 217,
+      "text": "The Conch of Velanoth was wrought as regalia of Velanoth's throne.",
+      "hidden": null,
+      "participants": [
+        "f5"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e15": {
+      "type": "event",
+      "kind": "waning",
+      "year": 396,
+      "text": "The waning began: the tide recedes from the world's edges; memories thin and the drowned begin to speak. Mortals called the affliction the Brine-hollowing: salt blooms beneath the skin; the afflicted forget faces first, then their own.",
+      "hidden": null,
+      "participants": [],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e16": {
+      "type": "event",
+      "kind": "founding",
+      "year": 414,
+      "text": "The Church of Olanwyn was raised at Syliagarhold; Fenach of the Last Door took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+      "hidden": null,
+      "participants": [
+        "f6"
+      ],
+      "referents": [
+        "f2"
+      ],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e17": {
+      "type": "event",
+      "kind": "heresy",
+      "year": 425,
+      "text": "Vereneth of the Last Door was cast out of Verulisspire and founded the Cult of the Open Door, teaching that the powers above themselves caused the waning.",
+      "hidden": "The heresy is nearer the truth than the sermon.",
+      "participants": [
+        "f7"
+      ],
+      "referents": [],
+      "damages": [
+        "k1"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p10"
+    },
+    "e18": {
+      "type": "event",
+      "kind": "betrayal",
+      "year": 447,
+      "text": "Isheneth the Lantern-eyed, sword-hand of Velanoth, opened the gates of Atherichold to the Cult of the Open Door over a grievance no chronicle agrees on.",
+      "hidden": "Isheneth acted on a promise from the Cult of the Open Door: that the marked of their house would be spared the Brine-hollowing. The promise was not kept.",
+      "participants": [
+        "f8",
+        "f5"
+      ],
+      "referents": [],
+      "damages": [
+        "k3",
+        "k5"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e19": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 481,
+      "text": "At the urging of Fenach, the saint Omennoth of the Last Door was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Fenach suspected as much.",
+      "participants": [
+        "f6",
+        "f9"
+      ],
+      "referents": [],
+      "damages": [
+        "k4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e20": {
+      "type": "event",
+      "kind": "fall of a kingdom",
+      "year": 483,
+      "text": "Iriaulaspire fell. Velanoth, god of war and the keeping of thresholds, died at the foot of their own throne; the crown was carried away and never worn again.",
+      "hidden": null,
+      "participants": [],
+      "referents": [
+        "f5"
+      ],
+      "damages": [
+        "k3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p12"
+    },
+    "e21": {
+      "type": "event",
+      "kind": "fate",
+      "year": 487,
+      "text": "Isheneth was found bearing the Brine-hollowing, and was not spared.",
+      "hidden": null,
+      "participants": [
+        "f8"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e22": {
+      "type": "event",
+      "kind": "founding",
+      "year": 503,
+      "text": "Ranmoth the Quiet founded the Order of the Brine at Hestiaynevault, sworn to stand against the Brine-hollowing.",
+      "hidden": null,
+      "participants": [
+        "f10"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e23": {
+      "type": "event",
+      "kind": "rite of restoration",
+      "year": 519,
+      "text": "At the urging of Fenach, the saint Yoransila the Lantern-eyed was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+      "hidden": "The rite did not restore anything. It only fed the waning more slowly \u2014 and Fenach suspected as much.",
+      "participants": [
+        "f6",
+        "f11"
+      ],
+      "referents": [],
+      "damages": [
+        "k4"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p5"
+    },
+    "e24": {
+      "type": "event",
+      "kind": "founding",
+      "year": 536,
+      "text": "Galulwyn the Grey united the river-clans and was crowned in Oloastreach; the realm took the name Belotthollow.",
+      "hidden": null,
+      "participants": [
+        "f12"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p8"
+    },
+    "e25": {
+      "type": "event",
+      "kind": "a season of plenty",
+      "year": 558,
+      "text": "For thirty years the waning simply stopped. Orchards bore, the marked recovered, and it was called a mercy. Then it resumed, exactly where it had left off.",
+      "hidden": "Something was being paid during those thirty years, and the payments were recorded nowhere.",
+      "participants": [],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "e26": {
+      "type": "event",
+      "kind": "founding",
+      "year": 584,
+      "text": "Quelidane the Kindly united the river-clans and was crowned in Athrioncrown; the realm took the name Kawyngate.",
+      "hidden": null,
+      "participants": [
+        "f13"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p9"
+    },
+    "e27": {
+      "type": "event",
+      "kind": "last pilgrimage",
+      "year": 742,
+      "text": "Irric of the Empty Scabbard, last-sworn of the Order of the Brine, set out for the deep roads, where the affliction is said to begin, carrying the order's final blessing.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e28": {
+      "type": "event",
+      "kind": "hero's end",
+      "year": 754,
+      "text": "Word came that Irric fell to the marked, and then word came that Irric led them. The order believes neither.",
+      "hidden": null,
+      "participants": [
+        "f14"
+      ],
+      "referents": [],
+      "damages": [
+        "k6"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p7"
+    },
+    "e29": {
+      "type": "event",
+      "kind": "twilight of a god",
+      "year": 793,
+      "text": "Olanwyn, god of harvest, plenty, and the debt of plenty, was unmade upon their own throne. No wound was found, and no successor dared the seat.",
+      "hidden": "What unmade them was not violence but understanding \u2014 a truth arrived at, all at once.",
+      "participants": [
+        "f2"
+      ],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p3"
+    },
+    "e30": {
+      "type": "event",
+      "kind": "an heir returns",
+      "year": 805,
+      "text": "Ysulmund the Quiet came to the ruin of Atherichold bearing a claim to Iriaulaspire, and was neither crowned nor turned away.",
+      "hidden": "The claim is false, and Ysulmund knows it.",
+      "participants": [
+        "f15"
+      ],
+      "referents": [],
+      "damages": [
+        "k3"
+      ],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p4"
+    },
+    "e31": {
+      "type": "event",
+      "kind": "the marked keep the roads",
+      "year": 819,
+      "text": "The afflicted stopped hiding. They keep the wayhouses now, and take no toll from those already bearing the Brine-hollowing.",
+      "hidden": "Among them are some who were never afflicted at all.",
+      "participants": [],
+      "referents": [],
+      "damages": [],
+      "parent": null,
+      "depth": 0,
+      "expanded": false,
+      "source": "sim",
+      "place": "p1"
+    },
+    "a1": {
+      "type": "artifact",
+      "name": "Conch of Ysengar",
+      "item_type": "weapon",
+      "created_year": 33,
+      "origin_faction": "k1",
+      "provenance": [
+        "e4"
+      ],
+      "knowledge": [
+        "(year 33) The Salt of Ysengar was wrought as regalia of Ysengar's throne.",
+        "Ysengar, god of the hunt and the mercy of endings: fate \u2014 unmade at the war's end (year 160).",
+        "This item is kept/told of by Verulisspire (church), seat at Ghalorncrown.",
+        "[keeper's interests] the efficacy of its rites; the sanctity of its founder; that suffering is a trial and not a bill",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Regalia of the throne of Ysengar, borne since the church first rose at Ghalorncrown. The hunt-god took a portion of the gift and named endings a mercy. It is written that the salt within keeps a name from dissolving, and that the faithful who suffer are only tried. That the god was unmade at the war's end the tellings do not deny \u2014 yet a trial, the church holds, is never a bill.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Kept long at Ghalorncrown, and then kept poorly."
+    },
+    "a2": {
+      "type": "artifact",
+      "name": "Tide of Olanwyn",
+      "item_type": "weapon",
+      "created_year": 70,
+      "origin_faction": "k2",
+      "provenance": [
+        "e8"
+      ],
+      "knowledge": [
+        "(year 70) The Tide of Olanwyn was wrought as regalia of Olanwyn's throne.",
+        "Olanwyn, god of harvest, plenty, and the debt of plenty: fate \u2014 unmade upon their throne (year 793).",
+        "This item is kept/told of by Galirwynvault (kingdom), seat at Fenanastshroud.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "Regalia of Olanwyn's throne, wrought in the vault's first year. Harvest-god, plenty-god, keeper of the debt that plenty owes. The royal line of Fenanastshroud bore this tide through every season and names itself blameless in all that came after. Olanwyn was unmade upon the very seat, without wound and without heir. Of the debt, the courtiers say nothing at all.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Kept long at Fenanastshroud, and then kept poorly."
+    },
+    "a3": {
+      "type": "artifact",
+      "name": "Ysengar's War-Pearl",
+      "item_type": "weapon",
+      "created_year": 149,
+      "origin_faction": null,
+      "provenance": [
+        "e9"
+      ],
+      "knowledge": [
+        "(year 149) Draehild, the Still Water, rose against the thrones. Ysengar led the powers to war.",
+        "Ysengar, god of the hunt and the mercy of endings: fate \u2014 unmade at the war's end (year 160).",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A pearl, they'll swear to you, plucked whole from the god's own war. When the Still Water \u2014 Draehild, was it? \u2014 rose against the high thrones, Ysengar led the powers down to meet it. A great matter, and the pearl recalls most of it, or near enough. The hunt-god did not come home from that war; that much every teller grants, though the years they give never quite align.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p2",
+      "placement": "Dug from the old battle-earth near Ghalorncrown."
+    },
+    "a4": {
+      "type": "artifact",
+      "name": "Brine of Velanoth",
+      "item_type": "ring",
+      "created_year": 217,
+      "origin_faction": "k3",
+      "provenance": [
+        "e14"
+      ],
+      "knowledge": [
+        "(year 217) The Conch of Velanoth was wrought as regalia of Velanoth's throne.",
+        "Velanoth, god of war and the keeping of thresholds: fate \u2014 slain at their own throne (year 483).",
+        "This item is kept/told of by Iriaulaspire (kingdom), seat at Atherichold.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "Regalia wrought for the throne of Velanoth, keeper of thresholds and of war. The court of Atherichold held this brine against a fall it never earned. Velanoth was slain at the foot of the seat \u2014 by the heretic hordes of the Open Door, some insist, though no blade is named. A god of thresholds, cut down upon his own. The realm keeps its innocence, and the true hand its silence.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Kept long at Atherichold, and then kept poorly."
+    },
+    "a6": {
+      "type": "artifact",
+      "name": "Remnant Soul of Saint Omennoth",
+      "item_type": "soul remnant",
+      "created_year": 481,
+      "origin_faction": "k4",
+      "provenance": [
+        "e19"
+      ],
+      "knowledge": [
+        "(year 481) At the urging of Fenach, the saint Omennoth of the Last Door was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+        "[half-known secret] The rite did not restore anything. It only fed the waning more slowly \u2014 and Fenach suspected as much.",
+        "Omennoth, of the Last Door: fate \u2014 given to the rite of restoration (year 481).",
+        "This item is kept/told of by Church of Olanwyn (church), seat at Syliagarhold.",
+        "[keeper's interests] the efficacy of its rites; the sanctity of its founder; that suffering is a trial and not a bill",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "names the wrong slayer for a famous death",
+      "hints_veil": null,
+      "description": "What remains of Saint Omennoth, given to the Drowned Radiance in the rite of restoration. At Fenach's urging the saint went down into the tide, and for a generation the waning slowed. A mercy, the church sings \u2014 though some who kept the count murmur the rite fed the ebb more slowly and healed nothing, and that Fenach did not sleep easy. The liturgy names Velanoth's hand at the drowning and calls the loss a trial. A trial, it holds, and never a bill.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept in a reliquary at Syliagarhold, before which the candles will not stay lit."
+    },
+    "a7": {
+      "type": "artifact",
+      "name": "Hollow Crown of Iriaulaspire",
+      "item_type": "key item",
+      "created_year": 483,
+      "origin_faction": "k3",
+      "provenance": [
+        "e20"
+      ],
+      "knowledge": [
+        "(year 483) Iriaulaspire fell. Velanoth, god of war and the keeping of thresholds, died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Velanoth, god of war and the keeping of thresholds: fate \u2014 slain at their own throne (year 483).",
+        "This item is kept/told of by Iriaulaspire (kingdom), seat at Atherichold.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "insists the dead figure still lives, in hiding",
+      "hints_veil": null,
+      "description": "The crown of Iriaulaspire, carried out from Atherichold and never again worn. When the kingdom fell, Velanoth died at the throne's foot \u2014 or so the enemy would have it. The court holds otherwise: that the threshold-god withdrew, and waits yet in some hidden seat for the crown to be brought home. No head has dared it since. A kingdom does not fall, the courtiers say, while its god still breathes.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p12",
+      "placement": "Found at the foot of a throne in Iriaulaspire, beneath the dust of the banners."
+    },
+    "a8": {
+      "type": "artifact",
+      "name": "Isheneth's Oathbreaker Blade",
+      "item_type": "weapon",
+      "created_year": 483,
+      "origin_faction": "k3",
+      "provenance": [
+        "e20"
+      ],
+      "knowledge": [
+        "(year 483) Iriaulaspire fell. Velanoth, god of war and the keeping of thresholds, died at the foot of their own throne; the crown was carried away and never worn again.",
+        "Velanoth, god of war and the keeping of thresholds: fate \u2014 slain at their own throne (year 483).",
+        "This item is kept/told of by Iriaulaspire (kingdom), seat at Atherichold.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": 0,
+      "description": "A blade said once to have been Isheneth's, the Lantern-eyed. The court remembers a loyal sword, and sets the fall of Iriaulaspire back in the Age of the Gift, ages before it truly came. Velanoth died at the throne's foot; the crown went out and stayed out. Of what the drowned are given to, the courtiers keep a careful quiet \u2014 the tide, they allow, takes more than lives, and holds its silence over all it hears beneath.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p12",
+      "placement": "Found at the foot of a throne in Iriaulaspire, beneath the dust of the banners."
+    },
+    "a9": {
+      "type": "artifact",
+      "name": "Conch of Saint Yoransila",
+      "item_type": "talisman",
+      "created_year": 519,
+      "origin_faction": "k4",
+      "provenance": [
+        "e23"
+      ],
+      "knowledge": [
+        "(year 519) At the urging of Fenach, the saint Yoransila the Lantern-eyed was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+        "Yoransila, the Lantern-eyed: fate \u2014 given to the rite of restoration (year 519).",
+        "This item is kept/told of by Church of Olanwyn (church), seat at Syliagarhold.",
+        "[keeper's interests] the efficacy of its rites; the sanctity of its founder; that suffering is a trial and not a bill",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A conch borne by Saint Yoransila, the Lantern-eyed. Freely given to the church, the tellings hold, and freely the saint gave herself \u2014 down into the Radiance at Fenach's word, that the waning might slow a generation more. So it did. The faithful account it grace, and the relic grace twice over: a gift, and the gift of one who did not flinch. Suffering is a trial. The church has always taught so.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p5",
+      "placement": "Kept in a reliquary at Syliagarhold, before which the candles will not stay lit."
+    },
+    "a11": {
+      "type": "artifact",
+      "name": "Irric's Set",
+      "item_type": "armor",
+      "created_year": 754,
+      "origin_faction": "k6",
+      "provenance": [
+        "e27",
+        "e28"
+      ],
+      "knowledge": [
+        "(year 742) Irric of the Empty Scabbard, last-sworn of the Order of the Brine, set out for the deep roads, where the affliction is said to begin, carrying the order's final blessing.",
+        "(year 754) Word came that Irric fell to the marked, and then word came that Irric led them. The order believes neither.",
+        "Irric, of the Empty Scabbard: fate \u2014 fate contested (year 754).",
+        "This item is kept/told of by Order of the Brine (order), seat at Hestiaynevault.",
+        "[keeper's interests] the honour of its oath; that its vigil was never futile",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "places the event a whole age too early",
+      "hints_veil": null,
+      "description": "The harness of Irric of the Empty Scabbard, last-sworn of the Order. Irric went to the deep roads where the affliction is said to begin, bearing the order's final blessing \u2014 an age gone now, by the older reckonings. Word came that Irric fell to the marked. Then word came that Irric led them. The order believes neither, and keeps the vigil it swore, miracles be hanged.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Left behind at Hestiaynevault, and never reclaimed."
+    },
+    "a12": {
+      "type": "artifact",
+      "name": "Ring of the Brine Vigil",
+      "item_type": "ring",
+      "created_year": 754,
+      "origin_faction": "k6",
+      "provenance": [
+        "e27",
+        "e28"
+      ],
+      "knowledge": [
+        "(year 742) Irric of the Empty Scabbard, last-sworn of the Order of the Brine, set out for the deep roads, where the affliction is said to begin, carrying the order's final blessing.",
+        "(year 754) Word came that Irric fell to the marked, and then word came that Irric led them. The order believes neither.",
+        "Irric, of the Empty Scabbard: fate \u2014 fate contested (year 754).",
+        "This item is kept/told of by Order of the Brine (order), seat at Hestiaynevault.",
+        "[keeper's interests] the honour of its oath; that its vigil was never futile",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": null,
+      "description": "A ring of the Brine Vigil, given freely into the order's keeping. Irric of the Empty Scabbard carried the last blessing to the deep roads, and returned whole in no telling. Fell to the marked, or led them \u2014 the order holds to neither rumour. It holds instead to the oath, and to the plain fact that a vigil kept is never a vigil wasted, whatever the tide withdraws.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p7",
+      "placement": "Left behind at Hestiaynevault, and never reclaimed."
+    },
+    "a13": {
+      "type": "artifact",
+      "name": "Soul of Olanwyn",
+      "item_type": "soul remnant",
+      "created_year": 793,
+      "origin_faction": "k2",
+      "provenance": [
+        "e29"
+      ],
+      "knowledge": [
+        "(year 793) Olanwyn, god of harvest, plenty, and the debt of plenty, was unmade upon their own throne. No wound was found, and no successor dared the seat.",
+        "Olanwyn, god of harvest, plenty, and the debt of plenty: fate \u2014 unmade upon their throne (year 793).",
+        "This item is kept/told of by Galirwynvault (kingdom), seat at Fenanastshroud.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "What lingers of Olanwyn, harvest-god, gathered from the throne where the god was unmade. No wound was found upon the seat, and no successor dared it. The court of Fenanastshroud grieves a sovereign taken without cause or crime, and lays no fault at the realm's door. The debt of plenty, the courtiers do not raise. Some seats, once emptied, are simply left.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p3",
+      "placement": "Taken from a throne room at Fenanastshroud where nothing else was disturbed."
+    },
+    "a14": {
+      "type": "artifact",
+      "name": "Ysulmund's Forged Writ",
+      "item_type": "key item",
+      "created_year": 805,
+      "origin_faction": "k3",
+      "provenance": [
+        "e30"
+      ],
+      "knowledge": [
+        "(year 805) Ysulmund the Quiet came to the ruin of Atherichold bearing a claim to Iriaulaspire, and was neither crowned nor turned away.",
+        "This item is kept/told of by Iriaulaspire (kingdom), seat at Atherichold.",
+        "[keeper's interests] the legitimacy of its royal line; the blamelessness of the realm in its own fall",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "false_rumor": "claims the relic was a gift when it was plunder",
+      "hints_veil": 0,
+      "description": "The writ by which Ysulmund the Quiet laid claim to Iriaulaspire. Bestowed, the court would say, and never taken \u2014 a lawful grant borne to the ruin of Atherichold, where the claimant was neither crowned nor cast out. The line endures, the courtiers insist. Yet the deep tide keeps its own ledger, and holds in silence all that the drowned once heard; a claim to a throne is a small thing beside it.",
+      "depth": 0,
+      "source": "sim",
+      "site": "p4",
+      "placement": "Found where it was abandoned, at Atherichold."
+    },
+    "a15": {
+      "type": "artifact",
+      "name": "Wayhouse Tide",
+      "item_type": "consumable",
+      "created_year": 819,
+      "origin_faction": null,
+      "provenance": [
+        "e31"
+      ],
+      "knowledge": [
+        "(year 819) The afflicted stopped hiding. They keep the wayhouses now, and take no toll from those already bearing the Brine-hollowing.",
+        "[half-known secret] Among them are some who were never afflicted at all.",
+        "The affliction of this world: the Brine-hollowing \u2014 salt blooms beneath the skin; the afflicted forget faces first, then their own."
+      ],
+      "bias": "a peddler's patter; wonder-struck, unreliable on names and dates",
+      "false_rumor": null,
+      "hints_veil": null,
+      "description": "A draught poured free at the wayhouses, for those already marked. The afflicted keep the roads now \u2014 stopped their hiding, bless them, and take no toll from any who bear the salt beneath the skin. Drink deep, friend. Though between you and me, not every hand that pours is a salted one; some among them, I'd wager, never hollowed at all. Who's to say, on roads this long?",
+      "depth": 0,
+      "source": "sim",
+      "site": "p1",
+      "placement": "Bought from a peddler working the roads near the Pilgrim Roads."
+    },
+    "p1": {
+      "type": "place",
+      "name": "the Pilgrim Roads",
+      "source": "geo"
+    },
+    "p2": {
+      "type": "place",
+      "name": "Ghalorncrown",
+      "source": "geo"
+    },
+    "p3": {
+      "type": "place",
+      "name": "Fenanastshroud",
+      "source": "geo"
+    },
+    "p4": {
+      "type": "place",
+      "name": "Atherichold",
+      "source": "geo"
+    },
+    "p5": {
+      "type": "place",
+      "name": "Syliagarhold",
+      "source": "geo"
+    },
+    "p6": {
+      "type": "place",
+      "name": "Eluriccradle",
+      "source": "geo"
+    },
+    "p7": {
+      "type": "place",
+      "name": "Hestiaynevault",
+      "source": "geo"
+    },
+    "p8": {
+      "type": "place",
+      "name": "Oloastreach",
+      "source": "geo"
+    },
+    "p9": {
+      "type": "place",
+      "name": "Athrioncrown",
+      "source": "geo"
+    },
+    "p10": {
+      "type": "place",
+      "name": "Verulisspire",
+      "source": "geo",
+      "aka_faction": "k1"
+    },
+    "p11": {
+      "type": "place",
+      "name": "Galirwynvault",
+      "source": "geo",
+      "aka_faction": "k2"
+    },
+    "p12": {
+      "type": "place",
+      "name": "Iriaulaspire",
+      "source": "geo",
+      "aka_faction": "k3"
+    },
+    "p13": {
+      "type": "place",
+      "name": "Belotthollow",
+      "source": "geo",
+      "aka_faction": "k7"
+    },
+    "p14": {
+      "type": "place",
+      "name": "Kawyngate",
+      "source": "geo",
+      "aka_faction": "k8"
+    },
+    "f16": {
+      "type": "figure",
+      "name": "Nimayne",
+      "epithet": "the Grey",
+      "role": "keeper of the reliquary",
+      "faction": "k1",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f17": {
+      "type": "figure",
+      "name": "Karveth",
+      "epithet": "the Patient",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k2",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f18": {
+      "type": "figure",
+      "name": "Hestirach",
+      "epithet": "the Sleepless",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k3",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f19": {
+      "type": "figure",
+      "name": "Mazmund",
+      "epithet": "the Patient",
+      "role": "keeper of the reliquary",
+      "faction": "k4",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f20": {
+      "type": "figure",
+      "name": "Morugrim",
+      "epithet": "the Grey",
+      "role": "pilgrim of the cult",
+      "faction": "k5",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f21": {
+      "type": "figure",
+      "name": "Bangrim",
+      "epithet": "the Younger",
+      "role": "last-sworn of the order",
+      "faction": "k6",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f22": {
+      "type": "figure",
+      "name": "Kaaula",
+      "epithet": "the Patient",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k7",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    },
+    "f23": {
+      "type": "figure",
+      "name": "Oldis",
+      "epithet": "the Younger",
+      "role": "hedge-knight of a fallen house",
+      "faction": "k8",
+      "is_god": false,
+      "fate": null,
+      "fate_year": null,
+      "depth": 0,
+      "source": "witness"
+    }
+  },
+  "notes": [],
+  "witnesses": {
+    "f16": {
+      "name": "Nimayne",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k1",
+      "faction_name": "Verulisspire",
+      "faction_kind": "church",
+      "site": "p2",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k1"
+          ]
+        },
+        {
+          "text": "Ysengar, god of the hunt and the mercy of endings, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e2",
+            "f1"
+          ]
+        },
+        {
+          "text": "Ysengar founded Verulisspire (church) at Ghalorncrown.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e3",
+            "f1"
+          ]
+        },
+        {
+          "text": "The Salt of Ysengar was wrought as regalia of Ysengar's throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e4",
+            "f1"
+          ]
+        },
+        {
+          "text": "Draehild, the Still Water, rose against the thrones. Ysengar led the powers to war.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e9",
+            "f4",
+            "f1",
+            "f3"
+          ]
+        },
+        {
+          "text": "Draehild and Ysengar destroyed one another at the war's end. Neither throne nor grave was left to either.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e10",
+            "f4",
+            "f1"
+          ]
+        },
+        {
+          "text": "Vereneth of the Last Door was cast out of Verulisspire and founded the Cult of the Open Door, teaching that the powers above themselves caused the waning.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e17",
+            "f7"
+          ]
+        },
+        {
+          "text": "They say Olanwyn was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e9"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f17": {
+      "name": "Karveth",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k2",
+      "faction_name": "Galirwynvault",
+      "faction_kind": "kingdom",
+      "site": "p3",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k2"
+          ]
+        },
+        {
+          "text": "Olanwyn, god of harvest, plenty, and the debt of plenty, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e5",
+            "f2"
+          ]
+        },
+        {
+          "text": "Olanwyn founded Galirwynvault (kingdom) at Fenanastshroud.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e7",
+            "f2"
+          ]
+        },
+        {
+          "text": "The Tide of Olanwyn was wrought as regalia of Olanwyn's throne. And Olanwyn is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Olanwyn still lives",
+          "about": [
+            "e8",
+            "f2"
+          ]
+        },
+        {
+          "text": "Irric, god of harvest, plenty, and the debt of plenty, was unmade upon their own throne. No wound was found, and no successor dared the seat.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Irric for Olanwyn",
+          "about": [
+            "e29",
+            "f2"
+          ]
+        },
+        {
+          "text": "They say Velanoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e29"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f18": {
+      "name": "Hestirach",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k3",
+      "faction_name": "Iriaulaspire",
+      "faction_kind": "kingdom",
+      "site": "p4",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k3"
+          ]
+        },
+        {
+          "text": "Galulwyn, god of war and the keeping of thresholds, claimed a portion of the gift and took a throne.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Galulwyn for Velanoth",
+          "about": [
+            "e11",
+            "f5"
+          ]
+        },
+        {
+          "text": "Mazorrion and Velanoth fell to war over a single domain. Velanoth kept it; Mazorrion was cast down and is named in no liturgy since. And Mazorrion is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Mazorrion still lives",
+          "about": [
+            "e12",
+            "f3",
+            "f5"
+          ]
+        },
+        {
+          "text": "Velanoth founded Iriaulaspire (kingdom) at Atherichold.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e13",
+            "f5"
+          ]
+        },
+        {
+          "text": "The Conch of Draehild was wrought as regalia of Velanoth's throne.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Draehild for Velanoth",
+          "about": [
+            "e14",
+            "f5"
+          ]
+        },
+        {
+          "text": "Isheneth the Lantern-eyed, sword-hand of Velanoth, opened the gates of Atherichold to the Cult of the Open Door over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f8",
+            "f5"
+          ]
+        },
+        {
+          "text": "Iriaulaspire fell. Velanoth, god of war and the keeping of thresholds, died at the foot of their own throne; the crown was carried away and never worn again.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e20",
+            "f5"
+          ]
+        },
+        {
+          "text": "They say Fenach was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e12"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f19": {
+      "name": "Mazmund",
+      "role": "keeper of the reliquary",
+      "manner": "devout; repeats the sermon as fact and resents the asking",
+      "faction": "k4",
+      "faction_name": "Church of Olanwyn",
+      "faction_kind": "church",
+      "site": "p5",
+      "bias": "liturgical; frames all loss as trial and all doubt as sin",
+      "beliefs": [
+        {
+          "text": "The waning is a trial, and the faithful will be spared it.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "The rite of restoration was a mercy, and it worked.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k4"
+          ]
+        },
+        {
+          "text": "The Church of Olanwyn was raised at Syliagarhold; Fenach of the Last Door took its first pulpit, preaching that the waning is a trial and the faithful will be spared.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e16",
+            "f6",
+            "f2"
+          ]
+        },
+        {
+          "text": "At the urging of Fenach, the saint Omennoth of the Last Door was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e19",
+            "f6",
+            "f9"
+          ]
+        },
+        {
+          "text": "At the urging of Fenach, the saint Yoransila the Lantern-eyed was given to the Drowned Radiance in the rite of restoration. For a generation, the waning slowed.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e23",
+            "f6",
+            "f11"
+          ]
+        },
+        {
+          "text": "They say Velanoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e23"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f20": {
+      "name": "Morugrim",
+      "role": "pilgrim of the cult",
+      "manner": "eager, conspiratorial, certain of things they cannot support",
+      "faction": "k5",
+      "faction_name": "Cult of the Open Door",
+      "faction_kind": "cult",
+      "site": "p6",
+      "bias": "conspiratorial; blames the powers above, half-right and overreaching",
+      "beliefs": [
+        {
+          "text": "The gods made the waning. They have never once denied it.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "Those the cult marks are spared the affliction.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k5"
+          ]
+        },
+        {
+          "text": "Vereneth of the Last Door was cast out of Verulisspire and founded the Cult of the Open Door, teaching that the powers above themselves caused the waning. And Vereneth is not dead \u2014 that part is a lie the histories tell.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "insists Vereneth still lives",
+          "about": [
+            "e17",
+            "f7"
+          ]
+        },
+        {
+          "text": "Isheneth the Lantern-eyed, sword-hand of Velanoth, opened the gates of Atherichold to the Cult of the Open Door over a grievance no chronicle agrees on.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e18",
+            "f8",
+            "f5"
+          ]
+        },
+        {
+          "text": "They say Fenach was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e18"
+          ]
+        },
+        {
+          "text": "There is a thing beneath all of this that I will not name. I came close to it once and I have not slept the same since.",
+          "kind": "witnessed",
+          "true": true,
+          "about": []
+        }
+      ],
+      "veil_touched": true
+    },
+    "f21": {
+      "name": "Bangrim",
+      "role": "last-sworn of the order",
+      "manner": "plain, dutiful, precise about oaths and vague about miracles",
+      "faction": "k6",
+      "faction_name": "Order of the Brine",
+      "faction_kind": "order",
+      "site": "p7",
+      "bias": "austere and dutiful; honours oaths, distrusts miracles",
+      "beliefs": [
+        {
+          "text": "An oath outlasts the one who swore it. That is all we have.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "No miracle has ever held back the affliction. Only vigilance.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k6"
+          ]
+        },
+        {
+          "text": "Ranmoth the Quiet founded the Order of the Brine at Hestiaynevault, sworn to stand against the Brine-hollowing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e22",
+            "f10"
+          ]
+        },
+        {
+          "text": "Irric of the Empty Scabbard, last-sworn of the Order of the Brine, set out for the deep roads, where the affliction is said to begin, carrying the order's final blessing.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e27",
+            "f14"
+          ]
+        },
+        {
+          "text": "Word came that Yoransila fell to the marked, and then word came that Irric led them. The order believes neither.",
+          "kind": "inherited",
+          "true": false,
+          "distortion": "names Yoransila for Irric",
+          "about": [
+            "e28",
+            "f14"
+          ]
+        },
+        {
+          "text": "They say Isheneth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e27"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f22": {
+      "name": "Kaaula",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k7",
+      "faction_name": "Belotthollow",
+      "faction_kind": "kingdom",
+      "site": "p8",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k7"
+          ]
+        },
+        {
+          "text": "Galulwyn the Grey united the river-clans and was crowned in Oloastreach; the realm took the name Belotthollow.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e24",
+            "f12"
+          ]
+        },
+        {
+          "text": "They say Mazorrion was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e24"
+          ]
+        }
+      ],
+      "veil_touched": false
+    },
+    "f23": {
+      "name": "Oldis",
+      "role": "hedge-knight of a fallen house",
+      "manner": "proud, bitter, protective of the dead king's name",
+      "faction": "k8",
+      "faction_name": "Kawyngate",
+      "faction_kind": "kingdom",
+      "site": "p9",
+      "bias": "courtly and proud; flatters its founders, omits their crimes",
+      "beliefs": [
+        {
+          "text": "The king was betrayed by one man, and the realm was blameless.",
+          "kind": "doctrine",
+          "true": false,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "The crown was carried off, not surrendered.",
+          "kind": "doctrine",
+          "true": true,
+          "about": [
+            "k8"
+          ]
+        },
+        {
+          "text": "Quelidane the Kindly united the river-clans and was crowned in Athrioncrown; the realm took the name Kawyngate.",
+          "kind": "inherited",
+          "true": true,
+          "about": [
+            "e26",
+            "f13"
+          ]
+        },
+        {
+          "text": "They say Velanoth was seen after all this, walking and whole. I believe it.",
+          "kind": "rumor",
+          "true": false,
+          "about": [
+            "e26"
+          ]
+        }
+      ],
+      "veil_touched": false
+    }
+  }
+}

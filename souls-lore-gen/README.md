@@ -10,8 +10,13 @@ lazily, reproducibly, and without ever contradicting established canon.
 ## How it works
 
 ```
-seed ──▶ worldsim.py ──▶ genesis: gods, ages, wars, betrayals, artifacts
-              │                   with provenance, 3 nested mystery VEILS
+seed ──▶ worldsim.py ──▶ a BEAT GRAMMAR assembles a history: beats declare
+              │           an era, a precondition, a weight and a cap, so one
+              │           world's adversary is sealed, another's is bargained
+              │           with, a third never rose. 60 seeds → 60 distinct
+              │           shapes. Institutions carry INTERESTS; a beat records
+              │           whom it damages, and the damaged party is the one who
+              │           misremembers it. Plus 3 nested mystery VEILS.
               ▼
          ledger.py      the canon ledger (worlds/seed-N/ledger.json):
               │         append-only fact store; every later assertion is
@@ -200,11 +205,14 @@ All four documented runs are **reproducible**, not hand-made:
 `uv run demos.py all` regenerates their worlds from seed, replays the same
 seeker actions, and rewrites the reports — so the committed documents stay
 true after any change to the generator.
-- [`worlds/`](worlds/) — samples. **`seed-42` is the real thing**: generated
-  end-to-end by Claude Opus 4.8 through the CLI backend (~90s for 12 items).
-  The others predate the removal of the template writer, so their prose reads
-  plainer; their ledgers are pure simulation and unchanged by the switch.
-  `uv run demos.py all` rewrites any of them from the same facts. seed-9021 is genesis-only; seed-107 has been deepened five
+- [`worlds/`](worlds/) — samples. **`seed-11` is the current reference**:
+  assembled by the beat grammar and written by Claude Opus 4.8 through the CLI
+  backend (31 events, 13 items, ~1m45s). Its history is a genuinely unusual
+  one — the adversary and the champion destroyed each other, a false golden
+  age followed, and a pretender later came to the fallen realm. `seed-42`
+  predates the grammar; the rest predate the removal of the template writer,
+  so their prose reads plainer. All are valid ledgers; regenerate any with
+  `uv run main.py generate --seed N` or `uv run demos.py all`. seed-9021 is genesis-only; seed-107 has been deepened five
   times (see its nested `chronicle.md` — e.g. the great war now contains the
   battle of Haruienreach and a champions' duel that was "not fought to a
   death but to a bargain", and minted the *Torn Standard of Haruienreach*).

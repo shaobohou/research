@@ -195,6 +195,43 @@ def check_world(world_dir: Path, c: Check) -> None:
                           f"(outside the seeker's own claims)" if hit else "")
 
 
+def check_grammar(c: Check, n: int = 40) -> None:
+    """Sweep freshly assembled worlds: the grammar must never emit an
+    incoherent history, however the beats fall."""
+    from worldsim import generate_world
+    from witness import ensure_witnesses
+    for seed in range(1, n + 1):
+        w = generate_world(seed, 14)
+        tag = f"grammar seed {seed}"
+        c.ok(len(w.artifacts) >= 6, f"[{tag}] only {len(w.artifacts)} artifacts")
+        c.ok(any(e.kind == "cosmogony" for e in w.events),
+             f"[{tag}] no cosmogony")
+        years = [e.year for e in w.events]
+        c.ok(years == sorted(years), f"[{tag}] events are not chronological")
+        fates = {f.id: f.fate_year for f in w.figures}
+        for e in w.events:
+            for pid in e.participants:
+                fy = fates.get(pid)
+                c.ok(fy is None or e.year <= fy,
+                     f"[{tag}] {e.id}: a participant acts after their fate")
+            for rid in e.referents:
+                c.ok(rid in fates, f"[{tag}] {e.id}: unknown referent")
+            for kid in e.damages:
+                c.ok(any(k.id == kid for k in w.factions),
+                     f"[{tag}] {e.id}: damages unknown faction {kid}")
+        for a in w.artifacts:
+            c.ok(bool(a.provenance), f"[{tag}] {a.name}: no provenance")
+            c.ok(all(any(e.id == pv for e in w.events) for pv in a.provenance),
+                 f"[{tag}] {a.name}: dangling provenance")
+            c.ok(bool(a.knowledge), f"[{tag}] {a.name}: empty knowledge packet")
+        # the whole thing must survive being made into a ledger with witnesses
+        lg = Ledger.from_world(w)
+        ensure_geography(lg)
+        ensure_witnesses(lg)
+        c.ok(bool(lg.d["witnesses"]) or not w.factions,
+             f"[{tag}] factions exist but no witnesses were made")
+
+
 def check_determinism(c: Check) -> None:
     """Genesis must be reproducible; expansion skeletons must be per-node."""
     from worldsim import generate_world
@@ -319,6 +356,7 @@ def main() -> int:
     c = Check()
     for d in dirs:
         check_world(d, c)
+    check_grammar(c)
     check_determinism(c)
     check_witnesses(c)
     check_roles(c)

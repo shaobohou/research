@@ -53,6 +53,7 @@ class Ledger:
                 "type": "event", "kind": e.kind, "year": e.year,
                 "text": e.text, "hidden": e.hidden,
                 "participants": e.participants, "referents": e.referents,
+                "damages": e.damages,
                 "parent": None, "depth": 0, "expanded": False, "source": "sim",
             }
         for a in w.artifacts:

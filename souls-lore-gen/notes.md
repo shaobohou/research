@@ -384,3 +384,60 @@ distortion targets when convenient.
 
 Also: `main.py _write` now seeds witnesses, so generate/codex produce
 ledgers that satisfy selfcheck without a migration pass.
+
+### 2026-07-06 — Phase A: beat grammar + interests (issues #1, #6)
+`worldsim.py` rewritten from a fixed script into a grammar. Beats are data —
+`(era, weight, cap, name, precondition, apply)` — and each age draws a random
+number of eligible beats by weight. 22 beats across three eras, including
+alternatives that never coexisted before: a war may end in **sealing**, a
+**bargain** (adversary withdraws unbroken, price unnamed), or **mutual ruin**
+(adversary and champion destroy each other); a kingdom may fall to
+**betrayal**, **plague** (gates shut from inside), or a **succession** none
+can prove; plus divine schism, a false golden age, an heir with a forged
+claim, and the marked taking the roads.
+
+Measured: **60 distinct genesis shapes across 60 seeds** (was 2 across 24).
+Frequencies are properly uneven — 12/60 worlds have no great war at all,
+mutual ruin appears in 5/60, the bargain in 9/60, sealing in 13/60.
+
+Interests (the scoped-down #6): factions carry `INTERESTS_BY_KIND` (a
+church needs its rites to have worked; a kingdom needs its fall to have been
+someone else's fault), events carry `damages: [faction_ids]`, and
+`assign_knowledge` now attaches a false rumour with p=0.75 when the keeper is
+damaged by its own provenance versus p=0.12 otherwise. Interests are also
+passed into the item payload, so the prose can motivate the lie. This is much
+less machinery than planned because the earlier seed-42 run showed the model
+already infers motive from `bias` alone.
+
+Verified: the new `check_grammar` sweep in selfcheck asserts, over 40 freshly
+assembled worlds, that events are chronological, no participant acts after
+their fate, referents/damages resolve, every artifact has provenance and a
+knowledge packet, and the whole thing survives becoming a ledger with
+geography and witnesses. 10,686 checks, 0 failures.
+
+The sweep immediately earned itself by catching two real bugs:
+  - Wars may now be settled an age after they start, so `state_champ` could
+    be dead by then (killed in a schism, or lost with a plague-struck realm).
+    Added `_war_closer()`: the champion if living, else another standing
+    power, else nobody named ("...who took up the war after X fell"). Mutual
+    ruin now requires the champion to be alive, since it kills them.
+  - `_do_rite` could pick a *dead* urger — specifically the saint consumed by
+    an earlier rite. Now filtered to the living.
+Also fixed an epithet running into a sentence unpunctuated ("Velanoth god of
+war and the keeping of thresholds died at...").
+
+Showcase: `worlds/seed-11` (sea). The interests model is visible in the
+prose — the fallen kingdom's own crown says "Velanoth died at the throne's
+foot — *or so the enemy would have it*. The court holds otherwise: that the
+threshold-god withdrew, and waits yet in some hidden seat... A kingdom does
+not fall, the courtiers say, while its god still breathes." That is a
+motivated denial of its own sovereign's death, generated from `damages` +
+`interests`. The forged writ likewise reads "Bestowed, the court would say,
+and never taken" — the false rumour delivered as courtly bias — and hints at
+veil 1 ("the deep tide keeps its own ledger, and holds in silence all that
+the drowned once heard") without stating it. selfcheck confirms no leak.
+
+Stale: worlds generated before the grammar (seed-42 and earlier) no longer
+represent what the sim produces, and the journals/walkthroughs describe those
+older worlds. Kept as records of design evolution rather than deleted;
+README now points at seed-11 as the reference.
