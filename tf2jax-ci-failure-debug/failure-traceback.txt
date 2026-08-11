@@ -1,0 +1,56 @@
+_______ Jax2TfTest.test_mlp_with_gradient_with_custom_gradient__with_jit _______
+[gw2] linux -- Python 3.12.3 /tmp/claude-0/-home-user-research/6c24e1ee-c746-577d-996d-84d94187cc3e/scratchpad/venv/bin/python3.12
+
+self = <tf2jax._src.roundtrip_test.Jax2TfTest testMethod=test_mlp_with_gradient_with_custom_gradient__with_jit>
+with_grad = True, with_custom_grad = True
+
+    @chex.variants(with_jit=True)
+    @parameterized.named_parameters(
+        chex.params_product(
+            (("without_gradient", False), ("with_gradient", True)),
+            (("without_custom_gradient", False), ("with_custom_gradient", True)),
+            named=True,
+        )
+    )
+    def test_mlp(self, with_grad, with_custom_grad):
+      np.random.seed(42)
+    
+      class MLP(nn.Module):
+        features: list[int]
+    
+        @nn.compact
+        def __call__(self, x):
+          for i, feat in enumerate(self.features):
+            x = nn.Dense(features=feat)(x)
+            if i != len(self.features) - 1:
+              x = nn.relu(x)
+          return x
+    
+      inputs = np.random.normal(size=(8, 28 * 28))
+      forward = MLP(features=[300, 100, 10])
+>     variables = forward.init(jax.random.key(42), jnp.zeros_like(inputs))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../venv/lib/python3.12/site-packages/tf2jax/_src/roundtrip_test.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../venv/lib/python3.12/site-packages/flax/core/tracers.py:30: in current_trace
+    return jax.core.get_opaque_trace_state(convention="flax")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'get_opaque_trace_state'
+
+    @functools.cache
+    def getattr(name):
+      if name in deprecations:
+        message, fn = deprecations[name]
+        if fn is None:  # Is the deprecation accelerated?
+>         raise AttributeError(message)
+E         AttributeError: jax.core.get_opaque_trace_state was deprecated in JAX v0.10.0 and removed in JAX v0.11.0.  Use jax.extend.core.get_opaque_trace_state.
+E         --------------------
+E         For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+
+../venv/lib/python3.12/site-packages/jax/_src/deprecations.py:54: AttributeError
+_____ Jax2TfTest.test_mlp_with_gradient_without_custom_gradient__with_jit ______
+[gw2] linux -- Python 3.12.3 /tmp/claude-0/-home-user-research/6c24e1ee-c746-577d-996d-84d94187cc3e/scratchpad/venv/bin/python3.12
+

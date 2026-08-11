@@ -1,0 +1,20 @@
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_mlp_with_gradient_with_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_mlp_with_gradient_without_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_mlp_without_gradient_with_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_mlp_without_gradient_without_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_batch_norm_with_gradient_with_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_batch_norm_with_gradient_without_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_batch_norm_without_gradient_with_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_batch_norm_without_gradient_without_custom_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_conv2d_with_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_conv2d_without_gradient__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_with_gradient_batch_group_count__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_with_gradient_default_group_counts__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_with_gradient_feature_group_count__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_without_gradient_batch_group_count__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_without_gradient_default_group_counts__with_jit
+FAILED _src/roundtrip_test.py::Jax2TfTest::test_xla_conv_without_gradient_feature_group_count__with_jit
+FAILED _src/tf2jax_test.py::FeaturesTest::test_export_saved_model_export_jax_module
+FAILED _src/tf2jax_test.py::FeaturesTest::test_force_bf16_consts_for_leaks__with_jit
+FAILED _src/tf2jax_test.py::FeaturesTest::test_force_bf16_consts_for_leaks__without_jit
+===== 19 failed, 995 passed, 96 skipped, 230 warnings in 122.88s (0:02:02) =====
