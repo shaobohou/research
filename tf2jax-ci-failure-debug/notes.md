@@ -123,3 +123,60 @@ ever getting there. 995 + 13 = 1008 and 96 + 6 = 102. Nothing is being newly mas
 Once stage 1 is fixed, CI will finally reach the second block, which reinstalls `tf-nightly`,
 `jax` from GitHub HEAD and pre-release `jaxlib`, then reruns `roundtrip_test`. Ran that locally
 too — see `stage2-result.md` for what it found.
+
+---
+
+# Part 2 — full repository scan (2026-08-11)
+
+Follow-on request: scan the whole repo for issues and rank them. Output: `issues.md`.
+
+## What was covered
+
+All of `tf2jax/` (~10.8k lines: `ops.py` 2970, `ops_test.py` 2615, `tf2jax.py` 1532,
+`roundtrip_test.py` 1182, plus `numpy_compat.py`, `utils.py`, `config.py`, `xla_utils.py`,
+`experimental/{ops,mhlo}.py`, `test_util.py`), `setup.py`, `test.sh`, both workflow files,
+`MANIFEST.in`, `.pylintrc`, `README.md`.
+
+## Verification runs (not just reading)
+
+- **pytype**: the CI-disabled command fails on `--use-enum-overlay` (flag removed from current
+  pytype). Re-run without it: exactly 1 error, `tf2jax.py:889 No attribute 'tolist' on tuple`,
+  traceable to the wrong return annotation on `_OpNode.__call__`.
+- **pylint on tests**: the CI-disabled command exits 24 today (refactor/convention only) → would
+  pass `pylint-exit -efail -wfail`. Without the `-d W0212,E1123,E1120` workaround it is exit 26 with
+  169 `E1120` TF false positives, so the workaround is still load-bearing.
+- **XlaCallModule empty `platforms`**: built a real jax2tf graph, cleared the `platforms` attr,
+  and converted. Confirmed `ValueError: tuple.index(x): x not in tuple` from
+  `experimental/ops.py:236`. Baseline (platforms=[CPU]) converts fine.
+- **skip census**: 102 skips over 1110 tests. 66 are the unconditional
+  `with_grad and not with_custom_grad` skip at `roundtrip_test.py:70`; 24 are
+  `CHECK_CUSTOM_CALLS_TEST=0`, which `test.sh` sets in CI; `sharding_test.py` (2 tests) is TPU-only.
+- **packaging**: `python setup.py sdist bdist_wheel` succeeds on setuptools 84 but warns
+  `Unknown distribution option: 'tests_require'` and `License classifiers are deprecated`.
+- **JAX API probe**: `jax.core.Tracer`, `jax.core.ShapedArray`, `mlir.flatten_ir_values`,
+  `jax.extend.sharding.GSPMDSharding`, `jax.lax.optimization_barrier_p` all still resolve on jax
+  HEAD; only `jax.core.get_opaque_trace_state` is gone.
+
+## Things checked that turned out NOT to be problems
+
+Worth recording so they are not re-investigated:
+
+- `MaxPool` with `init_value=-jnp.inf` on **int32** input — matches TF exactly (jnp coerces the
+  identity). Same for `AvgPool` with `SAME` padding.
+- `test_data/**` **is** present in the built wheel, despite setuptools warning
+  `Package 'tf2jax.test_data.custom_gradient_cubed' is absent from the packages configuration`.
+- `python setup.py --version` still prints only `0.3.9` to stdout under setuptools 84, so the
+  version-vs-tag check in `pypi-publish.yml` is not broken by warning noise.
+- `_XlaVariadicSort._compute_num_keys` looks like it can leave `num_keys` unbound, but the
+  `idx == 0` guard raises before any path reaches the `break`, so it cannot.
+- `_EvaluationCache.free_inputs` looks like it could free a parameter still needed by `new_params`,
+  but params are counted twice (once as graph input, once as node input), so the refcount never
+  reaches zero prematurely.
+- `jax.experimental.jax2tf` itself is **not** deprecated in jax 0.11 — only its
+  `native_serialization` and `enable_xla` parameters are. tf2jax does not pass either.
+
+## Notable non-findings in ops.py
+
+Read all 130+ op parsers. The conversions themselves are in good shape; the defects found are
+peripheral (two f-string bugs, one deprecated logging alias). The `# TODO(b/...)` density is high
+(13 in `ops.py`, 8 in `tf2jax.py`) but they are documented limitations, not latent breakage.
