@@ -1,0 +1,855 @@
+<title>tf2jax — issue scan</title>
+<style>
+  /* ---------- tokens: complete light palette on bare :root ---------- */
+  :root {
+    color-scheme: light dark;
+
+    --ground:      #F6F7F9;
+    --surface:     #FFFFFF;
+    --surface-alt: #EFF1F5;
+    --ink:         #121821;
+    --ink-soft:    #57616F;
+    --ink-faint:   #838D9B;
+    --rule:        #DFE3EA;
+    --rule-strong: #C4CBD5;
+    --accent:      #0C6E74;
+    --accent-soft: #DCEDEE;
+
+    --sev-crit:  #A62F24;
+    --sev-high:  #B4651F;
+    --sev-med:   #8E7015;
+    --sev-low:   #3F6E77;
+    --sev-quiet: #616C7B;
+
+    --crit-wash: #F7E7E4;
+    --shadow: 0 1px 0 rgba(18, 24, 33, .04);
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Source Serif Pro", Georgia, "Times New Roman", serif;
+
+    --gutter: 8.5rem;
+    --measure: 66ch;
+  }
+
+  /* system-dark (no data-theme stamped) — tokens only */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0D1117;
+      --surface:     #141A22;
+      --surface-alt: #1B222C;
+      --ink:         #E3E8EF;
+      --ink-soft:    #9BA5B3;
+      --ink-faint:   #6E7886;
+      --rule:        #242C37;
+      --rule-strong: #37414F;
+      --accent:      #52C2C7;
+      --accent-soft: #10333A;
+
+      --sev-crit:  #E4756A;
+      --sev-high:  #D9964F;
+      --sev-med:   #C4AC5B;
+      --sev-low:   #66A5AE;
+      --sev-quiet: #8A94A3;
+
+      --crit-wash: #2A1917;
+      --shadow: 0 1px 0 rgba(0, 0, 0, .3);
+    }
+  }
+
+  /* explicit dark choice — tokens only */
+  :root[data-theme="dark"] {
+    --ground:      #0D1117;
+    --surface:     #141A22;
+    --surface-alt: #1B222C;
+    --ink:         #E3E8EF;
+    --ink-soft:    #9BA5B3;
+    --ink-faint:   #6E7886;
+    --rule:        #242C37;
+    --rule-strong: #37414F;
+    --accent:      #52C2C7;
+    --accent-soft: #10333A;
+
+    --sev-crit:  #E4756A;
+    --sev-high:  #D9964F;
+    --sev-med:   #C4AC5B;
+    --sev-low:   #66A5AE;
+    --sev-quiet: #8A94A3;
+
+    --crit-wash: #2A1917;
+    --shadow: 0 1px 0 rgba(0, 0, 0, .3);
+  }
+
+  /* ---------- base ---------- */
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 6rem;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
+  code, kbd, samp, pre { font-family: var(--mono); }
+
+  code {
+    font-size: .82em;
+    background: var(--surface-alt);
+    padding: .1em .34em;
+    border-radius: 2px;
+    word-break: break-word;
+  }
+
+  pre {
+    font-family: var(--mono);
+    font-size: .78rem;
+    line-height: 1.55;
+    background: var(--surface);
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--rule-strong);
+    padding: .85rem 1rem;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+    box-shadow: var(--shadow);
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  pre .add { color: var(--sev-low); }
+  pre .del { color: var(--sev-crit); }
+  pre .em  { color: var(--ink); font-weight: 600; }
+
+  /* ---------- masthead ---------- */
+  .masthead { border-bottom: 2px solid var(--ink); padding-bottom: 1.75rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 1.1rem;
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(2.1rem, 6vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -.035em;
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 .dim { color: var(--ink-faint); font-weight: 400; }
+
+  .standfirst {
+    max-width: var(--measure);
+    margin: 1.1rem 0 0;
+    font-size: 1.14rem;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem 1.6rem;
+    margin-top: 1.6rem;
+    font-family: var(--mono);
+    font-size: .74rem;
+    color: var(--ink-faint);
+  }
+  .meta b { color: var(--ink-soft); font-weight: 600; }
+
+  /* ---------- run summary ---------- */
+  .summary {
+    margin: 2.5rem 0 0;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .summary-head {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: .6rem .9rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-alt);
+  }
+  .summary-body { overflow-x: auto; }
+  table.tally {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+  }
+  table.tally th, table.tally td {
+    text-align: left;
+    padding: .5rem .9rem;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  table.tally tr:last-child td { border-bottom: 0; }
+  table.tally th {
+    font-weight: 600;
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  table.tally td.num { color: var(--ink); font-weight: 600; }
+  table.tally td.what { white-space: normal; color: var(--ink-soft); font-family: var(--serif); font-size: .92rem; }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    padding: .12em .45em;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    line-height: 1.4;
+  }
+  .t-crit  { color: var(--sev-crit); }
+  .t-high  { color: var(--sev-high); }
+  .t-med   { color: var(--sev-med); }
+  .t-low   { color: var(--sev-low); }
+  .t-quiet { color: var(--sev-quiet); }
+
+  /* ---------- priority bands ---------- */
+  .band { margin-top: 4rem; }
+
+  .band-head {
+    display: flex;
+    align-items: baseline;
+    gap: .85rem;
+    flex-wrap: wrap;
+    padding-bottom: .55rem;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .band-id {
+    font-family: var(--mono);
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+  .band-title {
+    font-family: var(--serif);
+    font-size: 1.28rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -.01em;
+  }
+  .band-count {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+  #p0 .band-id { color: var(--sev-crit); }
+  #p1 .band-id { color: var(--sev-high); }
+  #p2 .band-id { color: var(--sev-med); }
+  #p3 .band-id { color: var(--sev-low); }
+  #p4 .band-id, #p5 .band-id { color: var(--sev-quiet); }
+
+  /* ---------- findings: hanging gutter ---------- */
+  .find {
+    display: grid;
+    grid-template-columns: var(--gutter) minmax(0, 1fr);
+    gap: 0 1.75rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .band .find:last-of-type { border-bottom: 0; }
+
+  .find-gutter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .45rem;
+    padding-top: .2rem;
+  }
+  .find-no {
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -.03em;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: .61rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .2em .45em;
+    border-radius: 2px;
+    line-height: 1.3;
+  }
+  .b-verified { background: var(--accent); color: var(--surface); }
+  :root[data-theme="dark"] .b-verified { color: #0D1117; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .b-verified { color: #0D1117; }
+  }
+  .b-observed {
+    background: transparent;
+    color: var(--ink-faint);
+    border: 1px solid var(--rule-strong);
+  }
+
+  .find-body > * + * { margin-top: .85rem; }
+  .find-body h3 {
+    font-family: var(--serif);
+    font-size: 1.09rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .find-body p {
+    margin: 0;
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    font-size: .97rem;
+    text-wrap: pretty;
+  }
+  .find-body p strong { color: var(--ink); font-weight: 600; }
+
+  .locus {
+    font-family: var(--mono);
+    font-size: .73rem;
+    color: var(--ink-faint);
+    letter-spacing: .01em;
+  }
+
+  .fix {
+    display: flex;
+    gap: .55rem;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: .76rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+  .fix::before {
+    content: "FIX";
+    flex: none;
+    font-size: .61rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--accent);
+    padding-top: .12em;
+  }
+
+  /* the P0 gets a heavier treatment — it is the reason the report exists */
+  .headline-find {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--sev-crit);
+    padding: 1.6rem 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .headline-find .find-no { color: var(--sev-crit); }
+  .headline-find pre { background: var(--crit-wash); border-color: var(--rule); border-left-color: var(--sev-crit); }
+
+  /* ---------- compact list for P4/P5 ---------- */
+  .compact { margin-top: 1.25rem; display: grid; gap: 0; }
+  .compact .row {
+    display: grid;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: 0 1rem;
+    padding: .8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .compact .row:last-child { border-bottom: 0; }
+  .compact .n {
+    font-family: var(--mono);
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .compact .txt { margin: 0; font-size: .95rem; color: var(--ink-soft); max-width: var(--measure); }
+  .compact .txt b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- clean list ---------- */
+  .clean { margin: 0; padding-left: 1.15rem; max-width: var(--measure); color: var(--ink-soft); font-size: .97rem; }
+  .clean li + li { margin-top: .4rem; }
+  .clean li::marker { color: var(--ink-faint); font-family: var(--mono); font-size: .85em; }
+
+  /* ---------- order of work ---------- */
+  .order { margin-top: 4rem; border-top: 2px solid var(--ink); padding-top: 1.75rem; }
+  ol.steps { list-style: none; margin: 1.25rem 0 0; padding: 0; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    gap: 0 1rem;
+    padding: .7rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: .97rem;
+    align-items: baseline;
+  }
+  ol.steps li:last-child { border-bottom: 0; }
+  ol.steps li::before {
+    content: counter(step);
+    font-family: var(--mono);
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  ol.steps b { color: var(--ink); font-weight: 600; }
+
+  .colophon {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-faint);
+    max-width: var(--measure);
+    line-height: 1.7;
+  }
+
+  /* ---------- narrow ---------- */
+  @media (max-width: 46rem) {
+    body { font-size: 16px; }
+    .wrap { padding: 2.5rem 1.15rem 4rem; }
+    .find { grid-template-columns: minmax(0, 1fr); gap: .7rem; }
+    .find-gutter { flex-direction: row; align-items: center; gap: .6rem; }
+    .find-no { font-size: 1.1rem; }
+    .band-count { margin-left: 0; width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Repository scan · 25 findings · ranked</p>
+    <h1>tf2jax <span class="dim">@ 567b347</span></h1>
+    <p class="standfirst">
+      The nightly build has been failing for months on a single dependency-pin conflict. Fixing it
+      is one line — but the scan turned up a second real crash, two quality gates that have been
+      switched off for years and would pass today, and 91 tests that can never run in CI.
+    </p>
+    <div class="meta">
+      <span><b>google-deepmind/tf2jax</b> · main</span>
+      <span>scanned <b>2026-08-11</b></span>
+      <span>~10.8k lines + build, CI, packaging</span>
+      <span>jax <b>0.11.0</b> / TF <b>2.20.0</b> / py <b>3.12</b></span>
+    </div>
+  </header>
+
+  <section class="summary" aria-label="Findings by priority">
+    <div class="summary-head">Findings by priority</div>
+    <div class="summary-body">
+      <table class="tally">
+        <thead>
+          <tr><th scope="col">Band</th><th scope="col">N</th><th scope="col">Verified</th><th scope="col">What it covers</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag t-crit">P0</span></td><td class="num">1</td><td class="num">1</td>
+            <td class="what">CI is red — the flax/jax pin conflict</td>
+          </tr>
+          <tr>
+            <td><span class="tag t-high">P1</span></td><td class="num">5</td><td class="num">4</td>
+            <td class="what">A real crash, plus the structural reasons this went unnoticed</td>
+          </tr>
+          <tr>
+            <td><span class="tag t-med">P2</span></td><td class="num">2</td><td class="num">2</td>
+            <td class="what">Disabled quality gates that pass today</td>
+          </tr>
+          <tr>
+            <td><span class="tag t-low">P3</span></td><td class="num">4</td><td class="num">3</td>
+            <td class="what">Test-coverage holes — 102 skips over 1110 tests</td>
+          </tr>
+          <tr>
+            <td><span class="tag t-quiet">P4</span></td><td class="num">9</td><td class="num">4</td>
+            <td class="what">Code defects, low severity</td>
+          </tr>
+          <tr>
+            <td><span class="tag t-quiet">P5</span></td><td class="num">4</td><td class="num">1</td>
+            <td class="what">Docs and release process</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== P0 ===================== -->
+  <section class="band" id="p0">
+    <div class="band-head">
+      <span class="band-id">P0</span>
+      <h2 class="band-title">CI is red</h2>
+      <span class="band-count">1 finding</span>
+    </div>
+
+    <div class="find headline-find">
+      <div class="find-gutter">
+        <span class="find-no">01</span>
+        <span class="badge b-verified">Verified</span>
+      </div>
+      <div class="find-body">
+        <h3><code>flax==0.10.6</code> is incompatible with jax 0.11 — 19 test failures</h3>
+        <p>
+          <code>requirements_tests.txt</code> pins flax exactly; <code>requirements.txt</code> leaves
+          jax at <code>&gt;=0.7.1</code>. Nightly CI therefore installs jax 0.11.0, which removed
+          <code>jax.core.get_opaque_trace_state</code> — a symbol flax 0.10.6 calls on every
+          <code>nn.Module.init</code>. Every flax-based test dies at model construction.
+          <strong>All 19 failures are this one exception.</strong> Nothing in tf2jax itself is broken.
+        </p>
+<pre><code>flax/core/tracers.py:30: in current_trace
+    return jax.core.get_opaque_trace_state(convention="flax")
+<span class="del">E   AttributeError: jax.core.get_opaque_trace_state was deprecated in JAX v0.10.0
+    and removed in JAX v0.11.0.</span></code></pre>
+<pre><code>  chex==0.1.89
+<span class="del">- flax==0.10.6</span>
+<span class="add">+ flax==0.12.8</span>
+  tensorflow==2.20.0; sys_platform != 'darwin' or platform_machine != 'arm64'</code></pre>
+        <p>
+          Verified green in the same environment with chex left untouched at 0.1.89:
+          <strong>1008 passed, 102 skipped, exit 0</strong>. The tf-nightly + jax@HEAD stage that
+          <code>set -e</code> has been killing for months also passes afterwards
+          (109 passed, 96 skipped).
+        </p>
+        <p class="locus">
+          Failing run 31454480871 · job “Python 3.12 on ubuntu-latest” · exit 1 at step 4
+          (<code>bash test.sh</code>) · the last ~25 scheduled runs all die at the same point
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P1 ===================== -->
+  <section class="band" id="p1">
+    <div class="band-head">
+      <span class="band-id">P1</span>
+      <h2 class="band-title">Structural causes and real defects</h2>
+      <span class="band-count">5 findings</span>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">02</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>Unpinned jax against pinned flax and tensorflow — this will recur</h3>
+        <p>
+          <code>jax&gt;=0.7.1</code> with no ceiling, while <code>tensorflow==2.20.0</code> and
+          <code>flax==0.10.6</code> are frozen exactly. A scheduled build silently drifts onto
+          whatever JAX shipped that day against partners that cannot move with it. Finding 01 is the
+          first casualty; it will not be the last.
+        </p>
+        <p class="fix">Bound jax/jaxlib in <code>requirements.txt</code>, or pin them alongside tensorflow and let <code>test.sh</code>’s existing second stage track HEAD.</p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">03</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3><code>XlaCallModule</code> crashes when the <code>platforms</code> attr is empty</h3>
+        <p>
+          The guard is falsy for an empty tuple, so control falls through to <code>.index()</code> on
+          it. <code>_xla_call_module</code> accepts <code>version &gt;= 2</code>, and
+          <code>platforms</code> postdates that — so a graph without it is a supported input that
+          crashes with an error naming neither the op nor the attr.
+        </p>
+<pre><code>if target_platforms and jax_backend not in target_platforms:
+    ...
+    return None
+else:
+    <span class="em">return target_platforms.index(jax_backend)</span>   # ().index(...) raises</code></pre>
+        <p>Reproduced by clearing the attr on a real jax2tf-produced graph:</p>
+<pre><code>platforms = [b'CPU'] <span class="add">-&gt; OK -&gt; [0. 0.39733866 0.77883667]</span>
+platforms = []       <span class="del">-&gt; ValueError: tuple.index(x): x not in tuple</span></code></pre>
+        <p class="locus">tf2jax/experimental/ops.py:236</p>
+        <p class="fix"><code>return target_platforms.index(jax_backend) if target_platforms else None</code></p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">04</span><span class="badge b-observed">Observed</span></div>
+      <div class="find-body">
+        <h3>Nightly failures reach nobody</h3>
+        <p>
+          <code>ci.yml</code> runs on <code>cron '30 2 * * *'</code> with no notification step, and
+          the workflow-run filter reports <strong>182 failed runs</strong>. Finding 01 ran unattended
+          for months because nothing was watching.
+        </p>
+        <p class="fix">An issue-on-failure action, or surface the scheduled run as a required signal somewhere a human looks.</p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">05</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3><code>fail-fast</code> hides the Python 3.13 job entirely</h3>
+        <p>
+          In the failing run the 3.13 job was cancelled — “The strategy configuration was canceled
+          because <code>build-and-test._3_12_ubuntu-latest</code> failed.” A 3.13-only regression
+          stays invisible until 3.12 is green.
+        </p>
+        <p class="fix"><code>strategy: fail-fast: false</code></p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">06</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>Actions six majors out of date</h3>
+        <p>
+          <code>actions/checkout@v2</code> and <code>actions/setup-python@v1</code>. The runner emits
+          a Node 20 deprecation annotation on every job, and <code>setup-python@v1</code> predates
+          version caching. <code>pypi-publish.yml</code> is on <code>@v4</code>, also Node 20.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P2 ===================== -->
+  <section class="band" id="p2">
+    <div class="band-head">
+      <span class="band-id">P2</span>
+      <h2 class="band-title">Gates switched off that pass today</h2>
+      <span class="band-count">2 findings</span>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">07</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>pytype has been off since “TF 2.14”; it now reports exactly one error</h3>
+        <p>
+          <code>test.sh</code> disables it pending a TensorFlow 2.14 release. TensorFlow is at 2.20.
+          Two things block a straight re-enable — the pinned command passes
+          <code>--use-enum-overlay</code>, a flag current pytype rejects outright, and with that
+          dropped the run surfaces a single error:
+        </p>
+<pre><code>tf2jax/_src/tf2jax.py:889:38: error: in _infer_relu_from_jax2tf:
+    No attribute 'tolist' on tuple [attribute-error]</code></pre>
+        <p>
+          That one is genuine: <code>_OpNode.__call__</code> is declared to return
+          <code>Tuple[Tuple[jnp.ndarray, ...], Mapping[...]]</code>, but ops actually return a bare
+          array, a tuple, or the <code>_EMPTY_RETURN_VALUE</code> sentinel. Correcting the annotation
+          unblocks the gate.
+        </p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">08</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>pylint on the test files would pass as-is</h3>
+        <p>
+          Disabled pending <a href="https://github.com/pylint-dev/pylint/issues/9185">pylint-dev/pylint#9185</a>.
+          Running the commented-out command unchanged today gives <strong>exit 24</strong> — refactor
+          and convention bits only — and <code>pylint-exit -efail -wfail</code> fails only on
+          fatal/error/warning. It can be turned back on now.
+        </p>
+        <p>
+          The <code>-d W0212,E1123,E1120</code> workaround is still load-bearing: without it the run
+          is exit 26 with 169 <code>E1120 no-value-for-parameter</code> false positives from
+          TensorFlow.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P3 ===================== -->
+  <section class="band" id="p3">
+    <div class="band-head">
+      <span class="band-id">P3</span>
+      <h2 class="band-title">Coverage holes</h2>
+      <span class="band-count">4 findings · 102 skips / 1110 tests</span>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">09</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>66 roundtrip tests can never run</h3>
+        <p>
+          <code>Jax2TfTest._test_convert</code> skips unconditionally when
+          <code>with_grad and not with_custom_grad</code>. Every parameterization in that quadrant is
+          dead, but <code>chex.params_product</code> still generates and names them — so the suite
+          advertises coverage it does not have.
+        </p>
+        <p class="locus">tf2jax/_src/roundtrip_test.py:70–74</p>
+        <p class="fix">Drop the quadrant from the parameterization, or make the skip conditional on something that can change.</p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">10</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3>Custom-call tests never run in CI</h3>
+        <p>
+          <code>test.sh</code> sets <code>CHECK_CUSTOM_CALLS_TEST=0</code> on <em>both</em> pytest
+          invocations, disabling 24 tests. They exist for local runs only.
+        </p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">11</span><span class="badge b-verified">Verified</span></div>
+      <div class="find-body">
+        <h3><code>sharding_test.py</code> has zero CI coverage</h3>
+        <p>
+          156 lines, 2 collected tests, both gated on “Only run sharding tests on TPU.” The matrix is
+          <code>ubuntu-latest</code>, CPU only. Combined with 09 and 10:
+          <strong>~95 of roundtrip_test’s 205 tests are skipped in CI — about 46%.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="find">
+      <div class="find-gutter"><span class="find-no">12</span><span class="badge b-observed">Observed</span></div>
+      <div class="find-body">
+        <h3>Ops carrying explicit “add test” TODOs</h3>
+        <ul class="clean">
+          <li><code>ResourceGather</code>, with <code>dtype</code> and <code>validate_indices</code> — ops.py:1041</li>
+          <li><code>VarHandleOp</code> — ops.py:2356</li>
+          <li><code>BatchMatMulV2</code> with complex values — ops.py:1215</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P4 ===================== -->
+  <section class="band" id="p4">
+    <div class="band-head">
+      <span class="band-id">P4</span>
+      <h2 class="band-title">Code defects, low severity</h2>
+      <span class="band-count">9 findings</span>
+    </div>
+
+    <div class="compact">
+      <div class="row">
+        <span class="n">13</span>
+        <p class="txt"><b>Two error messages missing their <code>f</code> prefix</b> — <code>ops.py:2349</code> and <code>ops.py:2851</code> print literal <code>{num}</code>, <code>{jaxpr}</code> braces instead of values. <span class="badge b-verified">Verified</span></p>
+      </div>
+      <div class="row">
+        <span class="n">14</span>
+        <p class="txt"><b><code>logging.warn</code> is deprecated</b> — <code>ops.py:1079</code> warns on every call; every other site in the file already uses <code>logging.warning</code>. <span class="badge b-verified">Verified</span></p>
+      </div>
+      <div class="row">
+        <span class="n">15</span>
+        <p class="txt"><b><code>mlir.flatten_ir_values</code> is deprecated on jax HEAD</b> — <code>mhlo.py:202</code>, 227 warnings per test run. This is the same deprecate-then-remove path that produced finding 01. <span class="badge b-verified">Verified</span></p>
+      </div>
+      <div class="row">
+        <span class="n">16</span>
+        <p class="txt"><b>Dead compatibility branches</b> — <code>numpy_compat.py:71</code> branches on jax <code>&gt;= 0.4.30</code> while requirements demand <code>&gt;=0.7.1</code>; <code>utils.py:53</code> branches on Python <code>&gt;= 3.10</code> while <code>python_requires</code> is <code>&gt;=3.12</code>. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">17</span>
+        <p class="txt"><b><code>test_util.parse_version</code> is unused</b> — never called; <code>linalg_ops_test.py:34</code> defines its own copy. <span class="badge b-verified">Verified</span></p>
+      </div>
+      <div class="row">
+        <span class="n">18</span>
+        <p class="txt"><b><code>setup.py</code> warnings on build</b> — <code>tests_require=</code> now raises <code>Unknown distribution option</code> and does nothing; license classifiers are deprecated in favour of SPDX; and <code>find_packages(exclude=['*_test.py'])</code> matches package names, not modules, so it excludes nothing. <span class="badge b-verified">Verified</span></p>
+      </div>
+      <div class="row">
+        <span class="n">19</span>
+        <p class="txt"><b>Global mutable config is not thread-safe</b> — <code>config.py</code> mutates a module-level dict process-wide. <code>override_configs</code> restores <em>every</em> key on exit, clobbering anything another thread changed inside its scope. A <code>ContextVar</code> fixes both. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">20</span>
+        <p class="txt"><b>Three loop variables shadowing enclosing names</b> — <code>tf2jax.py:838</code>, <code>tf2jax.py:1402</code>, <code>mhlo.py:116</code>. All benign today because each iterable is evaluated before rebinding, but fragile. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">21</span>
+        <p class="txt"><b><code>library[grad_fn_name]</code> where a miss is expected</b> — <code>tf2jax.py:791</code> raises <code>KeyError</code>, while the next two lines handle <code>if grad_fn is None: continue</code> (“the gradient is not available”). <code>.get()</code> matches the stated intent. <span class="badge b-observed">Observed</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P5 ===================== -->
+  <section class="band" id="p5">
+    <div class="band-head">
+      <span class="band-id">P5</span>
+      <h2 class="band-title">Docs and release process</h2>
+      <span class="band-count">4 findings</span>
+    </div>
+
+    <div class="compact">
+      <div class="row">
+        <span class="n">22</span>
+        <p class="txt"><b>The README CI badge has been red for months</b> — it points at <code>ci.yml?branch=main</code> and is the first thing on the project page. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">23</span>
+        <p class="txt"><b><code>[TOC]</code> does not render on GitHub</b> — <code>README.md:28</code> carries a Google-internal markdown directive, shown literally. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">24</span>
+        <p class="txt"><b>The publish workflow uses legacy PyPI credentials</b> — <code>TWINE_USERNAME</code>/<code>TWINE_PASSWORD</code> from <code>PYPI_USERNAME</code>/<code>PYPI_PASSWORD</code>. PyPI requires API tokens now (username literally <code>__token__</code>); worth confirming what those secrets hold before the next release. Trusted Publishing would remove them entirely, and <code>setup.py sdist bdist_wheel</code> should become <code>python -m build</code>. <span class="badge b-observed">Observed</span></p>
+      </div>
+      <div class="row">
+        <span class="n">25</span>
+        <p class="txt"><b>0.3.9 is unreleased</b> — <code>tf2jax/__init__.py</code> says <code>0.3.9</code>; PyPI’s latest is <code>0.3.8</code>. Informational. <span class="badge b-verified">Verified</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== order of work ===================== -->
+  <section class="order">
+    <p class="eyebrow">Suggested order</p>
+    <h2 class="band-title">Where to start</h2>
+    <ol class="steps">
+      <li><b>Finding 01 — the flax pin.</b> One line, verified, unblocks everything else.</li>
+      <li><b>Findings 05, 06, 04 — <code>fail-fast: false</code>, action bumps, a failure notification.</b> Cheap, and collectively they are why 01 went unnoticed.</li>
+      <li><b>Finding 02 — bound jax.</b> Stops the next recurrence rather than the current one.</li>
+      <li><b>Finding 03 — the empty-<code>platforms</code> crash.</b> One line, and a real user-facing bug.</li>
+      <li><b>Findings 07 and 08 — re-enable pytype and test-file pylint.</b> Both pass today; 07 needs the single annotation fix first.</li>
+      <li><b>Findings 13–18 — the small stuff.</b> Mechanical, safe to batch.</li>
+      <li><b>Findings 09–11 — the coverage holes.</b> The largest genuine gap, and the one that needs design work rather than a patch.</li>
+    </ol>
+  </section>
+
+  <section class="colophon">
+    <p style="margin:0 0 .8rem">
+      Verified findings were reproduced or measured in a python 3.12 venv running jax 0.11.0 and
+      TensorFlow 2.20.0, following <code>test.sh</code> step by step. Observed findings are static
+      readings that were not executed.
+    </p>
+    <p style="margin:0">
+      Checked and found <em>not</em> to be problems, so they need not be re-investigated: int32
+      <code>MaxPool</code> matches TF exactly despite the <code>-inf</code> identity;
+      <code>test_data/**</code> does reach the built wheel despite setuptools’ warning;
+      <code>setup.py --version</code> still prints cleanly, so the release version check works;
+      <code>_compute_num_keys</code> cannot leave <code>num_keys</code> unbound; the evaluation-cache
+      refcount cannot free a parameter early; and <code>jax2tf</code> itself is not deprecated in
+      jax 0.11 — only two of its parameters, neither of which tf2jax passes.
+    </p>
+  </section>
+
+</div>
